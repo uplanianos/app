@@ -1,0 +1,132 @@
+
+body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+	background-color: black;
+	margin-left: 0px;
+	margin-right: 0px;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+body::-webkit-scrollbar { display: none; }
+
+p	{color: white;}
+h1	{color: white;}
+a	{ color: cornflowerblue; text-decoration: none; }
+a:hover		{ color: blue; text-decoration: underline; }
+a:active	{ color: red; }
+a:visited	{ color: hotpink; }
+
+* { box-sizing: border-box; }
+
+.main {
+	margin: auto;
+	background-color: #151B54; /* For browsers that do not support gradients */
+	background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	border: 1px solid navy;
+	float: center;
+	padding: 0px;
+	width: 60%; /* The width is 60%, by default */
+	border-radius: 24px;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+    .main {
+	/* The width is 100%, when the viewport is 800px or smaller */ 
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	border: 0px solid navy;
+	border-radius: 0px;
+	min-height: 100%;
+    }
+}
+
+.title {
+  margin: auto;
+  width: 95%;
+  padding: 12px;
+  background-color: #151B54; /* For browsers that do not support gradients */
+  border: 1px solid white;
+  border-radius: 12px;
+}
+
+.uplanianos-h1-glow {
+  font-size: 32px;
+  color: #FFFFFF;
+  text-align: center;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from { text-shadow: 0 0 10px #999, 0 0 20px #999, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073; }
+  to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6; }
+}
+
+.labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; width: auto; }
+
+.info-div { font-size: 16px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; }
+
+.info-div::-webkit-scrollbar { display: none; }
+
+.info-bubble {
+  display: inline-block;
+  width: 160px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 6px;
+  background-color: #151B54;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.info-bubble-off {
+  display: inline-block;
+  width: 150px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 6px;
+  background-color: #666;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.font-bubble-off { color: darkgray; }
+
+.tools-div { font-size: 14px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; }
+
+.tools-div::-webkit-scrollbar { display: none; }
+
+.tools-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #151B54;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.tools-bubble-off {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #666;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.footer { color: white; font-size: 12px; margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; text-align: center; }

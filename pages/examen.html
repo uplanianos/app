@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../media/uplanianos-icon.png">
+	<link rel="stylesheet" href="../files/pages-style.css">
+	<title>Uplanianos - Examen Acumulativo Especial</title>
+</head>
+
+<body>
+
+<div class="main">
+    <div class="labels"><b><p>Uplanianos Web App:</b> Simulación de Procentaje de Asistencia.</p></div>
+    <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
+
+	<div class="grid-container-pages" style="grid-auto-flow: flow;">
+	  <div class="grid-item-tools"><br><text class="class-type" id="exam-title">Promedio Semestral (70%):<br><br>
+	  <div class="triple-container">
+	    <div class="triple-left"><input type="number" class="average" id="averageGrade" min="1" max="5" step="0.1" value="3.5" readonly disabled></div>
+	    <div class="triple-center" style="margin-top: 12px; font-weight: normal;">x 70% ➡️</div>
+	    <div class="triple-right"><input type="number" class="calculation" id="seventy" min="2.45" max="2.73" step="0.01" value="2.45" readonly disabled></div>
+	  </div>
+	  <br>
+	  <input type="range" class="slidebar" min="3.5" max="3.9" step="0.1" value="3.5" id="averageSlidebar" oninput="updateAverage(); getResult();"><br><br></div>
+	</div>
+
+	<br>
+
+	<div class="grid-container-pages" style="grid-auto-flow: flow;">
+	  <div class="grid-item-tools"><br><text class="class-type" id="exam-title">Examen Especial (30%):<br><br>
+	  <div class="triple-container">
+	    <div class="triple-left"><input type="number" class="exam" id="examGrade" min="4.0" max="7.0" step="0.1" value="4.0" readonly disabled></div>
+	    <div class="triple-center" style="margin-top: 12px; font-weight: normal;">x 30% ➡️</div>
+	    <div class="triple-right"><input type="number" class="calculation" id="thirty" min="1.2" max="2.1" step="0.01" value="1.2" readonly disabled></div>
+	  </div>
+	  <br>
+	  <input type="range" class="slidebar" min="4.0" max="7.0" step="0.1" value="4" id="examSlidebar" oninput="updateExam(); getResult();"><br><br></div>
+	</div>
+
+	<br>
+
+	<div class="grid-container-pages" style="grid-auto-flow: flow;">
+	  <div class="grid-exam-results"><br><text class="class-type" id="exam-title">Resultado final:<br>
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+
+	  <div class="triple-container">
+	    <div class="triple-center" style="margin-top: 10px; font-weight: normal;">Sumatoria:</div>
+	    <div class="triple-right"><input type="number" class="calculation" id="oneHundred" min="1.2" max="2.1" step="0.01" value="3.65" readonly disabled></div>
+	  </div>
+
+	  <div class="triple-container">
+	    <div class="triple-center" style="margin-top: 10px; font-weight: normal;"><b>Promedio:</b></div>
+	    <div class="triple-right"><input type="number" class="average" id="finalAverage" min="3.7" max="4.8" step="0.1" value="3.7" readonly disabled></div>
+	  </div>
+
+    <br>
+
+    </div>
+<br>
+</div>
+
+
+<script>
+function updateAverage() {
+	var averageNumber = document.getElementById('averageSlidebar').value;
+	document.getElementById('averageGrade').value = parseFloat(averageNumber);
+
+	var seventy = document.getElementById('seventy');
+	document.getElementById("seventy").value = (averageNumber * 0.7).toFixed(2);
+}
+
+function updateExam() {
+	var examNumber = document.getElementById('examSlidebar').value;
+	document.getElementById('examGrade').value = parseFloat(examNumber).toFixed(1);
+
+	var thirty = document.getElementById('thirty');
+	document.getElementById("thirty").value = (examNumber * 0.3).toFixed(2);
+}
+
+function getResult() {
+	var seventy = document.getElementById('seventy').value;
+	var thirty = document.getElementById('thirty').value;
+
+	var oneHundred = document.getElementById('oneHundred');
+	document.getElementById("oneHundred").value = (parseFloat(seventy) + parseFloat(thirty)).toFixed(2);
+
+	var finalAverage = document.getElementById('finalAverage');
+	var finalCalculation = document.getElementById("oneHundred").value;
+	document.getElementById("finalAverage").value = (Math.round(finalCalculation*10)/10).toFixed(1);
+
+	var finalResult = document.getElementById('finalAverage').value;
+	if (finalResult < 3.95) { document.getElementById("finalAverage").style.background = "darkred"; }
+	if (finalResult >= 3.95) { document.getElementById("finalAverage").style.background = "cornflowerblue"; }
+
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+</body>
+</html>

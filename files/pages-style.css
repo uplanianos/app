@@ -1,0 +1,410 @@
+
+body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+	background-color: black;
+	margin-left: 0px;
+	margin-right: 0px;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+body::-webkit-scrollbar { display: none; }
+
+p	{color: white;}
+h1	{color: white;}
+a		{ color: cornflowerblue; text-decoration: none; }
+a:hover		{ color: blue; text-decoration: underline; }
+a:active	{ color: red; }
+a:visited	{ color: hotpink; }
+
+.return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
+
+* { box-sizing: border-box; }
+
+/* MAIN DIV SETTINGS */
+
+.main {
+	margin: auto;
+	background-color: #151B54; /* For browsers that do not support gradients */
+	background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	border: 1px solid navy;
+	float: center;
+	padding: 0px;
+	width: 60%; /* The width is 60%, by default */
+	border-radius: 24px;
+	font-size: 16px;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+    .main {
+	/* The width is 100%, when the viewport is 800px or smaller */ 
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	border: 0px solid navy;
+	border-radius: 0px;
+	font-size: 14px;
+	min-height: 100%;
+    }
+}
+
+
+/* BUBBLE DIV ELEMENTS */
+
+.labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; }
+
+.referencias { color: white; margin-left: auto; margin-right: 50px; }
+
+.grid-container-pages {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: auto;
+	background-color: transparent;
+	row-gap: 16px;
+	padding: 1px;
+}
+
+.grid-item-title {
+	background-color: cornflowerblue;
+	border: 1px solid lightgray;
+	padding: 6px;
+	text-align: center;
+}
+
+.grid-item-blue {
+	background-color: lightblue;
+	border: 1px solid lightgray;
+	padding: 6px;
+	text-align: left;
+	border-radius: 6px;
+}
+
+.grid-item {
+	background-color: lightyellow;
+	border: 1px solid white;
+	padding: 6px;
+	text-align: left;
+	border-radius: 6px;
+}
+
+.grid-item-green {
+	background-color: lightgreen;
+	border: 1px solid lightgray;
+	padding: 6px;
+	text-align: left;
+	border-radius: 6px;
+}
+
+.grid-item-pink {
+	background-color: pink;
+	border: 1px solid lightgray;
+	padding: 6px;
+	text-align: left;
+	border-radius: 6px;
+}
+
+.grid-item-gray {
+	background-color: lightgray;
+	border: 1px solid white;
+	padding: 6px;
+	text-align: left;
+	border-radius: 6px;
+}
+
+
+
+/* LICENCE DIV SETTINGS */
+
+.grid-item-license {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #151B54;
+	border: 1px solid white;
+	color: white;
+	padding: 6px;
+	padding-left: 18px;
+	text-align: left;
+	border-radius: 12px;
+}
+
+
+/* TOOL PAGES DIV SETTINGS */
+
+.grid-item-slider {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #151B54;
+	border: 1px solid white;
+	color: white;
+	padding: 6px;
+	padding-left: 18px;
+	text-align: left;
+	border-radius: 12px;
+}
+
+.grid-item-tools {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #151B54;
+	border: 1px solid white;
+	color: white;
+	padding: 6px;
+	padding-left: 18px;
+	text-align: left;
+	border-radius: 12px;
+}
+
+.grid-item-results {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: gray;
+	border: 1px solid white;
+	color: white;
+	padding: 6px;
+	padding-left: 18px;
+	text-align: left;
+	border-radius: 12px;
+}
+
+.grid-exam-results {
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #151B54;
+	border: 1px solid white;
+	color: white;
+	padding: 6px;
+	padding-left: 18px;
+	text-align: left;
+	border-radius: 12px;
+}
+
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+    .grid-item-slider {  width: 95%; }
+    .grid-item-tools {  width: 90%; }
+    .grid-item-results {  width: 75%; }
+    .grid-exam-results {  width: 75%; }
+}
+
+
+/* INTEGRALES DIV SETTINGS */
+
+.test-number { color: cornflowerblue; font-size: 16px; font-weight: bold; }
+
+.slidebar { width: 92%; margin-left: 12px; outline: none; cursor: pointer; }
+
+.double-container { display: flex; width: 98%; text-align: center; align-content: center; }
+.test-left { flex: 5; padding: 6px; }
+.test-right { flex: 5; padding: 6px; margin-right: 12px; }
+
+input[type=number] {
+	width: 85px;
+	color: black;
+	background: white;
+	font-size: 15px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid cornflowerblue;
+	border-radius: 6px;
+	cursor: copy;
+	outline: none;
+}
+
+input[type=number].results {
+	width: 100px;
+	font-size: 16px;
+	background: darkgray;
+	cursor: not-allowed;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+	input[type=number] { padding-left: 3px; }
+	input[type=number].results { padding-left: 3px; }
+}
+
+
+/* BUTTONS SETTINGS */
+
+#getResults {
+	width: 100px;
+	font-size: 16px;
+	background-color: darkred;
+	border: 3px solid darkgray;
+	border-radius: 4px 4px;
+	color: white;
+	padding: 4px 4px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer; }
+
+#getResults:hover { background-color: #C30028; color: white; }
+#getResults:active { background-color: #FC0034; color: black; }
+
+#clearGrades {
+	width: 75px;
+	font-size: 16px;
+	background-color: darkgreen;
+	border: 3px solid darkgray;
+	border-radius: 4px 4px;
+	color: white;
+	padding: 4px 4px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer; }
+
+#clearGrades:hover { background-color: green; color: white; }
+#clearGrades:active { background-color: #39FF14; color: black; }
+
+
+/* ATTENDANCE SETTINGS */
+
+.class-type { color: white; font-size: 16px; font-weight: bold; }
+.class-percent { color: cornflowerblue; font-size: 16px; font-weight: bold; }
+.result-text { color: white; font-size: 24px; }
+
+input[type=number].attendance {
+	width: auto;
+	color: white;
+	text-color: white;
+	background: transparent;
+	font-size: 20px;
+	text-align: center;
+	padding: 12px;
+	border: 0px solid transparent;
+	border-radius: 6px;
+	pointer-events: none;
+	outline: none;
+}
+
+/* EXAM SETTINGS */
+
+.triple-container { display: flex; width: 100%; text-align: center; align-content: center; }
+.triple-left	{ flex: 1; padding: 6px; margin-left: 0px; }
+.triple-center	{ flex: 1; padding: 6px; }
+.triple-right	{ flex: 1; padding: 6px; margin-right: 12px; }
+
+input[type=number].average {
+	width: 100%;
+	color: white;
+	background: darkred;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid white;
+	border-radius: 6px;
+	pointer-events: none;
+	outline: none;
+}
+
+
+input[type=number].exam {
+	width: 100%;
+	color: white;
+	background: cornflowerblue;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid white;
+	border-radius: 6px;
+	pointer-events: none;
+	outline: none;
+}
+
+input[type=number].calculation {
+	width: 100%;
+	color: white;
+	background: gray;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid white;
+	border-radius: 6px;
+	pointer-events: none;
+	outline: none;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+	input[type=number].average	{ padding-left: 0px; padding-right: 0px; }
+	input[type=number].exam		{ padding-left: 0px; padding-right: 0px; }
+	input[type=number].calculation	{ padding-left: 0px; padding-right: 0px; }
+}
+
+/* TESTS SETTINGS */
+
+.test-percent { color: cornflowerblue; font-size: 16px; font-weight: bold; }
+
+/* PROMEDIOS SETTINGS */
+
+.promedios-container {
+	display: flex;
+	width: 96%;
+	margin-left: 3px;
+	margin-top: 12px;
+	margin-bottom: 6px;
+	padding-bottom: 12px;
+	border-bottom: 2px solid darkgray;
+	text-align: center;
+	align-content: center;
+}
+
+.test-titles { position: absolute; padding-left: 6px; margin-top: -1px; color: lightgray; font-size: 14px; }
+
+input[type=number].average-input {
+	width: 85px;
+	color: black;
+	background: white;
+	font-size: 15px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid cornflowerblue;
+	border-radius: 6px;
+	cursor: copy;
+	outline: none;
+}
+
+input[type=number].average-maths {
+	width: 85px;
+	color: black;
+	background: darkgray;
+	font-size: 15px;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 18px;
+	border: 3px solid cornflowerblue;
+	border-radius: 6px;
+	cursor: not-allowed;
+	outline: none;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+	input[type=number].average-input { width: 60px; padding-left: 0px; padding-right: 0px; }
+	input[type=number].average-maths { width: 60px; padding-left: 0px; padding-right: 0px; }
+}

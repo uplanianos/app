@@ -1,0 +1,103 @@
+
+body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+	background-color: black;
+	margin-left: 0px;
+	margin-right: 0px;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+body::-webkit-scrollbar { display: none; }
+
+p	{color: white;}
+h1	{color: white;}
+a		{ color: cornflowerblue; text-decoration: none; }
+a:hover		{ color: blue; text-decoration: underline; }
+a:active	{ color: red; }
+a:visited	{ color: hotpink; }
+
+.return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
+
+* { box-sizing: border-box; }
+
+.main {
+	margin: auto;
+	background-color: #151B54; /* For browsers that do not support gradients */
+	background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	border: 1px solid navy;
+	float: center;
+	padding: 0px;
+	width: 60%; /* The width is 60%, by default */
+	border-radius: 24px;
+	font-size: 14px;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+    .main {
+	/* The width is 100%, when the viewport is 800px or smaller */ 
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	border: 0px solid navy;
+	border-radius: 0px;
+	font-size: 12px;
+	min-height: 100%;
+    }
+}
+
+.labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; }
+
+.grid-container-seventy {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+	background-color: gray;
+	padding: 1px;
+}
+
+.grid-container-sixty {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+	background-color: gray;
+	padding: 1px;
+}
+
+.grid-item-blue {
+	background-color: lightblue;
+	border: 1px solid gray;
+	padding: 3px;
+	text-align: center;
+}
+
+.grid-item {
+	background-color: lightyellow;
+	border: 1px solid gray;
+	padding: 3px;
+	text-align: center;
+}
+
+.grid-item-green {
+	background-color: lightgreen;
+	border: 1px solid gray;
+	padding: 3px;
+	text-align: center;
+}
+
+.grid-item-pink {
+	background-color: pink;
+	border: 1px solid gray;
+	padding: 3px;
+	text-align: center;
+}
