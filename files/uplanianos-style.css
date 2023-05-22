@@ -17,6 +17,8 @@ a:hover		{ color: blue; text-decoration: underline; }
 a:active	{ color: red; }
 a:visited	{ color: hotpink; }
 
+.counter { position: absolute; right: 6px; bottom: 3px; color: white; font-size: 12px; opacity: 0.1; pointer-events: none; }
+
 * { box-sizing: border-box; }
 
 .main {
