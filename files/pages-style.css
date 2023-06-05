@@ -17,6 +17,8 @@ a:hover		{ color: blue; text-decoration: underline; }
 a:active	{ color: red; }
 a:visited	{ color: hotpink; }
 
+ul	{ padding-left: 18px; }
+
 .return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
 
 * { box-sizing: border-box; }
