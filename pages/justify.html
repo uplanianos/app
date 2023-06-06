@@ -9,7 +9,7 @@
 	<title>Uplanianos - Formato para Justificación de Inasistencia</title>
 </head>
 
-<body onload="concatenate()">
+<body>
 
 
 <div class="main">
@@ -154,7 +154,7 @@ Justificación:
 </div>
 
 <div class="grid-item-slider">
-Estudiante: <input type="text" id="student" name="student" placeholder="Nombre Estudiante">
+Estudiante: <input type="text" id="student" placeholder="Nombre Estudiante">
 <br> Promoción:
 <select id="year">
   <option value="2023" selected>2023</option>
@@ -168,6 +168,9 @@ Estudiante: <input type="text" id="student" name="student" placeholder="Nombre E
   <option value="2015">2015</option>
   <option value="2014">2014</option>
   <option value="2013">2013</option>
+  <option value="2012">2012</option>
+  <option value="2011">2011</option>
+  <option value="2010">2010</option>
 </select>
 <br>
 ¿Adjunta antedecentes? <input type="checkbox" id="attachments">
@@ -175,7 +178,7 @@ Estudiante: <input type="text" id="student" name="student" placeholder="Nombre E
 
 <div class="grid-item" style="text-align: center; text-align: center;  display: block; margin-left: auto; margin-right: auto; ">
 
-<button id="doConcatenate" onclick="concatenate()">Redactar</button>
+<button id="doCompose" onclick="compose()">Redactar</button>
 <button onclick="copyFullText()">Copiar</button>
 <br>
 
@@ -198,29 +201,30 @@ Promoción __________.
 
 <br>
 
+
 <script>
-function concatenate() {
-const message = document.getElementById('message');
+function compose() {
+var message = document.getElementById('message');
 var attachments = document.getElementById("attachments");
 
-doConcatenate.addEventListener('click', function handleClick() {
-message.value = title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
-'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
-', dictada por ' + teachers.value + '.\n\n' +
-'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + ' de ' + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
-'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n' + student.value + '\n' + 'Promoción ' + year.value +
-'\n---\n* http://uplanianos.github.io/app/pages/manual-estudiante.html#art45';
-});
+// FULL MESSAGE
+var fullMessage = title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
+ 'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
+ ', dictada por ' + teachers.value + '.\n\n' +
+ 'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + ' de ' + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
+ 'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n\n' + student.value + '\n' + 'Promoción ' + year.value;
 
-if ( attachments.checked == true) { doConcatenate.addEventListener('click', function handleClick() {
-message.value += '\n\n---\nPD: Se hace envío de los antecedentes correspondientes en archivo adjunto.';
-});
-}
+var link = '\n---\n* http://uplanianos.github.io/app/pages/manual-estudiante.html#art45';
 
-else { return ; }
+// ATTACHMENT MESSAGE
+var addAttachment = '\n---\nPD: Se hace envío de los antecedentes correspondientes en archivo adjunto.';
+
+if (attachments.checked) { message.value = fullMessage + addAttachment + link; }
+else { message.value = fullMessage + link; }
 
 }
 </script>
+
 </div>
 
 </div>
@@ -232,6 +236,8 @@ else { return ; }
 function copyFullText() {
   // Get the text field
   var copyText = document.getElementById("message");
+  var director = document.getElementById("director");
+  var reason = document.getElementById("reason");
 
   // Select the text field
   copyText.select();
@@ -241,7 +247,8 @@ function copyFullText() {
   navigator.clipboard.writeText(copyText.value);
   
   // Alert the copied text
-  alert("Copied the text: " + copyText.value);
+  // alert("Copied the text: " + copyText.value);
+  alert("Texto copiado:\nJustificación dirigida a " + director.value + " por motivos de " + reason.value + ".\nComprobar/autorizar para pegar a correo.");
 }
 </script>
 
@@ -258,7 +265,6 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script>
-
 
 </body>
 </html>
