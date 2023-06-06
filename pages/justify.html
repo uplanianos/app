@@ -20,7 +20,7 @@
 
 <div class="grid-item-slider">
 Director:
-<select id="title">
+<select id="adress">
   <option value="Estimado/a " selected>Estimado/a </option>
   <option value="Estimado ">Estimado</option>
   <option value="Estimada ">Estimada</option>
@@ -28,11 +28,16 @@ Director:
   <option value="Directora ">Directora</option>
   <option value="Respetable ">Respetable</option>
   <option value="Honorable ">Honorable</option>
-  <option value="Mg. ">Magíster</option>
-  <option value="Dr. ">Doctor</option>
+</select>
+<select id="title">
+  <option value="" selected>-</option>
   <option value="Sr. ">Sr.</option>
   <option value="Sra. ">Sra.</option>
   <option value="Srta. ">Srta.</option>
+  <option value="Mg. ">Magíster</option>
+  <option value="Dr. ">Doctor</option>
+  <option value="Prof. ">Profesor/a</option>
+  <option value="Dir. ">Director/a</option>
 </select>
 <input type="text" id="director" placeholder="Nombre Dir.">
 <br>
@@ -208,7 +213,7 @@ var message = document.getElementById('message');
 var attachments = document.getElementById("attachments");
 
 // FULL MESSAGE
-var fullMessage = title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
+var fullMessage = adress.value + title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
  'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
  ', dictada por ' + teachers.value + '.\n\n' +
  'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + ' de ' + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
@@ -228,6 +233,7 @@ else { message.value = fullMessage + link; }
 </div>
 
 </div>
+<br>
 <br>
 </div>
 
