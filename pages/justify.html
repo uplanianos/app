@@ -24,7 +24,7 @@ Formalidad:
   <option value="Estimado/a " selected>Estimado/a </option>
   <option value="Estimado ">Estimado</option>
   <option value="Estimada ">Estimada</option>
-  <option value="Director ">Director/a</option>
+  <option value="Director ">Director</option>
   <option value="Directora ">Directora</option>
   <option value="Respetable ">Respetable</option>
   <option value="Honorable ">Honorable</option>
@@ -37,7 +37,6 @@ Formalidad:
   <option value="Mg. ">Magíster</option>
   <option value="Dr. ">Doctor/a</option>
   <option value="Prof. ">Profesor/a</option>
-  <option value="Dir. ">Director/a</option>
 </select>
 <br>
 Director/a:
@@ -217,7 +216,7 @@ var attachments = document.getElementById("attachments");
 // FULL MESSAGE
 var fullMessage = adress.value + title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
  'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
- ', dictada por ' + teachers.value + '.\n\n' +
+ ', dictada por prof. ' + teachers.value + '.\n\n' +
  'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + ' de ' + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
  'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n\n' + student.value + '\n' + 'Promoción ' + year.value;
 
