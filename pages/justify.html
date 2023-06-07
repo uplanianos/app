@@ -18,9 +18,13 @@
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
 
+<div class="grid-item">
+Completar datos para redactar correo de justificación!
+</div>
+
 <div class="grid-item-slider">
 Formalidad:
-<select id="adress">
+<select id="adress" style="margin-left: 2px;">
   <option value="Estimado/a " selected>Estimado/a </option>
   <option value="Estimado ">Estimado</option>
   <option value="Estimada ">Estimada</option>
@@ -40,22 +44,23 @@ Formalidad:
 </select>
 <br>
 Director/a:
-<input type="text" id="director" placeholder="Nombre Dir." style="width: 250px;">
+<input type="text" id="director" placeholder="Nombre Dir. o Profesor/a" maxlength="50" style="width: 245px; margin-left: 9px;">
 <br>
 Carrera:
-<input type="text" id="program" placeholder="Carrera / Programa" style="width: 250px;">
+<input type="text" id="program" placeholder="Carrera / Programa" maxlength="50" style="width: 245px; margin-left: 30px;">
 </div>
 
 <div class="grid-item-slider">
-Asignaturas: 
-<input type="text" id="subjects" placeholder="Asignaturas a justificar" style="width: 250px;">
+<font style="vertical-align: top;">Asignaturas:</font>
+<textarea id="subjects" placeholder="Asignaturas a justificar." maxlength="200" rows="3" style="width: 240px; margin-left: 2px;"></textarea>
 <br>
-Profesores: <input type="text" id="teachers" placeholder="Profesor/a 1, 2 y 3..." style="width: 250px;">
+<font style="vertical-align: top;">Profesores:</font>
+<textarea id="teachers" placeholder="Profesor/a 1, 2 y 3..." maxlength="200" rows="3" style="width: 240px; margin-left: 12px;"></textarea>
 </div>
 
 <div class="grid-item-slider">
 Fecha Inicio: 
-<select id="startDay">
+<select id="startDay" style="margin-left: 28px;">
   <option value="1" selected>1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -107,7 +112,7 @@ Fecha Inicio:
 <br>
 
 Fecha Término: 
-<select id="endDay">
+<select id="endDay" style="margin-left: 6px;">
   <option value="" selected>-</option>
   <option value=" al 1">1</option>
   <option value=" al 2">2</option>
@@ -155,14 +160,15 @@ Fecha Término:
   <option value="noviembre"> Noviembre</option>
   <option value="diciembre">Diciembre</option>
 </select><br>
-Justificación:
-<input type="text" id="reason" placeholder="Motivo insasistencia" style="width: 250px;">
+<font style="vertical-align: top;">Motivo:</font>
+<textarea id="reason" placeholder="Justificación de insasistencia (120 caracteres)." maxlength="120" rows="4" cols style="width: 280px; margin-top: 6px;"></textarea>
 </div>
 
 <div class="grid-item-slider">
-Estudiante: <input type="text" id="student" placeholder="Nombre Estudiante" style="width: 250px;">
-<br> Promoción:
-<select id="year">
+Nombre: <input type="text" id="student" placeholder="Nombre Estudiante" maxlength="50" style="width: 265px;">
+<br>
+Año:
+<select id="year" style="margin-left:33px;">
   <option value="2023" selected>2023</option>
   <option value="2022">2022</option>
   <option value="2021">2021</option>
@@ -184,11 +190,12 @@ Estudiante: <input type="text" id="student" placeholder="Nombre Estudiante" styl
 
 <div class="grid-item" style="text-align: center; text-align: center;  display: block; margin-left: auto; margin-right: auto; ">
 
-<button id="doCompose" onclick="compose()">Redactar</button>
-<button onclick="copyFullText()">Copiar</button>
+<button id="doCompose" onclick="compose()">Redactar ⬇️</button>
+<button id="justSelect" onclick="justSelect()">Seleccionar 🤏</button>
+<button onclick="copyFullText()">Copiar 📝</button>
 <br>
 
-<textarea id="message" rows="24" cols="54" style="border-radius: 6px; padding: 12px; margin: 6px; width: 95%;">
+<textarea id="message" rows="26" cols="54" style="border-radius: 6px; padding: 12px; margin: 6px; width: 95%;">
 Estimado/a __________:
 Dirección de Carrera de
 __________.
@@ -199,8 +206,8 @@ Mi inasistencia ocurrió durante el __________ (hasta el __________) debido a __
 
 Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente.
 
-Estudiante _______________.
-Promoción __________.
+Nombre: _______________
+Estudiante promoción __________
 ---
 * http://uplanianos.github.io/app/pages/manual-estudiante.html#art45
 </textarea>
@@ -218,7 +225,7 @@ var fullMessage = adress.value + title.value + director.value + ':' + '\nDirecci
  'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
  ', dictada por prof. ' + teachers.value + '.\n\n' +
  'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + ' de ' + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
- 'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n\n' + student.value + '\n' + 'Promoción ' + year.value;
+ 'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n\n' + student.value + '\n' + 'Estudiante promoción ' + year.value;
 
 var link = '\n---\n* http://uplanianos.github.io/app/pages/manual-estudiante.html#art45';
 
@@ -255,7 +262,14 @@ function copyFullText() {
   
   // Alert the copied text
   // alert("Copied the text: " + copyText.value);
-  alert("Texto a copiar:\nJustificación dirigida a " + director.value + " por motivos de " + reason.value + ".\nComprobar/autorizar para pegar a correo.");
+  alert("Texto a copiar:\nJustificación dirigida a " + director.value + " por motivos de " + reason.value + ".\nCorroborar y corregir al pegar al correo.");
+}
+
+
+function justSelect() {
+  var copyText = document.getElementById("message"); // Get the text field
+  copyText.select();   // Select the text field
+  copyText.setSelectionRange(0, 99999); // For mobile devices
 }
 </script>
 
