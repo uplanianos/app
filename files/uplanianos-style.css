@@ -94,10 +94,10 @@ a:visited	{ color: hotpink; }
   margin-right: 4px;
   padding: 6px;
   background-color: #666;
-  border: 1px solid white;
+  border: 1px solid lightgray;
   border-radius: 12px;
   text-align: center;
-  cursor: not-allowed;
+  cursor: alias;
 }
 
 .font-bubble-off { color: darkgray; }
@@ -125,10 +125,10 @@ a:visited	{ color: hotpink; }
   margin-right: 3px;
   padding: 4px;
   background-color: #666;
-  border: 1px solid white;
+  border: 1px solid lightgray;
   border-radius: 12px;
   text-align: center;
-  cursor: not-allowed;
+  cursor: alias;
 }
 
 .footer { color: white; font-size: 12px; margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; text-align: center; }
