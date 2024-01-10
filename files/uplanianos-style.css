@@ -87,6 +87,42 @@ a:visited	{ color: hotpink; }
   text-align: center;
 }
 
+.pretty-blue-bubble {
+  display: inline-block;
+  width: 160px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 6px;
+  background-color: #4470EE;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.grass-green-bubble {
+  display: inline-block;
+  width: 160px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 6px;
+  background-color: #3F9B0B;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.candy-red-bubble {
+  display: inline-block;
+  width: 160px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 6px;
+  background-color: #D2042D;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
 .info-bubble-off {
   display: inline-block;
   width: 150px;
@@ -105,6 +141,78 @@ a:visited	{ color: hotpink; }
 .tools-div { font-size: 14px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; }
 
 .tools-div::-webkit-scrollbar { display: none; }
+
+.pumpkin-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #F87217;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pale-neon-yellow-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #FFFF55;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.purple-iris-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #571B7E;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.small-grass-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #3F9B0B;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pink-plum-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #B93B8F;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pale-blue-bubble {
+  display: inline-block;
+  width: 140px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #5E81D1;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
 
 .tools-bubble {
   display: inline-block;
