@@ -16,7 +16,7 @@
     <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
 	<div class="grid-container-pages" style="grid-auto-flow: flow;">
-	  <div class="grid-item-slider"><br><text class="class-type" id="class-type"><b>Curso:</b> Teórico (</text> <text class="class-percent" id="class-percent">60%</text><text class="class-type"> ).</text><br><br>
+	  <div class="grid-item-slider"><br><text class="class-type" id="class-type"><b>Curso Teórico</b> (</text> <text class="class-percent" id="class-percent">60%</text><text class="class-type"> ).</text><br><br>
 	  <input type="range" class="slidebar" min="1" max="3" value="1" id="classType" oninput="classType(); getResult()"><br><br></div>
 
 	  <div class="grid-item-tools"><br><b>Asistencia:</b>
@@ -35,7 +35,7 @@
 	    <div class="test-left" style="margin-top: 16px;">Mi asistencia:</div>
 	    <div class="test-right"><input type="number" class="attendance" id="attendance" min="0" max="80" step="1" value="0" readonly disabled></div>
 	  </div>
-	  <input type="range" class="slidebar" id="attendanceSlider" min="1" max="20" value="0" oninput="attendanceUpdate(); getResult()"><br><br>
+	  <input type="range" class="slidebar" id="attendanceSlider" min="0" max="20" value="0" oninput="attendanceUpdate(); getResult()"><br><br>
 	  <br>
 	  </div>
 
@@ -58,15 +58,15 @@ function classType() {
 	var classType = document.getElementById("classType").value;
 
 	if (classType == "1") {
-         document.getElementById('class-type').innerText= "Curso: Teórico (";
+         document.getElementById('class-type').innerText= "Curso Teórico (";
          document.getElementById('class-percent').innerText= "60%"; }
 
 	if (classType == "2") {
-         document.getElementById('class-type').innerText= "Curso: Teórico-Práctico (";
+         document.getElementById('class-type').innerText= "Curso Teórico-Práctico (";
          document.getElementById('class-percent').innerText= "75%"; }
 
 	if (classType == "3") {
-         document.getElementById('class-type').innerText= "Curso: Taller / Laboratorio (";
+         document.getElementById('class-type').innerText= "Taller / Laboratorio (";
          document.getElementById('class-percent').innerText= "+85%"; }
 
 }
@@ -103,18 +103,33 @@ function getResult() {
 	var classType = document.getElementById("classType").value;
 
 	if (classType == "1") {
-	  if (finalPercent < "60") { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent >= "60") { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent < 60) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 20) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 60) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
 	}
 
 	if (classType == "2") {
-	  if (finalPercent < "75") { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent >= "75") { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent < 75) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 50) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 30) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 75) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
 	}
 
 	if (classType == "3") {
-	  if (finalPercent < "85") { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent >= "85") { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent < 85) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 60) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent <= 10) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 95) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
 	}
 
 }
