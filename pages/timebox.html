@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../media/uplanianos-icon.png">
+	<link rel="stylesheet" href="../files/pages-style.css">
+	<title>Uplanianos - Timebox (organizador de tiempo/estudio)</title>
+</head>
+
+<body>
+
+<div class="main">
+<div class="labels"><b><p>Uplanianos Web App:</b> Timebox (organizador de tiempo/estudio).</p></div>
+<a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
+
+<div class="grid-container-pages" style="grid-auto-flow: flow;">
+
+<div class="grid-item">
+Completar tareas y actividades a priorizar!
+</div>
+
+
+<div class="grid-timebox">
+  <div>
+  <b>Prioridades principales:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" placeholder="Prioridad 1" maxlength="50"><br>
+  2. <input type="text" class="timebox-inputs" placeholder="Prioridad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" placeholder="Prioridad 3" maxlength="50"><br>
+  </div>
+
+  <div>
+  <b>Tareas secundarias:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" placeholder="Actividad 1" maxlength="50"><br>
+  2. <input type="text" class="timebox-inputs" placeholder="Actividad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" placeholder="Actividad 3" maxlength="50"><br>
+  </div>
+
+  <div>
+  <b>Notas / Recordatorios:</b>
+  <br>
+  <textarea id="message" rows="15" cols="auto" style="border-radius: 3px; padding: 3px; margin: 3px; width: 98%; resize: none;">
+  Notas importante para no olvidar.
+  </textarea>
+  </div>
+
+  <div class="schedule" style="grid-area: schedule;">
+  <b>Horario madrugada:</b><br>
+  05:00 <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  06:00 <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  07:00 <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <br>
+  <b>Horario mañana:</b><br>
+  08:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  09:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  11:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <br>
+  <b>Horario tarde:</b><br>
+  12:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  14:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  15:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  17:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
+  18:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
+  <br>
+  <b>Horario vespertino:</b><br>
+  20:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar" maxlength="50"><br>
+  21:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar" maxlength="50"><br>
+  22:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar" maxlength="50">
+  </div>
+
+  <button class="timebox-refresh" role="button" onClick="window.location.reload();">Borrar ♻️</button>
+  <button class="timebox-download" role="button" onclick="window.print()">Descargar ⬇️</button>
+
+
+
+  </div>
+</div>
+<br>
+
+</div>
+
+<br>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>
