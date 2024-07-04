@@ -23,6 +23,7 @@ ul	{ padding-left: 18px; }
 
 * { box-sizing: border-box; }
 
+
 /* MAIN DIV SETTINGS */
 
 .main {
@@ -135,6 +136,7 @@ ul	{ padding-left: 18px; }
 	text-align: left;
 	border-radius: 12px;
 }
+
 
 
 /* TOOL PAGES DIV SETTINGS */
@@ -295,6 +297,7 @@ input[type=number].attendance {
 	outline: none;
 }
 
+
 /* EXAM SETTINGS */
 
 .triple-container { display: flex; width: 100%; text-align: center; align-content: center; }
@@ -316,7 +319,6 @@ input[type=number].average {
 	pointer-events: none;
 	outline: none;
 }
-
 
 input[type=number].exam {
 	width: 100%;
@@ -355,9 +357,11 @@ input[type=number].calculation {
 	input[type=number].calculation	{ padding-left: 0px; padding-right: 0px; }
 }
 
+
 /* TESTS SETTINGS */
 
 .test-percent { color: cornflowerblue; font-size: 16px; font-weight: bold; }
+
 
 /* PROMEDIOS SETTINGS */
 
@@ -404,6 +408,104 @@ input[type=number].average-maths {
 	cursor: not-allowed;
 	outline: none;
 }
+
+
+/* TIMBOX SETTINGS */
+
+.grid-timebox {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+	 'div schedule'
+	 'div schedule'
+	 'div schedule';
+  gap: 12px;
+}
+
+.grid-timebox > div { background-color: lightyellow; border: 2px solid white; border-radius: 6px; text-align: left; padding: 6px; }
+
+input.timebox-inputs { width: 85%; border-width: 1px; border-radius: 6px; margin: 6px; padding: 6px; resize: none; }
+input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; margin: 3px; padding: 6px; resize: none; }
+
+.timebox-refresh {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  width: 85%;
+  margin:0 auto;
+  padding: 10px 10px;
+  background-color: green;
+  border-radius: 6px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 30px;
+  line-height: 12px;
+  list-style: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.timebox-refresh:hover,
+.timebox-refresh:focus {
+  background-color: lightgreen;
+}
+
+.timebox-download {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  width: 85%;
+  margin:0 auto;
+  padding: 10px 10px;
+  background-color: blue;
+  border-radius: 6px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 30px;
+  line-height: 12px;
+  list-style: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.timebox-download:hover,
+.timebox-download:focus {
+  background-color: lightblue;
+}
+
+
+/* PRINT OR CONVERT TO PDF SETTINGS*/
+
+@media print {
+p {color: black; }
+body {background-color: white; background: transparent;}
+.main {position: absolute; width: 100%; background-color: white; background: transparent; border: 0px; top: 0; padding: 0;}
+.grid-item {display:none;}
+.labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px;}
+.grid-timebox {position: absolute; width: 96%; top: 100px; background-color: white; }
+button {display:none; visibility: hidden;}
+}
+
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
