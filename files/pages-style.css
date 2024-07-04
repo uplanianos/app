@@ -504,7 +504,7 @@ body {background-color: white; background: transparent;}
 .labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px;}
 .grid-timebox {position: absolute; width: 96%; top: 100px; background-color: white; }
 button {display:none; visibility: hidden;}
-}
+::placeholder {color: white;}
 
 
 /* Use a media query to add a break point at 800px: */
