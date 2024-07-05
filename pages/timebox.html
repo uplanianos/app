@@ -26,7 +26,7 @@ Completar tareas y actividades a priorizar!
   <div>
   <b>Prioridades principales:</b>
   <br>
-  1. <input type="text" class="timebox-inputs" placeholder="Prioridad 1" maxlength="50"><br>
+  1. <input type="text" class="timebox-inputs" id="firstPriority" onChange="newTitle()" placeholder="Prioridad 1" maxlength="50"><br>
   2. <input type="text" class="timebox-inputs" placeholder="Prioridad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" placeholder="Prioridad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" placeholder="Prioridad 4" maxlength="50"><br>
@@ -49,7 +49,7 @@ Completar tareas y actividades a priorizar!
 
   <div style="grid-area: schedule; background-color: lightblue;">
   <b>FECHA / DÍA:</b>
-  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 50%; text-transform: uppercase;"><br>
+  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 55%; text-transform: uppercase;"><br>
   <br>
   <b>Horario madrugada:</b><br>
   05:00 <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
@@ -88,9 +88,24 @@ Completar tareas y actividades a priorizar!
 <script>
 function newTitle() {
 // THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
- newDate = document.getElementById("dateInput").value
- newPageTitle = "Uplanianos - Timebox (" + newDate.charAt(0).toUpperCase() + newDate.slice(1) + ")";
- document.title = newPageTitle;
+  newDate = document.getElementById("dateInput").value
+  priorityOne = document.getElementById("firstPriority").value
+
+// FIRST CONDITION
+  if (dateInput.value.length >= 1) {
+    newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    document.title = newPageTitle;
+  // SECOND CONDITION
+    if (firstPriority.value.length >= 1) {
+      newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+      document.title = newPageTitle;
+    }
+  }
+
+// THIS UPDATES TO ORIGINAL TITLE IF USER DELETES DATE.
+  else {
+    document.title = "Uplanianos - Timebox (organizador de tiempo de estudio)"
+  }
 }
 </script>
 
