@@ -71,7 +71,7 @@ a:visited	{ color: hotpink; }
 
 .labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; width: auto; }
 
-.info-div { font-size: 16px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; }
+.info-div { font-size: 16px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; cursor: e-resize; }
 
 .info-div::-webkit-scrollbar { display: none; }
 
@@ -138,7 +138,7 @@ a:visited	{ color: hotpink; }
 
 .font-bubble-off { color: darkgray; }
 
-.tools-div { font-size: 14px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; }
+.tools-div { font-size: 14px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; cursor: e-resize; }
 
 .tools-div::-webkit-scrollbar { display: none; }
 
