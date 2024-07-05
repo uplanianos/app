@@ -425,7 +425,7 @@ input[type=number].average-maths {
 .grid-timebox > div { background-color: lightyellow; border: 1px solid darkgray; border-radius: 6px; text-align: left; padding: 6px; }
 
 input.timebox-inputs { width: 85%; border-width: 1px; border-radius: 6px; margin: 6px; padding: 6px; resize: none; }
-input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; margin: 3px; padding: 6px; resize: none;}
+input.timebox-schedule { width: 75%; border-width: 1px; border-radius: 6px; margin: 3px; padding: 6px; resize: none; }
 
 .timebox-refresh {
   position: relative;
