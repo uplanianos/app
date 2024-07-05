@@ -47,9 +47,9 @@ Completar tareas y actividades a priorizar!
   <textarea id="message" rows="15" cols="auto" placeholder="Notas importante para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
   </div>
 
-  <div class="schedule" style="grid-area: schedule; background-color: lightblue;">
+  <div style="grid-area: schedule; background-color: lightblue;">
   <b>FECHA / DÍA:</b>
-  <input type="text" class="timebox-schedule" placeholder="Lunes, Viernes, 5 de Mayo..." maxlength="50" style="width: 50%; text-transform: uppercase;"><br>
+  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 50%; text-transform: uppercase;"><br>
   <br>
   <b>Horario madrugada:</b><br>
   05:00 <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
@@ -77,8 +77,6 @@ Completar tareas y actividades a priorizar!
   <button class="timebox-refresh" role="button" onClick="window.location.reload();">Borrar ♻️</button>
   <button class="timebox-download" role="button" onclick="window.print()">Descargar ⬇️</button>
 
-
-
   </div>
 </div>
 <br>
@@ -86,6 +84,14 @@ Completar tareas y actividades a priorizar!
 </div>
 
 <br>
+
+<script>
+function newTitle() {
+ newDate = document.getElementById("dateInput").value.toUpperCase();
+ newPageTitle = "Uplanianos - Timebox (" + newDate + ")";
+ document.title = newPageTitle;
+}
+</script>
 
 
 <script>
