@@ -12,7 +12,7 @@
 <body>
 
 <div class="main">
-<div class="labels"><b><p>Uplanianos Web App:</b> Timebox (organizador de tiempo de estudio).</p></div>
+<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Timebox</b> (organizador de tiempo de estudio).</p></div>
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
@@ -79,6 +79,7 @@ Completar tareas y actividades a priorizar!
 
   </div>
 </div>
+
 <br>
 
 </div>
@@ -89,16 +90,19 @@ Completar tareas y actividades a priorizar!
 function newTitle() {
 // THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
   newDate = document.getElementById("dateInput").value
+  innerTitle = document.getElementById("mainLabel")
   priorityOne = document.getElementById("firstPriority").value
 
 // FIRST CONDITION
   if (dateInput.value.length >= 1) {
     newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
     document.title = newPageTitle;
+    innerTitle.innerHTML = "<b>Uplanianos Web App - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
   // SECOND CONDITION
     if (firstPriority.value.length >= 1) {
       newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
       document.title = newPageTitle;
+    innerTitle.innerHTML = "<b>Uplanianos Web App - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
     }
   }
 
