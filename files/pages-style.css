@@ -419,6 +419,7 @@ input[type=number].average-maths {
 	 'div schedule'
 	 'div schedule'
 	 'div schedule';
+	 'foot foot';
   gap: 12px;
 }
 
@@ -501,11 +502,11 @@ p {color: black; }
 body {background-color: white; background: transparent;}
 .main {position: absolute; width: 100%; background-color: white; background: transparent; top: 0; padding: 0px; border: 0px solid darkgray; border-radius: 0px; }
 .grid-item {display:none;}
-.labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px;}
+.labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px; border: 1px solid darkgray; border-radius: 6px; margin-right: 6px;}
 .grid-timebox {position: absolute; width: 96%; top: 100px; background-color: white;}
 button {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
-::-ms-input-placeholder { color: red; /* Edge 12 -18 */ }
+::-ms-input-placeholder { color: white; /* Edge 12 -18 */ }
 
 
 /* Use a media query to add a break point at 800px: */
