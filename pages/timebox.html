@@ -87,8 +87,9 @@ Completar tareas y actividades a priorizar!
 
 <script>
 function newTitle() {
- newDate = document.getElementById("dateInput").value.toUpperCase();
- newPageTitle = "Uplanianos - Timebox (" + newDate + ")";
+// THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
+ newDate = document.getElementById("dateInput").value
+ newPageTitle = "Uplanianos - Timebox (" + newDate.charAt(0).toUpperCase() + newDate.slice(1) + ")";
  document.title = newPageTitle;
 }
 </script>
