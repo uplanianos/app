@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../media/uplanianos-icon.png">
 	<link rel="stylesheet" href="../files/pages-style.css">
-	<title>Uplanianos - Timebox (organizador de tiempo de estudio)</title>
+	<title>Uplanianos - Planificador (organizador de tiempo de estudio)</title>
 </head>
 
 <body>
 
 <div class="main">
-<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Timebox</b> (organizador de tiempo de estudio).</p></div>
+<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Planificador</b> (organizador de tiempo de estudio).</p></div>
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
@@ -30,6 +30,7 @@ Completar tareas y actividades a priorizar!
   2. <input type="text" class="timebox-inputs" placeholder="Prioridad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" placeholder="Prioridad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" placeholder="Prioridad 4" maxlength="50"><br>
+  5. <input type="text" class="timebox-inputs" placeholder="Prioridad 4" maxlength="50">
   </div>
 
   <div>
@@ -39,6 +40,7 @@ Completar tareas y actividades a priorizar!
   2. <input type="text" class="timebox-inputs" placeholder="Actividad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" placeholder="Actividad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" placeholder="Actividad 4" maxlength="50"><br>
+  5. <input type="text" class="timebox-inputs" placeholder="Actividad 4" maxlength="50">
   </div>
 
   <div>
@@ -58,20 +60,23 @@ Completar tareas y actividades a priorizar!
   <br>
   <b>Horario mañana:</b><br>
   08:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
-  09:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  09:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  10:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   11:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   <br>
   <b>Horario tarde:</b><br>
-  12:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  12:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  13:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
   14:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
-  15:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  15:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  16:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   17:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
-  18:30 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
+  18:00 <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
   <br>
   <b>Horario vespertino:</b><br>
+  19:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
   20:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
-  21:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
-  22:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
+  21:00 <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
   </div>
 
   <button class="timebox-refresh" role="button" onClick="window.location.reload();">Borrar ♻️</button>
@@ -80,9 +85,6 @@ Completar tareas y actividades a priorizar!
   </div>
 </div>
 
-<br>
-<a href="timeplanner.html" class="planner-link">Planificador Cronológico</a>
-<br>
 <br>
 
 </div>
@@ -98,20 +100,20 @@ function newTitle() {
 
 // FIRST CONDITION
   if (dateInput.value.length >= 1) {
-    newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    newPageTitle = "Planificador - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
     document.title = newPageTitle;
-    innerTitle.innerHTML = "<b>Uplanianos Web App - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    innerTitle.innerHTML = "<b>Uplanianos Web App - Planificador:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
   // SECOND CONDITION
     if (firstPriority.value.length >= 1) {
-      newPageTitle = "Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+      newPageTitle = "Planificador - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
       document.title = newPageTitle;
-    innerTitle.innerHTML = "<b>Uplanianos Web App - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+    innerTitle.innerHTML = "<b>Uplanianos Web App - Planificador:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
     }
   }
 
 // THIS UPDATES TO ORIGINAL TITLE IF USER DELETES DATE.
   else {
-    document.title = "Uplanianos - Timebox (organizador de tiempo de estudio)"
+    document.title = "Uplanianos - Planificador (organizador de tiempo de estudio)"
   }
 }
 </script>
