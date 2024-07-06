@@ -538,6 +538,7 @@ body {background-color: white; background: transparent;}
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 button {display:none; visibility: hidden;}
 .planner-link {display:none; visibility: hidden;}
+.return {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
 ::-ms-input-placeholder { color: white; /* Edge 12 -18 */ }
 
