@@ -24,9 +24,9 @@ Completar tareas y actividades a priorizar!
 
 <div class="grid-timebox">
   <div>
-  <b>Prioridades principales:</b>
+  <b>Prioridades ✔️:</b>
   <br>
-  1. <input type="text" class="timebox-inputs" id="firstPriority" onChange="newTitle()" placeholder="Prioridad 1" maxlength="50" style="background-color: #DBF9DB;"><br>
+  1. <input type="text" class="timebox-inputs" id="firstPriority" onChange="newTitle()" placeholder="Prioridad 1" maxlength="50" style="background-color: #DBF9DB;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad."><br>
   2. <input type="text" class="timebox-inputs" placeholder="Prioridad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" placeholder="Prioridad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" placeholder="Prioridad 4" maxlength="50"><br>
@@ -34,7 +34,7 @@ Completar tareas y actividades a priorizar!
   </div>
 
   <div>
-  <b>Tareas secundarias:</b>
+  <b>Otra tareas 📑:</b>
   <br>
   1. <input type="text" class="timebox-inputs" placeholder="Actividad 1" maxlength="50"><br>
   2. <input type="text" class="timebox-inputs" placeholder="Actividad 2" maxlength="50"><br>
@@ -44,14 +44,14 @@ Completar tareas y actividades a priorizar!
   </div>
 
   <div>
-  <b>Notas / Recordatorios:</b>
+  <b>Recordatorios ✍️:</b>
   <br>
-  <textarea id="message" rows="15" cols="auto" placeholder="Notas importante para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
+  <textarea id="message" rows="12" cols="auto" placeholder="Notas importante para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
   </div>
 
   <div style="grid-area: schedule; background-color: lightblue;">
-  <b>FECHA / DÍA:</b>
-  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 55%; text-transform: uppercase; background-color: #DBF9DB;"><br>
+  <b>📅 FECHA:</b>
+  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 55%; text-transform: uppercase; background-color: #DBF9DB;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad."><br>
   <br>
   <b>Horario madrugada:</b><br>
   <small>05:00</small> <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
