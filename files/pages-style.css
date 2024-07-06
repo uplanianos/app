@@ -420,7 +420,7 @@ input[type=number].average-maths {
 	 'div schedule'
 	 'div schedule';
 	 'foot foot';
-  gap: 12px;
+  gap: 18px;
 }
 
 .grid-timebox > div { background-color: lightyellow; border: 1px solid darkgray; border-radius: 6px; text-align: left; padding: 6px; }
@@ -495,6 +495,41 @@ input.timebox-schedule { width: 75%; border-width: 1px; border-radius: 6px; marg
 }
 
 
+.planner-link:link, .planner-link:visited {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  width: 50%;
+  margin:0 auto;
+  margin-left: 20%;
+  padding: 10px 25px;
+  background-color: #D44336;
+  border-radius: 6px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 30px;
+  line-height: 12px;
+  list-style: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.planner-link:hover, .planner-link:focus {
+  background-color: red;
+}
+
+
+
 /* PRINT OR CONVERT TO PDF SETTINGS*/
 
 @media print {
@@ -502,9 +537,10 @@ p {color: black; }
 body {background-color: white; background: transparent;}
 .main {position: absolute; width: 100%; background-color: white; background: transparent; top: 0; padding: 0px; border: 0px solid darkgray; border-radius: 0px; }
 .grid-item {display:none;}
-.labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px; border: 1px solid darkgray; border-radius: 6px; margin-right: 6px;}
-.grid-timebox {position: absolute; width: 96%; top: 100px; background-color: white;}
+.labels {background-color: lightyellow; padding-left: 24px; padding-bottom: 12px; border: 1px solid darkgray; border-radius: 6px; margin-right: 8px; margin-bottom: 12px;}
+.grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 button {display:none; visibility: hidden;}
+.planner-link {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
 ::-ms-input-placeholder { color: white; /* Edge 12 -18 */ }
 
