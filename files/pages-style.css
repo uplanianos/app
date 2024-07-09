@@ -461,6 +461,7 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
   background-color: lightgreen;
 }
 
+
 .timebox-download {
   position: relative;
   display: inline-block;
@@ -489,11 +490,9 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
   touch-action: manipulation;
 }
 
-.timebox-download:hover,
-.timebox-download:focus {
+.timebox-download:hover, .timebox-download:focus {
   background-color: lightblue;
 }
-
 
 .planner-link:link, .planner-link:visited {
   position: relative;
