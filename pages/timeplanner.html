@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../media/uplanianos-icon.png">
 	<link rel="stylesheet" href="../files/pages-style.css">
-	<title>Uplanianos - Planificador (organizador de estudio)</title>
+	<title>Uplanianos - Timebox (planificador de estudio)</title>
 </head>
 
 <body onload="updateInstructions()">
 
 <div class="main">
-<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Planificador</b> (organizador de estudio).</p></div>
+<div class="labels"><p id="mainLabel"><b>Uplanianos - Timebox</b> (planificador de estudio)</p></div>
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
@@ -23,6 +23,11 @@ Completar actividades a priorizar!
 
 
 <div class="grid-timebox">
+  <div>
+  <b>📅 FECHA:</b><br>
+  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 75%; margin-left: 12%; text-align: center; text-transform: uppercase; background-color: #DBF9DB; margin-top: 6px; margin-bottom: 6px;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad.">
+  </div>
+
   <div>
   <b>Prioridades ✔️:</b>
   <br>
@@ -46,25 +51,22 @@ Completar actividades a priorizar!
   <div>
   <b>Recordatorios ✍️:</b>
   <br>
-  <textarea id="message" rows="12" cols="auto" placeholder="Notas importante para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
+  <textarea id="message" rows="5" cols="auto" placeholder="Notas importantes para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
   </div>
 
   <div style="grid-area: schedule; background-color: lightblue;">
-  <b>📅 FECHA:</b>
-  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 55%; text-transform: uppercase; background-color: #DBF9DB;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad."><br>
-  <br>
-  <b>Horario madrugada:</b><br>
+  🕔 <b>Horario madrugada:</b><br>
   <small>05:00</small> <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
   <small>06:00</small> <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
   <small>07:00</small> <input type="text" class="timebox-schedule" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
   <br>
-  <b>Horario mañana:</b><br>
+  🕗 <b>Horario mañana:</b><br>
   <small>08:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   <small>09:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   <small>10:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   <small>11:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
   <br>
-  <b>Horario tarde:</b><br>
+  🕛 <b>Horario tarde:</b><br>
   <small>12:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
   <small>13:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
   <small>14:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
@@ -73,14 +75,14 @@ Completar actividades a priorizar!
   <small>17:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
   <small>18:00</small> <input type="text" class="timebox-schedule" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
   <br>
-  <b>Horario vespertino:</b><br>
+  🕖 <b>Horario vespertino:</b><br>
   <small>19:00</small> <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
   <small>20:00</small> <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
   <small>21:00</small> <input type="text" class="timebox-schedule" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
   </div>
 
-  <button class="timebox-refresh" role="button" onClick="window.location.reload();">♻️ Borrar ❌</button>
-  <button class="timebox-download" role="button" onclick="window.print()">📃 Descargar 🖨️</button>
+  <button class="timebox-refresh" role="button" onClick="window.location.reload();">♻️ Borrar</button>
+  <button class="timebox-download" role="button" onclick="window.print()">Descargar 🖨️</button>
 
   </div>
 </div>
@@ -90,6 +92,7 @@ Completar actividades a priorizar!
 </div>
 
 <br>
+
 
 <script>
 function newTitle() {
@@ -100,20 +103,19 @@ function newTitle() {
 
 // FIRST CONDITION
   if (dateInput.value.length >= 1) {
-    newPageTitle = "Planificador - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
-    document.title = newPageTitle;
-    innerTitle.innerHTML = "<b>Uplanianos Web App - Planificador:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    document.title = "Uplanianos Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
   // SECOND CONDITION
     if (firstPriority.value.length >= 1) {
-      newPageTitle = "Planificador - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
-      document.title = newPageTitle;
-    innerTitle.innerHTML = "<b>Uplanianos Web App - Planificador:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+      document.title = "Uplanianos Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
     }
   }
 
 // THIS UPDATES TO ORIGINAL TITLE IF USER DELETES DATE.
   else {
-    document.title = "Uplanianos - Planificador (organizador de tiempo de estudio)"
+    document.title = "Uplanianos - Timebox (planificador de estudio)";
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox</b> (planificador de estudio)";
   }
 }
 </script>
