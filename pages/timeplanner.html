@@ -6,19 +6,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../media/uplanianos-icon.png">
 	<link rel="stylesheet" href="../files/pages-style.css">
-	<title>Uplanianos - Planificador (organizador de tiempo de estudio)</title>
+	<title>Uplanianos - Planificador (organizador de estudio)</title>
 </head>
 
-<body>
+<body onload="updateInstructions()">
 
 <div class="main">
-<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Planificador</b> (organizador de tiempo de estudio).</p></div>
+<div class="labels"><b><p id="mainLabel">Uplanianos Web App - Planificador</b> (organizador de estudio).</p></div>
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
 
-<div class="grid-item" style="background-color: #DBF9DB;">
-Completar tareas y actividades a priorizar!
+<div class="grid-item" id="theInstructions" style="background-color: #DBF9DB;">
+Completar actividades a priorizar!
 </div>
 
 
@@ -117,6 +117,27 @@ function newTitle() {
   }
 }
 </script>
+
+
+
+<script type="text/javascript">
+function updateInstructions() {
+  for (let i=0; i<11; i++) {
+  theUpdate(i);
+  }
+}
+
+function theUpdate(i) {
+  setTimeout(function() {
+    console.log("Las instrucciones se actualizarán " + i + "/10.");
+    firstText = "Completar actividades a priorizar!";
+    secondText = "Luego, descargar en PDF o imprimir!";
+    if (i % 2 === 0) {theInstructions.innerHTML = firstText};
+    if (i % 2 === 1) {theInstructions.innerHTML = secondText};
+  }, 3000 * i);
+}
+</script>
+
 
 
 <script>
