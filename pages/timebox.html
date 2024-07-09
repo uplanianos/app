@@ -29,8 +29,8 @@ Completar actividades a priorizar!
 <div class="grid-timebox">
 
   <div>
-  <b>📅 FECHA:</b><br>
-  <input type="text" class="timebox-schedule" id="dateInput" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 75%; margin-left: 12%; text-align: center; text-transform: uppercase; background-color: #DBF9DB; margin-top: 6px; margin-bottom: 6px;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad.">
+  <b>📅 Fecha:</b><br>
+  <input type="text" class="timebox-schedule" id="dateInput" name="dateInput" onClick="getTomorrow()" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 75%; margin-left: 12%; text-align: center; background-color: #DBF9DB; margin-top: 6px; margin-bottom: 6px;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad.">
   </div>
 
   <div>
@@ -142,6 +142,18 @@ function theUpdate(i) {
     if (i % 2 === 0) {theInstructions.innerHTML = firstText};
     if (i % 2 === 1) {theInstructions.innerHTML = secondText};
   }, 3000 * i);
+}
+</script>
+
+
+
+<script type="text/javascript">
+function getTomorrow() {
+  const date = new Date();
+  const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  const currentDayOfWeek = daysOfWeek[date.getDay() + 1];
+  console.log(`Mañana es ${currentDayOfWeek}`);
+  document.getElementsByName('dateInput')[0].placeholder = "(Mañana es " + currentDayOfWeek + ")";
 }
 </script>
 
