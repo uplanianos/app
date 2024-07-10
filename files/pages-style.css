@@ -583,6 +583,7 @@ body {background-color: white; background: transparent;}
 .grid-item {display:none;}
 .labels {background-color: #DBF9DB; padding-left: 24px; padding-bottom: 12px; border: 1px solid darkgray; border-radius: 6px; margin-right: 8px; margin-bottom: 12px;}
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
+.dropdown {display:none; visibility: hidden;}
 .foot {display: block;}
 button {display:none; visibility: hidden;}
 .planner-link {display:none; visibility: hidden;}

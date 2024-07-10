@@ -19,9 +19,39 @@
 
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
 
+<div style="position: absolute; top: 24px; left: 50px;">
+  <select id="dropdown" class="dropdown"  name="form_select">
+    <option value="0" selected>...</option>
+    <option value="1">1er Semestre</option>
+    <option value="2">2do Semestre</option>
+    <option value="3">Descargar</option>
+    <option value="4">Borrar</option>
+  </select>
+</div>
+
+<script type="text/javascript">
+document.getElementById('dropdown').addEventListener('change', function() {
+scheduleName = document.getElementById("scheduleName");
+ if (dropdown.value == 1) {scheduleName.innerHTML = "UNIVERSIDAD DE PLAYA ANCHA (HORARIO - PRIMER SEMESTRE)"; dropdown.value = 0}
+ if (dropdown.value == 2) {scheduleName.innerHTML = "UNIVERSIDAD DE PLAYA ANCHA (HORARIO - SEGUNDO SEMESTRE)"; dropdown.value = 0}
+ if (dropdown.value == 3) {window.print(); dropdown.value = 0}
+ if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
+});
+</script>
+
+<script>
+function doDelete() {
+var doDelete = window.confirm("Borramos todo?");
+if (confirm) { deleteAll() }
+else { console.log("Eso estuvo cerca!") }
+}
+</script>
+
+
+
 <div class="grid-schedule" style="width: 96%; margin-left: auto; margin-right: auto; margin-top: 1%;">
 
-<div style="grid-area: top; text-align: center; font-size: 15px; font-weight: bold; border-style: hidden hidden dashed hidden; /* top right bottom left */">HORARIO - UNIVERSIDAD DE PLAYA ANCHA</div>
+<div id="scheduleName" style="grid-area: top; text-align: center; font-size: 15px; font-weight: bold; border-style: hidden hidden dashed hidden; /* top right bottom left */">UNIVERSIDAD DE PLAYA ANCHA - HORARIO</div>
 
  <div class="blueDiv">Per.</div>
  <div class="blueDiv">Horas</div>
@@ -105,11 +135,6 @@
  <div><textarea class="scheduleArea" maxlength="70" id="eight6" onChange="withinCells(); checkEight()"></textarea></div>
 
 </div>
-
-<!- THESE ARE THE BUTTONS->
-
-  <button class="timebox-refresh" role="button" onClick="deleteAll()" style="position: absolute; bottom: 25px; left: 3%; width: 200px;">♻️ Borrar</button>
-  <button class="timebox-download" role="button" onClick="window.print();" style="position: absolute; bottom: 25px; right: 3%;  width: 200px">Descargar 🖨️</button>
 
 
 <!- SAVE FUNCTION ->
