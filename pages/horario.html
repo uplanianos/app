@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../media/uplanianos-icon.png">
+	<link rel="stylesheet" href="../files/pages-style.css">
+	<title>Uplanianos - Horario</title>
+</head>
+
+<style type="text/css" media="print">
+  @page { size: landscape; }
+</style>
+
+
+<body>
+
+<a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
+
+<div class="grid-schedule" style="width: 96%; margin-left: auto; margin-right: auto; margin-top: 1%;">
+
+<div style="grid-area: top; text-align: center; font-size: 15px; font-weight: bold; border-style: hidden hidden dashed hidden; /* top right bottom left */">HORARIO - UNIVERSIDAD DE PLAYA ANCHA</div>
+
+ <div class="blueDiv">Per.</div>
+ <div class="blueDiv">Horas</div>
+ <div class="blueDiv">Lunes</div>
+ <div class="blueDiv">Martes</div>
+ <div class="blueDiv">Miércoles</div>
+ <div class="blueDiv">Jueves</div>
+ <div class="blueDiv">Viernes</div>
+ <div class="blueDiv">Sábado</div>
+
+ <div class="yellowDiv">1</div>
+ <div class="yellowDiv">08:00<br>09:15</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one1" onChange="withinCells(); checkOne()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one2" onChange="withinCells(); checkOne()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one3" onChange="withinCells(); checkOne()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one4" onChange="withinCells(); checkOne()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one5" onChange="withinCells(); checkOne()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one6" onChange="withinCells(); checkOne()"></textarea></div>
+
+ <div class="yellowDiv">2</div>
+ <div class="yellowDiv">09:30<br>10:45</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two1" onChange="withinCells(); checkTwo()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two2" onChange="withinCells(); checkTwo()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two3" onChange="withinCells(); checkTwo()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two4" onChange="withinCells(); checkTwo()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two5" onChange="withinCells(); checkTwo()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two6" onChange="withinCells(); checkTwo()"></textarea></div>
+
+ <div class="yellowDiv">3</div>
+ <div class="yellowDiv">11:00<br>12:15</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three1" onChange="withinCells(); checkThree()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three2" onChange="withinCells(); checkThree()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three3" onChange="withinCells(); checkThree()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three4" onChange="withinCells(); checkThree()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three5" onChange="withinCells(); checkThree()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three6" onChange="withinCells(); checkThree()"></textarea></div>
+
+ <div class="yellowDiv">4</div>
+ <div class="yellowDiv">12:30<br>13:45</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four1" onChange="withinCells(); checkFour()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four2" onChange="withinCells(); checkFour()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four3" onChange="withinCells(); checkFour()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four4" onChange="withinCells(); checkFour()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four5" onChange="withinCells(); checkFour()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four6" onChange="withinCells(); checkFour()"></textarea></div>
+
+ <div class="yellowDiv">5</div>
+ <div class="yellowDiv">14:00<br>15:15</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five1" onChange="withinCells(); checkFive()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five2" onChange="withinCells(); checkFive()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five3" onChange="withinCells(); checkFive()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five4" onChange="withinCells(); checkFive()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five5" onChange="withinCells(); checkFive()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five6" onChange="withinCells(); checkFive()"></textarea></div>
+
+ <div class="yellowDiv">6</div>
+ <div class="yellowDiv">15:30<br>16:45</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six1" onChange="withinCells(); checkSix()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six2" onChange="withinCells(); checkSix()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six3" onChange="withinCells(); checkSix()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six4" onChange="withinCells(); checkSix()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six5" onChange="withinCells(); checkSix()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six6" onChange="withinCells(); checkSix()"></textarea></div>
+
+ <div class="yellowDiv">7</div>
+ <div class="yellowDiv">17:00<br>18:15</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven1" onChange="withinCells(); checkSeven()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven2" onChange="withinCells(); checkSeven()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven3" onChange="withinCells(); checkSeven()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven4" onChange="withinCells(); checkSeven()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven5" onChange="withinCells(); checkSeven()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven6" onChange="withinCells(); checkSeven()"></textarea></div>
+
+ <div class="yellowDiv">8</div>
+ <div class="yellowDiv">18:30<br>19:45</div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight1" onChange="withinCells(); checkEight()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight2" onChange="withinCells(); checkEight()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight3" onChange="withinCells(); checkEight()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight4" onChange="withinCells(); checkEight()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight5" onChange="withinCells(); checkEight()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight6" onChange="withinCells(); checkEight()"></textarea></div>
+
+</div>
+
+<!- THESE ARE THE BUTTONS->
+
+  <button class="timebox-refresh" role="button" onClick="deleteAll()" style="position: absolute; bottom: 25px; left: 3%; width: 200px;">♻️ Borrar</button>
+  <button class="timebox-download" role="button" onClick="window.print();" style="position: absolute; bottom: 25px; right: 3%;  width: 200px">Descargar 🖨️</button>
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY (FIR LINE ON HEAD SECTION) ->
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+withinCells();
+}
+</script>
+
+
+<!- DELETE BUTTON FUNCTION ->
+<script type="text/javascript">
+function deleteAll() {
+document.getElementById('one1').value = ''
+document.getElementById('one2').value = ''
+document.getElementById('one3').value = ''
+document.getElementById('one4').value = ''
+document.getElementById('one5').value = ''
+document.getElementById('one6').value = ''
+  checkOne()
+
+document.getElementById('two1').value = ''
+document.getElementById('two2').value = ''
+document.getElementById('two3').value = ''
+document.getElementById('two4').value = ''
+document.getElementById('two5').value = ''
+document.getElementById('two6').value = ''
+  checkTwo()
+
+document.getElementById('three1').value = ''
+document.getElementById('three2').value = ''
+document.getElementById('three3').value = ''
+document.getElementById('three4').value = ''
+document.getElementById('three5').value = ''
+document.getElementById('three6').value = ''
+  checkThree()
+
+document.getElementById('four1').value = ''
+document.getElementById('four2').value = ''
+document.getElementById('four3').value = ''
+document.getElementById('four4').value = ''
+document.getElementById('four5').value = ''
+document.getElementById('four6').value = ''
+  checkFour()
+
+document.getElementById('five1').value = ''
+document.getElementById('five2').value = ''
+document.getElementById('five3').value = ''
+document.getElementById('five4').value = ''
+document.getElementById('five5').value = ''
+document.getElementById('five6').value = ''
+  checkFive()
+
+document.getElementById('six1').value = ''
+document.getElementById('six2').value = ''
+document.getElementById('six3').value = ''
+document.getElementById('six4').value = ''
+document.getElementById('six5').value = ''
+document.getElementById('six6').value = ''
+  checkSix()
+
+document.getElementById('seven1').value = ''
+document.getElementById('seven2').value = ''
+document.getElementById('seven3').value = ''
+document.getElementById('seven4').value = ''
+document.getElementById('seven5').value = ''
+document.getElementById('seven6').value = ''
+  checkSeven()
+
+document.getElementById('eight1').value = ''
+document.getElementById('eight2').value = ''
+document.getElementById('eight3').value = ''
+document.getElementById('eight4').value = ''
+document.getElementById('eight5').value = ''
+document.getElementById('eight6').value = ''
+  checkEight()
+}
+</script>
+
+
+
+<!- THIS FUNCTION CHECKS USED CELLS ON LOAD ->
+
+<script type="text/javascript">
+function withinCells() {
+console.log("Interlinked!")
+thisGreen = "#E0FFE0"
+one1 = document.getElementById("one1")
+one2 = document.getElementById("one2")
+one3 = document.getElementById("one3")
+one4 = document.getElementById("one4")
+one5 = document.getElementById("one5")
+one6 = document.getElementById("one6")
+if (one1.value !== '') {one1.style.backgroundColor = thisGreen}
+if (one2.value !== '') {one2.style.backgroundColor = thisGreen}
+if (one3.value !== '') {one3.style.backgroundColor = thisGreen}
+if (one4.value !== '') {one4.style.backgroundColor = thisGreen}
+if (one5.value !== '') {one5.style.backgroundColor = thisGreen}
+if (one6.value !== '') {one6.style.backgroundColor = thisGreen}
+
+two1 = document.getElementById("two1")
+two2 = document.getElementById("two2")
+two3 = document.getElementById("two3")
+two4 = document.getElementById("two4")
+two5 = document.getElementById("two5")
+two6 = document.getElementById("two6")
+if (two1.value !== '') {two1.style.backgroundColor = thisGreen}
+if (two2.value !== '') {two2.style.backgroundColor = thisGreen}
+if (two3.value !== '') {two3.style.backgroundColor = thisGreen}
+if (two4.value !== '') {two4.style.backgroundColor = thisGreen}
+if (two5.value !== '') {two5.style.backgroundColor = thisGreen}
+if (two6.value !== '') {two6.style.backgroundColor = thisGreen}
+
+three1 = document.getElementById("three1")
+three2 = document.getElementById("three2")
+three3 = document.getElementById("three3")
+three4 = document.getElementById("three4")
+three5 = document.getElementById("three5")
+three6 = document.getElementById("three6")
+if (three1.value !== '') {three1.style.backgroundColor = thisGreen}
+if (three2.value !== '') {three2.style.backgroundColor = thisGreen}
+if (three3.value !== '') {three3.style.backgroundColor = thisGreen}
+if (three4.value !== '') {three4.style.backgroundColor = thisGreen}
+if (three5.value !== '') {three5.style.backgroundColor = thisGreen}
+if (three6.value !== '') {three6.style.backgroundColor = thisGreen}
+
+four1 = document.getElementById("four1")
+four2 = document.getElementById("four2")
+four3 = document.getElementById("four3")
+four4 = document.getElementById("four4")
+four5 = document.getElementById("four5")
+four6 = document.getElementById("four6")
+if (four1.value !== '') {four1.style.backgroundColor = thisGreen}
+if (four2.value !== '') {four2.style.backgroundColor = thisGreen}
+if (four3.value !== '') {four3.style.backgroundColor = thisGreen}
+if (four4.value !== '') {four4.style.backgroundColor = thisGreen}
+if (four5.value !== '') {four5.style.backgroundColor = thisGreen}
+if (four6.value !== '') {four6.style.backgroundColor = thisGreen}
+
+five1 = document.getElementById("five1")
+five2 = document.getElementById("five2")
+five3 = document.getElementById("five3")
+five4 = document.getElementById("five4")
+five5 = document.getElementById("five5")
+five6 = document.getElementById("five6")
+if (five1.value !== '') {five1.style.backgroundColor = thisGreen}
+if (five2.value !== '') {five2.style.backgroundColor = thisGreen}
+if (five3.value !== '') {five3.style.backgroundColor = thisGreen}
+if (five4.value !== '') {five4.style.backgroundColor = thisGreen}
+if (five5.value !== '') {five5.style.backgroundColor = thisGreen}
+if (five6.value !== '') {five6.style.backgroundColor = thisGreen}
+
+six1 = document.getElementById("six1")
+six2 = document.getElementById("six2")
+six3 = document.getElementById("six3")
+six4 = document.getElementById("six4")
+six5 = document.getElementById("six5")
+six6 = document.getElementById("six6")
+if (six1.value !== '') {six1.style.backgroundColor = thisGreen}
+if (six2.value !== '') {six2.style.backgroundColor = thisGreen}
+if (six3.value !== '') {six3.style.backgroundColor = thisGreen}
+if (six4.value !== '') {six4.style.backgroundColor = thisGreen}
+if (six5.value !== '') {six5.style.backgroundColor = thisGreen}
+if (six6.value !== '') {six6.style.backgroundColor = thisGreen}
+
+seven1 = document.getElementById("seven1")
+seven2 = document.getElementById("seven2")
+seven3 = document.getElementById("seven3")
+seven4 = document.getElementById("seven4")
+seven5 = document.getElementById("seven5")
+seven6 = document.getElementById("seven6")
+if (seven1.value !== '') {seven1.style.backgroundColor = thisGreen}
+if (seven2.value !== '') {seven2.style.backgroundColor = thisGreen}
+if (seven3.value !== '') {seven3.style.backgroundColor = thisGreen}
+if (seven4.value !== '') {seven4.style.backgroundColor = thisGreen}
+if (seven5.value !== '') {seven5.style.backgroundColor = thisGreen}
+if (seven6.value !== '') {seven6.style.backgroundColor = thisGreen}
+
+eight1 = document.getElementById("eight1")
+eight2 = document.getElementById("eight2")
+eight3 = document.getElementById("eight3")
+eight4 = document.getElementById("eight4")
+eight5 = document.getElementById("eight5")
+eight6 = document.getElementById("eight6")
+if (eight1.value !== '') {eight1.style.backgroundColor = thisGreen}
+if (eight2.value !== '') {eight2.style.backgroundColor = thisGreen}
+if (eight3.value !== '') {eight3.style.backgroundColor = thisGreen}
+if (eight4.value !== '') {eight4.style.backgroundColor = thisGreen}
+if (eight5.value !== '') {eight5.style.backgroundColor = thisGreen}
+if (eight6.value !== '') {eight6.style.backgroundColor = thisGreen}
+}
+</script>
+
+
+<script type="text/javascript">
+function checkOne() {
+white = "#FFF"
+one1 = document.getElementById("one1")
+one2 = document.getElementById("one2")
+one3 = document.getElementById("one3")
+one4 = document.getElementById("one4")
+one5 = document.getElementById("one5")
+one6 = document.getElementById("one6")
+if (one1.value == '') {one1.style.backgroundColor = white}
+if (one2.value == '') {one2.style.backgroundColor = white}
+if (one3.value == '') {one3.style.backgroundColor = white}
+if (one4.value == '') {one4.style.backgroundColor = white}
+if (one5.value == '') {one5.style.backgroundColor = white}
+if (one6.value == '') {one6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkTwo() {
+white = "#FFF"
+two1 = document.getElementById("two1")
+two2 = document.getElementById("two2")
+two3 = document.getElementById("two3")
+two4 = document.getElementById("two4")
+two5 = document.getElementById("two5")
+two6 = document.getElementById("two6")
+if (two1.value == '') {two1.style.backgroundColor = white}
+if (two2.value == '') {two2.style.backgroundColor = white}
+if (two3.value == '') {two3.style.backgroundColor = white}
+if (two4.value == '') {two4.style.backgroundColor = white}
+if (two5.value == '') {two5.style.backgroundColor = white}
+if (two6.value == '') {two6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkThree() {
+white = "#FFF"
+three1 = document.getElementById("three1")
+three2 = document.getElementById("three2")
+three3 = document.getElementById("three3")
+three4 = document.getElementById("three4")
+three5 = document.getElementById("three5")
+three6 = document.getElementById("three6")
+if (three1.value == '') {three1.style.backgroundColor = white}
+if (three2.value == '') {three2.style.backgroundColor = white}
+if (three3.value == '') {three3.style.backgroundColor = white}
+if (three4.value == '') {three4.style.backgroundColor = white}
+if (three5.value == '') {three5.style.backgroundColor = white}
+if (three6.value == '') {three6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkFour() {
+white = "#FFF"
+four1 = document.getElementById("four1")
+four2 = document.getElementById("four2")
+four3 = document.getElementById("four3")
+four4 = document.getElementById("four4")
+four5 = document.getElementById("four5")
+four6 = document.getElementById("four6")
+if (four1.value == '') {four1.style.backgroundColor = white}
+if (four2.value == '') {four2.style.backgroundColor = white}
+if (four3.value == '') {four3.style.backgroundColor = white}
+if (four4.value == '') {four4.style.backgroundColor = white}
+if (four5.value == '') {four5.style.backgroundColor = white}
+if (four6.value == '') {four6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkFive() {
+white = "#FFF"
+five1 = document.getElementById("five1")
+five2 = document.getElementById("five2")
+five3 = document.getElementById("five3")
+five4 = document.getElementById("five4")
+five5 = document.getElementById("five5")
+five6 = document.getElementById("five6")
+if (five1.value == '') {five1.style.backgroundColor = white}
+if (five2.value == '') {five2.style.backgroundColor = white}
+if (five3.value == '') {five3.style.backgroundColor = white}
+if (five4.value == '') {five4.style.backgroundColor = white}
+if (five5.value == '') {five5.style.backgroundColor = white}
+if (five6.value == '') {five6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkSix() {
+white = "#FFF"
+six1 = document.getElementById("six1")
+six2 = document.getElementById("six2")
+six3 = document.getElementById("six3")
+six4 = document.getElementById("six4")
+six5 = document.getElementById("six5")
+six6 = document.getElementById("six6")
+if (six1.value == '') {six1.style.backgroundColor = white}
+if (six2.value == '') {six2.style.backgroundColor = white}
+if (six3.value == '') {six3.style.backgroundColor = white}
+if (six4.value == '') {six4.style.backgroundColor = white}
+if (six5.value == '') {six5.style.backgroundColor = white}
+if (six6.value == '') {six6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkSeven() {
+white = "#FFF"
+seven1 = document.getElementById("seven1")
+seven2 = document.getElementById("seven2")
+seven3 = document.getElementById("seven3")
+seven4 = document.getElementById("seven4")
+seven5 = document.getElementById("seven5")
+seven6 = document.getElementById("seven6")
+if (seven1.value == '') {seven1.style.backgroundColor = white}
+if (seven2.value == '') {seven2.style.backgroundColor = white}
+if (seven3.value == '') {seven3.style.backgroundColor = white}
+if (seven4.value == '') {seven4.style.backgroundColor = white}
+if (seven5.value == '') {seven5.style.backgroundColor = white}
+if (seven6.value == '') {seven6.style.backgroundColor = white}
+}
+</script>
+
+<script type="text/javascript">
+function checkEight() {
+white = "#FFF"
+eight1 = document.getElementById("eight1")
+eight2 = document.getElementById("eight2")
+eight3 = document.getElementById("eight3")
+eight4 = document.getElementById("eight4")
+eight5 = document.getElementById("eight5")
+eight6 = document.getElementById("eight6")
+if (eight1.value == '') {eight1.style.backgroundColor = white}
+if (eight2.value == '') {eight2.style.backgroundColor = white}
+if (eight3.value == '') {eight3.style.backgroundColor = white}
+if (eight4.value == '') {eight4.style.backgroundColor = white}
+if (eight5.value == '') {eight5.style.backgroundColor = white}
+if (eight6.value == '') {eight6.style.backgroundColor = white}
+}
+</script>
+
+
+<!- BACK ARROW ANIMATION ->
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>
