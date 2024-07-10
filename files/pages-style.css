@@ -27,32 +27,32 @@ ul	{ padding-left: 18px; }
 /* MAIN DIV SETTINGS */
 
 .main {
-	margin: auto;
-	background-color: #151B54; /* For browsers that do not support gradients */
-	background-image: linear-gradient(to bottom, black, #151B54, #36013F);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
-	border: 1px solid navy;
-	float: center;
-	padding: 0px;
-	width: 60%; /* The width is 60%, by default */
-	border-radius: 24px;
-	font-size: 16px;
+  margin: auto;
+  background-color: #151B54; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  border: 1px solid navy;
+  float: center;
+  padding: 0px;
+  width: 60%; /* The width is 60%, by default */
+  border-radius: 24px;
+  font-size: 16px;
 }
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
-    .main {
-	/* The width is 100%, when the viewport is 800px or smaller */ 
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	border: 0px solid navy;
-	border-radius: 0px;
-	font-size: 14px;
-	min-height: 100%;
-    }
+.main {
+  /* The width is 100%, when the viewport is 800px or smaller */ 
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  border: 0px solid navy;
+  border-radius: 0px;
+  font-size: 14px;
+  min-height: 100%;
+  }
 }
 
 
@@ -63,61 +63,61 @@ ul	{ padding-left: 18px; }
 .referencias { color: white; margin-left: auto; margin-right: 50px; }
 
 .grid-container-pages {
-	width: 95%;
-	margin-left: auto;
-	margin-right: auto;
-	display: grid;
-	grid-template-columns: auto;
-	background-color: transparent;
-	row-gap: 16px;
-	padding: 1px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto;
+  background-color: transparent;
+  row-gap: 16px;
+  padding: 1px;
 }
 
 .grid-item-title {
-	background-color: cornflowerblue;
-	border: 1px solid lightgray;
-	padding: 6px;
-	text-align: center;
+  background-color: cornflowerblue;
+  border: 1px solid lightgray;
+  padding: 6px;
+  text-align: center;
 }
 
 .grid-item-blue {
-	background-color: lightblue;
-	border: 1px solid lightgray;
-	padding: 6px;
-	text-align: left;
-	border-radius: 6px;
+  background-color: lightblue;
+  border: 1px solid lightgray;
+  padding: 6px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 .grid-item {
-	background-color: lightyellow;
-	border: 1px solid white;
-	padding: 6px;
-	text-align: left;
-	border-radius: 6px;
+  background-color: lightyellow;
+  border: 1px solid white;
+  padding: 6px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 .grid-item-green {
-	background-color: lightgreen;
-	border: 1px solid lightgray;
-	padding: 6px;
-	text-align: left;
-	border-radius: 6px;
+  background-color: lightgreen;
+  border: 1px solid lightgray;
+  padding: 6px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 .grid-item-pink {
-	background-color: pink;
-	border: 1px solid lightgray;
-	padding: 6px;
-	text-align: left;
-	border-radius: 6px;
+  background-color: pink;
+  border: 1px solid lightgray;
+  padding: 6px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 .grid-item-gray {
-	background-color: lightgray;
-	border: 1px solid white;
-	padding: 6px;
-	text-align: left;
-	border-radius: 6px;
+  background-color: lightgray;
+  border: 1px solid white;
+  padding: 6px;
+  text-align: left;
+  border-radius: 6px;
 }
 
 
@@ -125,16 +125,16 @@ ul	{ padding-left: 18px; }
 /* LICENCE DIV SETTINGS */
 
 .grid-item-license {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #151B54;
-	border: 1px solid white;
-	color: white;
-	padding: 6px;
-	padding-left: 18px;
-	text-align: left;
-	border-radius: 12px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #151B54;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  padding-left: 18px;
+  text-align: left;
+  border-radius: 12px;
 }
 
 
@@ -142,64 +142,64 @@ ul	{ padding-left: 18px; }
 /* TOOL PAGES DIV SETTINGS */
 
 .grid-item-slider {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #151B54;
-	border: 1px solid white;
-	color: white;
-	padding: 6px;
-	padding-left: 18px;
-	text-align: left;
-	border-radius: 12px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #151B54;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  padding-left: 18px;
+  text-align: left;
+  border-radius: 12px;
 }
 
 .grid-item-tools {
-	width: 60%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #151B54;
-	border: 1px solid white;
-	color: white;
-	padding: 6px;
-	padding-left: 18px;
-	text-align: left;
-	border-radius: 12px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #151B54;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  padding-left: 18px;
+  text-align: left;
+  border-radius: 12px;
 }
 
 .grid-item-results {
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: gray;
-	border: 1px solid white;
-	color: white;
-	padding: 6px;
-	padding-left: 18px;
-	text-align: left;
-	border-radius: 12px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: gray;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  padding-left: 18px;
+  text-align: left;
+  border-radius: 12px;
 }
 
 .grid-exam-results {
-	width: 40%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #151B54;
-	border: 1px solid white;
-	color: white;
-	padding: 6px;
-	padding-left: 18px;
-	text-align: left;
-	border-radius: 12px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #151B54;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  padding-left: 18px;
+  text-align: left;
+  border-radius: 12px;
 }
 
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
-    .grid-item-slider {  width: 95%; }
-    .grid-item-tools {  width: 90%; }
-    .grid-item-results {  width: 75%; }
-    .grid-exam-results {  width: 75%; }
+  .grid-item-slider {  width: 95%; }
+  .grid-item-tools {  width: 90%; }
+  .grid-item-results {  width: 75%; }
+  .grid-exam-results {  width: 75%; }
 }
 
 
@@ -214,67 +214,114 @@ ul	{ padding-left: 18px; }
 .test-right { flex: 5; padding: 6px; margin-right: 12px; }
 
 input[type=number] {
-	width: 85px;
-	color: black;
-	background: white;
-	font-size: 15px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid cornflowerblue;
-	border-radius: 6px;
-	cursor: copy;
-	outline: none;
+  width: 85px;
+  color: black;
+  background: white;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid cornflowerblue;
+  border-radius: 6px;
+  cursor: copy;
+  outline: none;
 }
 
 input[type=number].results {
-	width: 100px;
-	font-size: 16px;
-	background: darkgray;
-	cursor: not-allowed;
+  width: 100px;
+  font-size: 16px;
+  background: darkgray;
+  cursor: not-allowed;
 }
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
-	input[type=number] { padding-left: 3px; }
-	input[type=number].results { padding-left: 3px; }
+  input[type=number] { padding-left: 3px; }
+  input[type=number].results { padding-left: 3px; }
 }
 
 
 /* BUTTONS SETTINGS */
 
 #getResults {
-	width: 100px;
-	font-size: 16px;
-	background-color: darkred;
-	border: 3px solid darkgray;
-	border-radius: 4px 4px;
-	color: white;
-	padding: 4px 4px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer; }
+  width: 100px;
+  font-size: 16px;
+  background-color: darkred;
+  border: 3px solid darkgray;
+  border-radius: 4px 4px;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
 
 #getResults:hover { background-color: #C30028; color: white; }
 #getResults:active { background-color: #FC0034; color: black; }
 
 #clearGrades {
-	width: 75px;
-	font-size: 16px;
-	background-color: darkgreen;
-	border: 3px solid darkgray;
-	border-radius: 4px 4px;
-	color: white;
-	padding: 4px 4px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer; }
+  width: 75px;
+  font-size: 16px;
+  background-color: darkgreen;
+  border: 3px solid darkgray;
+  border-radius: 4px 4px;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
 
 #clearGrades:hover { background-color: green; color: white; }
 #clearGrades:active { background-color: #39FF14; color: black; }
+
+
+/* SCHEDULE SETTINGS */
+
+.grid-schedule {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  grid-template-rows: 30px auto auto auto auto auto auto auto;
+  grid-template-areas:
+    'top top top top top top top top'
+    'div div div div div div div div'
+    'div div div div div div div div'
+    'div div div div div div div div'
+    'div div div div div div div div'
+    'div div div div div div div div'
+    'div div div div div div div div'
+    'div div div div div div div div';
+  gap: 0px;
+  background-color: white;
+  border: 2px solid navy;
+  border-radius: 12px 12px;
+  padding: 10px;
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.grid-schedule > div {
+  font-size: 12px;
+  text-align: center;
+  font-family: Verdana, Tahoma;
+  color: #005B9A;
+  padding: 1px;
+  margin-right: -1px;
+  border: 1px dashed darkgray;
+  border-style: hidden dashed dashed dashed; /* top right bottom left */
+  word-break: break-word;
+}
+
+div.blueDiv {background-color: #A7C7E7; height: 30px; font-weight: bold; padding-top: 8px; text-transform: uppercase;}
+div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8px;}
+
+.scheduleArea {height: 64px; width: 100%; text-align: center; font-size: 11px; font-family: Verdana, Tahoma; color: #005B9A; border: 0px; margin: 0px; margin-top: -1px; margin-bottom: -3px; padding: 3px; resize: none; overflow: hidden;}
+.scheduleArea:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 10px #719ECE;}
+.scheduleArea:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 10px #719ECE;}
 
 
 /* ATTENDANCE SETTINGS */
@@ -284,17 +331,17 @@ input[type=number].results {
 .result-text { color: white; font-size: 24px; }
 
 input[type=number].attendance {
-	width: auto;
-	color: white;
-	text-color: white;
-	background: transparent;
-	font-size: 20px;
-	text-align: center;
-	padding: 12px;
-	border: 0px solid transparent;
-	border-radius: 6px;
-	pointer-events: none;
-	outline: none;
+  width: auto;
+  color: white;
+  text-color: white;
+  background: transparent;
+  font-size: 20px;
+  text-align: center;
+  padding: 12px;
+  border: 0px solid transparent;
+  border-radius: 6px;
+  pointer-events: none;
+  outline: none;
 }
 
 
@@ -306,55 +353,55 @@ input[type=number].attendance {
 .triple-right	{ flex: 1; padding: 6px; margin-right: 12px; }
 
 input[type=number].average {
-	width: 100%;
-	color: white;
-	background: darkred;
-	font-size: 18px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid white;
-	border-radius: 6px;
-	pointer-events: none;
-	outline: none;
+  width: 100%;
+  color: white;
+  background: darkred;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid white;
+  border-radius: 6px;
+  pointer-events: none;
+  outline: none;
 }
 
 input[type=number].exam {
-	width: 100%;
-	color: white;
-	background: cornflowerblue;
-	font-size: 18px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid white;
-	border-radius: 6px;
-	pointer-events: none;
-	outline: none;
+  width: 100%;
+  color: white;
+  background: cornflowerblue;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid white;
+  border-radius: 6px;
+  pointer-events: none;
+  outline: none;
 }
 
 input[type=number].calculation {
-	width: 100%;
-	color: white;
-	background: gray;
-	font-size: 18px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid white;
-	border-radius: 6px;
-	pointer-events: none;
-	outline: none;
+  width: 100%;
+  color: white;
+  background: gray;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid white;
+  border-radius: 6px;
+  pointer-events: none;
+  outline: none;
 }
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
-	input[type=number].average	{ padding-left: 0px; padding-right: 0px; }
-	input[type=number].exam		{ padding-left: 0px; padding-right: 0px; }
-	input[type=number].calculation	{ padding-left: 0px; padding-right: 0px; }
+  input[type=number].average { padding-left: 0px; padding-right: 0px; }
+  input[type=number].exam { padding-left: 0px; padding-right: 0px; }
+  input[type=number].calculation { padding-left: 0px; padding-right: 0px; }
 }
 
 
@@ -366,47 +413,47 @@ input[type=number].calculation {
 /* PROMEDIOS SETTINGS */
 
 .promedios-container {
-	display: flex;
-	width: 96%;
-	margin-left: 3px;
-	margin-top: 12px;
-	margin-bottom: 6px;
-	padding-bottom: 12px;
-	border-bottom: 2px solid darkgray;
-	text-align: center;
-	align-content: center;
+  display: flex;
+  width: 96%;
+  margin-left: 3px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid darkgray;
+  text-align: center;
+  align-content: center;
 }
 
 .test-titles { position: absolute; padding-left: 6px; margin-top: -1px; color: lightgray; font-size: 14px; }
 
 input[type=number].average-input {
-	width: 85px;
-	color: black;
-	background: white;
-	font-size: 15px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid cornflowerblue;
-	border-radius: 6px;
-	cursor: copy;
-	outline: none;
+  width: 85px;
+  color: black;
+  background: white;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid cornflowerblue;
+  border-radius: 6px;
+  cursor: copy;
+  outline: none;
 }
 
 input[type=number].average-maths {
-	width: 85px;
-	color: black;
-	background: darkgray;
-	font-size: 15px;
-	text-align: center;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 18px;
-	border: 3px solid cornflowerblue;
-	border-radius: 6px;
-	cursor: not-allowed;
-	outline: none;
+  width: 85px;
+  color: black;
+  background: darkgray;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  border: 3px solid cornflowerblue;
+  border-radius: 6px;
+  cursor: not-allowed;
+  outline: none;
 }
 
 
@@ -416,11 +463,11 @@ input[type=number].average-maths {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-areas:
-	 'div schedule'
-	 'div schedule'
-	 'div schedule'
-	 'div schedule'
-	 'foot foot';
+    'div schedule'
+    'div schedule'
+    'div schedule'
+    'div schedule'
+    'foot foot';
   gap: 18px;
 }
 
