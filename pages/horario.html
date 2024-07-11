@@ -33,8 +33,8 @@
 <script type="text/javascript">
 document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
- if (dropdown.value == 1) {scheduleName.innerHTML = "UPLANIANOS - HORARIO (PRIMER SEMESTRE)"; dropdown.value = 0}
- if (dropdown.value == 2) {scheduleName.innerHTML = "UPLANIANOS - HORARIO (SEGUNDO SEMESTRE)"; dropdown.value = 0}
+ if (dropdown.value == 1) {scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE"; dropdown.value = 0}
+ if (dropdown.value == 2) {scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE"; dropdown.value = 0}
  if (dropdown.value == 3) {window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
 });
@@ -128,14 +128,16 @@ function doDelete() {
  <div><textarea class="scheduleArea" maxlength="70" id="eight4" onChange="withinCells(); checkEight()"></textarea></div>
  <div><textarea class="scheduleArea" maxlength="70" id="eight5" onChange="withinCells(); checkEight()"></textarea></div>
 
+ <div id="foot" class="foot" style="grid-area: fin; text-align: center; font-size: 12px; border: 0px dashed darkgray; border-style: hidden; padding-top: 6px;">
+ Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
+ </div>
+
 </div>
 
 
 <!- DELETE BUTTON FUNCTION ->
 <script type="text/javascript">
 function deleteAll() {
-
-scheduleName.innerHTML = "UPLANIANOS - HORARIO"
 
 document.getElementById('one1').value = ''
 document.getElementById('one2').value = ''
@@ -224,7 +226,6 @@ withinCells();
 
 <script type="text/javascript">
 function withinCells() {
-// console.log("Interlinked!")
 thisGreen = "#E0FFE0"
 
 one1 = document.getElementById("one1")
@@ -321,54 +322,66 @@ rightNow();
 
 
 
-<!- THIS FUNCTION HIGHLIGHT WHICH CELL IS RIGHT NOW ->
+<!- THIS FUNCTION DEALS WITH DATE VALUES AND CHANGES ->
 <script type="text/javascript">
 function rightNow() {
 const now = new Date();
+
+// CONSTANTS FOR THE TITLE
+const month = now.getMonth();
+const year = now.getFullYear();
+scheduleName = document.getElementById("scheduleName");
+// Months start with 0 (for January)!
+if (month >= 1 && month <= 5) {
+    scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
+    document.title = "Uplanianos - Horario - I, " + year;
+    }
+if (month >= 6 && month <= 11) {
+    scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
+    document.title = "Uplanianos - Horario - II, " + year;
+    }
+
+// CONSTANTS FOR THE DAY CELLS
+thisOrange = "#FAC898"
 const day = now.getDay();
+if (day == 1) {document.getElementById("Monday").style.backgroundColor = thisOrange }
+if (day == 2) {document.getElementById("Tuesday").style.backgroundColor = thisOrange }
+if (day == 3) {document.getElementById("Wednesday").style.backgroundColor = thisOrange }
+if (day == 4) {document.getElementById("Thursday").style.backgroundColor = thisOrange }
+if (day == 5) {document.getElementById("Friday").style.backgroundColor = thisOrange }
+
+// CONSTANTS FOR THE PERIOD CELLS
 const hour = now.getHours();
 const minutes = now.getMinutes();
-const theTimeIs = (hour + "." + minutes);
+const theTime = (hour + "." + minutes);
 
-// console.log(day);
-// console.log(hour);
-// console.log(minutes);
-// console.log(hour + "." + minutes);
-// console.log(theTimeIs);
-
-if (day == 1) {document.getElementById("Monday").style.backgroundColor = "#FFBF00" }
-if (day == 2) {document.getElementById("Tuesday").style.backgroundColor = "#FFBF00" }
-if (day == 3) {document.getElementById("Wednesday").style.backgroundColor = "#FFBF00" }
-if (day == 4) {document.getElementById("Thursday").style.backgroundColor = "#FFBF00" }
-if (day == 5) {document.getElementById("Friday").style.backgroundColor = "#FFBF00" }
-
-if (hour >= 8 && theTimeIs <= 9.30) {
-  document.getElementById("period1").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours01").style.backgroundColor = "#FFBF00"
+if (hour >= 8 && theTime <= 9.30) {
+  document.getElementById("period1").style.backgroundColor = thisOrange
+  document.getElementById("hours01").style.backgroundColor = thisOrange
 }
-if (theTimeIs >= 9.30 && hour < 11) {
-  document.getElementById("period2").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours02").style.backgroundColor = "#FFBF00"
+if (theTime >= 9.30 && hour < 11) {
+  document.getElementById("period2").style.backgroundColor = thisOrange
+  document.getElementById("hours02").style.backgroundColor = thisOrange
   }
-if (hour >= 11 && theTimeIs < 12.30) {
-  document.getElementById("period3").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours03").style.backgroundColor = "#FFBF00"
+if (hour >= 11 && theTime < 12.30) {
+  document.getElementById("period3").style.backgroundColor = thisOrange
+  document.getElementById("hours03").style.backgroundColor = thisOrange
   }
-if (theTimeIs >= 12.30 && hour < 14) {
-  document.getElementById("period4").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours04").style.backgroundColor = "#FFBF00"
+if (theTime >= 12.30 && hour < 14) {
+  document.getElementById("period4").style.backgroundColor = thisOrange
+  document.getElementById("hours04").style.backgroundColor = thisOrange
   }
-if (hour >= 14 && theTimeIs < 15.30) {
-  document.getElementById("period5").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours05").style.backgroundColor = "#FFBF00"
+if (hour >= 14 && theTime < 15.30) {
+  document.getElementById("period5").style.backgroundColor = thisOrange
+  document.getElementById("hours05").style.backgroundColor = thisOrange
   }
-if (theTimeIs >= 15.30 && hour < 17) {
-  document.getElementById("period6").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours06").style.backgroundColor = "#FFBF00"
+if (theTime >= 15.30 && hour < 17) {
+  document.getElementById("period6").style.backgroundColor = thisOrange
+  document.getElementById("hours06").style.backgroundColor = thisOrange
   }
-if (theTimeIs >= 18.30 && theTimeIs < 19.45) {
-  document.getElementById("period7").style.backgroundColor = "#FFBF00"
-  document.getElementById("hours07").style.backgroundColor = "#FFBF00"
+if (theTime >= 18.30 && theTime < 19.45) {
+  document.getElementById("period7").style.backgroundColor = thisOrange
+  document.getElementById("hours07").style.backgroundColor = thisOrange
   }
 }
 </script>
