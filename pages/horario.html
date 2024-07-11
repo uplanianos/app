@@ -329,11 +329,13 @@ const hour = now.getHours();
 const minutes = now.getMinutes();
 const theTimeIs = (hour + "." + minutes);
 
+setInterval(rightNow, 60*1000);
+
 // console.log(day);
 // console.log(hour);
 // console.log(minutes);
 // console.log(hour + "." + minutes);
-// console.log(theTimeIs);
+console.log(theTimeIs);
 
 if (day == 1) {document.getElementById("Monday").style.backgroundColor = "#FFBF00" }
 if (day == 2) {document.getElementById("Tuesday").style.backgroundColor = "#FFBF00" }
@@ -341,7 +343,7 @@ if (day == 3) {document.getElementById("Wednesday").style.backgroundColor = "#FF
 if (day == 4) {document.getElementById("Thursday").style.backgroundColor = "#FFBF00" }
 if (day == 5) {document.getElementById("Friday").style.backgroundColor = "#FFBF00" }
 
-if (hour >= 8 && theTimeIs < 9.30) {
+if (hour >= 8 && theTimeIs <= 9.30) {
   document.getElementById("period1").style.backgroundColor = "#FFBF00"
   document.getElementById("hours01").style.backgroundColor = "#FFBF00"
 }
