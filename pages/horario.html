@@ -379,9 +379,13 @@ if (theTime >= 15.30 && hour < 17) {
   document.getElementById("period6").style.backgroundColor = thisOrange
   document.getElementById("hours06").style.backgroundColor = thisOrange
   }
-if (theTime >= 18.30 && theTime < 19.45) {
+if (hour >= 17 && theTime < 18.30) {
   document.getElementById("period7").style.backgroundColor = thisOrange
   document.getElementById("hours07").style.backgroundColor = thisOrange
+  }
+if (theTime >= 18.30 && theTime < 19.45) {
+  document.getElementById("period8").style.backgroundColor = thisOrange
+  document.getElementById("hours08").style.backgroundColor = thisOrange
   }
 }
 </script>
