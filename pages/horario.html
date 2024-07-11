@@ -17,9 +17,9 @@
 
 <body>
 
-<a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
+<a href="../index.html"><div id="return" class="return" style="right: 5%; top: 3%; color: black;">&larrhk;</div></a>
 
-<div style="position: absolute; top: 24px; left: 50px;">
+<div style="position: absolute; left: 4%; top: 3%;">
   <select id="dropdown" class="dropdown"  name="form_select">
     <option value="0" selected>...</option>
     <option value="1">1er Semestre</option>
@@ -32,8 +32,8 @@
 <script type="text/javascript">
 document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
- if (dropdown.value == 1) {scheduleName.innerHTML = "UNIVERSIDAD DE PLAYA ANCHA (HORARIO - PRIMER SEMESTRE)"; dropdown.value = 0}
- if (dropdown.value == 2) {scheduleName.innerHTML = "UNIVERSIDAD DE PLAYA ANCHA (HORARIO - SEGUNDO SEMESTRE)"; dropdown.value = 0}
+ if (dropdown.value == 1) {scheduleName.innerHTML = "UPLANIANOS - HORARIO (PRIMER SEMESTRE)"; dropdown.value = 0}
+ if (dropdown.value == 2) {scheduleName.innerHTML = "UPLANIANOS - HORARIO (SEGUNDO SEMESTRE)"; dropdown.value = 0}
  if (dropdown.value == 3) {window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
 });
@@ -41,9 +41,11 @@ scheduleName = document.getElementById("scheduleName");
 
 <script>
 function doDelete() {
-var doDelete = window.confirm("Borramos todo?");
-if (confirm) { deleteAll() }
-else { console.log("Eso estuvo cerca!") }
+  if (confirm('¿Borramos todo?')) {
+    deleteAll()
+    console.log("Todo borrado!")
+  }
+  else { console.log("Eso estuvo cerca!") }
 }
 </script>
 
@@ -51,7 +53,7 @@ else { console.log("Eso estuvo cerca!") }
 
 <div class="grid-schedule" style="width: 96%; margin-left: auto; margin-right: auto; margin-top: 1%;">
 
-<div id="scheduleName" style="grid-area: top; text-align: center; font-size: 15px; font-weight: bold; border-style: hidden hidden dashed hidden; /* top right bottom left */">UNIVERSIDAD DE PLAYA ANCHA - HORARIO</div>
+<div id="scheduleName" style="grid-area: top; text-align: center; font-size: 15px; font-weight: bold; border-style: hidden hidden dashed hidden; /* top right bottom left */">UPLANIANOS - HORARIO</div>
 
  <div class="blueDiv">Per.</div>
  <div class="blueDiv">Horas</div>
@@ -138,7 +140,7 @@ else { console.log("Eso estuvo cerca!") }
 
 
 <!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY (FIR LINE ON HEAD SECTION) ->
+<!- CONNECTED TO JQUERY (FOR LINE ON HEAD SECTION) ->
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
 <script>
@@ -163,6 +165,9 @@ withinCells();
 <!- DELETE BUTTON FUNCTION ->
 <script type="text/javascript">
 function deleteAll() {
+
+scheduleName.innerHTML = "UPLANIANOS - HORARIO"
+
 document.getElementById('one1').value = ''
 document.getElementById('one2').value = ''
 document.getElementById('one3').value = ''
