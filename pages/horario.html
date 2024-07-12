@@ -28,6 +28,7 @@
     <option value="2">&#x27A5; ✍️ 2do Semestre</option>
     <option value="3">&#x27A5; 📥 Descargar</option>
     <option value="4">&#x27A5; ❌ Borrar</option>
+    <option value="5">&#x27A5; 👈 Volver</option>
   </select>
 </div>
 
@@ -36,8 +37,9 @@ document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
  if (dropdown.value == 1) {firstTerm(thisYear); dropdown.value = 0}
  if (dropdown.value == 2) {secondTerm(thisYear); dropdown.value = 0}
- if (dropdown.value == 3) {window.print(); dropdown.value = 0}
+ if (dropdown.value == 3) {resetColors(); window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
+ if (dropdown.value == 5) {window.location = "../index.html";}
 });
 </script>
 
@@ -548,6 +550,21 @@ if (day == 5) {
   }
 }
 </script>
+
+
+<script>
+function resetColors() {
+checkOne();
+checkTwo();
+checkThree();
+checkFour();
+checkFive();
+checkSix();
+checkSeven();
+checkEight();
+}
+</script>
+
 
 <script type="text/javascript">
 function checkOne() {
