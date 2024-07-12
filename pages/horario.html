@@ -23,19 +23,19 @@
 
 <div>
   <select id="dropdown" class="dropdown"  name="form_select">
-    <option value="0" selected>Menu</option>
-    <option value="1">&#x27A5; 1er Semestre</option>
-    <option value="2">&#x27A5; 2do Semestre</option>
-    <option value="3">&#x27A5; Descargar</option>
-    <option value="4">&#x27A5; Borrar</option>
+    <option value="0" selected disabled="disabled">Menu</option>
+    <option value="1">&#x27A5; ✍️ 1er Semestre</option>
+    <option value="2">&#x27A5; ✍️ 2do Semestre</option>
+    <option value="3">&#x27A5; 📥 Descargar</option>
+    <option value="4">&#x27A5; ❌ Borrar</option>
   </select>
 </div>
 
 <script type="text/javascript">
 document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
- if (dropdown.value == 1) {scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE"; dropdown.value = 0}
- if (dropdown.value == 2) {scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE"; dropdown.value = 0}
+ if (dropdown.value == 1) {firstTerm(theYear); dropdown.value = 0}
+ if (dropdown.value == 2) {secondTerm(theYear); dropdown.value = 0}
  if (dropdown.value == 3) {window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
 });
@@ -322,7 +322,6 @@ rightNow();
 
 
 
-
 <!- THIS FUNCTION DEALS WITH DATE VALUES AND CHANGES ->
 <script type="text/javascript">
 function rightNow() {
@@ -341,6 +340,9 @@ if (month >= 6 && month <= 11) {
     scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - II, " + year;
     }
+
+// PASSING VALUES TO OTHER FUNCTION!
+theYear = year
 
 // CONSTANTS FOR THE DAY CELLS
 // thisColor = "#FFD580" // Light Orange
@@ -410,8 +412,18 @@ if (theTime >= 18.30 && theTime < 19.45) {
   period = 8
   }
 
-// PASSING VALUES TO NEXT FUNCTION!
+// PASSING VALUES TO OTHER FUNCTION!
 highlighPeriod(day, period);
+}
+
+function firstTerm(year) {
+ scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
+ document.title = "Uplanianos - Horario - I, " + year;
+}
+
+function secondTerm(year) {
+ scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
+ document.title = "Uplanianos - Horario - II, " + year;
 }
 </script>
 
