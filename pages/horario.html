@@ -19,6 +19,8 @@
 <body>
 
 <a href="../index.html"><div id="return" class="return" style="right: 5%; top: 3%; color: black;">&larrhk;</div></a>
+<div class="right-arrow" id="right-arrow"><img class="right-arrow" src="../media/right-arrow.png"></div>
+
 
 <div>
   <select id="dropdown" class="dropdown"  name="form_select">
@@ -341,14 +343,25 @@ if (month >= 6 && month <= 11) {
     document.title = "Uplanianos - Horario - II, " + year;
     }
 
+// RED ARROW FOR DAYS AND TIMES
+arrow = document.getElementById("right-arrow")
+
 // CONSTANTS FOR THE DAY CELLS
 thisOrange = "#FFD580"
 const day = now.getDay();
-if (day == 1) {document.getElementById("Monday").style.backgroundColor = thisOrange }
-if (day == 2) {document.getElementById("Tuesday").style.backgroundColor = thisOrange }
-if (day == 3) {document.getElementById("Wednesday").style.backgroundColor = thisOrange }
-if (day == 4) {document.getElementById("Thursday").style.backgroundColor = thisOrange }
-if (day == 5) {document.getElementById("Friday").style.backgroundColor = thisOrange }
+
+// DAYS
+document.getElementById("Monday")
+document.getElementById("Tuesday")
+document.getElementById("Wednesday")
+document.getElementById("Thursday")
+document.getElementById("Friday")
+
+if (day == 1) {Monday.style.backgroundColor = thisOrange; arrow.style.left = "20%" }
+if (day == 2) {Tuesday.style.backgroundColor = thisOrange; arrow.style.left = "35%"}
+if (day == 3) {Wednesday.style.backgroundColor = thisOrange; arrow.style.left = "50%" }
+if (day == 4) {Thursday.style.backgroundColor = thisOrange; arrow.style.left = "65%" }
+if (day == 5) {Friday.style.backgroundColor = thisOrange; arrow.style.left = "80%" }
 
 // CONSTANTS FOR THE PERIOD CELLS
 const hour = now.getHours();
@@ -358,34 +371,42 @@ const theTime = (hour + "." + minutes);
 if (hour >= 8 && theTime <= 9.30) {
   document.getElementById("period1").style.backgroundColor = thisOrange
   document.getElementById("hours01").style.backgroundColor = thisOrange
+  arrow.style.top = "14%"
 }
 if (theTime >= 9.30 && hour < 11) {
   document.getElementById("period2").style.backgroundColor = thisOrange
   document.getElementById("hours02").style.backgroundColor = thisOrange
+  arrow.style.top = "23%"
   }
 if (hour >= 11 && theTime < 12.30) {
   document.getElementById("period3").style.backgroundColor = thisOrange
   document.getElementById("hours03").style.backgroundColor = thisOrange
+  arrow.style.top = "31%"
   }
 if (theTime >= 12.30 && hour < 14) {
   document.getElementById("period4").style.backgroundColor = thisOrange
   document.getElementById("hours04").style.backgroundColor = thisOrange
+  arrow.style.top = "40%"
   }
 if (hour >= 14 && theTime < 15.30) {
   document.getElementById("period5").style.backgroundColor = thisOrange
   document.getElementById("hours05").style.backgroundColor = thisOrange
+  arrow.style.top = "49%"
   }
 if (theTime >= 15.30 && hour < 17) {
   document.getElementById("period6").style.backgroundColor = thisOrange
   document.getElementById("hours06").style.backgroundColor = thisOrange
+  arrow.style.top = "58%"
   }
 if (hour >= 17 && theTime < 18.30) {
   document.getElementById("period7").style.backgroundColor = thisOrange
   document.getElementById("hours07").style.backgroundColor = thisOrange
+  arrow.style.top = "67%"
   }
 if (theTime >= 18.30 && theTime < 19.45) {
   document.getElementById("period8").style.backgroundColor = thisOrange
   document.getElementById("hours08").style.backgroundColor = thisOrange
+  arrow.style.top = "76%"
   }
 }
 </script>
