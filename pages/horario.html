@@ -20,19 +20,6 @@
 
 
 <a href="../index.html"><div id="return" class="return" style="right: 5%; top: 3%; color: black;">&larrhk;</div></a>
-<div class="right-arrow" id="right-arrow"><img class="right-arrow" src="../media/right-arrow.png"></div>
-
-<script>
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (isMobile) {
-    document.getElementById("right-arrow").style.visibility = "hidden"
-  }
-  else {
-    document.getElementById("right-arrow").style.visibility = "visible"
-  }
-</script>
-
-
 
 <div>
   <select id="dropdown" class="dropdown"  name="form_select">
@@ -355,75 +342,194 @@ if (month >= 6 && month <= 11) {
     document.title = "Uplanianos - Horario - II, " + year;
     }
 
-// RED ARROW FOR DAYS AND TIMES
-arrow = document.getElementById("right-arrow")
-
 // CONSTANTS FOR THE DAY CELLS
-thisOrange = "#FFD580"
+// thisColor = "#FFD580" // Light Orange
+thisColor = "#FFFF8F" // Canary Yellow
+thisBlue = "#6495ED" // Cornflower Blue
 const day = now.getDay();
 
 // DAYS
-document.getElementById("Monday")
-document.getElementById("Tuesday")
-document.getElementById("Wednesday")
-document.getElementById("Thursday")
-document.getElementById("Friday")
+Monday = document.getElementById("Monday")
+Tuesday = document.getElementById("Tuesday")
+Wednesday = document.getElementById("Wednesday")
+Thursday = document.getElementById("Thursday")
+Friday = document.getElementById("Friday")
 
-if (day == 1) {Monday.style.backgroundColor = thisOrange; arrow.style.left = "20%" }
-if (day == 2) {Tuesday.style.backgroundColor = thisOrange; arrow.style.left = "35%"}
-if (day == 3) {Wednesday.style.backgroundColor = thisOrange; arrow.style.left = "50%" }
-if (day == 4) {Thursday.style.backgroundColor = thisOrange; arrow.style.left = "65%" }
-if (day == 5) {Friday.style.backgroundColor = thisOrange; arrow.style.left = "80%" }
+if (day == 1) {Monday.style.backgroundColor = thisBlue; }
+if (day == 2) {Tuesday.style.backgroundColor = thisBlue; }
+if (day == 3) {Wednesday.style.backgroundColor = thisBlue; }
+if (day == 4) {Thursday.style.backgroundColor = thisBlue; }
+if (day == 5) {Friday.style.backgroundColor = thisBlue; }
 
 // CONSTANTS FOR THE PERIOD CELLS
 const hour = now.getHours();
 const minutes = now.getMinutes();
 const theTime = (hour + "." + minutes);
 
+// VALUES TO PASS ALONG TO NEXT FUNCTION!
+period = 0
+
 if (hour >= 8 && theTime <= 9.30) {
-  document.getElementById("period1").style.backgroundColor = thisOrange
-  document.getElementById("hours01").style.backgroundColor = thisOrange
-  arrow.style.top = "14%"
+  document.getElementById("period1").style.backgroundColor = thisColor
+  document.getElementById("hours01").style.backgroundColor = thisColor
+  period = 1
 }
 if (theTime >= 9.30 && hour < 11) {
-  document.getElementById("period2").style.backgroundColor = thisOrange
-  document.getElementById("hours02").style.backgroundColor = thisOrange
-  arrow.style.top = "23%"
+  document.getElementById("period2").style.backgroundColor = thisColor
+  document.getElementById("hours02").style.backgroundColor = thisColor
+  period = 2
   }
 if (hour >= 11 && theTime < 12.30) {
-  document.getElementById("period3").style.backgroundColor = thisOrange
-  document.getElementById("hours03").style.backgroundColor = thisOrange
-  arrow.style.top = "31%"
+  document.getElementById("period3").style.backgroundColor = thisColor
+  document.getElementById("hours03").style.backgroundColor = thisColor
+  period = 3
   }
 if (theTime >= 12.30 && hour < 14) {
-  document.getElementById("period4").style.backgroundColor = thisOrange
-  document.getElementById("hours04").style.backgroundColor = thisOrange
-  arrow.style.top = "40%"
+  document.getElementById("period4").style.backgroundColor = thisColor
+  document.getElementById("hours04").style.backgroundColor = thisColor
+  period = 4
   }
 if (hour >= 14 && theTime < 15.30) {
-  document.getElementById("period5").style.backgroundColor = thisOrange
-  document.getElementById("hours05").style.backgroundColor = thisOrange
-  arrow.style.top = "49%"
+  document.getElementById("period5").style.backgroundColor = thisColor
+  document.getElementById("hours05").style.backgroundColor = thisColor
+  period = 5
   }
 if (theTime >= 15.30 && hour < 17) {
-  document.getElementById("period6").style.backgroundColor = thisOrange
-  document.getElementById("hours06").style.backgroundColor = thisOrange
-  arrow.style.top = "58%"
+  document.getElementById("period6").style.backgroundColor = thisColor
+  document.getElementById("hours06").style.backgroundColor = thisColor
+  period = 6
   }
 if (hour >= 17 && theTime < 18.30) {
-  document.getElementById("period7").style.backgroundColor = thisOrange
-  document.getElementById("hours07").style.backgroundColor = thisOrange
-  arrow.style.top = "67%"
+  document.getElementById("period7").style.backgroundColor = thisColor
+  document.getElementById("hours07").style.backgroundColor = thisColor
+  period = 7
   }
 if (theTime >= 18.30 && theTime < 19.45) {
-  document.getElementById("period8").style.backgroundColor = thisOrange
-  document.getElementById("hours08").style.backgroundColor = thisOrange
-  arrow.style.top = "76%"
+  document.getElementById("period8").style.backgroundColor = thisColor
+  document.getElementById("hours08").style.backgroundColor = thisColor
+  period = 8
   }
+
+// PASSING VALUES TO NEXT FUNCTION!
+highlighPeriod(day, period);
 }
 </script>
 
 
+<script type="text/javascript">
+function highlighPeriod(day,period) {
+thisColor = "#FFFF8F"
+
+// CREATE PERIOD ELEMENTS
+one1 = document.getElementById("one1")
+one2 = document.getElementById("one2")
+one3 = document.getElementById("one3")
+one4 = document.getElementById("one4")
+one5 = document.getElementById("one5")
+
+two1 = document.getElementById("two1")
+two2 = document.getElementById("two2")
+two3 = document.getElementById("two3")
+two4 = document.getElementById("two4")
+two5 = document.getElementById("two5")
+
+three1 = document.getElementById("three1")
+three2 = document.getElementById("three2")
+three3 = document.getElementById("three3")
+three4 = document.getElementById("three4")
+three5 = document.getElementById("three5")
+
+four1 = document.getElementById("four1")
+four2 = document.getElementById("four2")
+four3 = document.getElementById("four3")
+four4 = document.getElementById("four4")
+four5 = document.getElementById("four5")
+
+five1 = document.getElementById("five1")
+five2 = document.getElementById("five2")
+five3 = document.getElementById("five3")
+five4 = document.getElementById("five4")
+five5 = document.getElementById("five5")
+
+six1 = document.getElementById("six1")
+six2 = document.getElementById("six2")
+six3 = document.getElementById("six3")
+six4 = document.getElementById("six4")
+six5 = document.getElementById("six5")
+
+seven1 = document.getElementById("seven1")
+seven2 = document.getElementById("seven")
+seven3 = document.getElementById("seven3")
+seven4 = document.getElementById("seven4")
+seven5 = document.getElementById("seven5")
+
+eight1 = document.getElementById("eight1")
+eight2 = document.getElementById("eight2")
+eight3 = document.getElementById("eight3")
+eight4 = document.getElementById("eight4")
+eight5 = document.getElementById("eight5")
+
+// CHECK MONDAY!
+if (day == 1) {
+  if (period == 1) { one1.style.backgroundColor = thisColor }
+  if (period == 2) { two1.style.backgroundColor = thisColor }
+  if (period == 3) { three1.style.backgroundColor = thisColor }
+  if (period == 4) { four1.style.backgroundColor = thisColor }
+  if (period == 5) { five1.style.backgroundColor = thisColor }
+  if (period == 6) { six1.style.backgroundColor = thisColor }
+  if (period == 7) { seven1.style.backgroundColor = thisColor }
+  if (period == 8) { eight1.style.backgroundColor = thisColor }
+  }
+
+// CHECK TUESDAY!
+if (day == 2) {
+  if (period == 1) { one2.style.backgroundColor = thisColor }
+  if (period == 2) { two2.style.backgroundColor = thisColor }
+  if (period == 3) { three2.style.backgroundColor = thisColor }
+  if (period == 4) { four2.style.backgroundColor = thisColor }
+  if (period == 5) { five2.style.backgroundColor = thisColor }
+  if (period == 6) { six2.style.backgroundColor = thisColor }
+  if (period == 7) { seven2.style.backgroundColor = thisColor }
+  if (period == 8) { eight2.style.backgroundColor = thisColor }
+  }
+
+// CHECK WEDNESDAY!
+if (day == 3) {
+  if (period == 1) { one3.style.backgroundColor = thisColor }
+  if (period == 2) { two3.style.backgroundColor = thisColor }
+  if (period == 3) { three3.style.backgroundColor = thisColor }
+  if (period == 4) { four3.style.backgroundColor = thisColor }
+  if (period == 5) { five3.style.backgroundColor = thisColor }
+  if (period == 6) { six3.style.backgroundColor = thisColor }
+  if (period == 7) { seven3.style.backgroundColor = thisColor }
+  if (period == 8) { eight3.style.backgroundColor = thisColor }
+  }
+
+// THURSDAY FRIDAY!
+if (day == 4) {
+  if (period == 1) { one4.style.backgroundColor = thisColor }
+  if (period == 2) { two4.style.backgroundColor = thisColor }
+  if (period == 3) { three4.style.backgroundColor = thisColor }
+  if (period == 4) { four4.style.backgroundColor = thisColor }
+  if (period == 5) { five4.style.backgroundColor = thisColor }
+  if (period == 6) { six4.style.backgroundColor = thisColor }
+  if (period == 7) { seven4.style.backgroundColor = thisColor }
+  if (period == 8) { eight4.style.backgroundColor = thisColor }
+  }
+
+// CHECK FRIDAY!
+if (day == 5) {
+  if (period == 1) { one5.style.backgroundColor = thisColor }
+  if (period == 2) { two5.style.backgroundColor = thisColor }
+  if (period == 3) { three5.style.backgroundColor = thisColor }
+  if (period == 4) { four5.style.backgroundColor = thisColor }
+  if (period == 5) { five5.style.backgroundColor = thisColor }
+  if (period == 6) { six5.style.backgroundColor = thisColor }
+  if (period == 7) { seven5.style.backgroundColor = thisColor }
+  if (period == 8) { eight5.style.backgroundColor = thisColor }
+  }
+}
+</script>
 
 <script type="text/javascript">
 function checkOne() {
