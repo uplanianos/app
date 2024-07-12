@@ -18,8 +18,20 @@
 
 <body>
 
+
 <a href="../index.html"><div id="return" class="return" style="right: 5%; top: 3%; color: black;">&larrhk;</div></a>
 <div class="right-arrow" id="right-arrow"><img class="right-arrow" src="../media/right-arrow.png"></div>
+
+<script>
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    document.getElementById("right-arrow").style.visibility = "hidden"
+  }
+  else {
+    document.getElementById("right-arrow").style.visibility = "visible"
+  }
+</script>
+
 
 
 <div>
