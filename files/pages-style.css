@@ -236,7 +236,7 @@ ul	{ padding-left: 18px; }
   font-size: 12px;
   text-align: center;
   font-family: Verdana, Tahoma;
-  color: #005B9A;
+  color: #1434A4; /* Egyptian Blue */
   padding: 1px;
   margin-right: -1px;
   border: 1px dashed darkgray;
@@ -262,11 +262,8 @@ ul	{ padding-left: 18px; }
 .dropdown:focus { width: 132px; background-color: #0096FF; color: white; outline: none; }
 .dropdown:active { width: 132px; background-color: #00AAFF; color: white; outline: none; }
 
-div.blueDiv {background-color: #A7C7E7; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase;}
+div.blueDiv {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase;}
 div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8px;}
-
-div.right-arrow {position: absolute; left: 8%; top: 64px; border: 0px; border-radius: 0px; visibility: visible;}
-img.right-arrow {width: 24px; opacity: 0.6;}
 
 .scheduleArea {height: 65px; width: 100%; text-align: center; font-size: 11px; font-family: Verdana, Tahoma; color: #005B9A; border: 0px; margin: 0px; margin-top: -1px; margin-bottom: -3px; padding: 1px; resize: none; overflow: hidden; text-transform: capitalize;}
 .scheduleArea:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 10px #719ECE;}
@@ -611,8 +608,8 @@ body {background-color: white; background: transparent;}
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 .grid-schedule {position: absolute; right: 2%; width: 100%; height: 96%; }
 .dropdown {display:none; visibility: hidden;}
-div.blueDiv {background-color: #FFD580}
-div.yellowDiv {background-color: #FFD580}
+div.blueDiv {background-color: #6495ED}
+div.yellowDiv {background-color: #FFFF8F}
 .scheduleArea {height: 72px;}
 .foot {display: block;}
 button {display:none; visibility: hidden;}
