@@ -34,8 +34,8 @@
 <script type="text/javascript">
 document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
- if (dropdown.value == 1) {firstTerm(theYear); dropdown.value = 0}
- if (dropdown.value == 2) {secondTerm(theYear); dropdown.value = 0}
+ if (dropdown.value == 1) {firstTerm(thisYear); dropdown.value = 0}
+ if (dropdown.value == 2) {secondTerm(thisYear); dropdown.value = 0}
  if (dropdown.value == 3) {window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
 });
@@ -326,29 +326,37 @@ rightNow();
 <script type="text/javascript">
 function rightNow() {
 const now = new Date();
-
-// CONSTANTS FOR THE TITLE
 const month = now.getMonth();
 const year = now.getFullYear();
+const day = now.getDay();
+
+// CONSTANTS FOR THE PERIOD CELLS
+const dateDay = now.getDate();
+
+// CONSTANTS FOR THE PERIOD CELLS
+const hour = now.getHours();
+const minutes = now.getMinutes();
+const theTime = (hour + "." + minutes);
+
+// CHANGING THE TITLE
 scheduleName = document.getElementById("scheduleName");
 // Months start with 0 (for January)!
 if (month >= 1 && month <= 5) {
     scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - I, " + year;
+    document.getElementById("foot").innerHTML += " - - - Impreso el día: " + dateDay + "/" + month + "/" + year + ".";
     }
 if (month >= 6 && month <= 11) {
     scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - II, " + year;
+    document.getElementById("foot").innerHTML += " - - - Impreso el día: " + dateDay + "/" + month + "/" + year + ".";
     }
 
-// PASSING VALUES TO OTHER FUNCTION!
-theYear = year
 
-// CONSTANTS FOR THE DAY CELLS
+// COLORS FOR THE DAY CELLS
 // thisColor = "#FFD580" // Light Orange
 thisColor = "#FFFF8F" // Canary Yellow
 thisBlue = "#6495ED" // Cornflower Blue
-const day = now.getDay();
 
 // DAYS
 Monday = document.getElementById("Monday")
@@ -363,12 +371,7 @@ if (day == 3) {Wednesday.style.backgroundColor = thisBlue; }
 if (day == 4) {Thursday.style.backgroundColor = thisBlue; }
 if (day == 5) {Friday.style.backgroundColor = thisBlue; }
 
-// CONSTANTS FOR THE PERIOD CELLS
-const hour = now.getHours();
-const minutes = now.getMinutes();
-const theTime = (hour + "." + minutes);
-
-// VALUES TO PASS ALONG TO NEXT FUNCTION!
+// PASSING VALUES TO NEXT FUNCTION (HIGHLIGH PERIOD)!
 period = 0
 
 if (hour >= 8 && theTime <= 9.30) {
@@ -412,18 +415,21 @@ if (theTime >= 18.30 && theTime < 19.45) {
   period = 8
   }
 
+// PASSING VALUES TO NAME CHANGE (FROM DROPDOWN MENU)!
+thisYear = year;
+
 // PASSING VALUES TO OTHER FUNCTION!
 highlighPeriod(day, period);
 }
 
-function firstTerm(year) {
- scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
- document.title = "Uplanianos - Horario - I, " + year;
+function firstTerm(thisYear) {
+ scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + thisYear;
+ document.title = "Uplanianos - Horario - I, " + thisYear;
 }
 
-function secondTerm(year) {
- scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
- document.title = "Uplanianos - Horario - II, " + year;
+function secondTerm(thisYear) {
+ scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + thisYear;
+ document.title = "Uplanianos - Horario - II, " + thisYear;
 }
 </script>
 
