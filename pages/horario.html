@@ -343,15 +343,16 @@ const theTime = (hour + "." + minutes);
 // CHANGING THE TITLE
 scheduleName = document.getElementById("scheduleName");
 // Months start with 0 (for January)!
+const monthsOfTheYear = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 if (month >= 1 && month <= 5) {
     scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - I, " + year;
-    document.getElementById("foot").innerHTML += " - - - Impreso el día: " + dateDay + "/" + month + "/" + year + ".";
+    document.getElementById("foot").innerHTML += " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
 if (month >= 6 && month <= 11) {
     scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - II, " + year;
-    document.getElementById("foot").innerHTML += " - - - Impreso el día: " + dateDay + "/" + month + "/" + year + ".";
+    document.getElementById("foot").innerHTML += " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
 
 
