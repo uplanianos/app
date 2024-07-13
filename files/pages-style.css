@@ -262,14 +262,27 @@ ul	{ padding-left: 18px; }
 .dropdown:focus { width: 162px; height: 42px; background-color: #0096FF; color: white; outline: none; padding: 6px; }
 .dropdown:active { width: 162px; height: 42px; background-color: #00AAFF; color: white; outline: none; padding: 6px; }
 
-.seeThrough {opacity: 0.5;}
-
 div.blueDiv {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase;}
 div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8px;}
 
-.scheduleArea {height: 65px; width: 100%; text-align: center; font-size: 11px; font-family: Verdana, Tahoma; color: #005B9A; border: 0px; margin: 0px; margin-top: -1px; margin-bottom: -3px; padding: 1px; resize: none; overflow: hidden; text-transform: capitalize;}
+.scheduleArea {
+ height: 65px; width: 100%; text-align: center;
+ font-size: 11px; font-family: Verdana, Tahoma; color: #005B9A;
+ border: 0px; margin: 0px; margin-top: -1px; margin-bottom: -3px; padding: 1px;
+ text-transform: capitalize; resize: none; overflow: hidden;
+}
+
 .scheduleArea:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 10px #719ECE;}
 .scheduleArea:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 10px #719ECE;}
+
+@supports (-moz-appearance:none) {
+ .scheduleArea { margin-bottom: -1px; }
+@media print {
+ .scheduleArea { margin-bottom: 0px;}
+ .grid-schedule { margin-bottom: 3px; border: 0px;}
+ }
+}
+
 
 
 
@@ -610,15 +623,16 @@ body {background-color: white; background: transparent;}
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 .grid-schedule {position: absolute; right: 2%; width: 100%; height: 96%; }
 .dropdown {display:none; visibility: hidden;}
-div.blueDiv {background-color: #6495ED}
-div.yellowDiv {background-color: #FFFF8F}
-.scheduleArea {height: 72px;}
-.foot {display: block;}
+div.blueDiv {background-color: #6495ED;}
+div.yellowDiv {background-color: #FFFF8F;}
+.scheduleArea {height: 72px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+.foot {display: inline;}
 button {display:none; visibility: hidden;}
 .planner-link {display:none; visibility: hidden;}
 .return {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
-::-ms-input-placeholder { color: white; /* Edge 12 -18 */ }
+::-ms-input-placeholder { color: white; /* Edge 12 -18 */}
+}
 
 
 /* Use a media query to add a break point at 800px: */
