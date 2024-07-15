@@ -31,6 +31,11 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+newTitle();
+updateInstructions();
+
 }
 </script>
 
@@ -124,6 +129,26 @@ Completar actividades a priorizar!
 <br>
 
 
+<script type="text/javascript">
+function updateInstructions() {
+  for (let i=0; i<11; i++) {
+  theUpdate(i);
+  }
+}
+
+function theUpdate(i) {
+  setTimeout(function() {
+    console.log("Las instrucciones se actualizarán " + i + "/10.");
+    firstText = "Completar actividades a priorizar!";
+    secondText = "Luego, descargar en PDF o imprimir!";
+    if (i % 2 === 0) {theInstructions.innerHTML = firstText};
+    if (i % 2 === 1) {theInstructions.innerHTML = secondText};
+  }, 3000 * i);
+}
+</script>
+
+
+
 <script>
 function newTitle() {
 // THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
@@ -149,26 +174,6 @@ function newTitle() {
   }
 }
 </script>
-
-
-<script type="text/javascript">
-function updateInstructions() {
-  for (let i=0; i<11; i++) {
-  theUpdate(i);
-  }
-}
-
-function theUpdate(i) {
-  setTimeout(function() {
-    console.log("Las instrucciones se actualizarán " + i + "/10.");
-    firstText = "Completar actividades a priorizar!";
-    secondText = "Luego, descargar en PDF o imprimir!";
-    if (i % 2 === 0) {theInstructions.innerHTML = firstText};
-    if (i % 2 === 1) {theInstructions.innerHTML = secondText};
-  }, 3000 * i);
-}
-</script>
-
 
 
 <script type="text/javascript">

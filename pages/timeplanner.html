@@ -10,7 +10,7 @@
 	<title>Uplanianos - Timebox (planificador de estudio)</title>
 </head>
 
-<body onload="updateInstructions()">
+<body>
 
 
 <!- SAVE FUNCTION ->
@@ -31,6 +31,11 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+newTitle();
+updateInstructions();
+
 }
 </script>
 
