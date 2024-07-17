@@ -536,8 +536,7 @@ function secondTerm(thisYear) {
 function highlightPeriod(day,period) {
 // CURRENT PERIOD HIGHLIGHT COLOR:
 // usedGreen = "#E0FFE0" // Light Green (Used Cell)
-highlightColor = "#98FB98" // Mint Green (Highlight Cell)
-
+currentPeriod = "#98FB98" // Mint Green (Highlight Cell)
 
 // CREATE PERIOD ELEMENTS
 one1 = document.getElementById("one1")
@@ -588,66 +587,64 @@ eight3 = document.getElementById("eight3")
 eight4 = document.getElementById("eight4")
 eight5 = document.getElementById("eight5")
 
-
-
 // CHECK MONDAY!
 if (day == 1) {
-  if (period == 1) { one1.style.backgroundColor = highlightColor }
-  if (period == 2) { two1.style.backgroundColor = highlightColor }
-  if (period == 3) { three1.style.backgroundColor = highlightColor }
-  if (period == 4) { four1.style.backgroundColor = highlightColor }
-  if (period == 5) { five1.style.backgroundColor = highlightColor }
-  if (period == 6) { six1.style.backgroundColor = highlightColor }
-  if (period == 7) { seven1.style.backgroundColor = highlightColor }
-  if (period == 8) { eight1.style.backgroundColor = highlightColor }
+  if (period == 1) { one1.style.backgroundColor = currentPeriod }
+  if (period == 2) { two1.style.backgroundColor = currentPeriod }
+  if (period == 3) { three1.style.backgroundColor = currentPeriod }
+  if (period == 4) { four1.style.backgroundColor = currentPeriod }
+  if (period == 5) { five1.style.backgroundColor = currentPeriod }
+  if (period == 6) { six1.style.backgroundColor = currentPeriod }
+  if (period == 7) { seven1.style.backgroundColor = currentPeriod }
+  if (period == 8) { eight1.style.backgroundColor = currentPeriod }
   }
 
 // CHECK TUESDAY!
 if (day == 2) {
-  if (period == 1) { one2.style.backgroundColor = highlightColor }
-  if (period == 2) { two2.style.backgroundColor = highlightColor }
-  if (period == 3) { three2.style.backgroundColor = highlightColor }
-  if (period == 4) { four2.style.backgroundColor = highlightColor }
-  if (period == 5) { five2.style.backgroundColor = highlightColor }
-  if (period == 6) { six2.style.backgroundColor = highlightColor }
-  if (period == 7) { seven2.style.backgroundColor = highlightColor }
-  if (period == 8) { eight2.style.backgroundColor = highlightColor }
+  if (period == 1) { one2.style.backgroundColor = currentPeriod }
+  if (period == 2) { two2.style.backgroundColor = currentPeriod }
+  if (period == 3) { three2.style.backgroundColor = currentPeriod }
+  if (period == 4) { four2.style.backgroundColor = currentPeriod }
+  if (period == 5) { five2.style.backgroundColor = currentPeriod }
+  if (period == 6) { six2.style.backgroundColor = currentPeriod }
+  if (period == 7) { seven2.style.backgroundColor = currentPeriod }
+  if (period == 8) { eight2.style.backgroundColor = currentPeriod }
   }
 
 // CHECK WEDNESDAY!
 if (day == 3) {
-  if (period == 1) { one3.style.backgroundColor = highlightColor }
-  if (period == 2) { two3.style.backgroundColor = highlightColor }
-  if (period == 3) { three3.style.backgroundColor = highlightColor }
-  if (period == 4) { four3.style.backgroundColor = highlightColor }
-  if (period == 5) { five3.style.backgroundColor = highlightColor }
-  if (period == 6) { six3.style.backgroundColor = highlightColor }
-  if (period == 7) { seven3.style.backgroundColor = highlightColor }
-  if (period == 8) { eight3.style.backgroundColor = highlightColor }
+  if (period == 1) { one3.style.backgroundColor = currentPeriod }
+  if (period == 2) { two3.style.backgroundColor = currentPeriod }
+  if (period == 3) { three3.style.backgroundColor = currentPeriod }
+  if (period == 4) { four3.style.backgroundColor = currentPeriod }
+  if (period == 5) { five3.style.backgroundColor = currentPeriod }
+  if (period == 6) { six3.style.backgroundColor = currentPeriod }
+  if (period == 7) { seven3.style.backgroundColor = currentPeriod }
+  if (period == 8) { eight3.style.backgroundColor = currentPeriod }
   }
 
 // THURSDAY FRIDAY!
 if (day == 4) {
-  if (period == 1) { one4.style.backgroundColor = highlightColor }
-  if (period == 2) { two4.style.backgroundColor = highlightColor }
-  if (period == 3) { three4.style.backgroundColor = highlightColor }
-  if (period == 4) { four4.style.backgroundColor = highlightColor }
-  if (period == 5) { five4.style.backgroundColor = highlightColor }
-  if (period == 6) { six4.style.backgroundColor = highlightColor }
-  if (period == 7) { seven4.style.backgroundColor = highlightColor }
-  if (period == 8) { eight4.style.backgroundColor = highlightColor }
+  if (period == 1) { one4.style.backgroundColor = currentPeriod }
+  if (period == 2) { two4.style.backgroundColor = currentPeriod }
+  if (period == 3) { three4.style.backgroundColor = currentPeriod }
+  if (period == 4) { four4.style.backgroundColor = currentPeriod }
+  if (period == 5) { five4.style.backgroundColor = currentPeriod }
+  if (period == 6) { six4.style.backgroundColor = currentPeriod }
+  if (period == 7) { seven4.style.backgroundColor = currentPeriod }
+  if (period == 8) { eight4.style.backgroundColor = currentPeriod }
   }
 
 // CHECK FRIDAY!
 if (day == 5) {
-  if (period == 1) { one5.style.backgroundColor = highlightColor }
-  if (period == 2) { two5.style.backgroundColor = highlightColor }
-  if (period == 3) { three5.style.backgroundColor = highlightColor }
-  if (period == 4) { four5.style.backgroundColor = highlightColor }
-  if (period == 5) { five5.style.backgroundColor = highlightColor }
-  if (period == 6) { six5.style.backgroundColor = highlightColor }
-  if (period == 7) { seven5.style.backgroundColor = highlightColor }
-  if (period == 8) { eight5.style.backgroundColor = highlightColor }
+  if (period == 1) { one5.style.backgroundColor = currentPeriod }
+  if (period == 2) { two5.style.backgroundColor = currentPeriod }
+  if (period == 3) { three5.style.backgroundColor = currentPeriod }
+  if (period == 4) { four5.style.backgroundColor = currentPeriod }
+  if (period == 5) { five5.style.backgroundColor = currentPeriod }
+  if (period == 6) { six5.style.backgroundColor = currentPeriod }
+  if (period == 7) { seven5.style.backgroundColor = currentPeriod }
+  if (period == 8) { eight5.style.backgroundColor = currentPeriod }
   }
 }
 </script>
