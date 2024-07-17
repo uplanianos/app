@@ -225,6 +225,21 @@ withinCells();
 </script>
 
 
+<script type="text/javascript">
+window.onbeforeprint = function() {
+//  console.log("Before print");
+  printColors();
+}
+
+window.onafterprint = function() {
+setTimeout(() => {
+//  console.log("After print");
+  highlightPeriod();
+  }, 2000);
+}
+</script>
+
+
 <!- THIS FUNCTION CHECKS USED CELLS ON LOAD ->
 
 <script type="text/javascript">
@@ -421,7 +436,7 @@ if (theTime >= 18.30 && theTime < 19.45) {
 thisYear = year;
 
 // PASSING VALUES TO OTHER FUNCTION!
-highlighPeriod(day, period);
+highlightPeriod(day, period);
 }
 
 function firstTerm(thisYear) {
@@ -437,7 +452,7 @@ function secondTerm(thisYear) {
 
 
 <script type="text/javascript">
-function highlighPeriod(day,period) {
+function highlightPeriod(day,period) {
 // CURRENT PERIOD HIGHLIGHT COLOR:
 // thisColor = "#FFFF8F" // Canary Yellow
 // thisGreen = "#E0FFE0" // Light Green for Used Cell
@@ -704,7 +719,7 @@ eight5 = document.getElementById("eight5")
 </script>
 
 
-<script>
+<script type="text/javascript">
 function printColors() {
 green = "#E0FFE0" // Light Green
 const period = document.querySelectorAll("textarea");
