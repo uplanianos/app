@@ -256,56 +256,8 @@ for(let rows of blueDiv){ rows.style.backgroundColor = highlightDays; }
 for(let columns of yellowDiv){ columns.style.backgroundColor = highlightHours; }
 
 // RESET COLORS FOR PERIODS
-const period = document.querySelectorAll("textarea");
-
-// FIRST ROW
-if (period['0'] !== '') {period['0'].style.backgroundColor = usedGreen}
-if (period['1'] !== '') {period['1'].style.backgroundColor = usedGreen}
-if (period['2'] !== '') {period['2'].style.backgroundColor = usedGreen}
-if (period['3'] !== '') {period['3'].style.backgroundColor = usedGreen}
-if (period['4'] !== '') {period['4'].style.backgroundColor = usedGreen}
-// SECOND ROW
-if (period['5'] !== '') {period['5'].style.backgroundColor = usedGreen}
-if (period['6'] !== '') {period['6'].style.backgroundColor = usedGreen}
-if (period['7'] !== '') {period['7'].style.backgroundColor = usedGreen}
-if (period['8'] !== '') {period['8'].style.backgroundColor = usedGreen}
-if (period['9'] !== '') {period['9'].style.backgroundColor = usedGreen}
-// THIRD ROW
-if (period['10'] !== '') {period['10'].style.backgroundColor = usedGreen}
-if (period['11'] !== '') {period['11'].style.backgroundColor = usedGreen}
-if (period['12'] !== '') {period['12'].style.backgroundColor = usedGreen}
-if (period['13'] !== '') {period['13'].style.backgroundColor = usedGreen}
-if (period['14'] !== '') {period['14'].style.backgroundColor = usedGreen}
-// FOURTH ROW
-if (period['15'] !== '') {period['15'].style.backgroundColor = usedGreen}
-if (period['16'] !== '') {period['16'].style.backgroundColor = usedGreen}
-if (period['17'] !== '') {period['17'].style.backgroundColor = usedGreen}
-if (period['18'] !== '') {period['18'].style.backgroundColor = usedGreen}
-if (period['19'] !== '') {period['19'].style.backgroundColor = usedGreen}
-// FIFTH ROW
-if (period['20'] !== '') {period['20'].style.backgroundColor = usedGreen}
-if (period['21'] !== '') {period['21'].style.backgroundColor = usedGreen}
-if (period['22'] !== '') {period['22'].style.backgroundColor = usedGreen}
-if (period['23'] !== '') {period['23'].style.backgroundColor = usedGreen}
-if (period['24'] !== '') {period['24'].style.backgroundColor = usedGreen}
-// SIXTH ROW
-if (period['25'] !== '') {period['25'].style.backgroundColor = usedGreen}
-if (period['26'] !== '') {period['26'].style.backgroundColor = usedGreen}
-if (period['27'] !== '') {period['27'].style.backgroundColor = usedGreen}
-if (period['28'] !== '') {period['28'].style.backgroundColor = usedGreen}
-if (period['29'] !== '') {period['29'].style.backgroundColor = usedGreen}
-// SEVENTH ROW
-if (period['30'] !== '') {period['30'].style.backgroundColor = usedGreen}
-if (period['31'] !== '') {period['31'].style.backgroundColor = usedGreen}
-if (period['32'] !== '') {period['32'].style.backgroundColor = usedGreen}
-if (period['33'] !== '') {period['33'].style.backgroundColor = usedGreen}
-if (period['34'] !== '') {period['34'].style.backgroundColor = usedGreen}
-// EIGHTH ROW
-if (period['35'] !== '') {period['35'].style.backgroundColor = usedGreen}
-if (period['36'] !== '') {period['36'].style.backgroundColor = usedGreen}
-if (period['37'] !== '') {period['37'].style.backgroundColor = usedGreen}
-if (period['38'] !== '') {period['38'].style.backgroundColor = usedGreen}
-if (period['39'] !== '') {period['39'].style.backgroundColor = usedGreen}
+const schedule = document.querySelectorAll("textarea");
+for(let periods of schedule){ periods.style.backgroundColor = usedGreen; }
 
 // CHECK EMPTY CELLS
   checkOne();
