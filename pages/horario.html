@@ -37,7 +37,7 @@ document.getElementById('dropdown').addEventListener('change', function() {
 scheduleName = document.getElementById("scheduleName");
  if (dropdown.value == 1) {firstTerm(thisYear); dropdown.value = 0}
  if (dropdown.value == 2) {secondTerm(thisYear); dropdown.value = 0}
- if (dropdown.value == 3) {resetColors(); window.print(); dropdown.value = 0}
+ if (dropdown.value == 3) {resetColors(); printColors(); window.print(); dropdown.value = 0}
  if (dropdown.value == 4) {doDelete(); dropdown.value = 0}
  if (dropdown.value == 5) {window.location = "../index.html";}
 });
@@ -355,7 +355,6 @@ if (month >= 6 && month <= 11) {
     document.getElementById("foot").innerHTML += " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
 
-
 // COLORS FOR THE DAY CELLS
 // thisColor = "#FFD580" // Light Orange
 thisColor = "#FFFF8F" // Canary Yellow
@@ -368,11 +367,11 @@ Wednesday = document.getElementById("Wednesday")
 Thursday = document.getElementById("Thursday")
 Friday = document.getElementById("Friday")
 
-if (day == 1) {Monday.style.backgroundColor = thisBlue; }
-if (day == 2) {Tuesday.style.backgroundColor = thisBlue; }
-if (day == 3) {Wednesday.style.backgroundColor = thisBlue; }
-if (day == 4) {Thursday.style.backgroundColor = thisBlue; }
-if (day == 5) {Friday.style.backgroundColor = thisBlue; }
+if (day == 1) {Monday.style.backgroundColor = thisBlue }
+if (day == 2) {Tuesday.style.backgroundColor = thisBlue }
+if (day == 3) {Wednesday.style.backgroundColor = thisBlue }
+if (day == 4) {Thursday.style.backgroundColor = thisBlue }
+if (day == 5) {Friday.style.backgroundColor = thisBlue }
 
 // PASSING VALUES TO NEXT FUNCTION (HIGHLIGH PERIOD)!
 period = 0
@@ -439,7 +438,13 @@ function secondTerm(thisYear) {
 
 <script type="text/javascript">
 function highlighPeriod(day,period) {
-thisColor = "#FFFF8F"
+// CURRENT PERIOD HIGHLIGHT COLOR:
+// thisColor = "#FFFF8F" // Canary Yellow
+// thisGreen = "#E0FFE0" // Light Green for Used Cell
+// thisColor = "#50C878" // Emeral Green
+// thisColor = "#00FF7F" // Spring Green (Good One)
+thisColor = "#98FB98" // Mint Green (Best One)
+
 
 // CREATE PERIOD ELEMENTS
 one1 = document.getElementById("one1")
@@ -479,7 +484,7 @@ six4 = document.getElementById("six4")
 six5 = document.getElementById("six5")
 
 seven1 = document.getElementById("seven1")
-seven2 = document.getElementById("seven")
+seven2 = document.getElementById("seven2")
 seven3 = document.getElementById("seven3")
 seven4 = document.getElementById("seven4")
 seven5 = document.getElementById("seven5")
@@ -553,18 +558,20 @@ if (day == 5) {
 </script>
 
 
+
 <script>
 function resetColors() {
-checkOne();
-checkTwo();
-checkThree();
-checkFour();
-checkFive();
-checkSix();
-checkSeven();
-checkEight();
+ checkOne();
+ checkTwo();
+ checkThree();
+ checkFour();
+ checkFive();
+ checkSix();
+ checkSeven();
+ checkEight();
 }
 </script>
+
 
 
 <script type="text/javascript">
@@ -575,11 +582,11 @@ one2 = document.getElementById("one2")
 one3 = document.getElementById("one3")
 one4 = document.getElementById("one4")
 one5 = document.getElementById("one5")
-if (one1.value == '') {one1.style.backgroundColor = white}
-if (one2.value == '') {one2.style.backgroundColor = white}
-if (one3.value == '') {one3.style.backgroundColor = white}
-if (one4.value == '') {one4.style.backgroundColor = white}
-if (one5.value == '') {one5.style.backgroundColor = white}
+ if (one1.value == '') {one1.style.backgroundColor = white}
+ if (one2.value == '') {one2.style.backgroundColor = white}
+ if (one3.value == '') {one3.style.backgroundColor = white}
+ if (one4.value == '') {one4.style.backgroundColor = white}
+ if (one5.value == '') {one5.style.backgroundColor = white}
 }
 </script>
 
@@ -591,11 +598,11 @@ two2 = document.getElementById("two2")
 two3 = document.getElementById("two3")
 two4 = document.getElementById("two4")
 two5 = document.getElementById("two5")
-if (two1.value == '') {two1.style.backgroundColor = white}
-if (two2.value == '') {two2.style.backgroundColor = white}
-if (two3.value == '') {two3.style.backgroundColor = white}
-if (two4.value == '') {two4.style.backgroundColor = white}
-if (two5.value == '') {two5.style.backgroundColor = white}
+ if (two1.value == '') {two1.style.backgroundColor = white}
+ if (two2.value == '') {two2.style.backgroundColor = white}
+ if (two3.value == '') {two3.style.backgroundColor = white}
+ if (two4.value == '') {two4.style.backgroundColor = white}
+ if (two5.value == '') {two5.style.backgroundColor = white}
 }
 </script>
 
@@ -607,11 +614,11 @@ three2 = document.getElementById("three2")
 three3 = document.getElementById("three3")
 three4 = document.getElementById("three4")
 three5 = document.getElementById("three5")
-if (three1.value == '') {three1.style.backgroundColor = white}
-if (three2.value == '') {three2.style.backgroundColor = white}
-if (three3.value == '') {three3.style.backgroundColor = white}
-if (three4.value == '') {three4.style.backgroundColor = white}
-if (three5.value == '') {three5.style.backgroundColor = white}
+ if (three1.value == '') {three1.style.backgroundColor = white}
+ if (three2.value == '') {three2.style.backgroundColor = white}
+ if (three3.value == '') {three3.style.backgroundColor = white}
+ if (three4.value == '') {three4.style.backgroundColor = white}
+ if (three5.value == '') {three5.style.backgroundColor = white}
 }
 </script>
 
@@ -623,11 +630,11 @@ four2 = document.getElementById("four2")
 four3 = document.getElementById("four3")
 four4 = document.getElementById("four4")
 four5 = document.getElementById("four5")
-if (four1.value == '') {four1.style.backgroundColor = white}
-if (four2.value == '') {four2.style.backgroundColor = white}
-if (four3.value == '') {four3.style.backgroundColor = white}
-if (four4.value == '') {four4.style.backgroundColor = white}
-if (four5.value == '') {four5.style.backgroundColor = white}
+ if (four1.value == '') {four1.style.backgroundColor = white}
+ if (four2.value == '') {four2.style.backgroundColor = white}
+ if (four3.value == '') {four3.style.backgroundColor = white}
+ if (four4.value == '') {four4.style.backgroundColor = white}
+ if (four5.value == '') {four5.style.backgroundColor = white}
 }
 </script>
 
@@ -640,11 +647,11 @@ five2 = document.getElementById("five2")
 five3 = document.getElementById("five3")
 five4 = document.getElementById("five4")
 five5 = document.getElementById("five5")
-if (five1.value == '') {five1.style.backgroundColor = white}
-if (five2.value == '') {five2.style.backgroundColor = white}
-if (five3.value == '') {five3.style.backgroundColor = white}
-if (five4.value == '') {five4.style.backgroundColor = white}
-if (five5.value == '') {five5.style.backgroundColor = white}
+ if (five1.value == '') {five1.style.backgroundColor = white}
+ if (five2.value == '') {five2.style.backgroundColor = white}
+ if (five3.value == '') {five3.style.backgroundColor = white}
+ if (five4.value == '') {five4.style.backgroundColor = white}
+ if (five5.value == '') {five5.style.backgroundColor = white}
 }
 </script>
 
@@ -656,11 +663,11 @@ six2 = document.getElementById("six2")
 six3 = document.getElementById("six3")
 six4 = document.getElementById("six4")
 six5 = document.getElementById("six5")
-if (six1.value == '') {six1.style.backgroundColor = white}
-if (six2.value == '') {six2.style.backgroundColor = white}
-if (six3.value == '') {six3.style.backgroundColor = white}
-if (six4.value == '') {six4.style.backgroundColor = white}
-if (six5.value == '') {six5.style.backgroundColor = white}
+ if (six1.value == '') {six1.style.backgroundColor = white}
+ if (six2.value == '') {six2.style.backgroundColor = white}
+ if (six3.value == '') {six3.style.backgroundColor = white}
+ if (six4.value == '') {six4.style.backgroundColor = white}
+ if (six5.value == '') {six5.style.backgroundColor = white}
 }
 </script>
 
@@ -672,11 +679,11 @@ seven2 = document.getElementById("seven2")
 seven3 = document.getElementById("seven3")
 seven4 = document.getElementById("seven4")
 seven5 = document.getElementById("seven5")
-if (seven1.value == '') {seven1.style.backgroundColor = white}
-if (seven2.value == '') {seven2.style.backgroundColor = white}
-if (seven3.value == '') {seven3.style.backgroundColor = white}
-if (seven4.value == '') {seven4.style.backgroundColor = white}
-if (seven5.value == '') {seven5.style.backgroundColor = white}
+ if (seven1.value == '') {seven1.style.backgroundColor = white}
+ if (seven2.value == '') {seven2.style.backgroundColor = white}
+ if (seven3.value == '') {seven3.style.backgroundColor = white}
+ if (seven4.value == '') {seven4.style.backgroundColor = white}
+ if (seven5.value == '') {seven5.style.backgroundColor = white}
 }
 </script>
 
@@ -688,11 +695,61 @@ eight2 = document.getElementById("eight2")
 eight3 = document.getElementById("eight3")
 eight4 = document.getElementById("eight4")
 eight5 = document.getElementById("eight5")
-if (eight1.value == '') {eight1.style.backgroundColor = white}
-if (eight2.value == '') {eight2.style.backgroundColor = white}
-if (eight3.value == '') {eight3.style.backgroundColor = white}
-if (eight4.value == '') {eight4.style.backgroundColor = white}
-if (eight5.value == '') {eight5.style.backgroundColor = white}
+ if (eight1.value == '') {eight1.style.backgroundColor = white}
+ if (eight2.value == '') {eight2.style.backgroundColor = white}
+ if (eight3.value == '') {eight3.style.backgroundColor = white}
+ if (eight4.value == '') {eight4.style.backgroundColor = white}
+ if (eight5.value == '') {eight5.style.backgroundColor = white}
+}
+</script>
+
+
+<script>
+function printColors() {
+green = "#E0FFE0" // Light Green
+const period = document.querySelectorAll("textarea");
+// console.log(periods);
+if (period['0'] == '') {period['0'].style.backgroundColor = green}
+if (period['1'] == '') {period['1'].style.backgroundColor = green}
+if (period['2'] == '') {period['2'].style.backgroundColor = green}
+if (period['3'] == '') {period['3'].style.backgroundColor = green}
+if (period['4'] == '') {period['4'].style.backgroundColor = green}
+if (period['5'] == '') {period['5'].style.backgroundColor = green}
+if (period['6'] == '') {period['6'].style.backgroundColor = green}
+if (period['7'] == '') {period['7'].style.backgroundColor = green}
+if (period['8'] == '') {period['8'].style.backgroundColor = green}
+if (period['9'] == '') {period['9'].style.backgroundColor = green}
+if (period['10'] == '') {period['10'].style.backgroundColor = green}
+if (period['11'] == '') {period['11'].style.backgroundColor = green}
+if (period['12'] == '') {period['12'].style.backgroundColor = green}
+if (period['13'] == '') {period['13'].style.backgroundColor = green}
+if (period['14'] == '') {period['14'].style.backgroundColor = green}
+if (period['15'] == '') {period['15'].style.backgroundColor = green}
+if (period['16'] == '') {period['16'].style.backgroundColor = green}
+if (period['17'] == '') {period['17'].style.backgroundColor = green}
+if (period['18'] == '') {period['18'].style.backgroundColor = green}
+if (period['19'] == '') {period['19'].style.backgroundColor = green}
+if (period['20'] == '') {period['20'].style.backgroundColor = green}
+if (period['21'] == '') {period['21'].style.backgroundColor = green}
+if (period['22'] == '') {period['22'].style.backgroundColor = green}
+if (period['23'] == '') {period['23'].style.backgroundColor = green}
+if (period['24'] == '') {period['24'].style.backgroundColor = green}
+if (period['25'] == '') {period['25'].style.backgroundColor = green}
+if (period['26'] == '') {period['26'].style.backgroundColor = green}
+if (period['27'] == '') {period['27'].style.backgroundColor = green}
+if (period['28'] == '') {period['28'].style.backgroundColor = green}
+if (period['29'] == '') {period['29'].style.backgroundColor = green}
+if (period['30'] == '') {period['30'].style.backgroundColor = green}
+if (period['31'] == '') {period['31'].style.backgroundColor = green}
+if (period['32'] == '') {period['32'].style.backgroundColor = green}
+if (period['33'] == '') {period['33'].style.backgroundColor = green}
+if (period['34'] == '') {period['34'].style.backgroundColor = green}
+if (period['35'] == '') {period['35'].style.backgroundColor = green}
+if (period['36'] == '') {period['36'].style.backgroundColor = green}
+if (period['37'] == '') {period['37'].style.backgroundColor = green}
+if (period['38'] == '') {period['38'].style.backgroundColor = green}
+if (period['39'] == '') {period['39'].style.backgroundColor = green}
+if (period['40'] == '') {period['40'].style.backgroundColor = green}
 }
 </script>
 
