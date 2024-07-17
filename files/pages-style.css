@@ -626,6 +626,8 @@ body {background-color: white; background: transparent;}
 div.blueDiv {background-color: #6495ED;}
 div.yellowDiv {background-color: #FFFF8F;}
 .scheduleArea {height: 72px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
+.scheduleArea:hover {box-shadow: 0 0 0px #FFF;}
 .foot {display: inline;}
 button {display:none; visibility: hidden;}
 .planner-link {display:none; visibility: hidden;}
