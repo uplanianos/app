@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta http-equiv="refresh" content="300">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../media/uplanianos-icon.png">
+	<link rel="stylesheet" href="../files/pages-style.css">
+	<title>Uplanianos - Cuenta Regresiva</title>
+</head>
+
+<body onload="runCountdown()">
+
+<div class="main">
+    <div class="labels"><b><p>Uplanianos Web App:</b> Cuenta regresiva.</p></div>
+    <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
+
+	<div class="grid-item-slider">
+
+	  <br><b>Segundo Semestre, 2024:</b><br>
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+
+	  <br><font class="checkpoint">Inicio de clases (5 de Agosto):</font><br>
+	  <div class="countdown">
+	    <div><p class="startClassNumbers" id="weeks">0</p></div>
+	    <div><p class="startClassNumbers" id="days">0</p></div>
+	    <div><p class="startClassNumbers" id="hours">0</p></div>
+	    <div><p class="startClassNumbers" id="minutes">0</p></div>
+	    <div><p class="startClassNumbers" id="seconds">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">Primera Integral (23 de Septiembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="firstTestNumbers" id="weeksFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="daysFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="hoursFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="minutesFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="secondsFirst">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">Segunda Integral (28 de Octubre):</font><br>
+	  <div class="countdown">
+	    <div><p class="secondTestNumbers" id="weeksSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="daysSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="hoursSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="minutesSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="secondsSecond">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">Tercera Integral (9 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="thirdTestNumbers" id="weeksThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="daysThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="hoursThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="minutesThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="secondsThird">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">Examen Especial (16 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="specialExamNumbers" id="weeksExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="daysExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="hoursExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="minutesExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="secondsExam">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">Cierre de Semestre (20 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="lastDayNumbers" id="weeksEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="daysEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="hoursEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="minutesEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="secondsEnd">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br>
+
+	<!- End of "grid-item-tools" Div ->
+	</div>
+
+    <br>
+    <br>
+  </div>
+
+
+<br>
+<br>
+</div>
+
+
+<script type="text/javascript">
+function runCountdown() {
+startClass();
+firstTest();
+secondTest();
+thirdTest();
+specialExam();
+lastDay();
+}
+</script>
+
+
+<script type="text/javascript">
+function startClass() {
+var countDownDate = new Date("August 5, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("weeks").innerHTML = weeks;
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+  if (distance < 0) {
+    classStart = document.querySelectorAll("p.startClassNumbers");
+    for(let numbers of classStart){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function firstTest() {
+var countDownDate = new Date("September 23, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksFirst").innerHTML = weeks;
+  document.getElementById("daysFirst").innerHTML = days;
+  document.getElementById("hoursFirst").innerHTML = hours;
+  document.getElementById("minutesFirst").innerHTML = minutes;
+  document.getElementById("secondsFirst").innerHTML = seconds;
+  if (distance < 0) {
+    firstTest = document.querySelectorAll("p.firstTestNumbers");
+    for(let numbers of firstTest){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+
+<script type="text/javascript">
+function secondTest() {
+var countDownDate = new Date("October 28, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksSecond").innerHTML = weeks;
+  document.getElementById("daysSecond").innerHTML = days;
+  document.getElementById("hoursSecond").innerHTML = hours;
+  document.getElementById("minutesSecond").innerHTML = minutes;
+  document.getElementById("secondsSecond").innerHTML = seconds;
+  if (distance < 0) {
+    secondTest = document.querySelectorAll("p.secondTestNumbers");
+    for(let numbers of secondTest){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function thirdTest() {
+var countDownDate = new Date("December 9, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksThird").innerHTML = weeks;
+  document.getElementById("daysThird").innerHTML = days;
+  document.getElementById("hoursThird").innerHTML = hours;
+  document.getElementById("minutesThird").innerHTML = minutes;
+  document.getElementById("secondsThird").innerHTML = seconds;
+  if (distance < 0) {
+    thirdTest = document.querySelectorAll("p.thirdTestNumbers");
+    for(let numbers of thirdTest){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function specialExam() {
+var countDownDate = new Date("December 16, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksExam").innerHTML = weeks;
+  document.getElementById("daysExam").innerHTML = days;
+  document.getElementById("hoursExam").innerHTML = hours;
+  document.getElementById("minutesExam").innerHTML = minutes;
+  document.getElementById("secondsExam").innerHTML = seconds;
+  if (distance < 0) {
+    specialExam = document.querySelectorAll("p.specialExamNumbers");
+    for(let numbers of specialExam){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function lastDay() {
+var countDownDate = new Date("December 20, 2024 00:00:00").getTime();
+var x = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksEnd").innerHTML = weeks;
+  document.getElementById("daysEnd").innerHTML = days;
+  document.getElementById("hoursEnd").innerHTML = hours;
+  document.getElementById("minutesEnd").innerHTML = minutes;
+  document.getElementById("secondsEnd").innerHTML = seconds;
+  if (distance < 0) {
+    lastDay = document.querySelectorAll("p.lastDayNumbers");
+    for(let numbers of lastDay){ numbers.style.color = "red";
+    clearInterval(x); }
+    }
+  },1000);
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+</body>
+</html>
