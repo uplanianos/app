@@ -576,9 +576,7 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
   touch-action: manipulation;
 }
 
-.timebox-download:hover, .timebox-download:focus {
-  background-color: lightblue;
-}
+.timebox-download:hover, .timebox-download:focus { background-color: lightblue; }
 
 .planner-link:link, .planner-link:visited {
   position: relative;
@@ -605,11 +603,23 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
   touch-action: manipulation;
 }
 
-.planner-link:hover, .planner-link:focus {
-  background-color: red;
-}
-
+.planner-link:hover, .planner-link:focus { background-color: red; }
 .foot {display: none;}
+
+
+/* COUNTDOWN SETTINGS */
+.checkpoint	{color: lightblue;}
+.countdown	{display: flex; margin: auto; width: 98%; text-align: center; border: 0px solid red; padding-left: 3px; padding-right: 3px; padding-top: 6px; }
+.countdown div	{flex-basis: 200px; font-size: 32px; }
+.clock		{display: flex; margin: auto; width: 98%; text-align: center; border: 0px solid red; padding-left: 3px; padding-right: 3px; padding-bottom: 6px; }
+.clock div	{flex-basis: 200px; font-size: 10px; }
+.startClassNumbers	{margin: 0px;}
+.firstTestNumbers	{margin: 0px;}
+.secondTestNumbers	{margin: 0px;}
+.thirdTestNumbers	{margin: 0px;}
+.specialExamNumbers	{margin: 0px;}
+.lastDayNumbers		{margin: 0px;}
+
 
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
