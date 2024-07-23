@@ -262,12 +262,12 @@ ul	{ padding-left: 18px; }
 .dropdown:focus { width: 162px; height: 42px; background-color: #0096FF; color: white; outline: none; padding: 6px; }
 .dropdown:active { width: 162px; height: 42px; background-color: #00AAFF; color: white; outline: none; padding: 6px; }
 
-div.blueDiv {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase;}
+div.blueDiv {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase; white-space: nowrap; overflow: hidden; }
 div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8px;}
 
 .scheduleArea {
  height: 65px; width: 100%; text-align: center;
- font-size: 11px; font-family: Verdana, Tahoma; color: #005B9A;
+ font-size: min(1em, 2vw);  font-family: Verdana, Tahoma; color: #005B9A;
  border: 0px; margin: 0px; margin-top: -1px; margin-bottom: -3px; padding: 1px;
  text-transform: capitalize; resize: none; overflow: hidden;
 }
