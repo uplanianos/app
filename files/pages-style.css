@@ -262,6 +262,14 @@ ul	{ padding-left: 18px; }
 .dropdown:focus { width: 162px; height: 42px; background-color: #0096FF; color: white; outline: none; padding: 6px; }
 .dropdown:active { width: 162px; height: 42px; background-color: #00AAFF; color: white; outline: none; padding: 6px; }
 
+div.scheduleName {
+ grid-area: top;
+ text-align: center;
+ font-size: min(1em, 2.4vw);
+ font-weight: bold;
+ border-style: hidden hidden dashed hidden;
+}
+
 div.blueDiv {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-transform: uppercase; white-space: nowrap; overflow: hidden; }
 div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8px;}
 
