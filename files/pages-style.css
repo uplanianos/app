@@ -623,6 +623,16 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
 .lastDayNumbers		{margin: 0px;}
 
 
+/* PROGRESS SETTINGS */
+.progressArea {
+ position: absolute;
+ bottom: 12px; left: 10px;
+ height: 18px; width: 40px; border: 1px;
+ text-align: center; font-size: 10px; font-family: Verdana, Tahoma; color: red;
+ resize: none; overflow: hidden;
+ pointer-events: none;
+/* display: none; */
+}
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
 
