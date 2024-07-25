@@ -631,7 +631,7 @@ input.timebox-schedule { width: 80%; border-width: 1px; border-radius: 6px; marg
  text-align: center; font-size: 10px; font-family: Verdana, Tahoma; color: red;
  resize: none; overflow: hidden;
  pointer-events: none;
-/* display: none; */
+ display: none;
 }
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
