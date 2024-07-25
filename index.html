@@ -20,29 +20,6 @@
 <body>
 
 
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY (WITH THE FOLLOWING LINE SCRIPT ->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-
-<script>
-window.onbeforeunload = function() {
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-window.onload = function() {
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-counterProgress();
-}
-</script>
-
 <div class="main">
     <br>
     <div class="title">
@@ -73,21 +50,9 @@ counterProgress();
     <br>
     <a href="pages/license.html"><div class="footer">🔎 Web App no oficial para Uplanianos! ✔️<br><small>(<u>Términos de Uso</u>)</small></div></a>
     <br>
-    <textarea class="counterArea" id="counterProgress">250</textarea>
-    <br>
     <br>
     </div>
 </div>
-
-
-<script>
-function counterProgress() {
-var counterProgress = document.getElementById("counterProgress")
-var newProgress = parseFloat(counterProgress.value) + 1
-counterProgress.value = newProgress
-console.log("Hemos recibido a " + newProgress + " Uplanianos!")
-}
-</script>
 
 
 </body>
