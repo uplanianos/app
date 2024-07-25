@@ -9,7 +9,7 @@
 	<title>Uplanianos - Promediar Integrales</title>
 </head>
 
-<body onload="hideGrades()">
+<body onload="hideGrades();">
 
 <div class="main">
     <div class="labels"><b><p>Uplanianos Web App:</b> Promediar Evaluaciones Integrales.</p></div>
@@ -344,23 +344,25 @@ function checkGradeRange() {
 
 	if (average >= 4 && average <= 7) { document.getElementById("average").style.color = "#306EFF";
 					document.getElementById("average").style.background = "#BDEDFF";
-					document.getElementById("average").style.borderColor = "cornflowerblue"; }
+					document.getElementById("average").style.borderColor = "cornflowerblue";
+					autonomyProgress(); }
 
 	if (average < 4) { document.getElementById("average").style.color = "red";
 					document.getElementById("average").style.background = "pink";
-					document.getElementById("average").style.borderColor = "red"; }
+					document.getElementById("average").style.borderColor = "red";
+					autonomyProgress(); }
 
 	if (average >= 10 && average <= 70) { document.getElementById("average").value = Math.abs(average * 0.1).toFixed(1);
 					document.getElementById("average").style.color = "#306EFF";
 					document.getElementById("average").style.background = "#BDEDFF";
-					document.getElementById("average").style.borderColor = "cornflowerblue"; }
+					document.getElementById("average").style.borderColor = "cornflowerblue";
+					autonomyProgress(); }
 
 	if (average > 70) {		document.getElementById("average").style.color = "red";
 					document.getElementById("average").style.background = "hotpink";
 					document.getElementById("average").style.borderColor = "red";
 					document.getElementById("average").value = "0.0";
 					alert("ERROR:\nIngresar notas entre 1.0 y 7.0!\n(Use valores decimales)."); }
-
 }
 </script>
 
@@ -400,6 +402,61 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPTS) ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// CALLS TO ANOTHER FUNCTION!!
+hideGrades();
+}
+</script>
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="autonomyProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script>
+function autonomyProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var autonomyProgress = document.getElementById("autonomyProgress").value
+var additionValue = 0.01
+var newProgress = parseFloat(autonomyProgress) + parseFloat(additionValue);
+ if (autonomyProgress < 100) { 
+    document.getElementById("autonomyProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+  }
+ if (autonomyProgress >= 100) {document.getElementById("autonomyProgress").value = 100}
+}
+</script>
+
 
 
 </body>

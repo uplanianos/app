@@ -24,9 +24,20 @@ window.onbeforeunload = function() {
         var value = $(this).val();
        localStorage.setItem(id, value);
     });
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
 }
+
 window.onload = function() {
     $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+    $('textarea').each(function(){
        var id = $(this).attr('id');
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
@@ -34,8 +45,7 @@ window.onload = function() {
 
 // THIS CALLS TO OTHER FUNCTION ON LOAD!
 newTitle();
-updateInstructions();
-
+// updateInstructions();
 }
 </script>
 
@@ -65,7 +75,7 @@ Completar actividades a priorizar!
   2. <input type="text" class="timebox-inputs" id="priority2" placeholder="Prioridad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" id="priority3" placeholder="Prioridad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" id="priority4" placeholder="Prioridad 4" maxlength="50"><br>
-  5. <input type="text" class="timebox-inputs" id="priority5" placeholder="Prioridad 4" maxlength="50">
+  5. <input type="text" class="timebox-inputs" id="priority5" placeholder="Prioridad 5" maxlength="50">
   </div>
 
   <div>
@@ -75,7 +85,7 @@ Completar actividades a priorizar!
   2. <input type="text" class="timebox-inputs" id="task2" placeholder="Actividad 2" maxlength="50"><br>
   3. <input type="text" class="timebox-inputs" id="task3" placeholder="Actividad 3" maxlength="50"><br>
   4. <input type="text" class="timebox-inputs" id="task4" placeholder="Actividad 4" maxlength="50"><br>
-  5. <input type="text" class="timebox-inputs" id="task5" placeholder="Actividad 4" maxlength="50">
+  5. <input type="text" class="timebox-inputs" id="task5" placeholder="Actividad 5" maxlength="50">
   </div>
 
   <div>
@@ -235,6 +245,85 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script>
+
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="studyProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script>
+window.onafterprint = function() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var Priorities = 0
+var Tasks = 0
+var Dawn = 0
+var Morning = 0
+var Afternoon = 0
+var Evening = 0
+var Total = 0
+var theProgress = document.getElementById("studyProgress").value
+// var theProgress = 0
+
+// CHECKING ELEMENTS AND VALUES!
+ if (document.getElementById("priority1").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority2").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority3").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority4").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority5").value !== '') {Priorities += 0.2}
+
+ if (document.getElementById("task1").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task2").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task3").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task4").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task5").value !== '') {Tasks += 0.2}
+
+ if (document.getElementById("dawn1").value !== '') {Dawn += 0.2}
+ if (document.getElementById("dawn2").value !== '') {Dawn += 0.2}
+ if (document.getElementById("dawn3").value !== '') {Dawn += 0.2}
+
+ if (document.getElementById("morning1").value !== '') {Morning += 0.2}
+ if (document.getElementById("morning2").value !== '') {Morning += 0.1}
+ if (document.getElementById("morning3").value !== '') {Morning += 0.1}
+
+ if (document.getElementById("afternoon1").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon2").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon3").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon4").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon5").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon6").value !== '') {Afternoon += 0.1}
+ if (document.getElementById("afternoon7").value !== '') {Afternoon += 0.1}
+
+ if (document.getElementById("evening1").value !== '') {Evening += 0.1}
+ if (document.getElementById("evening2").value !== '') {Evening += 0.1}
+ if (document.getElementById("evening3").value !== '') {Evening += 0.1}
+
+ // console.log("Las prioridades son " + Priorities.toFixed(1));
+ // console.log("Las tareas son " + Tasks.toFixed(1));
+ // console.log("El amanecer es " + Dawn.toFixed(1));
+ // console.log("La mañana es " + Morning.toFixed(1));
+ // console.log("La tarde es " + Afternoon.toFixed(1));
+ // console.log("El atardecer es " + Evening.toFixed(1));
+ // console.log("Lo anterior era de " + theProgress);
+
+// FINAL CALCULATIONS!
+ theSum = Priorities + Tasks + Dawn + Morning + Afternoon + Evening;
+ sumRoundUp = parseFloat(theSum).toFixed(1);
+ newProgress = parseFloat(theProgress) + parseFloat(theSum);
+ // document.getElementById("studyProgress").value = newProgress;
+ // console.log("La suma es de " + theSum);
+ console.log("La suma (redonda) es de " + sumRoundUp);
+ // console.log("El progreso es de " + newProgress);
+}
+</script>
+
 
 </body>
 </html>
