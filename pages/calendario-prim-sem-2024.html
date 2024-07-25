@@ -84,5 +84,58 @@ var currentScrollPos = window.pageYOffset;
 }
 </script>
 
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPTS) ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+knowledgeProgress();
+}
+</script>
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="knowledgeProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script>
+function knowledgeProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var knowledgeProgress = document.getElementById("knowledgeProgress").value
+var additionValue = 1
+var newProgress = parseFloat(knowledgeProgress) + parseFloat(additionValue);
+ if (knowledgeProgress < 100) { 
+    document.getElementById("knowledgeProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+  }
+ if (knowledgeProgress >= 100) {document.getElementById("knowledgeProgress").value = 100}
+}
+</script>
+
+
 </body>
 </html>

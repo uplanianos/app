@@ -240,3 +240,15 @@ a:visited	{ color: hotpink; }
 }
 
 .footer { color: white; font-size: 12px; margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; text-align: center; }
+
+
+/* PROGRESS SETTINGS */
+.counterArea {
+ position: absolute;
+ bottom: 12px; left: 10px;
+ height: 18px; width: 40px; 
+ text-align: center; font-size: 10px; font-family: Verdana, Tahoma; color: #444;
+ background-color: transparent; border: 1px dashed #444;
+ resize: none; overflow: hidden;
+ pointer-events: none;
+}

@@ -539,7 +539,7 @@ var additionValue = 0.02
 var newProgress = parseFloat(autonomyProgress) + parseFloat(additionValue);
  if (autonomyProgress < 100) { 
     document.getElementById("autonomyProgress").value = newProgress.toFixed(2);
-    console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
   }
  if (autonomyProgress >= 100) {document.getElementById("autonomyProgress").value = 100}
 }

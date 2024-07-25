@@ -19,6 +19,30 @@
 
 <body>
 
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY (WITH THE FOLLOWING LINE SCRIPT ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+counterProgress();
+}
+</script>
+
 <div class="main">
     <br>
     <div class="title">
@@ -43,20 +67,28 @@
     <a href="pages/timebox.html"><div class="pumpkin-bubble"><p>ORGANIZADOR<br>DE ESTUDIO</p></div></a>
     <a href="pages/countdown.html"><div class="candy-red-bubble"><p>CUENTA<br>REGRESIVA</p></div></a>
     <a href="pages/justify.html"><div class="pale-blue-bubble"><p>JUSTIFICAR<br>INASISTENCIA</p></div></a>
-    <a href="pages/progreso.html"><div class="pale-neon-yellow-bubble"><p style="color: #616D7E; font-color: #616D7E;">PROGRESO<br>DE USUARIO</p></div></a>
+    <a href="pages/upladisticas.html"><div class="small-grass-bubble"><p>UPLANIANOS<br>STATS</p></div></a>
     <a href="https://play.google.com/store/apps/details?id=juedmar.upla.nianos"><div class="tools-bubble-off" title="Solo disponible en Android App!"><p class="font-bubble-off"><small>📱</small> VOTACIÓN<br>UPLANIANA</p></div></a>
     </div>
     <br>
-    <a href="pages/license.html"><div class="footer">🔎 Web App no oficial para Uplanianos! ✔️</div></a>
+    <a href="pages/license.html"><div class="footer">🔎 Web App no oficial para Uplanianos! ✔️<br><small>(<u>Términos de Uso</u>)</small></div></a>
     <br>
-    <div class="counter">
-    <a href='http://www.freevisitorcounters.com'>www.freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=38a6d5789117af0afbba085a736f0fe5465d0da8'></script>
-    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1032905/t/5"></script>
-    </div>
+    <textarea class="counterArea" id="counterProgress">250</textarea>
     <br>
     <br>
     </div>
 </div>
+
+
+<script>
+function counterProgress() {
+var counterProgress = document.getElementById("counterProgress")
+var newProgress = parseFloat(counterProgress.value) + 1
+counterProgress.value = newProgress
+console.log("Hemos recibido a " + newProgress + " Uplanianos!")
+}
+</script>
+
 
 </body>
 </html>
