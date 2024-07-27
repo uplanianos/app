@@ -401,8 +401,11 @@ div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8p
   word-break: break-word;
 }
 
-button.Year { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid green; border-radius: 12px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
-button.Delete { font-size: 11px; color: gray; text-align: center; text-decoration: none; background-color: #lightgray; border: 1px solid darkgray; border-radius: 12px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
+button.Year { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
+button.Year:hover {color: yellow; background-color: #FF0000AA;}
+button.Year:active {color: yellow; background-color: #FF0000AA;}
+
+button.Delete { font-size: 11px; color: gray; text-align: center; text-decoration: none; background-color: #lightgray; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
 button.Delete:hover {color: yellow; background-color: #FF0000AA;}
 button.Delete:active {color: yellow; background-color: #FF0000AA;}
 
