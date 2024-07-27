@@ -385,7 +385,7 @@ div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8p
   margin-top: 6px;
   margin-left: 6px;
   margin-right: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .grid-curriculum > div {
@@ -404,11 +404,11 @@ div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8p
 button.Year { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
 button.Year:hover {color: yellow; background-color: #FF0000AA;}
 button.Year:active {color: yellow; background-color: #FF0000AA;}
+button.Year:focus {color: yellow; background-color: #FF0000AA;}
 
 button.Delete { font-size: 11px; color: gray; text-align: center; text-decoration: none; background-color: #lightgray; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 3px 0px 3px; cursor: pointer; }
 button.Delete:hover {color: yellow; background-color: #FF0000AA;}
 button.Delete:active {color: yellow; background-color: #FF0000AA;}
-
 
 div.select {background-color: #FFF; border-style: hidden; margin-bottom: 6px;}
 div.title {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 8px; text-transform: uppercase; white-space: nowrap; overflow: hidden; border-style: dashed; /* top right bottom left */ }
@@ -425,6 +425,7 @@ div.fifth {background-color: #FFF; padding: 4px; text-transform: capitalize; whi
 input[type=number].classGrade {height: 24px; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Tahoma; color: #1434A4; border: 0px; margin: 0px; padding: 0px; border-radius: 0px;}
 input[type=number].classGrade:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
 input[type=number].classGrade:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
+
 
 
 /* INTEGRALES DIV SETTINGS */
