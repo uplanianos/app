@@ -11,11 +11,9 @@
 
 <body>
 
-
-<div class="main">
+<div class="main" style="margin-bottom: 3%;">
 <div class="labels"><p id="mainLabel"><b>Uplanianos - Avance Curricular</b></p></div>
 <a href="../index.html"><div id="return" class="return">&larrhk;</div></a>
-
 
 <div class="grid-container-pages" style="grid-auto-flow: flow;">
 
@@ -41,7 +39,7 @@ Completa con tus asignaturas cursadas!
 <!- FIRST YEAR ->
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
  <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first01" placeholder="Asignatura"></div>
- <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onChange="check(this); averageFirst()"></div>
+ <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onChange="check(this); averageFirst();"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
  <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first02" placeholder="Asignatura"></div>
@@ -347,12 +345,6 @@ Completa con tus asignaturas cursadas!
  <div class="fifth" style="grid-area: 3that; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;">Promedio 5° año:</div>
  <div class="fifth" style="grid-area: 3average; margin-bottom: 6px; border: 1px dashed gray; border-style: hidden dashed dashed dashed; /* top right bottom left */"><input type="number" class="classGrade" id="average5" placeholder="0.0" disabled="disabled" style="pointer-events: none;"></div>
 
-
-
-<!- FINAL RESULT ->
- <div class="result" style="grid-area: result;"><input type="number" class="classInput" id="result" placeholder="0.0" disabled="disabled" style="pointer-events: none;"></div>
-
-
  <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px; border: 0px; border-style: hidden; padding-top: 18px;">
  Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
  </div>
@@ -404,14 +396,16 @@ const child = document.getElementById(theDiv);
 </script>
 
 
+<script>
+function clear(input) {
+if (input.value !== "") { input.value = "" }
+}
+</script>
 
 <script>
 function check(input) {
 if (input.value.length === 1) {input.value = (input.value * 1.0).toFixed(1); input.select(); input.setSelectionRange(0, 99999);}
 if (input.value == "") {input.value = "0.0"; input.placeholder="0.0"; input.style.color="#1434A4"; }
-}
-</script>
-
 }
 </script>
 
@@ -706,14 +700,11 @@ colorTheAverages();
 <script>
 function highlightFirstYear() {
 
-document.getElementById("firstButton").style.color = "yellow"; document.getElementById("firstButton").style.backgroundColor = "#FF0000AA";
-document.getElementById("secondButton").style.color = "blue"; document.getElementById("secondButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("thirdButton").style.color = "blue"; document.getElementById("thirdButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fourthButton").style.color = "blue"; document.getElementById("fourthButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fifthButton").style.color = "blue"; document.getElementById("fifthButton").style.backgroundColor = "#A7C7E788";
-
 firstYear = document.querySelectorAll("div.first");
-for(let cells of firstYear){ cells.style.display = "inline" }
+for(let cells of firstYear) {
+  cells.style.display = "inline";
+  if (cells.style.display == "inline") { document.getElementById("firstButton").focus(); }
+}
 
 secondYear = document.querySelectorAll("div.second");
 for(let cells of secondYear){ cells.style.display = "none" }
@@ -726,9 +717,6 @@ for(let cells of fourthYear){ cells.style.display = "none" }
 
 fifthYear = document.querySelectorAll("div.fifth");
 for(let cells of fifthYear){ cells.style.display = "none" }
-
-finalResult = document.querySelectorAll("div.result");
-for(let cells of finalResult){ cells.style.display = "none" }
 
 averageFirst();
 }
@@ -738,17 +726,14 @@ averageFirst();
 <script>
 function highlightSecondYear() {
 
-document.getElementById("firstButton").style.color = "blue"; document.getElementById("firstButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("secondButton").style.color = "yellow"; document.getElementById("secondButton").style.backgroundColor = "#FF0000AA";
-document.getElementById("thirdButton").style.color = "blue"; document.getElementById("thirdButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fourthButton").style.color = "blue"; document.getElementById("fourthButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fifthButton").style.color = "blue"; document.getElementById("fifthButton").style.backgroundColor = "#A7C7E788";
-
 firstYear = document.querySelectorAll("div.first");
 for(let cells of firstYear){ cells.style.display = "none" }
 
 secondYear = document.querySelectorAll("div.second");
-for(let cells of secondYear){ cells.style.display = "inline" }
+for(let cells of secondYear) {
+  cells.style.display = "inline";
+  if (cells.style.display == "inline") { document.getElementById("secondButton").focus(); }
+}
 
 thirdYear = document.querySelectorAll("div.third");
 for(let cells of thirdYear){ cells.style.display = "none" }
@@ -758,9 +743,6 @@ for(let cells of fourthYear){ cells.style.display = "none" }
 
 fifthYear = document.querySelectorAll("div.fifth");
 for(let cells of fifthYear){ cells.style.display = "none" }
-
-finalResult = document.querySelectorAll("div.result");
-for(let cells of finalResult){ cells.style.display = "none" }
 
 averageSecond();
 }
@@ -770,12 +752,6 @@ averageSecond();
 <script>
 function highlightThirdYear() {
 
-document.getElementById("firstButton").style.color = "blue"; document.getElementById("firstButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("secondButton").style.color = "blue"; document.getElementById("secondButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("thirdButton").style.color = "yellow"; document.getElementById("thirdButton").style.backgroundColor = "#FF0000AA";
-document.getElementById("fourthButton").style.color = "blue"; document.getElementById("fourthButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fifthButton").style.color = "blue"; document.getElementById("fifthButton").style.backgroundColor = "#A7C7E788";
-
 firstYear = document.querySelectorAll("div.first");
 for(let cells of firstYear){ cells.style.display = "none" }
 
@@ -783,16 +759,16 @@ secondYear = document.querySelectorAll("div.second");
 for(let cells of secondYear){ cells.style.display = "none" }
 
 thirdYear = document.querySelectorAll("div.third");
-for(let cells of thirdYear){ cells.style.display = "inline" }
+for(let cells of thirdYear) {
+  cells.style.display = "inline";
+  if (cells.style.display == "inline") { document.getElementById("thirdButton").focus(); }
+}
 
 fourthYear = document.querySelectorAll("div.fourth");
 for(let cells of fourthYear){ cells.style.display = "none" }
 
 fifthYear = document.querySelectorAll("div.fifth");
 for(let cells of fifthYear){ cells.style.display = "none" }
-
-finalResult = document.querySelectorAll("div.result");
-for(let cells of finalResult){ cells.style.display = "none" }
 
 averageThird();
 }
@@ -802,12 +778,6 @@ averageThird();
 <script>
 function highlightFourthYear() {
 
-document.getElementById("firstButton").style.color = "blue"; document.getElementById("firstButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("secondButton").style.color = "blue"; document.getElementById("secondButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("thirdButton").style.color = "blue"; document.getElementById("thirdButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fourthButton").style.color = "yellow"; document.getElementById("fourthButton").style.backgroundColor = "#FF0000AA";
-document.getElementById("fifthButton").style.color = "blue"; document.getElementById("fifthButton").style.backgroundColor = "#A7C7E788";
-
 firstYear = document.querySelectorAll("div.first");
 for(let cells of firstYear){ cells.style.display = "none" }
 
@@ -818,13 +788,13 @@ thirdYear = document.querySelectorAll("div.third");
 for(let cells of thirdYear){ cells.style.display = "none" }
 
 fourthYear = document.querySelectorAll("div.fourth");
-for(let cells of fourthYear){ cells.style.display = "inline" }
+for(let cells of fourthYear) {
+  cells.style.display = "inline";
+  if (cells.style.display == "inline") { document.getElementById("fourthButton").focus(); }
+}
 
 fifthYear = document.querySelectorAll("div.fifth");
 for(let cells of fifthYear){ cells.style.display = "none" }
-
-finalResult = document.querySelectorAll("div.result");
-for(let cells of finalResult){ cells.style.display = "none" }
 
 averageFourth();
 }
@@ -833,12 +803,6 @@ averageFourth();
 
 <script>
 function highlightFifthYear() {
-
-document.getElementById("firstButton").style.color = "blue"; document.getElementById("firstButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("secondButton").style.color = "blue"; document.getElementById("secondButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("thirdButton").style.color = "blue"; document.getElementById("thirdButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fourthButton").style.color = "blue"; document.getElementById("fourthButton").style.backgroundColor = "#A7C7E788";
-document.getElementById("fifthButton").style.color = "yellow"; document.getElementById("fifthButton").style.backgroundColor = "#FF0000AA";
 
 firstYear = document.querySelectorAll("div.first");
 for(let cells of firstYear){ cells.style.display = "none" }
@@ -853,10 +817,10 @@ fourthYear = document.querySelectorAll("div.fourth");
 for(let cells of fourthYear){ cells.style.display = "none" }
 
 fifthYear = document.querySelectorAll("div.fifth");
-for(let cells of fifthYear){ cells.style.display = "inline" }
-
-finalResult = document.querySelectorAll("div.result");
-for(let cells of finalResult){ cells.style.display = "none" }
+for(let cells of fifthYear) {
+  cells.style.display = "inline";
+  if (cells.style.display == "inline") { document.getElementById("fifthButton").focus(); }
+}
 
 averageFifth();
 }
@@ -1044,7 +1008,7 @@ if (averageFifth.value >= "1.0" && averageFifth.value <= "3.9") {averageFifth.st
 <!- CHECK BEFORE DELETING ->
 <script>
 function doDelete() {
-  if (confirm('¿Borramos todo?')) {
+  if (confirm('¿Desea borrar todo de 1° a 5° año?')) {
     deleteAll()
     console.log("Todo borrado!")
   }
@@ -1057,7 +1021,7 @@ function doDelete() {
 function deleteAll() {
 
 allSubjects = document.querySelectorAll('input[type="text"]');
-for(let names of allSubjects) {names.value = "";};
+for(let names of allSubjects) {names.value = ""};
 // console.log(allSubjects);
 
 allGrades = document.querySelectorAll('input[type="number"]');
