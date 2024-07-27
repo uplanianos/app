@@ -407,8 +407,11 @@ const child = document.getElementById(theDiv);
 
 <script>
 function check(input) {
-if (input.value.length === 1) {input.value = (input.value * 1.0).toFixed(1);}
-if (input.value == "") {input.value = "0.0"; input.placeholder="0.0"; input.style.color="#1434A4";}
+if (input.value.length === 1) {input.value = (input.value * 1.0).toFixed(1); input.select(); input.setSelectionRange(0, 99999);}
+if (input.value == "") {input.value = "0.0"; input.placeholder="0.0"; input.style.color="#1434A4"; }
+}
+</script>
+
 }
 </script>
 
