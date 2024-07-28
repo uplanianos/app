@@ -239,13 +239,13 @@ a:visited	{ color: hotpink; }
   cursor: alias;
 }
 
-.slideInfoLeft {position: sticky; bottom: 14px; left: 0px; height: 56px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
-.slideInfoRight {position: sticky; bottom: 14px; right: 0px; height: 56px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
+.slideInfoLeft {position: sticky; bottom: 14px; left: 0px; height: 54px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
+.slideInfoRight {position: sticky; bottom: 14px; right: 0px; height: 54px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
 .slideInfoLeft:active, .slideInfoRight:active {background-color: #FF0000CC; color: white;}
 .slideInfoLeft:hover, .slideInfoRight:hover {background-color: #FF000088;}
 
-.slideToolsLeft {position: sticky; bottom: 14px; left: 0px; height: 42px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
-.slideToolsRight {position: sticky; bottom: 14px; right: 0px; height: 42px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
+.slideToolsLeft {position: sticky; bottom: 15px; left: 0px; height: 45px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
+.slideToolsRight {position: sticky; bottom: 15px; right: 0px; height: 45px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
 .slideToolsLeft:active, .slideToolsRight:active {background-color: #FF0000CC; color: white;}
 .slideToolsLeft:hover, .slideToolsRight:hover {background-color: #FF000088;}
 
