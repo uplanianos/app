@@ -11,26 +11,6 @@
 
 <body>
 
-<div>
-  <select id="dropdown" class="dropdown"  name="form_select">
-    <option value="0" selected disabled="disabled">Menu</option>
-    <option value="1">&#x27A5; 📥 Descargar</option>
-    <option value="2">&#x27A5; ❌ Borrar</option>
-    <option value="3">&#x27A5; 👈 Volver</option>
-  </select>
-</div>
-
-<script type="text/javascript">
-document.getElementById('dropdown').addEventListener('change', function() {
- if (dropdown.value == 1) {window.print(); setTimeout('blurMenu()', 1000);}
- if (dropdown.value == 2) {doDelete(); setTimeout('blurMenu()', 1000);}
- if (dropdown.value == 3) {window.location = "index.html";}
-});
-
-function blurMenu(){document.getElementById('dropdown').value = 0; document.getElementById('dropdown').blur();}
-</script>
-
-
 
 <div class="main" style="margin-bottom: 3%;">
 <div class="labels"><p id="mainLabel"><b>Uplanianos - Avance Curricular</b></p></div>
@@ -51,6 +31,7 @@ Completa con tus asignaturas cursadas!
     <button class="Year" id="thirdButton" onclick="highlightThirdYear();">3°</button>
     <button class="Year" id="fourthButton" onclick="highlightFourthYear();">4°</button>
     <button class="Year" id="fifthButton" onclick="highlightFifthYear();">5°</button>
+    <button class="Delete" id="deleteButton" onclick="window.print();"><small>🖨️</small></button>
     <button class="Delete" id="deleteButton" onclick="doDelete();">X</button>
  </div>
 
