@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Timebox (planificador de estudio)</title>
+</head>
+
+<body>
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY (WITH LINE CODE ON HEAD SECTION) ->
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+newTitle();
+updateInstructions();
+}
+</script>
+
+
+<div class="main">
+<div class="labels"><p id="mainLabel"><b>Uplanianos - Timebox</b> (planificador de estudio)</p></div>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+
+<div class="grid-container-pages" style="grid-auto-flow: flow;">
+
+<div class="grid-item" id="theInstructions" style="background-color: #DBF9DB;">
+Completar actividades a priorizar!
+</div>
+
+<center>
+<a href="timeplanner.html" class="planner-link">Horario cronológico</a>
+</center>
+
+
+<div class="grid-timebox">
+
+  <div>
+  <b>📅 Fecha:</b><br>
+  <input type="text" class="timebox-schedule" id="dateInput" name="dateInput" onClick="getTomorrow(); newTitle()" onChange="newTitle()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 88%; margin-left: 6%; text-align: center; background-color: #DBF9DB; margin-top: 6px; margin-bottom: 6px;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad.">
+  </div>
+
+  <div>
+  <b>Prioridades ✔️:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" id="priority1" onClick="newTitle()" onChange="newTitle()" placeholder="Prioridad 1" maxlength="50" style=" background-color: #DBF9DB;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad."><br>
+  2. <input type="text" class="timebox-inputs" id="priority2" placeholder="Prioridad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" id="priority3" placeholder="Prioridad 3" maxlength="50"><br>
+  4. <input type="text" class="timebox-inputs" id="priority4" placeholder="Prioridad 4" maxlength="50"><br>
+  </div>
+
+  <div>
+  <b>Otras tareas 📑:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" id="task1" placeholder="Actividad 1" maxlength="50"><br>
+  2. <input type="text" class="timebox-inputs" id="task2" placeholder="Actividad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" id="task3" placeholder="Actividad 3" maxlength="50"><br>
+  4. <input type="text" class="timebox-inputs" id="task4" placeholder="Actividad 4" maxlength="50">
+  </div>
+
+  <div>
+  <b>Recordatorios ✍️:</b>
+  <br>
+  <textarea id="message" rows="5" cols="auto" placeholder="Notas importantes para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
+  </div>
+
+  <div style="grid-area: schedule; background-color: lightblue; padding-top: 2%;">
+  🕔 <b>Horario madrugada:</b><br>
+  <small>05:00</small> <input type="text" class="timebox-schedule" id="dawn1" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <small>06:00</small> <input type="text" class="timebox-schedule" id="dawn2" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <small>07:00</small> <input type="text" class="timebox-schedule" id="dawn3" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <br>
+  🕗 <b>Horario mañana:</b><br>
+  <small>08:00</small> <input type="text" class="timebox-schedule" id="morning1" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>09:30</small> <input type="text" class="timebox-schedule" id="morning2" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>11:00</small> <input type="text" class="timebox-schedule" id="morning3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <br>
+  🕧 <b>Horario tarde:</b><br>
+  <small>12:30</small> <input type="text" class="timebox-schedule" id="afternoon1" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  <small>14:00</small> <input type="text" class="timebox-schedule" id="afternoon2" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  <small>15:30</small> <input type="text" class="timebox-schedule" id="afternoon3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>17:00</small> <input type="text" class="timebox-schedule" id="afternoon4" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
+  <small>18:30</small> <input type="text" class="timebox-schedule" id="afternoon5" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
+  <br>
+  🕗 <b>Horario vespertino:</b><br>
+  <small>20:00</small> <input type="text" class="timebox-schedule" id="evening1" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
+  <small>21:00</small> <input type="text" class="timebox-schedule" id="evening2" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
+  <small>22:00</small> <input type="text" class="timebox-schedule" id="evening3" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
+  </div>
+
+  <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px;">
+  Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
+  </div>
+
+  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
+  <button class="timebox-download" role="button" onclick="window.print()">Descargar 🖨️</button>
+
+  </div>
+
+</div>
+
+<br>
+
+</div>
+
+<br>
+
+
+<script type="text/javascript">
+function updateInstructions() {
+  for (let i=0; i<11; i++) {
+  theUpdate(i);
+  }
+}
+
+function theUpdate(i) {
+  setTimeout(function() {
+    console.log("Las instrucciones se actualizarán " + i + "/10.");
+    firstText = "Completar actividades a priorizar!";
+    secondText = "Luego, descargar en PDF o imprimir!";
+    if (i % 2 === 0) {theInstructions.innerHTML = firstText};
+    if (i % 2 === 1) {theInstructions.innerHTML = secondText};
+  }, 3000 * i);
+}
+</script>
+
+
+
+<script>
+function newTitle() {
+// THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
+  newDate = document.getElementById("dateInput").value
+  innerTitle = document.getElementById("mainLabel")
+  priorityOne = document.getElementById("priority1").value
+
+// FIRST CONDITION
+  if (dateInput.value.length >= 1) {
+    document.title = "Uplanianos Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase();
+  // SECOND CONDITION
+    if (priority1.value.length >= 1) {
+      document.title = "Uplanianos Timebox - " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox:</b> " + newDate.charAt(0).toUpperCase() + newDate.slice(1).toLowerCase() + " (" + priorityOne.toLowerCase() + ")";
+    }
+  }
+
+// THIS UPDATES TO ORIGINAL TITLE IF USER DELETES DATE.
+  else {
+    document.title = "Uplanianos - Timebox (planificador de estudio)";
+    innerTitle.innerHTML = "<b>Uplanianos - Timebox</b> (planificador de estudio)";
+  }
+}
+</script>
+
+
+<script type="text/javascript">
+function getTomorrow() {
+  const date = new Date();
+  const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+  const currentDayOfWeek = daysOfWeek[date.getDay() + 1];
+  console.log(`Mañana es ${currentDayOfWeek}`);
+  document.getElementsByName('dateInput')[0].placeholder = "(Mañana es " + currentDayOfWeek + ")";
+}
+</script>
+
+
+<script type="text/javascript">
+function deleteAll() {
+document.getElementById("dateInput").value = ""
+document.getElementById("priority1").value = ""
+document.getElementById("priority2").value = ""
+document.getElementById("priority3").value = ""
+document.getElementById("priority4").value = ""
+document.getElementById("task1").value = ""
+document.getElementById("task2").value = ""
+document.getElementById("task3").value = ""
+document.getElementById("task4").value = ""
+document.getElementById("message").value = ""
+document.getElementById("dawn1").value = ""
+document.getElementById("dawn2").value = ""
+document.getElementById("dawn3").value = ""
+document.getElementById("morning1").value = ""
+document.getElementById("morning2").value = ""
+document.getElementById("morning3").value = ""
+document.getElementById("afternoon1").value = ""
+document.getElementById("afternoon2").value = ""
+document.getElementById("afternoon3").value = ""
+document.getElementById("afternoon4").value = ""
+document.getElementById("afternoon5").value = ""
+document.getElementById("evening1").value = ""
+document.getElementById("evening2").value = ""
+document.getElementById("evening3").value = ""
+newTitle();
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="studyProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script>
+window.onafterprint = function() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var Priorities = 0
+var Tasks = 0
+var Dawn = 0
+var Morning = 0
+var Afternoon = 0
+var Evening = 0
+var Total = 0
+var theProgress = document.getElementById("studyProgress").value
+// var theProgress = 0
+
+// CHECKING ELEMENTS AND VALUES!
+ if (document.getElementById("priority1").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority2").value !== '') {Priorities += 0.2}
+ if (document.getElementById("priority3").value !== '') {Priorities += 0.1}
+ if (document.getElementById("priority4").value !== '') {Priorities += 0.1}
+
+ if (document.getElementById("task1").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task2").value !== '') {Tasks += 0.2}
+ if (document.getElementById("task3").value !== '') {Tasks += 0.1}
+ if (document.getElementById("task4").value !== '') {Tasks += 0.1}
+
+ if (document.getElementById("dawn1").value !== '') {Dawn += 0.2}
+ if (document.getElementById("dawn2").value !== '') {Dawn += 0.2}
+ if (document.getElementById("dawn3").value !== '') {Dawn += 0.2}
+
+ if (document.getElementById("morning1").value !== '') {Morning += 0.2}
+ if (document.getElementById("morning2").value !== '') {Morning += 0.2}
+ if (document.getElementById("morning3").value !== '') {Morning += 0.2}
+
+ if (document.getElementById("afternoon1").value !== '') {Afternoon += 0.2}
+ if (document.getElementById("afternoon2").value !== '') {Afternoon += 0.2}
+ if (document.getElementById("afternoon3").value !== '') {Afternoon += 0.2}
+ if (document.getElementById("afternoon4").value !== '') {Afternoon += 0.2}
+ if (document.getElementById("afternoon5").value !== '') {Afternoon += 0.2}
+
+ if (document.getElementById("evening1").value !== '') {Evening += 0.2}
+ if (document.getElementById("evening2").value !== '') {Evening += 0.2}
+ if (document.getElementById("evening3").value !== '') {Evening += 0.2}
+
+ // console.log("Las prioridades son " + Priorities.toFixed(1));
+ // console.log("Las tareas son " + Tasks.toFixed(1));
+ // console.log("El amanecer es " + Dawn.toFixed(1));
+ // console.log("La mañana es " + Morning.toFixed(1));
+ // console.log("La tarde es " + Afternoon.toFixed(1));
+ // console.log("El atardecer es " + Evening.toFixed(1));
+ // console.log("Lo anterior era de " + theProgress);
+
+// FINAL CALCULATIONS!
+ theSum = Priorities + Tasks + Dawn + Morning + Afternoon + Evening;
+ newProgress = parseFloat(theProgress) + parseFloat(theSum);
+ document.getElementById("studyProgress").value = newProgress;
+ // console.log("La suma es de " + theSum);
+ // console.log("El progreso es de " + newProgress);
+}
+</script>
+
+
+
+</body>
+</html>

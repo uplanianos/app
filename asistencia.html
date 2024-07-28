@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Porcentaje de Asistencia</title>
+</head>
+
+<body>
+
+<div class="main">
+    <div class="labels"><b><p>Uplanianos Web App:</b> Simulación de Procentaje de Asistencia.</p></div>
+    <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+	<div class="grid-container-pages" style="grid-auto-flow: flow;">
+	  <div class="grid-item-slider"><br><text class="class-type" id="class-type"><b>Curso Teórico</b> (</text> <text class="class-percent" id="class-percent">60%</text><text class="class-type"> ).</text><br><br>
+	  <input type="range" class="slidebar" min="1" max="3" value="1" id="classType" oninput="classType(); getResult()"><br><br></div>
+
+	  <div class="grid-item-tools"><br><b>Asistencia:</b>
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <div class="double-container">
+	    <div class="test-left" style="margin-top: 16px;">Clases realizadas:</div>
+	    <div class="test-right"><input type="number" class="attendance" id="classes" min="0" max="80" step="1" value="20" readonly disabled></div>
+	  </div>
+	  <input type="range" class="slidebar" id="classSlider" min="1" max="80" value="20" oninput="classUpdate(); getResult()"><br><br>
+
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+
+
+	  <div class="double-container">
+	    <div class="test-left" style="margin-top: 16px;">Mi asistencia:</div>
+	    <div class="test-right"><input type="number" class="attendance" id="attendance" min="0" max="80" step="1" value="0" readonly disabled></div>
+	  </div>
+	  <input type="range" class="slidebar" id="attendanceSlider" min="0" max="20" value="0" oninput="attendanceUpdate(); getResult()"><br><br>
+	  <br>
+	  </div>
+
+	  <div class="grid-item-results" id="resultDiv">
+	    <div class="double-container">
+	    <div class="test-left"><b>Ausencias:</b><br><br> <text class="result-text" id="absences">0</text><br><br></div>
+	    <div class="test-right"><b>Porcentaje:</b><br><br> <text class="result-text" id="percentage">0</text><text class="result-text">%</text><br><br></div>
+	  </div></div>
+
+	</div>
+    <br>
+    <br>
+    </div>
+<br>
+</div>
+
+
+<script>
+function classType() {
+	var classType = document.getElementById("classType").value;
+
+	if (classType == "1") {
+         document.getElementById('class-type').innerText= "Curso Teórico (";
+         document.getElementById('class-percent').innerText= "60%"; }
+
+	if (classType == "2") {
+         document.getElementById('class-type').innerText= "Curso Teórico-Práctico (";
+         document.getElementById('class-percent').innerText= "75%"; }
+
+	if (classType == "3") {
+         document.getElementById('class-type').innerText= "Taller / Laboratorio (";
+         document.getElementById('class-percent').innerText= "+85%"; }
+
+}
+</script>
+
+
+<script>
+function classUpdate() {
+	var howManyClasses = document.getElementById("classSlider").value;
+	var theirAttendance = document.getElementById("attendanceSlider").value;
+	document.getElementById('classes').value = howManyClasses;
+
+	document.getElementById('attendance').setAttribute('max', howManyClasses);
+	document.getElementById('attendanceSlider').setAttribute('max', howManyClasses);
+
+	if (howManyClasses < theirAttendance ) { document.getElementById('attendance').value = howManyClasses; }
+}
+
+function attendanceUpdate() {
+	var whatAttendance = document.getElementById("attendanceSlider").value;
+	document.getElementById('attendance').value = whatAttendance;
+}
+</script>
+
+<script>
+function getResult() {
+	var howManyClasses = document.getElementById("classes").value;
+	var whatAttendance = document.getElementById("attendance").value;
+	var finalPercent = ((whatAttendance * 100) / howManyClasses).toFixed(0);
+	document.getElementById('absences').innerText = (howManyClasses - whatAttendance);
+	document.getElementById('percentage').innerText = finalPercent;
+
+	var percentage = document.getElementById("percentage").value;
+	var classType = document.getElementById("classType").value;
+
+	// UPDATE STATS:
+	knowledgeProgress();
+
+	if (classType == "1") {
+	  if (finalPercent < 60) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 20) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 60) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
+	}
+
+	if (classType == "2") {
+	  if (finalPercent < 75) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 50) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 30) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 75) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
+	}
+
+	if (classType == "3") {
+	  if (finalPercent < 85) { document.getElementById('resultDiv').style.background = "purple"; }
+	  if (finalPercent <= 60) { document.getElementById('resultDiv').style.background = "maroon"; }
+	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "darkred"; }
+	  if (finalPercent <= 10) { document.getElementById('resultDiv').style.background = "red"; }
+	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "royalblue"; }
+	  if (finalPercent >= 95) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
+	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
+	}
+
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPTS) ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+knowledgeProgress();
+}
+</script>
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="knowledgeProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+<script>
+function knowledgeProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var knowledgeProgress = document.getElementById("knowledgeProgress").value
+var additionValue = 1 * 0.02
+var newProgress = parseFloat(knowledgeProgress) + parseFloat(additionValue);
+ if (knowledgeProgress < 100) { setTimeout(() => {
+    document.getElementById("knowledgeProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+    }, 1000);}
+ if (knowledgeProgress >= 100) {document.getElementById("knowledgeProgress").value = 100}
+}
+</script>
+
+
+
+</body>
+</html>

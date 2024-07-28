@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta http-equiv="refresh" content="180">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Cuenta Regresiva</title>
+</head>
+
+<body onload="runCountdown()">
+
+<div class="main">
+    <div class="labels"><b><p>Uplanianos Web App:</b> Cuenta regresiva.</p></div>
+    <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+	<div class="grid-item-slider">
+
+	  <br><b>Segundo Semestre, 2024:</b><br>
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+
+	  <br><font class="checkpoint">📅 Inicio de clases (5 de Agosto):</font><br>
+	  <div class="countdown">
+	    <div><p class="startClassNumbers" id="weeksStart">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="startClassNumbers">:</p></div>
+	    <div><p class="startClassNumbers" id="daysStart">0</p></div>
+	    <div><p class="startClassNumbers" id="hoursStart">0</p></div>
+	    <div><p class="startClassNumbers" id="minutesStart">0</p></div>
+	    <div><p class="startClassNumbers" id="secondsStart">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">📅 Primera Integral (23 de Septiembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="firstTestNumbers" id="weeksFirst">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="firstTestNumbers">:</p></div>
+	    <div><p class="firstTestNumbers" id="daysFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="hoursFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="minutesFirst">0</p></div>
+	    <div><p class="firstTestNumbers" id="secondsFirst">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">📅 Segunda Integral (28 de Octubre):</font><br>
+	  <div class="countdown">
+	    <div><p class="secondTestNumbers" id="weeksSecond">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="secondTestNumbers">:</p></div>
+	    <div><p class="secondTestNumbers" id="daysSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="hoursSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="minutesSecond">0</p></div>
+	    <div><p class="secondTestNumbers" id="secondsSecond">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">📅 Tercera Integral (9 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="thirdTestNumbers" id="weeksThird">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="thirdTestNumbers">:</p></div>
+	    <div><p class="thirdTestNumbers" id="daysThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="hoursThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="minutesThird">0</p></div>
+	    <div><p class="thirdTestNumbers" id="secondsThird">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">📅 Examen Especial (16 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="specialExamNumbers" id="weeksExam">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="specialExamNumbers">:</p></div>
+	    <div><p class="specialExamNumbers" id="daysExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="hoursExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="minutesExam">0</p></div>
+	    <div><p class="specialExamNumbers" id="secondsExam">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br><font class="checkpoint">📅 Cierre de Semestre (20 de Diciembre):</font><br>
+	  <div class="countdown">
+	    <div><p class="lastDayNumbers" id="weeksEnd">0</p></div>
+	    <div style="margin-left: -10%; margin-right: -5%;"><p class="lastDayNumbers">:</p></div>
+	    <div><p class="lastDayNumbers" id="daysEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="hoursEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="minutesEnd">0</p></div>
+	    <div><p class="lastDayNumbers" id="secondsEnd">0</p></div>
+	  </div>
+	  <div class="clock">
+	    <div>Semanas</div>
+	    <div style="margin-left: -10%; margin-right: -5%;"></div>
+	    <div>Días</div>
+	    <div>Horas</div>
+	    <div>Minutos</div>
+	    <div>Segundos</div>
+	  </div>
+
+
+	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	  <br>
+
+	<!- End of "grid-item-tools" Div ->
+	</div>
+
+    <br>
+    <br>
+  </div>
+
+
+<br>
+<br>
+</div>
+
+
+<script type="text/javascript">
+function runCountdown() {
+startClass();
+firstTest();
+secondTest();
+thirdTest();
+specialExam();
+lastDay();
+}
+</script>
+
+
+<script type="text/javascript">
+function startClass() {
+byGone = "red"
+notYet = "gray"
+classStart = document.querySelectorAll("p.startClassNumbers");
+// START WORKING
+var countDownDate = new Date("August 5, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("weeksStart").innerHTML = weeks;
+  document.getElementById("daysStart").innerHTML = days;
+  document.getElementById("hoursStart").innerHTML = hours;
+  document.getElementById("minutesStart").innerHTML = minutes;
+  document.getElementById("secondsStart").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of classStart) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of classStart) {numbers.style.color = byGone};
+    document.getElementById("secondsStart").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function firstTest() {
+byGone = "red"
+notYet = "gray"
+firstTest = document.querySelectorAll("p.firstTestNumbers");
+// START WORKING
+var countDownDate = new Date("September 23, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksFirst").innerHTML = weeks;
+  document.getElementById("daysFirst").innerHTML = days;
+  document.getElementById("hoursFirst").innerHTML = hours;
+  document.getElementById("minutesFirst").innerHTML = minutes;
+  document.getElementById("secondsFirst").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of firstTest) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of firstTest){numbers.style.color = byGone};
+    document.getElementById("secondsFirst").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+
+<script type="text/javascript">
+function secondTest() {
+byGone = "red"
+notYet = "gray"
+secondTest = document.querySelectorAll("p.secondTestNumbers");
+// START WORKING
+var countDownDate = new Date("October 28, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksSecond").innerHTML = weeks;
+  document.getElementById("daysSecond").innerHTML = days;
+  document.getElementById("hoursSecond").innerHTML = hours;
+  document.getElementById("minutesSecond").innerHTML = minutes;
+  document.getElementById("secondsSecond").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of secondTest) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of secondTest) {numbers.style.color = byGone};
+    document.getElementById("secondsSecond").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function thirdTest() {
+byGone = "red"
+notYet = "gray"
+thirdTest = document.querySelectorAll("p.thirdTestNumbers");
+// START WORKING
+var countDownDate = new Date("December 9, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksThird").innerHTML = weeks;
+  document.getElementById("daysThird").innerHTML = days;
+  document.getElementById("hoursThird").innerHTML = hours;
+  document.getElementById("minutesThird").innerHTML = minutes;
+  document.getElementById("secondsThird").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of thirdTest) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of thirdTest) {numbers.style.color = byGone};
+    document.getElementById("secondsThird").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function specialExam() {
+byGone = "red"
+notYet = "gray"
+specialExam = document.querySelectorAll("p.specialExamNumbers");
+// START WORKING
+var countDownDate = new Date("December 16, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksExam").innerHTML = weeks;
+  document.getElementById("daysExam").innerHTML = days;
+  document.getElementById("hoursExam").innerHTML = hours;
+  document.getElementById("minutesExam").innerHTML = minutes;
+  document.getElementById("secondsExam").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of specialExam) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of specialExam) {numbers.style.color = byGone};
+    document.getElementById("secondsExam").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function lastDay() {
+byGone = "red"
+notYet = "gray"
+lastDay = document.querySelectorAll("p.lastDayNumbers");
+// START WORKING
+var countDownDate = new Date("December 20, 2024 00:00:00").getTime();
+var doTheLoop = setInterval(function(){
+  // FIXED VARIABLES
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  // Distance calculation:
+  var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// UPDATE INNER HTML ELEMENTS:
+  document.getElementById("weeksEnd").innerHTML = weeks;
+  document.getElementById("daysEnd").innerHTML = days;
+  document.getElementById("hoursEnd").innerHTML = hours;
+  document.getElementById("minutesEnd").innerHTML = minutes;
+  document.getElementById("secondsEnd").innerHTML = seconds;
+  if (weeks >= 6) { for(let numbers of lastDay) {numbers.style.color = notYet;} }
+  if (distance < 0) {
+    for(let numbers of lastDay) {numbers.style.color = byGone};
+    document.getElementById("secondsEnd").innerHTML = "0";
+    clearInterval(doTheLoop); }
+  },1000);
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPTS) ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script>
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+runCountdown();
+knowledgeProgress();
+}
+</script>
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="knowledgeProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script>
+function knowledgeProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var knowledgeProgress = document.getElementById("knowledgeProgress").value
+var additionValue = 1
+var newProgress = parseFloat(knowledgeProgress) + parseFloat(additionValue);
+ if (knowledgeProgress < 100) { 
+    document.getElementById("knowledgeProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+  }
+ if (knowledgeProgress >= 100) {document.getElementById("knowledgeProgress").value = 100}
+}
+</script>
+
+
+</body>
+</html>

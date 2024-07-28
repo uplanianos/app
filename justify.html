@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Formato para Justificación de Inasistencia</title>
+</head>
+
+<body>
+
+
+<div class="main">
+<div class="labels"><b><p>Uplanianos Web App:</b> Justificación de Inasistencia (texto modelo).</p></div>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+<div class="grid-container-pages" style="grid-auto-flow: flow;">
+
+<div class="grid-item">
+Completar datos para redactar correo de justificación!
+</div>
+
+<div class="grid-item-slider">
+<font style="margin-right: 0.2em;">Formalidad:</font>
+<select id="adress"">
+  <option value="Estimado/a " selected>Estimado/a </option>
+  <option value="Estimado ">Estimado</option>
+  <option value="Estimada ">Estimada</option>
+  <option value="Director ">Director</option>
+  <option value="Directora ">Directora</option>
+  <option value="Respetable ">Respetable</option>
+  <option value="Honorable ">Honorable</option>
+</select>
+<select id="title">
+  <option value="" selected>-</option>
+  <option value="Sr. ">Sr.</option>
+  <option value="Sra. ">Sra.</option>
+  <option value="Srta. ">Srta.</option>
+  <option value="Mg. ">Magíster</option>
+  <option value="Dr. ">Doctor/a</option>
+  <option value="Prof. ">Profesor/a</option>
+</select>
+<br>
+<font style="margin-right: 0.7em;">Director/a:</font>
+<input type="text" id="director" placeholder="Nombre Dir. o Profesor/a" maxlength="50" style="width: 250px;">
+<br>
+<font style="margin-right: 2em;">Carrera:</font>
+<input type="text" id="program" placeholder="Carrera / Programa" maxlength="50" style="width: 250px;">
+</div>
+
+<div class="grid-item-slider">
+<font style="vertical-align: top; margin-right: 0.2em;">Cursos:</font>
+<textarea id="subjects" placeholder="Asignaturas a justificar." maxlength="200" rows="3" style="width: 285px;"></textarea>
+<br>
+<font style="vertical-align: top; margin-right: 0.6em;">Profes.</font>
+<textarea id="teachers" placeholder="Profesor/a 1, 2 y 3..." maxlength="200" rows="3" style="width: 285px;"></textarea>
+</div>
+
+<div class="grid-item-slider">
+<font style="margin-right: 2em;">Fecha Inicio: </font>
+<select id="startDay">
+  <option value="1" selected>1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+  <option value="25">25</option>
+  <option value="26">26</option>
+  <option value="27">27</option>
+  <option value="28">28</option>
+  <option value="29">29</option>
+  <option value="30">30</option>
+  <option value="31">31</option>
+</select>
+<select id="startMonth">
+  <option value="">-</option>
+  <option value="">... al</option>
+  <option value=" de enero">Enero</option>
+  <option value=" de febrero">Febrero</option>
+  <option value=" de marzo" selected>Marzo</option>
+  <option value=" de abril">Abril</option>
+  <option value=" de mayo">Mayo</option>
+  <option value=" de junio">Junio</option>
+  <option value=" de julio">Julio</option>
+  <option value=" de agosto">Agosto</option>
+  <option value=" de septiembre">Septiembre</option>
+  <option value=" de octubre">Octubre</option>
+  <option value=" de noviembre"> Noviembre</option>
+  <option value=" de diciembre">Diciembre</option>
+</select>
+
+<br>
+
+<font style="margin-right: 0.6em;">Fecha Término: </font>
+<select id="endDay">
+  <option value="" selected>-</option>
+  <option value=" al 1">1</option>
+  <option value=" al 2">2</option>
+  <option value=" al 3">3</option>
+  <option value=" al 4">4</option>
+  <option value=" al 5">5</option>
+  <option value=" al 6">6</option>
+  <option value=" al 7">7</option>
+  <option value=" al 8">8</option>
+  <option value=" al 9">9</option>
+  <option value=" al 10">10</option>
+  <option value=" al 11">11</option>
+  <option value=" al 12">12</option>
+  <option value=" al 13">13</option>
+  <option value=" al 14">14</option>
+  <option value=" al 15">15</option>
+  <option value=" al 16">16</option>
+  <option value=" al 17">17</option>
+  <option value=" al 18">18</option>
+  <option value=" al 19">19</option>
+  <option value=" al 20">20</option>
+  <option value=" al 21">21</option>
+  <option value=" al 22">22</option>
+  <option value=" al 23">23</option>
+  <option value=" al 24">24</option>
+  <option value=" al 25">25</option>
+  <option value=" al 26">26</option>
+  <option value=" al 27">27</option>
+  <option value=" al 28">28</option>
+  <option value=" al 29">29</option>
+  <option value=" al 30">30</option>
+  <option value=" al 31">31</option>
+</select>
+<select id="endMonth">
+  <option value="" selected>-</option>
+  <option value=" de enero">Enero</option>
+  <option value=" de febrero">Febrero</option>
+  <option value=" de marzo">Marzo</option>
+  <option value=" de abril">Abril</option>
+  <option value=" de mayo">Mayo</option>
+  <option value=" de junio">Junio</option>
+  <option value=" de julio">Julio</option>
+  <option value=" de agosto">Agosto</option>
+  <option value=" de septiembre">Septiembre</option>
+  <option value=" de octubre">Octubre</option>
+  <option value=" de noviembre"> Noviembre</option>
+  <option value=" de diciembre">Diciembre</option>
+</select><br>
+
+<font style="vertical-align: top; margin-right: 0.5em;">Motivo:</font>
+<textarea id="reason" placeholder="Justificación de insasistencia (120 caracteres)." maxlength="120" rows="4" cols style="width: 280px;"></textarea>
+</div>
+
+<div class="grid-item-slider">
+Nombre: 
+<input type="text" id="student" placeholder="Nombre Estudiante" maxlength="50" style="width: 275px;">
+<br>
+<font style="margin-right: 2.05em;">Año: </font>
+<select id="year">
+  <option value="2024" selected>2024</option>
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+  <option value="2019">2019</option>
+  <option value="2018">2018</option>
+  <option value="2017">2017</option>
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+  <option value="2014">2014</option>
+  <option value="2013">2013</option>
+  <option value="2012">2012</option>
+  <option value="2011">2011</option>
+  <option value="2010">2010</option>
+</select>
+<br>
+¿Adjunta antedecentes? <input type="checkbox" id="attachments">
+</div>
+
+<div class="grid-item" style="text-align: center; text-align: center;  display: block; margin-left: auto; margin-right: auto; ">
+
+<button id="doCompose" onclick="compose()">Redactar ⬇️</button>
+<button id="justSelect" onclick="justSelect()">Seleccionar 🤏</button>
+<button onclick="copyFullText()">Copiar 📝</button>
+<br>
+
+<textarea id="message" rows="26" cols="54" style="border-radius: 6px; padding: 12px; margin: 6px; width: 95%; resize: none;">
+Estimado/a __________:
+Dirección de Carrera de
+__________.
+
+Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de __________, dicatada por prof. __________.
+
+Mi inasistencia ocurrió durante el __________ (hasta el __________) debido a _______________.
+
+Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente.
+
+Nombre: _______________
+Estudiante promoción __________
+---
+* https://uplanianos.github.io/app/pages/manual-estudiante.html#art45
+</textarea>
+
+<br>
+
+
+<script>
+function compose() {
+var message = document.getElementById('message');
+var attachments = document.getElementById("attachments");
+
+// FULL MESSAGE
+var fullMessage = adress.value + title.value + director.value + ':' + '\nDirección de Carrera de\n' + program.value + '.\n\n' +
+ 'Junto con saludar cordialmente y esperando que se encuentre bien, mediante el presente me permito escribirle para justificar mi inasistencia a la asignatura de ' + subjects.value +
+ ', dictada por prof. ' + teachers.value + '.\n\n' +
+ 'Mi inasistencia ocurrió durante el ' + startDay.value + startMonth.value + endDay.value + endMonth.value + ' debido a ' + reason.value + '.\n\n' +
+ 'Agradeciendo de antemano tenga a bien justificar mi inasistencia para poder reagendar cualquier evaluación pendiente *, se despide muy atentamente. \n\n' + student.value + '\n' + 'Estudiante promoción ' + year.value;
+
+var link = '\n---\n* http://uplanianos.github.io/app/pages/manual-estudiante.html#art45';
+
+// ATTACHMENT MESSAGE
+var addAttachment = '\n---\nPD: Se hace envío de los antecedentes correspondientes en archivo adjunto.';
+
+if (attachments.checked) { message.value = fullMessage + addAttachment + link; }
+else { message.value = fullMessage + link; }
+
+}
+</script>
+
+</div>
+
+</div>
+<br>
+<br>
+</div>
+
+
+<script>
+function copyFullText() {
+  // Get the text field
+  var copyText = document.getElementById("message");
+  var director = document.getElementById("director");
+  var reason = document.getElementById("reason");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  
+  // Alert the copied text
+  // alert("Copied the text: " + copyText.value);
+  alert("Texto a copiar (quizás requiera autorización):\nJustificación dirigida a " + director.value + " por motivos de " + reason.value + ".\n\nPuede además editar los detalles faltantes,\ncopiar y pegar manualmente al correo.");
+}
+
+
+function justSelect() {
+  var copyText = document.getElementById("message"); // Get the text field
+  copyText.select();   // Select the text field
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+}
+</script>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>
