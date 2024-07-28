@@ -89,10 +89,10 @@ slideToolsRight = document.getElementById('slideToolsRight');
 slideToolsLeft = document.getElementById('slideToolsLeft');
 // CHECKING MOBILE
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    slideInfoRight.visibility = "hidden";
-    slideInfoLeft.visibility = "hidden";
-    slideToolsRight.visibility = "hidden";
-    slideToolsLeft.visibility = "hidden";
+    slideInfoRight.style.visibility = "hidden";
+    slideInfoLeft.style.visibility = "hidden";
+    slideToolsRight.style.visibility = "hidden";
+    slideToolsLeft.style.visibility = "hidden";
   }
   else {
     setTimeout('demoSlide1()', 1000 * 0.4);
