@@ -26,26 +26,30 @@
         <h1 class="uplanianos-h1-glow"><font color="red">U</font> <font color="green">P</font> <font color="blue">L</font> <font color="purple">A</font> <font color="yellow">N</font> <font color="turquoise">I</font> <font color="lightgreen">A</font> <font color="orange">N</font> <font color="lightblue">O</font> <font color="pink">S</font></h1>
     </div>
     <div class="labels"><p>Información:</p></div>
-<div class="info-div">
-    <a href="pages/horario.html"><div class="pretty-blue-bubble"><p>HORARIO<br>DE CLASES</p></div></a>
-    <a href="pages/manual-estudiante.html"><div class="candy-red-bubble"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
-    <a href="pages/calendario-prim-sem-2024.html"><div class="grass-green-bubble"><p>CALENDARIO<br>ACADÉMICO</p></div></a>
-    <a href="pages/avance.html"><div class="purple-iris-bubble"><p>AVANCE<br>CURRICULAR</p></div></a>
-    <a href="pages/notas.html"><div class="pumpkin-bubble"><p>ESCALAS<br>DE NOTAS</p></div></a>
+    <div class="info-div" id="infoDiv" style="overflow-x: scroll; scroll-behavior: smooth;">
+     <button onclick="sideScrollInfo()" class="slideInfoLeft" id="slideInfoLeft">&#8249;</button>
+     <a href="pages/horario.html"><div class="pretty-blue-bubble"><p>HORARIO<br>DE CLASES</p></div></a>
+     <a href="pages/manual-estudiante.html"><div class="candy-red-bubble"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
+     <a href="pages/calendario-prim-sem-2024.html"><div class="grass-green-bubble"><p>CALENDARIO<br>ACADÉMICO</p></div></a>
+     <a href="pages/avance.html"><div class="purple-iris-bubble"><p>AVANCE<br>CURRICULAR</p></div></a>
+     <a href="pages/notas.html"><div class="pumpkin-bubble"><p>ESCALAS<br>DE NOTAS</p></div></a>
+     <button onclick="sideScrollInfo()" class="slideInfoRight" id="slideInfoRight">&#8250;</button>
     </div>
 
     <div class="labels"><p>Herramientas:</p></div>
-    <div class="tools-div">
-    <a href="pages/integrales.html"><div class="pumpkin-bubble"><p>PROMEDIAR<br>INTEGRALES</p></div></a>
-    <a href="pages/promedios.html"><div class="pale-neon-yellow-bubble"><p style="color: #616D7E; font-color: #616D7E;">PROMEDIO EN<br>PORCENTAJES</p></div></a>
-    <a href="pages/pruebas.html"><div class="purple-iris-bubble"><p>PORCENTAJE<br>DE PRUEBAS</p></div></a>
-    <a href="pages/asistencia.html"><div class="small-grass-bubble"><p>PORCENTAJE<br>DE ASISTENCIA</p></div></a>
-    <a href="pages/examen.html"><div class="pink-plum-bubble"><p>SIMULACIÓN<br>DE EXAMEN</p></div></a>
-    <a href="pages/timebox.html"><div class="pumpkin-bubble"><p>ORGANIZADOR<br>DE ESTUDIO</p></div></a>
-    <a href="pages/countdown.html"><div class="candy-red-bubble"><p>CUENTA<br>REGRESIVA</p></div></a>
-    <a href="pages/justify.html"><div class="pale-blue-bubble"><p>JUSTIFICAR<br>INASISTENCIA</p></div></a>
-    <a href="pages/upladisticas.html"><div class="small-grass-bubble"><p>UPLANIANOS<br>STATS</p></div></a>
-    <a href="https://play.google.com/store/apps/details?id=juedmar.upla.nianos"><div class="tools-bubble-off" title="Solo disponible en Android App!"><p class="font-bubble-off"><small>📱</small> VOTACIÓN<br>UPLANIANA</p></div></a>
+    <div class="tools-div" id="toolsDiv" style="overflow-x: scroll; scroll-behavior: smooth;">
+     <button onclick="sideScrollTools()" class="slideToolsLeft" id="slideToolsLeft">&#8249;</button>
+     <a href="pages/integrales.html"><div class="pumpkin-bubble"><p>PROMEDIAR<br>INTEGRALES</p></div></a>
+     <a href="pages/promedios.html"><div class="pale-neon-yellow-bubble"><p style="color: #616D7E; font-color: #616D7E;">PROMEDIO EN<br>PORCENTAJES</p></div></a>
+     <a href="pages/pruebas.html"><div class="purple-iris-bubble"><p>PORCENTAJE<br>DE PRUEBAS</p></div></a>
+     <a href="pages/asistencia.html"><div class="small-grass-bubble"><p>PORCENTAJE<br>DE ASISTENCIA</p></div></a>
+     <a href="pages/examen.html"><div class="pink-plum-bubble"><p>SIMULACIÓN<br>DE EXAMEN</p></div></a>
+     <a href="pages/timebox.html"><div class="pumpkin-bubble"><p>ORGANIZADOR<br>DE ESTUDIO</p></div></a>
+     <a href="pages/countdown.html"><div class="candy-red-bubble"><p>CUENTA<br>REGRESIVA</p></div></a>
+     <a href="pages/justify.html"><div class="pale-blue-bubble"><p>JUSTIFICAR<br>INASISTENCIA</p></div></a>
+     <a href="pages/upladisticas.html"><div class="small-grass-bubble"><p>UPLANIANOS<br>STATS</p></div></a>
+     <a href="https://play.google.com/store/apps/details?id=juedmar.upla.nianos"><div class="tools-bubble-off" title="Solo disponible en Android App!"><p class="font-bubble-off"><small>📱</small> VOTACIÓN<br>UPLANIANA</p></div></a>
+    <button onclick="sideScrollTools()" class="slideToolsRight" id="slideToolsRight">&#8250;</button>
     </div>
     <br>
     <a href="pages/license.html"><div class="footer">🔎 Web App no oficial para Uplanianos! ✔️<br><small>(<u>Términos de Uso</u>)</small></div></a>
@@ -53,6 +57,27 @@
     <br>
     </div>
 </div>
+
+<script>
+function sideScrollInfo() {
+const buttonRight = document.getElementById('slideInfoRight');
+const buttonLeft = document.getElementById('slideInfoLeft');
+const contentArea = document.getElementById('infoDiv');
+    buttonRight.onclick = function() { contentArea.scrollLeft += 315};
+    buttonLeft.onclick = function() { contentArea.scrollLeft -= 315};
+}
+</script>
+
+
+<script>
+function sideScrollTools() {
+const buttonRight = document.getElementById('slideToolsRight');
+const buttonLeft = document.getElementById('slideToolsLeft');
+const contentArea = document.getElementById('toolsDiv');
+    buttonRight.onclick = function() { contentArea.scrollLeft += 315};
+    buttonLeft.onclick = function() { contentArea.scrollLeft -= 315};
+}
+</script>
 
 
 </body>

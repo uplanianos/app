@@ -239,6 +239,16 @@ a:visited	{ color: hotpink; }
   cursor: alias;
 }
 
+.slideInfoLeft {position: sticky; bottom: 14px; left: 0px;height: 56px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 3px; border: 1px solid white; border-radius: 12px;}
+.slideInfoRight {position: sticky; bottom: 14px; right: 0px; height: 56px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 3px; border: 1px solid white; border-radius: 12px;}
+.slideInfoLeft:active, .slideInfoRight:active {background-color: #FF0000CC; color: white;}
+.slideInfoLeft:hover, .slideInfoRight:hover {background-color: #FF000088;}
+
+.slideToolsLeft {position: sticky; bottom: 14px; left: 0px; height: 42px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 3px; border: 1px solid white; border-radius: 12px;}
+.slideToolsRight {position: sticky; bottom: 14px; right: 0px; height: 42px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 3px; border: 1px solid white; border-radius: 12px;}
+.slideToolsLeft:active, .slideToolsRight:active {background-color: #FF0000CC; color: white;}
+.slideToolsLeft:hover, .slideToolsRight:hover {background-color: #FF000088;}
+
 .footer { color: white; font-size: 12px; margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; text-align: center; }
 
 
