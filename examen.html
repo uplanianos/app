@@ -62,6 +62,50 @@
 </div>
 
 
+
+<script>
+function getLinkValue() {
+
+// DECLARING LINK ELEMENTS
+var promedio = (new URLSearchParams(window.location.search)).get("promedio");
+var examen = (new URLSearchParams(window.location.search)).get("examen");
+
+// DECLARING AVERAGE ELEMENTS
+var averageGrade = document.getElementById('averageGrade');
+var averageSlidebar = document.getElementById('averageSlidebar');
+
+// DECLARING EXAM ELEMENTS
+var examGrade = document.getElementById('examGrade');
+var examSlidebar = document.getElementById('examSlidebar');
+
+// CONVERTING LINK VALUE
+var linkAverage = parseFloat(promedio).toFixed(1);
+var linkExam = parseFloat(examen).toFixed(1);
+
+// CHECKING AVERAGE
+if (linkAverage >= 3.5 && linkAverage <= 3.9) { averageSlidebar.value = linkAverage; averageGrade.value = linkAverage; updateAverage() }
+else { averageGrade.value = "3.5"; averageSlidebar.value = "3.5"; updateAverage() };
+if (linkAverage >= 1.0 && linkAverage <= 3.4) { alert("El promedio debe ser mayor a 3.4!"); window.location.replace('examen.html') };
+if (linkAverage >= 4.0) { alert("El promedio debe ser manor a 4.0!"); window.location.replace('examen.html') };
+
+// CHECKING EXAM
+if (linkExam >= 4.0 && linkExam <= 7.0) { examSlidebar.value = linkExam; examGrade.value = linkExam; updateExam() }
+else { examGrade.value = "4.0"; examSlidebar.value = "4.0"; updateExam() };
+if (linkExam >= 1.0 && linkExam < 4.0) { alert("El examen debe ser mayor a 4.0!"); window.location.replace('examen.html') };
+if (linkExam > 7.0) { alert("El examen debe ser menor a 7.0!"); window.location.replace('examen.html')  };
+
+getResult();
+
+}
+
+// /================================================\
+// | Format: /examen.html?promedio=3.7&promedio=4.6 |
+// \================================================/
+
+</script>
+
+
+
 <script>
 function updateAverage() {
 	var averageNumber = document.getElementById('averageSlidebar').value;
@@ -101,6 +145,7 @@ function getResult() {
 </script>
 
 
+
 <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -138,6 +183,7 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 knowledgeProgress();
+getLinkValue();
 }
 </script>
 
