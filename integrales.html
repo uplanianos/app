@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="media/uplanianos-icon.png">
 	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Promediar Integrales</title>
+	<title>Uplanianos - Integrales</title>
 </head>
 
-<body onload="hideGrades();">
+<body>
 
 <div class="main">
     <div class="labels"><b><p>Uplanianos Web App:</b> Promediar Evaluaciones Integrales.</p></div>
@@ -33,52 +33,52 @@
 	    <div class="test-right"><input type="number" id="grade2" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test3">
+	  <div class="double-container" id="test3" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°3:</div>
 	    <div class="test-right"><input type="number" id="grade3" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test4">
+	  <div class="double-container" id="test4" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°4:</div>
 	    <div class="test-right"><input type="number" id="grade4" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test5">
+	  <div class="double-container" id="test5" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°5:</div>
 	    <div class="test-right"><input type="number" id="grade5" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test6">
+	  <div class="double-container" id="test6" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°6:</div>
 	    <div class="test-right"><input type="number" id="grade6" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test7">
+	  <div class="double-container" id="test7" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°7:</div>
 	    <div class="test-right"><input type="number" id="grade7" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test8">
+	  <div class="double-container" id="test8" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°8:</div>
 	    <div class="test-right"><input type="number" id="grade8" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test9">
+	  <div class="double-container" id="test9" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°9:</div>
 	    <div class="test-right"><input type="number" id="grade9" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test10">
+	  <div class="double-container" id="test10" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°10:</div>
 	    <div class="test-right"><input type="number" id="grade10" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test11">
+	  <div class="double-container" id="test11" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°11:</div>
 	    <div class="test-right"><input type="number" id="grade11" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
 
-	  <div class="double-container" id="test12">
+	  <div class="double-container" id="test12" style="display: none;">
 	    <div class="test-left" style="margin-top: 12px;">Evaluación N°12:</div>
 	    <div class="test-right"><input type="number" id="grade12" min="1" max="7" step="0.1" placeholder="0.0" onchange="getSum()"></div>
 	  </div>
@@ -119,213 +119,221 @@
 
 
 <script>
-function hideGrades() {
-         document.getElementById('test3').style.display = 'none'; document.getElementById('test4').style.display = 'none';
-         document.getElementById('test5').style.display = 'none'; document.getElementById('test6').style.display = 'none';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none';
-      }
+function getLinkValues() {
+
+// GETTING VALUE FROM LINK & UPDATING AMOUNT OF TESTS
+var rangeIntegrales = document.getElementById('rangeIntegrales');
+var valueIntegrales = document.getElementById('valueIntegrales');
+var testsAmount = (new URLSearchParams(window.location.search)).get("tests");
+if (testsAmount >= 2 && testsAmount <= 12 ) {rangeIntegrales.value = testsAmount; valueIntegrales.innerHTML = testsAmount; howManyTests(); }
+
+// GETTING GRADES FROM LINK
+var test1 = (new URLSearchParams(window.location.search)).get("gr1");
+var test2 = (new URLSearchParams(window.location.search)).get("gr2");
+var test3 = (new URLSearchParams(window.location.search)).get("gr3");
+var test4 = (new URLSearchParams(window.location.search)).get("gr4");
+var test5 = (new URLSearchParams(window.location.search)).get("gr5");
+var test6 = (new URLSearchParams(window.location.search)).get("gr6");
+var test7 = (new URLSearchParams(window.location.search)).get("gr7");
+var test8 = (new URLSearchParams(window.location.search)).get("gr8");
+var test9 = (new URLSearchParams(window.location.search)).get("gr9");
+var test10 = (new URLSearchParams(window.location.search)).get("gr10");
+var test11 = (new URLSearchParams(window.location.search)).get("gr11");
+var test12 = (new URLSearchParams(window.location.search)).get("gr12");
+
+// UPDATING GRADES FROM LINK
+if (test1 >= 1.0 && test1 <= 7.0) {grade1.value = test1; checkGradeRange()}
+if (test2 >= 1.0 && test2 <= 7.0) {grade2.value = test2; checkGradeRange()}
+if (test3 >= 1.0 && test3 <= 7.0) {grade3.value = test3; checkGradeRange()}
+if (test4 >= 1.0 && test4 <= 7.0) {grade4.value = test4; checkGradeRange()}
+if (test5 >= 1.0 && test5 <= 7.0) {grade5.value = test5; checkGradeRange()}
+if (test6 >= 1.0 && test6 <= 7.0) {grade6.value = test6; checkGradeRange()}
+if (test7 >= 1.0 && test7 <= 7.0) {grade7.value = test7; checkGradeRange()}
+if (test8 >= 1.0 && test8 <= 7.0) {grade8.value = test8; checkGradeRange()}
+if (test9 >= 1.0 && test9 <= 7.0) {grade9.value = test9; checkGradeRange()}
+if (test10 >= 1.0 && test10 <= 7.0) {grade10.value = test10; checkGradeRange()}
+if (test11 >= 1.0 && test11 <= 7.0) {grade11.value = test11; checkGradeRange()}
+if (test12 >= 1.0 && test12 <= 7.0) {grade12.value = test12; checkGradeRange()}
+
+}
+
+// /=================================================\
+// | Format: /integrales.html?tests=3&gr=5.0&gr2=6.0 |
+// \=================================================/
+
 </script>
 
 
 <script>
 function howManyTests() {
-	var howManyTests = document.getElementById("rangeIntegrales").value;
+var howManyTests = document.getElementById("rangeIntegrales").value;
 
-	if (howManyTests == "2") {
-         document.getElementById('test3').style.display = 'none'; document.getElementById('test4').style.display = 'none';
-         document.getElementById('test5').style.display = 'none'; document.getElementById('test6').style.display = 'none';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+var test3 = document.getElementById('test3')
+var test4 = document.getElementById('test4')
+var test5 = document.getElementById('test5')
+var test6 = document.getElementById('test6')
+var test7 = document.getElementById('test7')
+var test8 = document.getElementById('test8')
+var test9 = document.getElementById('test9')
+var test10 = document.getElementById('test10')
+var test11 = document.getElementById('test11')
+var test12 = document.getElementById('test12')
 
-	if (howManyTests == "3") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'none';
-         document.getElementById('test5').style.display = 'none'; document.getElementById('test6').style.display = 'none';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "2") {
+  test3.style.display = 'none'; test4.style.display = 'none'; test5.style.display = 'none'; test6.style.display = 'none'; test7.style.display = 'none';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "4") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'none'; document.getElementById('test6').style.display = 'none';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "3") {
+  test3.style.display = 'flex'; test4.style.display = 'none'; test5.style.display = 'none'; test6.style.display = 'none'; test7.style.display = 'none';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "5") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'none';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "4") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'none'; test6.style.display = 'none'; test7.style.display = 'none';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "6") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'none'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "5") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'none'; test7.style.display = 'none';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "7") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'none';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "6") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'none';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "8") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'flex';
-         document.getElementById('test9').style.display = 'none'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "7") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'none'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "9") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'flex';
-         document.getElementById('test9').style.display = 'flex'; document.getElementById('test10').style.display = 'none';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "8") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'flex'; test9.style.display = 'none'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "10") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'flex';
-         document.getElementById('test9').style.display = 'flex'; document.getElementById('test10').style.display = 'flex';
-         document.getElementById('test11').style.display = 'none'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "9") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'flex'; test9.style.display = 'flex'; test10.style.display = 'none'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "11") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'flex';
-         document.getElementById('test9').style.display = 'flex'; document.getElementById('test10').style.display = 'flex';
-         document.getElementById('test11').style.display = 'flex'; document.getElementById('test12').style.display = 'none'; }
+if (howManyTests == "10") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'flex'; test9.style.display = 'flex'; test10.style.display = 'flex'; test11.style.display = 'none'; test12.style.display = 'none'; }
 
-	if (howManyTests == "12") {
-         document.getElementById('test3').style.display = 'flex'; document.getElementById('test4').style.display = 'flex';
-         document.getElementById('test5').style.display = 'flex'; document.getElementById('test6').style.display = 'flex';
-         document.getElementById('test7').style.display = 'flex'; document.getElementById('test8').style.display = 'flex';
-         document.getElementById('test9').style.display = 'flex'; document.getElementById('test10').style.display = 'flex';
-         document.getElementById('test11').style.display = 'flex'; document.getElementById('test12').style.display = 'flex'; }
+if (howManyTests == "11") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'flex'; test9.style.display = 'flex'; test10.style.display = 'flex'; test11.style.display = 'flex'; test12.style.display = 'none'; }
+
+if (howManyTests == "12") {
+  test3.style.display = 'flex'; test4.style.display = 'flex'; test5.style.display = 'flex'; test6.style.display = 'flex'; test7.style.display = 'flex';
+  test8.style.display = 'flex'; test9.style.display = 'flex'; test10.style.display = 'flex'; test11.style.display = 'flex'; test12.style.display = 'flex'; }
+
 }
 </script>
 
 
 <script>
-	function getSum() {
-	var howManyTests = document.getElementById("rangeIntegrales").value;
-	var grade1 = document.getElementById("grade1").value;
-	var grade2 = document.getElementById("grade2").value;
-	var grade3 = document.getElementById("grade3").value;
-	var grade4 = document.getElementById("grade4").value;
-	var grade5 = document.getElementById("grade5").value;
-	var grade6 = document.getElementById("grade6").value;
-	var grade7 = document.getElementById("grade7").value;
-	var grade8 = document.getElementById("grade8").value;
-	var grade9 = document.getElementById("grade9").value;
-	var grade10 = document.getElementById("grade10").value;
-	var grade11 = document.getElementById("grade11").value;
-	var grade12 = document.getElementById("grade12").value;
+function getSum() {
+var howManyTests = document.getElementById("rangeIntegrales").value;
+var grade1 = document.getElementById("grade1").value;
+var grade2 = document.getElementById("grade2").value;
+var grade3 = document.getElementById("grade3").value;
+var grade4 = document.getElementById("grade4").value;
+var grade5 = document.getElementById("grade5").value;
+var grade6 = document.getElementById("grade6").value;
+var grade7 = document.getElementById("grade7").value;
+var grade8 = document.getElementById("grade8").value;
+var grade9 = document.getElementById("grade9").value;
+var grade10 = document.getElementById("grade10").value;
+var grade11 = document.getElementById("grade11").value;
+var grade12 = document.getElementById("grade12").value;
 
-	if (howManyTests == "2") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "2") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "3") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "3") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "4") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "4") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "5") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "5") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
+		Math.abs(grade5) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "6") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "6") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "7") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "7") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "8") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) ).toFixed(1); 
-									checkGradeRange(); }
+if (howManyTests == "8") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "9") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) +
-									Math.abs(grade9) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "9") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) + Math.abs(grade9) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "10") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) +
-									Math.abs(grade9) + Math.abs(grade10) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "10") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) + Math.abs(grade9) + Math.abs(grade10) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "11") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) +
-									Math.abs(grade9) + Math.abs(grade10) + Math.abs(grade11) ).toFixed(1); checkGradeRange(); }
+if (howManyTests == "11") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) + Math.abs(grade9) + Math.abs(grade10) + Math.abs(grade11) ).toFixed(1); checkGradeRange(); }
 
-	if (howManyTests == "12") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) +
-									Math.abs(grade5) + Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) +
-									Math.abs(grade9) + Math.abs(grade10) + Math.abs(grade11) + Math.abs(grade12) ).toFixed(1);
-									checkGradeRange(); }
+if (howManyTests == "12") { document.getElementById("addition").value = ( Math.abs(grade1) + Math.abs(grade2) + Math.abs(grade3) + Math.abs(grade4) + Math.abs(grade5) +
+		Math.abs(grade6) + Math.abs(grade7) + Math.abs(grade8) + Math.abs(grade9) + Math.abs(grade10) + Math.abs(grade11) + Math.abs(grade12) ).toFixed(1); checkGradeRange(); }
 }
 </script>
 
 
 <script>
 function checkGradeRange() {
-	var t1 = document.getElementById("grade1").value; var t2 = document.getElementById("grade2").value; var t3 = document.getElementById("grade3").value;
-	var t4 = document.getElementById("grade4").value; var t5 = document.getElementById("grade5").value; var t6 = document.getElementById("grade6").value;
-	var t7 = document.getElementById("grade7").value; var t8 = document.getElementById("grade8").value; var t9 = document.getElementById("grade9").value;
-	var t10 = document.getElementById("grade10").value; var t11 = document.getElementById("grade11").value; var t12 = document.getElementById("grade12").value;
+var t1 = document.getElementById("grade1").value; var t2 = document.getElementById("grade2").value; var t3 = document.getElementById("grade3").value;
+var t4 = document.getElementById("grade4").value; var t5 = document.getElementById("grade5").value; var t6 = document.getElementById("grade6").value;
+var t7 = document.getElementById("grade7").value; var t8 = document.getElementById("grade8").value; var t9 = document.getElementById("grade9").value;
+var t10 = document.getElementById("grade10").value; var t11 = document.getElementById("grade11").value; var t12 = document.getElementById("grade12").value;
 
-	if (t1 == 1 || t1 == 2 || t1 == 3 || t1 == 4 || t1 == 5 || t1 == 6 || t1 == 7) { document.getElementById("grade1").value = Math.abs(t1).toFixed(1); }
-	if (t2 == 1 || t2 == 2 || t2 == 3 || t2 == 4 || t2 == 5 || t2 == 6 || t2 == 7) { document.getElementById("grade2").value = Math.abs(t2).toFixed(1); }
-	if (t3 == 1 || t3 == 2 || t3 == 3 || t3 == 4 || t3 == 5 || t3 == 6 || t3 == 7) { document.getElementById("grade3").value = Math.abs(t3).toFixed(1); }
-	if (t4 == 1 || t4 == 2 || t4 == 3 || t4 == 4 || t4 == 5 || t4 == 6 || t4 == 7) { document.getElementById("grade4").value = Math.abs(t4).toFixed(1); }
-	if (t5 == 1 || t5 == 2 || t5 == 3 || t5 == 4 || t5 == 5 || t5 == 6 || t5 == 7) { document.getElementById("grade5").value = Math.abs(t5).toFixed(1); }
-	if (t6 == 1 || t6 == 2 || t6 == 3 || t6 == 4 || t6 == 5 || t6 == 6 || t6 == 7) { document.getElementById("grade6").value = Math.abs(t6).toFixed(1); }
-	if (t7 == 1 || t7 == 2 || t7 == 3 || t7 == 4 || t7 == 5 || t7 == 6 || t7 == 7) { document.getElementById("grade7").value = Math.abs(t7).toFixed(1); }
-	if (t8 == 1 || t8 == 2 || t8 == 3 || t8 == 4 || t8 == 5 || t8 == 6 || t8 == 7) { document.getElementById("grade8").value = Math.abs(t8).toFixed(1); }
-	if (t9 == 1 || t9 == 2 || t9 == 3 || t9 == 4 || t9 == 5 || t9 == 6 || t9 == 7) { document.getElementById("grade9").value = Math.abs(t9).toFixed(1); }
-	if (t10 == 1 || t10 == 2 || t10 == 3 || t10 == 4 || t10 == 5 || t10 == 6 || t10 == 7) { document.getElementById("grade10").value = Math.abs(t10).toFixed(1); }
-	if (t11 == 1 || t11 == 2 || t11 == 3 || t11 == 4 || t11 == 5 || t11 == 6 || t11 == 7) { document.getElementById("grade11").value = Math.abs(t11).toFixed(1); }
-	if (t12 == 1 || t12 == 2 || t12 == 3 || t12 == 4 || t12 == 5 || t12 == 6 || t12 == 7) { document.getElementById("grade12").value = Math.abs(t12).toFixed(1); }
+if (t1 == 1 || t1 == 2 || t1 == 3 || t1 == 4 || t1 == 5 || t1 == 6 || t1 == 7) { document.getElementById("grade1").value = Math.abs(t1).toFixed(1); }
+if (t2 == 1 || t2 == 2 || t2 == 3 || t2 == 4 || t2 == 5 || t2 == 6 || t2 == 7) { document.getElementById("grade2").value = Math.abs(t2).toFixed(1); }
+if (t3 == 1 || t3 == 2 || t3 == 3 || t3 == 4 || t3 == 5 || t3 == 6 || t3 == 7) { document.getElementById("grade3").value = Math.abs(t3).toFixed(1); }
+if (t4 == 1 || t4 == 2 || t4 == 3 || t4 == 4 || t4 == 5 || t4 == 6 || t4 == 7) { document.getElementById("grade4").value = Math.abs(t4).toFixed(1); }
+if (t5 == 1 || t5 == 2 || t5 == 3 || t5 == 4 || t5 == 5 || t5 == 6 || t5 == 7) { document.getElementById("grade5").value = Math.abs(t5).toFixed(1); }
+if (t6 == 1 || t6 == 2 || t6 == 3 || t6 == 4 || t6 == 5 || t6 == 6 || t6 == 7) { document.getElementById("grade6").value = Math.abs(t6).toFixed(1); }
+if (t7 == 1 || t7 == 2 || t7 == 3 || t7 == 4 || t7 == 5 || t7 == 6 || t7 == 7) { document.getElementById("grade7").value = Math.abs(t7).toFixed(1); }
+if (t8 == 1 || t8 == 2 || t8 == 3 || t8 == 4 || t8 == 5 || t8 == 6 || t8 == 7) { document.getElementById("grade8").value = Math.abs(t8).toFixed(1); }
+if (t9 == 1 || t9 == 2 || t9 == 3 || t9 == 4 || t9 == 5 || t9 == 6 || t9 == 7) { document.getElementById("grade9").value = Math.abs(t9).toFixed(1); }
+if (t10 == 1 || t10 == 2 || t10 == 3 || t10 == 4 || t10 == 5 || t10 == 6 || t10 == 7) { document.getElementById("grade10").value = Math.abs(t10).toFixed(1); }
+if (t11 == 1 || t11 == 2 || t11 == 3 || t11 == 4 || t11 == 5 || t11 == 6 || t11 == 7) { document.getElementById("grade11").value = Math.abs(t11).toFixed(1); }
+if (t12 == 1 || t12 == 2 || t12 == 3 || t12 == 4 || t12 == 5 || t12 == 6 || t12 == 7) { document.getElementById("grade12").value = Math.abs(t12).toFixed(1); }
 
-	if (t1 >= 1 && t1 < 4) { document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "red"; }
-	if (t2 >= 1 && t2 < 4) { document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "red"; }
-	if (t3 >= 1 && t3 < 4) { document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "red"; }
-	if (t4 >= 1 && t4 < 4) { document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "red"; }
-	if (t5 >= 1 && t5 < 4) { document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "red"; }
-	if (t6 >= 1 && t6 < 4) { document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "red"; }
-	if (t7 >= 1 && t7 < 4) { document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "red"; }
-	if (t8 >= 1 && t8 < 4) { document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "red"; }
-	if (t9 >= 1 && t9 < 4) { document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "red"; }
-	if (t10 >= 1 && t10 < 4) { document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "red"; }
-	if (t11 >= 1 && t11 < 4) { document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "red"; }
-	if (t12 >= 1 && t12 < 4) { document.getElementById("grade12").style.background = "white"; document.getElementById("grade12").style.color = "red"; }
+if (t1 >= 1 && t1 < 4) { document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "red"; }
+if (t2 >= 1 && t2 < 4) { document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "red"; }
+if (t3 >= 1 && t3 < 4) { document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "red"; }
+if (t4 >= 1 && t4 < 4) { document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "red"; }
+if (t5 >= 1 && t5 < 4) { document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "red"; }
+if (t6 >= 1 && t6 < 4) { document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "red"; }
+if (t7 >= 1 && t7 < 4) { document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "red"; }
+if (t8 >= 1 && t8 < 4) { document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "red"; }
+if (t9 >= 1 && t9 < 4) { document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "red"; }
+if (t10 >= 1 && t10 < 4) { document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "red"; }
+if (t11 >= 1 && t11 < 4) { document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "red"; }
+if (t12 >= 1 && t12 < 4) { document.getElementById("grade12").style.background = "white"; document.getElementById("grade12").style.color = "red"; }
 
-	if (t1 >= 4 && t1 <= 7) { document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "blue"; }
-	if (t2 >= 4 && t2 <= 7) { document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "blue"; }
-	if (t3 >= 4 && t3 <= 7) { document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "blue"; }
-	if (t4 >= 4 && t4 <= 7) { document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "blue"; }
-	if (t5 >= 4 && t5 <= 7) { document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "blue"; }
-	if (t6 >= 4 && t6 <= 7) { document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "blue"; }
-	if (t7 >= 4 && t7 <= 7) { document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "blue"; }
-	if (t8 >= 4 && t8 <= 7) { document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "blue"; }
-	if (t9 >= 4 && t9 <= 7) { document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "blue"; }
-	if (t10 >= 4 && t10 <= 7) { document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "blue"; }
-	if (t11 >= 4 && t11 <= 7) { document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "blue"; }
-	if (t12 >= 4 && t12 <= 7) { document.getElementById("grade12").style.background = "white"; document.getElementById("grade12").style.color = "blue"; }
+if (t1 >= 4 && t1 <= 7) { document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "blue"; }
+if (t2 >= 4 && t2 <= 7) { document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "blue"; }
+if (t3 >= 4 && t3 <= 7) { document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "blue"; }
+if (t4 >= 4 && t4 <= 7) { document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "blue"; }
+if (t5 >= 4 && t5 <= 7) { document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "blue"; }
+if (t6 >= 4 && t6 <= 7) { document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "blue"; }
+if (t7 >= 4 && t7 <= 7) { document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "blue"; }
+if (t8 >= 4 && t8 <= 7) { document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "blue"; }
+if (t9 >= 4 && t9 <= 7) { document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "blue"; }
+if (t10 >= 4 && t10 <= 7) { document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "blue"; }
+if (t11 >= 4 && t11 <= 7) { document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "blue"; }
+if (t12 >= 4 && t12 <= 7) { document.getElementById("grade12").style.background = "white"; document.getElementById("grade12").style.color = "blue"; }
 
-	 if (t1 >= 0 && t1 < 1 || t1 >= 7.1) { document.getElementById("grade1").style.background = "hotpink"; document.getElementById("grade1").style.color = "black"; }
-	 if (t2 > 0 && t2 < 1 || t2 >= 7.1) { document.getElementById("grade2").style.background = "hotpink"; document.getElementById("grade2").style.color = "black"; }
-	 if (t3 > 0 && t3 < 1 || t3 >= 7.1) { document.getElementById("grade3").style.background = "hotpink"; document.getElementById("grade3").style.color = "black"; }
-	 if (t4 > 0 && t4 < 1 || t4 >= 7.1) { document.getElementById("grade4").style.background = "hotpink"; document.getElementById("grade4").style.color = "black"; }
-	 if (t5 > 0 && t5 < 1 || t5 >= 7.1) { document.getElementById("grade5").style.background = "hotpink"; document.getElementById("grade5").style.color = "black"; }
-	 if (t6 > 0 && t6 < 1 || t6 >= 7.1) { document.getElementById("grade6").style.background = "hotpink"; document.getElementById("grade6").style.color = "black"; }
-	 if (t7 > 0 && t7 < 1 || t7 >= 7.1) { document.getElementById("grade7").style.background = "hotpink"; document.getElementById("grade7").style.color = "black"; }
-	 if (t8 > 0 && t8 < 1 || t8 >= 7.1) { document.getElementById("grade8").style.background = "hotpink"; document.getElementById("grade8").style.color = "black"; }
-	 if (t9 > 0 && t9 < 1 || t9 >= 7.1) { document.getElementById("grade9").style.background = "hotpink"; document.getElementById("grade9").style.color = "black"; }
-	 if (t10 > 0 && t10 < 1 || t10 >= 7.1) { document.getElementById("grade10").style.background = "hotpink"; document.getElementById("grade10").style.color = "black"; }
-	 if (t11 > 0 && t11 < 1 || t11 >= 7.1) { document.getElementById("grade11").style.background = "hotpink"; document.getElementById("grade11").style.color = "black"; }
-	 if (t12 > 0 && t12 < 1 || t12 >= 7.1) { document.getElementById("grade12").style.background = "hotpink"; document.getElementById("grade12").style.color = "black"; }
+if (t1 >= 0 && t1 < 1 || t1 >= 7.1) { document.getElementById("grade1").style.background = "hotpink"; document.getElementById("grade1").style.color = "black"; }
+if (t2 > 0 && t2 < 1 || t2 >= 7.1) { document.getElementById("grade2").style.background = "hotpink"; document.getElementById("grade2").style.color = "black"; }
+if (t3 > 0 && t3 < 1 || t3 >= 7.1) { document.getElementById("grade3").style.background = "hotpink"; document.getElementById("grade3").style.color = "black"; }
+if (t4 > 0 && t4 < 1 || t4 >= 7.1) { document.getElementById("grade4").style.background = "hotpink"; document.getElementById("grade4").style.color = "black"; }
+if (t5 > 0 && t5 < 1 || t5 >= 7.1) { document.getElementById("grade5").style.background = "hotpink"; document.getElementById("grade5").style.color = "black"; }
+if (t6 > 0 && t6 < 1 || t6 >= 7.1) { document.getElementById("grade6").style.background = "hotpink"; document.getElementById("grade6").style.color = "black"; }
+if (t7 > 0 && t7 < 1 || t7 >= 7.1) { document.getElementById("grade7").style.background = "hotpink"; document.getElementById("grade7").style.color = "black"; }
+if (t8 > 0 && t8 < 1 || t8 >= 7.1) { document.getElementById("grade8").style.background = "hotpink"; document.getElementById("grade8").style.color = "black"; }
+if (t9 > 0 && t9 < 1 || t9 >= 7.1) { document.getElementById("grade9").style.background = "hotpink"; document.getElementById("grade9").style.color = "black"; }
+if (t10 > 0 && t10 < 1 || t10 >= 7.1) { document.getElementById("grade10").style.background = "hotpink"; document.getElementById("grade10").style.color = "black"; }
+if (t11 > 0 && t11 < 1 || t11 >= 7.1) { document.getElementById("grade11").style.background = "hotpink"; document.getElementById("grade11").style.color = "black"; }
+if (t12 > 0 && t12 < 1 || t12 >= 7.1) { document.getElementById("grade12").style.background = "hotpink"; document.getElementById("grade12").style.color = "black"; }
 
 }
 </script>
@@ -333,59 +341,63 @@ function checkGradeRange() {
 
 
 <script>
-	function getResults() {
-	var howManyTests = document.getElementById("rangeIntegrales").value;
-	var addition = document.getElementById("addition").value;
+function getResults() {
 
-	checkGradeRange();
+getSum();
 
-	var calculation = document.getElementById("calculation").value = (parseFloat(addition) / howManyTests).toFixed(2);
-	var average = document.getElementById("average").value = ( Math.round(calculation * 10) /10 ).toFixed(1);
+var howManyTests = document.getElementById("rangeIntegrales").value;
+var addition = document.getElementById("addition").value;
 
-	if (average >= 4 && average <= 7) { document.getElementById("average").style.color = "#306EFF";
-					document.getElementById("average").style.background = "#BDEDFF";
-					document.getElementById("average").style.borderColor = "cornflowerblue";
-					autonomyProgress(); }
+checkGradeRange();
 
-	if (average < 4) { document.getElementById("average").style.color = "red";
-					document.getElementById("average").style.background = "pink";
-					document.getElementById("average").style.borderColor = "red";
-					autonomyProgress(); }
+var calculation = document.getElementById("calculation").value = (parseFloat(addition) / howManyTests).toFixed(2);
+var average = document.getElementById("average").value = ( Math.round(calculation * 10) /10 ).toFixed(1);
 
-	if (average >= 10 && average <= 70) { document.getElementById("average").value = Math.abs(average * 0.1).toFixed(1);
-					document.getElementById("average").style.color = "#306EFF";
-					document.getElementById("average").style.background = "#BDEDFF";
-					document.getElementById("average").style.borderColor = "cornflowerblue";
-					autonomyProgress(); }
+if (average >= 4 && average <= 7) { document.getElementById("average").style.color = "#306EFF";
+  document.getElementById("average").style.background = "#BDEDFF";
+  document.getElementById("average").style.borderColor = "cornflowerblue";
+  autonomyProgress(); }
 
-	if (average > 70) {		document.getElementById("average").style.color = "red";
-					document.getElementById("average").style.background = "hotpink";
-					document.getElementById("average").style.borderColor = "red";
-					document.getElementById("average").value = "0.0";
-					alert("ERROR:\nIngresar notas entre 1.0 y 7.0!\n(Use valores decimales)."); }
+if (average < 4) { document.getElementById("average").style.color = "red";
+  document.getElementById("average").style.background = "pink";
+  document.getElementById("average").style.borderColor = "red";
+  autonomyProgress(); }
+
+if (average >= 10 && average <= 70) { document.getElementById("average").value = Math.abs(average * 0.1).toFixed(1);
+  document.getElementById("average").style.color = "#306EFF";
+  document.getElementById("average").style.background = "#BDEDFF";
+  document.getElementById("average").style.borderColor = "cornflowerblue";
+  autonomyProgress(); }
+
+if (average > 70) {document.getElementById("average").style.color = "red";
+  document.getElementById("average").style.background = "hotpink";
+  document.getElementById("average").style.borderColor = "red";
+  document.getElementById("average").value = "0.0";
+  alert("ERROR:\nIngresar notas entre 1.0 y 7.0!\n(Use valores decimales)."); }
 }
 </script>
 
+
 <script>
-	function clearGrades() {
-	document.getElementById("grade1").value = ""; document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "black";
-	document.getElementById("grade2").value = ""; document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "black";
-	document.getElementById("grade3").value = ""; document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "black";
-	document.getElementById("grade4").value = ""; document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "black";
-	document.getElementById("grade5").value = ""; document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "black";
-	document.getElementById("grade6").value = ""; document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "black";
-	document.getElementById("grade7").value = ""; document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "black";
-	document.getElementById("grade8").value = ""; document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "black";
-	document.getElementById("grade9").value = ""; document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "black";
-	document.getElementById("grade10").value = ""; document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "black";
-	document.getElementById("grade11").value = ""; document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "black";
-	document.getElementById("grade12").value = ""; document.getElementById("grade11").style.background = "white"; document.getElementById("grade12").style.color = "black";
-	document.getElementById("addition").value = "0";
-	document.getElementById("calculation").value = "0.00";
-	document.getElementById("average").value = "0.0";
-	document.getElementById("average").style.color = "black";
-	document.getElementById("average").style.background = "darkgray";
-	document.getElementById("average").style.borderColor = "cornflowerblue";
+function clearGrades() {
+document.getElementById("grade1").value = ""; document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "black";
+document.getElementById("grade2").value = ""; document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "black";
+document.getElementById("grade3").value = ""; document.getElementById("grade3").style.background = "white"; document.getElementById("grade3").style.color = "black";
+document.getElementById("grade4").value = ""; document.getElementById("grade4").style.background = "white"; document.getElementById("grade4").style.color = "black";
+document.getElementById("grade5").value = ""; document.getElementById("grade5").style.background = "white"; document.getElementById("grade5").style.color = "black";
+document.getElementById("grade6").value = ""; document.getElementById("grade6").style.background = "white"; document.getElementById("grade6").style.color = "black";
+document.getElementById("grade7").value = ""; document.getElementById("grade7").style.background = "white"; document.getElementById("grade7").style.color = "black";
+document.getElementById("grade8").value = ""; document.getElementById("grade8").style.background = "white"; document.getElementById("grade8").style.color = "black";
+document.getElementById("grade9").value = ""; document.getElementById("grade9").style.background = "white"; document.getElementById("grade9").style.color = "black";
+document.getElementById("grade10").value = ""; document.getElementById("grade10").style.background = "white"; document.getElementById("grade10").style.color = "black";
+document.getElementById("grade11").value = ""; document.getElementById("grade11").style.background = "white"; document.getElementById("grade11").style.color = "black";
+document.getElementById("grade12").value = ""; document.getElementById("grade11").style.background = "white"; document.getElementById("grade12").style.color = "black";
+document.getElementById("addition").value = "0";
+document.getElementById("calculation").value = "0.00";
+document.getElementById("average").value = "0.0";
+document.getElementById("average").style.color = "black";
+document.getElementById("average").style.background = "darkgray";
+document.getElementById("average").style.borderColor = "cornflowerblue";
 }
 </script>
 
@@ -427,7 +439,7 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 // CALLS TO ANOTHER FUNCTION!!
-hideGrades();
+getLinkValues();
 }
 </script>
 
