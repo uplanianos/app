@@ -17,7 +17,7 @@
 
 	<div class="grid-container-pages" style="grid-auto-flow: flow;">
 	  <div class="grid-item-slider"><br><text class="class-type" id="class-type"><b>Curso Teórico</b> (</text> <text class="class-percent" id="class-percent">60%</text><text class="class-type"> ).</text><br><br>
-	  <input type="range" class="slidebar" min="1" max="3" value="1" id="classType" oninput="classType(); getResult()"><br><br></div>
+	  <input type="range" class="slidebar" min="1" max="3" value="1" id="classType" oninput="classCategory(); getResult()"><br><br></div>
 
 	  <div class="grid-item-tools"><br><b>Asistencia:</b>
 	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
@@ -53,90 +53,142 @@
 </div>
 
 
+
+
 <script>
-function classType() {
-	var classType = document.getElementById("classType").value;
+function getLinkValues() {
 
-	if (classType == "1") {
-         document.getElementById('class-type').innerText= "Curso Teórico (";
-         document.getElementById('class-percent').innerText= "60%"; }
+// GETTING VALUES FROM LINK
+var category = (new URLSearchParams(window.location.search)).get("tipo");
+var classTotal = (new URLSearchParams(window.location.search)).get("clases");
+var turnUp = (new URLSearchParams(window.location.search)).get("asiste");
 
-	if (classType == "2") {
-         document.getElementById('class-type').innerText= "Curso Teórico-Práctico (";
-         document.getElementById('class-percent').innerText= "75%"; }
+// CHECKING CLASS TYPE / CATEGORY
+var classType = document.getElementById('classType');
+if (category == "" || category == null || category == "0") {classType.value = 2; classCategory()}
+if (category == 1) {classType.value = category; classCategory(); }
+if (category == 2) {classType.value = category; classCategory(); }
+if (category == 3) {classType.value = category; classCategory(); }
 
-	if (classType == "3") {
-         document.getElementById('class-type').innerText= "Taller / Laboratorio (";
-         document.getElementById('class-percent').innerText= "+85%"; }
+// DECLARING DOCUMENT ELEMENTS
+var classes = document.getElementById('classes');
+var classSlider = document.getElementById('classSlider');
+var attendance = document.getElementById('attendance');
+var attendanceSlider = document.getElementById('attendanceSlider');
+
+// UPDATING CLASS AMOUNT
+if (classTotal >= 1 && classTotal <= 80) {classes.value = classTotal; classSlider.value = classTotal; classUpdate(); getResult()}
+else {classes.value = 20; classSlider.value = 20};
+
+// UPDATING STUDENT ATTENDANCE
+if (turnUp !== null) {attendance.value = classTotal; attendanceSlider.value = turnUp; attendanceUpdate(); getResult()}
+else {attendance.value = 0; attendanceSlider.value = 0};
+
+// UPDATING FOR ZERO VALUE
+if (classTotal == 0) {classes.value = 20; classSlider.value = 20}
+if (turnUp == 0) {attendance.value = 0; attendanceSlider.value = 0}
+
+}
+
+// /====================================================\
+// | Format: /asistencia.html?tipo=2&clases=12&asiste=0 |
+// \====================================================/
+</script>
+
+
+
+<script>
+function classCategory() {
+  var classType = document.getElementById("classType").value;
+
+  if (classType == "1") {
+    document.getElementById('class-type').innerText= "Curso Teórico (";
+    document.getElementById('class-percent').innerText= "60%"; }
+
+  if (classType == "2") {
+    document.getElementById('class-type').innerText= "Curso Teórico-Práctico (";
+    document.getElementById('class-percent').innerText= "75%"; }
+
+  if (classType == "3") {
+    document.getElementById('class-type').innerText= "Taller / Laboratorio (";
+    document.getElementById('class-percent').innerText= "+85%"; }
 
 }
 </script>
+
 
 
 <script>
 function classUpdate() {
-	var howManyClasses = document.getElementById("classSlider").value;
-	var theirAttendance = document.getElementById("attendanceSlider").value;
-	document.getElementById('classes').value = howManyClasses;
+  var howManyClasses = document.getElementById("classSlider").value;
+  var theirAttendance = document.getElementById("attendanceSlider").value;
+  document.getElementById('classes').value = howManyClasses;
+  document.getElementById('attendanceSlider').setAttribute('max', howManyClasses);
 
-	document.getElementById('attendance').setAttribute('max', howManyClasses);
-	document.getElementById('attendanceSlider').setAttribute('max', howManyClasses);
-
-	if (howManyClasses < theirAttendance ) { document.getElementById('attendance').value = howManyClasses; }
-}
-
-function attendanceUpdate() {
-	var whatAttendance = document.getElementById("attendanceSlider").value;
-	document.getElementById('attendance').value = whatAttendance;
+  if (howManyClasses < theirAttendance ) { document.getElementById('attendance').value = howManyClasses}
 }
 </script>
+
+
+
+<script>
+function attendanceUpdate() {
+  var whatAttendance = document.getElementById("attendanceSlider").value;
+  document.getElementById('attendance').value = whatAttendance;
+}
+</script>
+
+
 
 <script>
 function getResult() {
-	var howManyClasses = document.getElementById("classes").value;
-	var whatAttendance = document.getElementById("attendance").value;
-	var finalPercent = ((whatAttendance * 100) / howManyClasses).toFixed(0);
-	document.getElementById('absences').innerText = (howManyClasses - whatAttendance);
-	document.getElementById('percentage').innerText = finalPercent;
+  var howManyClasses = document.getElementById("classes").value;
+  var whatAttendance = document.getElementById("attendanceSlider").value;
+  var finalPercent = ((whatAttendance * 100) / howManyClasses).toFixed(0);
+  document.getElementById('absences').innerText = (howManyClasses - whatAttendance);
+  document.getElementById('percentage').innerText = finalPercent;
 
-	var percentage = document.getElementById("percentage").value;
-	var classType = document.getElementById("classType").value;
+  var percentage = document.getElementById("percentage").value;
+  var classType = document.getElementById("classType").value;
 
-	// UPDATE STATS:
-	knowledgeProgress();
+  var resultDiv = document.getElementById('resultDiv')
 
-	if (classType == "1") {
-	  if (finalPercent < 60) { document.getElementById('resultDiv').style.background = "purple"; }
-	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "maroon"; }
-	  if (finalPercent <= 20) { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
-	  if (finalPercent >= 60) { document.getElementById('resultDiv').style.background = "royalblue"; }
-	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
-	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
-	}
+  if (classType == "1") {
+    if (finalPercent < 70) { resultDiv.style.background = "purple" }
+    if (finalPercent <= 60) { resultDiv.style.background = "maroon" }
+    if (finalPercent <= 40) { resultDiv.style.background = "darkred" }
+    if (finalPercent == 0) { resultDiv.style.background = "gray" }
+    if (finalPercent >= 80) { resultDiv.style.background = "royalblue" }
+    if (finalPercent >= 90) { resultDiv.style.background = "cornflowerblue" }
+    if (finalPercent == 100) { resultDiv.style.background = "green" }
+  }
 
-	if (classType == "2") {
-	  if (finalPercent < 75) { document.getElementById('resultDiv').style.background = "purple"; }
-	  if (finalPercent <= 50) { document.getElementById('resultDiv').style.background = "maroon"; }
-	  if (finalPercent <= 30) { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent == 0) { document.getElementById('resultDiv').style.background = "red"; }
-	  if (finalPercent >= 75) { document.getElementById('resultDiv').style.background = "royalblue"; }
-	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
-	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
-	}
+  if (classType == "2") {
+    if (finalPercent < 75) { resultDiv.style.background = "purple" }
+    if (finalPercent <= 60) { resultDiv.style.background = "maroon" }
+    if (finalPercent <= 30) { resultDiv.style.background = "darkred" }
+    if (finalPercent == 0) { resultDiv.style.background = "gray" }
+    if (finalPercent >= 75) { resultDiv.style.background = "royalblue" }
+    if (finalPercent >= 85) { resultDiv.style.background = "cornflowerblue" }
+    if (finalPercent == 100) { resultDiv.style.background = "green" }
+  }
 
-	if (classType == "3") {
-	  if (finalPercent < 85) { document.getElementById('resultDiv').style.background = "purple"; }
-	  if (finalPercent <= 60) { document.getElementById('resultDiv').style.background = "maroon"; }
-	  if (finalPercent <= 40) { document.getElementById('resultDiv').style.background = "darkred"; }
-	  if (finalPercent <= 10) { document.getElementById('resultDiv').style.background = "red"; }
-	  if (finalPercent >= 85) { document.getElementById('resultDiv').style.background = "royalblue"; }
-	  if (finalPercent >= 95) { document.getElementById('resultDiv').style.background = "cornflowerblue"; }
-	  if (finalPercent == 100) { document.getElementById('resultDiv').style.background = "green"; }
-	}
+  if (classType == "3") {
+    if (finalPercent < 85) { resultDiv.style.background = "purple" }
+    if (finalPercent <= 60) { resultDiv.style.background = "maroon" }
+    if (finalPercent <= 40) { resultDiv.style.background = "darkred" }
+    if (finalPercent <= 10) { resultDiv.style.background = "red" }
+    if (finalPercent == 0) { resultDiv.style.background = "gray" }
+    if (finalPercent >= 85) { resultDiv.style.background = "royalblue" }
+    if (finalPercent >= 95) { resultDiv.style.background = "cornflowerblue" }
+    if (finalPercent == 100) { resultDiv.style.background = "green" }
+  }
 
+// UPDATE KNOWLEDGE PROGRESS:
+knowledgeProgress();
 }
 </script>
+
 
 
 <script>
@@ -175,6 +227,7 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 knowledgeProgress();
+getLinkValues();
 }
 </script>
 
