@@ -9,12 +9,14 @@
 	<title>Uplanianos - Escala de Notas</title>
 </head>
 
-<body>
+<body onload="getLinkValues()">
+
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="main">
-    <div class="labels"><b><p>Uplanianos Web App:</b> Escala de Notas (70%)!</p></div>
-    <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
+    <div id="seventy" style="display: inline;">
+    <div class="labels"><b><p>Uplanianos App:</b> Escala de Notas: <a href="notas.html?escala=60" style="text-decoration: none;">60%</a> | <a href="notas.html?escala=70" style="text-decoration: none;"><big><b>70%</big></b></a></p></div>
 	<div class="grid-container-seventy" style="grid-auto-flow: column;">
 	  <div class="grid-item-blue">%</div>
 	  <div class="grid-item">1</div>
@@ -227,8 +229,10 @@
 	  <div class="grid-item-green"><font color="blue">6.9</font></div>
 	  <div class="grid-item-green"><font color="blue">7.0</font></div>
 	</div>
+    </div>
 
-    <div class="labels"><b><p>Uplanianos Web App:</b> Escala de Notas (60%)!</p></div>
+    <div id="sixty" style="display: none;">
+    <div class="labels"><b><p>Uplanianos App:</b> Escala de Notas: <a href="notas.html?escala=60" style="text-decoration: none;"><big><b>60%</b></big></a> | <a href="notas.html?escala=70" style="text-decoration: none;">70%</a></p></div>
 	<div class="grid-container-sixty" style="grid-auto-flow: column;">
 	  <div class="grid-item-blue">%</div>
 	  <div class="grid-item">1</div>
@@ -441,11 +445,31 @@
 	  <div class="grid-item-green"><font color="blue">6.9</font></div>
 	  <div class="grid-item-green"><font color="blue">7.0</font></div>
 	</div>
+    </div>
     <br>
     <br>
     </div>
 <br>
 </div>
+
+
+<script>
+function getLinkValues() {
+
+// GETTING VALUE FROM LINK & UPDATING AMOUNT OF SCALES
+var sixty= document.getElementById('sixty');
+var seventy = document.getElementById('seventy');
+var linkScale = (new URLSearchParams(window.location.search)).get("escala");
+if (linkScale>= 60) {sixty.style.display = "block"; seventy.style.display = "none"}
+if (linkScale>= 70) {sixty.style.display = "none"; seventy.style.display = "block"}
+}
+
+// /============================================\
+// | Format: /integrales.html?x=3&g1=5.0&g2=6.0 |
+// \============================================/
+
+</script>
+
 
 
 <script>

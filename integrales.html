@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="media/uplanianos-icon.png">
 	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Integrales</title>
+	<title>Uplanianos - Promedio Integral</title>
 </head>
 
 <body>
 
 <div class="main">
-    <div class="labels"><b><p>Uplanianos Web App:</b> Promediar Evaluaciones Integrales.</p></div>
+    <div class="labels"><b><p>Uplanianos Web App:</b> Promediar Integrales.</p></div>
     <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 	<div class="grid-container-pages" style="grid-auto-flow: flow;">
@@ -124,22 +124,22 @@ function getLinkValues() {
 // GETTING VALUE FROM LINK & UPDATING AMOUNT OF TESTS
 var rangeIntegrales = document.getElementById('rangeIntegrales');
 var valueIntegrales = document.getElementById('valueIntegrales');
-var testsAmount = (new URLSearchParams(window.location.search)).get("tests");
-if (testsAmount >= 2 && testsAmount <= 12 ) {rangeIntegrales.value = testsAmount; valueIntegrales.innerHTML = testsAmount; howManyTests(); }
+var testsAmount = (new URLSearchParams(window.location.search)).get("x");
+if (testsAmount >= 2 && testsAmount <= 12 ) {rangeIntegrales.value = testsAmount; valueIntegrales.innerHTML = testsAmount; howManyTests()}
 
 // GETTING GRADES FROM LINK
-var test1 = (new URLSearchParams(window.location.search)).get("gr1");
-var test2 = (new URLSearchParams(window.location.search)).get("gr2");
-var test3 = (new URLSearchParams(window.location.search)).get("gr3");
-var test4 = (new URLSearchParams(window.location.search)).get("gr4");
-var test5 = (new URLSearchParams(window.location.search)).get("gr5");
-var test6 = (new URLSearchParams(window.location.search)).get("gr6");
-var test7 = (new URLSearchParams(window.location.search)).get("gr7");
-var test8 = (new URLSearchParams(window.location.search)).get("gr8");
-var test9 = (new URLSearchParams(window.location.search)).get("gr9");
-var test10 = (new URLSearchParams(window.location.search)).get("gr10");
-var test11 = (new URLSearchParams(window.location.search)).get("gr11");
-var test12 = (new URLSearchParams(window.location.search)).get("gr12");
+var test1 = (new URLSearchParams(window.location.search)).get("g1");
+var test2 = (new URLSearchParams(window.location.search)).get("g2");
+var test3 = (new URLSearchParams(window.location.search)).get("g3");
+var test4 = (new URLSearchParams(window.location.search)).get("g4");
+var test5 = (new URLSearchParams(window.location.search)).get("g5");
+var test6 = (new URLSearchParams(window.location.search)).get("g6");
+var test7 = (new URLSearchParams(window.location.search)).get("g7");
+var test8 = (new URLSearchParams(window.location.search)).get("g8");
+var test9 = (new URLSearchParams(window.location.search)).get("g9");
+var test10 = (new URLSearchParams(window.location.search)).get("g10");
+var test11 = (new URLSearchParams(window.location.search)).get("g11");
+var test12 = (new URLSearchParams(window.location.search)).get("g12");
 
 // UPDATING GRADES FROM LINK
 if (test1 >= 1.0 && test1 <= 7.0) {grade1.value = test1; checkGradeRange()}
@@ -154,12 +154,11 @@ if (test9 >= 1.0 && test9 <= 7.0) {grade9.value = test9; checkGradeRange()}
 if (test10 >= 1.0 && test10 <= 7.0) {grade10.value = test10; checkGradeRange()}
 if (test11 >= 1.0 && test11 <= 7.0) {grade11.value = test11; checkGradeRange()}
 if (test12 >= 1.0 && test12 <= 7.0) {grade12.value = test12; checkGradeRange()}
-
 }
 
-// /=================================================\
-// | Format: /integrales.html?tests=3&gr=5.0&gr2=6.0 |
-// \=================================================/
+// /============================================\
+// | Format: /integrales.html?x=3&g1=5.0&g2=6.0 |
+// \============================================/
 
 </script>
 
@@ -398,6 +397,7 @@ document.getElementById("average").value = "0.0";
 document.getElementById("average").style.color = "black";
 document.getElementById("average").style.background = "darkgray";
 document.getElementById("average").style.borderColor = "cornflowerblue";
+window.location.replace('integrales.html')
 }
 </script>
 

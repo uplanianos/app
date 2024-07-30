@@ -39,7 +39,7 @@
     <div class="labels"><p>Herramientas:</p></div>
     <div class="tools-div" id="toolsDiv" style="overflow-x: scroll; scroll-behavior: smooth;">
      <button onclick="sideScrollTools()" onMouseOver="sideScrollTools()" class="slideToolsLeft" id="slideToolsLeft">&#8249;</button>
-     <a href="integrales.html?tests=2&gr1=0.0&gr2=0.0"><div class="pumpkin-bubble"><p>PROMEDIAR<br>INTEGRALES</p></div></a>
+     <a href="integrales.html?x=2&g1=0.0&g2=0.0"><div class="pumpkin-bubble"><p>PROMEDIAR<br>INTEGRALES</p></div></a>
      <a href="promedios.html"><div class="pale-neon-yellow-bubble"><p style="color: #616D7E; font-color: #616D7E;">PROMEDIO EN<br>PORCENTAJES</p></div></a>
      <a href="pruebas.html?puntos=0&total=100"><div class="purple-iris-bubble"><p>PORCENTAJE<br>DE PRUEBAS</p></div></a>
      <a href="asistencia.html"><div class="small-grass-bubble"><p>PORCENTAJE<br>DE ASISTENCIA</p></div></a>
@@ -63,8 +63,8 @@ function sideScrollInfo() {
 const slideInfoRight = document.getElementById('slideInfoRight');
 const slideInfoLeft = document.getElementById('slideInfoLeft');
 const infoArea = document.getElementById('infoDiv');
-    slideInfoRight.onclick = function() { infoArea.scrollLeft += 400};
-    slideInfoLeft.onclick = function() { infoArea.scrollLeft -= 400};
+    slideInfoRight.onclick = function() { infoArea.scrollLeft += 500};
+    slideInfoLeft.onclick = function() { infoArea.scrollLeft -= 500};
 }
 </script>
 
@@ -74,8 +74,8 @@ function sideScrollTools() {
 const slideToolsRight = document.getElementById('slideToolsRight');
 const slideToolsLeft = document.getElementById('slideToolsLeft');
 const toolsArea = document.getElementById('toolsDiv');
-    slideToolsRight.onclick = function() { toolsArea.scrollLeft += 400};
-    slideToolsLeft.onclick = function() { toolsArea.scrollLeft -= 400};
+    slideToolsRight.onclick = function() { toolsArea.scrollLeft += 500};
+    slideToolsLeft.onclick = function() { toolsArea.scrollLeft -= 500};
 }
 </script>
 
