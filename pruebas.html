@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="media/uplanianos-icon.png">
 	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Porcentaje de Pruebas</title>
+	<title>Uplanianos - Nota de Pruebas</title>
 </head>
 
 <body>
@@ -58,36 +58,81 @@ function setScale() {
 	var whatScale = document.getElementById("scaleSlider").value;
 	if (whatScale == "1") { document.getElementById('testPercent').innerText= "60%"; }
 	if (whatScale== "2") { document.getElementById('testPercent').innerText= "70%"; }
-	doTheThing();
+	getResult();
 }
 </script>
+
+
+
+<script>
+function getLinkValues() {
+
+// GETTING VALUES FROM LINK & UPDATING GRADES
+var studentPoints = (new URLSearchParams(window.location.search)).get("puntos");
+var totalPoints = (new URLSearchParams(window.location.search)).get("total");
+
+// DECLARING DOCUMENT ELEMENTS
+var performancePoints = document.getElementById('performancePoints');
+var performanceSlider = document.getElementById('performanceSlider');
+var testPoints = document.getElementById('testPoints');
+var testSlider = document.getElementById('testPointsSlider');
+
+// CHECKING IF VALUES ARE LOGICAL
+if (totalPoints >= performancePoints.value) {
+    // UPDATING TEST POINTS
+    if (totalPoints >= 1 && totalPoints <= 250) {testPoints.value = totalPoints; testPointsSlider.value = totalPoints}
+    else {testPoints.value = 100; testPointsSlider.value = 100}
+    // UPDATING STUDENT POINTS
+    if (studentPoints >= 1 && studentPoints <= 250) {
+      performancePoints.value = studentPoints;
+      performanceSlider.value = studentPoints;
+      testPointsUpdate();
+      performanceUpdate();}
+    else {performancePoints.value = "0"; performanceSlider.value = "0"}
+    // UPDATING FOR ZERO VALUE
+    if (studentPoints == 0) {performancePoints.value = "0"; performanceSlider.value = "0"}
+  }
+}
+
+// /==========================================\
+// | Format: /pruebas.html?puntos=0&total=100 |
+// \==========================================/
+</script>
+
+
 
 <script>
 function testPointsUpdate() {
-	var howManyPoints = document.getElementById("testPointsSlider").value;
-	  document.getElementById('testPoints').value = howManyPoints;
-	  document.getElementById('performancePoints').setAttribute('max', howManyPoints);
-	  document.getElementById('performanceSlider').setAttribute('max', howManyPoints);
+// SET MAXIMUM STUDENT POINTS FROM TOTAL TEST POINTS
+var howManyPoints = document.getElementById("testPointsSlider").value;
+document.getElementById('testPoints').value = howManyPoints;
+document.getElementById('performanceSlider').setAttribute('max', howManyPoints);
+document.getElementById('performancePoints').setAttribute('max', howManyPoints);
 
-	var pointsObtained = document.getElementById("performanceSlider").value;
-	if ( howManyPoints < pointsObtained ) {
-	  document.getElementById('performancePoints').setAttribute('max', howManyPoints);
-	  document.getElementById('performanceSlider').setAttribute('max', howManyPoints); }
-	if ( howManyPoints > pointsObtained ) { doTheThing(); }
+var pointsObtained = document.getElementById("performanceSlider").value;
+  if ( howManyPoints <= pointsObtained ) {
+    document.getElementById('performanceSlider').setAttribute('max', howManyPoints);
+    document.getElementById('performancePoints').setAttribute('max', howManyPoints);
+    document.getElementById('performancePoints').value = pointsObtained;
+    }
+  if ( howManyPoints > pointsObtained ) { getResult(); }
 }
 </script>
+
+
 
 <script>
 function performanceUpdate() {
-	var pointsObtained = document.getElementById("performanceSlider").value;
-	document.getElementById('performancePoints').value = pointsObtained;
-
-	doTheThing();
+  var pointsObtained = document.getElementById("performanceSlider").value;
+  document.getElementById('performancePoints').value = pointsObtained;
+  getResult();
 }
 </script>
 
+
+
 <script>
-function doTheThing() {
+function getResult() {
 	var scale = document.getElementById("scaleSlider").value;
 	total = document.getElementById("testPoints").value;
 	points = document.getElementById("performancePoints").value;
@@ -175,6 +220,8 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+// CALL TO OTHER FUNCTIONS
+getLinkValues();
 }
 </script>
 
