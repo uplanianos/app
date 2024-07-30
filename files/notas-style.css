@@ -101,3 +101,25 @@ a:visited	{ color: hotpink; }
 	padding: 3px;
 	text-align: center;
 }
+
+
+/* TITLE MENU */
+.titleMenu {
+  width: 154px;
+  height: 32px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-radius: 10px 10px 0px 3px;
+  transition: background-color 0.6s;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  padding-left: 3px;
+  appearance: none; /* Hides little arrow */
+}
+
+.titleMenu:hover { background-color: #0096FF88; color: white; outline: none; padding-left: 3px;}
+.titleMenu:focus { background-color: #0096FF; color: white; outline: none; padding-left: 3px;}
+.titleMenu:active { background-color: #66AAFF; color: white; outline: none; padding-left: 3px;}
