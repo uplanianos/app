@@ -203,6 +203,26 @@ ul	{ padding-left: 18px; }
 }
 
 
+/* TITLE MENU */
+.titleMenu {
+  width: 150px;
+  height: 32px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-radius: 6px 6px 3px 3px;
+  transition: background-color 0.6s;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  appearance: none; /* Hides little arrow */
+}
+
+.titleMenu:hover { width: 206px; background-color: #0096FF; color: white; outline: none; padding-left: 6px;}
+.titleMenu:focus { width: 206px; background-color: #0096FF; color: white; outline: none; padding-left: 6px;}
+.titleMenu:active { width: 206px; background-color: #00AAFF; color: white; outline: none; padding-left: 6px;}
+
 
 /* SCHEDULE SETTINGS */
 
@@ -431,6 +451,9 @@ div.fifth {background-color: #FFF; padding: 4px; text-transform: capitalize; whi
 input[type=number].classGrade {height: 24px; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Tahoma; color: #1434A4; border: 0px; margin: 0px; padding: 0px; border-radius: 0px;}
 input[type=number].classGrade:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
 input[type=number].classGrade:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
+
+
+
 
 /* INTEGRALES DIV SETTINGS */
 
