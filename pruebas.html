@@ -96,7 +96,7 @@ function exitSoon(){window.location = "index.html"}
 </div>
 
 
-<script>
+<script type="text/javascript">
 function setScale() {
 	var whatScale = document.getElementById("scaleSlider").value;
 	if (whatScale == "1") { document.getElementById('testPercent').innerText= "60%"; }
@@ -107,7 +107,7 @@ function setScale() {
 
 
 
-<script>
+<script type="text/javascript">
 function getLinkValues() {
 
 // GETTING VALUES FROM LINK
@@ -144,7 +144,7 @@ if (totalPoints >= performancePoints.value) {
 
 
 
-<script>
+<script type="text/javascript">
 function testPointsUpdate() {
 // SET MAXIMUM STUDENT POINTS FROM TOTAL TEST POINTS
 var howManyPoints = document.getElementById("testPointsSlider").value;
@@ -164,7 +164,7 @@ var pointsObtained = document.getElementById("performanceSlider").value;
 
 
 
-<script>
+<script type="text/javascript">
 function performanceUpdate() {
   var pointsObtained = document.getElementById("performanceSlider").value;
   document.getElementById('performancePoints').value = pointsObtained;
@@ -174,7 +174,7 @@ function performanceUpdate() {
 
 
 
-<script>
+<script type="text/javascript">
 function getResult() {
 	var scale = document.getElementById("scaleSlider").value;
 	total = document.getElementById("testPoints").value;
@@ -227,7 +227,7 @@ autonomyProgress();
 </script>
 
 
-<script>
+<script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -248,7 +248,7 @@ var currentScrollPos = window.pageYOffset;
 </script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
-<script>
+<script type="text/javascript">
 window.onbeforeunload = function() {
      $('textarea').each(function(){
         var id = $(this).attr('id');
@@ -276,7 +276,7 @@ getLinkValues();
 <!- USER STATS PROGRESS COUNTER ->
 
 
-<script>
+<script type="text/javascript">
 function autonomyProgress() {
 // =========================
 // USER STATS CALCULATION

@@ -18,7 +18,7 @@
 <!- CONNECTED TO JQUERY (WITH LINE CODE ON HEAD SECTION) ->
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
-<script>
+<script type="text/javascript">
 window.onbeforeunload = function() {
      $('input').each(function(){
         var id = $(this).attr('id');
@@ -160,7 +160,7 @@ function theUpdate(i) {
 
 
 
-<script>
+<script type="text/javascript">
 function newTitle() {
 // THIS CHANGES THE TITLE OF THE PAGE FROM THE DATE THE USER ENTERED.
   newDate = document.getElementById("dateInput").value
@@ -229,7 +229,7 @@ newTitle();
 </script>
 
 
-<script>
+<script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -251,7 +251,7 @@ var currentScrollPos = window.pageYOffset;
 <!- USER STATS PROGRESS COUNTER ->
 
 
-<script>
+<script type="text/javascript">
 window.onafterprint = function() {
 // =========================
 // USER STATS CALCULATION

@@ -454,7 +454,7 @@ function theUpdate(i) {
 </script>
 
 
-<script>
+<script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -470,7 +470,7 @@ var currentScrollPos = window.pageYOffset;
 
 
 <!- THIS IS HERE AS A KEEPSAKE ->
-<script>
+<script type="text/javascript">
 function removeDiv(theDiv) {
 const parent = document.getElementById('curriculum');
 const child = document.getElementById(theDiv);
@@ -479,14 +479,14 @@ const child = document.getElementById(theDiv);
 </script>
 
 
-<script>
+<script type="text/javascript">
 function focusOn(input) {
 input.select(); input.focus();
 }
 </script>
 
 
-<script>
+<script type="text/javascript">
 function check(input) {
 // CHECKING VALUE FORMAT!
   if (input.value == "" || input.value == "0") {input.value = "0.0"; input.placeholder="0.0"; input.style.color="#1434A4";}
@@ -502,7 +502,7 @@ var theNumber = parseFloat(input.value);
 
 
 
-<script>
+<script type="text/javascript">
 function averageFirst() {
 // FIRST YEAR GRADES
 grade01 = document.getElementById("firstGrade01").value;
@@ -555,7 +555,7 @@ if (amount == 0) {return false}
 </script>
 
 
-<script>
+<script type="text/javascript">
 function averageSecond() {
 // SECOND YEAR GRADES
 grade01 = document.getElementById("secondGrade01").value;
@@ -608,7 +608,7 @@ if (amount == 0) {return false}
 </script>
 
 
-<script>
+<script type="text/javascript">
 function averageThird() {
 // THIRD YEAR GRADES
 grade01 = document.getElementById("thirdGrade01").value;
@@ -662,7 +662,7 @@ if (amount == 0) {return false}
 
 
 
-<script>
+<script type="text/javascript">
 function averageFourth() {
 // FOURTH YEAR GRADES
 grade01 = document.getElementById("fourthGrade01").value;
@@ -716,7 +716,7 @@ if (amount == 0) {return false}
 
 
 
-<script>
+<script type="text/javascript">
 function averageFifth() {
 // FOURTH YEAR GRADES
 grade01 = document.getElementById("fifthGrade01").value;
@@ -776,7 +776,7 @@ if (amount == 0) {return false}
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
 
-<script>
+<script type="text/javascript">
 window.onbeforeunload = function() {
      $('input').each(function(){
         var id = $(this).attr('id');
@@ -799,7 +799,7 @@ colorTheAverages();
 </script>
 
 
-<script>
+<script type="text/javascript">
 function highlightFirstYear() {
 
 document.getElementById("yearTitle1").style.display = "inline";
@@ -831,7 +831,7 @@ averageFirst();
 </script>
 
 
-<script>
+<script type="text/javascript">
 function highlightSecondYear() {
 
 document.getElementById("yearTitle1").style.display = "none";
@@ -863,7 +863,7 @@ averageSecond();
 </script>
 
 
-<script>
+<script type="text/javascript">
 function highlightThirdYear() {
 
 document.getElementById("yearTitle1").style.display = "none";
@@ -895,7 +895,7 @@ averageThird();
 </script>
 
 
-<script>
+<script type="text/javascript">
 function highlightFourthYear() {
 
 document.getElementById("yearTitle1").style.display = "none";
@@ -927,7 +927,7 @@ averageFourth();
 </script>
 
 
-<script>
+<script type="text/javascript">
 function highlightFifthYear() {
 
 document.getElementById("yearTitle1").style.display = "none";
@@ -960,7 +960,7 @@ averageFifth();
 
 
 
-<script>
+<script type="text/javascript">
 function colorTheGrades() {
 
 if (firstGrade01.value >= "4.0") {firstGrade01.style.color="blue"}
@@ -1121,7 +1121,7 @@ if (fifthGrade15.value >= "1.0" && fifthGrade15.value <= "3.9") {fifthGrade15.st
 }
 </script>
 
-<script>
+<script type="text/javascript">
 function colorTheAverages() {
 var averageFirst = document.getElementById("average1")
 var averageSecond = document.getElementById("average2")
@@ -1148,7 +1148,7 @@ if (averageFifth.value >= "1.0" && averageFifth.value <= "3.9") {averageFifth.st
 
 
 <!- CHECK BEFORE DELETING ->
-<script>
+<script type="text/javascript">
 function doDelete() {
   if (confirm('¿Desea borrar todo de 1° a 5° año?')) {
     deleteAll()

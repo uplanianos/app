@@ -162,7 +162,7 @@ function exitSoon(){window.location = "index.html"}
 </div>
 
 
-<script>
+<script type="text/javascript">
 function getLinkValues() {
 
 // GETTING VALUE FROM LINK & UPDATING AMOUNT OF TESTS
@@ -207,7 +207,7 @@ if (test12 >= 1.0 && test12 <= 7.0) {grade12.value = test12; checkGradeRange()}
 </script>
 
 
-<script>
+<script type="text/javascript">
 function howManyTests() {
 var howManyTests = document.getElementById("rangeIntegrales").value;
 
@@ -270,7 +270,7 @@ if (howManyTests == "12") {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function getSum() {
 var howManyTests = document.getElementById("rangeIntegrales").value;
 var grade1 = document.getElementById("grade1").value;
@@ -319,7 +319,7 @@ if (howManyTests == "12") { document.getElementById("addition").value = ( Math.a
 </script>
 
 
-<script>
+<script type="text/javascript">
 function checkGradeRange() {
 var t1 = document.getElementById("grade1").value; var t2 = document.getElementById("grade2").value; var t3 = document.getElementById("grade3").value;
 var t4 = document.getElementById("grade4").value; var t5 = document.getElementById("grade5").value; var t6 = document.getElementById("grade6").value;
@@ -383,7 +383,7 @@ if (t12 > 0 && t12 < 1 || t12 >= 7.1) { document.getElementById("grade12").style
 
 
 
-<script>
+<script type="text/javascript">
 function getResults() {
 
 getSum();
@@ -421,7 +421,7 @@ if (average > 70) {document.getElementById("average").style.color = "red";
 </script>
 
 
-<script>
+<script type="text/javascript">
 function clearGrades() {
 document.getElementById("grade1").value = ""; document.getElementById("grade1").style.background = "white"; document.getElementById("grade1").style.color = "black";
 document.getElementById("grade2").value = ""; document.getElementById("grade2").style.background = "white"; document.getElementById("grade2").style.color = "black";
@@ -446,7 +446,7 @@ window.location.replace('integrales.html')
 </script>
 
 
-<script>
+<script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -467,7 +467,7 @@ var currentScrollPos = window.pageYOffset;
 </script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
-<script>
+<script type="text/javascript">
 window.onbeforeunload = function() {
      $('textarea').each(function(){
         var id = $(this).attr('id');
@@ -495,7 +495,7 @@ getLinkValues();
 <!- USER STATS PROGRESS COUNTER ->
 
 
-<script>
+<script type="text/javascript">
 function autonomyProgress() {
 // =========================
 // USER STATS CALCULATION

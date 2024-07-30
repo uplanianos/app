@@ -160,7 +160,7 @@ function exitSoon(){window.location = "index.html"}
 </div>
 
 
-<script>
+<script type="text/javascript">
 function hideGrades() {
          document.getElementById('test3').style.display = 'none'; document.getElementById('test4').style.display = 'none';
          document.getElementById('test5').style.display = 'none'; document.getElementById('test6').style.display = 'none';
@@ -169,7 +169,7 @@ function hideGrades() {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function howManyTests() {
 	var howManyTests = document.getElementById("rangePromedios").value;
 
@@ -246,7 +246,7 @@ function howManyTests() {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function sumPercentages() {
 	var howManyTests = document.getElementById("rangePromedios").value;
 	var p1 = document.getElementById("testPercent1").value;
@@ -272,7 +272,7 @@ function sumPercentages() {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function checkSumResult() {
 	var sumResult = document.getElementById("addition").value;
 	 if (sumResult < 100) {
@@ -294,7 +294,7 @@ function checkSumResult() {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function sumGrades() {
 	var howManyTests = document.getElementById("rangePromedios").value;
 
@@ -366,7 +366,7 @@ function sumGrades() {
 }
 </script>
 
-<script>
+<script type="text/javascript">
 function checkGradeRange() {
 	var t1 = document.getElementById("testGrade1").value; var t2 = document.getElementById("testGrade2").value;
 	var t3 = document.getElementById("testGrade3").value; var t4 = document.getElementById("testGrade4").value;
@@ -430,7 +430,7 @@ function checkGradeRange() {
 </script>
 
 
-<script>
+<script type="text/javascript">
 function getResults() {
 	sumGrades();
 	var r1 = document.getElementById("testResult1").value; var r2 = document.getElementById("testResult2").value; 
@@ -481,7 +481,7 @@ function getResults() {
 }
 </script>
 
-<script>
+<script type="text/javascript">
 function clearGrades() {
 	  document.getElementById("testGrade1").value = ''; document.getElementById("testGrade1").style.background = "white"; document.getElementById("testGrade1").style.color = "black";
 	  document.getElementById("testGrade2").value = ''; document.getElementById("testGrade2").style.background = "white"; document.getElementById("testGrade2").style.color = "black";
@@ -521,7 +521,7 @@ function clearGrades() {
 }
 </script>
 
-<script>
+<script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -542,7 +542,7 @@ var currentScrollPos = window.pageYOffset;
 </script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 
-<script>
+<script type="text/javascript">
 window.onbeforeunload = function() {
      $('textarea').each(function(){
         var id = $(this).attr('id');
@@ -571,7 +571,7 @@ sumPercentages();
 <!- USER STATS PROGRESS COUNTER ->
 
 
-<script>
+<script type="text/javascript">
 function autonomyProgress() {
 // =========================
 // USER STATS CALCULATION
