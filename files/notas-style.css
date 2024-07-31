@@ -105,14 +105,14 @@ a:visited	{ color: hotpink; }
 
 /* TITLE MENU */
 .titleMenu {
-  width: 154px;
+  width: 150px;
   height: 32px;
   color: white;
   font-size: 16px;
   font-weight: bold;
   background-color: #0096FF22;
   border: 0px solid transparent;
-  border-radius: 10px 10px 0px 3px;
+  border-radius: 6px 6px 6px 6px;
   transition: background-color 0.6s;
   margin-top: -6px;
   margin-bottom: -6px;
