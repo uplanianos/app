@@ -19,6 +19,8 @@
       <option value="0" selected disabled="disabled">☰ Uplanianos App:</option>
       <option value="1">✔️ Asistencia</option>
       <option value="2">📁 Avance Curricular</option>
+      <option value="21">&nbsp;&#x27A5; 🖨️ Imprimir</option>
+      <option value="22">&nbsp;&#x27A5; ❌ Borrar</option>
       <option value="3">🗓️ Calendario II, 2024</option>
       <option value="4">⏲️ Cuenta Regresiva</option>
       <option value="5">📈 Escala de Notas</option>
@@ -39,6 +41,8 @@
 document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 1) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
  if (titleMenu.value == 2) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 21) {blurMenu(); window.print();}
+ if (titleMenu.value == 22) {blurMenu(); doDelete();}
  if (titleMenu.value == 3) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
  if (titleMenu.value == 4) {blurMenu(); window.location = "countdown.html"}
  if (titleMenu.value == 5) {blurMenu(); window.location = "notas.html?escala=70"}
@@ -74,8 +78,6 @@ Completa con tus asignaturas cursadas!
     <button class="Year" id="thirdButton" onclick="highlightThirdYear();">3°</button>
     <button class="Year" id="fourthButton" onclick="highlightFourthYear();">4°</button>
     <button class="Year" id="fifthButton" onclick="highlightFifthYear();">5°</button>
-    <button class="Delete" id="deleteButton" onclick="window.print();"><small>🖨️</small></button>
-    <button class="Delete" id="deleteButton" onclick="doDelete();">X</button>
  </div>
 
  <div style="grid-area: yearsLeft; background-color: #FFF; border: 0px hidden transparent;"></div>
