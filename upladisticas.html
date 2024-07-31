@@ -14,7 +14,7 @@
 <div class="main">
     <div class="labels"><p>
       <select class="titleMenu" id="titleMenu" name="titleMenu" >
-      <option value="0" selected disabled="disabled">☰ Uplanianos App:</option>
+      <option value="0" selected disabled="disabled">☰</option>
       <option value="1">✔️ Asistencia</option>
       <option value="2">📁 Avance Curricular</option>
       <option value="3">🗓️ Calendario II, 2024</option>
@@ -31,8 +31,9 @@
       <option value="14">📝 Timebox (Hora)</option>
       <option value="15">📊 Upladísticas</option>
       <option value="16">👈 Volver</option>
-    </select> Progreso Uplaniano.<br>
-    <font color="darkgray" size="2px">Aumenta tus estadísticas Uplanianas mediante el uso de las herramientas de la aplicación.</font></p>
+    </select>
+    <b>Uplanianos App:</b> Progreso Uplaniano.<br>
+    <font color="darkgray" size="2px" style="position: relative; left: 40px;">Aumenta tus estadísticas Uplanianas mediante el uso de las herramientas de la aplicación.</font></p>
   </div>
 
 <script type="text/javascript">
@@ -58,9 +59,6 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 function exitSoon(){window.location = "index.html"}
 </script>
-
-
-
 
 
     <a href="index.html"><div id="return" class="return">&larrhk;</div></a>

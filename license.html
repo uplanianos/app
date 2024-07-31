@@ -12,16 +12,36 @@
 <body>
 
 <div class="main">
-    <div class="labels"><b><p>Uplanianos App:</b> Términos de Uso.</p></div>
+    <div class="labels"><p>
+      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <option value="0" selected disabled="disabled">☰</option>
+      <option value="1">✔️ Asistencia</option>
+      <option value="2">📁 Avance Curricular</option>
+      <option value="3">🗓️ Calendario II, 2024</option>
+      <option value="4">⏲️ Cuenta Regresiva</option>
+      <option value="5">📈 Escala de Notas</option>
+      <option value="6">📚 Horario de Clases</option>
+      <option value="7">💊 Justificador</option>
+      <option value="8">📜 Manual Estudiante</option>
+      <option value="9">✍️ Nota de Pruebas</option>
+      <option value="10">💯 Promedio Integral</option>
+      <option value="11">💯 Promedio Porcentual</option>
+      <option value="12">📋 Simulador Examen</option>
+      <option value="13">📝 Timebox (Upla)</option>
+      <option value="14">📝 Timebox (Hora)</option>
+      <option value="15">📊 Upladísticas</option>
+      <option value="16">👈 Volver</option>
+    </select>
+    <b>Uplanianos App:</b> Términos de Uso.</p></div>
     <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 	<div class="grid-container-pages" style="grid-auto-flow: flow;">
 	  <div class="grid-item-license"><br>
 					<b>Términos de uso:</b><br>Este recurso online, ya sea en formato de sitio web o aplicación/software para aplicación móvil se proporciona "tal cual", sin garantía de ningún tipo, expresa o implícita, y por la presente licencia de uso el usuario renuncia a todas las garantías implícitas, incluida cualquier garantía de comerciabilidad y garantía de idoneidad para un fin determinado. En ningún caso, el desarrollador será responsable de ningún reclamo, daño u otra responsabilidad, ya sea en una acción contractual, extracontractual o de otro tipo, que surja de, o en relación con el recurso web/software o el uso u otras transacciones en éste.<br><br>
-					<b>Privacidad:</b><br>Este recurso/software no recopila ninguna información personal del usuario o información técnica de su dispositivo y no rastrea su actividad mientras usa la aplicación. Al usar este recurso/software, acepta esta política de privacidad.<br><br>
+					<b>Privacidad:</b><br>Este recurso/software no recopila ninguna información personal del usuario o información técnica de su dispositivo. Al usar este recurso/software, acepta esta política de privacidad.<br><br>
 					<b>Actualizaciones de política:</b><br>Se pueden realizar cambios en este acuerdo a medida que se amplía la funcionalidad del sitio/software, para lo cual puede volver a consultar esta página ya que todas las actualizaciones se publicarán aquí.<br><br>
 					<b>Usos prohibidos:</b><br>Tiene prohibido utilizar este software: (a) para fines ilegales; (b) para solicitar a otros que realicen o participen en cualquier acto ilegal; (c) para violar cualquier regulación, regla, ley u ordenanza local; (d) para infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de otros; (e) acosar, abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o discriminar por motivos de género, orientación sexual, religión, etnia, raza, edad, origen nacional o discapacidad; (f) para cualquier propósito obsceno o inmoral. Nos reservamos el derecho de terminar su uso del software por violar cualquiera de los usos prohibidos.<br><br>
-					<b>Derechos de propiedad intelectual:</b> <br>Esta licencia no le transfiere ninguna propiedad intelectual perteneciente al desarrollador, y todos los derechos, títulos e intereses sobre dicha propiedad permanecerán (entre las partes ) únicamente con el desarrollador. Su uso del software no le otorga ningún derecho a reproducir o reclamar la propiedad de este software o su funcionalidad.<br><br>
+					<b>Derechos de propiedad intelectual:</b> <br>Esta licencia no le transfiere ninguna propiedad intelectual perteneciente al desarrollador, y todos los derechos, títulos e intereses sobre dicha propiedad permanecerán únicamente con el desarrollador. Su uso del software no le otorga ningún derecho a reproducir o reclamar la propiedad de este software o su funcionalidad.<br><br>
 					<p align="right" style="padding-right:12px;">Desarrollado por <b>Juedmar</b><br>juedmar@gmail.com<br>📷 <a href="https://www.instagram.com/uplanianos/" target="_blank">@uplanianos</a></p></div>
 	</div>
     <br>
@@ -29,6 +49,31 @@
     </div>
 <br>
 </div>
+
+
+<script type="text/javascript">
+document.getElementById('titleMenu').addEventListener('change', function() {
+ if (titleMenu.value == 1) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenu.value == 2) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 3) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenu.value == 5) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenu.value == 6) {blurMenu(); window.location = "horario.html"}
+ if (titleMenu.value == 7) {blurMenu(); window.location = "justify.html"}
+ if (titleMenu.value == 8) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenu.value == 9) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenu.value == 10) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenu.value == 11) {blurMenu(); window.location = "promedios.html"}
+ if (titleMenu.value == 12) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenu.value == 13) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "timeplanner.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "upladisticas.html"}
+ if (titleMenu.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
+});
+
+function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
+function exitSoon(){window.location = "index.html"}
+</script>
 
 
 <script type="text/javascript">
