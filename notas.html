@@ -15,35 +15,9 @@
 
 <div class="main">
 
-
-<script type="text/javascript">
-document.getElementById('titleMenu').addEventListener('change', function() {
- if (titleMenu.value == 1) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
- if (titleMenu.value == 2) {blurMenu(); window.location = "avance.html"}
- if (titleMenu.value == 3) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
- if (titleMenu.value == 4) {blurMenu(); window.location = "countdown.html"}
- if (titleMenu.value == 5) {blurMenu(); window.location = "notas.html?escala=70"}
- if (titleMenu.value == 6) {blurMenu(); window.location = "horario.html"}
- if (titleMenu.value == 7) {blurMenu(); window.location = "justify.html"}
- if (titleMenu.value == 8) {blurMenu(); window.location = "manual-estudiante.html"}
- if (titleMenu.value == 9) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
- if (titleMenu.value == 10) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
- if (titleMenu.value == 11) {blurMenu(); window.location = "promedios.html"}
- if (titleMenu.value == 12) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (titleMenu.value == 13) {blurMenu(); window.location = "timebox.html"}
- if (titleMenu.value == 14) {blurMenu(); window.location = "timeplanner.html"}
- if (titleMenu.value == 15) {blurMenu(); window.location = "upladisticas.html"}
- if (titleMenu.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
-});
-
-function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
-function exitSoon(){window.location = "index.html"}
-</script>
-
-
     <div id="seventy" style="display: inline;">
     <div class="labels"><p>
-      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <select class="titleMenu" id="titleMenuOne" name="titleMenuOne" >
       <option value="0" selected disabled="disabled">☰ Uplanianos App:</option>
       <option value="1">✔️ Asistencia</option>
       <option value="2">📁 Avance Curricular</option>
@@ -279,7 +253,7 @@ function exitSoon(){window.location = "index.html"}
 
     <div id="sixty" style="display: none;">
     <div class="labels"><p>
-      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <select class="titleMenu" id="titleMenuTwo" name="titleMenuTwo" >
       <option value="0" selected disabled="disabled">☰ Uplanianos App:</option>
       <option value="1">✔️ Asistencia</option>
       <option value="2">📁 Avance Curricular</option>
@@ -517,6 +491,56 @@ function exitSoon(){window.location = "index.html"}
     </div>
 <br>
 </div>
+
+
+<script type="text/javascript">
+document.getElementById('titleMenuOne').addEventListener('change', function() {
+ if (titleMenuOne.value == 1) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenuOne.value == 2) {blurMenu(); window.location = "avance.html"}
+ if (titleMenuOne.value == 3) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (titleMenuOne.value == 4) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenuOne.value == 5) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenuOne.value == 6) {blurMenu(); window.location = "horario.html"}
+ if (titleMenuOne.value == 7) {blurMenu(); window.location = "justify.html"}
+ if (titleMenuOne.value == 8) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenuOne.value == 9) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenuOne.value == 10) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenuOne.value == 11) {blurMenu(); window.location = "promedios.html"}
+ if (titleMenuOne.value == 12) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenuOne.value == 13) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenuOne.value == 14) {blurMenu(); window.location = "timeplanner.html"}
+ if (titleMenuOne.value == 15) {blurMenu(); window.location = "upladisticas.html"}
+ if (titleMenuOne.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
+});
+
+function blurMenu(){document.getElementById('titleMenuOne').value = 0; document.getElementById('titleMenuOne').blur();}
+function exitSoon(){window.location = "index.html"}
+</script>
+
+
+<script type="text/javascript">
+document.getElementById('titleMenuTwo').addEventListener('change', function() {
+ if (titleMenuTwo.value == 1) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenuTwo.value == 2) {blurMenu(); window.location = "avance.html"}
+ if (titleMenuTwo.value == 3) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (titleMenuTwo.value == 4) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenuTwo.value == 5) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenuTwo.value == 6) {blurMenu(); window.location = "horario.html"}
+ if (titleMenuTwo.value == 7) {blurMenu(); window.location = "justify.html"}
+ if (titleMenuTwo.value == 8) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenuTwo.value == 9) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenuTwo.value == 10) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenuTwo.value == 11) {blurMenu(); window.location = "promedios.html"}
+ if (titleMenuTwo.value == 12) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenuTwo.value == 13) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenuTwo.value == 14) {blurMenu(); window.location = "timeplanner.html"}
+ if (titleMenuTwo.value == 15) {blurMenu(); window.location = "upladisticas.html"}
+ if (titleMenuTwo.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
+});
+
+function blurMenu(){document.getElementById('titleMenuTwo').value = 0; document.getElementById('titleMenuTwo').blur();}
+function exitSoon(){window.location = "index.html"}
+</script>
 
 
 <script type="text/javascript">
