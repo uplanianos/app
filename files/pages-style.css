@@ -221,21 +221,18 @@ ul	{ padding-left: 18px; }
 
 .dropdown {
   position: absolute;
-  left: 4%;
-  top: -1px;
-  width: 72px;
-  height: 32px;
-  color: white;
-  font-size: 14px;
-  background-color: #0F56A2DD;
-  border: 1px solid lightgray;
-  border-radius: 0px 0px 6px 6px;
-  transition: background-color 0.6s;
+  left: 4%; top: -1px;
+  width: 32px; height: 30px;
+  font-size: 16px; color: white; font-weight: normal;
+  background-color: #0F56A2DD; transition: background-color 0.6s;
+  border: 1px solid lightgray; border-radius: 0px 0px 6px 6px;
+  padding-left: 8px;
+  appearance: none; /* Hides little arrow */
 }
 
-.dropdown:hover { width: 162px; height: 42px; background-color: #0096FF; color: white; outline: none; padding: 6px; }
-.dropdown:focus { width: 162px; height: 42px; background-color: #0096FF; color: white; outline: none; padding: 6px; }
-.dropdown:active { width: 162px; height: 42px; background-color: #00AAFF; color: white; outline: none; padding: 6px; }
+.dropdown:hover {background-color: #0096FF; font-weight: bold; outline: none;}
+.dropdown:active {background-color: #00AAFF; font-weight: bold; outline: none;}
+.dropdown:focus {background-color: #0096FF; font-weight: bold; outline: none; border-radius: 0px 0px 0px 0px;}
 
 div.scheduleName { text-align: center; font-size: min(1em, 2.8vw); font-weight: bold; border-style: hidden hidden dashed hidden; }
 
@@ -383,13 +380,9 @@ div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8p
 }
 
 button.Year { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
-button.Year:hover {color: yellow; background-color: #FF0000AA;}
-button.Year:active {color: yellow; background-color: #FF0000AA;}
-button.Year:focus {color: yellow; background-color: #FF0000AA;}
-
-button.Delete { font-size: 11px; color: gray; text-align: center; text-decoration: none; background-color: #lightgray; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
-button.Delete:hover {color: yellow; background-color: #FF0000AA;}
-button.Delete:active {color: yellow; background-color: #FF0000AA;}
+button.Year:hover {color: yellow; background-color: #FF0000AA; outline: none;}
+button.Year:active {color: yellow; background-color: #FF0000AA; outline: none;}
+button.Year:focus {color: yellow; background-color: #FF0000AA; outline: none;}
 
 div.select {background-color: #FFF; border-style: hidden; margin-bottom: 6px;}
 div.title {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 8px; text-transform: uppercase; white-space: nowrap; overflow: hidden; border-style: dashed; /* top right bottom left */ }
