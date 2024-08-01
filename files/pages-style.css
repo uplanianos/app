@@ -460,16 +460,10 @@ input[type=number].classGrade:hover {outline: none !important; border-color: #71
 
 .grid-agenda > div {
   height: 32px;
-  font-size: 12px;
-  text-align: center;
-  font-family: Verdana, Tahoma;
-  color: #1434A4; /* Egyptian Blue */
-  padding: 1px;
-  padding-top: 8px;
-  margin-right: -1px;
-  border: 1px dashed gray;
-  border-style: hidden dashed dashed dashed; /* top right bottom left */
-  word-break: break-word;
+  font-size: min(1em, 2.8vw); overflow: hidden; white-space: nowrap; word-break: break-word;
+  text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */
+  padding: 1px; padding-top: 8px; margin-right: -1px;
+  border: 1px dashed gray; border-style: hidden dashed dashed dashed; /* top right bottom left */
 }
 
 button.agendaMonth { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
