@@ -891,11 +891,11 @@ body {background-color: white; background: transparent;}
 .labels {background-color: #A7C7E7; /* Pastel Blue */; padding-left: 24px; padding-bottom: 12px; border: 1px solid #6495ED /* Cornflower Blue */; border-radius: 6px; margin-right: 8px; margin-bottom: 12px; }
 
 /* SCHEDULE */
-.grid-schedule {position: absolute; right: 2%; width: 100%; height: 96%; border: 0px; padding: 0px;}
+.grid-schedule {position: absolute; right: 1%; width: 100%; height: 96%; border: 0px; padding: 0px;}
 .dropdown {display:none; visibility: hidden;}
-div.blueDiv {background-color: #6495ED /* Cornflower Blue */;}
+div.blueDiv {max-height: fit-content; padding-top: 20px; margin-bottom: -28px; vertical-align: middle; background-color: #6495ED /* Cornflower Blue */;}
 div.yellowDiv {background-color: #FFFF8F;}
-.scheduleArea {height: 89px; margin-top: 1px;-moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+.scheduleArea {min-height: fit-content; height: 100%; margin-top: 0px;-moz-margin-top: -1px; -moz-margin-bottom: -1px;}
 .scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
 .scheduleArea:hover {box-shadow: 0 0 0px #FFF;}
 .scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
