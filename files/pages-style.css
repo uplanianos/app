@@ -409,7 +409,7 @@ input[type=number].classGrade:hover {outline: none !important; border-color: #71
 
 .grid-agenda {
   display: grid;
-  grid-template-columns: 17% 13% auto;
+  grid-template-columns: 20% 10% auto auto;
   grid-template-areas:
     'theMonths theMonths theMonths theMonths'
     'select select select select'
@@ -460,13 +460,20 @@ input[type=number].classGrade:hover {outline: none !important; border-color: #71
 
 .grid-agenda > div {
   height: 32px;
-  font-size: min(1em, 2.8vw); overflow: hidden; white-space: nowrap; word-break: break-word;
-  text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */
-  padding: 1px; padding-top: 8px; margin-right: -1px;
-  border: 1px dashed gray; border-style: hidden dashed dashed dashed; /* top right bottom left */
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-word;
+  text-align: center;
+  font-family: Verdana, Tahoma;
+  color: #1434A4; /* Egyptian Blue */
+  padding: 1px; padding-top: 8px;
+  margin-right: -1px;
+  border: 1px dashed gray;
+  border-style: hidden dashed dashed dashed; /* top right bottom left */
 }
 
-button.agendaMonth { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
+button.agendaMonth {font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
 button.agendaMonth:hover {color: yellow; background-color: #FF0000AA; outline: none;}
 button.agendaMonth:active {color: yellow; background-color: #FF0000AA; outline: none;}
 button.agendaMonth:focus {color: yellow; background-color: #FF0000AA; outline: none;}
@@ -476,17 +483,27 @@ div.theMonths {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; p
 div.title {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 8px; text-transform: uppercase; white-space: nowrap; overflow: hidden; border-style: dashed; /* top right bottom left */ }
 
 textarea.agendaTask {
-  height: 30px; width: 100%; text-align: left;
-  font-size: min(1em, 2vw); font-family: Verdana, Tahoma; color: #005B9A;
-  margin: 0px; margin-top: -8px; margin-bottom: -3px;
-  padding: 3px; border: 0px;
+  height: 30px;
+  width: 100%;
+  text-align: left;
+  font-size: min(1em, 2vw);
+  font-family: Verdana, Tahoma;
+  color: #005B9A;
+  margin: 0px;
+  margin-top: -8px;
+  margin-bottom: -3px;
+  padding: 3px;
+  border: 0px;
   text-transform: capitalize;
-  white-space: nowrap; overflow: hidden; resize: none;
+  white-space: pre-wrap; 
+  overflow-wrap: break-word;
+  overflow: hidden;
+  resize: none;
 }
 
-textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 textarea.agendaTask:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
-
+textarea.agendaTask:active {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 
 
 /* TIMBOX SETTINGS */
@@ -873,8 +890,27 @@ body {background-color: white; background: transparent;}
 .grid-item {display:none; }
 .labels {background-color: #A7C7E7; /* Pastel Blue */; padding-left: 24px; padding-bottom: 12px; border: 1px solid #6495ED /* Cornflower Blue */; border-radius: 6px; margin-right: 8px; margin-bottom: 12px; }
 
+/* SCHEDULE */
+.grid-schedule {position: absolute; right: 2%; width: 100%; height: 96%; border: 0px; padding: 0px;}
+.dropdown {display:none; visibility: hidden;}
+div.blueDiv {background-color: #6495ED /* Cornflower Blue */;}
+div.yellowDiv {background-color: #FFFF8F;}
+.scheduleArea {height: 89px; margin-top: 1px;-moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
+.scheduleArea:hover {box-shadow: 0 0 0px #FFF;}
+.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
+.foot {display: inline;}
+
+/* AGENDA */
+.grid-agenda {position: absolute; right: 2%; width: 100%; height: 98%; border: 0px; padding: 0px;}
+textarea.agendaTask {height: 28px; margin-top: -6px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+textarea.agendaTask:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+
 /* CURRICULUM */
-.select {visibility: hidden; display: inherit; margin: -32px; }
+.grid-curriculum {border: 0px;}
+.select {visibility: hidden; display: inherit; margin: -32px;}
 .className:focus {box-shadow: 0 0 0px #FFF;}
 .className:active {box-shadow: 0 0 0px #FFF;}
 input[type=number].classGrade:focus {box-shadow: 0 0 0px #FFF;}
@@ -883,23 +919,6 @@ input[type=number].classGrade:active {box-shadow: 0 0 0px #FFF;}
 /* TIMEBOX */
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 
-/* SCHEDULE */
-.grid-schedule {position: absolute; right: 2%; width: 100%; height: 96%; }
-.dropdown {display:none; visibility: hidden;}
-div.blueDiv {background-color: #6495ED /* Cornflower Blue */;}
-div.yellowDiv {background-color: #FFFF8F;}
-.scheduleArea {height: 72px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
-.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
-.scheduleArea:hover {box-shadow: 0 0 0px #FFF;}
-.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
-.foot {display: inline;}
-
-/* AGENDA */
-.grid-agenda {position: absolute; right: 2%; width: 100%; height: 98%; }
-textarea.agendaTask {height: 28px; margin-top: -6px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
-textarea.agendaTask:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
-textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
-textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* PLANNER */
 button {display:none; visibility: hidden;}
