@@ -17,6 +17,9 @@ a:hover		{ color: blue; text-decoration: underline; }
 a:active	{ color: red; }
 a:visited	{ color: hotpink; }
 
+::placeholder {color: #33333366; opacity: 85; font-size: 10px;/* Firefox */ }
+::-ms-input-placeholder { color: darkgray; /* Edge 12 -18 */}
+
 ul	{ padding-left: 18px; }
 
 .return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
@@ -75,7 +78,7 @@ ul	{ padding-left: 18px; }
 
 .grid-item-title {background-color: cornflowerblue; border: 1px solid lightgray; padding: 6px; text-align: center;}
 .grid-item-blue {background-color: lightblue; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px;}
-.grid-item {background-color: lightyellow; border: 1px solid white; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item {background-color: lightyellow; border: 1px solid #6495ED /* Cornflower Blue */; padding: 6px; text-align: left; border-radius: 6px;}
 .grid-item-green {background-color: lightgreen; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px;}
 .grid-item-pink {background-color: pink; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px;}
 .grid-item-gray {background-color: lightgray; border: 1px solid white; padding: 6px; text-align: left; border-radius: 6px;}
@@ -258,7 +261,6 @@ div.yellowDiv {background-color: lightyellow; font-weight: bold; padding-top: 8p
 }
 
 
-
 /* CURRICULUM SETTINGS */
 
 .grid-curriculum {
@@ -400,6 +402,96 @@ input[type=number].classGrade {height: 24px; width: 100%; text-align: center; fo
 input[type=number].classGrade:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
 input[type=number].classGrade:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 6px #719ECE;}
 
+
+
+
+/* AGENDA SETTINGS */
+
+.grid-agenda {
+  display: grid;
+  grid-template-columns: 17% 13% auto;
+  grid-template-areas:
+    'theMonths theMonths theMonths theMonths'
+    'select select select select'
+    'top1 top2 top3 top4'
+
+    /* August */
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+    'div div div div'
+
+    'foot foot foot foot';
+  gap: 0px;
+  background-color: white;
+  border: 2px solid navy;
+  border-radius: 12px 12px;
+  padding: 20px;
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 24px;
+}
+
+.grid-agenda > div {
+  height: 32px;
+  font-size: 12px;
+  text-align: center;
+  font-family: Verdana, Tahoma;
+  color: #1434A4; /* Egyptian Blue */
+  padding: 1px;
+  padding-top: 8px;
+  margin-right: -1px;
+  border: 1px dashed gray;
+  border-style: hidden dashed dashed dashed; /* top right bottom left */
+  word-break: break-word;
+}
+
+button.agendaMonth { font-size: 11px; color: blue; text-align: center; text-decoration: none; background-color: #A7C7E788; border: 1px solid darkgray; border-radius: 6px; padding: 3px 6px 3px 6px; margin: 0px 1px 0px 1px; cursor: pointer; }
+button.agendaMonth:hover {color: yellow; background-color: #FF0000AA; outline: none;}
+button.agendaMonth:active {color: yellow; background-color: #FF0000AA; outline: none;}
+button.agendaMonth:focus {color: yellow; background-color: #FF0000AA; outline: none;}
+
+div.select {background-color: #FFF; border-style: hidden; margin-bottom: 6px;}
+div.theMonths {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 8px; text-transform: uppercase;}
+div.title {background-color: #A7C7E7 /* Pastel Blue */; font-weight: bold; padding-top: 8px; text-transform: uppercase; white-space: nowrap; overflow: hidden; border-style: dashed; /* top right bottom left */ }
+
+textarea.agendaTask {
+  height: 30px; width: 100%; text-align: left;
+  font-size: min(1em, 2vw); font-family: Verdana, Tahoma; color: #005B9A;
+  margin: 0px; margin-top: -8px; margin-bottom: -3px;
+  padding: 3px; border: 0px;
+  text-transform: capitalize;
+  white-space: nowrap; overflow: hidden; resize: none;
+}
+
+textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+textarea.agendaTask:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 
 
 
@@ -781,11 +873,11 @@ input[type=number].average-maths {
 /* PRINT OR CONVERT TO PDF SETTINGS*/
 
 @media print {
-p {color: black; }
+p {color: black;}
 body {background-color: white; background: transparent;}
 .main {position: absolute; width: 100%; background-color: white; background: transparent; top: 0; padding: 0px; border: 0px solid white; border-radius: 0px;}
-.grid-item {display:none;}
-.labels {background-color: #DBF9DB; padding-left: 24px; padding-bottom: 12px; border: 1px solid darkgray; border-radius: 6px; margin-right: 8px; margin-bottom: 12px;}
+.grid-item {display:none; }
+.labels {background-color: #A7C7E7; /* Pastel Blue */; padding-left: 24px; padding-bottom: 12px; border: 1px solid #6495ED /* Cornflower Blue */; border-radius: 6px; margin-right: 8px; margin-bottom: 12px; }
 
 /* CURRICULUM */
 .select {visibility: hidden; display: inherit; margin: -32px; }
@@ -800,12 +892,19 @@ input[type=number].classGrade:active {box-shadow: 0 0 0px #FFF;}
 
 /* SCHEDULE */
 .dropdown {display:none; visibility: hidden;}
-div.blueDiv {background-color: #6495ED;}
+div.blueDiv {background-color: #6495ED /* Cornflower Blue */;}
 div.yellowDiv {background-color: #FFFF8F;}
 .scheduleArea {height: 72px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
 .scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
 .scheduleArea:hover {box-shadow: 0 0 0px #FFF;}
+.scheduleArea:focus {box-shadow: 0 0 0px #FFF;}
 .foot {display: inline;}
+
+/* AGENDA */
+textarea.agendaTask {height: 28px; margin-top: -6px; -moz-margin-top: -1px; -moz-margin-bottom: -1px;}
+textarea.agendaTask:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* PLANNER */
 button {display:none; visibility: hidden;}
