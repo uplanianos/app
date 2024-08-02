@@ -486,7 +486,7 @@ textarea.agendaTask {
   height: 30px;
   width: 100%;
   text-align: left;
-  font-size: min(11px, 3vw);
+  font-size: min(10px, 2vw);
   font-family: Verdana, Tahoma;
   color: #005B9A;
   margin: 0px;

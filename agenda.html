@@ -816,12 +816,13 @@ var i1 = (new URLSearchParams(window.location.search)).get("i1");
 var i2 = (new URLSearchParams(window.location.search)).get("i2");
 var i3 = (new URLSearchParams(window.location.search)).get("i3");
 var ex = (new URLSearchParams(window.location.search)).get("ex");
+var c = (new URLSearchParams(window.location.search)).get("c");
 
 // SETTING TEST STING VALUES
-let text1 = "► Integral N°1!";
-let text2 = "► Integral N°2!";
-let text3 = "► Integral N°3!";
-let textX = "► Examen Especial!";
+let text1 = "► Integral 1";
+let text2 = "► Integral 2";
+let text3 = "► Integral 3";
+let textX = "► Examen";
 
 // CHECK DATE FORMAT (REGULAR EXPRESSION)
 var regex = /^[a-z]{3}(0?[1-9]|[12][0-9]|3[01])[m|t]$/;
@@ -852,12 +853,43 @@ if (ex !== null && regex.exec(ex)) {
   document.getElementById(ex).style.fontWeight = "Bold"
   document.getElementById(ex).style.backgroundColor = "#FF3131"}
   else {console.log("Examen final sin fecha!")};
+
+// ADDING CLASS TO TESTS
+var regexClass = /[a-z]/; // Regular characters.
+if (c !== null && regexClass.exec(c) ) {
+  if (i1 !== null && regex.exec(i1)) {
+    document.getElementById(i1).value = text1 + " (" + c + ")"
+    document.getElementById(i1).style.color = "red"
+    document.getElementById(i1).style.fontWeight = "Bold"
+    document.getElementById(i1).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°1 sin fecha!")};
+  if (i2 !== null && regex.exec(i2)) {
+    document.getElementById(i2).value = text2 + " (" + c + ")"
+    document.getElementById(i2).style.color = "red"
+    document.getElementById(i2).style.fontWeight = "Bold"
+    document.getElementById(i2).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°2 sin fecha!")};
+  if (i3 !== null && regex.exec(i3)) {
+    document.getElementById(i3).value = text3 + " (" + c + ")"
+    document.getElementById(i3).style.color = "red"
+    document.getElementById(i3).style.fontWeight = "Bold"
+    document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°3 sin fecha!")};
+  if (ex !== null && regex.exec(ex)) {
+    document.getElementById(ex).value = textX + " (" + c + ")"
+    document.getElementById(ex).style.color = "yellow"
+    document.getElementById(ex).style.fontWeight = "Bold"
+    document.getElementById(ex).style.backgroundColor = "#FF3131"}
+    else {console.log("Examen final sin fecha!")};
+    }
+else {console.log("Asignatura sin nombre!")}
+
 }
 
-// /=============================================================\
-// | Mañana: /agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m |
-// | Tarde-: /agenda.html?i1=sep23t&i2=oct28t&i3=dic9t&ex=dic16t |
-// \=============================================================/
+// /=====================================================================\
+// | Mañana: /agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Clase |
+// | Tarde-: /agenda.html?i1=sep23t&i2=oct28t&i3=dic9t&ex=dic16t&c=Clase |
+// \=====================================================================/
 
 </script>
 
