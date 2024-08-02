@@ -180,8 +180,8 @@ function getResult() {
 	document.getElementById("finalAverage").value = (Math.round(finalCalculation*10)/10).toFixed(1);
 
 	var finalResult = document.getElementById('finalAverage').value;
-	if (finalResult < 3.95) { document.getElementById("finalAverage").style.background = "darkred"; }
-	if (finalResult >= 3.95) { document.getElementById("finalAverage").style.background = "cornflowerblue"; }
+	if (finalResult < 3.95) { document.getElementById("finalAverage").style.background = "darkred"; document.getElementById("finalAverage").style.transition = "background-color 0.6s"}
+	if (finalResult >= 3.95) { document.getElementById("finalAverage").style.background = "cornflowerblue";  document.getElementById("finalAverage").style.transition = "background-color 0.6s";}
 
 	// UPDATE STATS:
 	knowledgeProgress();

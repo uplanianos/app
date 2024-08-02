@@ -195,14 +195,17 @@ function getResult() {
 	  if (roundPercent <= 59) {
 		document.getElementById('nota').innerText = parseFloat(sixtyRed).toFixed(1);
 		document.getElementById('resultDiv').style.background = "darkred";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	  if (roundPercent == 59) {
 	  	document.getElementById('nota').innerText = parseFloat(sixtyRed).toFixed(1);
 	  	document.getElementById('resultDiv').style.background = "purple";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	  if (roundPercent >= 60) {
 		document.getElementById('nota').innerText = parseFloat(sixtyBlue).toFixed(1);
 		document.getElementById('resultDiv').style.background = "cornflowerblue";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	}
 
@@ -210,18 +213,22 @@ function getResult() {
 	  if (roundPercent <= 69) {
 	  	document.getElementById('nota').innerText = parseFloat(seventyRed).toFixed(1);
 	  	document.getElementById('resultDiv').style.background = "darkred";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	  if (roundPercent == 69) {
 	  	document.getElementById('nota').innerText = parseFloat(seventyRed).toFixed(1);
 	  	document.getElementById('resultDiv').style.background = "purple";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	  if (roundPercent >= 70) {
 	  	document.getElementById('nota').innerText = parseFloat(seventyBlue).toFixed(1);
 		document.getElementById('resultDiv').style.background = "cornflowerblue";
+		document.getElementById('resultDiv').style.transition = "background-color 0.6s";
 		}
 	}
 
-	if (roundPercent >= 101) { document.getElementById('resultDiv').style.background = "white"; }
+	if (roundPercent >= 101) { document.getElementById('resultDiv').style.background = "white";
+				   document.getElementById('resultDiv').style.transition = "background-color 0.6s";}
 // CALLS TO ANOTHER FUNCTION!!
 autonomyProgress();
 }
