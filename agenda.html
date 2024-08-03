@@ -42,7 +42,7 @@
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 1) {blurMenu(); window.location = "agenda.html"}
- if (titleMenu.value == 110) {blurMenu(); window.location = "agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Calandario"}
+ if (titleMenu.value == 110) {blurMenu(); window.location = "agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Calendario"}
  if (titleMenu.value == 111) {setTimeout('blurMenu()', 1000); window.print()}
  if (titleMenu.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
  if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
@@ -99,7 +99,7 @@ Agenda tus evaluaciones programadas!
 
 <!- AUGUST ->
  <div class="days8">Lunes</div> <div class="days8">5</div>
- <div class="days8"><textarea class="agendaTask" maxlength="50" maxlength="50" id="ago5m"></textarea></div>
+ <div class="days8"><textarea class="agendaTask" maxlength="50" id="ago5m"></textarea></div>
  <div class="days8"><textarea class="agendaTask" maxlength="50" id="ago5t"></textarea></div>
 
  <div class="days8">Martes</div> <div class="days8">6</div>
@@ -605,6 +605,7 @@ window.onload = function() {
 updateInstructions();
 checkMonth();
 getLinkValues();
+highlightCells();
 }
 </script>
 
@@ -805,6 +806,18 @@ for(let dates of fullCalendar) {dates.value = ""};
 }
 </script>
 
+
+
+<!- HIGHLIGHT USED CELLS ->
+<script type="text/javascript">
+function highlightCells() {
+const Agenda = document.getElementsByClassName('agendaTask');
+Array.from(Agenda).forEach (task => {
+  if (task.value.length > 0) {task.style.backgroundColor="#FFFF6EAA"}
+  })
+}
+
+</script>
 
 
 
