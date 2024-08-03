@@ -12,12 +12,6 @@
 <body>
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
-<!- THIS IF FOR JQUERY CONTEXT ERROR->
-<canvas id="myCanvas" width="0px" height="0px" style="border:0px solid transparent">
-</canvas>
-
-
-
 <div class="main" style="margin-bottom: 3%;">
 <div class="labels"><p id="mainLabel"><div><p>
       <select class="titleMenu" id="titleMenu" name="titleMenu" >
@@ -552,6 +546,34 @@ Agenda tus evaluaciones programadas!
 
 
 
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+updateInstructions();
+highlightCells();
+getLinkValues();
+checkDates();
+}
+</script>
+
+
 <script type="text/javascript">
 function updateInstructions() {
   for (let i=0; i<11; i++) {
@@ -807,7 +829,6 @@ for(let cells of December) {cells.style.display = "inline";
 </script>
 
 
-
 <!- CHECK BEFORE DELETING ->
 <script type="text/javascript">
 function doDelete() {
@@ -926,38 +947,6 @@ else {console.log("Asignatura sin nombre!")}
 // \=====================================================================/
 
 </script>
-
-
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-window.onload = function() {
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-// THIS CALLS TO OTHER FUNCTION ON LOAD!
-updateInstructions();
-checkDates();
-getLinkValues();
-highlightCells();
-
-var ctx = myCanvas.getContext('2d');
-
-}
-</script>
-
 
 
 </body>
