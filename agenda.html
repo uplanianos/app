@@ -12,6 +12,11 @@
 <body>
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
+<!- THIS IF FOR JQUERY CONTEXT ERROR->
+<canvas id="myCanvas" width="0px" height="0px" style="border:0px solid transparent">
+</canvas>
+
+
 
 <div class="main" style="margin-bottom: 3%;">
 <div class="labels"><p id="mainLabel"><div><p>
@@ -947,6 +952,9 @@ updateInstructions();
 checkDates();
 getLinkValues();
 highlightCells();
+
+var ctx = myCanvas.getContext('2d');
+
 }
 </script>
 
