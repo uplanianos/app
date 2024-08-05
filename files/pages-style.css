@@ -17,7 +17,7 @@ a:hover		{ color: blue; text-decoration: underline; }
 a:active	{ color: red; }
 a:visited	{ color: hotpink; }
 
-::placeholder {color: #33333366; opacity: 85; font-size: 10px;/* Firefox */ }
+::placeholder {font-size: min(10px, 2vw); color: #33333366; opacity: 85; /* Firefox */ }
 ::-ms-input-placeholder { color: darkgray; /* Edge 12 -18 */}
 
 ul	{ padding-left: 18px; }
