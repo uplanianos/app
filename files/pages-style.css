@@ -553,9 +553,9 @@ textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-
   margin-left: auto;
   margin-right: auto;
   margin-top: 1%;
-  margin-bottom: 2%;
-  white-space: nowrap;
-  overflow: hidden; 
+  margin-bottom: 3%;
+  padding-left: 12px;
+  padding-right: 18px;
 }
 .grid-agenda-full > div {font-size: min(14px, 2vw); text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */ margin: 0px; padding: 0px; border: 0px dashed blue;}
 .divFull {height: 40px; padding: 2px; padding-top: 2px; padding-bottom: 1px; margin-right: -1px; border: 1px dashed gray; border-style: none dashed dashed dashed; /* top right bottom left */ }
