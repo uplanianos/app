@@ -415,7 +415,7 @@ input[type=number].classGrade:hover {outline: none !important; border-color: #71
     'select select select select'
     'top1 top2 top3 top4'
 
-    /* August */
+    /* WITHIN CELLS */
     'div div div div'
     'div div div div'
     'div div div div'
@@ -504,6 +504,87 @@ textarea.agendaTask {
 textarea.agendaTask:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 textarea.agendaTask:active {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+
+
+/* AGENDA FULL SEMESTER SETTINGS */
+.grid-agenda-full {
+  width: 98%;
+  display: grid;
+  grid-template-columns: auto 18% 18% 18% 18% 18%;
+  grid-template-areas:
+
+    'top top top top top top'
+    'div div div div div div'
+
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div'
+    'div div div div div div';
+  gap: 0px;
+  background-color: white;
+  border: 2px solid navy;
+  border-radius: 12px 12px;
+  padding: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  white-space: nowrap;
+  overflow: hidden; 
+}
+.grid-agenda-full > div {font-size: min(14px, 2vw); text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */ margin: 0px; padding: 0px; border: 0px dashed blue;}
+.divFull {height: 40px; padding: 2px; padding-top: 2px; padding-bottom: 1px; margin-right: -1px; border: 1px dashed gray; border-style: none dashed dashed dashed; /* top right bottom left */ }
+
+textarea.agendaTaskFull {
+  height: 48%;
+  width: 100%;
+  text-align: left;
+  font-size: min(10px, 2vw);
+  font-family: Verdana, Tahoma;
+  background-color: transparent;
+  color: #005B9A;
+  border: 0px;
+  margin: 0px;
+  margin-bottom: -2px;
+  text-transform: capitalize;
+  white-space: pre-wrap; 
+  overflow-wrap: break-word;
+  overflow: hidden;
+  resize: none;
+}
+textarea.agendaTaskFull:hover {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+textarea.agendaTaskFull:active {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+textarea.agendaTaskFull:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
+
+#feriado {background-color: #FF000033;}
+#receso {background-color: #00FF0033;}
+/* END END END ENDEND END */
+
 
 
 /* TIMBOX SETTINGS */
@@ -907,6 +988,12 @@ textarea.agendaTask {height: 28px; margin-top: -6px; -moz-margin-top: -1px; -moz
 textarea.agendaTask:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+
+/* AGENDA FULL */
+.grid-agenda-full {position: absolute; top: -18px; width: 98%; border: 0px; }
+textarea.agendaTaskFull:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTaskFull:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+textarea.agendaTaskFull:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* CURRICULUM */
 .grid-curriculum {border: 0px;}

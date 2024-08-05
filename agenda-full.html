@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Agendar Semestral</title>
+	<style>
+	::placeholder {color: #33333366; opacity: 85; font-size: 10px;/* Firefox */ }
+	::-ms-input-placeholder { color: darkgray; /* Edge 12 -18 */}
+	</style>
+</head>
+
+<body>
+<a href="index.html"><div id="return" class="return" style="right: 3%; top: 4%; color: black;">&larrhk;</div></a>
+
+
+<body style="height: 100%;">
+
+<div>
+  <select id="dropdown" class="dropdown"  name="dropdown">
+    <option value="0" selected disabled="disabled">☰</option>
+    <option value="1">📖 Agenda</option>
+      <option value="110">&#x27A5; 📑 Fecha Integrales</option>
+      <option value="111">&#x27A5; 📥 Descargar</option>
+      <option value="112">&#x27A5; ❌ Borrar</option>
+    <option value="2">✔️ Asistencia</option>
+    <option value="3">📁 Avance Curricular</option>
+    <option value="4">🗓️ Calendario II, 2024</option>
+    <option value="5">⏲️ Cuenta Regresiva</option>
+    <option value="6">📈 Escala de Notas</option>
+    <option value="7">📚 Horario de Clases</option>
+    <option value="8">💊 Justificador</option>
+    <option value="9">📜 Manual Estudiante</option>
+    <option value="10">✍️ Nota de Pruebas</option>
+    <option value="11">💯 Promedio Integral</option>
+    <option value="12">💯 Promedio Porcentual</option>
+    <option value="13">📋 Simulador Examen</option>
+    <option value="14">📝 Timebox (Upla)</option>
+    <option value="15">📊 Upladísticas</option>
+    <option value="16">👈 Volver</option>
+  </select>
+</div>
+
+<script type="text/javascript">
+document.getElementById('dropdown').addEventListener('change', function() {
+ if (dropdown.value == 1) {blurMenu(); window.location = "agenda.html"}
+ if (dropdown.value == 110) {blurMenu(); window.location = "agenda-full.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Calendario"}
+ if (dropdown.value == 111) {setTimeout('blurMenu()', 1000); window.print()}
+ if (dropdown.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
+ if (dropdown.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (dropdown.value == 3) {blurMenu(); window.location = "avance.html"}
+ if (dropdown.value == 4) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (dropdown.value == 5) {blurMenu(); window.location = "countdown.html"}
+ if (dropdown.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (dropdown.value == 7) {blurMenu(); window.location = "horario.html"}
+ if (dropdown.value == 8) {blurMenu(); window.location = "justify.html"}
+ if (dropdown.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (dropdown.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (dropdown.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (dropdown.value == 12) {blurMenu(); window.location = "promedios.html"}
+ if (dropdown.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (dropdown.value == 14) {blurMenu(); window.location = "timebox.html"}
+ if (dropdown.value == 15) {blurMenu(); window.location = "upladisticas.html"}
+ if (dropdown.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5)}
+});
+
+function blurMenu(){document.getElementById('dropdown').value = 0; document.getElementById('dropdown').blur();}
+function exitSoon(){window.location = "index.html"}
+</script>
+</div>
+
+
+<div class="grid-agenda-full" id="grid-agenda-full">
+
+<div class="agendaTitle" id="agendaTitle" style="grid-area: top; font-size: 14px; font-weight: bold; padding-top: 3px; padding-bottom: 12px;">UPLANIANOS - AGENDA SEMESTRAL</div>
+
+<!- DAYS ->
+<div>
+ <div class="divFull" style="padding-top: 10px; border: 1px dashed gray; font-weight: bold;">DÍA</div>
+ <div class="divFull" style="padding-top: 10px;">Lunes</div>
+ <div class="divFull" style="padding-top: 10px;">Martes</div>
+ <div class="divFull" style="padding-top: 10px;">Miércoles</div>
+ <div class="divFull" style="padding-top: 10px;">Jueves</div>
+ <div class="divFull" style="padding-top: 10px;">Viernes</div>
+
+ <div class="divFull" style="padding-top: 10px; margin-top: 12px; border: 1px dashed gray;">Lunes</div>
+ <div class="divFull" style="padding-top: 10px;">Martes</div>
+ <div class="divFull" style="padding-top: 10px;">Miércoles</div>
+ <div class="divFull" style="padding-top: 10px;">Jueves</div>
+ <div class="divFull" style="padding-top: 10px;">Viernes</div>
+
+ <div class="divFull" style="padding-top: 10px; margin-top: 12px; border: 1px dashed gray;">Lunes</div>
+ <div class="divFull" style="padding-top: 10px;">Martes</div>
+ <div class="divFull" style="padding-top: 10px;">Miércoles</div>
+ <div class="divFull" style="padding-top: 10px;">Jueves</div>
+ <div class="divFull" style="padding-top: 10px;">Viernes</div>
+
+ <div class="divFull" style="padding-top: 10px; margin-top: 12px; border: 1px dashed gray;">Lunes</div>
+ <div class="divFull" style="padding-top: 10px;">Martes</div>
+ <div class="divFull" style="padding-top: 10px;">Miércoles</div>
+ <div class="divFull" style="padding-top: 10px;">Jueves</div>
+ <div class="divFull" style="padding-top: 10px;">Viernes</div>
+
+ <div class="divFull" style="padding-top: 10px; margin-top: 12px; border: 1px dashed gray;">Lunes</div>
+ <div class="divFull" style="padding-top: 10px;">Martes</div>
+ <div class="divFull" style="padding-top: 10px;">Miércoles</div>
+ <div class="divFull" style="padding-top: 10px;">Jueves</div>
+ <div class="divFull" style="padding-top: 10px;">Viernes</div>
+
+</div>
+
+
+<!- AUGUST ->
+<div>
+ <div class="divFull" style="font-weight: bold; padding-top: 10px; border: 1px dashed gray;">AGOSTO</div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago5m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago5t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago6m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago6t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago7m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago7t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago8m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago8t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago9m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago9t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago12m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago12t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago13m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago13t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago14m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago14t"></textarea>
+ </div>
+
+ <div class="divFull" id="feriado">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago15m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="ago15t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago16m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago16t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago19m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago19t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago20m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago20t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago21m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago21t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago22m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago22t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago23m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago23t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago26m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago26t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago27m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago27t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago28m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago28t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago29m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago29t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="ago30m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="ago30t"></textarea>
+ </div>
+
+ <div class="divFull" style="background-color: #eeeeee88eee66; margin-top: 12px; border: 1px dashed gray;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+</div>
+
+
+
+<!- SEPTEMBER ->
+<div>
+
+ <div class="divFull" style="font-weight: bold; padding-top: 10px; border: 1px dashed gray;">SEPTIEMBRE</div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep2m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep2t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep3m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep3t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep4m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep4t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep5m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep5t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep6m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep6t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep9m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep9t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep10m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep10t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep11m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep11t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep12m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep12t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep13m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep13t"></textarea>
+ </div>
+
+
+ <div class="divFull" id="receso" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep16m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep16t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep17m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep17t" style="background-color: transparent"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep18m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep18t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep19m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep19t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep20m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep20t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep23m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="sep23t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep24m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep24t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep25m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep25t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep26m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep26t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep27m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep27t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="sep30m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="sep30t"></textarea>
+ </div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+</div>
+
+
+<!- OCTOBER ->
+<div>
+ <div class="divFull" style="font-weight: bold; padding-top: 10px; border: 1px dashed gray;">OCTUBRE</div>
+
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct1m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct1t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct2m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct2t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct3m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct3t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct4m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct4t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct7m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct7t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct8m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct8t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct9m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct9t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct10m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct10t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct11m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct11t"></textarea>
+ </div>
+
+
+ <div class="divFull" id="receso" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct14m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct14t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct15m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct15t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct16m" ></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct16t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct17m" ></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct17t"></textarea>
+ </div>
+
+ <div class="divFull" id="receso">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct18m" ></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct18t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct21m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct21t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct22m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct22t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct23m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct23t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct24m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct24t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct25m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct25t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct28m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct28t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct29m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct29t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct30m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="oct30t"></textarea>
+ </div>
+
+ <div class="divFull" id="feriado">
+ <textarea class="agendaTaskFull" maxlength="50" id="oct31m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="oct31t"></textarea>
+ </div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+</div>
+
+
+
+<!- NOVEMBER ->
+<div>
+ <div class="divFull" style="font-weight: bold; padding-top: 10px; border: 1px dashed gray;">NOVIEMBRE</div>
+
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+
+ <div class="divFull" id="feriado">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov1m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="nov1t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov4m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov4t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov5m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov5t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov6m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov6t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov7m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov7t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov8m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov8t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov11m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov11t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov12m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov12t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov13m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov13t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov14m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov14t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov15m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov15t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov18m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov18t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov19m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov19t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov20m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov20t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov21m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov21t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov22m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov22t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov25m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov25t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov26m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov26t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov27m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov27t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov28m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov28t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="nov29m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="nov29t"></textarea>
+ </div>
+</div>
+
+
+
+<!- DECEMBER ->
+<div>
+ <div class="divFull" style="font-weight: bold; padding-top: 10px; border: 1px dashed gray;">DICIEMBRE</div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic2m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic2t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic3m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic3t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic4m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic4t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic5m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic5t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic6m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic6t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic9m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="dic9t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic10m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic10t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic11m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic11t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic12m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic12t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic13m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic13t"></textarea>
+ </div>
+
+
+ <div class="divFull" style="margin-top: 12px; border: 1px dashed gray;">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic16m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="dic16t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic17m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic17t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic18m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic18t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic19m"></textarea><br><textarea class="agendaTaskFull" maxlength="50" id="dic19t"></textarea>
+ </div>
+
+ <div class="divFull">
+ <textarea class="agendaTaskFull" maxlength="50" id="dic20m"></textarea><br>
+ <textarea class="agendaTaskFull" maxlength="50" id="dic20t"></textarea>
+ </div>
+
+ <div class="divFull" style="background-color: #eeeeee88; margin-top: 12px; border: 1px dashed gray;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+
+ <div class="divFull" style="background-color: #eeeeee88; margin-top: 12px; border: 1px dashed gray;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+ <div class="divFull" style="background-color: #eeeeee88;"></div>
+</div>
+
+<!- END OF GRID CONTAINER ->
+</div>
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+getLinkValues();
+checkDates();
+highlightCells();
+}
+</script>
+
+
+<script type="text/javascript">
+function checkDates() {
+const date = new Date();
+let thisMonth = date.getMonth()
+var elMes = 0 // For current date
+
+// Months go from 0 (Jan.) to 11 (Dec.)!
+if (thisMonth <= 7) {elMes = "ago"}
+if (thisMonth == 8) {elMes = "sep"}
+if (thisMonth == 9) {elMes = "oct"}
+if (thisMonth == 10) {elMes = "nov"}
+if (thisMonth >= 11) {elMes = "dic"}
+
+// HIGHLITGHTING THE CURRENT DATE CELL
+var thisDate = date.getDate()
+var thisFormat = elMes+thisDate
+
+if (
+  // CHECK AUGUST
+  thisFormat != "ago3" && thisFormat != "ago4" &&
+  thisFormat != "ago10" && thisFormat != "ago11" &&
+  thisFormat != "ago17" && thisFormat != "ago18" &&
+  thisFormat != "ago24" && thisFormat != "ago25" &&
+  thisFormat != "ago31" &&
+  // SEPTEMBER
+  thisFormat != "sep1" &&
+  thisFormat != "sep7" && thisFormat != "sep8" &&
+  thisFormat != "sep14" && thisFormat != "sep15" &&
+  thisFormat != "sep21" && thisFormat != "sep22" &&
+  thisFormat != "sep28" && thisFormat != "sep29" &&
+  // CHECK OCTOBER
+  thisFormat != "oct5" && thisFormat != "oct6" &&
+  thisFormat != "oct12" && thisFormat != "oct13" &&
+  thisFormat != "oct19" && thisFormat != "oct20" &&
+  thisFormat != "oct26" && thisFormat != "oct27" &&
+  // CHECK NOVEMBER
+  thisFormat != "nov2" && thisFormat != "nov3" &&
+  thisFormat != "nov9" && thisFormat != "nov10" &&
+  thisFormat != "nov16" && thisFormat != "nov17" &&
+  thisFormat != "nov23" && thisFormat != "nov24" &&
+  thisFormat != "nov30" &&
+  // CHECK DECEMBER
+  thisFormat != "dic1" &&
+  thisFormat != "dic7" && thisFormat != "dic8" &&
+  thisFormat != "dic14" && thisFormat != "dic15" ||
+  thisMonth == 11 && thisDate > 20) {underlineDate(thisFormat)}
+  else {console.log("Feliz fin de semana!")
+  }
+}
+
+function underlineDate(thisFormat) {
+var thisMorn = document.getElementById(thisFormat+"m")
+var thisNoon = document.getElementById(thisFormat+"t")
+thisMorn.style.color = "red"; thisMorn.style.border = "1px solid #FF000088"
+thisNoon.style.color = "red"; thisNoon.style.border = "1px solid #FF000088"
+}
+</script>
+
+
+
+<!- CHECK BEFORE DELETING ->
+<script type="text/javascript">
+function doDelete() {
+  if (confirm('¿Desea borrar todos los meses?')) {
+    clearSchedule()
+    window.location = "agenda.html"
+    alert("Todo borrado!")
+  }
+  else { console.log("Eso estuvo cerca!") }
+}
+</script>
+
+<!- DELETE BUTTON FUNCTION ->
+<script type="text/javascript">
+function clearSchedule() {
+fullCalendar = document.querySelectorAll('textarea.agendaTaskFull');
+for(let dates of fullCalendar) {dates.value = ""};
+}
+</script>
+
+
+
+<!- HIGHLIGHT USED CELLS ->
+<script type="text/javascript">
+function highlightCells() {
+const Agenda = document.getElementsByClassName('agendaTaskFull');
+Array.from(Agenda).forEach (task => {
+  if (task.value.length > 0) {task.style.backgroundColor="#FFFF6EAA"}
+  })
+holderDates(Agenda)
+}
+
+function holderDates(Agenda) {
+Array.from(Agenda).forEach (task => {
+  if (task.id.length == 5) {task.placeholder = task.id.slice(3, 4)}
+  if (task.id.length == 6) {task.placeholder = task.id.slice(3, 5)}
+  // FERIADO
+  if (task.id == "ago15m" || task.id == "ago15t") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
+  if (task.id == "oct31m" || task.id == "oct31t") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
+  if (task.id == "nov1m" || task.id == "nov1t") {task.placeholder = "Feriado - " + task.id.slice(3, 4)}
+  // RECESO FIESTAS PATRIAS
+  if (task.id == "sep16m" || task.id == "sep16t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep17m" || task.id == "sep17t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep18m" || task.id == "sep18t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep19m" || task.id == "sep19t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep20m" || task.id == "sep20t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  // RECESO SALUD MENTAL
+  if (task.id == "oct14m" || task.id == "oct14t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct15m" || task.id == "oct15t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct16m" || task.id == "oct16t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct17m" || task.id == "oct17t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct18m" || task.id == "oct18t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  // CHECK IF EMPTY
+  if (task.value.length == 0) {task.style.textAlign = "right"}
+  })
+}
+</script>
+
+
+
+<script type="text/javascript">
+function getLinkValues() {
+
+// GETTING VALUE FROM LINK & UPDATING DATES
+var i1 = (new URLSearchParams(window.location.search)).get("i1");
+var i2 = (new URLSearchParams(window.location.search)).get("i2");
+var i3 = (new URLSearchParams(window.location.search)).get("i3");
+var ex = (new URLSearchParams(window.location.search)).get("ex");
+var c = (new URLSearchParams(window.location.search)).get("c");
+
+// SETTING TEST STING VALUES
+let text1 = "► Integral 1";
+let text2 = "► Integral 2";
+let text3 = "► Integral 3";
+let exam = "► Examen";
+
+// CHECK DATE FORMAT (REGULAR EXPRESSION)
+var regex = /^[a-z]{3}(0?[1-9]|[12][0-9]|3[01])[m|t]$/;
+// PHRASE = 3 characters & month days 0 upto 31 & m or t
+
+// SETTING DATES & STYLES
+if (i1 !== null && regex.exec(i1)) {
+  document.getElementById(i1).value = text1
+  document.getElementById(i1).style.color = "red"
+  document.getElementById(i1).style.fontWeight = "Bold"
+  document.getElementById(i1).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°1 sin fecha!")};
+if (i2 !== null && regex.exec(i2)) {
+  document.getElementById(i2).value = text2
+  document.getElementById(i2).style.color = "red"
+  document.getElementById(i2).style.fontWeight = "Bold"
+  document.getElementById(i2).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°2 sin fecha!")};
+if (i3 !== null && regex.exec(i3)) {
+  document.getElementById(i3).value = text3
+  document.getElementById(i3).style.color = "red"
+  document.getElementById(i3).style.fontWeight = "Bold"
+  document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°3 sin fecha!")};
+if (ex !== null && regex.exec(ex)) {
+  document.getElementById(ex).value = exam
+  document.getElementById(ex).style.color = "red"
+  document.getElementById(ex).style.fontWeight = "Bold"
+  document.getElementById(ex).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Examen final sin fecha!")};
+
+// ADDING CLASS TO TESTS
+var regexClass = /[a-z]/; // Regular characters.
+if (c !== null && regexClass.exec(c) ) {
+  if (i1 !== null && regex.exec(i1)) {
+    document.getElementById(i1).value = text1 + " (" + c + ")"
+    document.getElementById(i1).style.color = "red"
+    document.getElementById(i1).style.fontWeight = "Bold"
+    document.getElementById(i1).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°1 sin fecha!")};
+  if (i2 !== null && regex.exec(i2)) {
+    document.getElementById(i2).value = text2 + " (" + c + ")"
+    document.getElementById(i2).style.color = "red"
+    document.getElementById(i2).style.fontWeight = "Bold"
+    document.getElementById(i2).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°2 sin fecha!")};
+  if (i3 !== null && regex.exec(i3)) {
+    document.getElementById(i3).value = text3 + " (" + c + ")"
+    document.getElementById(i3).style.color = "red"
+    document.getElementById(i3).style.fontWeight = "Bold"
+    document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°3 sin fecha!")};
+  if (ex !== null && regex.exec(ex)) {
+    document.getElementById(ex).value = exam + " (" + c + ")"
+    document.getElementById(ex).style.color = "red"
+    document.getElementById(ex).style.fontWeight = "Bold"
+    document.getElementById(ex).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Examen final sin fecha!")};
+    }
+else {console.log("Asignatura sin nombre!")}
+
+}
+
+// /=====================================================================\
+// | Mañana: /agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Clase |
+// | Tarde-: /agenda.html?i1=sep23t&i2=oct28t&i3=dic9t&ex=dic16t&c=Clase |
+// \=====================================================================/
+
+</script>
+
+
+</body>
+</html>

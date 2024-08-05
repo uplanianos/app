@@ -89,6 +89,7 @@ Agenda tus evaluaciones programadas!
     <button class="agendaMonth" id="clickOct" onclick="clickOct();">10</button>
     <button class="agendaMonth" id="clickNov" onclick="clickNov();">11</button>
     <button class="agendaMonth" id="clickDec" onclick="clickDec();">12</button>
+    <button class="agendaMonth" onclick="location.href='agenda-full.html'">Full</button>
  </div>
 
  <div class="title" style="grid-area: top1;">Semana</div>
@@ -550,6 +551,7 @@ Agenda tus evaluaciones programadas!
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
 <script src="scripts/jquery-3.7.1.slim.js"></script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
@@ -877,7 +879,7 @@ var c = (new URLSearchParams(window.location.search)).get("c");
 let text1 = "► Integral 1";
 let text2 = "► Integral 2";
 let text3 = "► Integral 3";
-let textX = "► Examen";
+let exam = "► Examen";
 
 // CHECK DATE FORMAT (REGULAR EXPRESSION)
 var regex = /^[a-z]{3}(0?[1-9]|[12][0-9]|3[01])[m|t]$/;
@@ -903,10 +905,10 @@ if (i3 !== null && regex.exec(i3)) {
   document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
   else {console.log("Integral N°3 sin fecha!")};
 if (ex !== null && regex.exec(ex)) {
-  document.getElementById(ex).value = textX
+  document.getElementById(ex).value = exam
   document.getElementById(ex).style.color = "yellow"
   document.getElementById(ex).style.fontWeight = "Bold"
-  document.getElementById(ex).style.backgroundColor = "#FF3131"}
+  document.getElementById(ex).style.backgroundColor = "red"}
   else {console.log("Examen final sin fecha!")};
 
 // ADDING CLASS TO TESTS
@@ -931,10 +933,10 @@ if (c !== null && regexClass.exec(c) ) {
     document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
     else {console.log("Integral N°3 sin fecha!")};
   if (ex !== null && regex.exec(ex)) {
-    document.getElementById(ex).value = textX + " (" + c + ")"
+    document.getElementById(ex).value = exam + " (" + c + ")"
     document.getElementById(ex).style.color = "yellow"
     document.getElementById(ex).style.fontWeight = "Bold"
-    document.getElementById(ex).style.backgroundColor = "#FF3131"}
+    document.getElementById(ex).style.backgroundColor = "red"}
     else {console.log("Examen final sin fecha!")};
     }
 else {console.log("Asignatura sin nombre!")}
