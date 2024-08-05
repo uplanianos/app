@@ -737,24 +737,24 @@ holderDates(Agenda)
 
 function holderDates(Agenda) {
 Array.from(Agenda).forEach (task => {
-  if (task.id.length == 5) {task.placeholder = task.id.slice(3, 4)}
-  if (task.id.length == 6) {task.placeholder = task.id.slice(3, 5)}
+  if (task.id.length == 5 && task.id.slice(4,6) == "m") {task.placeholder = task.id.slice(3, 4)}
+  if (task.id.length == 6 && task.id.slice(5,7) == "m") {task.placeholder = task.id.slice(3, 5)}
   // FERIADO
-  if (task.id == "ago15m" || task.id == "ago15t") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
-  if (task.id == "oct31m" || task.id == "oct31t") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
-  if (task.id == "nov1m" || task.id == "nov1t") {task.placeholder = "Feriado - " + task.id.slice(3, 4)}
+  if (task.id == "ago15m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
+  if (task.id == "oct31m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
+  if (task.id == "nov1m") {task.placeholder = "Feriado - " + task.id.slice(3, 4)}
   // RECESO FIESTAS PATRIAS
-  if (task.id == "sep16m" || task.id == "sep16t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "sep17m" || task.id == "sep17t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "sep18m" || task.id == "sep18t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "sep19m" || task.id == "sep19t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "sep20m" || task.id == "sep20t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep16m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep17m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep18m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep19m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "sep20m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
   // RECESO SALUD MENTAL
-  if (task.id == "oct14m" || task.id == "oct14t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "oct15m" || task.id == "oct15t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "oct16m" || task.id == "oct16t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "oct17m" || task.id == "oct17t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
-  if (task.id == "oct18m" || task.id == "oct18t") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct14m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct15m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct16m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct17m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
+  if (task.id == "oct18m") {task.placeholder = "Receso - " + task.id.slice(3, 5)}
   // CHECK IF EMPTY
   if (task.value.length == 0) {task.style.textAlign = "right"}
   })
