@@ -992,11 +992,11 @@ textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* AGENDA FULL */
-.grid-agenda-full {position: absolute; top: -18px; width: 98%; border: 0px; }
+.grid-agenda-full {position: absolute; top: -24px; width: 100%; border: 0px;}
 textarea.agendaTaskFull:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
-.divFull {max-height: 38px;}
+.divFull {max-height: 34px; border: 1px solid gray; }
 
 /* CURRICULUM */
 .grid-curriculum {border: 0px;}
@@ -1008,7 +1008,6 @@ input[type=number].classGrade:active {box-shadow: 0 0 0px #FFF;}
 
 /* TIMEBOX */
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
-
 
 /* PLANNER */
 button {display:none; visibility: hidden;}
