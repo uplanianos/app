@@ -62,11 +62,11 @@ function exitSoon(){window.location = "index.html"}
 </script> 
 
 
-	<div class="grid-item-slider">
+<div class="grid-item" id="secondSemester" style="font-size: 14px; margin: 12px; margin-left: 5%; margin-right: 5%; padding: 12px; background-color: #A7C7E7; /* Pastel Blue */">
+<b>Segundo Semestre, 2024:</b>
+</div>
 
-	  <br><b>Segundo Semestre, 2024:</b><br>
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
-
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Inicio de clases (5 de Agosto):</font><br>
 	  <div class="countdown">
 	    <div><p class="startClassNumbers" id="weeksStart">0</p></div>
@@ -84,8 +84,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Minutos</div>
 	    <div>Segundos</div>
 	  </div>
+	</div>
 
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Primera Integral (23 de Septiembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="firstTestNumbers" id="weeksFirst">0</p></div>
@@ -103,8 +104,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Minutos</div>
 	    <div>Segundos</div>
 	  </div>
+	</div>
 
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Segunda Integral (28 de Octubre):</font><br>
 	  <div class="countdown">
 	    <div><p class="secondTestNumbers" id="weeksSecond">0</p></div>
@@ -122,8 +124,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Minutos</div>
 	    <div>Segundos</div>
 	  </div>
+	</div>
 
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Tercera Integral (9 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="thirdTestNumbers" id="weeksThird">0</p></div>
@@ -141,8 +144,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Minutos</div>
 	    <div>Segundos</div>
 	  </div>
+	</div>
 
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Examen Especial (16 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="specialExamNumbers" id="weeksExam">0</p></div>
@@ -160,8 +164,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Minutos</div>
 	    <div>Segundos</div>
 	  </div>
+	</div>
 
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
+	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Cierre de Semestre (20 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="lastDayNumbers" id="weeksEnd">0</p></div>
@@ -180,20 +185,15 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Segundos</div>
 	  </div>
 
-
-	  <hr style="width: 98%; margin: auto; margin-top: 6px; margin-bottom: 6px; margin-right: 12px;">
 	  <br>
 
 	<!- End of "grid-item-tools" Div ->
 	</div>
 
-    <br>
-    <br>
+    <br><br>
   </div>
 
-
-<br>
-<br>
+<br><br>
 </div>
 
 
@@ -234,6 +234,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of classStart) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of classStart) {numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsStart").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
@@ -267,6 +269,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of firstTest) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of firstTest){numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsFirst").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
@@ -301,6 +305,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of secondTest) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of secondTest) {numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsSecond").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
@@ -334,6 +340,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of thirdTest) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of thirdTest) {numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsThird").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
@@ -367,6 +375,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of specialExam) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of specialExam) {numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsExam").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
@@ -400,6 +410,8 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of lastDay) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of lastDay) {numbers.style.color = byGone};
+    document.getElementById("weeksStart").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysStart").innerHTML = -Math.abs(days)+1;
     document.getElementById("secondsEnd").innerHTML = "0";
     clearInterval(doTheLoop); }
   },1000);
