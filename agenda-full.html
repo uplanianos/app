@@ -611,6 +611,9 @@ UPLANIANOS - AGENDA SEMESTRAL
  <div class="divFull" style="background-color: #eeeeee88;"></div>
 </div>
 
+ <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px; border: 0px; border-style: hidden; padding-top: 18px;">
+ Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font></div>
+
 <!- END OF GRID CONTAINER ->
 </div>
 
@@ -698,9 +701,15 @@ var thisMorn = document.getElementById(thisFormat+"m")
 var thisNoon = document.getElementById(thisFormat+"t")
 thisMorn.style.color = "red"; thisMorn.style.border = "2px solid #FF000088"; thisMorn.style.borderStyle = "solid solid hidden solid";
 thisNoon.style.color = "red"; thisNoon.style.border = "2px solid #FF000088"; thisNoon.style.borderStyle = "hidden solid solid solid";
+
+window.onbeforeprint = function() { thisMorn.style.border = "0px"; thisNoon.style.border = "2px"; }
+
+window.onafterprint = function() {
+  thisMorn.style.color = "red"; thisMorn.style.border = "2px solid #FF000088"; thisMorn.style.borderStyle = "solid solid hidden solid";
+  thisNoon.style.color = "red"; thisNoon.style.border = "2px solid #FF000088"; thisNoon.style.borderStyle = "hidden solid solid solid";
+  }
 }
 </script>
-
 
 
 <!- CHECK BEFORE DELETING ->
@@ -708,8 +717,8 @@ thisNoon.style.color = "red"; thisNoon.style.border = "2px solid #FF000088"; thi
 function doDelete() {
   if (confirm('¿Desea borrar todos los meses?')) {
     clearSchedule()
-    window.location = "agenda.html"
     alert("Todo borrado!")
+    window.location = "agenda-full.html"
   }
   else { console.log("Eso estuvo cerca!") }
 }

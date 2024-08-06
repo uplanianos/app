@@ -544,7 +544,9 @@ textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-
     'div div div div div div'
     'div div div div div div'
     'div div div div div div'
-    'div div div div div div';
+    'div div div div div div'
+
+    'foot foot foot foot foot foot';
   gap: 0px;
   background-color: white;
   border: 2px solid navy;
@@ -994,6 +996,7 @@ textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
+.divFull {max-height: 38px;}
 
 /* CURRICULUM */
 .grid-curriculum {border: 0px;}
