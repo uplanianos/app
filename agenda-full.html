@@ -697,13 +697,19 @@ if (
 printFooterDate(elMes,thisDate)
 }
 
+function printFooterDate(elMes,thisDate){
+var footerDate = document.getElementById("footerDate")
+if (elMes.length >= 1) {footerDate.innerHTML = " - Impreso el " + thisDate + " de " + elMes + ", 2024."}
+else {footerDate.innerHTML = " !"}
+}
+
 function underlineDate(thisFormat) {
 var thisMorn = document.getElementById(thisFormat+"m")
 var thisNoon = document.getElementById(thisFormat+"t")
 thisMorn.style.color = "red"; thisMorn.style.border = "2px solid #FF000088"; thisMorn.style.borderStyle = "solid solid hidden solid";
 thisNoon.style.color = "red"; thisNoon.style.border = "2px solid #FF000088"; thisNoon.style.borderStyle = "hidden solid solid solid";
 
-window.onbeforeprint = function() { thisMorn.style.border = "0px"; thisNoon.style.border = "2px"; }
+window.onbeforeprint = function() { thisMorn.style.border = "0px"; thisNoon.style.border = "2px"; notAllowedOnMobilePrint()}
 
 window.onafterprint = function() {
   thisMorn.style.color = "red"; thisMorn.style.border = "2px solid #FF000088"; thisMorn.style.borderStyle = "solid solid hidden solid";
@@ -711,10 +717,18 @@ window.onafterprint = function() {
   }
 }
 
-function printFooterDate(elMes,thisDate){
-var footerDate = document.getElementById("footerDate")
-if (elMes.length >= 1) {footerDate.innerHTML = " - Impreso el " + thisDate + " de " + elMes + ", 2024."}
-else {footerDate.innerHTML = " !"}
+function notAllowedOnMobilePrint() {
+var notAllowed = document.querySelectorAll("#notAllowed") // OFF CALENDAR DATES
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+  for(let cells of notAllowed) {
+    cells.style.border = "1px solid lightgray"
+    cells.style.borderStyle = "hidden hidden hidden solid"
+    cells.style.backgroundColor = "white"}
+  }
+  else {for(let cells of notAllowed) {
+    cells.style.border = "1px solid darkgray"
+    cells.style.backgroundColor = "DDDDDDcc"}
+  }
 }
 </script>
 
