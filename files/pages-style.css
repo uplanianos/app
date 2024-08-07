@@ -560,7 +560,13 @@ textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-
   padding-right: 18px;
 }
 .grid-agenda-full > div {font-size: min(14px, 2vw); text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */ margin: 0px; padding: 0px; border: 0px dashed blue;}
-.divFull {height: 40px; padding: 2px; padding-top: 2px; padding-bottom: 1px; margin-right: -1px; border: 1px dashed gray; border-style: none dashed dashed dashed; /* top right bottom left */ }
+.divFull {height: 40px; padding: 2px; padding-bottom: 1px; margin-right: -1px; border: 1px dashed gray; border-style: dashed; /* top right bottom left */ }
+
+#top-border {margin-top: 6px; border: 1px dashed gray;}
+#recesoTop {background-color: #00FF0033; margin-top: 6px; border: 1px dashed gray;}
+#notAllowed {background-color: #DDDDDDcc; cursor: not-allowed;}
+#receso {background-color: #00FF0033;}
+#feriado {background-color: #FF000033;}
 
 textarea.agendaTaskFull {
   height: 48%;
@@ -583,8 +589,6 @@ textarea.agendaTaskFull:hover {outline: none !important; border-color: #719ECE; 
 textarea.agendaTaskFull:active {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 textarea.agendaTaskFull:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 
-#feriado {background-color: #FF000033;}
-#receso {background-color: #00FF0033;}
 /* END END END ENDEND END */
 
 
@@ -992,11 +996,14 @@ textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* AGENDA FULL */
-.grid-agenda-full {position: absolute; top: -24px; width: 100%; border: 0px;}
+.grid-agenda-full {position: absolute; top: -24px; left: -10px; width: 103%; border: 0px;}
+textarea.agendaTaskFull {height: 46%; padding: 0px; margin-top: -14px; margin-bottom: 1px;}
 textarea.agendaTaskFull:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
-.divFull {max-height: 34px; border: 1px solid gray; }
+.divFull {max-height: 35px; border: 1px solid darkgray; margin-top: -1px;}
+#top-border {margin-top: 6px; border: 1px solid darkgray;}
+#recesoTop {margin-top: 6px; border: 1px solid darkgray;}
 
 /* CURRICULUM */
 .grid-curriculum {border: 0px;}
