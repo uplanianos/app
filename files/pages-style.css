@@ -556,11 +556,11 @@ textarea.agendaTask:focus {outline: none !important; border-color: #719ECE; box-
   margin-right: auto;
   margin-top: 1%;
   margin-bottom: 3%;
-  padding-left: 12px;
-  padding-right: 18px;
+  padding-left: 14px;
+  padding-right: 16px;
 }
 .grid-agenda-full > div {font-size: min(14px, 2vw); text-align: center; font-family: Verdana, Tahoma; color: #1434A4; /* Egyptian Blue */ margin: 0px; padding: 0px; border: 0px dashed blue;}
-.divFull {height: 40px; padding: 2px; padding-bottom: 1px; margin-right: -1px; border: 1px dashed gray; border-style: dashed; /* top right bottom left */ }
+.divFull {height: 40px; padding: 2px; padding-bottom: 1px; margin-left: -1px; margin-top: -1px; border: 1px dashed gray; border-style: dashed; /* top right bottom left */ }
 
 #top-border {margin-top: 6px; border: 1px dashed gray;}
 #recesoTop {background-color: #00FF0033; margin-top: 6px; border: 1px dashed gray;}
@@ -996,7 +996,7 @@ textarea.agendaTask:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTask:focus {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 
 /* AGENDA FULL */
-.grid-agenda-full {position: absolute; top: -24px; left: -10px; width: 103%; border: 0px;}
+.grid-agenda-full {position: absolute; top: -24px; left: -10px; width: 102%; border: 0px;}
 textarea.agendaTaskFull {height: 46%; padding: 0px; margin-top: -14px; margin-bottom: 1px;}
 textarea.agendaTaskFull:hover {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
 textarea.agendaTaskFull:active {border-color: #FFF; box-shadow: 0 0 0px #FFF;}
