@@ -718,16 +718,11 @@ window.onafterprint = function() {
 }
 
 function notAllowedOnMobilePrint() {
-var notAllowed = document.querySelectorAll("#notAllowed") // OFF CALENDAR DATES
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-  for(let cells of notAllowed) {
-    cells.style.border = "1px solid lightgray"
-    cells.style.borderStyle = "hidden hidden hidden solid"
-    cells.style.backgroundColor = "white"}
-  }
-  else {for(let cells of notAllowed) {
-    cells.style.border = "1px solid darkgray"
-    cells.style.backgroundColor = "DDDDDDcc"}
+// OFF CALENDAR DATES
+var notAllowed = document.querySelectorAll("#notAllowed")
+// CHECKING MOBILE
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+  for(let cells of notAllowed) {cells.style.border = "0px"; cells.style.backgroundColor = "transparent"}
   }
 }
 </script>
