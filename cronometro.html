@@ -142,17 +142,18 @@ if (rightNow >= 12.30 && rightNow < 13.45) {classTime = break4; nextEvent.innerH
 if (rightNow >= 14.0  && rightNow < 15.15) {classTime = break5; nextEvent.innerHTML = "receso"}
 if (rightNow >= 15.30 && rightNow < 16.45) {classTime = break6; nextEvent.innerHTML = "receso"}
 if (rightNow >= 17.0  && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "receso"}
-if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "receso"}
+if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar por hoy!"}
 
 // SETTING UP BREAKS
-if (rightNow >=  9.15 && rightNow <  9.30) {classTime = period2; nextEvent.innerHTML = "segundo período"}
-if (rightNow >= 10.45 && rightNow < 11.0 ) {classTime = period3; nextEvent.innerHTML = "tercer período"}
-if (rightNow >= 12.15 && rightNow < 12.30) {classTime = period4; nextEvent.innerHTML = "cuarto período"}
-if (rightNow >= 13.45 && rightNow < 14.0 ) {classTime = period5; nextEvent.innerHTML = "quinto período"}
-if (rightNow >= 15.15 && rightNow < 15.30) {classTime = period6; nextEvent.innerHTML = "sexto período"}
-if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.innerHTML = "séptimo período"}
-if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "octavo período"}
-if (rightNow >= 19.45 || rightNow < 08.0 ) {thisDate++; classTime = period1; nextEvent.innerHTML = "1er período"}
+if (rightNow  <  8.0 ) {classTime = period1; nextEvent.innerHTML = "1° período"}
+if (rightNow >=  9.15 && rightNow <  9.30) {classTime = period2; nextEvent.innerHTML = "2° período"}
+if (rightNow >= 10.45 && rightNow < 11.0 ) {classTime = period3; nextEvent.innerHTML = "3° período"}
+if (rightNow >= 12.15 && rightNow < 12.30) {classTime = period4; nextEvent.innerHTML = "4° período"}
+if (rightNow >= 13.45 && rightNow < 14.0 ) {classTime = period5; nextEvent.innerHTML = "5° período"}
+if (rightNow >= 15.15 && rightNow < 15.30) {classTime = period6; nextEvent.innerHTML = "6° período"}
+if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.innerHTML = "7° período"}
+if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "8° período"}
+if (rightNow >= 19.45) {thisDate++; classTime = period1; nextEvent.innerHTML = "1° período"}
 
 // DATE FORMATTING AND TIME VARIABLES
 var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
