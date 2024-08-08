@@ -75,7 +75,7 @@ function exitSoon(){window.location = "index.html"}
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="classCountdown" style="margin: 0px;">:</p></div>
 	    <div><p class="classCountdown" id="secondsStart" style="margin: 0px;">-</p></div>
 	  </div>
-	  <div class="clock" style="margin-bottom: 18px; margin-left: -8px;">
+	  <div class="clock" style="margin-bottom: 12px; margin-left: -8px;">
 	    <div>Horas</div>
 	    <div style="margin-left: -10%; margin-right: -5%;"></div>
 	    <div>Minutos</div>
@@ -83,8 +83,8 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Segundos</div>
 	  </div>
 
-	    <div id="progress" style="display: none; width: 85%; height: 20px; margin-left: auto; margin-right: auto; margin-top: 12px; margin-bottom: 18px;">
-	    <input id="progress" class="temporizador" min="0" max="60" type="range" value="30"/>
+	    <div style="width: 85%; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 18px;">
+	    <input id="progress" class="temporizador" min="0.0" max="23.59" type="range" value="00.00" step="00.01"/>
 	    </div>
 
 	</div>
@@ -136,29 +136,30 @@ var rightNow = thisHour+"."+theseMinutes
 // SETTING UP CLASS TIME
 var classTime = "23:00:00"
 
-// SETTING INNER HTML ITEMS
+// SETTING HTML ELEMENTS
 const nextEvent = document.getElementById("nextEvent")
+progress = document.getElementById('progress')
 
 // SETTING UP PERIODS
-if (rightNow >=  8.0  && rightNow <  9.15) {classTime = break1; nextEvent.innerHTML = "1° receso (9:15)"}
-if (rightNow >=  9.30 && rightNow < 10.45) {classTime = break2; nextEvent.innerHTML = "2° receso (10:45)"}
-if (rightNow >= 11.0  && rightNow < 12.15) {classTime = break3; nextEvent.innerHTML = "3° receso (12:15)"}
-if (rightNow >= 12.30 && rightNow < 13.45) {classTime = break4; nextEvent.innerHTML = "4° receso (13:45)"}
-if (rightNow >= 14.0  && rightNow < 15.15) {classTime = break5; nextEvent.innerHTML = "5° receso (15:15)"}
-if (rightNow >= 15.30 && rightNow < 16.45) {classTime = break6; nextEvent.innerHTML = "6° receso (16:45)"}
-if (rightNow >= 17.0  && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "7° receso (18:15)"}
-if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar por hoy!"}
+if (rightNow >=  8.0  && rightNow <  9.15) {classTime = break1; nextEvent.innerHTML = "1° receso (9:15)"; progress.min = "8.0"; progress.max = "9.15"}
+if (rightNow >=  9.30 && rightNow < 10.45) {classTime = break2; nextEvent.innerHTML = "2° receso (10:45)"; progress.min = "9.30"; progress.max = "10.45"}
+if (rightNow >= 11.0  && rightNow < 12.15) {classTime = break3; nextEvent.innerHTML = "3° receso (12:15)"; progress.min = "11.0"; progress.max = "12.15"}
+if (rightNow >= 12.30 && rightNow < 13.45) {classTime = break4; nextEvent.innerHTML = "4° receso (13:45)"; progress.min = "12.30"; progress.max = "13.45"}
+if (rightNow >= 14.0  && rightNow < 15.15) {classTime = break5; nextEvent.innerHTML = "5° receso (15:15)"; progress.min = "14.0"; progress.max = "15.15"}
+if (rightNow >= 15.30 && rightNow < 16.45) {classTime = break6; nextEvent.innerHTML = "6° receso (16:45)"; progress.min = "15.30"; progress.max = "16.45"}
+if (rightNow >= 17.0  && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "7° receso (18:15)"; progress.min = "17.0"; progress.max = "18.15"}
+if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar por hoy!"; progress.min = "18.30"; progress.max = "19.45"}
 
 // SETTING UP BREAKS
-if (rightNow  <  8.0 ) {classTime = period1; nextEvent.innerHTML = "1° período (8:00)"}
-if (rightNow >=  9.15 && rightNow <  9.30) {classTime = period2; nextEvent.innerHTML = "2° período (9:30)"}
-if (rightNow >= 10.45 && rightNow < 11.0 ) {classTime = period3; nextEvent.innerHTML = "3° período (11:00)"}
-if (rightNow >= 12.15 && rightNow < 12.30) {classTime = period4; nextEvent.innerHTML = "4° período (12:30)"}
-if (rightNow >= 13.45 && rightNow < 14.0 ) {classTime = period5; nextEvent.innerHTML = "5° período (14:00)"}
-if (rightNow >= 15.15 && rightNow < 15.30) {classTime = period6; nextEvent.innerHTML = "6° período (15:30)"}
-if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.innerHTML = "7° período (17:00)"}
-if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "8° período (18:30)"}
-if (rightNow >= 19.45) {thisDate++; classTime = period1; nextEvent.innerHTML = "1° período"}
+if (rightNow  <  8.0 ) {classTime = period1; nextEvent.innerHTML = "1° período (8:00)"; progress.min = "0.0"; progress.max = "8.0"}
+if (rightNow >=  9.15 && rightNow <  9.30) {classTime = period2; nextEvent.innerHTML = "2° período (9:30)"; progress.min = "9.15"; progress.max = "9.30"}
+if (rightNow >= 10.45 && rightNow < 11.0 ) {classTime = period3; nextEvent.innerHTML = "3° período (11:00)"; progress.min = "10.45"; progress.max = "11.0"}
+if (rightNow >= 12.15 && rightNow < 12.30) {classTime = period4; nextEvent.innerHTML = "4° período (12:30)"; progress.min = "12.15"; progress.max = "12.30"}
+if (rightNow >= 13.45 && rightNow < 14.0 ) {classTime = period5; nextEvent.innerHTML = "5° período (14:00)"; progress.min = "13.45"; progress.max = "14.0"}
+if (rightNow >= 15.15 && rightNow < 15.30) {classTime = period6; nextEvent.innerHTML = "6° período (15:30)"; progress.min = "15.15"; progress.max = "15.30"}
+if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.innerHTML = "7° período (17:00)"; progress.min = "16.45"; progress.max = "17.0"}
+if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "8° período (18:30)"; progress.min = "18.15"; progress.max = "18.30"}
+if (rightNow >= 19.45) {thisDate++; classTime = period1; nextEvent.innerHTML = "1° período"; progress.min = "19.45"; progress.max = "23.59"}
 
 // DATE FORMATTING AND TIME VARIABLES
 var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
@@ -174,6 +175,10 @@ var countdownDate = new Date(finalDate).getTime()
 
 // Update the count down every 1 second
 var x = setInterval(function() {
+
+    // UPDATING RANGE PROGRESS
+    progress.value = rightNow
+    updateProgress(rightNow)
 
     // Get todays date and time
     var now = new Date().getTime();
@@ -216,6 +221,16 @@ var x = setInterval(function() {
 }
 
 function refreshCountdown() {window.location = "temporizador.html"}
+
+function updateProgress(rightNow) {
+progress = document.getElementById('progress');
+var value = (rightNow-progress.min)/(progress.max-progress.min)*100; console.log() // console.log(value)
+progress.style.background = 'linear-gradient(to right, lightgreen 0%, lightgreen ' + value + '%, #fff ' + value + '%, white 100%)'
+
+// SOURCE FOR ORIGINAL CODE:
+// https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
+
+}
 </script>
 
 

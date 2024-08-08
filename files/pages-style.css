@@ -182,6 +182,29 @@ ul	{ padding-left: 18px; }
 .titleMenu:focus { background-color: #0096FF; color: white; outline: none; font-weight: bold; border-radius: 6px 6px 0px 0px;}
 
 
+/* TEMPORIZADOR */
+
+.temporizador {
+  background: linear-gradient(to right, lightgreen 0%, lightgreen 50%, #FFF 50%, #FFF 100%);
+  border: solid 1px lightblue;
+  border-radius: 6px;
+  width: 96%;
+  height: 32px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.temporizador::-webkit-slider-thumb {
+  width: 0px;
+  -webkit-appearance: none !important;
+  height: 30px;
+  cursor: pointer;
+  background: lightblue;
+  border-radius: 3px;
+  box-shadow: 0.5px 0 0 0.5px darkgray;
+}
+
+
 /* SCHEDULE SETTINGS */
 
 .grid-schedule {
