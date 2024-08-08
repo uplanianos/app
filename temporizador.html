@@ -83,13 +83,9 @@ function exitSoon(){window.location = "index.html"}
 	    <div>Segundos</div>
 	  </div>
 
-	    <div id="progress" style="width: 85%; height: 20px; margin-left: auto; margin-right: auto; margin-top: 12px; margin-bottom: 18px;">
+	    <div id="progress" style="display: none; width: 85%; height: 20px; margin-left: auto; margin-right: auto; margin-top: 12px; margin-bottom: 18px;">
 	    <input id="progress" class="temporizador" min="0" max="60" type="range" value="30"/>
 	    </div>
-
-	    <div id="progressBarDiv" style="display: none; width: 85%; background-color: gray; margin-left: auto; margin-right: auto; margin-top: 12px; margin-bottom: 18px;border: 1px solid darkgray; border-radius: 3px;">
-	    <div id="progressBar" style="width: 0%; height: 30px; background-color: green; border-radius: 3px; padding-top: 6px; text-align: center;">&nbsp;0%
-	    </div></div>
 
 	</div>
 
@@ -102,13 +98,6 @@ function exitSoon(){window.location = "index.html"}
 <br><br>
 </div>
 
-<script type="text/javascript">
-// .chrome styling Vanilla JS
-document.getElementById("myinput").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
-  this.style.background = 'linear-gradient(to right, #82CFD0 0%, #82CFD0 ' + value + '%, #fff ' + value + '%, white 100%)'
-};
-</script>
 
 <script type="text/javascript">
 function startTimer() {
