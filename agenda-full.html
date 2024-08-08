@@ -38,9 +38,9 @@
     <option value="11">💯 Promedio Integral</option>
     <option value="12">💯 Promedio Porcentual</option>
     <option value="13">📋 Simulador Examen</option>
-    <option value="14">📝 Timebox (Upla)</option>
-    <option value="15">📊 Upladísticas</option>
-    <option value="16">👈 Volver</option>
+    <option value="14">⏳ Temporizador</option>
+    <option value="15">📝 Timebox (Upla)</option>
+    <option value="16">📊 Upladísticas</option>
   </select>
 </div>
 
@@ -52,7 +52,7 @@ document.getElementById('dropdown').addEventListener('change', function() {
  if (dropdown.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
  if (dropdown.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
  if (dropdown.value == 3) {blurMenu(); window.location = "avance.html"}
- if (dropdown.value == 4) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (dropdown.value == 4) {blurMenu(); window.location = "calendario.html"}
  if (dropdown.value == 5) {blurMenu(); window.location = "countdown.html"}
  if (dropdown.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
  if (dropdown.value == 7) {blurMenu(); window.location = "horario.html"}
@@ -62,9 +62,9 @@ document.getElementById('dropdown').addEventListener('change', function() {
  if (dropdown.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (dropdown.value == 12) {blurMenu(); window.location = "promedios.html"}
  if (dropdown.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (dropdown.value == 14) {blurMenu(); window.location = "timebox.html"}
- if (dropdown.value == 15) {blurMenu(); window.location = "upladisticas.html"}
- if (dropdown.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5)}
+ if (dropdown.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (dropdown.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (dropdown.value == 16) {blurMenu(); window.location = "upladisticas.html"}
 });
 
 function blurMenu(){document.getElementById('dropdown').value = 0; document.getElementById('dropdown').blur();}
@@ -642,6 +642,7 @@ window.onload = function() {
 getLinkValues();
 checkDates();
 highlightCells();
+studyProgress();
 }
 </script>
 
@@ -872,6 +873,35 @@ else {console.log("Asignatura sin nombre!")}
 // \=====================================================================/
 
 </script>
+
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="studyProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script type="text/javascript">
+function studyProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var studyProgress = document.getElementById("studyProgress").value
+var additionValue = 0.5
+var newProgress = parseFloat(studyProgress) + parseFloat(additionValue);
+ if (studyProgress < 100) { 
+    document.getElementById("studyProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+  }
+ if (studyProgress >= 100) {document.getElementById("studyProgress").value = 100}
+}
+</script>
+
+
 
 
 </body>

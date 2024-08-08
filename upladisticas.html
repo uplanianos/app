@@ -29,9 +29,9 @@
       <option value="11">💯 Promedio Integral</option>
       <option value="12">💯 Promedio Porcentual</option>
       <option value="13">📋 Simulador Examen</option>
-      <option value="14">📝 Timebox (Upla)</option>
-      <option value="15">📊 Upladísticas</option>
-      <option value="16">👈 Volver</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+      <option value="16">📊 Upladísticas</option>
     </select>
     <b>Uplanianos App:</b> Progreso Uplaniano.</p>
   </div>
@@ -51,9 +51,9 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
  if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (titleMenu.value == 14) {blurMenu(); window.location = "timebox.html"}
- if (titleMenu.value == 15) {blurMenu(); window.location = "upladisticas.html"}
- if (titleMenu.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
 });
 
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
@@ -74,7 +74,7 @@ function exitSoon(){window.location = "index.html"}
 	    <div id="studyBarDiv" style="width: 100%; background-color: grey; border: 1px solid darkgray; border-radius: 3px; margin-top: 12px;">
 	    <div id="studyBar" style="width: 0%; height: 30px; background-color: green; border-radius: 3px; padding-top: 6px; text-align: center;">&nbsp;0%
 	    </div></div>
-	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Planificación de prioridades y horarios de estudios.</font></center>
+	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Planificación de <a href="agenda.html">prioridades</a> y <a href="timebox.html">hábitos</a> de estudios.</font></center>
 	  </div>
 	</div>
 
@@ -85,7 +85,7 @@ function exitSoon(){window.location = "index.html"}
 	    <div id="scheduleBarDiv" style="width: 100%; background-color: grey; border: 1px solid darkgray; border-radius: 3px; margin-top: 12px;">
 	    <div id="scheduleBar" style="width: 0%; height: 30px; background-color: green; border-radius: 3px; padding-top: 6px; text-align: center;">&nbsp;0%
 	    </div></div>
-	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Completación del horario de clases.</font></center>
+	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Completación del <a href="horario.html">horario de clases</a>.</font></center>
 	  </div>
 	</div>
 
@@ -96,7 +96,7 @@ function exitSoon(){window.location = "index.html"}
 	    <div id="knowledgeBarDiv" style="width: 100%; background-color: grey; border: 1px solid darkgray; border-radius: 3px; margin-top: 12px;">
 	    <div id="knowledgeBar" style="width: 0%; height: 30px; background-color: green; border-radius: 3px; padding-top: 6px; text-align: center;">&nbsp;0%
 	    </div></div>
-	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Conocimiento de las fechas, porcentajes y normativas.</font></center>
+	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Conocimiento de las <a href="calendario.html">fechas</a>, <a href="asistencia.html">porcentajes</a> y <a href="manual-estudiante.html">normativas</a>.</font></center>
 	  </div>
 	</div>
 
@@ -107,7 +107,7 @@ function exitSoon(){window.location = "index.html"}
 	    <div id="autonomyBarDiv" style="width: 100%; background-color: grey; border: 1px solid darkgray; border-radius: 3px; margin-top: 12px;">
 	    <div id="autonomyBar" style="width: 0%; height: 30px; background-color: green; border-radius: 3px; padding-top: 6px; text-align: center;">&nbsp;0%
 	    </div></div>
-	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Uso de cálculos y procentajes.</font></center>
+	    <center><font color="darkgray" size="1px" style="border-left: 12%;">Uso de <a href="integrales.html">cálculos</a> y <a href="pruebas.html">procentajes</a>.</font></center>
 	  </div>
 	</div>
 

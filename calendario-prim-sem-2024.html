@@ -30,9 +30,9 @@
       <option value="11">💯 Promedio Integral</option>
       <option value="12">💯 Promedio Porcentual</option>
       <option value="13">📋 Simulador Examen</option>
-      <option value="14">📝 Timebox (Upla)</option>
-      <option value="15">📊 Upladísticas</option>
-      <option value="16">👈 Volver</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+      <option value="16">📊 Upladísticas</option>
     </select> Calendario I, 2024.</p></div>
 
 <script type="text/javascript">
@@ -40,7 +40,7 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 1) {blurMenu(); window.location = "agenda.html"}
  if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
  if (titleMenu.value == 3) {blurMenu(); window.location = "avance.html"}
- if (titleMenu.value == 4) {blurMenu(); window.location = "calendario-seg-sem-2024.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "calendario.html"}
  if (titleMenu.value == 5) {blurMenu(); window.location = "countdown.html"}
  if (titleMenu.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
  if (titleMenu.value == 7) {blurMenu(); window.location = "horario.html"}
@@ -50,16 +50,16 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
  if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (titleMenu.value == 14) {blurMenu(); window.location = "timebox.html"}
- if (titleMenu.value == 15) {blurMenu(); window.location = "upladisticas.html"}
- if (titleMenu.value == 16) {blurMenu(); setTimeout('exitSoon()', 1000 * 0.5);}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
 });
 
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 function exitSoon(){window.location = "index.html"}
 </script> 
 
-    <div class="labels" align="center"><p><b>PRIMER</b> | <a href="calendario-seg-sem-2024.html">Segundo</a> Semestre, 2024. | <a href="calendario-seg-sem-2023.html">2023</a></p></div>
+    <div class="labels" align="center"><p><b>PRIMER</b> | <a href="calendario.html">Segundo</a> Semestre, 2024. | <a href="calendario-seg-sem-2023.html">2023</a></p></div>
 
 
 	<div class="grid-container-pages" style="grid-auto-flow: flow;">
