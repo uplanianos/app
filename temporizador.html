@@ -154,11 +154,11 @@ if (rightNow >= 10.45 && rightNow < 11.00) {classTime = period3; nextEvent.inner
 if (rightNow >= 11.00 && rightNow < 12.15) {classTime = break3; nextEvent.innerHTML = "el próximo receso (12:15)";	progress.min = "11.00"; progress.max = "12.15"}
 if (rightNow >= 12.15 && rightNow < 12.30) {classTime = period4; nextEvent.innerHTML = "el 4° período (12:30)";		progress.min = "12.15"; progress.max = "12.30"}
 if (rightNow >= 12.30 && rightNow < 13.45) {classTime = break4; nextEvent.innerHTML = "el próximo receso (13:45)";	progress.min = "12.30"; progress.max = "13.45"}
-if (rightNow >= 13.45 && rightNow < 14.0 ) {classTime = period5; nextEvent.innerHTML = "el 5° período (14:00)";		progress.min = "13.45"; progress.max = "14.00"}
+if (rightNow >= 13.45 && rightNow < 14.00) {classTime = period5; nextEvent.innerHTML = "el 5° período (14:00)";		progress.min = "13.45"; progress.max = "14.00"}
 if (rightNow >= 14.00 && rightNow < 15.15) {classTime = break5; nextEvent.innerHTML = "el próximo receso (15:15)";	progress.min = "14.00"; progress.max = "15.15"}
 if (rightNow >= 15.15 && rightNow < 15.30) {classTime = period6; nextEvent.innerHTML = "6° período (15:30)";		progress.min = "15.15"; progress.max = "15.30"}
 if (rightNow >= 15.30 && rightNow < 16.45) {classTime = break6; nextEvent.innerHTML = "el próximo receso (16:45)";	progress.min = "15.30"; progress.max = "16.45"}
-if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.innerHTML = "7° período (17:00)";		progress.min = "16.45"; progress.max = "17.00"}
+if (rightNow >= 16.45 && rightNow < 17.00) {classTime = period7; nextEvent.innerHTML = "7° período (17:00)";		progress.min = "16.45"; progress.max = "17.00"}
 if (rightNow >= 17.00 && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "el próximo receso (18:15)";	progress.min = "17.00"; progress.max = "18.15"}
 if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "el 8° período (18:30)";		progress.min = "18.15"; progress.max = "18.30"}
 if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "estudiar y descansar";		progress.min = "18.30"; progress.max = "19.45"}
@@ -238,8 +238,14 @@ function updateProgress(tickingClock) {
 progress = document.getElementById('progress'); progress.value = tickingClock
 var value = (tickingClock-progress.min)/(progress.max-progress.min)*100
 let valuePercent = parseFloat(value).toFixed(2)
-
-progress.style.background = 'linear-gradient(to right, lightgreen 0%, lightgreen ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' // ORIGINAL
+if (valuePercent < 80.00) {
+  progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)'
+  progress.style.transition = 'background 1s'
+}
+if (valuePercent >= 80.00) {
+  progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)'
+  progress.style.transition = 'background 1s'
+}
 
 // TESTING
 // console.log(progress.min, progress.value, valuePercent, progress.max)
