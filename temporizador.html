@@ -82,7 +82,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	    <div>Segundos</div>
 	  </div>
 
-	    <div style="width: 95%; padding-right: -6px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
+	    <div style="display: none; width: 95%; padding-right: -6px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
 	    <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01" />
 	    <div id="progressPercent" class="progressPercent" style="position: relative; width: 100%; padding-right: 3%; margin-top: -25px; text-align: center; color: #666; font-size: 10px;">-</div>
 	    </div>
@@ -146,7 +146,7 @@ const nextEvent = document.getElementById("nextEvent")
 progress = document.getElementById('progress')
 
 // SETTING UP PERIODS
-if (rightNow  < 08.00 ) {classTime = period1; nextEvent.innerHTML = "el 1° período (8:00)"; progress.min = "00.00"; progress.max = "08.00"}
+if (rightNow  < 08.00 ) {classTime = period1; nextEvent.innerHTML = "el 1° período (8:00)";				progress.min = "00.00"; progress.max = "08.00"}
 if (rightNow >= 08.00 && rightNow < 09.15) {classTime = break1; nextEvent.innerHTML = "el próximo receso (9:15)";	progress.min = "08.00"; progress.max = "09.15"}
 if (rightNow >= 09.15 && rightNow < 09.30) {classTime = period2; nextEvent.innerHTML = "el 2° período (9:30)";		progress.min = "09.15"; progress.max = "09.30"}
 if (rightNow >= 09.30 && rightNow < 10.45) {classTime = break2; nextEvent.innerHTML = "el próximo receso (10:45)";	progress.min = "09.30"; progress.max = "10.45"}
@@ -161,9 +161,8 @@ if (rightNow >= 15.30 && rightNow < 16.45) {classTime = break6; nextEvent.innerH
 if (rightNow >= 16.45 && rightNow < 17.00) {classTime = period7; nextEvent.innerHTML = "7° período (17:00)";		progress.min = "16.45"; progress.max = "17.00"}
 if (rightNow >= 17.00 && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "el próximo receso (18:15)";	progress.min = "17.00"; progress.max = "18.15"}
 if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "el 8° período (18:30)";		progress.min = "18.15"; progress.max = "18.30"}
-if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "estudiar y descansar";		progress.min = "18.30"; progress.max = "19.45"}
-if (rightNow >= 19.45) {classTime = midnight; nextEvent.innerHTML = "volver a casa"; progress.min = "19.45";		progress.max = "23.59"}
-
+if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar las clases";		progress.min = "18.30"; progress.max = "19.45"}
+if (rightNow >= 19.45) {classTime = midnight; nextEvent.innerHTML = "estudiar y descansar";				progress.min = "19.45"; progress.max = "23.59"}
 
 // DATE FORMATTING AND TIME VARIABLES
 var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
@@ -172,7 +171,7 @@ var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
 var finalDate = new Date(dateFormat+classTime).getTime()
 
 // ORIGINAL COUNTDOWN DATE (COMMENTED OUT)
-var originalCountdown = new Date("Aug 7, 2024 10:45:00").getTime()
+// var originalCountdown = new Date("Aug 7, 2024 10:45:00").getTime()
 
 // FORMATTED COUNTDOWN DATE
 var countdownDate = new Date(finalDate).getTime()
@@ -198,8 +197,8 @@ var x = setInterval(function() {
     // UPDATING PROGRESS BAR (WITH VALUE)
     progress.value = tickingClock // RANGE THUMB VALUE (CHAGED IN STYLE SHEET)
     // UPDATING PROGRESS BACKGROUND WITH PERCENTAGE VALUE
-    var value = (tickingClock-progress.min)/(progress.max-progress.min)*100
-    let valuePercent = parseFloat(value).toFixed(2)
+    var barValue = (tickingClock-progress.min)/(progress.max-progress.min)*100
+    let valuePercent = parseFloat(barValue).toFixed(2)
     if (valuePercent < 85.00) { progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
     if (valuePercent >= 85.00) { progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
     // SOURCE FOR ORIGINAL CODE: https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
@@ -208,6 +207,17 @@ var x = setInterval(function() {
     var progressPercent = document.getElementById("progressPercent")
     var roundPercent = Math.round(valuePercent).toFixed(0)
     progressPercent.innerHTML = roundPercent + '%'
+
+    /*
+    // TESTING PROGRESS BAR VALUES
+    console.log('MONITORING:',
+	'\nthisTime(onLoad):', rightNow,
+	'|\nclassTime(onLoad):', classTime,
+	'|\ntickingClock(now):', tickingClock,
+	'|\nProgress(now):', progress.min, progress.value, progress.max,
+	'|\nPercent(now):', valuePercent, roundPercent+'%')
+    */
+
 
     // COUNTDOWN FUNCTIONALITY
     // COUNTDOWN FUNCTIONALITY
