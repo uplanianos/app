@@ -196,7 +196,22 @@ var x = setInterval(function() {
     doubleClock = parseFloat(tickingClock).toFixed(2)
 
     // UPDATING PROGRESS BAR (WITH VALUE)
-    updateProgress(doubleClock)
+    progress.value = tickingClock // RANGE THUMB VALUE (CHAGED IN STYLE SHEET)
+    // UPDATING PROGRESS BACKGROUND WITH PERCENTAGE VALUE
+    var value = (tickingClock-progress.min)/(progress.max-progress.min)*100
+    let valuePercent = parseFloat(value).toFixed(2)
+    if (valuePercent < 85.00) { progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+    if (valuePercent >= 85.00) { progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+    // SOURCE FOR ORIGINAL CODE: https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
+
+    // UPDATING PROGRESS TEXT PERCENTAGE
+    var progressPercent = document.getElementById("progressPercent")
+    var roundPercent = Math.round(valuePercent).toFixed(0)
+    progressPercent.innerHTML = roundPercent + '%'
+
+    // COUNTDOWN FUNCTIONALITY
+    // COUNTDOWN FUNCTIONALITY
+    // COUNTDOWN FUNCTIONALITY
 
     // Find the distance between now an the count down date
     var distance = countdownDate - now;
@@ -235,22 +250,22 @@ function refreshCountdown() {window.location = "temporizador.html"}
 
 // UPDATING PROGRESS BAR
 function updateProgress(tickingClock) {
-progress = document.getElementById('progress'); progress.value = tickingClock
+
 var value = (tickingClock-progress.min)/(progress.max-progress.min)*100
 let valuePercent = parseFloat(value).toFixed(2)
 if (valuePercent < 85.00) { progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 if (valuePercent >= 85.00) { progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 
+
 // UPDATING PROGRESS PORCENTAGE
 var progressPercent = document.getElementById("progressPercent")
-var roundPercent = Math.round(valuePercent).toFixed(0); console.log(roundPercent)
+var roundPercent = Math.round(valuePercent).toFixed(0)
 progressPercent.innerHTML = roundPercent + '%'
 
 // TESTING
 // console.log(progress.min, progress.value, valuePercent, progress.max)
 
-// SOURCE FOR ORIGINAL CODE:
-// https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
+
 
 }
 </script>
