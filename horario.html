@@ -416,7 +416,14 @@ const dateDay = now.getDate();
 // CONSTANTS FOR THE PERIOD CELLS
 const hour = now.getHours();
 const minutes = now.getMinutes();
-const theTime = (hour + "." + minutes);
+
+// FORMATTING HOUR AS DOUBLE DIGITS
+const doubleHour = hour.toString().padStart(2,0)
+const doubleMinutes = minutes.toString().padStart(2,0)
+
+// CONSTRUCTING THE TIME (WITH DOUBLE DIGITS)
+const theTime = (doubleHour + "." + doubleMinutes); console.log("La hora es " + theTime)
+
 
 // CHANGING THE TITLE
 scheduleName = document.getElementById("scheduleName");
@@ -454,12 +461,12 @@ if (day == 5) {Friday.style.backgroundColor = highlightDays }
 // PASSING VALUES TO NEXT FUNCTION (HIGHLIGH PERIOD)!
 period = 0
 
-if (hour >= 8 && theTime <= 9.30) {
+if (hour >= 8 && theTime <= 09.30) {
   document.getElementById("period1").style.backgroundColor = highlightHours
   document.getElementById("hours01").style.backgroundColor = highlightHours
   period = 1
 }
-if (theTime >= 9.30 && hour < 11) {
+if (theTime >= 09.30 && hour < 11) {
   document.getElementById("period2").style.backgroundColor = highlightHours
   document.getElementById("hours02").style.backgroundColor = highlightHours
   period = 2
