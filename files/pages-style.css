@@ -195,10 +195,10 @@ ul	{ padding-left: 18px; }
 }
 
 .temporizador::-webkit-slider-thumb {
-  width: 0px;
-  height: 0px;
+  width: 1px;
+  height: 28px;
   cursor: pointer;
-  background: transparent;
+  background: #009E6066; /* Shamrock Green|Transparent */
   -webkit-appearance: none !important;
 }
 

@@ -66,8 +66,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 </div>
 
 	<div id="studyBar" class="grid-item-slider" style="background-color: #0000CC66; margin-top: 24px; margin-bottom: 24px">
-	  <br><font class="checkpoint">📅 Tiempo restante para <span id="nextEvent">el siguiente evento</span>:</font><br>
-	  <div class="countdown" style="margin-top: 18px; margin-left: -8px;">
+	  <br><font class="checkpoint">📅 Tiempo para <span id="nextEvent">el siguiente evento</span>:</font><br>
+	  <div class="countdown" style="margin-top: 12px; margin-left: -8px;">
 	    <div><p class="classCountdown" id="hoursStart" style="margin: 0px;">-</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="classCountdown" style="margin: 0px;">:</p></div>
 	    <div><p class="classCountdown" id="minutesStart" style="margin: 0px;">-</p></div>
@@ -82,7 +82,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	    <div>Segundos</div>
 	  </div>
 
-	    <div style="width: 85%; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 18px;">
+	    <div style="width: 95%; padding-right: 6px; height: 30px; padding-right: -12px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
 	    <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01"/>
 	    </div>
 
@@ -132,10 +132,10 @@ const break8 = "19:45:00"
 const midnight = "23:59:00"
 
 // SETTING CURRENT TIME
-var rightNow = thisHour+"."+theseMinutes; // console.log(rightNow)
+var rightNow = thisHour+"."+theseMinutes
 
 // SETTING UP CLASS TIME
-var classTime = "00:00:00"; // console.log(classTime)
+var classTime = "00:00:00"
 
 // SETTING HTML ELEMENTS
 const nextEvent = document.getElementById("nextEvent")
@@ -164,7 +164,7 @@ if (rightNow >= 16.45 && rightNow < 17.0 ) {classTime = period7; nextEvent.inner
 if (rightNow >= 17.0  && rightNow < 18.15) {classTime = break7; nextEvent.innerHTML = "el próximo receso (18:15)"; progress.min = "17.0"; progress.max = "18.15"}
 
 if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.innerHTML = "el 8° período (18:30)"; progress.min = "18.15"; progress.max = "18.30"}
-if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar las clases"; progress.min = "18.30"; progress.max = "19.45"}
+if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "estudiar y descansar"; progress.min = "18.30"; progress.max = "19.45"}
 
 if (rightNow >= 19.45) {classTime = midnight; nextEvent.innerHTML = "volver a casa"; progress.min = "19.45"; progress.max = "23.59"}
 
@@ -185,20 +185,23 @@ var countdownDate = new Date(finalDate).getTime()
 var x = setInterval(function() {
 
     // Get todays date and time
-    var now = new Date().getTime(); // console.log(now)
+    var now = new Date().getTime()
 
     // UPDATING RANGE PROGRESS
-    var minutesTicker = Math.floor((now % (1000 * 60 * 60)) / (1000 * 60)); // console.log(minutesTicker)
-    var tickingClock = thisHour+"."+minutesTicker; // console.log(tickingClock)
+ // TRYING TO GET HOURS
+    let realHour = Math.floor( now % (1000*60*60*24) / (1000*60*60))-4
+ // TRYING TO GET HOURS
+    var minutesTicker = Math.floor((now % (1000 * 60 * 60)) / (1000 * 60))
+    var tickingClock = realHour+"."+minutesTicker
     updateProgress(tickingClock)
 
     // Find the distance between now an the count down date
     var distance = countdownDate - now;
     
     // Time calculations for days, hours, minutes and seconds
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
     // Output the result in an element with id="demo"
     document.getElementById("hoursStart").innerHTML = hours
@@ -229,8 +232,9 @@ function refreshCountdown() {window.location = "temporizador.html"}
 
 // UPDATING PROGRESS BAR
 function updateProgress(tickingClock) {
-progress = document.getElementById('progress'); progress.value = tickingClock; // console.log(progress.value)
-var value = (tickingClock-progress.min)/(progress.max-progress.min)*100; console.log(); // console.log(value)
+progress = document.getElementById('progress'); progress.value = tickingClock
+// var value = (tickingClock-progress.min)/(progress.max-progress.min) * 100 // FULL ORIGINAL VALUE
+var value = parseFloat((tickingClock-progress.min)/(progress.max-progress.min)*100).toFixed(2) // 2 DECIMALS VALUE
 progress.style.background = 'linear-gradient(to right, lightgreen 0%, lightgreen ' + value + '%, #fff ' + value + '%, white 100%)'
 
 // SOURCE FOR ORIGINAL CODE:
