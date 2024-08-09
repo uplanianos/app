@@ -83,7 +83,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	  </div>
 
 	    <div style="width: 95%; padding-right: 6px; height: 30px; padding-right: -12px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
-	    <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01"/>
+	    <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01" />
+	    <div id="progressPercent" class="progressPercent" style="position: relative; width: 100%; padding-right: 3%; margin-top: -26px; text-align: center; color: #666; font-size: 10px;">-</div>
 	    </div>
 
 	</div>
@@ -112,7 +113,6 @@ const theseMinutes = date.getMinutes()
 const doubleHour = thisHour.toString().padStart(2,0)
 const doubleMinutes = theseMinutes.toString().padStart(2,0)
 
-
 // SETTING UP CLASS PERIODS
 const period1 = "08:00:00"
 const period2 = "09:30:00"
@@ -136,7 +136,7 @@ const break8 = "19:45:00"
 const midnight = "23:59:00"
 
 // SETTING CURRENT TIME
-var rightNow = thisHour+"."+theseMinutes
+var rightNow = doubleHour+"."+doubleMinutes; // console.log(rightNow)
 
 // SETTING UP CLASS TIME (DEFAULT VALUE)
 var classTime = "00:00:00"
@@ -238,14 +238,13 @@ function updateProgress(tickingClock) {
 progress = document.getElementById('progress'); progress.value = tickingClock
 var value = (tickingClock-progress.min)/(progress.max-progress.min)*100
 let valuePercent = parseFloat(value).toFixed(2)
-if (valuePercent < 80.00) {
-  progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)'
-  progress.style.transition = 'background 1s'
-}
-if (valuePercent >= 80.00) {
-  progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)'
-  progress.style.transition = 'background 1s'
-}
+if (valuePercent < 85.00) { progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+if (valuePercent >= 85.00) { progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+
+// UPDATING PROGRESS PORCENTAGE
+var progressPercent = document.getElementById("progressPercent")
+var roundPercent = Math.round(valuePercent).toFixed(0); console.log(roundPercent)
+progressPercent.innerHTML = roundPercent + '%'
 
 // TESTING
 // console.log(progress.min, progress.value, valuePercent, progress.max)
