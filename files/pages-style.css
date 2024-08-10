@@ -184,21 +184,22 @@ ul	{ padding-left: 18px; }
 
 /* TEMPORIZADOR */
 
+
 .temporizador {
   background: linear-gradient(to right, lightgreen 15%, lightgreen 0%, #FFF 50%, #FFF 100%);
   border: solid 1px lightblue;
-  border-radius: 6px;
-  width: 96%;
+  border-radius: 3px;
+  width: 98%;
   height: 32px;
   outline: none;
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
 }
 
 .temporizador::-webkit-slider-thumb {
   width: 1px;
   height: 28px;
   cursor: pointer;
-  background: #aaa; /* Shamrock Green|Transparent */
+  background: #bbb;
   -webkit-appearance: none !important;
 }
 
