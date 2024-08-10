@@ -35,7 +35,7 @@
       <option value="15">📝 Timebox (Upla)</option>
       <option value="16">📊 Upladísticas</option>
     </select>
-    <b>Uplanianos App:</b> Temporizador de Clases.</p></div>
+    <b>Uplanianos App:</b> Temporizador-inator!</p></div>
 
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
@@ -65,16 +65,21 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <b>Cronómetro automático para las clases.</b>
 </div>
 
+
+
 	<div id="studyBar" class="grid-item-slider" style="background-color: #0000CC66; margin-top: 24px; margin-bottom: 24px">
-	  <br><font class="checkpoint">📅 Tiempo para <span id="nextEvent">el siguiente evento</span>:</font><br>
-	  <div class="countdown" style="margin-top: 12px; margin-left: -8px;">
+
+	  <br><font id="checkpoint" class="checkpoint">📅 Tiempo para <span id="nextEvent">el siguiente evento</span>:</font><br>
+
+	  <div id="countdown" class="countdown" style="margin-top: 12px; margin-left: -8px;">
 	    <div><p class="classCountdown" id="hoursStart" style="margin: 0px;">-</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="classCountdown" style="margin: 0px;">:</p></div>
 	    <div><p class="classCountdown" id="minutesStart" style="margin: 0px;">-</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="classCountdown" style="margin: 0px;">:</p></div>
 	    <div><p class="classCountdown" id="secondsStart" style="margin: 0px;">-</p></div>
 	  </div>
-	  <div class="clock" style="margin-bottom: 12px; margin-left: -8px;">
+
+	  <div id="clock" class="clock" style="margin-bottom: 12px; margin-left: -8px;">
 	    <div>Horas</div>
 	    <div style="margin-left: -10%; margin-right: -5%;"></div>
 	    <div>Minutos</div>
@@ -82,10 +87,14 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	    <div>Segundos</div>
 	  </div>
 
-	    <div style="display: none; width: 95%; padding-right: -6px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
-	    <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01" />
-	    <div id="progressPercent" class="progressPercent" style="position: relative; width: 100%; padding-right: 3%; margin-top: -25px; text-align: center; color: #666; font-size: 10px;">-</div>
-	    </div>
+	  <div id="progressBar" style="display: none; width: 95%; padding-right: -6px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 6px; margin-bottom: 24px;">
+	   <input id="progress" class="temporizador" min="00.00" max="23.59" type="range" value="00.00" step="00.01" />
+	  <div id="progressPercent" class="progressPercent" style="position: relative; width: 100%; padding-right: 3%; margin-top: -25px; text-align: center; color: #666; font-size: 10px;">-</div>
+	  </div>
+
+	  <div id="theWeekend" style="margin-top: 32px; text-align: center; font-color: white; font-weight: bold">
+	    <p>No hay clases el fin de semana!</p><br><br>
+	  </div>
 
 	</div>
 
@@ -94,6 +103,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
     <br><br>
   </div>
+
 
 <br><br>
 </div>
@@ -105,7 +115,8 @@ function startTimer() {
 const date = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const thisMonth = date.getMonth() // ZERO is January
-var thisDate = date.getDate() // ZERO is Monday
+var thisDate = date.getDate()
+var thisDay = date.getDay() // ZERO is Monday
 // SETTING RIGHT NOW
 const thisHour = date.getHours()
 const theseMinutes = date.getMinutes()
@@ -176,8 +187,24 @@ var finalDate = new Date(dateFormat+classTime).getTime()
 // FORMATTED COUNTDOWN DATE
 var countdownDate = new Date(finalDate).getTime()
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+// thisDay=2; // Monday
+
+// CHECK IF IT'S THE WEEKEND
+if (thisDay == 6 || thisDay == 1) { // SATURDAY & SUNDAY
+document.getElementById("checkpoint").style.display = "none"
+document.getElementById("countdown").style.display = "none"
+document.getElementById("clock").style.display = "none"
+document.getElementById("progressBar").style.display = "none"
+document.getElementById("theWeekend").style.display = "inline"
+}
+
+else {
+
+  // HIDDING WEEKEND TEXT
+  document.getElementById("theWeekend").style.display = "none"
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
 
     // Get todays date and time
     var now = new Date().getTime()
@@ -253,8 +280,11 @@ var x = setInterval(function() {
     // clearInterval(x);
     setTimeout('refreshCountdown()', 1000 * 15); // 15 SECONDS OF RED NUMBERS, THEN REFRESH!
     }
-  }, 1000);
-}
+  }, 1000) // END OF INTERVAL
+
+ } // END OF ELSE STATEMENT FROM WEEKEND CHECK!
+
+} // END OF FULL SCRIPT
 
 function refreshCountdown() {window.location = "temporizador.html"}
 
@@ -266,7 +296,6 @@ let valuePercent = parseFloat(value).toFixed(2)
 if (valuePercent < 85.00) { progress.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 if (valuePercent >= 85.00) { progress.style.background = 'linear-gradient(to right, pink 0%, #FF3131 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 
-
 // UPDATING PROGRESS PORCENTAGE
 var progressPercent = document.getElementById("progressPercent")
 var roundPercent = Math.round(valuePercent).toFixed(0)
@@ -274,8 +303,6 @@ progressPercent.innerHTML = roundPercent + '%'
 
 // TESTING
 // console.log(progress.min, progress.value, valuePercent, progress.max)
-
-
 
 }
 </script>
