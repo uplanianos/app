@@ -161,7 +161,7 @@ var classTime = "00:00:00"
 const nextEvent = document.getElementById("nextEvent")
 
 // SETTING UP PERIODS
-if (rightNow  < 08.00 ) {classTime = period1; nextEvent.innerHTML = "el 1° período (8:00)"}
+if (rightNow < 08.00) {classTime = period1; nextEvent.innerHTML = "el 1° período (8:00)"}
 if (rightNow >= 08.00 && rightNow < 09.15) {classTime = break1; nextEvent.innerHTML = "el próximo receso (9:15)"}
 if (rightNow >= 09.15 && rightNow < 09.30) {classTime = period2; nextEvent.innerHTML = "el 2° período (9:30)"}
 if (rightNow >= 09.30 && rightNow < 10.45) {classTime = break2; nextEvent.innerHTML = "el próximo receso (10:45)"}
@@ -256,16 +256,20 @@ else {
 
 } // END OF FULL SCRIPT
 
+
+// END OF COUNTDOWN REFRESH FUNCTION
 function refreshCountdown() {window.location = "temporizador.html"}
 
-// PROGRESS BAR FUNCTIONS
+
+// PROGRESS BAR FUNCTION
 function progressBar(classTime) {
 bar = document.getElementById('theProgressBar')
 
 var classEnd = classTime.slice(0, -3)
-
-var theStart = "08:00"
+var theStart = "00:00"
 var theEnd = "23:59"
+
+  if (classEnd == "08:00") {theStart = "00:00"; theEnd = "08:00"} // START OF DAY
 
   if (classEnd == "09:15") {theStart = "08:00"; theEnd = "09:15"} // FIRST PERIOD
   if (classEnd == "09:30") {theStart = "09:15"; theEnd = "09:30"} // FIRS BREAK
@@ -312,17 +316,19 @@ var clockTicking = setInterval(function() {
   bar.max = ending
 
   var value = (current-starting)/(ending-starting)*100
-  let valuePercent = parseFloat(value).toFixed(0)
-  document.getElementById("progressPercent").innerHTML = valuePercent+"%"
-  if (valuePercent < 85) { bar.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
-  if (valuePercent >= 85) { bar.style.background = 'linear-gradient(to right, pink 0%, #FF0000cc ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+  let valuePercent = parseFloat(value).toFixed(2)
+  let roundPercent = parseFloat(value).toFixed(0)
+  document.getElementById("progressPercent").innerHTML = roundPercent+"%"
+    if (valuePercent < 85) { bar.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
+    if (valuePercent >= 85) { bar.style.background = 'linear-gradient(to right, pink 0%, #FF0000cc ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 
   }, 1000 * 1)
   // END OF CLOCK TICKING INTERVAL
 
-}
-// END OF PROGRESS BAR FUNCTION
+} // END OF PROGRESS BAR FUNCTION
 </script>
+
+
 
 <script type="text/javascript">
 function noCode() {
@@ -334,6 +340,7 @@ qrCode = document.getElementById("qrCode")
   else { qrCode.style.display = "inline" }
 }
 </script>
+
 
 
 <script type="text/javascript">

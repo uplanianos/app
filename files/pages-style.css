@@ -196,10 +196,10 @@ ul	{ padding-left: 18px; }
 }
 
 .temporizador::-webkit-slider-thumb {
-  width: 1px;
+  width: 0.5px;
   height: 28px;
   cursor: pointer;
-  background: #bbb;
+  background: #666666aa;
   -webkit-appearance: none !important;
 }
 
