@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="media/uplanianos-icon.png">
 	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Temporizador de Clases</title>
+	<title>Uplanianos - Temporizador</title>
 </head>
 
 <body>
@@ -31,7 +31,8 @@
       <option value="11">💯 Promedio Integral</option>
       <option value="12">💯 Promedio Porcentual</option>
       <option value="13">📋 Simulador Examen</option>
-      <option value="14">⏳ Temporizador!</option>
+      <option value="14" disabled="disabled">⏳ Temporizador</option>
+      <option value="141">&#x27A5; ⏳ Mostar tiempo!!!</option>
       <option value="15">📝 Timebox (Upla)</option>
       <option value="16">📊 Upladísticas</option>
     </select>
@@ -52,7 +53,8 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
  if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html?show=true"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+   if (titleMenu.value == 141) {blurMenu(); window.location = "temporizador.html?show=true"}
  if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
  if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
 });
@@ -92,8 +94,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	  <div id="progressPercent" class="progressPercent" style="position: relative; width: 100%; padding-right: 5%; margin-top: -25px; text-align: center; color: #333; font-size: 10px;">-</div>
 	  </div>
 
-	  <div id="theWeekend" style="margin-top: 32px; text-align: center; font-color: white; font-weight: bold">
-	    <p>No hay clases el fin de semana!</p><br><br>
+	  <div id="theWeekend" style="font-color: white; font-size: 21px; font-weight: bold; text-align: center">
+	    <br><p>No hay clases el fin de semana!</p><br><br>
 	  </div>
 
 	</div>
@@ -101,7 +103,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	<!- End of "grid-item-tools" Div ->
 	</div>
 
-	<div style="margin-top: 12px; text-align: center">
+	<div id="qrCode" style="margin-top: 12px; text-align: center">
 	<p>Consigue esta herramienta:<br>
 	<img src="media/temporizador-qr.jpg" width="18%" onclick="window.open('media/temporizador-qr.jpg')">
 	</p>
@@ -112,6 +114,37 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <br>
 </div>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// CALLS TO FUNCTIONS ON LOADING
+knowledgeProgress()
+startTimer()
+noCode()
+}
+</script>
+
 
 
 
@@ -137,6 +170,7 @@ else {var thisDay = date.getDay()} // SIX is Saturday & ZERO is Sunday!
 // console.log(thisDay)
 
 // SETTING UP CLASS PERIODS
+// THE FORMAT MUST BE IN FULL FOR THE COUNTDOWN!!!
 const period1 = "08:00:00"
 const period2 = "09:30:00"
 const period3 = "11:00:00"
@@ -186,8 +220,8 @@ if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.inner
 if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar las clases"}
 if (rightNow >= 19.45) {classTime = midnight; nextEvent.innerHTML = "estudiar y descansar"}
 
-// CALLING PROGRESS BAR FUNCTION
-progressBar(classTime); // console.log(classTime)
+// CALLING PROGRESS BAR FUNCTION & PASSING 'CLASS TIME' VALUE!!!
+progressBar(classTime,thisDay)
 
 // DATE FORMATTING AND TIME VARIABLES
 var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
@@ -208,6 +242,11 @@ document.getElementById("countdown").style.display = "none"
 document.getElementById("clock").style.display = "none"
 document.getElementById("progressBar").style.display = "none"
 document.getElementById("theWeekend").style.display = "inline"
+
+setTimeout('document.getElementById("titleMenu").focus()', 1000 * 1)
+setTimeout('document.getElementById("titleMenu").blur()', 1000 * 2)
+setTimeout('document.getElementById("titleMenu").focus()', 1000 * 3)
+
 }
 
 else {
@@ -267,10 +306,11 @@ function refreshCountdown() {window.location = "temporizador.html"}
 
 
 // PROGRESS BAR FUNCTION
-function progressBar(classTime) {
+function progressBar(classTime,thisDay) {
 bar = document.getElementById('theProgressBar')
 
-var classEnd = classTime.slice(0, -3)
+var classEnd = classTime.slice(0, -3) // TIME IS SLICED TO 4 DIGITS FOR MILLISECOND CONVERSION
+
 var theStart = "00:00"
 var theEnd = "24:00"
 
@@ -326,6 +366,11 @@ var clockTicking = setInterval(function() {
     if (valuePercent < 85) { bar.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
     if (valuePercent >= 85) { bar.style.background = 'linear-gradient(to right, pink 0%, #FF0000cc ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
 
+  if (thisDay >= 1 && thisDay <= 5) { // SATURDAY & SUNDAY
+    let titlePercent = Math.floor(value).toFixed(0)
+    document.title = (100-titlePercent) + "% restante - Uplanianos"
+  }
+
   }, 1000 * 1)
   // END OF CLOCK TICKING INTERVAL
 
@@ -336,11 +381,9 @@ var clockTicking = setInterval(function() {
 
 <script type="text/javascript">
 function noCode() {
-qrCode = document.getElementById("qrCode")
+var qrCode = document.getElementById("qrCode")
   // CHECKING MOBILE
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    qrCode.style.display = "none"
-  }
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) { qrCode.style.display = "none" }
   else { qrCode.style.display = "inline" }
 }
 </script>
@@ -362,31 +405,6 @@ var currentScrollPos = window.pageYOffset;
 
 
 
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-window.onload = function() {
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-knowledgeProgress()
-startTimer()
-noCode()
-}
-</script>
 
 
 <!- USER STATS PROGRESS COUNTER ->
