@@ -31,7 +31,7 @@
       <option value="11">💯 Promedio Integral</option>
       <option value="12">💯 Promedio Porcentual</option>
       <option value="13">📋 Simulador Examen</option>
-      <option value="14">⏳ Temporizador</option>
+      <option value="14">⏳ Temporizador!</option>
       <option value="15">📝 Timebox (Upla)</option>
       <option value="16">📊 Upladísticas</option>
     </select>
@@ -52,7 +52,7 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
  if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
- if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html?show=true"}
  if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
  if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
 });
@@ -64,7 +64,6 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div class="grid-item" id="secondSemester" style="font-size: 14px; margin-top: 24px; margin-left: 2%; margin-right: 3%; padding: 12px; background-color: #A7C7E7; /* Pastel Blue */">
 <b>Cronómetro automático para las clases.</b>
 </div>
-
 
 
 	<div id="studyBar" class="grid-item-slider" style="background-color: #0000CC66; margin-top: 24px; margin-bottom: 24px">
@@ -121,13 +120,19 @@ const date = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const thisMonth = date.getMonth() // ZERO is January
 var thisDate = date.getDate()
-var thisDay = date.getDay() // ZERO is Monday
 // SETTING RIGHT NOW
 const thisHour = date.getHours()
 const theseMinutes = date.getMinutes()
 // FORMATTING HOUR AS DOUBLE DIGITS
 const doubleHour = thisHour.toString().padStart(2,0)
 const doubleMinutes = theseMinutes.toString().padStart(2,0)
+
+var show = (new URLSearchParams(window.location.search)).get("show")
+if (show == "true") {thisDay=1} // Monday!
+else {var thisDay = date.getDay()} // SIX is Saturday & ZERO is Sunday!
+
+// thisDay=1; // MONDAY (FOR TESTING)
+// console.log(thisDay)
 
 // SETTING UP CLASS PERIODS
 const period1 = "08:00:00"
@@ -194,10 +199,8 @@ var finalDate = new Date(dateFormat+classTime).getTime()
 // FORMATTED COUNTDOWN DATE
 var countdownDate = new Date(finalDate).getTime()
 
-// thisDay=2; // MONDAY (FOR TESTING)
-
 // CHECK IF IT'S THE WEEKEND
-if (thisDay == 6 || thisDay == 1) { // SATURDAY & SUNDAY
+if (thisDay == 6 || thisDay == 0) { // SATURDAY & SUNDAY
 document.getElementById("checkpoint").style.display = "none"
 document.getElementById("countdown").style.display = "none"
 document.getElementById("clock").style.display = "none"
