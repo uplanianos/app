@@ -101,11 +101,16 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	<!- End of "grid-item-tools" Div ->
 	</div>
 
-    <br><br>
+	<div id="qrCode" style="margin-top: 12px; text-align: center">
+	<p>Consigue esta herramienta:<br>
+	<img src="media/temporizador-qr.jpg" width="20%">
+	</p>
+	</div>
+
+  <br>
   </div>
 
-
-<br><br>
+<br>
 </div>
 
 
@@ -319,6 +324,17 @@ var clockTicking = setInterval(function() {
 // END OF PROGRESS BAR FUNCTION
 </script>
 
+<script type="text/javascript">
+function noCode() {
+qrCode = document.getElementById("qrCode")
+  // CHECKING MOBILE
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    qrCode.style.display = "none"
+  }
+  else { qrCode.style.display = "inline" }
+}
+</script>
+
 
 <script type="text/javascript">
 var prevScrollpos = window.pageYOffset;
@@ -355,8 +371,9 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
-knowledgeProgress();
+knowledgeProgress()
 startTimer()
+noCode()
 }
 </script>
 
