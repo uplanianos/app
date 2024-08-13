@@ -105,7 +105,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 	<div id="qrCode" style="margin-top: 12px; text-align: center">
 	<p>Consigue esta herramienta:<br>
-	<img src="media/temporizador-qr.jpg" width="18%" onclick="window.open('media/temporizador-qr.jpg')">
+	<img src="media/temporizador-qr.jpg" width="18%" style="cursor: pointer;" onclick="window.open('media/temporizador-qr.jpg')">
 	</p>
 	</div>
 
@@ -142,6 +142,11 @@ window.onload = function() {
 knowledgeProgress()
 startTimer()
 noCode()
+
+// THIS IS INTERESTING:
+// I'M DISABLING THE PROGRESS BAR (RANGE INPUT OBJECT)
+   document.getElementById("theProgressBar").disabled=true
+//
 }
 </script>
 
