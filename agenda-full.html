@@ -718,13 +718,15 @@ window.onafterprint = function() {
 }
 
 function notAllowedOnMobilePrint() {
-// OFF CALENDAR DATES
+// OFF CALENDAR DATES / BREAK WEEKS
 var notAllowed = document.querySelectorAll("#notAllowed")
-var weekBreak = document.querySelectorAll("#receso")
+var breakTop = document.querySelectorAll("#recesoTop")
+var breakWeek = document.querySelectorAll("#receso")
 // CHECKING MOBILE
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
   for(let cells of notAllowed) {cells.style.border = "0px"; cells.style.backgroundColor = "transparent"}
-  for(let cells of weekBreak) {cells.style.backgroundColor = "lightgreen"}
+  for(let cells of breakTop) {cells.style.border = "1px dashed gray"; cells.style.backgroundColor = "#00FF0033;"}
+  for(let cells of breakWeek) {cells.style.border = "1px dashed gray"; cells.style.backgroundColor = "#00FF0033;"}
   }
 }
 </script>
