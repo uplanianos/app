@@ -720,9 +720,11 @@ window.onafterprint = function() {
 function notAllowedOnMobilePrint() {
 // OFF CALENDAR DATES
 var notAllowed = document.querySelectorAll("#notAllowed")
+var weekBreak = document.querySelectorAll("#receso")
 // CHECKING MOBILE
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
   for(let cells of notAllowed) {cells.style.border = "0px"; cells.style.backgroundColor = "transparent"}
+  for(let cells of weekBreak) {cells.style.backgroundColor = "lightgreen"}
   }
 }
 </script>
