@@ -342,9 +342,9 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of thirdTest) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of thirdTest) {numbers.style.color = byGone};
-    document.getElementById("weeksSecond").innerHTML = -Math.abs(weeks)+1;
-    document.getElementById("daysSecond").innerHTML = -Math.abs(days)+1;
-    document.getElementById("hoursSecond").innerHTML = -Math.abs(hours)+1;
+    document.getElementById("weeksThird").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysThird").innerHTML = -Math.abs(days)+1;
+    document.getElementById("hoursThird").innerHTML = -Math.abs(hours)+1;
     document.getElementById("secondsThird").innerHTML = "-";
     clearInterval(doTheLoop); }
   },1000);
@@ -378,9 +378,9 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of specialExam) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of specialExam) {numbers.style.color = byGone};
-    document.getElementById("weeksSecond").innerHTML = -Math.abs(weeks)+1;
-    document.getElementById("daysSecond").innerHTML = -Math.abs(days)+1;
-    document.getElementById("hoursSecond").innerHTML = -Math.abs(hours)+1;
+    document.getElementById("weeksExam").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysExam").innerHTML = -Math.abs(days)+1;
+    document.getElementById("hoursExam").innerHTML = -Math.abs(hours)+1;
     document.getElementById("secondsExam").innerHTML = "-";
     clearInterval(doTheLoop); }
   },1000);
@@ -414,9 +414,9 @@ var doTheLoop = setInterval(function(){
   if (weeks >= 6) { for(let numbers of lastDay) {numbers.style.color = notYet;} }
   if (distance < 0) {
     for(let numbers of lastDay) {numbers.style.color = byGone};
-    document.getElementById("weeksSecond").innerHTML = -Math.abs(weeks)+1;
-    document.getElementById("daysSecond").innerHTML = -Math.abs(days)+1;
-    document.getElementById("hoursSecond").innerHTML = -Math.abs(hours)+1;
+    document.getElementById("weeksEnd").innerHTML = -Math.abs(weeks)+1;
+    document.getElementById("daysEnd").innerHTML = -Math.abs(days)+1;
+    document.getElementById("hoursEnd").innerHTML = -Math.abs(hours)+1;
     document.getElementById("secondsEnd").innerHTML = "-";
     clearInterval(doTheLoop); }
   },1000);
