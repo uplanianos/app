@@ -9,7 +9,7 @@
 	<title>Uplanianos - Correo Justificación</title>
 </head>
 
-<body onload="checkMonth()">
+<body>
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="main">
@@ -142,12 +142,12 @@ Completar datos para redactar correo de justificación!
   <option value="">... al</option>
   <option value=" de enero">Enero</option>
   <option value=" de febrero">Febrero</option>
-  <option value=" de marzo" selected>Marzo</option>
+  <option value=" de marzo">Marzo</option>
   <option value=" de abril">Abril</option>
   <option value=" de mayo">Mayo</option>
   <option value=" de junio">Junio</option>
   <option value=" de julio">Julio</option>
-  <option value=" de agosto">Agosto</option>
+  <option value=" de agosto" selected>Agosto</option>
   <option value=" de septiembre">Septiembre</option>
   <option value=" de octubre">Octubre</option>
   <option value=" de noviembre"> Noviembre</option>
@@ -322,21 +322,6 @@ function justSelect() {
   copyText.setSelectionRange(0, 99999); // For mobile devices
 }
 </script>
-
-
-
-<script type="text/javascript">
-function checkMonth() {
-// DECLARING ELEMENTS AND VARIABLES
-const date = new Date() // SETTING UP DATE CONSTANT
-let thisMonth = date.getMonth() // CURRENT MONTH
-
-// CHANGING THE PAGE AFTER AUGUST (7)
- if (thisMonth >= 7) { window.location = "justify2.html" }
-
-}
-</script>
-
 
 
 <script type="text/javascript">
