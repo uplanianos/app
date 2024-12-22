@@ -767,12 +767,18 @@ Array.from(Agenda).forEach (task => {
  if (task.id == "may21m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
  if (task.id == "jun20m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
  if (task.id == "jul16m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
- // SEMANA BIENVENIDA
+ // SEMANA BIENVENIDA - MORNING
  if (task.id == "abr7m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 4)}
- if (task.id == "abr8m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 4)}
- if (task.id == "abr9m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 4)}
- if (task.id == "abr10m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 5)}
- if (task.id == "abr11m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 5)}
+ if (task.id == "abr8m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 4)}
+ if (task.id == "abr9m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 4)}
+ if (task.id == "abr10m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
+ if (task.id == "abr11m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
+ // SEMANA BIENVENIDA - AFTERNOON
+ if (task.id == "abr7t") {task.placeholder = "Actividad (PM)"}
+ if (task.id == "abr8t") {task.placeholder = "Actividad (PM)"}
+ if (task.id == "abr9t") {task.placeholder = "Actividad (PM)"}
+ if (task.id == "abr10t") {task.placeholder = "Actividad (PM)"}
+ if (task.id == "abr11t") {task.placeholder = "Actividad (PM)"}
  // PAUSA ACADÉMICA ESTUDIANTIL
  if (task.id == "jun2m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
  if (task.id == "jun3m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
