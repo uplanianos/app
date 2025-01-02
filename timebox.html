@@ -107,9 +107,18 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 Completar actividades a priorizar!
 </div>
 
+
+
+<!- REPLACE LOCATION URL WITH TIME PLANNER ->
 <center>
-<a href="timeplanner.html" class="planner-link">Horario cronológico</a>
+<a href="javascript: replacePlanner()" class="planner-link">Horario cronológico</a>
 </center>
+
+<script type="text/javascript">
+function replacePlanner() { location.replace('timeplanner.html') }
+</script>
+<!- REPLACED LOCATION URL WITH TIME PLANNER ->
+
 
 
 <div class="grid-timebox">
