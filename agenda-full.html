@@ -769,29 +769,31 @@ Array.from(Agenda).forEach (task => {
  if (task.id == "jul16m") {task.placeholder = "Feriado - " + task.id.slice(3, 5)}
  // SEMANA BIENVENIDA - MORNING
  if (task.id == "abr7m") {task.placeholder = "Bienvenida - " + task.id.slice(3, 4)}
- if (task.id == "abr8m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 4)}
- if (task.id == "abr9m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 4)}
- if (task.id == "abr10m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
- if (task.id == "abr11m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
+ if (task.id == "abr8m") {task.placeholder = "AM: Clases - " + task.id.slice(3, 4)}
+// if (task.id == "abr9m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 4)}
+// if (task.id == "abr10m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
+// if (task.id == "abr11m") {task.placeholder = "Clases (AM) - " + task.id.slice(3, 5)}
  // SEMANA BIENVENIDA - AFTERNOON
- if (task.id == "abr7t") {task.placeholder = "Actividad (PM)"}
- if (task.id == "abr8t") {task.placeholder = "Actividad (PM)"}
- if (task.id == "abr9t") {task.placeholder = "Actividad (PM)"}
- if (task.id == "abr10t") {task.placeholder = "Actividad (PM)"}
- if (task.id == "abr11t") {task.placeholder = "Actividad (PM)"}
+ if (task.id == "abr7t") {task.placeholder = "PM: Actividades"}
+ if (task.id == "abr8t") {task.placeholder = "PM: Actividades"}
+// if (task.id == "abr9t") {task.placeholder = "Actividad (PM)"}
+// if (task.id == "abr10t") {task.placeholder = "Actividad (PM)"}
+// if (task.id == "abr11t") {task.placeholder = "Actividad (PM)"}
  // PAUSA ACADÉMICA ESTUDIANTIL
- if (task.id == "jun2m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
- if (task.id == "jun3m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
- if (task.id == "jun4m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
- if (task.id == "jun5m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
- if (task.id == "jun6m") {task.placeholder = "Receso - " + task.id.slice(3, 4)}
+ if (task.id == "jun2m") {task.placeholder = "Pausa... - " + task.id.slice(3, 4)}
+ if (task.id == "jun2t") {task.placeholder = "Académica"}
+ if (task.id == "jun3m") {task.placeholder = "Pausa - " + task.id.slice(3, 4)}
+ if (task.id == "jun4m") {task.placeholder = "Pausa - " + task.id.slice(3, 4)}
+ if (task.id == "jun5m") {task.placeholder = "Pausa - " + task.id.slice(3, 4)}
+ if (task.id == "jun6m") {task.placeholder = "Pausa - " + task.id.slice(3, 4)}
  // ASSESSMENT & IMPORTANT DATES
- if (task.id == "abr28m") {task.placeholder = "Integal 1 - " + task.id.slice(3, 5)}
- if (task.id == "may26m") {task.placeholder = "Integal 2 - " + task.id.slice(3, 5)}
- if (task.id == "jun30m") {task.placeholder = "Integal 3 - " + task.id.slice(3, 5)}
- if (task.id == "jul1m") {task.placeholder = "Integal 3 - " + task.id.slice(3, 4)}
+ if (task.id == "abr28m") {task.placeholder = "Integal N°1 - " + task.id.slice(3, 5)}
+ if (task.id == "may26m") {task.placeholder = "Integal N°2 - " + task.id.slice(3, 5)}
+ if (task.id == "jun30m") {task.placeholder = "Integal N°3 - " + task.id.slice(3, 5)}
+ if (task.id == "jul1m") {task.placeholder = "Integal N°3 - " + task.id.slice(3, 4)}
  if (task.id == "jul7m") {task.placeholder = "Pendientes - " + task.id.slice(3, 4)}
- if (task.id == "jul14m") {task.placeholder = "Exámenes - " + task.id.slice(3, 5)}
+ if (task.id == "jul7t") {task.placeholder = "(Justificados)"}
+ if (task.id == "jul14m") {task.placeholder = "Examen Especial - " + task.id.slice(3, 5)}
  if (task.id == "jul18m") {task.placeholder = "Cierre! - " + task.id.slice(3, 5)}
  // CHECK IF EMPTY
  if (task.value.length == 0) {task.style.textAlign = "right"}

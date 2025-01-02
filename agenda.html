@@ -88,7 +88,7 @@ Agenda tus evaluaciones programadas!
     <button class="agendaMonth" id="clickMay" onclick="clickMay();">05</button>
     <button class="agendaMonth" id="clickJun" onclick="clickJun();">06</button>
     <button class="agendaMonth" id="clickJul" onclick="clickJul();">07</button>
-    <button class="agendaMonth" onclick="location.href='agenda-full.html'">Full</button>
+    <button class="agendaMonth" onclick="agendaFull()">Full</button>
  </div>
 
  <div class="title" style="grid-area: top1;">Semana</div>
@@ -370,10 +370,10 @@ Agenda tus evaluaciones programadas!
 
 
 <!- JUNE ->
- <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;">Lunes</div>
- <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;">2</div>
- <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="jun2m" placeholder="* Semana Receso" style="background-color: transparent;"></textarea></div>
- <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="jun2t" placeholder="*" style="background-color: transparent;"></textarea></div>
+ <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033; border-style: hidden dashed dashed dashed; /* top right bottom left */">Lunes</div>
+ <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033; border-style: hidden dashed dashed dashed; /* top right bottom left */">2</div>
+ <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033; border-style: hidden dashed dashed dashed; /* top right bottom left */"><textarea class="agendaTask" maxlength="50" id="jun2m" placeholder="* Pausa Académica" style="background-color: transparent;"></textarea></div>
+ <div class="days6" style="border: 1px dashed gray; color: darkgreen; background-color: #00FF0033; border-style: hidden dashed dashed dashed; /* top right bottom left */"><textarea class="agendaTask" maxlength="50" id="jun2t" placeholder="*" style="background-color: transparent;"></textarea></div>
 
  <div class="days6" style="color: darkgreen; background-color: #00FF0033;">Martes</div> <div class="days6" style="color: darkgreen; background-color: #00FF0033;">3</div>
  <div class="days6" style="color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="jun3m" placeholder="*" style="background-color: transparent;"></textarea></div>
@@ -955,6 +955,16 @@ else {console.log("Asignatura sin nombre!")}
 // \=====================================================================/
 
 </script>
+
+
+
+<script type="text/javascript">
+function agendaFull() {
+// window.location = "agenda-full.html"
+location.replace("agenda-full.html");
+}
+</script>
+
 
 
 <!- USER STATS PROGRESS COUNTER ->
