@@ -180,7 +180,7 @@ function replacePlanner() { location.replace('timeplanner.html') }
   Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
   </div>
 
-  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
+  <button class="timebox-refresh" role="button" onClick="doDelete();">♻️ Borrar</button>
   <button class="timebox-download" role="button" onclick="window.print()">Descargar 🖨️</button>
 
   </div>
@@ -252,7 +252,16 @@ function getTomorrow() {
 </script>
 
 
+
 <script type="text/javascript">
+function doDelete() {
+  if (confirm('¿Borrar toda la planificación?')) {
+    deleteAll()
+    console.log("Todo borrado!")
+  }
+  else { console.log("Eso estuvo cerca!") }
+}
+
 function deleteAll() {
 document.getElementById("dateInput").value = ""
 document.getElementById("priority1").value = ""
