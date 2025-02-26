@@ -315,8 +315,8 @@ empty = "#FFF" // White (No Input)
 const schedule = document.querySelectorAll("textarea")
  for (let cells of schedule) {
   if (cells.value.length == 0) { cells.style.backgroundColor = empty }
-  if (cells.value.length >= 3) { cells.style.backgroundColor = usedGreen }
-  if (cells.value.length > 0 && cells.value.length <= 2) { cells.style.backgroundColor = iconYellow }
+  if (cells.value.length >= 5) { cells.style.backgroundColor = usedGreen }
+  if (cells.value.length > 0 && cells.value.length < 5) { cells.style.backgroundColor = iconYellow }
  }
 
 rightNow();
