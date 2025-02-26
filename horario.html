@@ -308,14 +308,14 @@ for(let periods of schedule) { periods.style.backgroundColor = usedGreen; }
 <script type="text/javascript">
 function withinCells() {
 usedGreen = "#E0FFE0" // Light Green (Used Cell)
-iconUsed = "#ebf5fb" // Light Colored Cells (Icons Used)
+lightBlue = "#EBF5FB" // Light Blue (Icons Used)
 empty = "#FFF" // White (No Input)
 
 const schedule = document.querySelectorAll("textarea")
  for (let cells of schedule) {
   if (cells.value.length == 0) { cells.style.backgroundColor = empty }
-  if (cells.value.length >= 6) { cells.style.backgroundColor = usedGreen }
-  if (cells.value.length > 0 && cells.value.length < 6) { cells.style.backgroundColor = iconUsed }
+  if (cells.value.length >= 8) { cells.style.backgroundColor = usedGreen }
+  if (cells.value.length > 0 && cells.value.length < 7) { cells.style.backgroundColor = lightBlue }
  }
 
 rightNow();
