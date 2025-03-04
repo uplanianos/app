@@ -160,16 +160,23 @@ const date = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const thisMonth = date.getMonth() // ZERO is January
 var thisDate = date.getDate()
+
 // SETTING RIGHT NOW
 const thisHour = date.getHours()
 const theseMinutes = date.getMinutes()
+
 // FORMATTING HOUR AS DOUBLE DIGITS
 const doubleHour = thisHour.toString().padStart(2,0)
 const doubleMinutes = theseMinutes.toString().padStart(2,0)
 
+// CHECKING HOUR AND MINUTES FORMAT!
+// console.log(thisHour,theseMinutes,doubleHour,doubleMinutes)
+
+// CHECKING IF URL SAYS SHOW (OVERRIDES WEEKEND / HIDDEN MODE SETTING)!
+// FORMAT = temporizador.html?show=true
 var show = (new URLSearchParams(window.location.search)).get("show")
 if (show == "true") {thisDay=1} // Monday!
-else {var thisDay = date.getDay()} // SIX is Saturday & ZERO is Sunday!
+else { var thisDay = date.getDay() } // SIX is Saturday & ZERO is Sunday!
 
 // thisDay=1; // MONDAY (FOR TESTING)
 // console.log(thisDay)
@@ -204,7 +211,8 @@ var rightNow = doubleHour+"."+doubleMinutes; // console.log(rightNow)
 var classTime = "00:00:00"
 
 // SETTING HTML ELEMENTS
-const nextEvent = document.getElementById("nextEvent")
+const nextEvent = document.getElementById("nextEvent"); // console.log(nextEvent)
+
 
 // SETTING UP PERIODS
 if (rightNow < 08.00) {classTime = period1; nextEvent.innerHTML = "el 1° período (8:00)"}
@@ -225,20 +233,27 @@ if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; nextEvent.inner
 if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; nextEvent.innerHTML = "terminar las clases"}
 if (rightNow >= 19.45) {classTime = midnight; nextEvent.innerHTML = "estudiar y descansar"}
 
+// console.log (classTime)
+
 // CALLING PROGRESS BAR FUNCTION & PASSING 'CLASS TIME' VALUE!!!
 progressBar(classTime,thisDay)
 
+// SETTING CURRENT YEAR FROM INITIAL TIME SETTINGS [ "const date = new Date()" ]
+let thisYear = date.getFullYear(); // console.log(thisYear)
+
 // DATE FORMATTING AND TIME VARIABLES
-var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
+// var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2025 "; // ORIGINAL WITH TEXT YEAR
+var dateFormat = monthNames[thisMonth] + " " + thisDate + ", " + thisYear + " "; // UPDATED WITH AUTOMATIC CURRENT YEAR VALUE
 
 // UPDATE FINAL COUNTDOWN DATE
 var finalDate = new Date(dateFormat+classTime).getTime()
 
 // ORIGINAL COUNTDOWN DATE (COMMENTED OUT)
-// var originalCountdown = new Date("Aug 7, 2024 10:45:00").getTime()
+// var originalCountdown = new Date("Aug 7, 2025 10:45:00").getTime()
 
 // FORMATTED COUNTDOWN DATE
 var countdownDate = new Date(finalDate).getTime()
+
 
 // CHECK IF IT'S THE WEEKEND
 if (thisDay == 6 || thisDay == 0) { // SATURDAY & SUNDAY
@@ -248,6 +263,7 @@ document.getElementById("clock").style.display = "none"
 document.getElementById("progressBar").style.display = "none"
 document.getElementById("theWeekend").style.display = "inline"
 
+// HIGHTLIGHTING THE MENU BUTTON DURING THE WEEKEND!
 setTimeout('document.getElementById("titleMenu").focus()', 1000 * 1)
 setTimeout('document.getElementById("titleMenu").blur()', 1000 * 2)
 setTimeout('document.getElementById("titleMenu").focus()', 1000 * 3)
