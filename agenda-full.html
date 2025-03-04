@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -646,7 +647,9 @@ studyProgress();
 function checkDates() {
 const date = new Date()
 let thisMonth = date.getMonth()
+let thisYear = date.getFullYear()
 var elMes = 0 // For current date
+
 
 // Months go from 0 (Jan.) to 11 (Dec.)!
 if (thisMonth == 0) {elMes = "ene"}
@@ -706,16 +709,16 @@ var thisFormat = elMes+thisDate
   thisFormat != "jul29" && thisFormat != "jul30" &&
   thisFormat != "jul31") { underlineDate(thisFormat) }
   else { console.log("No classes on this date!") }
-  printFooterDate(elMes,thisDate)
+  printFooterDate(elMes,thisDate,thisYear)
   }
  else { console.log("Month Out of Date Range!") }
 }
 
 
-function printFooterDate(elMes,thisDate){
+function printFooterDate(elMes,thisDate,thisYear){
 var footerDate = document.getElementById("footerDate")
-if (elMes.length >= 1) {footerDate.innerHTML = " - Impreso el " + thisDate + " de " + elMes + ", 2024."}
-else {footerDate.innerHTML = " !"}
+if (elMes.length >= 1) { footerDate.innerHTML = " - Impreso el " + thisDate + " de " + elMes + ", " + thisYear + "." }
+else { footerDate.innerHTML = " !" }
 }
 
 function underlineDate(thisFormat) {
