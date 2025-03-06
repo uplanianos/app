@@ -28,10 +28,11 @@
       <option value="10">✍️ Nota de Pruebas</option>
       <option value="11">💯 Promedio Integral</option>
       <option value="12">💯 Promedio Porcentual</option>
+      <option value="125">🧠 Preguntas Estudio</option>
       <option value="13">📋 Simulador Examen</option>
       <option value="14">⏳ Temporizador</option>
       <option value="15">📝 Timebox (Upla)</option>
-      <option value="16">📊 Upladísticas</option>
+<!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
     </select>
     <b>Uplanianos App:</b> Simulación Asistencia.</p></div>
   </div>
@@ -50,6 +51,7 @@ document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
  if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
  if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
+ if (titleMenu.value == 125) {blurMenu(); window.location = "estudio.html"}
  if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
  if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
  if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
