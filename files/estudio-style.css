@@ -1,0 +1,355 @@
+
+body {
+ /* background-color: #F1E3DD; Appricot */
+ /* background-color: #F9E1A8; Gelatto Yellow */
+ /* background-color: #E0E2E4; Grayish */
+ /* background-color: #CFE0E8; Grayish Blue */
+ /* background-color: #DBF9DB; Green */
+ /* background-color: #50C878; Green Emerald */
+ /* background-color: #98FB98; Green Mint */
+ /* background-color: #F0EFEF; Mauve 1 */
+ /* background-color: #D6CBD3; Mauve 2 */
+ /* background-color: #E4D1D1; Peach */
+ /* background-color: #F9D5E5; Purple */
+  background-color: #151B54; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 500% 100%;
+ font-family: Verdana, Helvetica, sans-serif;
+ margin-top: 0px;
+ margin-left: 0px;
+ margin-right: 0px;
+ margin-bottom: 0px;
+}
+
+/* HIDDEN!
+body::-webkit-scrollbar { display: none; }
+*/
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #4EA5FF; border: 1px solid gray; }
+::-webkit-scrollbar-thumb { background: #FEFAE0; border: 1px solid gray; }
+::-webkit-scrollbar-thumb:hover { background: #FEFAE0; border: 1px solid gray; }
+
+.top {
+ background-color: #FEFAE0;
+ position: fixed;
+ left: 0px;
+ top: 0px;
+ height: 44px;
+ width: 100%;
+ border: 1px solid gray;
+ border-style: hidden hidden solid hidden; /* top right bottom left */
+}
+
+.topButtons {
+ font-size: min(14px, 2.6vw);
+ border: 2px solid darkgray;
+ border-radius: 5px 5px;
+ cursor: pointer;
+}
+
+.topButtons:hover { background-color: #CFE0E8; } /* Grayish Blue: #CFE0E8; */
+.topButtons:active { background-color: lightblue; }
+
+
+.title {
+ margin-top: 6px;
+ text-align: center;
+ text-shadow: 2px 2px 5px gray;
+ font-size: min(22px, 3vw);
+ font-weight: bold;
+}
+
+.questList {
+ margin-left: 12px;
+}
+
+.answerTitle { position: absolute; top: 12px; right: 22%; }
+
+.randomizer {
+ position: relative;
+ top: 60px;
+ width: 20%;
+ height: 100%;
+ margin: auto;
+ margin-bottom: 112px;
+ background-color: #98FB98;
+ color: black;
+ border: 1px solid gray;
+ border-radius: 12px;
+ font-size: min(14px, 2.5vw);
+ transition: all 1.6s ease-in-out;
+ padding: 12px;
+}
+
+.randomQs {
+ margin: auto;
+ flex; justify-content: center;
+ align-items: center;
+ margin-top: 3%;
+ margin-bottom: 3%;
+ background-color: #FDFD96;
+ color: black;
+ border: 1px dashed darkgray;
+ border-radius: 12px;
+ font-size: min(30px, 3.4vw);
+ transition: all 1.6s ease-in-out;
+ text-align: center;
+ padding: 6%;
+}
+
+.trivia {
+ position: relative;
+ bottom: 6px;
+ margin: auto;
+ margin-top: -6px;
+ margin-bottom: 3px;
+ width: 25%;
+ display: flex;
+ justify-content: space-between;
+ background-color: #FFFFFF99;
+ color: gray;
+ text-align: center;
+ border-radius: 12px;
+ padding: 3px;
+ padding-left: 24px;
+ padding-right: 24px;
+}
+
+.triviaIcons {
+ cursor: pointer;
+ user-select: none;
+}
+
+.questions {
+ position: relative;
+ margin: auto;
+ margin-bottom: 120px;
+ top: 60px;
+ width: 88%;
+ background-color: #B7D7E8;
+ color: black;
+ border: 1px solid gray;
+ border-radius: 12px;
+ font-size: min(14px, 2.5vw);
+ transition: all 1.2s ease-in-out;
+ padding: 12px;
+}
+
+textarea.questAmount {
+ width: 20px;
+ height: 16px;
+ font-size: min(12px, 2vw);
+ text-align: center;
+ margin: 6px;
+ padding: 6px;
+ outline: none;
+ resize: none;
+ border-width: 1px;
+ border-radius: 6px;
+}
+
+textarea.theQs {
+ width: 95%;
+ background-color: #DBF9DB;
+ font-size: min(11px, 2vw);
+ border-width: 1px;
+ border-radius: 6px;
+ margin-left: 3px;
+ margin: 6px;
+ margin-bottom: -3px;
+ padding: 6px;
+ outline: none;
+ resize: none;
+ vertical-align: text-bottom;
+ overflow-wrap: break-word;
+ white-space: pre-wrap;
+}
+
+textarea.studyQs {
+ width: 65%;
+ height: 26px;
+ background-color: #DBF9DB;
+ font-size: min(11px, 2vw);
+ border-width: 1px;
+ border-radius: 6px;
+ margin-left: 3px;
+ margin: 6px;
+ margin-bottom: -3px;
+ padding: 6px;
+ outline: none;
+ resize: none;
+ vertical-align: text-bottom;
+ overflow-wrap: break-word;
+ white-space: pre-wrap;
+}
+
+textarea.answers {
+ width: 25%;
+ height: 26px;
+ background-color: #F9D5E5;
+ font-size: min(11px, 2vw);
+ border-width: 1px;
+ border-radius: 6px;
+ margin-left: 3px;
+ margin: 6px;
+ margin-bottom: -3px;
+ padding: 6px;
+ outline: none;
+ resize: none;
+ vertical-align: text-bottom;
+ overflow-wrap: break-word;
+ white-space: pre-wrap;
+}
+
+.audioToggle { width: 25px; }
+
+.actionButton {
+ position: relative;
+ width: 50%;
+ left: 50%;
+ translate: -50%;
+ text-align: center;
+ background-color: #4EA5FF;
+ font-size: 18px; color: white;
+ border: 1px solid gray;
+ border-radius: 18px;
+ padding: 4px;
+ padding-left: 5px;
+ padding-right: 5px;
+ margin-bottom: 6px;
+ cursor: pointer;
+ user-select: none;
+}
+
+.actionButton:hover { background-color: #4EAFFF; }
+.actionButton:active { background-color: red; }
+
+.studyButton {
+ position: absolute;
+ width: 30%;
+ text-align: center;
+ background-color: #4EA5FF;
+ font-size: 18px; color: white;
+ border: 1px solid gray;
+ border-radius: 18px;
+ padding: 4px;
+ padding-left: 5px;
+ padding-right: 5px;
+ cursor: pointer;
+ user-select: none;
+}
+
+.studyButton:hover { background-color: #4EAFFF; }
+.studyButton:active { background-color: red; }
+
+div#answerButton { color: #333; background-color: #F9D5E5; }
+
+div#answerButton:hover { color: #000; background-color: #E0B0FF; }
+div#answerButton:active { color: #CCCCFF; background-color: #CF9FFF; }
+
+
+.addQuestButton {
+ position: absolute;
+ top: 8px;
+ width: 18px;
+ height: 14px;
+ font-size: min(10px, 2vw);
+ text-align: center;
+ background-color: lightgreen;
+ border: 1px solid gray;
+ border-radius: 6px;
+ padding-top: 3px;
+ padding-left: 6px;
+ padding-right: 6px;
+ padding-bottom: 3px;
+ cursor: pointer;
+ user-select: none;
+}
+
+.addQuestButton:hover { background-color: #98FB98; }  /* background-color: #98FB98; Green Mint */
+.addQuestButton:active {  background-color: #50C878; }  /* background-color: #50C878; Green Emerald */
+
+
+.deleteQuestButton {
+ position: absolute;
+ top: 8px;
+ left: 48px;
+ width: 18px;
+ height: 14px;
+ font-size: min(10px, 2vw);
+ text-align: center;
+ background-color: #F3A5F3; /* Violet (80%): #EE82EE; */
+ border: 1px solid gray;
+ border-radius: 6px;
+ padding-top: 3px;
+ padding-left: 6px;
+ padding-right: 6px;
+ padding-bottom: 3px;
+ cursor: pointer;
+ user-select: none;
+}
+
+.deleteQuestButton:hover {  background-color: #EE82EE; }  /* Violte (72%): #FF00FF; */
+.deleteQuestButton:active {  background-color: #FF00FF; } /* Magenta: #FF00FF; */
+
+.closeButton {
+ position: absolute;
+ top: 6px;
+ right: 8px;
+ height: 14px;
+ font-size: min(10px, 2vw);
+ background-color: pink;
+ border: 1px solid gray;
+ border-radius: 3px;
+ padding-top: 4px;
+ padding-left: 6px;
+ padding-right: 6px;
+ padding-bottom: 3px;
+ cursor: pointer;
+}
+
+.closeButton:hover { background-color: yellow; }
+.closeButton:active { background-color: red; }
+
+
+.bottom {
+ position: fixed;
+ left: 0px;
+ bottom: 0px;
+ height: 36px;
+ width: 100%;
+ background-color: #4EA5FF;
+ color: white;
+ font-size: min(14px, 2vw);
+ border: 1px solid gray;
+ border-style: solid hidden hidden hidden; /* top right bottom left */
+}
+
+
+/* Use a media query to add a break point at 800px: */
+/* Use a media query to add a break point at 800px: */
+/* Use a media query to add a break point at 800px: */
+
+@media screen and (max-width: 800px) {
+ textarea.theQs { width: 82%; height: 32px; }
+ textarea.studyQs { width: 60%; height: 42px; padding: 1px; margin-left: 1px; margin-right: 1px;}
+ textarea.answers { width: 30%; height: 42px; padding: 1px; margin-left: 1px; margin-right: 1px;}
+
+ .title {margin-top: 12px;}
+ .answerTitle {right: 14%;}
+ .addQuestButton { height: 12px; padding-bottom: 0px; }
+ .deleteQuestButton { height: 12px; padding-bottom: 0px; }
+ .closeButton { height: 12px; padding-bottom: 0px; }
+
+ div.questions {margin-bottom: 120px;}
+ .questList {margin-left: 6px;}
+ .randomQs {margin: auto; width: 80%;}
+
+ .trivia {width: 60%;}
+
+ .developer {margin-top: 4px; margin-left: 4px;}
+ .time {margin-top: 4px; margin-right: 4px;}

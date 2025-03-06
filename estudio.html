@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html lang="en-US">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/favicon-speak.png">
+ <link rel="stylesheet" href="files/estudio-style.css">
+ <title>Uplanianos - Preguntas de Estudio</title>
+
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+</head>
+
+<audio id="shuffle" src="media/shuffle.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="answer" src="media/answer.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// CALL FUNCTIONS ONLOAD!
+loadQuestions();
+}
+</script>
+
+
+
+<body>
+<div class="top">
+
+<div style="position: absolute; top: 10px; left: 10px;">
+ <button class="topButtons" value="Borrar?" title="Borrar preguntas!" onclick="doDelete()">🗑️</button></a>
+ </div>
+
+<div id="title" class="title">Preguntas de Estudio!</div>
+
+<div id="questButton" style="position: absolute; top: 10px; right: 52px; display: none;">
+ <button class="topButtons" value="Preguntas?" title="Abrir preguntas!" onclick="slideQuestUp(); hideRandomizer()">&nbsp;❓&nbsp;</button></a>
+ </div>
+<div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
+ <a href="index.html"><button class="topButtons" title="Volver a página inicial!" value="Volver a página inicial!">&nbsp;&larrhk;&nbsp;</button></a>
+ </div>
+
+<div style="position: absolute; top: 10px; right: 12px;">
+ <button id="fullscreen" class="topButtons" title="Pantalla completa!" onclick="activate(document.documentElement);">🚀</button>
+ <button id="minimize" class="topButtons" title="Minimizar pantalla!" style="display: none;" onclick="deactivate()">❌</button>
+ </div>
+</div>
+
+
+<div class="randomizer" id="randomizer" style="display: none; visibility: hidden;">
+ <div class="closeButton" onclick="slideQuestUp(); hideRandomizer()" title="Cerrar estudiador-inator!">❌</div>
+ <b>PREGUNTADOR-INATOR:</b><br>
+ <br>
+ <div id="randomQs" class="randomQs">Tus preguntas aleatorias<br>aparecerán aquí!!</div>
+ <br>
+ <div id="answerButton" class="studyButton" style="left: 15%; display: none;" title="Mostrar respuesta!" onclick="getAnswer()">Ver respuesta!</div>
+ <div id="randomButton" class="studyButton" style="right: 15%;" title="Mostrar pregunta aleatoria!" onclick="goRandomize()">Preguntar?</div>
+ <br>
+ <br>
+ <div id="audioOn" class="audioToggle" onclick="enableAudio()" style="cursor: pointer;" title="Activar sonido!">🔈</div>
+ <div id="audioOff" class="audioToggle" onclick="disableAudio()" style="cursor: pointer; display: none;" title="Desactiva sonido!">🔊</div>
+</div>
+
+
+<div class="questions" id="questions" style="display: block; visibility: visible;">
+<span style="padding-left: 75px;"><b>Preguntas:</b></span><br><br>
+ <div class="addQuestButton" id="addQuestButton" onclick="showMoreQs()" title="Agregar pregunta!">➕</div>
+ <div class="deleteQuestButton" id="deleteQuestButton" onclick="showLessQs()" title="Borrar última pregunta!">➖</div>
+<span class="answerTitle"><b>Respuestas:</b></span>
+ <div class="closeButton" onclick="slideQuestDown(); showRandomizer()" title="Cerrar preguntas!">❌</div>
+
+<textarea id="questAmount" class="questAmount" rows="1" cols="auto" maxlength="5" style="display: none;">6</textarea>
+
+<div class="questList">01. <textarea id="q1" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°1"></textarea>
+<textarea id="a1" class="answers" rows="1" cols="auto" placeholder="Respuesta N°1"></textarea><br></div>
+
+<div class="questList">02. <textarea id="q2" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°2"></textarea>
+<textarea id="a2" class="answers" rows="1" cols="auto" placeholder="Respuesta N°2"></textarea><br></div>
+
+<div class="questList">03. <textarea id="q3" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°3"></textarea>
+<textarea id="a3" class="answers" rows="1" cols="auto" placeholder="Respuesta N°3"></textarea><br></div>
+
+<div class="questList">04. <textarea id="q4" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°4"></textarea>
+<textarea id="a4" class="answers" rows="1" cols="auto" placeholder="Respuesta N°4"></textarea><br></div>
+
+<div class="questList">05. <textarea id="q5" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°5"></textarea>
+<textarea id="a5" class="answers" rows="1" cols="auto" placeholder="Respuesta N°5"></textarea><br></div>
+
+<div class="questList">06. <textarea id="q6" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°6"></textarea>
+<textarea id="a6" class="answers" rows="1" cols="auto" placeholder="Respuesta N°6"></textarea><br></div>
+
+<!-- HIDDEN DIVS -->
+<div class="questList" id="list7" style="display: none;">07. <textarea id="q7" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°7"></textarea>
+<textarea id="a7" class="answers" rows="1" cols="auto" placeholder="Respuesta N°7"></textarea><br></div>
+
+<div class="questList" id="list8" style="display: none;">08. <textarea id="q8" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°8"></textarea>
+<textarea id="a8" class="answers" rows="1" cols="auto" placeholder="Respuesta N°8"></textarea><br></div>
+
+<div class="questList" id="list9" style="display: none;">09. <textarea id="q9" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°9"></textarea>
+<textarea id="a9" class="answers" rows="1" cols="auto" placeholder="Respuesta N°9"></textarea><br></div>
+
+<div class="questList" id="list10" style="display: none;">10. <textarea id="q10" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°10"></textarea>
+<textarea id="a10" class="answers" rows="1" cols="auto" placeholder="Respuesta N°10"></textarea><br></div>
+
+<div class="questList" id="list11" style="display: none;">11. <textarea id="q11" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°11"></textarea>
+<textarea id="a11" class="answers" rows="1" cols="auto" placeholder="Respuesta N°11"></textarea><br></div>
+
+<div class="questList" id="list12" style="display: none;">12. <textarea id="q12" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°12"></textarea>
+<textarea id="a12" class="answers" rows="1" cols="auto" placeholder="Respuesta N°12"></textarea><br></div>
+
+<div class="questList" id="list13" style="display: none;">13. <textarea id="q13" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°13"></textarea>
+<textarea id="a13" class="answers" rows="1" cols="auto" placeholder="Respuesta N°13"></textarea><br></div>
+
+<div class="questList" id="list14" style="display: none;">14. <textarea id="q14" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°14"></textarea>
+<textarea id="a14" class="answers" rows="1" cols="auto" placeholder="Respuesta N°14"></textarea><br></div>
+
+<div class="questList" id="list15" style="display: none;">15. <textarea id="q15" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°15"></textarea>
+<textarea id="a15" class="answers" rows="1" cols="auto" placeholder="Respuesta N°15"></textarea><br></div>
+
+<br>
+<div id="goButton" class="actionButton" onclick="slideQuestDown(); showRandomizer()" title="Iniciar sesión de estudio!">Estudiar!</div>
+<br>
+ <div id="trivia" class="trivia">
+  <span>Preguntas:</span>
+  <span class="triviaIcons" title="Preguntas de ejemplo (15)" onclick="sampleQuestions1()">❓</span>
+  <span class="triviaIcons" title="Borrar todas las preguntas?" onclick="doDelete()">🗑️</span>
+ </div>
+</div>
+
+
+<div class="bottom">
+  <div class="developer" style="position: absolute; top: 6px; left: 6px;">📱 Invento <a href="https://play.google.com/store/apps/details?id=juedmar.upla.nianos" target="_blank">Uplaniano!</a> 💡</span>
+  </div>
+  <div class="time" style="position: absolute; top: 6px; right: 8px; cursor: progress;">📅 <span id="time">12/12/0000 - ⏰ 00:00:00 ?</span>
+  </div>
+</div>
+
+</body>
+
+
+<script type="text/javascript">
+function loadQuestions() {
+var questAmount = document.getElementById('questAmount').value;
+var i = questAmount;
+var theQs = parseInt(i) - parseInt(6);
+var start = parseInt(6);
+var end = parseInt(15);
+
+// DISPLAY HIDDEN QUESTIONS (BY AMOUNT PREVIOUSLY SET)!
+if (i >= 7 && i <= end) {
+ for (let step = 6; step < end; step++) {
+  start++;
+  var thisQuest = "list" + start;
+  document.getElementById(thisQuest).style.display = "block";
+  end = i;
+  }
+ }
+
+// DISPLAYING & HIDDING BUTTONS!
+if (i<= 6) {document.getElementById("deleteQuestButton").style.display = "none"}
+if (i >= 7 && i <= 15 ) {document.getElementById("deleteQuestButton").style.display = "block"}
+}
+</script>
+
+
+<script type="text/javascript">
+function showMoreQs() {
+var questAmount = document.getElementById('questAmount').value;
+
+var i = questAmount;
+++i; // UPDATING AMOUNT OF LISTS!
+
+// CHECKING IF VALUE IS BETWEEN 7 AND 15!
+if (i >= 7 && i <= 15 ) {
+ document.getElementById('questAmount').value = i;
+ var thisQuest = "list" + i;
+ document.getElementById(thisQuest).style.display = "block";
+ document.getElementById("deleteQuestButton").style.display = "block";
+ }
+if (i == 15 ) {document.getElementById("addQuestButton").style.display = "none"}
+}
+
+
+function showLessQs() {
+var questAmount = document.getElementById('questAmount').value;
+
+var i = questAmount;
+
+// CHECKING IF VALUE IS BETWEEN 7 AND 15!
+if (i >= 7 && i <= 15) {
+ var thisQuest = "list" + i;
+ document.getElementById(thisQuest).style.display = "none";
+ document.getElementById("addQuestButton").style.display = "block";
+ // UPDATING AMOUNT OF LISTS!
+ i = i - 1; // UPDATING AMOUNT OF LISTS
+ document.getElementById('questAmount').value = i;
+ }
+if (i == 6 ) {document.getElementById("deleteQuestButton").style.display = "none"}
+if (i == 15 ) {document.getElementById("addQuestButton").style.display = "none"}
+}
+</script>
+
+
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript" src="scripts/loadQsScript.js"></script>
+<script type="text/javascript" src="scripts/randomizeScript.js"></script>
+<script type="text/javascript" src="scripts/animationScript.js"></script>
+<script type="text/javascript" src="scripts/studyScript.js"></script>
+<script type="text/javascript" src="scripts/miscScript.js"></script>
+
+
+</html>
