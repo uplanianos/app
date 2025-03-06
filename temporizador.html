@@ -385,9 +385,9 @@ var clockTicking = setInterval(function() {
   let valuePercent = parseFloat(value).toFixed(2)
 
   // CHECK IF NUMBER IS WHOLE OR IF IT A FRACTION, THEN DISPLAY PERCENTAGE ACCORDINGLY
-  var checkFullNumber = valuePercent.slice(3); // console.log(checkFullNumber)
-  if (checkFullNumber !== 00) { document.getElementById("progressPercent").innerHTML = valuePercent+"%" }
-  else { document.getElementById("progressPercent").innerHTML = valuePercent.slice(0,-3)+"%" }
+  var checkFullNumber = valuePercent.slice(3); console.log(checkFullNumber)
+  if (checkFullNumber == 00) { document.getElementById("progressPercent").innerHTML = valuePercent.slice(0,-3)+"%" }
+  else { document.getElementById("progressPercent").innerHTML = valuePercent+"%" }
 
   // CHANGES PERCENTAGE BAR COLORS
     if (valuePercent < 85) { bar.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + valuePercent + '%, #fff ' + valuePercent + '%, white 100%)' }
