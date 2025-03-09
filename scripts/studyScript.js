@@ -1,7 +1,7 @@
 
-// INITIAL TRIVIA CHECKS!
-// INITIAL TRIVIA CHECKS!
-// INITIAL TRIVIA CHECKS!
+// INITIAL CHECK!
+// INITIAL CHECK!
+// INITIAL CHECK!
 
 
 // SAMPLE QUESTIONS 1 / CHECK FUNCTION!
@@ -20,15 +20,19 @@ if (confirm('¿Remplazar todas las preguntas con 15 ejemplos generales?')) {
 
 function resetTrivia() {
 // SETTING UP & CLEARING QUESTIONS!
- const allQuestions = document.getElementsByClassName('studyQs');
- for(let eachQuestion of allQuestions) { eachQuestion.value = ""; }
+ const theQuestions = document.getElementsByClassName('studyQs');
+ for(let eachOne of theQuestions) { eachOne.value = "" }
 
 // SETTING UP & CLEARING ANSWERS!
- const allAnswers = document.getElementsByClassName('answers');
- for(let eachAnswer of allAnswers) { eachAnswer.value = ""; }
+ const theAnswers = document.getElementsByClassName('answers');
+ for(let eachOne of theAnswers) { eachOne.value = "" }
 
 // RESETTING ANSWER BUTTON!
  document.getElementById("answerButton").style.display = "none";
+
+// RESETTING DELETE QUESTION BUTTON!
+ var questAmount = document.getElementById('questAmount').value;
+ if (questAmount >= 7 && questAmount <= 15 ) { document.getElementById("deleteQuestButton").style.display = "block" }
 }
 
 
@@ -42,7 +46,7 @@ document.getElementById("questAmount").value = "15";
 document.getElementById("randomQs").innerHTML = "Preguntas generales listas.<br>Ya puedes estudiar!";
 
 document.getElementById("q1").value = "¿Cuáles son los cinco tipos de sabores primarios?";
-document.getElementById("a1").value = "Los sabores primarios son ácido, amargo, dulce, salado y umami";
+document.getElementById("a1").value = "Los sabores primarios son: ácido, amargo, dulce, salado y umami";
 
 document.getElementById("q2").value = "¿Cuál es el lugar más frío de la tierra?";
 document.getElementById("a2").value = "La Antártida, que está cubierta de capas con un espesor de entre dos mil y tres mil metros";
@@ -72,7 +76,7 @@ document.getElementById("q10").value = "¿Cuál es el océano más grande?";
 document.getElementById("a10").value = "El Océano Pacífico, con una superficie total de 165.700.000 km²";
 
 document.getElementById("q11").value = "¿Qué año llegó Cristóbal Colón a América?";
-document.getElementById("a11").value = "La fecha en la Cristóbal Colón llegó a América es en 1492";
+document.getElementById("a11").value = "La fecha en la que Cristóbal Colón llegó a América es en 1492";
 
 document.getElementById("q12").value = "¿En qué año comenzó la II Guerra Mundial?";
 document.getElementById("a12").value = "Este famoso conflicto bélico se inició en 1939";
@@ -96,12 +100,12 @@ startCountdown();
 function startCountdown() {
 let goButton = document.getElementById("goButton");
 goButton.style.backgroundColor = "red";
-goButton.innerHTML = "Estudiando en...!";
-setTimeout(function() { goButton.innerHTML = "Estudiando en 3!" }, 1000);
-setTimeout(function() { goButton.innerHTML = "Estudiando en 2!" }, 2000);
-setTimeout(function() { goButton.innerHTML = "Estudiando en 1!" }, 3000);
+goButton.innerHTML = "Comenzando en...!";
+setTimeout(function() { goButton.innerHTML = "Comenzando en 3!" }, 1000);
+setTimeout(function() { goButton.innerHTML = "Comenzando en 2!" }, 2000);
+setTimeout(function() { goButton.innerHTML = "Comenzando en 1!" }, 3000);
 setTimeout(function() { slideQuestDown(); showRandomizer() }, 4000);
-setTimeout(function() { goButton.innerHTML = "Estudiar!"; goButton.style.backgroundColor = "" }, 4500);
+setTimeout(function() { goButton.innerHTML = "Comenzar!"; goButton.style.backgroundColor = "" }, 4500);
 enableAudio();
 }
 
