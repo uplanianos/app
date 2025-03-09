@@ -65,13 +65,12 @@ loadQuestions();
 
 <div class="randomizer" id="randomizer" style="display: none; visibility: hidden;">
  <div class="closeButton" onclick="slideQuestUp(); hideRandomizer()" title="Cerrar estudiador-inator!">❌</div>
- <b>PREGUNTADOR-INATOR:</b><br>
+ <b>PREGUNTADOR-INATOR:</b>
  <br>
- <div id="randomQs" class="randomQs">Tus preguntas aleatorias<br>aparecerán aquí!!</div>
- <br>
+ <div id="randomQs" class="randomQs" style="margin-top: 6px; margin-bottom: 16px;">Tus preguntas aleatorias<br>aparecerán aquí!!</div>
+
  <div id="answerButton" class="studyButton" style="left: 15%; display: none;" title="Mostrar respuesta!" onclick="getAnswer()">Respuesta!</div>
  <div id="randomButton" class="studyButton" style="right: 15%;" title="Mostrar pregunta aleatoria!" onclick="goRandomize()">Preguntar?</div>
- <br>
  <br>
  <div id="audioOn" class="audioToggle" onclick="enableAudio()" style="cursor: pointer;" title="Activar sonido!">🔈</div>
  <div id="audioOff" class="audioToggle" onclick="disableAudio()" style="cursor: pointer; display: none;" title="Desactiva sonido!">🔊</div>
