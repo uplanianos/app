@@ -17,6 +17,9 @@ a:hover		{ color: blue; text-decoration: underline; }
 a:active	{ color: red; }
 a:visited	{ color: hotpink; }
 
+.gradeScaleLinked { color: hotpink; text-decoration: none; cursor: pointer; font-size: smaller; }
+.gradeScaleActive { color: cornflowerblue; text-decoration: none; cursor: pointer; font-size: larger; font-weight: bold; }
+
 ::placeholder {font-size: min(10px, 2vw); color: #33333366; opacity: 85; /* Firefox */ }
 ::-ms-input-placeholder { color: darkgray; /* Edge 12 -18 */}
 

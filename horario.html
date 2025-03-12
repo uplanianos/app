@@ -18,6 +18,7 @@
 <body style="height: 100%;">
 
 <a href="index.html"><div id="return" class="return" style="right: 5%; top: 3%; color: black;">&larrhk;</div></a>
+<div id="deleteAnim" style="display: none; width: 100%; height: 100vh; justify-content: center; align-items: center; font-size: 16vh;">🗑️</div>
 
 <div>
   <select id="dropdown" class="dropdown"  name="dropdown">
@@ -29,9 +30,8 @@
     <option value="5">⏲️ Cuenta Regresiva</option>
     <option value="6">📈 Escala de Notas</option>
     <option value="7">📚 Horario de Clases</option>
-      <option value="71">&#x27A5; ✍️ 1er Semestre</option>
-      <option value="72">&#x27A5; 📥 Descargar</option>
-      <option value="73">&#x27A5; ❌ Borrar</option>
+      <option value="71">&#x27A5; 📥 Descargar</option>
+      <option value="72">&#x27A5; ❌ Borrar</option>
     <option value="8">💊 Justificador</option>
     <option value="9">📜 Manual Estudiante</option>
     <option value="10">✍️ Nota de Pruebas</option>
@@ -54,9 +54,8 @@ document.getElementById('dropdown').addEventListener('change', function() {
  if (dropdown.value == 5) {blurMenu(); window.location = "countdown.html"}
  if (dropdown.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
  if (dropdown.value == 7) {blurMenu(); window.location = "horario.html"}
- if (dropdown.value == 71) {firstTerm(thisYear); setTimeout('blurMenu()', 1000);}
- if (dropdown.value == 72) {printColors(); window.print(); setTimeout('blurMenu()', 1000);}
- if (dropdown.value == 73) {doDelete(); setTimeout('blurMenu()', 1000);}
+ if (dropdown.value == 71) {printColors(); window.print(); setTimeout('blurMenu()', 1000);}
+ if (dropdown.value == 72) {doDelete(); setTimeout('blurMenu()', 1000);}
  if (dropdown.value == 8) {blurMenu(); window.location = "justify.html"}
  if (dropdown.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
  if (dropdown.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
@@ -75,20 +74,7 @@ function exitSoon(){window.location = "index.html"}
 
 
 
-<script type="text/javascript">
-function doDelete() {
-  if (confirm('¿Borramos todo?')) {
-    deleteAll()
-    // console.log("Todo borrado!")
-    window.location = "horario.html"
-  }
-  else { console.log("Eso estuvo cerca!") }
-}
-</script>
-
-
-
-<div class="grid-schedule" style="width: 96%; margin-left: auto; margin-right: auto; margin-top: 1%;">
+<div id="grid-schedule" class="grid-schedule" style="width: 96%; margin-left: auto; margin-right: auto; margin-top: 1%;">
 
 <div id="scheduleName" class="scheduleName" style="grid-area: top;">UPLANIANOS - HORARIO</div>
 
@@ -175,11 +161,26 @@ function doDelete() {
 <!- DELETE BUTTON FUNCTION ->
 <!- DELETE BUTTON FUNCTION ->
 <!- DELETE BUTTON FUNCTION ->
-
 <script type="text/javascript">
+function doDelete() {
+  gridSchedule = document.getElementById("grid-schedule")
+  deleteAnim = document.getElementById("deleteAnim")
+  if (confirm('¿Borramos todo?')) {
+    setTimeout(function() { gridSchedule.style.opacity = "0.80" }, 1000 * 0.1)
+    setTimeout(function() { gridSchedule.style.opacity = "0.60" }, 1000 * 0.2)
+    setTimeout(function() { gridSchedule.style.opacity = "0.45" }, 1000 * 0.3)
+    setTimeout(function() { gridSchedule.style.opacity = "0.20" }, 1000 * 0.4)
+    setTimeout(function() { gridSchedule.style.opacity = "0" }, 1000 * 0.5)
+    setTimeout(function() { deleteAnim.style.display = "flex" }, 1000 * 0.6)
+    setTimeout(function() { deleteAll() }, 1000 * 0.7)
+    setTimeout(function() { window.location = "horario.html" }, 1000 * 1)
+  }
+  else { console.log("Eso estuvo cerca!") }
+}
+
 function deleteAll() {
-const schedule = document.querySelectorAll("textarea")
- for (let cells of schedule) { cells.value = '' }
+  const schedule = document.querySelectorAll("textarea")
+  for (let cells of schedule) { cells.value = '' }
 }
 </script>
 
@@ -388,22 +389,10 @@ if (theTime >= 18.30 && theTime < 19.45) {
   period = 8
   }
 
-// PASSING VALUES TO NAME CHANGE (FROM DROPDOWN MENU)!
-thisYear = year;
-
 // PASSING VALUES TO OTHER FUNCTION!
 highlightPeriod(day, period);
 }
 
-function firstTerm(thisYear) {
- scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + thisYear;
- document.title = "Uplanianos - Horario - I, " + thisYear;
-}
-
-function secondTerm(thisYear) {
- scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + thisYear;
- document.title = "Uplanianos - Horario - II, " + thisYear;
-}
 </script>
 
 
