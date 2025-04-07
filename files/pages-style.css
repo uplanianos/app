@@ -171,8 +171,8 @@ ul	{ padding-left: 18px; }
 
 /* TITLE MENU */
 .titleMenu {
-  width: 30px; height: 30px;
-  font-size: 16px; color: white; font-weight: normal;
+  width: 32px; height: 30px;
+  font-size: 15px; color: white; font-weight: normal;
   background-color: #0096FF22; transition: background-color 0.6s;
   border: 1px solid #0096FF22; border-radius: 6px 6px 6px 6px;
   margin-top: -6px; margin-bottom: -6px; margin-right: 4px;
@@ -251,7 +251,7 @@ ul	{ padding-left: 18px; }
   position: absolute;
   left: 4%; top: -1px;
   width: 32px; height: 30px;
-  font-size: 16px; color: white; font-weight: normal;
+  font-size: 15px; color: white; font-weight: normal;
   background-color: #0F56A2DD; transition: background-color 0.6s;
   border: 1px solid lightgray; border-radius: 0px 0px 6px 6px;
   padding-left: 8px;
@@ -992,6 +992,28 @@ input[type=number].average-maths {
  visibility: hidden;
  display: none;
 }
+
+
+/* PARO TRACKER SETTINGS */
+#fac-artsies { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-sportis { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-eduquis { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-saludis { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-sociats { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-science { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-humanis { margin-bottom: 12px; cursor: pointer; background-color: green; }
+#fac-enginis { margin-bottom: 12px; cursor: pointer; background-color: green; }
+
+div.artsies { margin-left: 60px; padding: 6px; display: none; }
+div.sportis { margin-left: 60px; padding: 6px; display: none; }
+div.eduquis { margin-left: 60px; padding: 6px; display: none; }
+div.saludis { margin-left: 60px; padding: 6px; display: none; }
+div.sociats { margin-left: 60px; padding: 6px; display: none; }
+div.science { margin-left: 60px; padding: 6px; display: none; }
+div.sociats { margin-left: 60px; padding: 6px; display: none; }
+div.humanis { margin-left: 60px; padding: 6px; display: none; }
+div.enginis { margin-left: 60px; padding: 6px; display: none; }
+
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
 
