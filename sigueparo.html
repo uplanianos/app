@@ -120,11 +120,12 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	</div>
 	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()">
 	  <br><div>Facultad de Ingeniería</div><br>
+	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Estadística.<br></div>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Ambiental.<br></div>
-	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Comercial.<br></div>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Civil Ambiental.<br></div>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Civil Industrial.<br></div>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Civil Informática.<br></div>
+	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Comercial.<br></div>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Ingeniería Informática.<br><br></div>
 	</div>
 
@@ -202,7 +203,7 @@ for(let Courses of Science) {
  if (scienceTotal == 0) { document.getElementById("fac-science").style.backgroundColor = "red" }
  }
 
-// HUMAN!
+// HUMANIS!
 let humanisTotal = 6
 Humanis = document.querySelectorAll("span.humanis")
 for(let Courses of Humanis) {
@@ -214,16 +215,16 @@ for(let Courses of Humanis) {
 
 
 // ENGINEERS!
-let enginisTotal = 6
+let enginisTotal = 7
 Enginis = document.querySelectorAll("span.enginis")
 for(let Courses of Enginis) {
  if (Courses.innerHTML == "❌") { enginisTotal-- }
- if (enginisTotal == 6) { document.getElementById("fac-enginis").style.backgroundColor = "green" }
- if (enginisTotal <= 5) { document.getElementById("fac-enginis").style.backgroundColor = "orange" }
+ if (enginisTotal == 7) { document.getElementById("fac-enginis").style.backgroundColor = "green" }
+ if (enginisTotal <= 6) { document.getElementById("fac-enginis").style.backgroundColor = "orange" }
  if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "red" }
  }
 
-// DISPLAY THE ORANGES!
+// DEFINING ELEMENTS (FACULTIES)!
 todoNormal = document.getElementById("todo-normal")
 facArtsies = document.getElementById("fac-artsies")
 facSportis = document.getElementById("fac-sportis")
@@ -234,6 +235,7 @@ facScience = document.getElementById("fac-science")
 facHumanis = document.getElementById("fac-humanis")
 facEnginis = document.getElementById("fac-enginis")
 
+// DISPLAY ORANGE & RED!
 if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "red" ) { displayArtsies(); todoNormal.style.display = "none" }
 if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "red" ) { displaySportis(); todoNormal.style.display = "none" }
 if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "red" ) { displayEduquis(); todoNormal.style.display = "none" }
