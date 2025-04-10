@@ -14,36 +14,6 @@
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-
-window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-
-// CALLS TO ANOTHER FUNCTION!!
-initialSetup();
-adjustBalance(month);
-
-}
-</script>
-
-
 <div class="main">
     <div class="labels"><p>
       <select class="titleMenu" id="titleMenu" name="titleMenu" >
@@ -139,25 +109,32 @@ let month = d.getMonth() +1
 // +1 because normally months start with Zero (0):
 // Jan=0, Feb=1, Mar=2, Apr=3, May=4, Jun=5, Jul=6, Aug=7, etc... - Dec=11!
 
+// DECLARING VALUES PER SEMESTER!
+var theMoney = 47000
+var firstTerm = theMoney
+var secondTerm = theMoney + 1000
+
+// INITIAL SETUP (LOAD ON START)
+function initialSetup() {
+
 // DECLARING ELEMENTS!
 var receipt1 = document.getElementById("receipt1").value
 var receipt2 = document.getElementById("receipt2").value
 var receipt3 = document.getElementById("receipt3").value
 var balance = document.getElementById("balance")
 
-// DECLARING VALUES PER SEMESTER!
-var theMoney = 47000
-var firstTerm = theMoney
-var secondTerm = theMoney + 1000
-var expenses = parseInt(receipt1) + parseInt(receipt2) + parseInt(receipt3)
+// INITIAL CHECKS!
+if (receipt1 === "" || receipt1 === null || receipt1 === undefined || receipt1 === NaN) { document.getElementById("receipt1").value = 0 }
+if (receipt2 === "" || receipt2 === null || receipt2 === undefined || receipt2 === NaN) { document.getElementById("receipt2").value = 0 }
+if (receipt3 === "" || receipt3 === null || receipt3 === undefined || receipt3 === NaN) { document.getElementById("receipt3").value = 0 }
 
-// INITIAL SETUP (LOAD ON START)
-function initialSetup() {
+// DOING THE MATH!
+var expenses = parseInt(receipt1) + parseInt(receipt2) + parseInt(receipt3)
 
 // UPDATING MONTHLY AMOUNT!
 if (month >= 1 && month <= 2) { balance.value = 0; balance.style.backgroundColor = "gray" }
-if (month >= 3 && month <= 7) { balance.value = (firstTerm-expenses) }
-if (month >= 8 && month <= 12) { balance.value = (secondTerm-expenses) }
+if (month >= 3 && month <= 7) { balance.value = (firstTerm - expenses) }
+if (month >= 8 && month <= 12) { balance.value = (secondTerm - expenses) }
 
 checkColors()
 }
@@ -186,10 +163,41 @@ if (balance.value < 0) { balance.style.backgroundColor = "darkred" }
 
 function clearGrades() {
 Receipts = document.querySelectorAll('input.junaeb-compras')
-for(let total of Receipts) {total.value = "0"; initialSetup();}
+for(let total of Receipts) {total.value = "0"; initialSetup(); }
 }
 
 // END OF SCRIPT!
+</script>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// CALLS TO ANOTHER FUNCTION!!
+initialSetup();
+adjustBalance(month);
+
+}
 </script>
 
 
