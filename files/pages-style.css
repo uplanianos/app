@@ -994,6 +994,18 @@ input[type=number].average-maths {
 }
 
 
+/* JUNAEB TRACKER SETTINGS */
+@font-face { font-family: 'CashRegister'; /*name to be used below*/ src: url('HighDef.ttf'); /*URL to font*/ }
+input.junaeb-compras {height: 48px; width: 60%; text-align: right; font-size: 28px; font-family: 'CashRegister'; background-color: orange; color: white; border: 3px solid white; border-radius: 6px; cursor: text; margin-bottom: 6px;}
+input.junaeb-saldo {height: 48px; width: 60%; text-align: right; font-size: 32px; font-family: 'CashRegister'; background-color: green; color: white; border: 3px solid white; border-radius: 6px; cursor: not-allowed;}
+span.money { position:relative; left: 28px; font-size: 24px; }
+
+#resetJunaeb { width: 95px; height: 44px; font-size: 16px; background-color: darkred; color: white; border: 3px solid white; border-radius: 6px; cursor: pointer; padding-top: 8px; }
+#resetJunaeb:hover { background-color: green; color: white; }
+#resetJunaeb:active { background-color: #39FF14; color: black; }
+
+
+
 /* PARO TRACKER SETTINGS */
 #fac-artsies { margin-bottom: 12px; cursor: pointer; background-color: green; }
 #fac-sportis { margin-bottom: 12px; cursor: pointer; background-color: green; }
@@ -1064,7 +1076,7 @@ input[type=number].classGrade:active {box-shadow: 0 0 0px #FFF;}
 .grid-timebox {position: absolute; width: 96%; top: 105px; background-color: white;}
 
 /* PLANNER */
-button {display:none; visibility: hidden;}
+button {display: none; visibility: hidden;}
 .planner-link {display:none; visibility: hidden;}
 .return {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
