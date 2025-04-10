@@ -1013,7 +1013,7 @@ input.junaeb-saldo {
  cursor: not-allowed;}
 
 span.money { position: relative; left: 28px; font-size: 24px; }
-div.clearJunaeb { position: relative; top: -14px; margin-left: 66%; }
+div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-right: 10%; }
 
 #resetJunaeb {
  height: 40px; width: 100px;
