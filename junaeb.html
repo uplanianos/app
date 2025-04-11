@@ -70,13 +70,13 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	  <br>
 
 	  <div style="text-align: center;">Boleta N°1:<span class="money">$</span>
-	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onchange="adjustBalance(month)"></div>
+	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onclick="clearOneZero()" onchange="adjustBalance(month)"></div>
 
 	  <div style="text-align: center;">Boleta N°2:<span class="money">$</span>
-	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onchange="adjustBalance(month)"></div>
+	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onclick="clearTwoZero()" onchange="adjustBalance(month)"></div>
 
 	  <div style="text-align: center;">Boleta N°3:<span class="money">$</span>
-	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onchange="adjustBalance(month)"></div>
+	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onclick="clearThreeZero()" onchange="adjustBalance(month)"></div>
 
 	  <br>
 	  <div><big><b>Saldo:</b></big></div><br>
@@ -164,6 +164,21 @@ if (balance.value < 0) { balance.style.backgroundColor = "darkred" }
 function clearGrades() {
 Receipts = document.querySelectorAll('input.junaeb-compras')
 for(let total of Receipts) {total.value = "0"; initialSetup(); }
+}
+
+function clearOneZero() {
+var receipt1 = document.getElementById("receipt1")
+if (receipt1.value == 0) { receipt1.value = "" }
+}
+
+function clearTwoZero() {
+var receipt2 = document.getElementById("receipt2")
+if (receipt2.value == 0) { receipt2.value = "" }
+}
+
+function clearThreeZero() {
+var receipt3 = document.getElementById("receipt3")
+if (receipt3.value == 0) { receipt3.value = "" }
 }
 
 // END OF SCRIPT!
