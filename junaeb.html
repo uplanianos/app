@@ -263,7 +263,9 @@ if (balance.value < 0) { balance.style.backgroundColor = "darkred" }
 
 function clearGrades() {
 Receipts = document.querySelectorAll('input.junaeb-compras')
-for(let total of Receipts) {total.value = "0"; initialSetup(); }
+for(let total of Receipts) { total.value = "0" }
+document.getElementById("howMany").value = "1"
+initialSetup()
 }
 
 function clearOneZero() {
