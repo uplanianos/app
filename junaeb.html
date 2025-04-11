@@ -65,26 +65,59 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	<br>
 	<div class="grid-item-slider">
 
-	  <br>
-	  <div><b>Compras:</b></div>
-	  <br>
+	 <br>
+	 <div>
+	  <b>Compras:</b>
+	  <input type="button" id="purchaseButton" class="purchaseButton" value="+" onclick="buyMore()">
+	  <input type="button" id="refundButton" class="refundButton" value="x" onclick="returnLast()">
+	  <input type="number" id="howMany" value="1" min="1" max="6" step="1" style="display: none;">
+	  </div>
+	 <br>
 
-	  <div style="text-align: center;">Boleta N°1:<span class="money">$</span>
-	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onclick="clearOneZero()" onchange="adjustBalance(month)"></div>
+	 <div style="text-align: center;">
+	  Boleta N°1:<span class="money">$</span>
+	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onclick="clearOneZero()" onchange="adjustBalance(month)">
+	 </div>
+	  
+	 <div id="divReceipt2" style="text-align: center; display: none;">
+	  Boleta N°2:<span class="money">$</span>
+	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onclick="clearTwoZero()" onchange="adjustBalance(month)">
 
-	  <div style="text-align: center;">Boleta N°2:<span class="money">$</span>
-	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onclick="clearTwoZero()" onchange="adjustBalance(month)"></div>
+	 </div>
 
-	  <div style="text-align: center;">Boleta N°3:<span class="money">$</span>
-	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onclick="clearThreeZero()" onchange="adjustBalance(month)"></div>
+	 <div id="divReceipt3" style="text-align: center; display: none;">
+	  Boleta N°3:<span class="money">$</span>
+	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onclick="clearThreeZero()" onchange="adjustBalance(month)">
+	 </div>
 
-	  <br>
-	  <div><big><b>Saldo:</b></big></div><br>
-	  <div style="text-align: center;"><span class="money">$</span>
-	  <input type="number" id="balance" class="junaeb-saldo" value="0" min="0" step="1" disabled readonly onchange="checkColors(month)"></div><br>
-	  <div id="clearJunaeb" class="clearJunaeb"><input type="button" id="resetJunaeb" value="BORRAR" onclick="clearGrades()"></div>
-	</div>
+	 <div id="divReceipt4" style="text-align: center; display: none;">
+	  Boleta N°4:<span class="money">$</span>
+	  <input type="number" id="receipt4" class="junaeb-compras" value="0" min="0" step="1" onclick="clearFourZero()" onchange="adjustBalance(month)">
+	 </div>
 
+	 <div id="divReceipt5" style="text-align: center; display: none;">
+	  Boleta N°5:<span class="money">$</span>
+	  <input type="number" id="receipt5" class="junaeb-compras" value="0" min="0" step="1" onclick="clearFiveZero()" onchange="adjustBalance(month)">
+	 </div>
+
+	 <div id="divReceipt6" style="text-align: center; display: none;">
+	  Boleta N°6:<span class="money">$</span>
+	  <input type="number" id="receipt6" class="junaeb-compras" value="0" min="0" step="1" onclick="clearSixZero()" onchange="adjustBalance(month)">
+	 </div>
+
+	 <br>
+
+	 <div><big><b>Saldo:</b></big></div><br>
+	  <div style="text-align: center;">
+	  <span class="money">$</span>
+	  <input type="number" id="balance" class="junaeb-saldo" value="0" min="0" step="1" disabled readonly"></div><br>
+	  <div id="clearJunaeb" class="clearJunaeb"><input type="button" id="resetJunaeb" value="BORRAR" onclick="clearGrades()">
+	 </div>
+
+	 <input type="text" id="theBalance" class="junaeb-saldo" value="0" disabled readonly" style="display: none">
+	 </div>
+
+	<br>
 	<br>
 
 	<!- End of "grid-item-tools" Div ->
@@ -118,35 +151,102 @@ var secondTerm = theMoney + 1000
 function initialSetup() {
 
 // DECLARING ELEMENTS!
-var receipt1 = document.getElementById("receipt1").value
-var receipt2 = document.getElementById("receipt2").value
-var receipt3 = document.getElementById("receipt3").value
+// DIVS
+var divReceipt2 = document.getElementById("divReceipt2")
+var divReceipt3 = document.getElementById("divReceipt3")
+var divReceipt4 = document.getElementById("divReceipt4")
+var divReceipt5 = document.getElementById("divReceipt5")
+var divReceipt6 = document.getElementById("divReceipt6")
+// INPUT VALUES
+var receipt1 = document.getElementById("receipt1")
+var receipt2 = document.getElementById("receipt2")
+var receipt3 = document.getElementById("receipt3")
+var receipt4 = document.getElementById("receipt4")
+var receipt5 = document.getElementById("receipt5")
+var receipt6 = document.getElementById("receipt6")
+// FINAL BALANCE (READ ONLY)
 var balance = document.getElementById("balance")
 
-// INITIAL CHECKS!
-if (receipt1 === "" || receipt1 === null || receipt1 === undefined || receipt1 === NaN) { document.getElementById("receipt1").value = 0 }
-if (receipt2 === "" || receipt2 === null || receipt2 === undefined || receipt2 === NaN) { document.getElementById("receipt2").value = 0 }
-if (receipt3 === "" || receipt3 === null || receipt3 === undefined || receipt3 === NaN) { document.getElementById("receipt3").value = 0 }
+// CHECKING PURCHASED AMOUNT
+var purchaseButton = document.getElementById("purchaseButton")
+var refundButton = document.getElementById("refundButton")
+var howMany = document.getElementById("howMany").value
 
-// DOING THE MATH!
-var expenses = parseInt(receipt1) + parseInt(receipt2) + parseInt(receipt3)
+if (howMany == 1) {
+ divReceipt2.style.display = "none";  divReceipt3.style.display = "none";
+ divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
+ divReceipt6.style.display = "none"; refundButton.style.visibility = "hidden";
+ purchaseButton.style.visibility = "visible" }
+
+if (howMany == 2) {
+ divReceipt2.style.display = "block";  divReceipt3.style.display = "none";
+ divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
+ divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
+ purchaseButton.style.visibility = "visible" }
+
+if (howMany == 3) {
+ divReceipt2.style.display = "block"; divReceipt3.style.display = "block"
+ divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
+ divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
+ purchaseButton.style.visibility = "visible" }
+
+if (howMany == 4) {
+ divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
+ divReceipt4.style.display = "block"; divReceipt5.style.display = "none";
+ divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
+ purchaseButton.style.visibility = "visible" }
+
+if (howMany == 5) {
+ divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
+ divReceipt4.style.display = "block"; divReceipt5.style.display = "block";
+ divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
+ purchaseButton.style.visibility = "visible" }
+
+if (howMany == 6) {
+ divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
+ divReceipt4.style.display = "block"; divReceipt5.style.display = "block";
+ divReceipt6.style.display = "block"; refundButton.style.visibility = "visible";
+ purchaseButton.style.visibility = "hidden" }
+
+// INITIAL BALANCE CHECKS!
+if (receipt1.value === "" || receipt1.value === null || receipt1.value === undefined || receipt1.value === NaN) { document.getElementById("receipt1").value = 0 }
+if (receipt2.value === "" || receipt2.value === null || receipt2.value === undefined || receipt2.value === NaN) { document.getElementById("receipt2").value = 0 }
+if (receipt3.value === "" || receipt3.value === null || receipt3.value === undefined || receipt3.value === NaN) { document.getElementById("receipt3").value = 0 }
+if (receipt4.value === "" || receipt4.value === null || receipt4.value === undefined || receipt4.value === NaN) { document.getElementById("receipt4").value = 0 }
+if (receipt5.value === "" || receipt5.value === null || receipt5.value === undefined || receipt5.value === NaN) { document.getElementById("receipt5").value = 0 }
+if (receipt6.value === "" || receipt6.value === null || receipt6.value === undefined || receipt6.value === NaN) { document.getElementById("receipt6").value = 0 }
+
+// DOING THE INITIAL MATH (ON LOAD)!
+var expenses = parseInt(receipt1.value) + parseInt(receipt2.value) + parseInt(receipt3.value) +
+		parseInt(receipt4.value) + parseInt(receipt5.value) + parseInt(receipt6.value)
 
 // UPDATING MONTHLY AMOUNT!
 if (month >= 1 && month <= 2) { balance.value = 0; balance.style.backgroundColor = "gray" }
 if (month >= 3 && month <= 7) { balance.value = (firstTerm - expenses) }
 if (month >= 8 && month <= 12) { balance.value = (secondTerm - expenses) }
 
+// TRYING TO USE DECIMAL SEPARATOR
+// console.log( (firstTerm-expenses).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") )
+// balance.value = ( (firstTerm-expenses).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") )
+
 checkColors()
 }
+
 
 // ADJUST VALUES WHEN EXPENSES CHANGE!
 function adjustBalance(month) {
 
 // DECLARING ELEMENTS!
-var receipt1 = document.getElementById("receipt1").value
-var receipt2 = document.getElementById("receipt2").value
-var receipt3 = document.getElementById("receipt3").value
-var expenses = parseInt(receipt1) + parseInt(receipt2) + parseInt(receipt3)
+var receipt1 = document.getElementById("receipt1")
+var receipt2 = document.getElementById("receipt2")
+var receipt3 = document.getElementById("receipt3")
+var receipt4 = document.getElementById("receipt4")
+var receipt5 = document.getElementById("receipt5")
+var receipt6 = document.getElementById("receipt6")
+
+// DOING THE INITIAL MATH (ON CHANGE)!
+var expenses = parseInt(receipt1.value) + parseInt(receipt2.value) + parseInt(receipt3.value) +
+		parseInt(receipt4.value) + parseInt(receipt5.value) + parseInt(receipt6.value)
 
 if (month >= 3 && month <= 7) { balance.value = (firstTerm-expenses) }
 if (month >= 8 && month <= 12) { balance.value = (secondTerm-expenses) }
@@ -181,9 +281,53 @@ var receipt3 = document.getElementById("receipt3")
 if (receipt3.value == 0) { receipt3.value = "" }
 }
 
+function clearFourZero() {
+var receipt4 = document.getElementById("receipt4")
+if (receipt4.value == 0) { receipt4.value = "" }
+}
+
+function clearFiveZero() {
+var receipt5 = document.getElementById("receipt5")
+if (receipt5.value == 0) { receipt5.value = "" }
+}
+
+function clearSixZero() {
+var receipt6 = document.getElementById("receipt6")
+if (receipt6.value == 0) { receipt6.value = "" }
+}
+
+
+function buyMore() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+var divReceipt2 = document.getElementById("divReceipt2")
+var divReceipt3 = document.getElementById("divReceipt3")
+var divReceipt4 = document.getElementById("divReceipt4")
+var divReceipt5 = document.getElementById("divReceipt5")
+var divReceipt6 = document.getElementById("divReceipt6")
+if (amount >= 1 && amount <= 5) { amount++; howMany.value = amount; initialSetup() }
+}
+
+function returnLast() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+if (amount > 1 && amount <= 6) { amount--; howMany.value = amount; initialSetup() }
+
+// DELETE LAST VALUE!
+var thisReceipt
+var maxValue = amount+1
+if (maxValue >= 2 && maxValue <= 6) {
+ for (let step = 1; step <= maxValue; step++) {
+  thisReceipt= "receipt" + maxValue
+  document.getElementById(thisReceipt).value = 0
+  adjustBalance(month)
+  end = maxValue
+  }
+ }
+}
+
 // END OF SCRIPT!
 </script>
-
 
 
 <!- SAVE FUNCTION ->
