@@ -1017,23 +1017,23 @@ input.junaeb-saldo {
 span.money { position: relative; left: 28px; font-size: 24px; }
 div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-right: 10%; }
 
-input.purchaseButton {
- width: 26px; height: 24px;
+#purchaseButton {
+ width: 40px; height: 26px;
  font-size: 12px; font-weight: bold; text-align: center;
  background-color: green; color: white;
  border: 2px solid white; border-radius: 6px;
  cursor: pointer;
 }
-input.purchaseButton:hover { background-color: orange; font-weight: normal;}
+#purchaseButton:hover { background-color: orange; font-weight: normal;}
 
-input.refundButton {
- width: 26px; height: 24px;
+#refundButton {
+ width: 40px; height: 26px;
  font-size: 13px; text-align: center;
  background-color: darkred; color: white;
  border: 2px solid white; border-radius: 6px;
  cursor: pointer;
 }
-input.refundButton:hover { background-color: orange; font-weight: bold;}
+#refundButton:hover { background-color: orange; font-weight: bold;}
 
 #resetJunaeb {
  height: 40px; width: 100px;
