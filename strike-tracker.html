@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta http-equiv="refresh" content="180">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Paro Tracker - Programs</title>
+</head>
+
+<body onload="checkCourses()" style="background-color: transparent; border: 0px solid #000000FF; border-radius: 0px;">
+
+	<br>
+	<div id="todo-normal" style="color: white; font-weight: bold; margin-left: 40px; margin-bottom: 20px;">📣 TODO NORMAL 🖒 !</div>
+	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
+	  <br><div>Facultad de Artes</div><br>
+	  <div class="artsies">- <span class="artsies">✔️</span> Dibujante Proyectista.<br></div>
+	  <div class="artsies">- <span class="artsies">✔️</span> Diseño.<br></div>
+	  <div class="artsies">- <span class="artsies">✔️</span> Pedagogía en Artes Visuales.<br></div>
+	  <div class="artsies">- <span class="artsies">✔️</span> Pedagogía en Educación Musical.<br></div>
+	  <div class="artsies">- <span class="artsies">✔️</span> Licenciatura en Arte.<br></div>
+	  <div class="artsies">- <span class="artsies">✔️</span> Teatro.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-sportis" onclick="displaySportis()">
+	  <br><div>Facultad de Ciencias de la Actividad Física y el Deporte</div><br>
+	  <div class="sportis">- <span class="sportis">✔️</span> Pedagogía en Educación Física.<br></div>
+	  <div class="sportis">- <span class="sportis">✔️</span> Tecnología en Deportes y Recreación.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-eduquis" onclick="displayEduquis()">
+	  <br><div>Facultad de Ciencias de la Educación</div><br>
+	  <div class="eduquis">- <span class="eduquis">✔️</span> Pedagogía en Educación Básica.<br></div>
+	  <div class="eduquis">- <span class="eduquis">✔️</span> Pedagogía en Educación Diferencial.<br></div>
+	  <div class="eduquis">- <span class="eduquis">✔️</span> Educación Parvularia.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()">
+	  <br><div>Facultad de Ciencias de la Salud</div><br>
+	  <div class="saludis">- <span class="saludis">✔️</span> Enfermería.<br></div>
+	  <div class="saludis">- <span class="saludis">✔️</span> Fonoaudiología.<br></div>
+	  <div class="saludis">- <span class="saludis">✔️</span> Kinesiología.<br></div>
+	  <div class="saludis">- <span class="saludis">✔️</span> Nutrición y Dietética.<br></div>
+	  <div class="saludis">- <span class="saludis">✔️</span> Terapia Ocupacional.<br><br></div>
+
+	</div>
+	<div class="grid-item-slider" id="fac-sociats" onclick="displaySociats()">
+	  <br><div>Facultad de Ciencias Sociales</div><br>
+	  <div class="sociats">- <span class="sociats">✔️</span> Bibliotecología.<br></div>
+	  <div class="sociats">- <span class="sociats">✔️</span> Derecho.<br></div>
+	  <div class="sociats">- <span class="sociats">✔️</span> Periodismo.<br></div>
+	  <div class="sociats">- <span class="sociats">✔️</span> Psicología.<br></div>
+	  <div class="sociats">- <span class="sociats">✔️</span> Sociología.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-science" onclick="displayScience()">
+	  <br><div>Facultad de Ciencias Naturales y Exactas</div><br>
+	  <div class="science">- <span class="science">✔️</span> Geografía.<br></div>
+	  <div class="science">- <span class="science">✔️</span> Pedagogía en Biología y Ciencias.<br></div>
+	  <div class="science">- <span class="science">✔️</span> Pedagogía en Física.<br></div>
+	  <div class="science">- <span class="science">✔️</span> Pedagogía en Matemáticas y Computación.<br></div>
+	  <div class="science">- <span class="science">✔️</span> Pedagogía en Química y Ciencias.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-humanis" onclick="displayHumanis()">
+	  <br><div>Facultad de Humanidades</div><br>
+	  <div class="humanis">- <span class="humanis">✔️</span> Administración Turística Multilingüe.<br></div>
+	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Castellano.<br></div>
+	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Filosofía.<br></div>
+	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Historia y Geografía.<br></div>
+	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Inglés.<br></div>
+	  <div class="humanis">- <span class="humanis">✔️</span> Traducción e Interpretación Inglés – Español.<br><br></div>
+	</div>
+	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()">
+	  <br><div>Facultad de Ingeniería</div><br>
+	  <div class="enginis">- <span class="enginis">✔️</span> Estadística.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Ambiental.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Civil Ambiental.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Civil Industrial.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Civil Informática.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Comercial.<br></div>
+	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Informática.<br><br></div>
+	</div>
+
+<br>
+
+<script type="text/javascript">
+function checkCourses() {
+// ARTS!
+let artsiesTotal = 6
+Artsies = document.querySelectorAll("span.artsies")
+for(let Courses of Artsies) {
+ if (Courses.innerHTML == "❌") { artsiesTotal-- }
+ if (artsiesTotal == 6) { document.getElementById("fac-artsies").style.backgroundColor = "green" }
+ if (artsiesTotal <= 5) { document.getElementById("fac-artsies").style.backgroundColor = "orange" }
+ if (artsiesTotal == 0) { document.getElementById("fac-artsies").style.backgroundColor = "red" }
+ }
+
+// SPORTS!
+let sportisTotal = 2
+Sportis = document.querySelectorAll("span.sportis")
+for(let Courses of Sportis) {
+ if (Courses.innerHTML == "❌") { sportisTotal-- }
+ if (sportisTotal == 2) { document.getElementById("fac-sportis").style.backgroundColor = "green" }
+ if (sportisTotal == 1) { document.getElementById("fac-sportis").style.backgroundColor = "orange" }
+ if (sportisTotal == 0) { document.getElementById("fac-sportis").style.backgroundColor = "red" }
+ }
+
+// EDUCATION!
+let eduquisTotal = 3
+Eduquis = document.querySelectorAll("span.eduquis")
+for(let Courses of Eduquis) {
+ if (Courses.innerHTML == "❌") { eduquisTotal-- }
+ if (eduquisTotal == 3) { document.getElementById("fac-eduquis").style.backgroundColor = "green" }
+ if (eduquisTotal <= 2) { document.getElementById("fac-eduquis").style.backgroundColor = "orange" }
+ if (eduquisTotal == 0) { document.getElementById("fac-eduquis").style.backgroundColor = "red" }
+ }
+
+// SALUDIS!
+let saludisTotal = 5
+Saludis = document.querySelectorAll("span.saludis")
+for(let Courses of Saludis) {
+ if (Courses.innerHTML == "❌") { saludisTotal-- }
+ if (saludisTotal == 5) { document.getElementById("fac-saludis").style.backgroundColor = "green" }
+ if (saludisTotal <= 4) { document.getElementById("fac-saludis").style.backgroundColor = "orange" }
+ if (saludisTotal == 0) { document.getElementById("fac-saludis").style.backgroundColor = "red" }
+ }
+
+// SOCIALES!
+let sociatsTotal = 5
+Sociats = document.querySelectorAll("span.sociats")
+for(let Courses of Sociats) {
+ if (Courses.innerHTML == "❌") { sociatsTotal-- }
+ if (sociatsTotal == 5) { document.getElementById("fac-sociats").style.backgroundColor = "green" }
+ if (sociatsTotal <= 4) { document.getElementById("fac-sociats").style.backgroundColor = "orange" }
+ if (sociatsTotal == 0) { document.getElementById("fac-sociats").style.backgroundColor = "red" }
+ }
+
+// SCIENCE!
+let scienceTotal = 5
+Science = document.querySelectorAll("span.science")
+for(let Courses of Science) {
+ if (Courses.innerHTML == "❌") { scienceTotal-- }
+ if (scienceTotal == 5) { document.getElementById("fac-science").style.backgroundColor = "green" }
+ if (scienceTotal <= 4) { document.getElementById("fac-science").style.backgroundColor = "orange" }
+ if (scienceTotal == 0) { document.getElementById("fac-science").style.backgroundColor = "red" }
+ }
+
+// HUMANIS!
+let humanisTotal = 6
+Humanis = document.querySelectorAll("span.humanis")
+for(let Courses of Humanis) {
+ if (Courses.innerHTML == "❌") { humanisTotal-- }
+ if (humanisTotal == 6) { document.getElementById("fac-humanis").style.backgroundColor = "green" }
+ if (humanisTotal <= 5) { document.getElementById("fac-humanis").style.backgroundColor = "orange" }
+ if (humanisTotal == 0) { document.getElementById("fac-humanis").style.backgroundColor = "red" }
+ }
+
+
+// ENGINEERS!
+let enginisTotal = 7
+Enginis = document.querySelectorAll("span.enginis")
+for(let Courses of Enginis) {
+ if (Courses.innerHTML == "❌") { enginisTotal-- }
+ if (enginisTotal == 7) { document.getElementById("fac-enginis").style.backgroundColor = "green" }
+ if (enginisTotal <= 6) { document.getElementById("fac-enginis").style.backgroundColor = "orange" }
+ if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "red" }
+ }
+
+// DEFINING ELEMENTS (FACULTIES)!
+todoNormal = document.getElementById("todo-normal")
+facArtsies = document.getElementById("fac-artsies")
+facSportis = document.getElementById("fac-sportis")
+facEduquis = document.getElementById("fac-eduquis")
+facSaludis = document.getElementById("fac-saludis")
+facSociats = document.getElementById("fac-sociats")
+facScience = document.getElementById("fac-science")
+facHumanis = document.getElementById("fac-humanis")
+facEnginis = document.getElementById("fac-enginis")
+
+// DISPLAY ORANGE & RED!
+if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "red" ) { displayArtsies(); todoNormal.style.display = "none" }
+if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "red" ) { displaySportis(); todoNormal.style.display = "none" }
+if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "red" ) { displayEduquis(); todoNormal.style.display = "none" }
+if (facSaludis.style.backgroundColor == "orange" || facSaludis.style.backgroundColor == "red" ) { displaySaludis(); todoNormal.style.display = "none" }
+if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundColor == "red" ) { displaySociats(); todoNormal.style.display = "none" }
+if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "red" ) { displayScience(); todoNormal.style.display = "none" }
+if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "red" ) { displayHumanis(); todoNormal.style.display = "none" }
+if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "red" ) { displayEnginis(); todoNormal.style.display = "none" }
+
+// END OF CHECKCOURSES!
+}
+</script>
+
+
+
+<script type="text/javascript">
+function displayArtsies() {
+Artsies = document.querySelectorAll("div.artsies")
+for(let Courses of Artsies) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displaySportis() {
+Sportis = document.querySelectorAll("div.sportis")
+for(let Courses of Sportis) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displayEduquis() {
+Eduquis = document.querySelectorAll("div.eduquis")
+for(let Courses of Eduquis) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displaySaludis() {
+Saludis = document.querySelectorAll("div.saludis")
+for(let Courses of Saludis) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displaySociats() {
+Sociats = document.querySelectorAll("div.sociats")
+for(let Courses of Sociats) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displayScience() {
+Science = document.querySelectorAll("div.science")
+for(let Courses of Science) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displayHumanis() {
+Humanis = document.querySelectorAll("div.humanis")
+for(let Courses of Humanis) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+<script type="text/javascript">
+function displayEnginis() {
+Enginis = document.querySelectorAll("div.enginis")
+for(let Courses of Enginis) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+</script>
+
+
+</body>
+</html>
