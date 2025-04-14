@@ -13,10 +13,12 @@
 
 <body onload="checkCourses()" style="border: 0px solid #000000FF; border-radius: 0px; background-color: #151B54; background-image: linear-gradient(to bottom, black, #151B54, #36013F); background-repeat: no-repeat; background-attachment: fixed; background-size: 500% 100%; margin-left: 12px; margin-right: 12px;">
 
+<div id="mainDiv">
 	<br>
 	<div id="todo-normal" style="color: white; font-weight: bold; margin-left: 12px; margin-bottom: 20px;">📣 TODO NORMAL 🖒 !</div>
-	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
-	  <br><div>Facultad de Artes</div><br>
+
+	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()"><br>
+	  <div onclick="displayArtsies()">Facultad de Artes</div><br>
 	  <div class="artsies">- <span class="artsies">✔️</span> Dibujante Proyectista.<br></div>
 	  <div class="artsies">- <span class="artsies">✔️</span> Diseño.<br></div>
 	  <div class="artsies">- <span class="artsies">✔️</span> Pedagogía en Artes Visuales.<br></div>
@@ -24,44 +26,49 @@
 	  <div class="artsies">- <span class="artsies">✔️</span> Licenciatura en Arte.<br></div>
 	  <div class="artsies">- <span class="artsies">✔️</span> Teatro.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-sportis" onclick="displaySportis()">
-	  <br><div>Facultad de Ciencias de la Actividad Física y el Deporte</div><br>
+
+	<div class="grid-item-slider" id="fac-sportis" onclick="displaySportis()"><br>
+	  <div onclick="displaySportis()">Facultad de Ciencias de la Actividad Física y el Deporte</div><br>
 	  <div class="sportis">- <span class="sportis">✔️</span> Pedagogía en Educación Física.<br></div>
 	  <div class="sportis">- <span class="sportis">✔️</span> Tecnología en Deportes y Recreación.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-eduquis" onclick="displayEduquis()">
-	  <br><div>Facultad de Ciencias de la Educación</div><br>
+
+	<div class="grid-item-slider" id="fac-eduquis" onclick="displayEduquis()"><br>
+	  <div onclick="displayEduquis()">Facultad de Ciencias de la Educación</div><br>
 	  <div class="eduquis">- <span class="eduquis">✔️</span> Pedagogía en Educación Básica.<br></div>
 	  <div class="eduquis">- <span class="eduquis">✔️</span> Pedagogía en Educación Diferencial.<br></div>
 	  <div class="eduquis">- <span class="eduquis">✔️</span> Educación Parvularia.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()">
-	  <br><div>Facultad de Ciencias de la Salud</div><br>
+
+	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()"><br>
+	  <div onclick="displaySaludis()">Facultad de Ciencias de la Salud</div><br>
 	  <div class="saludis">- <span class="saludis">✔️</span> Enfermería.<br></div>
 	  <div class="saludis">- <span class="saludis">✔️</span> Fonoaudiología.<br></div>
 	  <div class="saludis">- <span class="saludis">✔️</span> Kinesiología.<br></div>
 	  <div class="saludis">- <span class="saludis">✔️</span> Nutrición y Dietética.<br></div>
 	  <div class="saludis">- <span class="saludis">✔️</span> Terapia Ocupacional.<br><br></div>
-
 	</div>
-	<div class="grid-item-slider" id="fac-sociats" onclick="displaySociats()">
-	  <br><div>Facultad de Ciencias Sociales</div><br>
+
+	<div class="grid-item-slider" id="fac-sociats" onclick="displaySociats()"><br>
+	  <div onclick="displaySociats()">Facultad de Ciencias Sociales</div><br>
 	  <div class="sociats">- <span class="sociats">✔️</span> Bibliotecología.<br></div>
 	  <div class="sociats">- <span class="sociats">✔️</span> Derecho.<br></div>
 	  <div class="sociats">- <span class="sociats">✔️</span> Periodismo.<br></div>
 	  <div class="sociats">- <span class="sociats">✔️</span> Psicología.<br></div>
 	  <div class="sociats">- <span class="sociats">✔️</span> Sociología.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-science" onclick="displayScience()">
-	  <br><div>Facultad de Ciencias Naturales y Exactas</div><br>
+
+	<div class="grid-item-slider" id="fac-science" onclick="displayScience()"><br>
+	  <div onclick="displayScience()">Facultad de Ciencias Naturales y Exactas</div><br>
 	  <div class="science">- <span class="science">✔️</span> Geografía.<br></div>
 	  <div class="science">- <span class="science">✔️</span> Pedagogía en Biología y Ciencias.<br></div>
 	  <div class="science">- <span class="science">✔️</span> Pedagogía en Física.<br></div>
 	  <div class="science">- <span class="science">✔️</span> Pedagogía en Matemáticas y Computación.<br></div>
 	  <div class="science">- <span class="science">✔️</span> Pedagogía en Química y Ciencias.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-humanis" onclick="displayHumanis()">
-	  <br><div>Facultad de Humanidades</div><br>
+
+	<div class="grid-item-slider" id="fac-humanis" onclick="displayHumanis()"><br>
+	  <div onclick="displayHumanis()">Facultad de Humanidades</div><br>
 	  <div class="humanis">- <span class="humanis">✔️</span> Administración Turística Multilingüe.<br></div>
 	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Castellano.<br></div>
 	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Filosofía.<br></div>
@@ -69,8 +76,9 @@
 	  <div class="humanis">- <span class="humanis">✔️</span> Pedagogía en Inglés.<br></div>
 	  <div class="humanis">- <span class="humanis">✔️</span> Traducción e Interpretación Inglés – Español.<br><br></div>
 	</div>
-	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()">
-	  <br><div>Facultad de Ingeniería</div><br>
+
+	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()"><br>
+	  <div onclick="displayEnginis()">Facultad de Ingeniería</div><br>
 	  <div class="enginis">- <span class="enginis">✔️</span> Estadística.<br></div>
 	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Ambiental.<br></div>
 	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Civil Ambiental.<br></div>
@@ -79,6 +87,7 @@
 	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Comercial.<br></div>
 	  <div class="enginis">- <span class="enginis">✔️</span> Ingeniería Informática.<br><br></div>
 	</div>
+</div>
 
 <br>
 
@@ -154,7 +163,6 @@ for(let Courses of Humanis) {
  if (humanisTotal == 0) { document.getElementById("fac-humanis").style.backgroundColor = "red" }
  }
 
-
 // ENGINEERS!
 let enginisTotal = 7
 Enginis = document.querySelectorAll("span.enginis")
@@ -200,9 +208,8 @@ for(let Courses of Artsies) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displaySportis() {
 Sportis = document.querySelectorAll("div.sportis")
 for(let Courses of Sportis) {
@@ -210,9 +217,8 @@ for(let Courses of Sportis) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displayEduquis() {
 Eduquis = document.querySelectorAll("div.eduquis")
 for(let Courses of Eduquis) {
@@ -220,9 +226,8 @@ for(let Courses of Eduquis) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displaySaludis() {
 Saludis = document.querySelectorAll("div.saludis")
 for(let Courses of Saludis) {
@@ -230,9 +235,8 @@ for(let Courses of Saludis) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displaySociats() {
 Sociats = document.querySelectorAll("div.sociats")
 for(let Courses of Sociats) {
@@ -240,9 +244,8 @@ for(let Courses of Sociats) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displayScience() {
 Science = document.querySelectorAll("div.science")
 for(let Courses of Science) {
@@ -250,9 +253,8 @@ for(let Courses of Science) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displayHumanis() {
 Humanis = document.querySelectorAll("div.humanis")
 for(let Courses of Humanis) {
@@ -260,9 +262,8 @@ for(let Courses of Humanis) {
  else { Courses.style.display = "none" }
  }
 }
-</script>
 
-<script type="text/javascript">
+
 function displayEnginis() {
 Enginis = document.querySelectorAll("div.enginis")
 for(let Courses of Enginis) {
