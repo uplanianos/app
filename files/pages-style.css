@@ -1058,15 +1058,15 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
 
 .tracker-list { list-style-type: none; margin: 0px; spacing: 0px; text-indent: -28px; }
 
-div.artsies { margin-left: 24px; padding: 6px; display: none; }
-div.sportis { margin-left: 24px; padding: 6px; display: none; }
-div.eduquis { margin-left: 24px; padding: 6px; display: none; }
-div.saludis { margin-left: 24px; padding: 6px; display: none; }
-div.sociats { margin-left: 24px; padding: 6px; display: none; }
-div.science { margin-left: 24px; padding: 6px; display: none; }
-div.sociats { margin-left: 24px; padding: 6px; display: none; }
-div.humanis { margin-left: 24px; padding: 6px; display: none; }
-div.enginis { margin-left: 24px; padding: 6px; display: none; }
+div.artsies { margin-left: 20px; padding: 6px; display: none; }
+div.sportis { margin-left: 20px; padding: 6px; display: none; }
+div.eduquis { margin-left: 20px; padding: 6px; display: none; }
+div.saludis { margin-left: 20px; padding: 6px; display: none; }
+div.sociats { margin-left: 20px; padding: 6px; display: none; }
+div.science { margin-left: 20px; padding: 6px; display: none; }
+div.sociats { margin-left: 20px; padding: 6px; display: none; }
+div.humanis { margin-left: 20px; padding: 6px; display: none; }
+div.enginis { margin-left: 20px; padding: 6px; display: none; }
 
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
