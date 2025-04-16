@@ -1056,15 +1056,17 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
 #fac-humanis { margin-bottom: 6px; cursor: pointer; background-color: green; }
 #fac-enginis { margin-bottom: 6px; cursor: pointer; background-color: green; }
 
-div.artsies { margin-left: 18px; padding: 6px; display: none; }
-div.sportis { margin-left: 18px; padding: 6px; display: none; }
-div.eduquis { margin-left: 18px; padding: 6px; display: none; }
-div.saludis { margin-left: 18px; padding: 6px; display: none; }
-div.sociats { margin-left: 18px; padding: 6px; display: none; }
-div.science { margin-left: 18px; padding: 6px; display: none; }
-div.sociats { margin-left: 18px; padding: 6px; display: none; }
-div.humanis { margin-left: 18px; padding: 6px; display: none; }
-div.enginis { margin-left: 18px; padding: 6px; display: none; }
+.tracker-list { list-style-type: none; margin: 0px; text-indent:-1.8em; }
+
+div.artsies { margin-left: 24px; padding: 6px; display: none; }
+div.sportis { margin-left: 24px; padding: 6px; display: none; }
+div.eduquis { margin-left: 24px; padding: 6px; display: none; }
+div.saludis { margin-left: 24px; padding: 6px; display: none; }
+div.sociats { margin-left: 24px; padding: 6px; display: none; }
+div.science { margin-left: 24px; padding: 6px; display: none; }
+div.sociats { margin-left: 24px; padding: 6px; display: none; }
+div.humanis { margin-left: 24px; padding: 6px; display: none; }
+div.enginis { margin-left: 24px; padding: 6px; display: none; }
 
 
 /* PRINT OR CONVERT TO PDF SETTINGS*/
