@@ -10,7 +10,7 @@
 	<title>Uplanianos - Paro Tracker</title>
 </head>
 
-<body onload="focus()">
+<body onload="iframeFocus()">
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="main" style="border-radius: 12px;">
@@ -62,7 +62,7 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 </script> 
 
- <iframe src="strike-tracker.html" id="Strike-Tracker" title="Strike Tracker - Programs" style="width: 100%; height: 777px; border-width: 0; margin-bottom: -3px;"></iframe>
+ <iframe src="strike-tracker.html" id="Strike-Tracker" title="Strike Tracker - Programs" style="width: 100%; height: 725px; border-width: 0; margin-bottom: -3px;"></iframe>
  <br>
 </div>
 
@@ -70,7 +70,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 
 <script type="text/javascript">
-function focus() {
+function iframeFocus() {
 console.log("Focusing!")
  var iframe = document.getElementById("Strike-Tracker")
  // var elmnt = iframe.contentWindow.document.getElementById("mainDiv")

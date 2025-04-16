@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -7,16 +8,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="media/uplanianos-icon.png">
 	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Strike Tracker</title>
+	<title>Uplanianos - Paro Tracker</title>
 </head>
 
-<body onload="checkCourses()" style="border: 0px solid #000000FF; border-radius: 0px; background-color: #151B54; background-image: linear-gradient(to bottom, black, #151B54, #36013F); background-repeat: no-repeat; background-attachment: fixed; background-size: 500% 100%; margin-left: 12px; margin-right: 12px;">
+<body onload="checkCourses()">
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 
-<div class="mainDiv">
+<div class="main">
+    <div class="labels"><p>
+      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <option value="0" selected disabled="disabled">☰</option>
+      <option value="1">📖 Agenda</option>
+      <option value="2">✔️ Asistencia</option>
+      <option value="3">📁 Avance Curricular</option>
+      <option value="4">🗓️ Calendario Oficial</option>
+      <option value="5">⏲️ Cuenta Regresiva</option>
+      <option value="6">📈 Escala de Notas</option>
+      <option value="7">📚 Horario de Clases</option>
+      <option value="8">💊 Justificador</option>
+      <option value="9">📜 Manual Estudiante</option>
+      <option value="10">✍️ Nota de Pruebas</option>
+      <option value="11">💯 Promedio Integral</option>
+      <option value="12">💯 Promedio Porcentual</option>
+      <option value="125">🧠 Preguntas Estudio</option>
+      <option value="13">📋 Simulador Examen</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+<!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
+    </select>
+    <b>Uplanianos App:</b> Paro Tracker.</p></div>
 
-	<div id="todo-normal" style="color: white; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px;">📣 TODO NORMAL 🖒 !</div>
+<script type="text/javascript">
+document.getElementById('titleMenu').addEventListener('change', function() {
+ if (titleMenu.value == 1) {blurMenu(); window.location = "agenda.html"}
+ if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenu.value == 3) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "calendario.html"}
+ if (titleMenu.value == 5) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenu.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenu.value == 7) {blurMenu(); window.location = "horario.html"}
+ if (titleMenu.value == 8) {blurMenu(); window.location = "justify.html"}
+ if (titleMenu.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenu.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenu.value == 11) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenu.value == 12) {blurMenu(); window.location = "promedios.html"}
+ if (titleMenu.value == 125) {blurMenu(); window.location = "estudio.html"}
+ if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
+});
 
+function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
+</script> 
+
+	<br>
+	<div id="todo-normal" style="color: white; font-weight: bold; margin-left: 40px; margin-bottom: 20px;">📣 TODO NORMAL 🖒 !</div>
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
 	  <br><div>Facultad de Artes</div><br>
 	  <div class="artsies" style="display: none;">- <span class="artsies">✔️</span> Dibujante Proyectista.<br></div>
@@ -26,20 +74,17 @@
 	  <div class="artsies" style="display: none;">- <span class="artsies">✔️</span> Licenciatura en Arte.<br></div>
 	  <div class="artsies" style="display: none;">- <span class="artsies">✔️</span> Teatro.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-sportis" onclick="displaySportis()">
 	  <br><div>Facultad de Ciencias de la Actividad Física y el Deporte</div><br>
 	  <div class="sportis" style="display: none;">- <span class="sportis">✔️</span> Pedagogía en Educación Física.<br></div>
 	  <div class="sportis" style="display: none;">- <span class="sportis">✔️</span> Tecnología en Deportes y Recreación.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-eduquis" onclick="displayEduquis()">
 	  <br><div>Facultad de Ciencias de la Educación</div><br>
 	  <div class="eduquis" style="display: none;">- <span class="eduquis">✔️</span> Pedagogía en Educación Básica.<br></div>
 	  <div class="eduquis" style="display: none;">- <span class="eduquis">✔️</span> Pedagogía en Educación Diferencial.<br></div>
 	  <div class="eduquis" style="display: none;">- <span class="eduquis">✔️</span> Educación Parvularia.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()">
 	  <br><div>Facultad de Ciencias de la Salud</div><br>
 	  <div class="saludis" style="display: none;">- <span class="saludis">✔️</span> Enfermería.<br></div>
@@ -47,8 +92,8 @@
 	  <div class="saludis" style="display: none;">- <span class="saludis">✔️</span> Kinesiología.<br></div>
 	  <div class="saludis" style="display: none;">- <span class="saludis">✔️</span> Nutrición y Dietética.<br></div>
 	  <div class="saludis" style="display: none;">- <span class="saludis">✔️</span> Terapia Ocupacional.<br><br></div>
-	</div>
 
+	</div>
 	<div class="grid-item-slider" id="fac-sociats" onclick="displaySociats()">
 	  <br><div>Facultad de Ciencias Sociales</div><br>
 	  <div class="sociats" style="display: none;">- <span class="sociats">✔️</span> Bibliotecología.<br></div>
@@ -57,7 +102,6 @@
 	  <div class="sociats" style="display: none;">- <span class="sociats">✔️</span> Psicología.<br></div>
 	  <div class="sociats" style="display: none;">- <span class="sociats">✔️</span> Sociología.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-science" onclick="displayScience()">
 	  <br><div>Facultad de Ciencias Naturales y Exactas</div><br>
 	  <div class="science" style="display: none;">- <span class="science">✔️</span> Geografía.<br></div>
@@ -66,7 +110,6 @@
 	  <div class="science" style="display: none;">- <span class="science">✔️</span> Pedagogía en Matemáticas y Computación.<br></div>
 	  <div class="science" style="display: none;">- <span class="science">✔️</span> Pedagogía en Química y Ciencias.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-humanis" onclick="displayHumanis()">
 	  <br><div>Facultad de Humanidades</div><br>
 	  <div class="humanis" style="display: none;">- <span class="humanis">✔️</span> Administración Turística Multilingüe.<br></div>
@@ -76,7 +119,6 @@
 	  <div class="humanis" style="display: none;">- <span class="humanis">✔️</span> Pedagogía en Inglés.<br></div>
 	  <div class="humanis" style="display: none;">- <span class="humanis">✔️</span> Traducción e Interpretación Inglés – Español.<br><br></div>
 	</div>
-
 	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()">
 	  <br><div>Facultad de Ingeniería</div><br>
 	  <div class="enginis" style="display: none;">- <span class="enginis">✔️</span> Estadística.<br></div>
@@ -89,9 +131,14 @@
 	</div>
 
 	<br>
+
+	<!- End of "grid-item-tools" Div ->
 	</div>
 
-<br>
+    <br><br>
+  </div>
+
+<br><br>
 </div>
 
 
@@ -213,7 +260,9 @@ for(let Courses of Artsies) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displaySportis() {
 Sportis = document.querySelectorAll("div.sportis")
 for(let Courses of Sportis) {
@@ -221,7 +270,9 @@ for(let Courses of Sportis) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displayEduquis() {
 Eduquis = document.querySelectorAll("div.eduquis")
 for(let Courses of Eduquis) {
@@ -229,7 +280,9 @@ for(let Courses of Eduquis) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displaySaludis() {
 Saludis = document.querySelectorAll("div.saludis")
 for(let Courses of Saludis) {
@@ -237,7 +290,9 @@ for(let Courses of Saludis) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displaySociats() {
 Sociats = document.querySelectorAll("div.sociats")
 for(let Courses of Sociats) {
@@ -245,7 +300,9 @@ for(let Courses of Sociats) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displayScience() {
 Science = document.querySelectorAll("div.science")
 for(let Courses of Science) {
@@ -253,7 +310,9 @@ for(let Courses of Science) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displayHumanis() {
 Humanis = document.querySelectorAll("div.humanis")
 for(let Courses of Humanis) {
@@ -261,7 +320,9 @@ for(let Courses of Humanis) {
  else { Courses.style.display = "none" }
  }
 }
+</script>
 
+<script type="text/javascript">
 function displayEnginis() {
 Enginis = document.querySelectorAll("div.enginis")
 for(let Courses of Enginis) {
@@ -270,6 +331,22 @@ for(let Courses of Enginis) {
  }
 }
 </script>
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
 
 
 </body>
