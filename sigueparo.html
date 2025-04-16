@@ -10,10 +10,10 @@
 	<title>Uplanianos - Paro Tracker</title>
 </head>
 
-<body onload="iframeFocus()">
+<body>
 <a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
-<div class="main" style="border-radius: 12px;">
+<div class="main" style="border-radius: 24px 24px 3px 3px;">
     <div class="labels"><p>
       <select class="titleMenu" id="titleMenu" name="titleMenu" >
       <option value="0" selected disabled="disabled">☰</option>
@@ -62,23 +62,10 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 </script> 
 
- <iframe src="strike-tracker.html" id="Strike-Tracker" title="Strike Tracker - Programs" style="width: 100%; height: 725px; border-width: 0; margin-bottom: -3px;"></iframe>
- <br>
-</div>
-
+<iframe src="strike-tracker.html" id="Strike-Tracker" title="Strike Tracker - Programs" style="width: 100%; height: 724px; border-width: 0; margin-bottom: -3px;"></iframe>
 <br>
-
-
-<script type="text/javascript">
-function iframeFocus() {
-console.log("Focusing!")
- var iframe = document.getElementById("Strike-Tracker")
- // var elmnt = iframe.contentWindow.document.getElementById("mainDiv")
- iframe.contentWindow.focus("mainDiv")
-// elmnt.focus()
-// iframe.focus()
-}
-</script>
+</div>
+<br>
 
 
 <script type="text/javascript">
