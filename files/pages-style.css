@@ -1069,6 +1069,11 @@ div.humanis { margin-left: 20px; padding: 6px; display: none; }
 div.enginis { margin-left: 20px; padding: 6px; display: none; }
 
 
+/* ENGLISH WORKSHOP BUTTON */
+input.English { font-size: 18px; color: white; background-color: green; border: 2px solid white; border-radius: 6px; padding: 12px 20px 12px 12px; cursor: pointer; }
+input.English:hover { color: yellow; background-color: #FF0000AA; outline: none; }
+
+
 /* PRINT OR CONVERT TO PDF SETTINGS*/
 
 @media print {
