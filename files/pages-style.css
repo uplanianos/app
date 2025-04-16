@@ -1047,16 +1047,16 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
 
 
 /* PARO TRACKER SETTINGS */
-#fac-artsies { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-sportis { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-eduquis { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-saludis { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-sociats { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-science { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-humanis { margin-bottom: 6px; cursor: pointer; background-color: green; }
-#fac-enginis { margin-bottom: 6px; cursor: pointer; background-color: green; }
+#fac-artsies { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-sportis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-eduquis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-saludis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-sociats { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-science { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-humanis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#fac-enginis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 
-.tracker-list { list-style-type: none; margin: 0px; text-indent:-1.8em; }
+.tracker-list { list-style-type: none; margin: 0px; spacing: 0px; text-indent: -28px; }
 
 div.artsies { margin-left: 24px; padding: 6px; display: none; }
 div.sportis { margin-left: 24px; padding: 6px; display: none; }
