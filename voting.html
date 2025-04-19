@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Votación Uplaniana</title>
+</head>
+
+<body>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+
+<div class="main" style="background-color: yellow; left-margin: 200px;">
+    <div class="labels"><p>
+      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <option value="0" selected disabled="disabled">☰</option>
+      <option value="1">📖 Agenda</option>
+      <option value="2">✔️ Asistencia</option>
+      <option value="3">📁 Avance Curricular</option>
+      <option value="4">🗓️ Calendario Oficial</option>
+      <option value="5">⏲️ Cuenta Regresiva</option>
+      <option value="6">📈 Escala de Notas</option>
+      <option value="7">📚 Horario de Clases</option>
+      <option value="8">💊 Justificador</option>
+      <option value="9">📜 Manual Estudiante</option>
+      <option value="10">✍️ Nota de Pruebas</option>
+      <option value="11">🚫 Paro Tracker</option>
+      <option value="12">💯 Promedio Integral</option>
+      <option value="125">🧠 Preguntas Estudio</option>
+      <option value="13">📋 Simulador Examen</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+<!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
+    </select>
+    <b>Uplanianos App:</b> Votación Uplaniana.</p></div>
+
+<script type="text/javascript">
+document.getElementById('titleMenu').addEventListener('change', function() {
+ if (titleMenu.value == 1) {blurMenu(); window.location = "agenda.html"}
+ if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenu.value == 3) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "calendario.html"}
+ if (titleMenu.value == 5) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenu.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenu.value == 7) {blurMenu(); window.location = "horario.html"}
+ if (titleMenu.value == 8) {blurMenu(); window.location = "justify.html"}
+ if (titleMenu.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenu.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenu.value == 11) {blurMenu(); window.location = "sigueparo.html"}
+ if (titleMenu.value == 12) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenu.value == 125) {blurMenu(); window.location = "estudio.html"}
+ if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
+});
+
+function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
+</script> 
+
+<br>
+
+<div class="grid-item-slider" style="padding: 12px;">
+
+<br>
+
+<div>
+ <b>Mociones:</b>
+ <input type="button" id="moreButton" value="+" onclick="doMore()">
+ <input type="button" id="lessButton" value="x" onclick="doLess()">
+ <input type="number" id="howMany" value="2" min="2" max="5" step="1" style="display: none;" disabled readonly>
+</div>
+
+<br>
+
+ <!- GRID ->
+ <!- GRID ->
+ <!- GRID ->
+ <div class="grid-voting" style="width: 96%; margin-left: auto; margin-right: auto;">
+
+  <div id="divMotion1" style="grid-area: divMotion1;">N°1
+   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Propuesta N°1" onchange="updateSummary()">
+   <input type="text"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
+   <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
+  </div>
+
+  <div id="divMotion2" style="grid-area: divMotion2; display: none;">N°2
+   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Propuesta N°2" onchange="updateSummary()">
+   <input type="text"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
+   <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
+  </div>
+
+  <div id="divMotion3" style="grid-area: divMotion3; display: none;">N°3
+   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Propuesta N°3" onchange="updateSummary()">
+   <input type="text"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
+   <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
+  </div>
+
+  <div id="divMotion4" style="grid-area: divMotion4; display: none;">N°4
+   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Propuesta N°4" onchange="updateSummary()">
+   <input type="text"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
+   <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
+  </div>
+
+  <div id="divMotion5" style="grid-area: divMotion5; display: none;">N°5
+   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Propuesta N°5" onchange="updateSummary()">
+   <input type="text"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
+   <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
+  </div>
+
+  <div class="divTotalVotes" style="grid-area: divTotal;">Total:
+   <input type="text"	id="totalVotes"	class="votesCount" value="0" min="0" step="1" style="margin: 6px;" disabled readonly>
+  </div>
+
+  <div style="grid-area: divDelete; text-align: right;">
+   <input type="button"	id="resetJunaeb" value="Borrar" onclick="clearButton()" style="width: 80px;">
+  </div>
+
+
+ </div><!- End of "GRID Div ->
+ <!- END OF GRID ->
+ <!- END OF GRID ->
+ <!- END OF GRID ->
+
+<br>
+
+<div><big><b>Resultado:</b></big></div><br>
+ <div class="voteResult">
+
+  <div id="voteSummary" class="voteSummary"><b>Votos:</b><br>
+   <span id="motion1Span" style="color: blue;">N°1: 0 votos (0%).</span><br>
+   <span id="motion2Span" style="color: red;">N°2: 0 votos (0%).</span><br>
+   <span id="motion3Span" style="color: orange;">N°3: 0 votos (0%).</span><br>
+   <span id="motion4Span" style="color: green;">N°4: 0 votos (0%).</span><br>
+   <span id="motion5Span" style="color: purple;">N°5: 0 votos (0%).</span>
+  </div>
+
+ <canvas id="myCanvas" class="myCanvas" width="250" height="250"></canvas>
+
+ <!- Labels Div ->
+ <div class="arcLabel">
+  <label id="arcBlue"	for="bluePercentage">Blue:	<input type="text" class="arcPercent" id="bluePercentage" value="100" min="0" max="100" disabled readonly></label>
+  <label id="arcRed"	for="redPercentage">Red:	<input type="text" class="arcPercent" id="redPercentage" value="0" min="0" max="100" disabled readonly></label>
+  <label id="arcOrange"	for="orangePercentage">Orange:	<input type="text" class="arcPercent" id="orangePercentage" value="0" min="0" max="100" disabled readonly></label>
+  <label id="arcGreen"	for="greenPercentage">Green:	<input type="text" class="arcPercent" id="greenPercentage" value="0" min="0" max="100" disabled readonly></label>
+  <label id="arcPurple"	for="purplePercentage">Purple:	<input type="text" class="arcPercent" id="purplePercentage" value="0" min="0" max="100" disabled readonly></label>
+ </div>
+
+</div>	<!- End of "Votes Result" Div ->
+
+<br>
+
+</div><!- End of "Main" Div ->
+
+<br>
+
+<script type="text/javascript">
+// SETTING UP GLOBAL VALUES!
+// DECLARING ELEMENTS!
+
+// DIVS
+var divMotion2 = document.getElementById("divMotion2")
+var divMotion3 = document.getElementById("divMotion3")
+var divMotion4 = document.getElementById("divMotion4")
+var divMotion5 = document.getElementById("divMotion5")
+
+// INPUT VALUES
+var motion1 = document.getElementById("motion1")
+var motion2 = document.getElementById("motion2")
+var motion3 = document.getElementById("motion3")
+var motion4 = document.getElementById("motion4")
+var motion5 = document.getElementById("motion5")
+
+// INITIAL SETUP FUNCTION!
+function initialSetup() {
+
+// BUTTONS & AMOUNT OF PROPOSALS!
+var moreButton = document.getElementById("moreButton")
+var lessButton = document.getElementById("lessButton")
+var howMany = document.getElementById("howMany").value
+
+if (howMany == 2) {
+ divMotion2.style.display = "block"; divMotion3.style.display = "none";
+ divMotion4.style.display = "none"; divMotion5.style.display = "none";
+ lessButton.style.visibility = "hidden"; moreButton.style.visibility = "visible" }
+
+if (howMany == 3) {
+ divMotion2.style.display = "block"; divMotion3.style.display = "block"
+ divMotion4.style.display = "none"; divMotion5.style.display = "none";
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
+
+if (howMany == 4) {
+ divMotion2.style.display = "block"; divMotion3.style.display = "block";
+ divMotion4.style.display = "block"; divMotion5.style.display = "none";
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
+
+if (howMany == 5) {
+ divMotion2.style.display = "block"; divMotion3.style.display = "block";
+ divMotion4.style.display = "block"; divMotion5.style.display = "block";
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "hidden" }
+
+updateVotes()
+pieChart()
+}
+
+// ====================
+
+
+// DELETE BUTTON FUNCTION
+function clearButton() {
+// DELETE MOTIONS' NAMES!
+ Motions = document.querySelectorAll('input.voteMotion')
+ for(let names of Motions) { names.value = "" }
+// DELETE ALL VOTES!
+ AllVotes = document.querySelectorAll('input.votesCount')
+ for(let count of AllVotes) { count.value = "0" }
+// RESET NUMBER OF MOTIONES!
+ document.getElementById("howMany").value = "2"
+ initialSetup()
+ updateSummary()
+}
+
+
+function doMore() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+var divMotion2 = document.getElementById("divMotion2")
+var divMotion3 = document.getElementById("divMotion3")
+var divMotion4 = document.getElementById("divMotion4")
+var divMotion5 = document.getElementById("divMotion5")
+if (amount >= 1 && amount <= 4) { amount++; howMany.value = amount}
+initialSetup()
+}
+
+
+function doLess() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+if (amount > 2 && amount <= 5) { amount--; howMany.value = amount }
+
+// DELETE LAST VALUE!
+var thisMotion
+var maxValue = amount+1
+if (maxValue >= 2 && maxValue <= 5) {
+ for (let step = 1; step <= maxValue; step++) {
+  thisMotion = "motion" + maxValue
+  theseCount = "counts" + maxValue
+  document.getElementById(thisMotion).value = ""
+  document.getElementById(theseCount).value = "0"
+  end = maxValue
+  initialSetup()
+  }
+ } // END OF "DELETE LAST VALUE" CODE!
+
+} // END OF "DO LESS" FUNCTION!
+
+</script>
+
+
+<script type="text/javascript">
+// VOTING FUNCTIONALITY!
+var howMany = document.getElementById("howMany")
+var counts1 = document.getElementById("counts1")
+var counts2 = document.getElementById("counts2")
+var counts3 = document.getElementById("counts3")
+var counts4 = document.getElementById("counts4")
+var counts5 = document.getElementById("counts5")
+var totalVotes = document.getElementById("totalVotes")
+
+var counted1 = counts1.value
+var counted2 = counts2.value
+var counted3 = counts3.value
+var counted4 = counts4.value
+var counted5 = counts5.value
+var finalCount = totalVotes.value
+
+// DECLARING CIRCLE ELEMENTS
+var blue = document.getElementById("bluePercentage")
+var red = document.getElementById("redPercentage")
+var orange = document.getElementById("orangePercentage")
+var green = document.getElementById("greenPercentage")
+var purple = document.getElementById("purplePercentage")
+
+function vote1More() { counted1 = counts1.value; counted1++; counts1.value = counted1; moreTotal(finalCount,totalVotes) }
+function vote1Less() { counted1=counts1.value; if(counted1 > 0 ) {counted1--; counts1.value = counted1; lessTotal(finalCount,totalVotes) } }
+
+function vote2More() { counted2 = counts2.value; counted2++; counts2.value = counted2; moreTotal(finalCount,totalVotes) }
+function vote2Less() { counted2 = counts2.value; if(counted2 > 0 ) {counted2--; counts2.value = counted2; lessTotal(finalCount,totalVotes) } }
+
+function vote3More() { counted3 = counts3.value; counted3++; counts3.value = counted3; moreTotal(finalCount,totalVotes) }
+function vote3Less() { counted3 = counts3.value; if(counted3 > 0 ) {counted3--; counts3.value = counted3; lessTotal(finalCount,totalVotes) } }
+
+function vote4More() { counted4 = counts4.value; counted4++; counts4.value = counted4; moreTotal(finalCount,totalVotes) }
+function vote4Less() { counted4 = counts4.value; if(counted4 > 0 ) {counted4--; counts4.value = counted4; lessTotal(finalCount,totalVotes) } }
+
+function vote5More() { counted5 = counts5.value; counted5++; counts5.value = counted5; moreTotal(finalCount,totalVotes) }
+function vote5Less() { counted5 = counts5.value; if(counted5 > 0 ) {counted5--; counts5.value = counted5; lessTotal(finalCount,totalVotes) } }
+
+function moreTotal() { finalCount = totalVotes.value; finalCount++; totalVotes.value = finalCount; pieChart() }
+function lessTotal() { finalCount = totalVotes.value; finalCount--; totalVotes.value = finalCount; pieChart() }
+
+// UPDATE TOTAL VOTES FUNCTION!
+function updateVotes() {
+voteUpdate = parseInt(counts1.value) + parseInt(counts2.value) + parseInt(counts3.value) + parseInt(counts4.value) + parseInt(counts5.value)
+totalVotes.value = voteUpdate
+}
+
+
+// UPDATE THE PIE CHART!
+function pieChart() {
+if (totalVotes.value !== 0) {
+ // FORMATTING PERCENTAGES INTO DECIMALS
+ var pie1 = Math.abs(counts1.value / finalCount * 100).toFixed(2)
+ var pie2 = Math.abs(counts2.value / finalCount * 100).toFixed(2)
+ var pie3 = Math.abs(counts3.value / finalCount * 100).toFixed(2)
+ var pie4 = Math.abs(counts4.value / finalCount * 100).toFixed(2)
+ var pie5 = Math.abs(counts5.value / finalCount * 100).toFixed(2)
+
+ // PRINTING PERCENT VALUES
+ blue.value = pie1
+ red.value = pie2
+ orange.value = pie3
+ green.value = pie4
+ purple.value = pie5
+
+ // CALLING CANVAS FUNCTION
+ drawCircle(); updateSummary(pie1,pie2,pie3,pie4,pie5)
+ }
+}
+
+
+function updateSummary(pie1,pie2,pie3,pie4,pie5) {
+ // UPDATING "VOTE SUMMARY"
+ var voteSummary = document.getElementById("voteSummary")
+ var motion1 = document.getElementById("motion1").value
+ var motion2 = document.getElementById("motion2").value
+ var motion3 = document.getElementById("motion3").value
+ var motion4 = document.getElementById("motion4").value
+ var motion5 = document.getElementById("motion5").value
+ var motion1Span = document.getElementById("motion1Span")
+ var motion2Span = document.getElementById("motion2Span")
+ var motion3Span = document.getElementById("motion3Span")
+ var motion4Span = document.getElementById("motion4Span")
+ var motion5Span = document.getElementById("motion5Span")
+
+ if (motion1 !== "") { motion1Span.innerText = motion1.toString() + ": " + counts1.value + " (" + pie1 + "%)."
+  voteSummary.style.display = "block"; motion1Span.style.display = "inline" } else { motion1Span.style.display = "none" }
+
+ if (motion2 !== "") { motion2Span.innerText = motion2.toString() + ": " + counts2.value + " (" + pie2 + "%)."
+  voteSummary.style.display = "block"; motion2Span.style.display = "inline" } else { motion2Span.style.display = "none" }
+
+ if (motion3 !== "") { motion3Span.innerText = motion3.toString() + ": " + counts3.value + " (" + pie3 + "%)."
+  voteSummary.style.display = "block"; motion3Span.style.display = "inline" } else { motion3Span.style.display = "none" }
+
+ if (motion4 !== "") { motion4Span.innerText = motion4.toString() + ": " + counts4.value + " (" + pie4 + "%)."
+  voteSummary.style.display = "block"; motion4Span.style.display = "inline" } else { motion4Span.style.display = "none" }
+
+ if (motion5 !== "") { motion5Span.innerText = motion5.toString() + ": " + counts5.value + " (" + pie5 + "%)."
+  voteSummary.style.display = "block"; motion5Span.style.display = "inline" } else { motion5Span.style.display = "none" }
+}
+</script>
+
+
+
+<script type="text/javascript">
+// DRAW CIRCLE FUNCTION!
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const radius = 100.00;
+
+// Function to draw the circle based on the input percentages
+function drawCircle() {
+
+ const bluePercent = parseFloat(document.getElementById('bluePercentage').value)
+ const redPercent = parseFloat(document.getElementById('redPercentage').value)
+ const orangePercent = parseFloat(document.getElementById('orangePercentage').value)
+ const greenPercent = parseFloat(document.getElementById('greenPercentage').value)
+ const purplePercent = parseFloat(document.getElementById('purplePercentage').value)
+
+ // Ensure total percentage doesn't exceed 100%
+ var totalPercent = parseFloat(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
+ if (totalPercent !== 100.00) { return }
+
+ const blueEnd = (bluePercent / 100) * 2 * Math.PI
+ const redEnd = blueEnd + (redPercent / 100) * 2 * Math.PI
+ const orangeEnd = redEnd + (orangePercent / 100) * 2 * Math.PI
+ const greenEnd = orangeEnd + (greenPercent / 100) * 2 * Math.PI
+ const purpleEnd = greenEnd + (purplePercent / 100) * 2 * Math.PI
+
+ // Clear previous circle
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+ // Draw the blue arc
+ ctx.beginPath();
+ ctx.moveTo(centerX, centerY);
+ ctx.arc(centerX, centerY, radius, 0, blueEnd);
+ ctx.closePath();
+ ctx.fillStyle = 'blue';
+ ctx.fill();
+
+ // Draw the red arc
+ ctx.beginPath();
+ ctx.moveTo(centerX, centerY);
+ ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
+ ctx.closePath();
+ ctx.fillStyle = 'red';
+ ctx.fill();
+
+ // Draw the orange arc
+ ctx.beginPath();
+ ctx.moveTo(centerX, centerY);
+ ctx.arc(centerX, centerY, radius, redEnd, orangeEnd);
+ ctx.closePath();
+ ctx.fillStyle = 'orange';
+ ctx.fill();
+
+ // Draw the green arc
+ ctx.beginPath();
+ ctx.moveTo(centerX, centerY);
+ ctx.arc(centerX, centerY, radius, orangeEnd, greenEnd);
+ ctx.closePath();
+ ctx.fillStyle = 'green';
+ ctx.fill();
+
+ // Draw the purple arc
+ ctx.beginPath();
+ ctx.moveTo(centerX, centerY);
+ ctx.arc(centerX, centerY, radius, greenEnd, purpleEnd);
+ ctx.closePath();
+ ctx.fillStyle = 'purple';
+ ctx.fill();
+
+}
+
+// Event listeners for input change
+document.getElementById('bluePercentage').addEventListener('input', drawCircle);
+document.getElementById('redPercentage').addEventListener('input', drawCircle);
+document.getElementById('orangePercentage').addEventListener('input', drawCircle);
+document.getElementById('greenPercentage').addEventListener('input', drawCircle);
+document.getElementById('purplePercentage').addEventListener('input', drawCircle);
+
+// Initial draw
+drawCircle();
+</script>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// CALLS TO ANOTHER FUNCTION!!
+initialSetup()
+}
+</script>
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+
+</body>
+</html>

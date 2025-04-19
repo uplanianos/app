@@ -68,8 +68,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	 <br>
 	 <div>
 	  <b>Compras:</b>
-	  <input type="button" id="purchaseButton" value="+" onclick="buyMore()">
-	  <input type="button" id="refundButton" value="x" onclick="returnLast()">
+	  <input type="button" id="moreButton" value="+" onclick="buyMore()">
+	  <input type="button" id="lessButton" value="x" onclick="returnLast()">
 	  <input type="number" id="howMany" value="1" min="1" max="6" step="1" style="display: none;">
 	  </div>
 	 <br>
@@ -110,7 +110,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	 <div><big><b>Saldo:</b></big></div><br>
 	  <div style="text-align: center;">
 	  <span class="money">$</span>
-	  <input type="number" id="theBalance" class="junaeb-saldo" value="0" disabled readonly">
+	  <input type="number" id="theBalance" class="junaeb-saldo" value="0" disabled readonly>
 	  </div><br>
 	  <div id="clearJunaeb" class="clearJunaeb"><input type="button" id="resetJunaeb" value="BORRAR" onclick="clearGrades()">
 	 </div>
@@ -165,45 +165,45 @@ var receipt6 = document.getElementById("receipt6")
 var theBalance = document.getElementById("theBalance")
 
 // CHECKING PURCHASED AMOUNT
-var purchaseButton = document.getElementById("purchaseButton")
-var refundButton = document.getElementById("refundButton")
+var moreButton = document.getElementById("moreButton")
+var lessButton = document.getElementById("lessButton")
 var howMany = document.getElementById("howMany").value
 
 if (howMany == 1) {
  divReceipt2.style.display = "none";  divReceipt3.style.display = "none";
  divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
- divReceipt6.style.display = "none"; refundButton.style.visibility = "hidden";
- purchaseButton.style.visibility = "visible" }
+ divReceipt6.style.display = "none"; lessButton.style.visibility = "hidden";
+ moreButton.style.visibility = "visible" }
 
 if (howMany == 2) {
  divReceipt2.style.display = "block";  divReceipt3.style.display = "none";
  divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
- divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
- purchaseButton.style.visibility = "visible" }
+ divReceipt6.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
 
 if (howMany == 3) {
  divReceipt2.style.display = "block"; divReceipt3.style.display = "block"
  divReceipt4.style.display = "none"; divReceipt5.style.display = "none";
- divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
- purchaseButton.style.visibility = "visible" }
+ divReceipt6.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
 
 if (howMany == 4) {
  divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
  divReceipt4.style.display = "block"; divReceipt5.style.display = "none";
- divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
- purchaseButton.style.visibility = "visible" }
+ divReceipt6.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
 
 if (howMany == 5) {
  divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
  divReceipt4.style.display = "block"; divReceipt5.style.display = "block";
- divReceipt6.style.display = "none"; refundButton.style.visibility = "visible";
- purchaseButton.style.visibility = "visible" }
+ divReceipt6.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
 
 if (howMany == 6) {
  divReceipt2.style.display = "block"; divReceipt3.style.display = "block";
  divReceipt4.style.display = "block"; divReceipt5.style.display = "block";
- divReceipt6.style.display = "block"; refundButton.style.visibility = "visible";
- purchaseButton.style.visibility = "hidden" }
+ divReceipt6.style.display = "block"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "hidden" }
 
 // INITIAL BALANCE CHECKS!
 if (receipt1.value === "" || receipt1.value === null || receipt1.value === undefined || receipt1.value === NaN) { document.getElementById("receipt1").value = 0 }
