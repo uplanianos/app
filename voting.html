@@ -135,6 +135,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div><big><b>Resultado:</b></big></div><br>
  <div class="voteResult">
 
+ <canvas id="myCanvas" class="myCanvas" width="200" height="232"></canvas>
+
   <div id="voteSummary" class="voteSummary"><b>Votos:</b><br>
    <span id="motion1Span" style="color: blue;">N°1: 0 votos (0%).</span><br>
    <span id="motion2Span" style="color: red;">N°2: 0 votos (0%).</span><br>
@@ -142,8 +144,6 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
    <span id="motion4Span" style="color: green;">N°4: 0 votos (0%).</span><br>
    <span id="motion5Span" style="color: purple;">N°5: 0 votos (0%).</span>
   </div>
-
- <canvas id="myCanvas" class="myCanvas" width="250" height="250"></canvas>
 
  <!- Labels Div ->
  <div class="arcLabel">
@@ -497,7 +497,6 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script>
-
 
 
 </body>
