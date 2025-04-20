@@ -1160,6 +1160,8 @@ input.arcPercent { text-align: center; font-size: 10px; width: 40px; height: 24p
 
 
 /* PARO TRACKER SETTINGS */
+span.onStrike { color: white; margin: 0px; spacing: 0px; }
+
 #fac-artsies { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 #fac-sportis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 #fac-eduquis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }

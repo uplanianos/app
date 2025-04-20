@@ -10,13 +10,16 @@
 	<title>Uplanianos - Strike Tracker</title>
 </head>
 
-<body onload="checkCourses()" style="border: 0px solid #000000FF; border-radius: 0px; background-color: #151B54; background-image: linear-gradient(to bottom, black, #151B54, #36013F); background-repeat: no-repeat; background-attachment: fixed; background-size: 500% 100%; margin-left: 12px; margin-right: 12px;">
+<body onload="checkCourses(); onStrike()" style="border: 0px solid #000000FF; border-radius: 0px; background-color: #151B54; background-image: linear-gradient(to bottom, black, #151B54, #36013F); background-repeat: no-repeat; background-attachment: fixed; background-size: 500% 100%; margin-left: 12px; margin-right: 12px;">
 
 
 <div class="mainDiv">
 
 	<div id="todo-normal" style="color: white; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px;">📣 TODO NORMAL 🖒</div>
-	<div id="en-paro" style="color: red; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px; display: none;">📣 CARRERAS EN PARO❗ 😲</div>
+	<div id="en-paro" style="color: red; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px; display: none;">
+	 📣 CARRERAS EN PARO❗ 😲 <font color="white">(<span class="onStrike" id="daysStart">0</span>:<span class="onStrike" id="hoursStart">0</span>:<span class="onStrike" id="minutesStart">0</span>:<span class="onStrike" id="secondsStart">0</span>)</font>
+
+	</div>
 
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
 	  <br><div>Facultad de Artes</div><br>
@@ -50,11 +53,11 @@
 	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()">
 	  <br><div>Facultad de Ciencias de la Salud</div><br>
 	 <ul class="tracker-list">
-	  <div class="saludis" style="display: none;"><li><span class="saludis">❌</span> Enfermería (➜ 26 de Abril).</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis">✔️</span> Fonoaudiología.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis">❌</span> Kinesiología (➜ 26 de Abril).</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis">❌</span> Nutrición y Dietética (➜ 26 de Abril).</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis">✔️</span> Terapia Ocupacional.</li><br></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="enfermeria">❌</span> Enfermería.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">✔️</span> Fonoaudiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">❌</span> Kinesiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">❌</span> Nutrición y Dietética.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">✔️</span> Terapia Ocupacional.</li><br></div>
 	 </ul>
 	</div>
 
@@ -194,6 +197,7 @@ for(let Courses of Enginis) {
  if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "red" }
  }
 
+
 // DEFINING ELEMENTS (FACULTIES)!
 todoNormal = document.getElementById("todo-normal")
 enParo = document.getElementById("en-paro")
@@ -285,6 +289,53 @@ for(let Courses of Enginis) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
+}
+</script>
+
+
+
+
+
+<script type="text/javascript">
+function onStrike() {
+classStart = document.querySelectorAll("span.onStrike");
+
+// START WORKING
+var countDownDate = new Date("April 26, 2025 00:00:00").getTime();
+var doTheLoop = setInterval(function() {
+
+ // FIXED VARIABLES
+ var now = new Date().getTime();
+ var distance = countDownDate - now;
+
+ // DISTANCE CALCULATION
+ var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+ var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+ var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+ // PRINT CLOCK!
+ document.getElementById("daysStart").innerHTML = days;
+ document.getElementById("hoursStart").innerHTML = hours;
+ document.getElementById("minutesStart").innerHTML = minutes;
+ document.getElementById("secondsStart").innerHTML = seconds;
+ if (days < 10) { document.getElementById("daysStart").innerHTML = "0" + days; }
+ if (hours < 10) { document.getElementById("hoursStart").innerHTML = "0" + hours; }
+ if (minutes < 10) { document.getElementById("minutesStart").innerHTML = "0" + minutes; }
+ if (seconds < 10) { document.getElementById("secondsStart").innerHTML = "0" + seconds; }
+
+ // AFTER DEADLINE
+ if (distance < 0) {
+  document.getElementById("enfermeria").innerHTML = "✔️"
+  document.getElementById("kinesiologia").innerHTML = "✔️"
+  document.getElementById("nutricion").innerHTML = "✔️"
+  document.getElementById("todo-normal").style.display = "block"
+  document.getElementById("en-paro").style.display = "none"
+  displaySaludis()
+  checkCourses()
+  clearInterval(doTheLoop)
+  }
+ },1000);
 }
 </script>
 
