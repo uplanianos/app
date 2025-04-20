@@ -61,6 +61,7 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 </script> 
 
+<div class="desarrollo" align="center"><b>EN DESARROLLO!</b></div>
 <br>
 
 <div class="grid-item-slider" style="padding: 12px;">
@@ -142,7 +143,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
    <span id="motion2Span" style="color: red;">N°2: 0 votos (0%).</span><br>
    <span id="motion3Span" style="color: orange;">N°3: 0 votos (0%).</span><br>
    <span id="motion4Span" style="color: green;">N°4: 0 votos (0%).</span><br>
-   <span id="motion5Span" style="color: purple;">N°5: 0 votos (0%).</span>
+   <span id="motion5Span" style="color: purple;">N°5: 0 votos (0%).</span><br>
+   <span id="motionTotal" style="color: black;">Total: 0 (0%).</span>
   </div>
 
  <!- Labels Div ->
@@ -318,26 +320,30 @@ totalVotes.value = voteUpdate
 function pieChart() {
 if (totalVotes.value !== 0) {
  // FORMATTING PERCENTAGES INTO DECIMALS
- var pie1 = Math.abs(counts1.value / finalCount * 100).toFixed(2)
- var pie2 = Math.abs(counts2.value / finalCount * 100).toFixed(2)
- var pie3 = Math.abs(counts3.value / finalCount * 100).toFixed(2)
- var pie4 = Math.abs(counts4.value / finalCount * 100).toFixed(2)
- var pie5 = Math.abs(counts5.value / finalCount * 100).toFixed(2)
+ var pie1 = Math.abs(counts1.value / finalCount * 100)
+ var pie2 = Math.abs(counts2.value / finalCount * 100)
+ var pie3 = Math.abs(counts3.value / finalCount * 100)
+ var pie4 = Math.abs(counts4.value / finalCount * 100)
+ var pie5 = Math.abs(counts5.value / finalCount * 100)
+
+ var fullPie = Math.abs(pie1+pie2+pie3+pie4+pie5)
+ console.log(fullPie)
 
  // PRINTING PERCENT VALUES
  blue.value = pie1
  red.value = pie2
  orange.value = pie3
  green.value = pie4
- purple.value = pie5
+ purple.value = pie5 
 
  // CALLING CANVAS FUNCTION
- drawCircle(); updateSummary(pie1,pie2,pie3,pie4,pie5)
+ drawCircle();
+ updateSummary(pie1,pie2,pie3,pie4,pie5,fullPie)
  }
 }
 
 
-function updateSummary(pie1,pie2,pie3,pie4,pie5) {
+function updateSummary(pie1,pie2,pie3,pie4,pie5,fullPie) {
  // UPDATING "VOTE SUMMARY"
  var voteSummary = document.getElementById("voteSummary")
  var motion1 = document.getElementById("motion1").value
@@ -345,26 +351,37 @@ function updateSummary(pie1,pie2,pie3,pie4,pie5) {
  var motion3 = document.getElementById("motion3").value
  var motion4 = document.getElementById("motion4").value
  var motion5 = document.getElementById("motion5").value
+ var totalVotes = document.getElementById("totalVotes").value
  var motion1Span = document.getElementById("motion1Span")
  var motion2Span = document.getElementById("motion2Span")
  var motion3Span = document.getElementById("motion3Span")
  var motion4Span = document.getElementById("motion4Span")
  var motion5Span = document.getElementById("motion5Span")
 
- if (motion1 !== "") { motion1Span.innerText = motion1.toString() + ": " + counts1.value + " (" + pie1 + "%)."
+ if (motion1 !== "") {
+  motion1Span.innerText = motion1.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion1Span.style.display = "inline" } else { motion1Span.style.display = "none" }
 
- if (motion2 !== "") { motion2Span.innerText = motion2.toString() + ": " + counts2.value + " (" + pie2 + "%)."
+ if (motion2 !== "") {
+  motion2Span.innerText = motion2.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion2Span.style.display = "inline" } else { motion2Span.style.display = "none" }
 
- if (motion3 !== "") { motion3Span.innerText = motion3.toString() + ": " + counts3.value + " (" + pie3 + "%)."
+ if (motion3 !== "") {
+  motion3Span.innerText = motion3.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion3Span.style.display = "inline" } else { motion3Span.style.display = "none" }
 
- if (motion4 !== "") { motion4Span.innerText = motion4.toString() + ": " + counts4.value + " (" + pie4 + "%)."
+ if (motion4 !== "") {
+  motion4Span.innerText = motion4.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion4Span.style.display = "inline" } else { motion4Span.style.display = "none" }
 
- if (motion5 !== "") { motion5Span.innerText = motion5.toString() + ": " + counts5.value + " (" + pie5 + "%)."
+ if (motion5 !== "") {
+  motion5Span.innerText = motion5.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion5Span.style.display = "inline" } else { motion5Span.style.display = "none" }
+
+ if (totalVotes !== "") {
+  motionTotal.innerText = "Total: " + totalVotes + " (" + Math.ceil(fullPie).toFixed(3) + ")."
+  voteSummary.style.display = "block"; motion5Span.style.display = "inline" } else { motion5Span.style.display = "none" }
+  if (Math.ceil(fullPie) > 100.000) { motionTotal.style.color = "red" } else { motionTotal.style.color = "black"  }
 }
 </script>
 
@@ -440,7 +457,6 @@ function drawCircle() {
  ctx.closePath();
  ctx.fillStyle = 'purple';
  ctx.fill();
-
 }
 
 // Event listeners for input change
