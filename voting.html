@@ -68,7 +68,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <br>
 
 <div>
- <b>Mociones:</b>
+ <b>Propuestas:</b>
  <input type="button" id="moreButton" value="+" onclick="doMore()">
  <input type="button" id="lessButton" value="x" onclick="doLess()">
  <input type="number" id="howMany" value="2" min="2" max="5" step="1" style="display: none;" disabled readonly>
@@ -81,36 +81,36 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
  <!- GRID ->
  <div class="grid-voting" style="width: 96%; margin-left: auto; margin-right: auto;">
 
-  <div id="divMotion1" style="grid-area: divMotion1;">N°1
-   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Propuesta N°1" onchange="updateSummary()">
+  <div id="divMotion1" style="grid-area: divMotion1;">1
+   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="updateSummary()">
    <input type="text"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly>
    <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
    <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
   </div>
 
-  <div id="divMotion2" style="grid-area: divMotion2; display: none;">N°2
-   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Propuesta N°2" onchange="updateSummary()">
+  <div id="divMotion2" style="grid-area: divMotion2; display: none;">2
+   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="updateSummary()">
    <input type="text"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly>
    <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
    <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
   </div>
 
-  <div id="divMotion3" style="grid-area: divMotion3; display: none;">N°3
-   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Propuesta N°3" onchange="updateSummary()">
+  <div id="divMotion3" style="grid-area: divMotion3; display: none;">3
+   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="updateSummary()">
    <input type="text"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly>
    <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
    <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
   </div>
 
-  <div id="divMotion4" style="grid-area: divMotion4; display: none;">N°4
-   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Propuesta N°4" onchange="updateSummary()">
+  <div id="divMotion4" style="grid-area: divMotion4; display: none;">4
+   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="updateSummary()">
    <input type="text"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly>
    <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
    <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
   </div>
 
-  <div id="divMotion5" style="grid-area: divMotion5; display: none;">N°5
-   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Propuesta N°5" onchange="updateSummary()">
+  <div id="divMotion5" style="grid-area: divMotion5; display: none;">5
+   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="updateSummary()">
    <input type="text"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly>
    <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
    <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
