@@ -1063,29 +1063,29 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
     "divMotion6 divMotion6 divMotion6 divMotion6 divMotion6"
     ". divTotal divTotal divDelete  .";
   gap: 0px;
-  width: 98%;
+  width: 100%;
   text-align: center;
   align-items: center;
   margin: auto;
 }
 
 input.voteMotion {
- height: 40px; width: 40%;
- text-align: center; font-size: 12px; font-family: 'CashRegister'; letter-spacing: 0.2em;
+ height: 40px; width: 36%;
+ text-align: center; font-size: 10px; font-family: 'CashRegister'; letter-spacing: 0.2em;
  background-color: orange; color: white;
  border: 3px solid white; border-radius: 6px;
  text-transform: capitalize;
- margin: 3px;
+ margin: 1px;
  cursor: text;
 }
 
 input.votesCount {
  height: 40px; width: 15%;
- text-align: right; font-size: 12px; font-family: 'CashRegister';
+ text-align: right; font-size: 10px; font-family: 'CashRegister';
  background-color: orange; color: white;
  border: 3px solid white; border-radius: 6px;
  padding-right: 12px;
- margin: 3px;
+ margin: 1px;
  cursor: not-allowed;
 }
 
@@ -1094,7 +1094,7 @@ input.votesPlus {
  text-align: center; font-size: 16px;
  background-color: green; color: white;
  border: 3px solid white; border-radius: 6px;
- margin: 3px; padding-bottom: 5px;
+ margin: 1px; padding-bottom: 5px;
  cursor: pointer;
 }
 input.votesPlus:hover { background-color: lightgreen; }
@@ -1105,7 +1105,7 @@ input.votesLess {
  text-align: center; font-size: 16px;
  background-color: darkred; color: white;
  border: 3px solid white; border-radius: 6px;
- margin: 3px; padding-bottom: 5px;
+ margin: 1px; padding-bottom: 5px;
  cursor: pointer;
 }
 input.votesLess:hover { background-color: pink; }
