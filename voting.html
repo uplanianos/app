@@ -84,35 +84,35 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
    <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="updateSummary()">
-   <input type="text"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="text"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
    <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
   </div>
 
   <div id="divMotion2" style="grid-area: divMotion2; display: none;">2
    <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="updateSummary()">
-   <input type="text"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="text"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
    <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
   </div>
 
   <div id="divMotion3" style="grid-area: divMotion3; display: none;">3
    <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="updateSummary()">
-   <input type="text"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="text"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
    <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
   </div>
 
   <div id="divMotion4" style="grid-area: divMotion4; display: none;">4
    <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="updateSummary()">
-   <input type="text"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="text"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
    <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
   </div>
 
   <div id="divMotion5" style="grid-area: divMotion5; display: none;">5
    <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="updateSummary()">
-   <input type="text"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly>
+   <input type="text"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
    <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
   </div>
@@ -136,25 +136,16 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div><big><b>Resultado:</b></big></div><br>
  <div class="voteResult">
 
- <canvas id="myCanvas" class="myCanvas" width="200" height="232"></canvas>
-
-  <div id="voteSummary" class="voteSummary"><b>Votos:</b><br>
-   <span id="motion1Span" style="color: blue;">N°1: 0 votos (0%).</span><br>
-   <span id="motion2Span" style="color: red;">N°2: 0 votos (0%).</span><br>
-   <span id="motion3Span" style="color: orange;">N°3: 0 votos (0%).</span><br>
-   <span id="motion4Span" style="color: green;">N°4: 0 votos (0%).</span><br>
-   <span id="motion5Span" style="color: purple;">N°5: 0 votos (0%).</span><br>
-   <span id="motionTotal" style="color: black;">Total: 0 (0%).</span>
+  <div id="voteSummary" class="voteSummary" style="display: none;"><b>VOTOS:</b><br>
+   <span id="motion1Span" style="color: blue;	display: none;">N°1: 0 votos (0%).</span>
+   <span id="motion2Span" style="color: red;	display: none;">N°2: 0 votos (0%).</span>
+   <span id="motion3Span" style="color: orange;	display: none;">N°3: 0 votos (0%).</span>
+   <span id="motion4Span" style="color: green;	display: none;">N°4: 0 votos (0%).</span>
+   <span id="motion5Span" style="color: purple;	display: none;">N°5: 0 votos (0%).</span>
+   <span id="motionTotal" style="color: black;	display: none;">0 Votos.</span>
   </div>
 
- <!- Labels Div ->
- <div class="arcLabel">
-  <label id="arcBlue"	for="bluePercentage">Blue:	<input type="text" class="arcPercent" id="bluePercentage" value="100" min="0" max="100" disabled readonly></label>
-  <label id="arcRed"	for="redPercentage">Red:	<input type="text" class="arcPercent" id="redPercentage" value="0" min="0" max="100" disabled readonly></label>
-  <label id="arcOrange"	for="orangePercentage">Orange:	<input type="text" class="arcPercent" id="orangePercentage" value="0" min="0" max="100" disabled readonly></label>
-  <label id="arcGreen"	for="greenPercentage">Green:	<input type="text" class="arcPercent" id="greenPercentage" value="0" min="0" max="100" disabled readonly></label>
-  <label id="arcPurple"	for="purplePercentage">Purple:	<input type="text" class="arcPercent" id="purplePercentage" value="0" min="0" max="100" disabled readonly></label>
- </div>
+ <canvas id="myCanvas" class="myCanvas" width="212" height="232"></canvas>
 
 </div>	<!- End of "Votes Result" Div ->
 
@@ -164,22 +155,50 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <br>
 
+
+<script type="text/javascript">
+var buttonFlash = function() {
+ var focusWhich = "vote" + this.id.slice(6) + "More"
+ var onThisOne = document.getElementById(focusWhich)
+ onThisOne.style.backgroundColor = "red"
+ setTimeout(function() { onThisOne.style.backgroundColor = "" }, 500);
+}
+</script>
+
+
 <script type="text/javascript">
 // SETTING UP GLOBAL VALUES!
 // DECLARING ELEMENTS!
 
 // DIVS
+var divMotion1 = document.getElementById("divMotion1")
 var divMotion2 = document.getElementById("divMotion2")
 var divMotion3 = document.getElementById("divMotion3")
 var divMotion4 = document.getElementById("divMotion4")
 var divMotion5 = document.getElementById("divMotion5")
 
-// INPUT VALUES
+// PROPOSAL NAMES
 var motion1 = document.getElementById("motion1")
 var motion2 = document.getElementById("motion2")
 var motion3 = document.getElementById("motion3")
 var motion4 = document.getElementById("motion4")
 var motion5 = document.getElementById("motion5")
+
+// PROPOSAL NAMES EVENT LISTENERS
+document.getElementById('motion1').addEventListener('input', updateSummary())
+document.getElementById('motion2').addEventListener('input', updateSummary())
+document.getElementById('motion3').addEventListener('input', updateSummary())
+document.getElementById('motion4').addEventListener('input', updateSummary())
+document.getElementById('motion5').addEventListener('input', updateSummary())
+
+// VOTING VALUES
+var howMany = document.getElementById("howMany")
+var counts1 = document.getElementById("counts1")
+var counts2 = document.getElementById("counts2")
+var counts3 = document.getElementById("counts3")
+var counts4 = document.getElementById("counts4")
+var counts5 = document.getElementById("counts5")
+var totalVotes = document.getElementById("totalVotes")
 
 // INITIAL SETUP FUNCTION!
 function initialSetup() {
@@ -187,30 +206,29 @@ function initialSetup() {
 // BUTTONS & AMOUNT OF PROPOSALS!
 var moreButton = document.getElementById("moreButton")
 var lessButton = document.getElementById("lessButton")
-var howMany = document.getElementById("howMany").value
 
-if (howMany == 2) {
+if (howMany.value == 2) {
  divMotion2.style.display = "block"; divMotion3.style.display = "none";
  divMotion4.style.display = "none"; divMotion5.style.display = "none";
  lessButton.style.visibility = "hidden"; moreButton.style.visibility = "visible" }
 
-if (howMany == 3) {
+if (howMany.value == 3) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block"
  divMotion4.style.display = "none"; divMotion5.style.display = "none";
  lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
 
-if (howMany == 4) {
+if (howMany.value == 4) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block";
  divMotion4.style.display = "block"; divMotion5.style.display = "none";
  lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
 
-if (howMany == 5) {
+if (howMany.value == 5) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block";
  divMotion4.style.display = "block"; divMotion5.style.display = "block";
  lessButton.style.visibility = "visible"; moreButton.style.visibility = "hidden" }
 
-updateVotes()
-pieChart()
+getValues()
+
 }
 
 // ====================
@@ -218,21 +236,28 @@ pieChart()
 
 // DELETE BUTTON FUNCTION
 function clearButton() {
-// DELETE MOTIONS' NAMES!
+ // DELETE MOTIONS' NAMES!
  Motions = document.querySelectorAll('input.voteMotion')
  for(let names of Motions) { names.value = "" }
-// DELETE ALL VOTES!
+
+ // DELETE ALL VOTES!
  AllVotes = document.querySelectorAll('input.votesCount')
  for(let count of AllVotes) { count.value = "0" }
-// RESET NUMBER OF MOTIONES!
+
+ // RESET NUMBER OF MOTIONES!
  document.getElementById("howMany").value = "2"
+
+ // HIDING SUMMARY
+ document.getElementById("voteSummary").style.display = "none"
+
+ // RESETTING FUNCTIONS
  initialSetup()
- updateSummary()
 }
+
+// ====================
 
 
 function doMore() {
-var howMany = document.getElementById("howMany")
 amount = howMany.value
 var divMotion2 = document.getElementById("divMotion2")
 var divMotion3 = document.getElementById("divMotion3")
@@ -242,9 +267,10 @@ if (amount >= 1 && amount <= 4) { amount++; howMany.value = amount}
 initialSetup()
 }
 
+// ====================
+
 
 function doLess() {
-var howMany = document.getElementById("howMany")
 amount = howMany.value
 if (amount > 2 && amount <= 5) { amount--; howMany.value = amount }
 
@@ -264,32 +290,16 @@ if (maxValue >= 2 && maxValue <= 5) {
 
 } // END OF "DO LESS" FUNCTION!
 
-</script>
+// ====================
 
 
-<script type="text/javascript">
 // VOTING FUNCTIONALITY!
-var howMany = document.getElementById("howMany")
-var counts1 = document.getElementById("counts1")
-var counts2 = document.getElementById("counts2")
-var counts3 = document.getElementById("counts3")
-var counts4 = document.getElementById("counts4")
-var counts5 = document.getElementById("counts5")
-var totalVotes = document.getElementById("totalVotes")
-
 var counted1 = counts1.value
 var counted2 = counts2.value
 var counted3 = counts3.value
 var counted4 = counts4.value
 var counted5 = counts5.value
 var finalCount = totalVotes.value
-
-// DECLARING CIRCLE ELEMENTS
-var blue = document.getElementById("bluePercentage")
-var red = document.getElementById("redPercentage")
-var orange = document.getElementById("orangePercentage")
-var green = document.getElementById("greenPercentage")
-var purple = document.getElementById("purplePercentage")
 
 function vote1More() { counted1 = counts1.value; counted1++; counts1.value = counted1; moreTotal(finalCount,totalVotes) }
 function vote1Less() { counted1=counts1.value; if(counted1 > 0 ) {counted1--; counts1.value = counted1; lessTotal(finalCount,totalVotes) } }
@@ -306,88 +316,69 @@ function vote4Less() { counted4 = counts4.value; if(counted4 > 0 ) {counted4--; 
 function vote5More() { counted5 = counts5.value; counted5++; counts5.value = counted5; moreTotal(finalCount,totalVotes) }
 function vote5Less() { counted5 = counts5.value; if(counted5 > 0 ) {counted5--; counts5.value = counted5; lessTotal(finalCount,totalVotes) } }
 
-function moreTotal() { finalCount = totalVotes.value; finalCount++; totalVotes.value = finalCount; pieChart() }
-function lessTotal() { finalCount = totalVotes.value; finalCount--; totalVotes.value = finalCount; pieChart() }
+function moreTotal() { finalCount = totalVotes.value; finalCount++; totalVotes.value = finalCount; getValues() }
+function lessTotal() { finalCount = totalVotes.value; finalCount--; totalVotes.value = finalCount; getValues() }
 
-// UPDATE TOTAL VOTES FUNCTION!
-function updateVotes() {
-voteUpdate = parseInt(counts1.value) + parseInt(counts2.value) + parseInt(counts3.value) + parseInt(counts4.value) + parseInt(counts5.value)
-totalVotes.value = voteUpdate
-}
+// ====================
 
 
-// UPDATE THE PIE CHART!
-function pieChart() {
-if (totalVotes.value !== 0) {
- // FORMATTING PERCENTAGES INTO DECIMALS
+// SETTING UP PERCENTAGE VALUES
+function getValues() {
  var pie1 = Math.abs(counts1.value / finalCount * 100)
  var pie2 = Math.abs(counts2.value / finalCount * 100)
  var pie3 = Math.abs(counts3.value / finalCount * 100)
  var pie4 = Math.abs(counts4.value / finalCount * 100)
  var pie5 = Math.abs(counts5.value / finalCount * 100)
+ var pieSum = Math.abs(pie1+pie2+pie3+pie4+pie5)
+ var finalPercent = Math.abs(pieSum)
 
- var fullPie = Math.abs(pie1+pie2+pie3+pie4+pie5)
- console.log(fullPie)
+ updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent)
+ drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent)
 
- // PRINTING PERCENT VALUES
- blue.value = pie1
- red.value = pie2
- orange.value = pie3
- green.value = pie4
- purple.value = pie5 
-
- // CALLING CANVAS FUNCTION
- drawCircle();
- updateSummary(pie1,pie2,pie3,pie4,pie5,fullPie)
- }
 }
 
 
-function updateSummary(pie1,pie2,pie3,pie4,pie5,fullPie) {
- // UPDATING "VOTE SUMMARY"
- var voteSummary = document.getElementById("voteSummary")
- var motion1 = document.getElementById("motion1").value
- var motion2 = document.getElementById("motion2").value
- var motion3 = document.getElementById("motion3").value
- var motion4 = document.getElementById("motion4").value
- var motion5 = document.getElementById("motion5").value
- var totalVotes = document.getElementById("totalVotes").value
- var motion1Span = document.getElementById("motion1Span")
- var motion2Span = document.getElementById("motion2Span")
- var motion3Span = document.getElementById("motion3Span")
- var motion4Span = document.getElementById("motion4Span")
- var motion5Span = document.getElementById("motion5Span")
+// UPDATING "VOTE SUMMARY"
+function updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent) {
 
- if (motion1 !== "") {
-  motion1Span.innerText = motion1.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion1Span.style.display = "inline" } else { motion1Span.style.display = "none" }
+// GRAPH SUMMARY
+var voteSummary = document.getElementById("voteSummary")
+var motion1Span = document.getElementById("motion1Span")
+var motion2Span = document.getElementById("motion2Span")
+var motion3Span = document.getElementById("motion3Span")
+var motion4Span = document.getElementById("motion4Span")
+var motion5Span = document.getElementById("motion5Span")
 
- if (motion2 !== "") {
-  motion2Span.innerText = motion2.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion2Span.style.display = "inline" } else { motion2Span.style.display = "none" }
+ if (motion1.value !== "") {
+  motion1Span.innerText = motion1.value.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
+  voteSummary.style.display = "block"; motion1Span.style.display = "block" } else { motion1Span.style.display = "none" }
 
- if (motion3 !== "") {
-  motion3Span.innerText = motion3.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion3Span.style.display = "inline" } else { motion3Span.style.display = "none" }
+ if (motion2.value !== "") {
+  motion2Span.innerText = motion2.value.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
+  voteSummary.style.display = "block"; motion2Span.style.display = "block" } else { motion2Span.style.display = "none" }
 
- if (motion4 !== "") {
-  motion4Span.innerText = motion4.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion4Span.style.display = "inline" } else { motion4Span.style.display = "none" }
+ if (motion3.value !== "") {
+  motion3Span.innerText = motion3.value.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
+  voteSummary.style.display = "block"; motion3Span.style.display = "block" } else { motion3Span.style.display = "none" }
 
- if (motion5 !== "") {
-  motion5Span.innerText = motion5.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion5Span.style.display = "inline" } else { motion5Span.style.display = "none" }
+ if (motion4.value !== "") {
+  motion4Span.innerText = motion4.value.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
+  voteSummary.style.display = "block"; motion4Span.style.display = "block" } else { motion4Span.style.display = "none" }
 
- if (totalVotes !== "") {
-  motionTotal.innerText = "Total: " + totalVotes + " (" + Math.ceil(fullPie).toFixed(3) + ")."
-  voteSummary.style.display = "block"; motion5Span.style.display = "inline" } else { motion5Span.style.display = "none" }
-  if (Math.ceil(fullPie) > 100.000) { motionTotal.style.color = "red" } else { motionTotal.style.color = "black"  }
+ if (motion5.value !== "") {
+  motion5Span.innerText = motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
+  voteSummary.style.display = "block"; motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
+
+ if (totalVotes !== "" || totalVotes == NaN) {
+  motionTotal.innerText = "Total: " + finalCount + " votos."
+  motionTotal.style.display = "block"
+  motionTotal.style.lineHeight = "3"
+  motionTotal.style.textDecoration = "overline solid blue"
+  } else { motionTotal.style.display = "none" }
+  if (finalPercent !== 100) { motionTotal.style.color = "red" } else { motionTotal.style.color = "black" }
 }
-</script>
 
 
-
-<script type="text/javascript">
 // DRAW CIRCLE FUNCTION!
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
@@ -397,78 +388,82 @@ const centerY = canvas.height / 2;
 const radius = 100.00;
 
 // Function to draw the circle based on the input percentages
-function drawCircle() {
+function drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent) {
 
- const bluePercent = parseFloat(document.getElementById('bluePercentage').value)
- const redPercent = parseFloat(document.getElementById('redPercentage').value)
- const orangePercent = parseFloat(document.getElementById('orangePercentage').value)
- const greenPercent = parseFloat(document.getElementById('greenPercentage').value)
- const purplePercent = parseFloat(document.getElementById('purplePercentage').value)
+const bluePercent = parseFloat(pie1)
+const redPercent = parseFloat(pie2)
+const orangePercent = parseFloat(pie3)
+const greenPercent = parseFloat(pie4)
+const purplePercent = parseFloat(pie5)
 
- // Ensure total percentage doesn't exceed 100%
- var totalPercent = parseFloat(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
- if (totalPercent !== 100.00) { return }
+// Ensure total percentage doesn't exceed 100%
+var totalPercent = Math.round(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
+// var totalPercent = parseFloat(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
+if (totalPercent !== 100.000) { return }
 
- const blueEnd = (bluePercent / 100) * 2 * Math.PI
- const redEnd = blueEnd + (redPercent / 100) * 2 * Math.PI
- const orangeEnd = redEnd + (orangePercent / 100) * 2 * Math.PI
- const greenEnd = orangeEnd + (greenPercent / 100) * 2 * Math.PI
- const purpleEnd = greenEnd + (purplePercent / 100) * 2 * Math.PI
+const blueEnd = (bluePercent / 100) * 2 * Math.PI
+const redEnd = blueEnd + (redPercent / 100) * 2 * Math.PI
+const orangeEnd = redEnd + (orangePercent / 100) * 2 * Math.PI
+const greenEnd = orangeEnd + (greenPercent / 100) * 2 * Math.PI
+const purpleEnd = greenEnd + (purplePercent / 100) * 2 * Math.PI
 
- // Clear previous circle
- ctx.clearRect(0, 0, canvas.width, canvas.height);
+// Clear previous circle
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 
- // Draw the blue arc
- ctx.beginPath();
- ctx.moveTo(centerX, centerY);
- ctx.arc(centerX, centerY, radius, 0, blueEnd);
- ctx.closePath();
- ctx.fillStyle = 'blue';
- ctx.fill();
+// Draw the blue arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, 0, blueEnd);
+ctx.closePath();
+ctx.fillStyle = 'blue';
+ctx.fill();
 
- // Draw the red arc
- ctx.beginPath();
- ctx.moveTo(centerX, centerY);
- ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
- ctx.closePath();
- ctx.fillStyle = 'red';
- ctx.fill();
+// Draw the red arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
+ctx.closePath();
+ctx.fillStyle = 'red';
+ctx.fill();
 
- // Draw the orange arc
- ctx.beginPath();
- ctx.moveTo(centerX, centerY);
- ctx.arc(centerX, centerY, radius, redEnd, orangeEnd);
- ctx.closePath();
- ctx.fillStyle = 'orange';
- ctx.fill();
+// Draw the orange arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, redEnd, orangeEnd);
+ctx.closePath();
+ctx.fillStyle = 'orange';
+ctx.fill();
 
- // Draw the green arc
- ctx.beginPath();
- ctx.moveTo(centerX, centerY);
- ctx.arc(centerX, centerY, radius, orangeEnd, greenEnd);
- ctx.closePath();
- ctx.fillStyle = 'green';
- ctx.fill();
+// Draw the green arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, orangeEnd, greenEnd);
+ctx.closePath();
+ctx.fillStyle = 'green';
+ctx.fill();
 
- // Draw the purple arc
- ctx.beginPath();
- ctx.moveTo(centerX, centerY);
- ctx.arc(centerX, centerY, radius, greenEnd, purpleEnd);
- ctx.closePath();
- ctx.fillStyle = 'purple';
- ctx.fill();
+// Draw the purple arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, greenEnd, purpleEnd);
+ctx.closePath();
+ctx.fillStyle = 'purple';
+ctx.fill();
+
+// BORDER
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+ctx.strokeStyle = "#00000066";
+ctx.stroke();
+
 }
-
-// Event listeners for input change
-document.getElementById('bluePercentage').addEventListener('input', drawCircle);
-document.getElementById('redPercentage').addEventListener('input', drawCircle);
-document.getElementById('orangePercentage').addEventListener('input', drawCircle);
-document.getElementById('greenPercentage').addEventListener('input', drawCircle);
-document.getElementById('purplePercentage').addEventListener('input', drawCircle);
 
 // Initial draw
 drawCircle();
+
+// END OF MAIN SCRIPT
 </script>
+
 
 
 
