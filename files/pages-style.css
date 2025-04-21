@@ -1183,7 +1183,7 @@ input.arcPercent { text-align: center; font-size: 10px; width: 40px; height: 24p
 }
 
 div.todoNormal { color: white; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px; }
-div.enParo { color: red; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px; display: none; }
+div.enParo { color: red; font-weight: bold; margin-top: 24px; margin-left: 12px; margin-bottom: 24px; }
 span.onStrike { font-size: 14px; color: white; margin: 0px; spacing: 0px; }
 
 #fac-artsies { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }

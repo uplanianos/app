@@ -10,16 +10,20 @@
 	<title>Uplanianos - Strike Tracker</title>
 </head>
 
-<body onload="checkCourses(); onStrike()" class="paroTrackerBody">
+<body onload="checkCourses(); weekCheck()" class="paroTrackerBody">
 
 
 <div class="mainDiv">
 
 	<div id="todo-normal" class="todoNormal">📣 TODO NORMAL 🖒</div>
-	<div id="en-paro" class="enParo">
-	 📣 CARRERAS EN PARO❗ <font color="white"> (<span class="onStrike" id="daysStart">0</span>:<span class="onStrike" id="hoursStart">0</span>:<span class="onStrike" id="minutesStart">0</span>:<span class="onStrike" id="secondsStart">0</span>)</font>
+	<div id="en-paro" class="enParo" style="display: none; ">📣 CARRERAS EN PARO❗</div>
 
+	<div class="grid-item-slider" id="weekCheck" style="display: none">
+	 Revalidación semanal en <span class="onStrike" id="daysStart">-</span> días
+	 (<span class="onStrike" id="hoursStart">00</span>:<span class="onStrike" id="minutesStart">00</span>:<span class="onStrike" id="secondsStart">00</span>).<br>
 	</div>
+
+	<br>
 
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
 	  <br><div>Facultad de Artes</div><br>
@@ -116,6 +120,10 @@
 
 <script type="text/javascript">
 function checkCourses() {
+
+// COLORS
+var darkred = "#FF6666"
+
 // ARTS!
 let artsiesTotal = 6
 Artsies = document.querySelectorAll("span.artsies")
@@ -123,7 +131,7 @@ for(let Courses of Artsies) {
  if (Courses.innerHTML == "❌") { artsiesTotal-- }
  if (artsiesTotal == 6) { document.getElementById("fac-artsies").style.backgroundColor = "green" }
  if (artsiesTotal <= 5) { document.getElementById("fac-artsies").style.backgroundColor = "orange" }
- if (artsiesTotal == 0) { document.getElementById("fac-artsies").style.backgroundColor = "red" }
+ if (artsiesTotal == 0) { document.getElementById("fac-artsies").style.backgroundColor = "darkred" }
  }
 
 // SPORTS!
@@ -133,7 +141,7 @@ for(let Courses of Sportis) {
  if (Courses.innerHTML == "❌") { sportisTotal-- }
  if (sportisTotal == 2) { document.getElementById("fac-sportis").style.backgroundColor = "green" }
  if (sportisTotal == 1) { document.getElementById("fac-sportis").style.backgroundColor = "orange" }
- if (sportisTotal == 0) { document.getElementById("fac-sportis").style.backgroundColor = "red" }
+ if (sportisTotal == 0) { document.getElementById("fac-sportis").style.backgroundColor = "darkred" }
  }
 
 // EDUCATION!
@@ -143,7 +151,7 @@ for(let Courses of Eduquis) {
  if (Courses.innerHTML == "❌") { eduquisTotal-- }
  if (eduquisTotal == 3) { document.getElementById("fac-eduquis").style.backgroundColor = "green" }
  if (eduquisTotal <= 2) { document.getElementById("fac-eduquis").style.backgroundColor = "orange" }
- if (eduquisTotal == 0) { document.getElementById("fac-eduquis").style.backgroundColor = "red" }
+ if (eduquisTotal == 0) { document.getElementById("fac-eduquis").style.backgroundColor = "darkred" }
  }
 
 // SALUDIS!
@@ -153,7 +161,7 @@ for(let Courses of Saludis) {
  if (Courses.innerHTML == "❌") { saludisTotal-- }
  if (saludisTotal == 5) { document.getElementById("fac-saludis").style.backgroundColor = "green" }
  if (saludisTotal <= 4) { document.getElementById("fac-saludis").style.backgroundColor = "orange" }
- if (saludisTotal == 0) { document.getElementById("fac-saludis").style.backgroundColor = "red" }
+ if (saludisTotal == 0) { document.getElementById("fac-saludis").style.backgroundColor = "darkred" }
  }
 
 // SOCIALES!
@@ -163,7 +171,7 @@ for(let Courses of Sociats) {
  if (Courses.innerHTML == "❌") { sociatsTotal-- }
  if (sociatsTotal == 5) { document.getElementById("fac-sociats").style.backgroundColor = "green" }
  if (sociatsTotal <= 4) { document.getElementById("fac-sociats").style.backgroundColor = "orange" }
- if (sociatsTotal == 0) { document.getElementById("fac-sociats").style.backgroundColor = "red" }
+ if (sociatsTotal == 0) { document.getElementById("fac-sociats").style.backgroundColor = "darkred" }
  }
 
 // SCIENCE!
@@ -173,7 +181,7 @@ for(let Courses of Science) {
  if (Courses.innerHTML == "❌") { scienceTotal-- }
  if (scienceTotal == 5) { document.getElementById("fac-science").style.backgroundColor = "green" }
  if (scienceTotal <= 4) { document.getElementById("fac-science").style.backgroundColor = "orange" }
- if (scienceTotal == 0) { document.getElementById("fac-science").style.backgroundColor = "red" }
+ if (scienceTotal == 0) { document.getElementById("fac-science").style.backgroundColor = "darkred" }
  }
 
 // HUMANIS!
@@ -183,7 +191,7 @@ for(let Courses of Humanis) {
  if (Courses.innerHTML == "❌") { humanisTotal-- }
  if (humanisTotal == 6) { document.getElementById("fac-humanis").style.backgroundColor = "green" }
  if (humanisTotal <= 5) { document.getElementById("fac-humanis").style.backgroundColor = "orange" }
- if (humanisTotal == 0) { document.getElementById("fac-humanis").style.backgroundColor = "red" }
+ if (humanisTotal == 0) { document.getElementById("fac-humanis").style.backgroundColor = "darkred" }
  }
 
 
@@ -194,7 +202,7 @@ for(let Courses of Enginis) {
  if (Courses.innerHTML == "❌") { enginisTotal-- }
  if (enginisTotal == 7) { document.getElementById("fac-enginis").style.backgroundColor = "green" }
  if (enginisTotal <= 6) { document.getElementById("fac-enginis").style.backgroundColor = "orange" }
- if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "red" }
+ if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "darkred" }
  }
 
 
@@ -211,14 +219,14 @@ facHumanis = document.getElementById("fac-humanis")
 facEnginis = document.getElementById("fac-enginis")
 
 // DISPLAY ORANGE & RED!
-if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "red" ) { displayArtsies(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "red" ) { displaySportis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "red" ) { displayEduquis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSaludis.style.backgroundColor == "orange" || facSaludis.style.backgroundColor == "red" ) { displaySaludis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundColor == "red" ) { displaySociats(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "red" ) { displayScience(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "red" ) { displayHumanis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "red" ) { displayEnginis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "darkred" ) { displayArtsies(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "darkred" ) { displaySportis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "darkred" ) { displayEduquis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSaludis.style.backgroundColor == "orange" || facSaludis.style.backgroundColor == "darkred" ) { displaySaludis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundColor == "darkred" ) { displaySociats(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "darkred" ) { displayScience(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "darkred" ) { displayHumanis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "darkred" ) { displayEnginis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
 
 // END OF CHECKCOURSES!
 }
@@ -297,11 +305,11 @@ for(let Courses of Enginis) {
 
 
 <script type="text/javascript">
-function onStrike() {
+function weekCheck() {
 classStart = document.querySelectorAll("span.onStrike");
 
 // START WORKING
-var countDownDate = new Date("April 26, 2025 00:00:00").getTime();
+var countDownDate = new Date("April 26, 2025 00:00:00").getTime(); // SATURDAY MORNING!
 var doTheLoop = setInterval(function() {
 
  // FIXED VARIABLES
@@ -319,11 +327,12 @@ var doTheLoop = setInterval(function() {
  document.getElementById("hoursStart").innerHTML = hours;
  document.getElementById("minutesStart").innerHTML = minutes;
  document.getElementById("secondsStart").innerHTML = seconds;
- if (days < 10) { document.getElementById("daysStart").innerHTML = "0" + days; }
+ if (days < 10) { document.getElementById("daysStart").innerHTML = days; }
  if (hours < 10) { document.getElementById("hoursStart").innerHTML = "0" + hours; }
  if (minutes < 10) { document.getElementById("minutesStart").innerHTML = "0" + minutes; }
  if (seconds < 10) { document.getElementById("secondsStart").innerHTML = "0" + seconds; }
-
+ // DURING DEADLINE
+ if (distance >= 0) { document.getElementById("weekCheck").style.display = "block" }
  // AFTER DEADLINE
  if (distance < 0) {
   document.getElementById("enfermeria").innerHTML = "✔️"
@@ -333,6 +342,7 @@ var doTheLoop = setInterval(function() {
   document.getElementById("terapia").innerHTML = "✔️"
   document.getElementById("todo-normal").style.display = "block"
   document.getElementById("en-paro").style.display = "none"
+  document.getElementById("weekCheck").style.display = "none"
   displaySaludis()
   checkCourses()
   clearInterval(doTheLoop)
