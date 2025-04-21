@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -84,41 +85,41 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
    <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="updateSummary()">
-   <input type="text"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
+   <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
    <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
   </div>
 
   <div id="divMotion2" style="grid-area: divMotion2; display: none;">2
    <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="updateSummary()">
-   <input type="text"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
+   <input type="number"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
    <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
   </div>
 
   <div id="divMotion3" style="grid-area: divMotion3; display: none;">3
    <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="updateSummary()">
-   <input type="text"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
+   <input type="number"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
    <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
   </div>
 
   <div id="divMotion4" style="grid-area: divMotion4; display: none;">4
    <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="updateSummary()">
-   <input type="text"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
+   <input type="number"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
    <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
   </div>
 
   <div id="divMotion5" style="grid-area: divMotion5; display: none;">5
    <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="updateSummary()">
-   <input type="text"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
+   <input type="number"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
    <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
   </div>
 
   <div class="divTotalVotes" style="grid-area: divTotal;">Total:
-   <input type="text"	id="totalVotes"	class="votesCount" value="0" min="0" step="1" style="margin: 6px;" disabled readonly>
+   <input type="number"	id="totalVotes"	class="votesCount" value="0" min="0" step="1" style="margin: 6px;" disabled readonly>
   </div>
 
   <div style="grid-area: divDelete; text-align: right;">
@@ -252,6 +253,7 @@ function clearButton() {
 
  // RESETTING FUNCTIONS
  initialSetup()
+	sumCheck()
 }
 
 // ====================
@@ -265,6 +267,7 @@ var divMotion4 = document.getElementById("divMotion4")
 var divMotion5 = document.getElementById("divMotion5")
 if (amount >= 1 && amount <= 4) { amount++; howMany.value = amount}
 initialSetup()
+	sumCheck()
 }
 
 // ====================
@@ -285,6 +288,7 @@ if (maxValue >= 2 && maxValue <= 5) {
   document.getElementById(theseCount).value = "0"
   end = maxValue
   initialSetup()
+	sumCheck()
   }
  } // END OF "DELETE LAST VALUE" CODE!
 
@@ -292,6 +296,13 @@ if (maxValue >= 2 && maxValue <= 5) {
 
 // ====================
 
+function sumCheck() {
+var newSum = parseInt(counts1.value) + parseInt(counts2.value) + parseInt(counts3.value) + parseInt(counts4.value) + parseInt(counts5.value)
+totalVotes.value = newSum
+drawCircle()
+}
+
+// ====================
 
 // VOTING FUNCTIONALITY!
 var counted1 = counts1.value
@@ -369,16 +380,19 @@ var motion5Span = document.getElementById("motion5Span")
   motion5Span.innerText = motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
   voteSummary.style.display = "block"; motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
 
- if (totalVotes !== "" || totalVotes == NaN) {
-  motionTotal.innerText = "Total: " + finalCount + " votos."
+ if (totalVotes !== "" || totalVotes !== NaN) {
+  motionTotal.innerText = finalCount + " votos. (" + parseInt(finalPercent) + ")."
   motionTotal.style.display = "block"
   motionTotal.style.lineHeight = "3"
   motionTotal.style.textDecoration = "overline solid blue"
   } else { motionTotal.style.display = "none" }
-  if (finalPercent !== 100) { motionTotal.style.color = "red" } else { motionTotal.style.color = "black" }
+  if (finalPercent !== 100) {
+  motionTotal.innerText = finalCount + " votos. (∼" + Math.round(finalPercent) + "%)."
+  motionTotal.style.color = "red" } else { motionTotal.style.color = "black" }
 }
 
 
+// DRAW CIRCLE FUNCTION!
 // DRAW CIRCLE FUNCTION!
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
@@ -396,15 +410,9 @@ const orangePercent = pie3
 const greenPercent = pie4
 const purplePercent = pie5
 
-// const bluePercent = parseFloat(pie1)
-// const redPercent = parseFloat(pie2)
-// const orangePercent = parseFloat(pie3)
-// const greenPercent = parseFloat(pie4)
-// const purplePercent = parseFloat(pie5)
-
 // Ensure total percentage doesn't exceed 100%
 var totalPercent = Math.round(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
-if (totalPercent = Infinity) { totalPercent = 100.000 }
+if (totalPercent = Infinity) { totalPercent = 100.000 } // DRAWS INITIAL BORDER!
 if (totalPercent !== 100.000) { return }
 
 const blueEnd = (bluePercent / 100) * 2 * Math.PI
@@ -518,3 +526,4 @@ var currentScrollPos = window.pageYOffset;
 
 </body>
 </html>
+
