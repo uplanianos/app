@@ -57,7 +57,7 @@
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">❌</span> Fonoaudiología.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">❌</span> Kinesiología.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">❌</span> Nutrición y Dietética.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">✔️</span> Terapia Ocupacional.</li><br></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">❌</span> Terapia Ocupacional.</li><br></div>
 	 </ul>
 	</div>
 
@@ -330,6 +330,7 @@ var doTheLoop = setInterval(function() {
   document.getElementById("fonoaudiologia").innerHTML = "✔️"
   document.getElementById("kinesiologia").innerHTML = "✔️"
   document.getElementById("nutricion").innerHTML = "✔️"
+  document.getElementById("terapia").innerHTML = "✔️"
   document.getElementById("todo-normal").style.display = "block"
   document.getElementById("en-paro").style.display = "none"
   displaySaludis()
