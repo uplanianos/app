@@ -332,9 +332,9 @@ function getValues() {
  var pieSum = Math.abs(pie1+pie2+pie3+pie4+pie5)
  var finalPercent = Math.abs(pieSum)
 
+ // CALLING OTHER FUNCTIONS
  updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent)
  drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent)
-
 }
 
 
@@ -390,15 +390,21 @@ const radius = 100.00;
 // Function to draw the circle based on the input percentages
 function drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent) {
 
-const bluePercent = parseFloat(pie1)
-const redPercent = parseFloat(pie2)
-const orangePercent = parseFloat(pie3)
-const greenPercent = parseFloat(pie4)
-const purplePercent = parseFloat(pie5)
+const bluePercent = pie1
+const redPercent = pie2
+const orangePercent = pie3
+const greenPercent = pie4
+const purplePercent = pie5
+
+// const bluePercent = parseFloat(pie1)
+// const redPercent = parseFloat(pie2)
+// const orangePercent = parseFloat(pie3)
+// const greenPercent = parseFloat(pie4)
+// const purplePercent = parseFloat(pie5)
 
 // Ensure total percentage doesn't exceed 100%
 var totalPercent = Math.round(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
-// var totalPercent = parseFloat(bluePercent + redPercent + orangePercent + greenPercent + purplePercent)
+if (totalPercent = Infinity) { totalPercent = 100.000 }
 if (totalPercent !== 100.000) { return }
 
 const blueEnd = (bluePercent / 100) * 2 * Math.PI
@@ -459,7 +465,7 @@ ctx.stroke();
 }
 
 // Initial draw
-drawCircle();
+// drawCircle();
 
 // END OF MAIN SCRIPT
 </script>
