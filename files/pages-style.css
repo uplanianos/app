@@ -1154,8 +1154,10 @@ input.arcPercent { text-align: center; font-size: 10px; width: 40px; height: 24p
 @media screen and (max-width: 800px) {
  #divResult { margin-left: 35%; }
  #totalVotes { width: 100px; margin-right: 22px; }
- div.voteResult { width: 95%; height: 190px; margin-right: 6%; transform: translate(3%); }
- #myCanvas { width: 140px; height: 160px; margin-left: 24%; padding-top: 12px; }
+
+ div.voteResult { display: flex; width: 95%; transform: translate(3%); margin-right: 12%; padding-bottom: 4%; }
+ div.Summary { font-size: 8px; }
+ #myCanvas { width: 40%; height: 60%; margin-left: 6%; padding-top: 6%; }
 }
 
 /* END VOTE FLEX GRID */
