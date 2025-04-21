@@ -54,7 +54,7 @@
 	  <br><div>Facultad de Ciencias de la Salud</div><br>
 	 <ul class="tracker-list">
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="enfermeria">❌</span> Enfermería.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">✔️</span> Fonoaudiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">❌</span> Fonoaudiología.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">❌</span> Kinesiología.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">❌</span> Nutrición y Dietética.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">✔️</span> Terapia Ocupacional.</li><br></div>
@@ -327,6 +327,7 @@ var doTheLoop = setInterval(function() {
  // AFTER DEADLINE
  if (distance < 0) {
   document.getElementById("enfermeria").innerHTML = "✔️"
+  document.getElementById("fonoaudiologia").innerHTML = "✔️"
   document.getElementById("kinesiologia").innerHTML = "✔️"
   document.getElementById("nutricion").innerHTML = "✔️"
   document.getElementById("todo-normal").style.display = "block"
