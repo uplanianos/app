@@ -1207,6 +1207,8 @@ div.sociats { margin-left: 20px; padding: 6px; }
 div.humanis { margin-left: 20px; padding: 6px; }
 div.enginis { margin-left: 20px; padding: 6px; }
 
+#strike-footer { width: max-content; text-align: center; margin-top: 12px; margin-left: auto; margin-right: auto; margin-bottom: 6px; padding: 12px; }
+
 
 /* ENGLISH WORKSHOP BUTTON */
 input.English { font-size: 18px; color: white; background-color: green; border: 2px solid white; border-radius: 6px; padding: 12px 20px 12px 12px; cursor: pointer; }
