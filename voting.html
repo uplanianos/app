@@ -185,13 +185,6 @@ var motion3 = document.getElementById("motion3")
 var motion4 = document.getElementById("motion4")
 var motion5 = document.getElementById("motion5")
 
-// PROPOSAL NAMES EVENT LISTENERS
-document.getElementById('motion1').addEventListener('input', updateSummary())
-document.getElementById('motion2').addEventListener('input', updateSummary())
-document.getElementById('motion3').addEventListener('input', updateSummary())
-document.getElementById('motion4').addEventListener('input', updateSummary())
-document.getElementById('motion5').addEventListener('input', updateSummary())
-
 // VOTING VALUES
 var howMany = document.getElementById("howMany")
 var counts1 = document.getElementById("counts1")
@@ -253,7 +246,7 @@ function clearButton() {
 
  // RESETTING FUNCTIONS
  initialSetup()
-	sumCheck()
+ getValues()
 }
 
 // ====================
@@ -267,7 +260,7 @@ var divMotion4 = document.getElementById("divMotion4")
 var divMotion5 = document.getElementById("divMotion5")
 if (amount >= 1 && amount <= 4) { amount++; howMany.value = amount}
 initialSetup()
-	sumCheck()
+getValues()
 }
 
 // ====================
@@ -288,7 +281,7 @@ if (maxValue >= 2 && maxValue <= 5) {
   document.getElementById(theseCount).value = "0"
   end = maxValue
   initialSetup()
-	sumCheck()
+  getValues()
   }
  } // END OF "DELETE LAST VALUE" CODE!
 
@@ -296,13 +289,6 @@ if (maxValue >= 2 && maxValue <= 5) {
 
 // ====================
 
-function sumCheck() {
-var newSum = parseInt(counts1.value) + parseInt(counts2.value) + parseInt(counts3.value) + parseInt(counts4.value) + parseInt(counts5.value)
-totalVotes.value = newSum
-drawCircle()
-}
-
-// ====================
 
 // VOTING FUNCTIONALITY!
 var counted1 = counts1.value
@@ -335,18 +321,34 @@ function lessTotal() { finalCount = totalVotes.value; finalCount--; totalVotes.v
 
 // SETTING UP PERCENTAGE VALUES
 function getValues() {
- var pie1 = Math.abs(counts1.value / finalCount * 100)
- var pie2 = Math.abs(counts2.value / finalCount * 100)
- var pie3 = Math.abs(counts3.value / finalCount * 100)
- var pie4 = Math.abs(counts4.value / finalCount * 100)
- var pie5 = Math.abs(counts5.value / finalCount * 100)
- var pieSum = Math.abs(pie1+pie2+pie3+pie4+pie5)
- var finalPercent = Math.abs(pieSum)
 
- // CALLING OTHER FUNCTIONS
- updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent)
- drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent)
+// SUM CHECK!!
+var counting1 = parseInt(counts1.value)
+var counting2 = parseInt(counts2.value)
+var counting3 = parseInt(counts3.value)
+var counting4 = parseInt(counts4.value)
+var counting5 = parseInt(counts5.value)
+var newSum = counting1 + counting2 + counting3 + counting4 + counting5
+totalVotes.value = newSum
+finalCount = newSum
+
+
+// PIE CHART VALUES!!
+var pie1 = Math.abs(counting1 / finalCount * 100)
+var pie2 = Math.abs(counting2 / finalCount * 100)
+var pie3 = Math.abs(counting3 / finalCount * 100)
+var pie4 = Math.abs(counting4 / finalCount * 100)
+var pie5 = Math.abs(counting5 / finalCount * 100)
+var pieSum = Math.abs(pie1+pie2+pie3+pie4+pie5)
+var finalPercent = Math.abs(pieSum)
+
+
+// CALLING OTHER FUNCTIONS
+updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent)
+drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent)
 }
+
+// ====================
 
 
 // UPDATING "VOTE SUMMARY"
