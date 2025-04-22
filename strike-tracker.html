@@ -24,8 +24,10 @@
 	</div>
 
 	<div class="grid-item-slider" id="checkWeekly" style="display: none; margin-bottom: 12px;">
-	 Revalidación semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días
-	 (<span class="weeklyStrike" id="hoursWeekly">00</span>:<span class="weeklyStrike" id="minutesWeekly">00</span>:<span class="weekleStrike" id="secondsWeekly">00</span>).<br>
+	 Revalidación semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días, 
+	 <span class="weeklyStrike" id="hoursWeekly">0</span> horas, 
+	 <span class="weeklyStrike" id="minutesWeekly">0</span> minutos y 
+	 <span class="weekleStrike" id="secondsWeekly">0 </span> segundos.<br>
 	</div>
 
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
@@ -335,10 +337,10 @@ var dailyLoop = setInterval(function() {
  document.getElementById("hoursDaily").innerHTML = hours;
  document.getElementById("minutesDaily").innerHTML = minutes;
  document.getElementById("secondsDaily").innerHTML = seconds;
- // ADDING LEFT-HAND ZEROS TO CLOCK
- if (hours < 10) { document.getElementById("hoursDaily").innerHTML = "0" + hours }
- if (minutes < 10) { document.getElementById("minutesDaily").innerHTML = "0" + minutes }
- if (seconds < 10) { document.getElementById("secondsDaily").innerHTML = "0" + seconds }
+ // ADDING LEFT-HAND ZEROS IN CLOCK FORMAT - COMMENTED OUT FOR TEXT FORMAT
+ // if (hours < 10) { document.getElementById("hoursDaily").innerHTML = "0" + hours }
+ // if (minutes < 10) { document.getElementById("minutesDaily").innerHTML = "0" + minutes }
+ // if (seconds < 10) { document.getElementById("secondsDaily").innerHTML = "0" + seconds }
  // DURING DEADLINE
  if (distance >= 0) { document.getElementById("checkDaily").style.display = "block" }
  // AFTER DEADLINE
@@ -438,10 +440,10 @@ var weeklyLoop = setInterval(function() {
  document.getElementById("hoursWeekly").innerHTML = hours;
  document.getElementById("minutesWeekly").innerHTML = minutes;
  document.getElementById("secondsWeekly").innerHTML = seconds;
- // ADDING LEFT-HAND ZEROS TO CLOCK
- if (hours < 10) { document.getElementById("hoursWeekly").innerHTML = "0" + hours }
- if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
- if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
+ // ADDING LEFT-HAND ZEROS IN CLOCK FORMAT - COMMENTED OUT FOR TEXT FORMAT
+ // if (hours < 10) { document.getElementById("hoursWeekly").innerHTML = "0" + hours }
+ // if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
+ // if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
  // DURING DEADLINE
  if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block" }
  // AFTER DEADLINE
