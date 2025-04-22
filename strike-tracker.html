@@ -10,7 +10,7 @@
 	<title>Uplanianos - Strike Tracker</title>
 </head>
 
-<body onload="checkCourses(); weekCheck()" class="paroTrackerBody">
+<body onload="checkCourses(); checkDaily(); checkWeekly();" class="paroTrackerBody">
 
 
 <div class="mainDiv">
@@ -18,12 +18,15 @@
 	<div id="todo-normal" class="todoNormal">📣 TODO NORMAL 🖒</div>
 	<div id="en-paro" class="enParo" style="display: none; ">📣 CARRERAS EN PARO❗</div>
 
-	<div class="grid-item-slider" id="weekCheck" style="display: none">
-	 Revalidación semanal en <span class="onStrike" id="daysStart">-</span> días
-	 (<span class="onStrike" id="hoursStart">00</span>:<span class="onStrike" id="minutesStart">00</span>:<span class="onStrike" id="secondsStart">00</span>).<br>
-	</div>
+	<div class="grid-item-slider" id="checkDaily" style="display: none">
+	 Revalidación diaria en <span class="dailyStrike" id="daysDaily">-</span> días
+	 (<span class="dailyStrike" id="hoursDaily">00</span>:<span class="dailyStrike" id="minutesDaily">00</span>:<span class="dailyStrike" id="secondsDaily">00</span>).<br>
+	</div><br>
 
-	<br>
+	<div class="grid-item-slider" id="checkWeekly" style="display: none">
+	 Revalidación semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días
+	 (<span class="weeklyStrike" id="hoursWeekly">00</span>:<span class="weeklyStrike" id="minutesWeekly">00</span>:<span class="weekleStrike" id="secondsWeekly">00</span>).<br>
+	</div><br>
 
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
 	  <br><div>Facultad de Artes</div><br>
@@ -82,7 +85,7 @@
 	  <div class="science" style="display: none;"><li><span class="science">✔️</span> Geografía.</li></div>
 	  <div class="science" style="display: none;"><li><span class="science">✔️</span> Pedagogía en Biología y Ciencias.</li></div>
 	  <div class="science" style="display: none;"><li><span class="science">✔️</span> Pedagogía en Física.</li></div>
-	  <div class="science" style="display: none;"><li><span class="science">✔️</span> Pedagogía en Matemáticas y Computación.</li></div>
+	  <div class="science" style="display: none;"><li><span class="science" id="matematica">❌</span> Pedagogía en Matemáticas y Computación.</li></div>
 	  <div class="science" style="display: none;"><li><span class="science">✔️</span> Pedagogía en Química y Ciencias.</li><br></div>
 	 </ul>
 	</div>
@@ -121,17 +124,27 @@
 <script type="text/javascript">
 function checkCourses() {
 
-// COLORS
-var darkred = "#FF6666"
+// DEFINING ELEMENTS!
+const todoNormal = document.getElementById("todo-normal")
+const enParo = document.getElementById("en-paro")
+// FACULTIES
+const facArtsies = document.getElementById("fac-artsies")
+const facSportis = document.getElementById("fac-sportis")
+const facEduquis = document.getElementById("fac-eduquis")
+const facSaludis = document.getElementById("fac-saludis")
+const facSociats = document.getElementById("fac-sociats")
+const facScience = document.getElementById("fac-science")
+const facHumanis = document.getElementById("fac-humanis")
+const facEnginis = document.getElementById("fac-enginis")
 
 // ARTS!
 let artsiesTotal = 6
 Artsies = document.querySelectorAll("span.artsies")
 for(let Courses of Artsies) {
  if (Courses.innerHTML == "❌") { artsiesTotal-- }
- if (artsiesTotal == 6) { document.getElementById("fac-artsies").style.backgroundColor = "green" }
- if (artsiesTotal <= 5) { document.getElementById("fac-artsies").style.backgroundColor = "orange" }
- if (artsiesTotal == 0) { document.getElementById("fac-artsies").style.backgroundColor = "darkred" }
+ if (artsiesTotal == 6) { facArtsies.style.backgroundColor = "green" }
+ if (artsiesTotal <= 5) { facArtsies.style.backgroundColor = "orange" }
+ if (artsiesTotal == 0) { facArtsies.style.backgroundColor = "red"; facArtsies.style.opacity = "0.9"; facArtsies.style.textShadow = "1px 1px black" }
  }
 
 // SPORTS!
@@ -139,9 +152,9 @@ let sportisTotal = 2
 Sportis = document.querySelectorAll("span.sportis")
 for(let Courses of Sportis) {
  if (Courses.innerHTML == "❌") { sportisTotal-- }
- if (sportisTotal == 2) { document.getElementById("fac-sportis").style.backgroundColor = "green" }
- if (sportisTotal == 1) { document.getElementById("fac-sportis").style.backgroundColor = "orange" }
- if (sportisTotal == 0) { document.getElementById("fac-sportis").style.backgroundColor = "darkred" }
+ if (sportisTotal == 2) { facSportis.style.backgroundColor = "green" }
+ if (sportisTotal == 1) { facSportis.style.backgroundColor = "orange" }
+ if (sportisTotal == 0) { facSportis.style.backgroundColor = "red"; facSportis.style.opacity = "0.9"; facSportis.style.textShadow = "1px 1px black" }
  }
 
 // EDUCATION!
@@ -149,9 +162,9 @@ let eduquisTotal = 3
 Eduquis = document.querySelectorAll("span.eduquis")
 for(let Courses of Eduquis) {
  if (Courses.innerHTML == "❌") { eduquisTotal-- }
- if (eduquisTotal == 3) { document.getElementById("fac-eduquis").style.backgroundColor = "green" }
- if (eduquisTotal <= 2) { document.getElementById("fac-eduquis").style.backgroundColor = "orange" }
- if (eduquisTotal == 0) { document.getElementById("fac-eduquis").style.backgroundColor = "darkred" }
+ if (eduquisTotal == 3) { facEduquis.style.backgroundColor = "green" }
+ if (eduquisTotal <= 2) { facEduquis.style.backgroundColor = "orange" }
+ if (eduquisTotal  == 0) { facEduquis.style.backgroundColor = "red"; facEduquis.style.opacity = "0.9"; facEduquis.style.textShadow = "1px 1px black" }
  }
 
 // SALUDIS!
@@ -159,9 +172,9 @@ let saludisTotal = 5
 Saludis = document.querySelectorAll("span.saludis")
 for(let Courses of Saludis) {
  if (Courses.innerHTML == "❌") { saludisTotal-- }
- if (saludisTotal == 5) { document.getElementById("fac-saludis").style.backgroundColor = "green" }
- if (saludisTotal <= 4) { document.getElementById("fac-saludis").style.backgroundColor = "orange" }
- if (saludisTotal == 0) { document.getElementById("fac-saludis").style.backgroundColor = "darkred" }
+ if (saludisTotal == 5) { facSaludis.style.backgroundColor = "green" }
+ if (saludisTotal <= 4) { facSaludis.style.backgroundColor = "orange" }
+ if (saludisTotal == 0) { facSaludis.style.backgroundColor = "red"; facSaludis.style.opacity = "0.9"; facSaludis.style.textShadow = "1px 1px black" }
  }
 
 // SOCIALES!
@@ -169,9 +182,9 @@ let sociatsTotal = 5
 Sociats = document.querySelectorAll("span.sociats")
 for(let Courses of Sociats) {
  if (Courses.innerHTML == "❌") { sociatsTotal-- }
- if (sociatsTotal == 5) { document.getElementById("fac-sociats").style.backgroundColor = "green" }
- if (sociatsTotal <= 4) { document.getElementById("fac-sociats").style.backgroundColor = "orange" }
- if (sociatsTotal == 0) { document.getElementById("fac-sociats").style.backgroundColor = "darkred" }
+ if (sociatsTotal == 5) { facSociats.style.backgroundColor = "green" }
+ if (sociatsTotal <= 4) { facSociats.style.backgroundColor = "orange" }
+ if (sociatsTotal == 0) { facSociats.style.backgroundColor = "red"; facSociats.style.opacity = "0.9"; facSociats.style.textShadow = "1px 1px black" }
  }
 
 // SCIENCE!
@@ -179,9 +192,9 @@ let scienceTotal = 5
 Science = document.querySelectorAll("span.science")
 for(let Courses of Science) {
  if (Courses.innerHTML == "❌") { scienceTotal-- }
- if (scienceTotal == 5) { document.getElementById("fac-science").style.backgroundColor = "green" }
- if (scienceTotal <= 4) { document.getElementById("fac-science").style.backgroundColor = "orange" }
- if (scienceTotal == 0) { document.getElementById("fac-science").style.backgroundColor = "darkred" }
+ if (scienceTotal == 5) { facScience.style.backgroundColor = "green" }
+ if (scienceTotal <= 4) { facScience.style.backgroundColor = "orange" }
+ if (scienceTotal == 0) { facScience.style.backgroundColor = "red"; facScience.style.opacity = "0.9"; facScience.style.textShadow = "1px 1px black" }
  }
 
 // HUMANIS!
@@ -189,44 +202,42 @@ let humanisTotal = 6
 Humanis = document.querySelectorAll("span.humanis")
 for(let Courses of Humanis) {
  if (Courses.innerHTML == "❌") { humanisTotal-- }
- if (humanisTotal == 6) { document.getElementById("fac-humanis").style.backgroundColor = "green" }
- if (humanisTotal <= 5) { document.getElementById("fac-humanis").style.backgroundColor = "orange" }
- if (humanisTotal == 0) { document.getElementById("fac-humanis").style.backgroundColor = "darkred" }
+ if (humanisTotal == 6) { facHumanis.style.backgroundColor = "green" }
+ if (humanisTotal <= 5) { facHumanis.style.backgroundColor = "orange" }
+ if (humanisTotal == 0) { facHumanis.style.backgroundColor = "red"; facHumanis.style.opacity = "0.9"; facHumanis.style.textShadow = "1px 1px black" }
  }
-
 
 // ENGINEERS!
 let enginisTotal = 7
 Enginis = document.querySelectorAll("span.enginis")
 for(let Courses of Enginis) {
  if (Courses.innerHTML == "❌") { enginisTotal-- }
- if (enginisTotal == 7) { document.getElementById("fac-enginis").style.backgroundColor = "green" }
- if (enginisTotal <= 6) { document.getElementById("fac-enginis").style.backgroundColor = "orange" }
- if (enginisTotal == 0) { document.getElementById("fac-enginis").style.backgroundColor = "darkred" }
+ if (enginisTotal == 7) { facEnginis.style.backgroundColor = "green" }
+ if (enginisTotal <= 6) { facEnginis.style.backgroundColor = "orange" }
+ if (enginisTotal == 0) { facEnginis.style.backgroundColor = "red"; facEnginis.style.opacity = "0.9"; facEnginis.style.textShadow = "1px 1px black" }
  }
 
 
-// DEFINING ELEMENTS (FACULTIES)!
-todoNormal = document.getElementById("todo-normal")
-enParo = document.getElementById("en-paro")
-facArtsies = document.getElementById("fac-artsies")
-facSportis = document.getElementById("fac-sportis")
-facEduquis = document.getElementById("fac-eduquis")
-facSaludis = document.getElementById("fac-saludis")
-facSociats = document.getElementById("fac-sociats")
-facScience = document.getElementById("fac-science")
-facHumanis = document.getElementById("fac-humanis")
-facEnginis = document.getElementById("fac-enginis")
+// HIDE GREENS
+// if (facArtsies.style.backgroundColor == "green") { displayArtsies(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (facSportis.style.backgroundColor == "green") { displaySportis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (facEduquis.style.backgroundColor == "green") { displayEduquis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+if (facSaludis.style.backgroundColor == "green") { displaySaludis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (facSociats.style.backgroundColor == "green") { displaySociats(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+if (facScience.style.backgroundColor == "green") { displayScience(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (facHumanis.style.backgroundColor == "green") { displayHumanis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (facEnginis.style.backgroundColor == "green") { displayEnginis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+
 
 // DISPLAY ORANGE & RED!
-if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "darkred" ) { displayArtsies(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "darkred" ) { displaySportis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "darkred" ) { displayEduquis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSaludis.style.backgroundColor == "orange" || facSaludis.style.backgroundColor == "darkred" ) { displaySaludis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundColor == "darkred" ) { displaySociats(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "darkred" ) { displayScience(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "darkred" ) { displayHumanis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
-if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "darkred" ) { displayEnginis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facArtsies.style.backgroundColor == "orange" || facArtsies.style.backgroundColor == "red" ) { displayArtsies(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSportis.style.backgroundColor == "orange" || facSportis.style.backgroundColor == "red" ) { displaySportis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facEduquis.style.backgroundColor == "orange" || facEduquis.style.backgroundColor == "red" ) { displayEduquis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSaludis.style.backgroundColor == "orange" || facSaludis.style.backgroundColor == "red" ) { displaySaludis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundColor == "red" ) { displaySociats(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "red" ) { displayScience(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "red" ) { displayHumanis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "red" ) { displayEnginis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
 
 // END OF CHECKCOURSES!
 }
@@ -236,7 +247,8 @@ if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundC
 
 <script type="text/javascript">
 function displayArtsies() {
-Artsies = document.querySelectorAll("div.artsies")
+Artsies = document.querySelector("div.artsies")
+// Artsies = document.querySelectorAll("div.artsies")
 for(let Courses of Artsies) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
@@ -302,15 +314,12 @@ for(let Courses of Enginis) {
 
 
 
-
-
 <script type="text/javascript">
-function weekCheck() {
-classStart = document.querySelectorAll("span.onStrike");
+function checkDaily() {
 
 // START WORKING
-var countDownDate = new Date("April 26, 2025 00:00:00").getTime(); // SATURDAY MORNING!
-var doTheLoop = setInterval(function() {
+var countDownDate = new Date("April 21, 2025 00:00:00").getTime(); // MIDNIGHT (NEXT DAY)!
+var dailyLoop = setInterval(function() {
 
  // FIXED VARIABLES
  var now = new Date().getTime();
@@ -323,16 +332,59 @@ var doTheLoop = setInterval(function() {
  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
  // PRINT CLOCK!
- document.getElementById("daysStart").innerHTML = days;
- document.getElementById("hoursStart").innerHTML = hours;
- document.getElementById("minutesStart").innerHTML = minutes;
- document.getElementById("secondsStart").innerHTML = seconds;
- if (days < 10) { document.getElementById("daysStart").innerHTML = days; }
- if (hours < 10) { document.getElementById("hoursStart").innerHTML = "0" + hours; }
- if (minutes < 10) { document.getElementById("minutesStart").innerHTML = "0" + minutes; }
- if (seconds < 10) { document.getElementById("secondsStart").innerHTML = "0" + seconds; }
+ document.getElementById("daysDaily").innerHTML = days;
+ document.getElementById("hoursDaily").innerHTML = hours;
+ document.getElementById("minutesDaily").innerHTML = minutes;
+ document.getElementById("secondsDaily").innerHTML = seconds;
+ // ADDING LEFT-HAND ZEROS TO CLOCK
+ if (hours < 10) { document.getElementById("hoursDaily").innerHTML = "0" + hours }
+ if (minutes < 10) { document.getElementById("minutesDaily").innerHTML = "0" + minutes }
+ if (seconds < 10) { document.getElementById("secondsDaily").innerHTML = "0" + seconds }
  // DURING DEADLINE
- if (distance >= 0) { document.getElementById("weekCheck").style.display = "block" }
+ if (distance >= 0) { document.getElementById("checkDaily").style.display = "block" }
+ // AFTER DEADLINE
+ if (distance < 0) {
+  document.getElementById("matematica").innerHTML = "✔️"
+  document.getElementById("todo-normal").style.display = "block"
+  document.getElementById("en-paro").style.display = "none"
+  document.getElementById("checkDaily").style.display = "none"
+  displayScience()
+  overallCheck()
+  clearInterval(dailyLoop)
+  }
+ },1000);
+}
+</script>
+
+
+<script type="text/javascript">
+function checkWeekly() {
+
+// START WORKING
+var countDownDate = new Date("April 26, 2025 00:00:00").getTime(); // SATURDAY MORNING!
+var weeklyLoop = setInterval(function() {
+
+ // FIXED VARIABLES
+ var now = new Date().getTime();
+ var distance = countDownDate - now;
+
+ // DISTANCE CALCULATION
+ var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+ var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+ var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+ // PRINT CLOCK!
+ document.getElementById("daysWeekly").innerHTML = days;
+ document.getElementById("hoursWeekly").innerHTML = hours;
+ document.getElementById("minutesWeekly").innerHTML = minutes;
+ document.getElementById("secondsWeekly").innerHTML = seconds;
+ // ADDING LEFT-HAND ZEROS TO CLOCK
+ if (hours < 10) { document.getElementById("hoursWeekly").innerHTML = "0" + hours }
+ if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
+ if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
+ // DURING DEADLINE
+ if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block" }
  // AFTER DEADLINE
  if (distance < 0) {
   document.getElementById("enfermeria").innerHTML = "✔️"
@@ -342,14 +394,23 @@ var doTheLoop = setInterval(function() {
   document.getElementById("terapia").innerHTML = "✔️"
   document.getElementById("todo-normal").style.display = "block"
   document.getElementById("en-paro").style.display = "none"
-  document.getElementById("weekCheck").style.display = "none"
+  document.getElementById("checkWeekly").style.display = "none"
   displaySaludis()
-  checkCourses()
-  clearInterval(doTheLoop)
+  overallCheck()
+  clearInterval(weeklyLoop)
   }
  },1000);
 }
 </script>
+
+
+<script type="text/javascript">
+function overallCheck() {
+checkCourses()
+checkCourses()
+}
+</script>
+
 
 
 </body>
