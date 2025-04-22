@@ -137,7 +137,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div><big><b>Resultado:</b></big></div><br>
  <div class="voteResult">
 
-  <div id="voteSummary" class="voteSummary" style="display: none;"><b>VOTOS:</b><br>
+  <div id="voteSummary" class="voteSummary" style="display: none;"><b>MOCIÓN / VOTOS:</b><br>
    <span id="motion1Span" style="color: blue;	display: none;">N°1: 0 votos (0%).</span>
    <span id="motion2Span" style="color: red;	display: none;">N°2: 0 votos (0%).</span>
    <span id="motion3Span" style="color: orange;	display: none;">N°3: 0 votos (0%).</span>
@@ -332,16 +332,14 @@ var newSum = counting1 + counting2 + counting3 + counting4 + counting5
 totalVotes.value = newSum
 finalCount = newSum
 
-
 // PIE CHART VALUES!!
-var pie1 = Math.abs(counting1 / finalCount * 100)
-var pie2 = Math.abs(counting2 / finalCount * 100)
-var pie3 = Math.abs(counting3 / finalCount * 100)
-var pie4 = Math.abs(counting4 / finalCount * 100)
-var pie5 = Math.abs(counting5 / finalCount * 100)
+var pie1 = Math.abs(counting1 / finalCount * 100) || 0
+var pie2 = Math.abs(counting2 / finalCount * 100) || 0
+var pie3 = Math.abs(counting3 / finalCount * 100) || 0
+var pie4 = Math.abs(counting4 / finalCount * 100) || 0
+var pie5 = Math.abs(counting5 / finalCount * 100) || 0
 var pieSum = Math.abs(pie1+pie2+pie3+pie4+pie5)
 var finalPercent = Math.abs(pieSum)
-
 
 // CALLING OTHER FUNCTIONS
 updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent)
@@ -469,7 +467,7 @@ ctx.fill();
 // BORDER
 ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.strokeStyle = "#00000066";
+ctx.strokeStyle = "#00000088";
 ctx.stroke();
 
 }
