@@ -19,8 +19,9 @@
 	<div id="en-paro" class="enParo" style="display: none; ">📣 CARRERAS EN PARO❗</div>
 
 	<div class="grid-item-slider" id="checkDaily" style="display: none; margin-bottom: 12px;">
-	 Revalidación diaria en <span class="dailyStrike" id="daysDaily">-</span> días
-	 (<span class="dailyStrike" id="hoursDaily">00</span>:<span class="dailyStrike" id="minutesDaily">00</span>:<span class="dailyStrike" id="secondsDaily">00</span>).<br>
+	 Revalidación diaria en <span class="weeklyStrike" id="hoursDaily">0</span> horas, 
+	 <span class="weeklyStrike" id="minutesDaily">0</span> minutos y 
+	 <span class="weekleStrike" id="secondsDaily">0 </span> segundos.<br>
 	</div>
 
 	<div class="grid-item-slider" id="checkWeekly" style="display: none; margin-bottom: 12px;">
@@ -327,13 +328,11 @@ var dailyLoop = setInterval(function() {
  var distance = countDownDate - now;
 
  // DISTANCE CALCULATION
- var days = Math.floor(distance / (1000 * 60 * 60 * 24));
  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
  // PRINT CLOCK!
- document.getElementById("daysDaily").innerHTML = days;
  document.getElementById("hoursDaily").innerHTML = hours;
  document.getElementById("minutesDaily").innerHTML = minutes;
  document.getElementById("secondsDaily").innerHTML = seconds;
