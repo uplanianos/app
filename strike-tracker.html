@@ -19,13 +19,13 @@
 	<div id="en-paro" class="enParo" style="display: none; ">📣 CARRERAS EN PARO❗</div>
 
 	<div class="grid-item-slider" id="checkDaily" style="display: none; margin-bottom: 12px;">
-	 Revalidación diaria en <span class="weeklyStrike" id="hoursDaily">0</span> horas, 
+	 Actualización diaria en <span class="weeklyStrike" id="hoursDaily">0</span> horas, 
 	 <span class="weeklyStrike" id="minutesDaily">0</span> minutos y 
 	 <span class="weekleStrike" id="secondsDaily">0 </span> segundos.
 	</div>
 
 	<div class="grid-item-slider" id="checkWeekly" style="display: none; margin-bottom: 12px;">
-	 Revalidación semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días, 
+	 Actualización semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días, 
 	 <span class="weeklyStrike" id="hoursWeekly">0</span> horas, 
 	 <span class="weeklyStrike" id="minutesWeekly">0</span> minutos y 
 	 <span class="weekleStrike" id="secondsWeekly">0 </span> segundos.
@@ -398,7 +398,7 @@ var dailyLoop = setInterval(function() {
   // ELEMENTIS
   document.getElementById("todo-normal").style.display = "block"
   document.getElementById("en-paro").style.display = "none"
-  document.getElementById("checkWeekly").style.display = "none"
+  document.getElementById("checkDaily").style.display = "none"
   // DISPLAY DIVS
   displayArtsies()
   displaySportis()
@@ -423,7 +423,7 @@ COMMENTED OUT - COMMENTED OUT - COMMENTED OUT */
 function checkWeekly() {
 
 // START WORKING
-var countDownDate = new Date("April 26, 2025 00:00:00").getTime(); // SATURDAY MORNING!
+var countDownDate = new Date("April 30, 2025 00:00:00").getTime(); // WEDNESDAY MORNING!
 var weeklyLoop = setInterval(function() {
 
  // FIXED VARIABLES
