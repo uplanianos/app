@@ -995,7 +995,7 @@ input[type=number].average-maths {
 
 
 /* JUNAEB TRACKER SETTINGS */
-@font-face { font-family: 'CashRegister'; /*name to be used below*/ src: url('../Fonts/HighDef.ttf'); /*URL to font*/ }
+@font-face { font-family: 'CashRegister'; /*name to be used below*/ src: url('../fonts/HighDef.ttf'); /*URL to font*/ }
 
 input.junaeb-compras {
  height: 44px; width: 60%;
@@ -1051,7 +1051,7 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
 /* VOTE FLEX GRID */
 /* VOTE FLEX GRID */
 
-@font-face { font-family: 'Pricedown'; /*name to be used below*/ src: url('../Fonts/Pricedown.otf'); /*URL to font*/ }
+@font-face { font-family: 'Pricedown'; /*name to be used below*/ src: url('../fonts/Pricedown.otf'); /*URL to font*/ }
 div.desarrollo { position: relative; font-family: 'Pricedown'; color: darkred; text-align: center; font-size: 32px; transform: translate();}
 
 .grid-voting {
