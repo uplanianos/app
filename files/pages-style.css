@@ -1084,10 +1084,10 @@ input.voteMotion {
 
 input.votesCount {
  height: 40px; width: 15%;
- text-align: right; font-size: 12px; font-family: 'CashRegister';
+ text-align: center; font-size: 12px; font-family: 'CashRegister';
  background-color: orange; color: white;
  border: 3px solid white; border-radius: 6px;
- margin: 1px; padding-right: 3px;
+ margin: 1px; padding: 0px; padding-left: 3px;
  cursor: not-allowed;
 }
 
