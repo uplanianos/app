@@ -146,7 +146,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
    <span id="motionTotal" style="color: black;	display: none;">0 Votos.</span>
   </div>
 
- <canvas id="myCanvas" class="myCanvas" width="212" height="232"></canvas>
+ <canvas id="myCanvas" class="myCanvas" width="212" height="212"></canvas>
 
 </div>	<!- End of "Votes Result" Div ->
 
@@ -381,13 +381,13 @@ var motion5Span = document.getElementById("motion5Span")
   voteSummary.style.display = "block"; motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
 
  if (totalVotes !== "" || totalVotes !== NaN) {
-  motionTotal.innerText = finalCount + " votos. (" + parseInt(finalPercent) + ")."
+  motionTotal.innerText = finalCount + " votos (" + parseInt(finalPercent) + "%)."
   motionTotal.style.display = "block"
   motionTotal.style.lineHeight = "3"
   motionTotal.style.textDecoration = "overline solid blue"
   } else { motionTotal.style.display = "none" }
   if (finalPercent !== 100) {
-  motionTotal.innerText = finalCount + " votos. (∼" + Math.round(finalPercent) + "%)."
+  motionTotal.innerText = finalCount + " votos (∼" + Math.round(finalPercent) + "%)."
   motionTotal.style.color = "red" } else { motionTotal.style.color = "black" }
 }
 
