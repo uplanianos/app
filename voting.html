@@ -137,7 +137,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div><big><b>Resultado:</b></big></div><br>
  <div class="voteResult">
 
-  <div id="voteSummary" class="voteSummary" style="display: none;"><b>MOCIÓN / VOTOS:</b><br>
+  <div id="voteSummary" class="voteSummary"><b>MOCIÓN / VOTOS:</b><br>
    <span id="motion1Span" style="color: blue;	display: none;">N°1: 0 votos (0%).</span>
    <span id="motion2Span" style="color: red;	display: none;">N°2: 0 votos (0%).</span>
    <span id="motion3Span" style="color: orange;	display: none;">N°3: 0 votos (0%).</span>
@@ -201,6 +201,8 @@ function initialSetup() {
 var moreButton = document.getElementById("moreButton")
 var lessButton = document.getElementById("lessButton")
 
+if (howMany.value == 1) { document.getElementById("howMany").value = "2" }
+
 if (howMany.value == 2) {
  divMotion2.style.display = "block"; divMotion3.style.display = "none";
  divMotion4.style.display = "none"; divMotion5.style.display = "none";
@@ -242,7 +244,7 @@ function clearButton() {
  document.getElementById("howMany").value = "2"
 
  // HIDING SUMMARY
- document.getElementById("voteSummary").style.display = "none"
+ // document.getElementById("voteSummary").style.display = "none"
 
  // RESETTING FUNCTIONS
  initialSetup()
