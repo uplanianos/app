@@ -318,12 +318,12 @@ scheduleName = document.getElementById("scheduleName");
 developedBy = "Desarrollado por Uplanianos: <font color='blue'><u>https://www.instagram.com/uplanianos/</u></font>"
 const monthsOfTheYear = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 if (month >= 1 && month <= 5) {
-    scheduleName.innerHTML = "UPLANIANOS - HORARIO: PRIMER SEMESTRE, " + year;
+    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - PRIMER SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - I, " + year;
     document.getElementById("foot").innerHTML = developedBy + " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
 if (month >= 6 && month <= 11) {
-    scheduleName.innerHTML = "UPLANIANOS - HORARIO: SEGUNDO SEMESTRE, " + year;
+    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - SEGUNDO SEMESTRE, " + year;
     document.title = "Uplanianos - Horario - II, " + year;
     document.getElementById("foot").innerHTML = developedBy + " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
