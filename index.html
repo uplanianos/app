@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
 <html lang="en-US">
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- The following are Search Engine Meta Tags -->
-	<meta name="description" content="La app Uplanianos permite a los estudiantes optimizar sus actividades académicas como el horario, avance curricular, calendario académico o reglamento del estudiante, además de utilizar herramientas de cálculo de notas de pruebas, promedios generales, porcentaje de asistencia y examen acumulativo especial."/>
-	<meta name="keywords" content="Uplanianos, Upla, Universidad, Playa, Ancha, Universidad de Playa Ancha, Valparaíso"/>
-	<meta name="author" content="Prof. Juan Edo. Méndez" />
-	<meta name="robots" content="follow"/>
-	<!-- End of Search Engine Meta Tags -->
-
-	<link rel="icon" href="media/uplanianos-icon.png">
-	<link rel="stylesheet" href="files/uplanianos-style.css">
-	<title>Uplanianos Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The following are Search Engine Meta Data -->
+    <meta charset="utf-8">
+    <meta name="description" content="Uplanianos Web: La app Uplanianos permite llevar registro de tus actividades académicas como el horario, avance curricular, calendario académico, fechas de pruebas o reglamento del estudiante, además de usar herramientas para calcular tus notas de pruebas, promedios, asistencia y examen acumulativo especial."/>
+    <meta name="keywords" content="Uplanianos, Upla, Reglamento, Justificación, Paro, Votación, Universidad, Playa, Ancha, Universidad de Playa Ancha, Valparaíso, Chile"/>
+    <meta name="author" content="Prof. Juan Edo. Méndez - juan.mendez@upla.cl" />
+    <meta name="robots" content="index, follow">
+    <!-- End of Search Engine Meta Tags -->
+    <link rel="icon" href="media/uplanianos-icon.png">
+    <link rel="stylesheet" href="files/uplanianos-style.css">
+    <title>Uplanianos Web</title>
 </head>
 
-<body onLoad="doNeedButtons()">
+<body>
 
 
 <div class="main">
@@ -64,7 +62,6 @@
     <br>
     </div>
 
-
 <! -- COMMENTED OUT! -->
 <! -- <div class="counter"> -->
 <! --  <a href='http://www.freevisitorcounters.com'>www.freevisitorcounters.com</a> -->
@@ -72,8 +69,13 @@
 <! --  <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1032905/t/5"></script> -->
 <! -- </div> -->
 
-
 </div>
+
+
+ <div style="width: max-content; text-align: center; background-color: red; margin-top: 12px; margin-left: auto; margin-right: auto; padding: 3px; display: none; visibility: hidden;">
+  <input number id="localVisitCounter" value="0" style="width: 25px; text-align: center;">
+ </div>
+
 
 <script type="text/javascript">
 function sideScrollInfo() {
@@ -97,25 +99,32 @@ const toolsArea = document.getElementById('toolsDiv');
 </script>
 
 
+
 <script type="text/javascript">
-function doNeedButtons() {
+function demoTheButtons() {
+
 // DECLARING ELEMENTS
-slideInfoRight = document.getElementById('slideInfoRight');
-slideInfoLeft = document.getElementById('slideInfoLeft');
-slideToolsRight = document.getElementById('slideToolsRight');
-slideToolsLeft = document.getElementById('slideToolsLeft');
-// CHECKING MOBILE
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    slideInfoRight.style.visibility = "hidden"; slideInfoRight.style.display = "none";
-    slideInfoLeft.style.visibility = "hidden"; slideInfoLeft.style.display = "none";
-    slideToolsRight.style.visibility = "hidden"; slideToolsRight.style.display = "none";
-    slideToolsLeft.style.visibility = "hidden"; slideToolsLeft.style.display = "none";
-   }
-  else {
-    setTimeout('demoSlide1()', 1000 * 0.4);
-    setTimeout('demoSlide2()', 1000 * 1);
-    setTimeout('demoSlide3()', 1000 * 2.5);
-   }
+counter = document.getElementById('localVisitCounter')
+slideInfoRight = document.getElementById('slideInfoRight')
+slideInfoLeft = document.getElementById('slideInfoLeft')
+slideToolsRight = document.getElementById('slideToolsRight')
+slideToolsLeft = document.getElementById('slideToolsLeft')
+
+// COUNT LOCAL VISITS
+counter.value++; // console.log(counter.value)
+
+// CHECKING LOCAL VISIT COUNTER & MOBILE ENVIRONMENT
+ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+  slideInfoRight.style.visibility = "hidden"; slideInfoRight.style.display = "none"
+  slideInfoLeft.style.visibility = "hidden"; slideInfoLeft.style.display = "none"
+  slideToolsRight.style.visibility = "hidden"; slideToolsRight.style.display = "none"
+  slideToolsLeft.style.visibility = "hidden"; slideToolsLeft.style.display = "none"
+ }
+ else if (counter.value <= 5) {
+  setTimeout('demoSlide1()', 1000 * 0.4)
+  setTimeout('demoSlide2()', 1000 * 1)
+  setTimeout('demoSlide3()', 1000 * 2.5)
+ }
 }
 
 function demoSlide1() {
@@ -129,6 +138,35 @@ document.getElementById('toolsDiv').scrollLeft -= 632;}
 function demoSlide3() {
 document.getElementById('slideToolsLeft').blur();}
 </script>
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// CALLS TO ANOTHER FUNCTION!!
+demoTheButtons()
+}
+</script>
+
 
 
 </body>
