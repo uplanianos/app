@@ -36,7 +36,7 @@
       <option value="15">📝 Timebox (Upla)</option>
 <!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
     </select>
-    <b>Uplanianos App:</b> Votación Uplaniana.</p></div>
+    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Votación Uplaniana.</p></div>
 
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
@@ -84,35 +84,35 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
  <div class="grid-voting" style="width: 96%; margin-left: auto; margin-right: auto;">
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
-   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="updateSummary()">
+   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues()">
    <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
    <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
   </div>
 
   <div id="divMotion2" style="grid-area: divMotion2; display: none;">2
-   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="updateSummary()">
+   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="getValues()">
    <input type="number"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
    <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
   </div>
 
   <div id="divMotion3" style="grid-area: divMotion3; display: none;">3
-   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="updateSummary()">
+   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="getValues()">
    <input type="number"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
    <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
   </div>
 
   <div id="divMotion4" style="grid-area: divMotion4; display: none;">4
-   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="updateSummary()">
+   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="getValues()">
    <input type="number"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
    <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
   </div>
 
   <div id="divMotion5" style="grid-area: divMotion5; display: none;">5
-   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="updateSummary()">
+   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="getValues()">
    <input type="number"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
    <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
    <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
@@ -350,7 +350,6 @@ drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent)
 
 // ====================
 
-
 // UPDATING "VOTE SUMMARY"
 function updateSummary(pie1,pie2,pie3,pie4,pie5,finalPercent) {
 
@@ -362,27 +361,29 @@ var motion3Span = document.getElementById("motion3Span")
 var motion4Span = document.getElementById("motion4Span")
 var motion5Span = document.getElementById("motion5Span")
 
- if (motion1.value !== "") {
-  motion1Span.innerText = motion1.value.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion1Span.style.display = "block" } else { motion1Span.style.display = "none" }
+// CHECKING FOR EMPTY NAMES / AND ZERO VALUES BEFORE UPDATING
+// EMPTY PROPOSALS WITH ZERO VOTES ARE EXCLUDED FROM THE "SUMMARY" OR "PIE CHART GRAPH"
+ if (motion1.value !== "" && parseInt(counts1.value) > 0) {
+  motion1Span.innerText = "- " + motion1.value.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
+  motion1Span.style.display = "block" } else { motion1Span.style.display = "none" }
 
- if (motion2.value !== "") {
-  motion2Span.innerText = motion2.value.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion2Span.style.display = "block" } else { motion2Span.style.display = "none" }
+ if (motion2.value !== "" && parseInt(counts2.value) > 0) {
+  motion2Span.innerText = "- " + motion2.value.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
+  motion2Span.style.display = "block" } else { motion2Span.style.display = "none" }
 
- if (motion3.value !== "") {
-  motion3Span.innerText = motion3.value.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion3Span.style.display = "block" } else { motion3Span.style.display = "none" }
+ if (motion3.value !== "" && parseInt(counts3.value) > 0) {
+  motion3Span.innerText = "- " + motion3.value.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
+  motion3Span.style.display = "block" } else { motion3Span.style.display = "none" }
 
- if (motion4.value !== "") {
-  motion4Span.innerText = motion4.value.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion4Span.style.display = "block" } else { motion4Span.style.display = "none" }
+ if (motion4.value !== "" && parseInt(counts4.value) > 0) {
+  motion4Span.innerText = "- " + motion4.value.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
+  motion4Span.style.display = "block" } else { motion4Span.style.display = "none" }
 
- if (motion5.value !== "") {
-  motion5Span.innerText = motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
-  voteSummary.style.display = "block"; motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
+ if (motion5.value !== "" && parseInt(counts5.value) > 0) {
+  motion5Span.innerText = "- " + motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
+  motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
 
- if (totalVotes !== "" || totalVotes !== NaN) {
+ if (totalVotes.value !== "" || totalVotes.value !== Undefined || totalVotes.value !== NaN) {
   motionTotal.innerText = finalCount + " votos (" + parseInt(finalPercent) + "%)."
   motionTotal.style.display = "block"
   motionTotal.style.lineHeight = "3"
