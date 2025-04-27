@@ -103,21 +103,6 @@ ul	{ padding-left: 18px; }
 }
 
 
-/* INFORMER TICKER SETTINGS */
-
-div.ticker {
- color: cornflowerblue;
- text-decoration: none; 
- font-size: 12px;
- text-align: center;
- margin-left: auto;
- margin-right: auto;
- padding: 0px;
-}
-
-a.ticker-link { color: cornflowerblue; text-decoration: none; cursor: pointer; }
-a.ticker-link:hover { color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 1px pink; }
-
 /* TOOL PAGES DIV SETTINGS */
 
 .grid-item-slider {

@@ -57,8 +57,38 @@
     <button onclick="sideScrollTools()" onMouseOver="sideScrollTools()" class="slideToolsRight" id="slideToolsRight">&#8250;</button>
     </div>
     <br>
-    <iframe src="ticker.html" title="Uplanianos - Inform-inator" style="display: flex; width: 95%; height: 60px; text-align: center; border: 0; margin-left: auto; margin-right: auto; padding: 0px;">
+
+<!--
+    <iframe src="ticker.html" title="Uplanianos - Inform-inator" style="display: flex; width: 95%; height: 60px; text-align: center; border: 0; margin-left: auto; margin-right: auto; 
+padding: 0px;">
     </iframe>
+-->
+
+<div class="ticker">
+
+ <div id="div1" style="display: block;">Web App no oficial para Uplanianos! ✔️<br>
+ <small>🔎 <a class="ticker-link" href="license.html" target="_parent">Términos de Uso</small></a> 👈
+ </div> 
+
+ <div id="div2" class="ticker-link" style="display: none;">¿Cuánto queda para las pruebas? ⏳<br>
+ <small>🔎 <a class="ticker-link" href="countdown.html" target="_parent">Ver recuento!</small></a>  👈
+ </div>
+
+ <div id="div3" class="ticker-link" style="display: none;"><span id="dateSpan">Hoy día es...</span><br>
+ <small>🔎 <a class="ticker-link" href="agenda.html" target="_parent">Ver Agenda!</small></a> 👈
+ </div>
+
+ <div id="div4" class="ticker-link" style="display: none;"><span id="dateSpan">¿Tienes teléfono Android? 👽</span><br>
+ <small>🔎 <a class="ticker-link" href="install.html" target="_parent">Ver Instalación!</small></a> 👈
+ </div>
+
+ <div id="div5" class="ticker-link" style="display: none;">Hay carreras <font color="red">en paro!✋</font><br>
+ <small>🔎 <a class="ticker-link" href="sigueparo.html" target="_parent">Ver detalles!</a></small> 👈
+ </div>
+
+</div>
+
+
     <br>
     <br>
     </div>
@@ -141,6 +171,45 @@ document.getElementById('slideToolsLeft').blur();}
 </script>
 
 
+
+
+<script type="text/javascript">
+function slideTicker() {
+
+// DECLARING ELEMENTS
+div1 = document.getElementById('div1')
+div2 = document.getElementById('div2')
+div3 = document.getElementById('div3')
+div4 = document.getElementById('div4')
+div5 = document.getElementById('div5')
+
+// Generate a random number between 1 and 5
+var doTheLoop = setInterval(function(){
+ const randomNumber = Math.floor(Math.random() * 5) + 1
+ console.log(randomNumber)
+ if (randomNumber == 1) { div1.style.display = "block" } else {div1.style.display = "none" }
+ if (randomNumber == 2) { div2.style.display = "block" } else {div2.style.display = "none" }
+ if (randomNumber == 3) { div3.style.display = "block" } else {div3.style.display = "none" }
+ if (randomNumber == 4) { div4.style.display = "block" } else {div4.style.display = "none" }
+ if (randomNumber == 5) { div5.style.display = "block" } else {div5.style.display = "none" }
+ // clearInterval(doTheLoop)
+ },1000 * 5 );
+}
+
+
+// GET DATE FOR TOMORROW!
+function getDate() {
+var dateSpan = document.getElementById('dateSpan')
+
+ const date = new Date();
+ const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+ const currentDayOfWeek = daysOfWeek[date.getDay() + 1];
+ dateSpan.innerText = "Mañana es " + currentDayOfWeek + " 📅❗"
+}
+</script>
+
+
+
 <!- SAVE FUNCTION ->
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
 <script src="scripts/jquery-3.7.1.slim.js"></script>
@@ -165,6 +234,8 @@ window.onload = function() {
 
 // CALLS TO ANOTHER FUNCTION!!
 demoTheButtons()
+slideTicker()
+getDate()
 }
 </script>
 

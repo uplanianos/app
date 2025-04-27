@@ -254,6 +254,23 @@ a:visited	{ color: hotpink; }
 .footer { color: white; font-size: 12px; margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; text-align: center; }
 
 
+/* INFORMER TICKER SETTINGS */
+
+div.ticker {
+ color: cornflowerblue;
+ text-decoration: none; 
+ font-size: 12px;
+ text-align: center;
+ margin-left: auto;
+ margin-right: auto;
+ padding: 0px;
+}
+
+a.ticker-link { color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a.ticker-link:hover { color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 1px pink; }
+
+
+
 /* PROGRESS SETTINGS */
 .counterArea {
  position: absolute;
