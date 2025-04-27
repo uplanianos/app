@@ -12,10 +12,10 @@ body::-webkit-scrollbar { display: none; }
 
 p	{color: white;}
 h1	{color: white;}
-a	{ color: cornflowerblue; text-decoration: none; }
-a:hover		{ color: blue; text-decoration: underline; }
-a:active	{ color: red; }
-a:visited	{ color: hotpink; }
+a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px corflowerblue; }
+a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
 
 .counter { position: absolute; left: 6px; bottom: 12px; color: white; font-size: 6px; opacity: 0.2; pointer-events: none; }
 
