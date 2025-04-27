@@ -13,9 +13,9 @@ body::-webkit-scrollbar { display: none; }
 p	{color: white;}
 h1	{color: white;}
 a		{ color: cornflowerblue; text-decoration: none; }
-a:hover		{ color: blue; text-decoration: underline; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 1px pink; }
 a:active	{ color: red; }
-a:visited	{ color: hotpink; }
+a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 2px pink; }
 
 .gradeScaleLinked { color: hotpink; text-decoration: none; cursor: pointer; font-size: smaller; }
 .gradeScaleActive { color: cornflowerblue; text-decoration: none; cursor: pointer; font-size: larger; font-weight: bold; }
