@@ -121,7 +121,7 @@
 	<div class="strike-label-wrapper">
 	 <div class="strike-label-bubbles" style="color: white; background-color: #FF0000cc;">❌ En paro!</div>
 	 <div class="strike-label-bubbles" style="color: black; background-color: yellow;">✔️❌ Por carrera!</div>
-	 <div class="strike-label-bubbles" style="color: white; background-color: green; ">✔️ Todo normal!</div>
+	 <div class="strike-label-bubbles" style="color: white; background-color: green;">✔️ Todo normal!</div>
 	</div>
 
 	<div class="grid-item-slider" id="strike-footer">Visita 📷 <a href="https://www.instagram.com/uplanianos/" target="_blank" style="text-decoration: none; cursor: pointer;" title="Uplanianos en Instagram!">Uplanianos</a> para ver actualizaciones.</div>
@@ -133,12 +133,11 @@
 
 
 <script type="text/javascript">
-function checkCourses() {
 
 // DEFINING ELEMENTS!
 const todoNormal = document.getElementById("todo-normal")
 const enParo = document.getElementById("en-paro")
-// FACULTIES
+// FACULTIES MAIN WRAPPER
 const facArtsies = document.getElementById("fac-artsies")
 const facSportis = document.getElementById("fac-sportis")
 const facEduquis = document.getElementById("fac-eduquis")
@@ -147,11 +146,30 @@ const facSociats = document.getElementById("fac-sociats")
 const facScience = document.getElementById("fac-science")
 const facHumanis = document.getElementById("fac-humanis")
 const facEnginis = document.getElementById("fac-enginis")
+// DIV ELEMENTS
+var sportisDiv = document.querySelectorAll("div.sportis")
+var artsiesDiv = document.querySelectorAll("div.artsies")
+var sportisDiv = document.querySelectorAll("div.sportis")
+var eduquisDiv = document.querySelectorAll("div.eduquis")
+var saludisDiv = document.querySelectorAll("div.saludis")
+var sociatsDiv = document.querySelectorAll("div.sociats")
+var scienceDiv = document.querySelectorAll("div.science")
+var humanisDiv = document.querySelectorAll("div.humanis")
+var enginisDiv = document.querySelectorAll("div.enginis")
+// SPAN ELEMENTS
+var artsiesSpan = document.querySelectorAll("span.artsies")
+var sportisSpan = document.querySelectorAll("span.sportis")
+var eduquisSpan = document.querySelectorAll("span.eduquis")
+var saludisSpan = document.querySelectorAll("span.saludis")
+var sociatsSpan = document.querySelectorAll("span.sociats")
+var scienceSpan = document.querySelectorAll("span.science")
+var humanisSpan = document.querySelectorAll("span.humanis")
+var enginisSpan = document.querySelectorAll("span.enginis")
 
+function checkCourses() {
 // ARTS!
 let artsiesTotal = 6
-Artsies = document.querySelectorAll("span.artsies")
-for(let Courses of Artsies) {
+for(let Courses of artsiesSpan) {
  if (Courses.innerHTML == "❌") { artsiesTotal-- }
  if (artsiesTotal == 6) { facArtsies.style.backgroundColor = "green" }
  if (artsiesTotal <= 5) { facArtsies.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -160,8 +178,7 @@ for(let Courses of Artsies) {
 
 // SPORTS!
 let sportisTotal = 2
-Sportis = document.querySelectorAll("span.sportis")
-for(let Courses of Sportis) {
+for(let Courses of sportisSpan) {
  if (Courses.innerHTML == "❌") { sportisTotal-- }
  if (sportisTotal == 2) { facSportis.style.backgroundColor = "green" }
  if (sportisTotal == 1) { facSportis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -170,8 +187,7 @@ for(let Courses of Sportis) {
 
 // EDUCATION!
 let eduquisTotal = 3
-Eduquis = document.querySelectorAll("span.eduquis")
-for(let Courses of Eduquis) {
+for(let Courses of eduquisSpan) {
  if (Courses.innerHTML == "❌") { eduquisTotal-- }
  if (eduquisTotal == 3) { facEduquis.style.backgroundColor = "green" }
  if (eduquisTotal <= 2) { facEduquis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -180,8 +196,7 @@ for(let Courses of Eduquis) {
 
 // SALUDIS!
 let saludisTotal = 5
-Saludis = document.querySelectorAll("span.saludis")
-for(let Courses of Saludis) {
+for(let Courses of saludisSpan) {
  if (Courses.innerHTML == "❌") { saludisTotal-- }
  if (saludisTotal == 5) { facSaludis.style.backgroundColor = "green" }
  if (saludisTotal <= 4) { facSaludis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -190,8 +205,7 @@ for(let Courses of Saludis) {
 
 // SOCIALES!
 let sociatsTotal = 5
-Sociats = document.querySelectorAll("span.sociats")
-for(let Courses of Sociats) {
+for(let Courses of sociatsSpan) {
  if (Courses.innerHTML == "❌") { sociatsTotal-- }
  if (sociatsTotal == 5) { facSociats.style.backgroundColor = "green" }
  if (sociatsTotal <= 4) { facSociats.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -200,8 +214,7 @@ for(let Courses of Sociats) {
 
 // SCIENCE!
 let scienceTotal = 5
-Science = document.querySelectorAll("span.science")
-for(let Courses of Science) {
+for(let Courses of scienceSpan) {
  if (Courses.innerHTML == "❌") { scienceTotal-- }
  if (scienceTotal == 5) { facScience.style.backgroundColor = "green" }
  if (scienceTotal <= 4) { facScience.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -210,8 +223,7 @@ for(let Courses of Science) {
 
 // HUMANIS!
 let humanisTotal = 6
-Humanis = document.querySelectorAll("span.humanis")
-for(let Courses of Humanis) {
+for(let Courses of humanisSpan) {
  if (Courses.innerHTML == "❌") { humanisTotal-- }
  if (humanisTotal == 6) { facHumanis.style.backgroundColor = "green" }
  if (humanisTotal <= 5) { facHumanis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -220,8 +232,7 @@ for(let Courses of Humanis) {
 
 // ENGINEERS!
 let enginisTotal = 7
-Enginis = document.querySelectorAll("span.enginis")
-for(let Courses of Enginis) {
+for(let Courses of enginisSpan) {
  if (Courses.innerHTML == "❌") { enginisTotal-- }
  if (enginisTotal == 7) { facEnginis.style.backgroundColor = "green" }
  if (enginisTotal <= 6) { facEnginis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
@@ -252,76 +263,65 @@ if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundC
 
 // END OF CHECKCOURSES!
 }
-</script>
 
 
-
-<script type="text/javascript">
+// DISPAY FUNCTIONS FOR EACH DIV (ON CLICK)!
 function displayArtsies() {
-Artsies = document.querySelectorAll("div.artsies")
-for(let Courses of Artsies) {
+for(let Courses of artsiesDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displaySportis() {
-Sportis = document.querySelectorAll("div.sportis")
-for(let Courses of Sportis) {
+for(let Courses of sportisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displayEduquis() {
-Eduquis = document.querySelectorAll("div.eduquis")
-for(let Courses of Eduquis) {
+for(let Courses of eduquisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displaySaludis() {
-Saludis = document.querySelectorAll("div.saludis")
-for(let Courses of Saludis) {
+for(let Courses of saludisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displaySociats() {
-Sociats = document.querySelectorAll("div.sociats")
-for(let Courses of Sociats) {
+for(let Courses of sociatsDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displayScience() {
-Science = document.querySelectorAll("div.science")
-for(let Courses of Science) {
+for(let Courses of scienceDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displayHumanis() {
-Humanis = document.querySelectorAll("div.humanis")
-for(let Courses of Humanis) {
+for(let Courses of humanisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 
 function displayEnginis() {
-Enginis = document.querySelectorAll("div.enginis")
-for(let Courses of Enginis) {
+for(let Courses of enginisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
 }
 </script>
-
 
 
 <script type="text/javascript">
@@ -522,6 +522,7 @@ var weeklyLoop = setInterval(function() {
  },1000);
 }
 </script>
+
 
 
 <script type="text/javascript">
