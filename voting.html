@@ -595,47 +595,47 @@ function shareLink() {
  var theVotes = ""
  if (howMany.value == 2) {
 	theVotes =
-	"?cv=" + urlAmount +
-	"?m1=" + url1Motion +
-	"?v1=" + url1Amount +
-	"?m2=" + url2Motion +
-	"?v2=" + url2Amount;
+	"?cv=" + howMany.value +
+	"?m1=" + motion1.value +
+	"?v1=" + counts1.value +
+	"?m2=" + motion2.value +
+	"?v2=" + counts2.value;
  }
  if (howMany.value == 3) {
 	theVotes =
-	"?cv=" + urlAmount +
-	"?m1=" + url1Motion +
-	"?v1=" + url1Amount +
-	"?m2=" + url2Motion +
-	"?v2=" + url2Amount +
-	"?m3=" + url3Motion +
-	"?v3=" + url3Amount;
+	"?cv=" + howMany.value +
+	"?m1=" + motion1.value +
+	"?v1=" + counts1.value +
+	"?m2=" + motion2.value +
+	"?v2=" + counts2.value +
+	"?m3=" + motion3.value +
+	"?v3=" + counts3.value;
  }
  if (howMany.value == 4) {
 	theVotes =
-	"?cv=" + urlAmount +
-	"?m1=" + url1Motion +
-	"?v1=" + url1Amount +
-	"?m2=" + url2Motion +
-	"?v2=" + url2Amount +
-	"?m3=" + url3Motion +
-	"?v3=" + url3Amount +
-	"?m4=" + url4Motion +
-	"?v4=" + url4Amount;
+	"?cv=" + howMany.value +
+	"?m1=" + motion1.value +
+	"?v1=" + counts1.value +
+	"?m2=" + motion2.value +
+	"?v2=" + counts2.value +
+	"?m3=" + motion3.value +
+	"?v3=" + counts3.value +
+	"?m3=" + motion4.value +
+	"?v3=" + counts4.value;
  }
  if (howMany.value == 5) {
 	theVotes =
-	"?cv=" + urlAmount +
-	"?m1=" + url1Motion +
-	"?v1=" + url1Amount +
-	"?m2=" + url2Motion +
-	"?v2=" + url2Amount +
-	"?m3=" + url3Motion +
-	"?v3=" + url3Amount +
-	"?m4=" + url4Motion +
-	"?v4=" + url4Amount +
-	"?m5=" + url5Motion +
-	"?v5=" + url5Amount;
+	"?cv=" + howMany.value +
+	"?m1=" + motion1.value +
+	"?v1=" + counts1.value +
+	"?m2=" + motion2.value +
+	"?v2=" + counts2.value +
+	"?m3=" + motion3.value +
+	"?v3=" + counts3.value +
+	"?m3=" + motion4.value +
+	"?v3=" + counts4.value +
+	"?m3=" + motion5.value +
+	"?v3=" + counts5.value;
  }
  navigator.clipboard.writeText(trunURL+theVotes)
  alert("Link copied!")
