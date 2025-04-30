@@ -150,6 +150,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 </div>	<!- End of "Votes Result" Div ->
 
+<div id="shareButton" class="strike-label-bubbles" style="width: 150px; background-color: green; margin: auto; margin-top: 12px; padding: 6px; cursor: pointer; display: none;" onclick="shareLink()">Compartir!</div>
+
 <br>
 
 </div><!- End of "Main" Div ->
@@ -158,6 +160,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 
 <script type="text/javascript">
+// RED FLASH FOR PLUS BUTTON
+// WHEN VOTES DOUBLE CLICKED - SELECTED
 var buttonFlash = function() {
  var focusWhich = "vote" + this.id.slice(6) + "More"
  var onThisOne = document.getElementById(focusWhich)
@@ -201,34 +205,34 @@ function initialSetup() {
 var moreButton = document.getElementById("moreButton")
 var lessButton = document.getElementById("lessButton")
 
-if (howMany.value == 1) { document.getElementById("howMany").value = "2" }
+if (howMany.value == 1) { document.getElementById("howMany").value = "2"; }
 
 if (howMany.value == 2) {
  divMotion2.style.display = "block"; divMotion3.style.display = "none";
  divMotion4.style.display = "none"; divMotion5.style.display = "none";
- lessButton.style.visibility = "hidden"; moreButton.style.visibility = "visible" }
+ lessButton.style.visibility = "hidden"; moreButton.style.visibility = "visible"; }
 
 if (howMany.value == 3) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block"
  divMotion4.style.display = "none"; divMotion5.style.display = "none";
- lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible"; }
 
 if (howMany.value == 4) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block";
  divMotion4.style.display = "block"; divMotion5.style.display = "none";
- lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible" }
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "visible"; }
 
 if (howMany.value == 5) {
  divMotion2.style.display = "block"; divMotion3.style.display = "block";
  divMotion4.style.display = "block"; divMotion5.style.display = "block";
- lessButton.style.visibility = "visible"; moreButton.style.visibility = "hidden" }
+ lessButton.style.visibility = "visible"; moreButton.style.visibility = "hidden"; }
 
 getValues()
 
 }
 
-// ====================
 
+// ====================
 
 // DELETE BUTTON FUNCTION
 function clearButton() {
@@ -300,20 +304,20 @@ var counted4 = counts4.value
 var counted5 = counts5.value
 var finalCount = totalVotes.value
 
-function vote1More() { counted1 = counts1.value; counted1++; counts1.value = counted1; moreTotal(finalCount,totalVotes) }
-function vote1Less() { counted1=counts1.value; if(counted1 > 0 ) {counted1--; counts1.value = counted1; lessTotal(finalCount,totalVotes) } }
+function vote1More() { counted1 = counts1.value; counted1++; counts1.value = counted1; moreTotal(finalCount,totalVotes); shareButton2()}
+function vote1Less() { counted1=counts1.value; if(counted1 > 0 ) {counted1--; counts1.value = counted1; lessTotal(finalCount,totalVotes); shareButton2() } }
 
-function vote2More() { counted2 = counts2.value; counted2++; counts2.value = counted2; moreTotal(finalCount,totalVotes) }
-function vote2Less() { counted2 = counts2.value; if(counted2 > 0 ) {counted2--; counts2.value = counted2; lessTotal(finalCount,totalVotes) } }
+function vote2More() { counted2 = counts2.value; counted2++; counts2.value = counted2; moreTotal(finalCount,totalVotes); shareButton2() }
+function vote2Less() { counted2 = counts2.value; if(counted2 > 0 ) {counted2--; counts2.value = counted2; lessTotal(finalCount,totalVotes); shareButton2() } }
 
-function vote3More() { counted3 = counts3.value; counted3++; counts3.value = counted3; moreTotal(finalCount,totalVotes) }
-function vote3Less() { counted3 = counts3.value; if(counted3 > 0 ) {counted3--; counts3.value = counted3; lessTotal(finalCount,totalVotes) } }
+function vote3More() { counted3 = counts3.value; counted3++; counts3.value = counted3; moreTotal(finalCount,totalVotes); shareButton3()}
+function vote3Less() { counted3 = counts3.value; if(counted3 > 0 ) {counted3--; counts3.value = counted3; lessTotal(finalCount,totalVotes); shareButton3()} }
 
-function vote4More() { counted4 = counts4.value; counted4++; counts4.value = counted4; moreTotal(finalCount,totalVotes) }
-function vote4Less() { counted4 = counts4.value; if(counted4 > 0 ) {counted4--; counts4.value = counted4; lessTotal(finalCount,totalVotes) } }
+function vote4More() { counted4 = counts4.value; counted4++; counts4.value = counted4; moreTotal(finalCount,totalVotes); shareButton4() }
+function vote4Less() { counted4 = counts4.value; if(counted4 > 0 ) {counted4--; counts4.value = counted4; lessTotal(finalCount,totalVotes); shareButton4() } }
 
-function vote5More() { counted5 = counts5.value; counted5++; counts5.value = counted5; moreTotal(finalCount,totalVotes) }
-function vote5Less() { counted5 = counts5.value; if(counted5 > 0 ) {counted5--; counts5.value = counted5; lessTotal(finalCount,totalVotes) } }
+function vote5More() { counted5 = counts5.value; counted5++; counts5.value = counted5; moreTotal(finalCount,totalVotes); shareButton5() }
+function vote5Less() { counted5 = counts5.value; if(counted5 > 0 ) {counted5--; counts5.value = counted5; lessTotal(finalCount,totalVotes); shareButton5() } }
 
 function moreTotal() { finalCount = totalVotes.value; finalCount++; totalVotes.value = finalCount; getValues() }
 function lessTotal() { finalCount = totalVotes.value; finalCount--; totalVotes.value = finalCount; getValues() }
@@ -478,6 +482,30 @@ ctx.stroke();
 // Initial draw
 // drawCircle();
 
+
+// ====================
+// SHARE BUTTON FUNCTIONS
+
+function shareButton2() {
+ if (motion1.value.trim() !== '' && motion2.value.trim() !== '') { shareButton.style.display = "block" }
+ else { shareButton.style.display = "none" }
+}
+
+function shareButton3() {
+ if (motion1.value.trim() !== '' && motion2.value.trim() !== '' && motion3.value.trim() !== '') { shareButton.style.display = "block" }
+ else { shareButton.style.display = "none" }
+}
+
+function shareButton4() {
+ if (motion1.value.trim() !== '' && motion2.value.trim() !== '' && motion3.value.trim() !== '' && motion4.value.trim() !== '') { shareButton.style.display = "block" }
+ else { shareButton.style.display = "none" }
+}
+
+function shareButton5() {
+ if (motion1.value.trim() !== '' && motion2.value.trim() !== '' && motion3.value.trim() !== '' && motion4.value.trim() !== '' && motion5.value.trim() !== '') { shareButton.style.display = "block" }
+ else { shareButton.style.display = "none" }
+}
+
 // END OF MAIN SCRIPT
 </script>
 
@@ -508,6 +536,110 @@ window.onload = function() {
 
 // CALLS TO ANOTHER FUNCTION!!
 initialSetup()
+getLinkValues()
+}
+</script>
+
+
+
+
+<script type="text/javascript">
+// DECLARING URL LINK ELEMENTS
+var urlAmount = (new URLSearchParams(window.location.search)).get("cv")
+var url1Motion = (new URLSearchParams(window.location.search)).get("m1")
+var url1Amount = (new URLSearchParams(window.location.search)).get("v1")
+var url2Motion = (new URLSearchParams(window.location.search)).get("m2")
+var url2Amount = (new URLSearchParams(window.location.search)).get("v2")
+var url3Motion = (new URLSearchParams(window.location.search)).get("m3")
+var url3Amount = (new URLSearchParams(window.location.search)).get("v3")
+var url4Motion = (new URLSearchParams(window.location.search)).get("m4")
+var url4Amount = (new URLSearchParams(window.location.search)).get("v4")
+var url5Motion = (new URLSearchParams(window.location.search)).get("m5")
+var url5Amount = (new URLSearchParams(window.location.search)).get("v5")
+
+// DECLARING VOTING ELEMENTS
+var howMany = document.getElementById('howMany')
+var motion1 = document.getElementById('motion1')
+var counts1 = document.getElementById('counts1')
+var motion2 = document.getElementById('motion2')
+var counts2 = document.getElementById('counts2')
+var motion3 = document.getElementById('motion3')
+var counts4 = document.getElementById('counts3')
+var motion4 = document.getElementById('motion4')
+var counts4 = document.getElementById('counts4')
+var motion5 = document.getElementById('motion5')
+var counts5 = document.getElementById('counts5')
+
+function getLinkValues() {
+if (urlAmount >= 2 && urlAmount <= 5) {howMany.value = urlAmount; initialSetup() }
+if (url1Motion !== null) {motion1.value = url1Motion; initialSetup() }
+if (url1Amount !== null) {counts1.value = url1Amount; initialSetup() }
+if (url2Motion !== null) {motion2.value = url2Motion; initialSetup() }
+if (url2Amount !== null) {counts2.value = url2Amount; initialSetup() }
+if (url3Motion !== null) {motion3.value = url3Motion; initialSetup() }
+if (url3Amount !== null) {counts3.value = url3Amount; initialSetup() }
+if (url4Motion !== null) {motion4.value = url4Motion; initialSetup() }
+if (url4Amount !== null) {counts4.value = url4Amount; initialSetup() }
+if (url5Motion !== null) {motion5.value = url5Motion; initialSetup() }
+if (url5Amount !== null) {counts5.value = url5Amount; initialSetup() }
+
+// /=================================================================================================\
+// | Format: /voting.html?cv=4&m1=Paro&v1=31&m2=No%20Paro&v2=2&m3=Abstencion&v3=1&m4=Sin%20Voto&v4=1 |
+// \=================================================================================================/
+
+}
+
+function shareLink() {
+ var thisURL = "https://uplanianos.github.io/app/voting.html++++++"
+ var trunURL = thisURL.substr(0, 44);
+ var theVotes = ""
+ if (howMany.value == 2) {
+	theVotes =
+	"?cv=" + urlAmount +
+	"?m1=" + url1Motion +
+	"?v1=" + url1Amount +
+	"?m2=" + url2Motion +
+	"?v2=" + url2Amount;
+ }
+ if (howMany.value == 3) {
+	theVotes =
+	"?cv=" + urlAmount +
+	"?m1=" + url1Motion +
+	"?v1=" + url1Amount +
+	"?m2=" + url2Motion +
+	"?v2=" + url2Amount +
+	"?m3=" + url3Motion +
+	"?v3=" + url3Amount;
+ }
+ if (howMany.value == 4) {
+	theVotes =
+	"?cv=" + urlAmount +
+	"?m1=" + url1Motion +
+	"?v1=" + url1Amount +
+	"?m2=" + url2Motion +
+	"?v2=" + url2Amount +
+	"?m3=" + url3Motion +
+	"?v3=" + url3Amount +
+	"?m4=" + url4Motion +
+	"?v4=" + url4Amount;
+ }
+ if (howMany.value == 5) {
+	theVotes =
+	"?cv=" + urlAmount +
+	"?m1=" + url1Motion +
+	"?v1=" + url1Amount +
+	"?m2=" + url2Motion +
+	"?v2=" + url2Amount +
+	"?m3=" + url3Motion +
+	"?v3=" + url3Amount +
+	"?m4=" + url4Motion +
+	"?v4=" + url4Amount +
+	"?m5=" + url5Motion +
+	"?v5=" + url5Amount;
+ }
+ navigator.clipboard.writeText(trunURL+theVotes)
+ alert("Link copied!")
+ window.location.href = trunURL+theVotes
 }
 </script>
 
