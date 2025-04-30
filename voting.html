@@ -150,7 +150,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 </div>	<!- End of "Votes Result" Div ->
 
-<div id="shareButton" class="strike-label-bubbles" style="width: 150px; background-color: green; margin: auto; margin-top: 12px; padding: 6px; cursor: pointer; display: none;" onclick="shareLink()">Compartir!</div>
+<div id="shareButton" class="voteShareButton" style="display: none;" onclick="shareLink()">COMPARTIR</div>
 
 <br>
 
@@ -591,6 +591,7 @@ if (url5Amount !== null) {counts5.value = url5Amount; initialSetup() }
 }
 
 function shareLink() {
+ var shareButton = document.getElementById("shareButton")
  var thisURL = "https://uplanianos.github.io/app/voting.html++++++"
  var trunURL = thisURL.substr(0, 44);
  var theVotes = ""
@@ -638,9 +639,18 @@ function shareLink() {
 	"&m5=" + motion5.value +
 	"&v5=" + counts5.value;
  }
+ // COPYING GENERATED LINK!
  navigator.clipboard.writeText(trunURL+theVotes)
- alert("Link copied!")
- window.location.href = trunURL+theVotes
+ // UPDATING BUTTON
+ shareButton.innerHTML = "COPIADO!"
+ shareButton.style.backgroundColor = "blue"
+ // UPDATING LINK DYNAMIC WARNING!
+ setTimeout(function() { shareButton.innerHTML = "NUEVO..."; shareButton.style.backgroundColor = "red" }, 2000)
+ setTimeout(function() { shareButton.innerHTML = "LINK..."; shareButton.style.backgroundColor = "red" }, 2400)
+ setTimeout(function() { shareButton.innerHTML = "AHORA..."; shareButton.style.backgroundColor = "red" }, 2800)
+ setTimeout(function() { shareButton.innerHTML = "YA!"; shareButton.style.backgroundColor = "red" }, 3200)
+ // REDIRECTION TO NEW URL!
+ setTimeout(function() { window.location.href = trunURL+theVotes }, 3600)
 }
 </script>
 
