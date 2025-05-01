@@ -253,7 +253,8 @@ function clearButton() {
  // RESETTING FUNCTIONS
  initialSetup()
  getValues()
- window.location = "voting.html"
+ // RESETTING THE URL
+ location.replace('voting.html')
 }
 
 // ====================
@@ -650,7 +651,7 @@ function shareLink() {
  setTimeout(function() { shareButton.innerHTML = "AHORA..."; shareButton.style.backgroundColor = "red" }, 2800)
  setTimeout(function() { shareButton.innerHTML = "YA!"; shareButton.style.backgroundColor = "red" }, 3200)
  // REDIRECTION TO NEW URL!
- setTimeout(function() { window.location.href = trunURL+theVotes }, 3600)
+ setTimeout(function() { location.replace(trunURL+theVotes) }, 3600)
 }
 </script>
 
