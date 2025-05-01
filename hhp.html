@@ -7,13 +7,14 @@
 
   <style>
     body { margin: 0; overflow: hidden; background: #a3cef1; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
-    canvas { display: block; margin: auto; boolean willReadFrequently = true; }
+    canvas { display: block; margin: auto; }
     .controls {
       position: absolute;
       width: 100%;
       bottom: 20px;
       pointer-events: none;
     }
+
     .btn {
       width: 200px;
       height: 200px;
@@ -76,9 +77,9 @@ function preload() {
   this.load.image('apple','https://labs.phaser.io/assets/sprites/apple.png');
   this.load.image('chicken','https://uplanianos.github.io/app/sprites/chicken.png');
   this.load.image('books','https://uplanianos.github.io/app/sprites/books.png');
+  this.load.image('beer','https://uplanianos.github.io/app/sprites/beer.png');
   this.load.image('chocolate','https://uplanianos.github.io/app/sprites/chocolate.png');
   this.load.image('weed','https://uplanianos.github.io/app/sprites/weed.png');
-  this.load.image('beer','https://uplanianos.github.io/app/sprites/beer.png');
 
 }
 
@@ -154,7 +155,7 @@ function update() {
 
 function dropItem() {
   const x = Phaser.Math.Between(50, config.width - 50);
-  const types = ['food', 'book', 'pill', 'chocolate', 'beer'];
+  const types = ['apple', 'chicken', 'books', 'beer', 'chocolate', 'weed'];
   const type = Phaser.Utils.Array.GetRandom(types);
 
   const item = items.create(x, 10, type);
@@ -169,12 +170,12 @@ function dropItem() {
 function collectItem(player, item) {
   const type = item.getData('type');
 
-  if (type === 'apple') score += 10;
-  else if (type === 'chicken') score += 20;
+  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10), score += 10;
+  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
+  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
   else if (type === 'books') score += 30;
-  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 25);
-  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 50);
-  else if (type === 'beer') score -= 20;
+  else if (type === 'beer') score -= 30;
+  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 30), score -= 60;
 
   item.destroy();
   scoreText.setText('Puntos: ' + score);
