@@ -68,11 +68,12 @@ function preload() {
     frameWidth: 32, frameHeight: 48
   });
 
-  this.load.image('food', 'https://labs.phaser.io/assets/sprites/apple.png');
-  this.load.image('book', 'sprites/books.png');
-  this.load.image('weed', 'sprites/weed.png');
-  this.load.image('chocolate', 'sprites/chocolate.png');
-  this.load.image('beer', 'sprites/beer.png');
+  this.load.image('apple', 'https://labs.phaser.io/assets/sprites/apple.png');
+  this.load.image('book', 'https://uplanianos.github.io/app/sprites/books.png');
+  this.load.image('meat', 'https://labs.phaser.io/assets/sprites/chicken.png');
+  this.load.image('chocolate', 'https://uplanianos.github.io/app/sprites/chocolate.png');
+  this.load.image('weed', 'https://uplanianos.github.io/app/sprites/weed.png');
+  this.load.image('beer', 'https://uplanianos.github.io/app/sprites/beer.png');
 }
 
 function create() {
@@ -149,18 +150,19 @@ function dropItem() {
   item.setVelocityY(200);
 
   // Scale item to 5% of screen width
-  const scaleFactor = (config.width * 0.08) / item.width; // 0.08 = 8%
+  const scaleFactor = (config.width * 0.09) / item.width; // 0.09 = 9%
   item.setScale(scaleFactor);
 }
 
 function collectItem(player, item) {
   const type = item.getData('type');
 
-  if (type === 'food') score += 10;
-  else if (type === 'book') score += 20;
-  else if (type === 'beer') score -= 10;
+  if (type === 'apple') score += 10;
+  else if (type === 'meat') score += 20;
+  else if (type === 'book') score += 30;
+  else if (type === 'beer') score -= 20;
   else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 25);
-  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 100);
+  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 50);
 
   item.destroy();
   scoreText.setText('Puntos: ' + score);
