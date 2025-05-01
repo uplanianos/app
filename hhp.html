@@ -27,6 +27,22 @@
       touch-action: manipulation;
       position: absolute;
     }
+
+    .pause-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      font-size: 18px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      z-index: 10;
+      cursor: pointer;
+      touch-action: manipulation;
+     }
+
     #leftBtn { left: 10px; bottom: 20px; }
     #rightBtn { right: 10px; bottom: 20px; }
   </style>
@@ -39,6 +55,8 @@
   <button id="leftBtn" class="btn">⬅️</button>
   <button id="rightBtn" class="btn">➡️</button>
 </div>
+
+  <button id="pauseBtn" class="pause-btn">⏸ Pause</button>
 
 <script>
 const config = {
@@ -112,6 +130,7 @@ function create() {
     fill: '#000'
   });
 
+
   // Power bar + label
   speedLabel = this.add.text(16, 80, 'Velocidad', {
     fontSize: '4em',
@@ -119,6 +138,21 @@ function create() {
   });
   powerBarBg = this.add.rectangle(24, 120, 200, 20, 0x888888).setOrigin(0, 0);
   powerBarFill = this.add.rectangle(24, 120, 200, 20, 0x00ff00).setOrigin(0, 0);
+
+  // Pause Button
+  let isPaused = false;
+   const pauseBtn = document.getElementById('pauseBtn');
+   pauseBtn.addEventListener('click', () => {
+    if (!isPaused) {
+      this.scene.pause();
+      pauseBtn.textContent = '▶ Resume';
+    } else {
+      this.scene.resume();
+      pauseBtn.textContent = '⏸ Pause';
+    }
+    isPaused = !isPaused;
+  });
+
 
   this.time.addEvent({
     delay: 1000,
@@ -134,6 +168,8 @@ function create() {
   document.getElementById('leftBtn').addEventListener('touchend', () => moveLeft = false);
   document.getElementById('rightBtn').addEventListener('touchstart', () => moveRight = true);
   document.getElementById('rightBtn').addEventListener('touchend', () => moveRight = false);
+
+
 }
 
 function update() {
@@ -174,12 +210,23 @@ function collectItem(player, item) {
   else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
   else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
   else if (type === 'books') score += 30;
-  else if (type === 'beer') score -= 30;
-  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 30), score -= 60;
+  else if (type === 'beer') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 30), score -= 30;
+  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 60), score -= 60;
 
   item.destroy();
   scoreText.setText('Puntos: ' + score);
+  checkGameOver();
 }
+
+function checkGameOver() {
+  if (score >= 1000) {
+    game.scene.pause(); // Pause the game
+    window.location.href = "index.html"; // Redirect
+  }
+}
+
 </script>
+
+
 </body>
 </html>
