@@ -30,10 +30,10 @@
 
     .pause-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      font-size: 18px;
+      top: 25px;
+      right: 30px;
+      padding: 20px 30px;
+      font-size: 2em;
       background: #333;
       color: #fff;
       border: none;
@@ -56,7 +56,7 @@
   <button id="rightBtn" class="btn">➡️</button>
 </div>
 
-  <button id="pauseBtn" class="pause-btn">⏸ Pause</button>
+  <button id="pauseBtn" class="pause-btn">⏸ Pausa</button>
 
 <script>
 const config = {
@@ -95,6 +95,7 @@ function preload() {
   this.load.image('apple','https://labs.phaser.io/assets/sprites/apple.png');
   this.load.image('chicken','https://uplanianos.github.io/app/sprites/chicken.png');
   this.load.image('books','https://uplanianos.github.io/app/sprites/books.png');
+  this.load.image('study','https://uplanianos.github.io/app/sprites/study.png');
   this.load.image('beer','https://uplanianos.github.io/app/sprites/beer.png');
   this.load.image('chocolate','https://uplanianos.github.io/app/sprites/chocolate.png');
   this.load.image('weed','https://uplanianos.github.io/app/sprites/weed.png');
@@ -125,14 +126,14 @@ function create() {
   cursors = this.input.keyboard.createCursorKeys();
   items = this.physics.add.group();
 
-  scoreText = this.add.text(16, 16, 'Puntos: 0', {
+  scoreText = this.add.text(16, 16, 'Estudio: 0', {
     fontSize: '5em',
     fill: '#000'
   });
 
 
   // Power bar + label
-  speedLabel = this.add.text(16, 80, 'Velocidad', {
+  speedLabel = this.add.text(36, 80, 'Hábitos', {
     fontSize: '4em',
     fill: '#000'
   });
@@ -145,10 +146,10 @@ function create() {
    pauseBtn.addEventListener('click', () => {
     if (!isPaused) {
       this.scene.pause();
-      pauseBtn.textContent = '▶ Resume';
+      pauseBtn.textContent = '▶ Seguir';
     } else {
       this.scene.resume();
-      pauseBtn.textContent = '⏸ Pause';
+      pauseBtn.textContent = '⏸ Pausa';
     }
     isPaused = !isPaused;
   });
@@ -191,7 +192,7 @@ function update() {
 
 function dropItem() {
   const x = Phaser.Math.Between(50, config.width - 50);
-  const types = ['apple', 'chicken', 'books', 'beer', 'chocolate', 'weed'];
+  const types = ['apple', 'chicken', 'books', 'study', 'beer', 'chocolate', 'weed'];
   const type = Phaser.Utils.Array.GetRandom(types);
 
   const item = items.create(x, 10, type);
@@ -206,15 +207,16 @@ function dropItem() {
 function collectItem(player, item) {
   const type = item.getData('type');
 
-  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10), score += 10;
-  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
-  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), score += 20;
+  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10);
+  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20);
+  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20);
   else if (type === 'books') score += 30;
+  else if (type === 'study') score += 30;
   else if (type === 'beer') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 30), score -= 30;
   else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 60), score -= 60;
 
   item.destroy();
-  scoreText.setText('Puntos: ' + score);
+  scoreText.setText('Estudio: ' + score);
   checkGameOver();
 }
 
