@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <title>Hungry Hungry Pupils</title>
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+
   <style>
     body { margin: 0; overflow: hidden; background: #a3cef1; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
-    canvas { display: block; margin: auto; }
+    canvas { display: block; margin: auto; boolean willReadFrequently = true; }
     .controls {
       position: absolute;
       width: 100%;
@@ -14,8 +15,8 @@
       pointer-events: none;
     }
     .btn {
-      width: 120px;
-      height: 120px;
+      width: 200px;
+      height: 200px;
       font-size: 60px;
       background: rgba(0,0,0,0.3);
       color: white;
@@ -28,6 +29,7 @@
     #leftBtn { left: 10px; bottom: -10px; }
     #rightBtn { right: 10px; bottom: -10px; }
   </style>
+
 </head>
 <body>
 
@@ -63,31 +65,36 @@ let powerBarBg, powerBarFill, speedLabel;
 
 const game = new Phaser.Game(config);
 
+
 function preload() {
+
   this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
     frameWidth: 32, frameHeight: 48
   });
 
-  this.load.image('background', 'https://uplanianos.github.io/app/sprites/background.png');
-  this.load.image('apple', 'https://labs.phaser.io/assets/sprites/apple.png');
-  this.load.image('meat', 'https://uplanianos.github.io/app/sprites/chicken.png');
-  this.load.image('books', 'https://uplanianos.github.io/app/sprites/books.png');
-  this.load.image('chocolate', 'https://uplanianos.github.io/app/sprites/chocolate.png');
-  this.load.image('weed', 'https://uplanianos.github.io/app/sprites/weed.png');
-  this.load.image('beer', 'https://uplanianos.github.io/app/sprites/beer.png');
+  this.load.image('background','https://uplanianos.github.io/app/sprites/background.png');
+  this.load.image('apple','https://labs.phaser.io/assets/sprites/apple.png');
+  this.load.image('chicken','https://uplanianos.github.io/app/sprites/chicken.png');
+  this.load.image('books','https://uplanianos.github.io/app/sprites/books.png');
+  this.load.image('chocolate','https://uplanianos.github.io/app/sprites/chocolate.png');
+  this.load.image('weed','https://uplanianos.github.io/app/sprites/weed.png');
+  this.load.image('beer','https://uplanianos.github.io/app/sprites/beer.png');
+
 }
 
 function create() {
   const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
-  bg.setDisplaySize(config.width, config.height); // Stretch to full screen
-  bg.setDepth(-1); // Send background behind everything
+// bg.setDisplaySize(config.width, config.height); // Stretch to full screen
+    if (window.innerWidth < 600) { bg.setDisplaySize(config.width, config.height); }
+    else { bg.setDisplaySize(config.width, config.height) }; // Stretch to full screen
+   bg.setDepth(-1); // Send background behind everything
 
   // Player setup
   player = this.physics.add.sprite(config.width / 2, config.height - 100, 'dude');
   player.setCollideWorldBounds(true);
 
   // 🔽 Add this block to scale the character adaptively
-  const targetWidthPercent = 0.08; // You can set this between 0.05 and 0.10
+  const targetWidthPercent = 0.12; // You can set this between 0.05 and 0.12
   const scale = (config.width * targetWidthPercent) / player.width;
   player.setScale(scale);
 
@@ -100,17 +107,17 @@ function create() {
   items = this.physics.add.group();
 
   scoreText = this.add.text(16, 16, 'Puntos: 0', {
-    fontSize: '32px',
+    fontSize: '5em',
     fill: '#000'
   });
 
   // Power bar + label
-  speedLabel = this.add.text(16, 60, 'Velocidad', {
-    fontSize: '20px',
+  speedLabel = this.add.text(16, 80, 'Velocidad', {
+    fontSize: '4em',
     fill: '#000'
   });
-  powerBarBg = this.add.rectangle(16, 90, 200, 20, 0x888888).setOrigin(0, 0);
-  powerBarFill = this.add.rectangle(16, 90, 200, 20, 0x00ff00).setOrigin(0, 0);
+  powerBarBg = this.add.rectangle(24, 120, 200, 20, 0x888888).setOrigin(0, 0);
+  powerBarFill = this.add.rectangle(24, 120, 200, 20, 0x00ff00).setOrigin(0, 0);
 
   this.time.addEvent({
     delay: 1000,
@@ -163,11 +170,11 @@ function collectItem(player, item) {
   const type = item.getData('type');
 
   if (type === 'apple') score += 10;
-  else if (type === 'meat') score += 20;
-  else if (type === 'book') score += 30;
-  else if (type === 'beer') score -= 20;
+  else if (type === 'chicken') score += 20;
+  else if (type === 'books') score += 30;
   else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 25);
   else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 50);
+  else if (type === 'beer') score -= 20;
 
   item.destroy();
   scoreText.setText('Puntos: ' + score);
