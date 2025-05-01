@@ -70,7 +70,7 @@ function preload() {
 
   this.load.image('food', 'https://labs.phaser.io/assets/sprites/apple.png');
   this.load.image('book', 'https://labs.phaser.io/assets/sprites/book.png');
-  this.load.image('pill', 'sprites/pill.png');
+  this.load.image('weed', 'sprites/weed.png');
   this.load.image('chocolate', 'sprites/chocolate.png');
   this.load.image('beer', 'sprites/beer.png');
 }
@@ -135,7 +135,7 @@ function update() {
 
 function dropItem() {
   const x = Phaser.Math.Between(50, config.width - 50);
-  const types = ['food', 'book', 'pill', 'chocolate', 'beer'];
+  const types = ['food', 'book', 'weed', 'chocolate', 'beer'];
   const type = Phaser.Utils.Array.GetRandom(types);
 
   const item = items.create(x, 10, type);
@@ -148,9 +148,9 @@ function collectItem(player, item) {
 
   if (type === 'food') score += 10;
   else if (type === 'book') score += 20;
-  else if (type === 'pill') score -= 10;
-  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 50);
-  else if (type === 'beer') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 50);
+  else if (type === 'beer') score -= 10;
+  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 25);
+  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 100);
 
   item.destroy();
   scoreText.setText('Score: ' + score);
