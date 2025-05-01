@@ -5,7 +5,7 @@
   <title>Hungry Hungry Pupils</title>
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
   <style>
-    body { margin: 0; overflow: hidden; background: #a3cef1; }
+    body { margin: 0; overflow: hidden; background: #a3cef1; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
     canvas { display: block; margin: auto; }
     .controls {
       position: absolute;
@@ -14,9 +14,9 @@
       pointer-events: none;
     }
     .btn {
-      width: 80px;
-      height: 80px;
-      font-size: 40px;
+      width: 120px;
+      height: 120px;
+      font-size: 60px;
       background: rgba(0,0,0,0.3);
       color: white;
       border: none;
@@ -153,7 +153,7 @@ function collectItem(player, item) {
   else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 100);
 
   item.destroy();
-  scoreText.setText('Score: ' + score);
+  scoreText.setText('Puntos: ' + score);
 }
 </script>
 </body>
