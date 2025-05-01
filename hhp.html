@@ -68,15 +68,20 @@ function preload() {
     frameWidth: 32, frameHeight: 48
   });
 
+  this.load.image('background', 'https://uplanianos.github.io/app/sprites/background.png');
   this.load.image('apple', 'https://labs.phaser.io/assets/sprites/apple.png');
-  this.load.image('book', 'https://uplanianos.github.io/app/sprites/books.png');
-  this.load.image('meat', 'https://labs.phaser.io/assets/sprites/chicken.png');
+  this.load.image('books', 'https://uplanianos.github.io/app/sprites/books.png');
+  this.load.image('meat', 'https://uplanianos.github.io/app/sprites/chicken.png');
   this.load.image('chocolate', 'https://uplanianos.github.io/app/sprites/chocolate.png');
   this.load.image('weed', 'https://uplanianos.github.io/app/sprites/weed.png');
   this.load.image('beer', 'https://uplanianos.github.io/app/sprites/beer.png');
 }
 
 function create() {
+  const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+  bg.setDisplaySize(config.width, config.height); // Stretch to full screen
+  bg.setDepth(-1); // Send background behind everything
+
   // Player setup
   player = this.physics.add.sprite(config.width / 2, config.height - 100, 'dude');
   player.setCollideWorldBounds(true);
@@ -159,7 +164,7 @@ function collectItem(player, item) {
 
   if (type === 'apple') score += 10;
   else if (type === 'meat') score += 20;
-  else if (type === 'book') score += 30;
+  else if (type === 'books') score += 30;
   else if (type === 'beer') score -= 20;
   else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 25);
   else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 50);
