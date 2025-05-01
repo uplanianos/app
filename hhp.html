@@ -69,7 +69,7 @@ function preload() {
   });
 
   this.load.image('food', 'https://labs.phaser.io/assets/sprites/apple.png');
-  this.load.image('book', 'https://labs.phaser.io/assets/sprites/book.png');
+  this.load.image('book', 'sprites/book.png');
   this.load.image('weed', 'sprites/weed.png');
   this.load.image('chocolate', 'sprites/chocolate.png');
   this.load.image('beer', 'sprites/beer.png');
@@ -87,7 +87,7 @@ function create() {
   cursors = this.input.keyboard.createCursorKeys();
   items = this.physics.add.group();
 
-  scoreText = this.add.text(16, 16, 'Score: 0', {
+  scoreText = this.add.text(16, 16, 'Puntos: 0', {
     fontSize: '32px',
     fill: '#000'
   });
@@ -135,12 +135,16 @@ function update() {
 
 function dropItem() {
   const x = Phaser.Math.Between(50, config.width - 50);
-  const types = ['food', 'book', 'weed', 'chocolate', 'beer'];
+  const types = ['food', 'book', 'pill', 'chocolate', 'beer'];
   const type = Phaser.Utils.Array.GetRandom(types);
 
   const item = items.create(x, 10, type);
   item.setData('type', type);
   item.setVelocityY(200);
+
+  // Scale item to 5% of screen width
+  const scaleFactor = (config.width * 0.04) / item.width; // 0.04 = 4%
+  item.setScale(scaleFactor);
 }
 
 function collectItem(player, item) {
