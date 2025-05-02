@@ -13,17 +13,20 @@
 <audio id="soundtrack" class="audios" src="media/classical_8bit_01.mp3" preload="auto" style="display:none">No audio!</audio>
 <audio id="apple" class="audios" src="media/apple.mp3" preload="auto" style="display:none">No audio!</audio>
 <audio id="eat" class="audios" src="media/eat.mp3" preload="auto" style="display:none">No audio!</audio>
-<audio id="chicken" class="audios" src="media/chicken.mp3" preload="auto" style="display:none">No audio!</audio>
 <audio id="success" class="audios" src="media/success.mp3" preload="auto" style="display:none">No audio!</audio>
 <audio id="lose" class="audios" src="media/lose.mp3" preload="auto" style="display:none">No audio!</audio>
 <audio id="youwin" class="audios" src="media/you-win.mp3" preload="auto" style="display:none">No audio!</audio>
 
 
-<div id="youWin" class="main" style="position: absolute; left: 16%; top: 40%; width: 60%; z-index: 1; text-align: center; color: white; border: 3px solid white; padding: 24px; display: none;">
+<div id="youWin" class="main" style="position: absolute; left: 16%; top: 40%; width: 60%; z-index: 1; color: white; text-align: center; border: 4px solid white; padding: 24px; display: none;">
 <br>
 <font style="font-size: 3em; font-weight: bold; font-family: 'SketchRockwell';">Semestre terminado!</font><br>
+Ahora que jugaste, ya puedes dedicar un tiempo a estudiar...<br>
+establece una alarma de 30 a 60 minutos y <b>repasa</b>!
+<br>
 <br>
 <div class="studyStart" onclick="location.href='demo-02.html'">REINICIAR</div>
+<br>
 </div>
 
 
@@ -67,14 +70,14 @@ function preload() {
     frameWidth: 32, frameHeight: 48
   });
 
-  this.load.image('background','https://uplanianos.github.io/app/study/background.jpg');
-  this.load.image('apple','https://uplanianos.github.io/app/study/apple.png');
-  this.load.image('chicken','https://uplanianos.github.io/app/study/chicken.png');
-  this.load.image('books','https://uplanianos.github.io/app/study/books.png');
-  this.load.image('study','https://uplanianos.github.io/app/study/study.png');
-  this.load.image('beer','https://uplanianos.github.io/app/study/beer.png');
-  this.load.image('chocolate','https://uplanianos.github.io/app/study/chocolate.png');
-  this.load.image('weed','https://uplanianos.github.io/app/study/weed.png');
+  this.load.image('background','https://uplanianos.github.io/app/study/sprites/background.jpg');
+  this.load.image('apple','https://uplanianos.github.io/app/study/sprites/apple.png');
+  this.load.image('chicken','https://uplanianos.github.io/app/study/sprites/chicken.png');
+  this.load.image('books','https://uplanianos.github.io/app/study/sprites/books.png');
+  this.load.image('study','https://uplanianos.github.io/app/study/sprites/study.png');
+  this.load.image('beer','https://uplanianos.github.io/app/study/sprites/beer.png');
+  this.load.image('chocolate','https://uplanianos.github.io/app/study/sprites/chocolate.png');
+  this.load.image('weed','https://uplanianos.github.io/app/study/sprites/weed.png');
 }
 
 function create() {
@@ -181,8 +184,8 @@ function collectItem(player, item) {
   const type = item.getData('type');
 
 
-  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10), applePlay();
-  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), chickenPlay();
+  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10), score += 10, applePlay();
+  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), eatPlay();
   else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), eatPlay();
   else if (type === 'books') score += 30, successPlay();
   else if (type === 'study') score += 30, successPlay();
@@ -211,8 +214,8 @@ function checkGameOver() {
 
 
 function soundtrackPlay() {
-leftBtn = document.getElementById("leftBtn")
-rightBtn = document.getElementById("rightBtn")
+const leftBtn = document.getElementById("leftBtn")
+const rightBtn = document.getElementById("rightBtn")
 
 document.addEventListener('keydown', (event) => {
  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -221,9 +224,9 @@ document.addEventListener('keydown', (event) => {
   }
  });
 
-element.addEventListener('touchstart', (event) => {
- soundtrack.play()
- });
+leftBtn.addEventListener("click", function(event) { soundtrack.play() })
+rightBtn.addEventListener("click", function(event) { soundtrack.play() })
+
 } // END OF SOUNDTRACK FUNCTION!
 
 function soundtrackStop() {
@@ -246,19 +249,9 @@ function eatPlay() {
  eat.play();
 }
 
-function chickenPlay() {
- document.getElementById("chicken").muted = false;
- chicken.play();
-}
-
 function successPlay() {
  document.getElementById("success").muted = false;
  success.play();
-}
-
-function drinkPlay() {
- document.getElementById("drink").muted = false;
- drink.play();
 }
 
 function losePlay() {
