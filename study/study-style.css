@@ -1,0 +1,57 @@
+
+/* SCHOOL FONT SETTINGS */
+@font-face { font-family: 'SketchRockwell'; /*name to be used below*/ src: url('../fonts/SketchRockwell.ttf'); /*URL to font*/ }
+
+body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+	background: #a3cef1;
+	background-image: url("background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin-left: 0px; margin-right: 0px;
+	overflow: auto;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+ }
+
+study-crash-style {
+	font-family: 'SketchRockwell'; 
+	background: #a3cef1;
+	background-image: url("study/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin-left: 0px; margin-right: 0px;
+	overflow: auto;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+
+body::-webkit-scrollbar { display: none; }
+
+p	{color: white;}
+h1	{color: white;}
+a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px corflowerblue; }
+a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
+
+.main {
+	margin: auto;
+	background-color: #151B54; /* For browsers that do not support gradients */
+	background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	border: 1px solid navy;
+	float: center;
+	padding: 0px;
+	width: 60%; /* The width is 60%, by default */
+	border-radius: 24px;
+}
+
+div.studyStart { width: 200px; background-color: green; font-size: 14px; text-align: center; margin: auto; padding: 6px; padding-left: 8px; padding-right: 12px; margin-top: 12px; border: 3px solid white; border-radius: 6px; cursor: pointer; }
+div.studyStart:hover {color: yellow; background-color: #FF0000AA; outline: none;}
