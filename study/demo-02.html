@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Study or Crash! - Uplanianos</title>
+  <link rel="icon" href="../media/uplanianos-icon.png">
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+  <link rel="stylesheet" href="study-style.css"></style>
+</head>
+
+<body onload="soundtrackPlay(); checkMobile()" class="game-style">
+
+<audio id="soundtrack" class="audios" src="media/classical_8bit_01.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="apple" class="audios" src="media/apple.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="eat" class="audios" src="media/eat.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="chicken" class="audios" src="media/chicken.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="success" class="audios" src="media/success.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="lose" class="audios" src="media/lose.mp3" preload="auto" style="display:none">No audio!</audio>
+<audio id="youwin" class="audios" src="media/you-win.mp3" preload="auto" style="display:none">No audio!</audio>
+
+
+<div id="youWin" class="main" style="position: absolute; left: 16%; top: 40%; width: 60%; z-index: 1; text-align: center; color: white; border: 3px solid white; padding: 24px; display: none;">
+<br>
+<font style="font-size: 3em; font-weight: bold; font-family: 'SketchRockwell';">Semestre terminado!</font><br>
+<br>
+<div class="studyStart" onclick="location.href='demo-02.html'">REINICIAR</div>
+</div>
+
+
+<!-- Touch Controls -->
+<div class="controls">
+  <button id="leftBtn" class="btn">⬅️</button>
+  <button id="rightBtn" class="btn">➡️</button>
+</div>
+
+<button id="pauseBtn" class="pause-btn">⏸ Pausa</button>
+
+<script type="text/javascript">
+const config = {
+  type: Phaser.AUTO,
+  width: window.innerWidth,
+  height: window.innerHeight,
+  backgroundColor: '#a3cef1',
+  physics: {
+    default: 'arcade',
+    arcade: { gravity: { y: 300 }, debug: false }
+  },
+  scene: { preload, create, update }
+};
+
+let player, cursors, items;
+let score = 0;
+let scoreText;
+let moveLeft = false;
+let moveRight = false;
+let moveSpeed = 300;
+const MAX_SPEED = 600;
+const MIN_SPEED = 100;
+
+let powerBarBg, powerBarFill, speedLabel;
+
+const game = new Phaser.Game(config);
+
+function preload() {
+
+  this.load.spritesheet('dude', 'https://uplanianos.github.io/app/study/dude.png', {
+    frameWidth: 32, frameHeight: 48
+  });
+
+  this.load.image('background','https://uplanianos.github.io/app/study/background.jpg');
+  this.load.image('apple','https://uplanianos.github.io/app/study/apple.png');
+  this.load.image('chicken','https://uplanianos.github.io/app/study/chicken.png');
+  this.load.image('books','https://uplanianos.github.io/app/study/books.png');
+  this.load.image('study','https://uplanianos.github.io/app/study/study.png');
+  this.load.image('beer','https://uplanianos.github.io/app/study/beer.png');
+  this.load.image('chocolate','https://uplanianos.github.io/app/study/chocolate.png');
+  this.load.image('weed','https://uplanianos.github.io/app/study/weed.png');
+}
+
+function create() {
+  const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+
+  bg.setDisplaySize(config.width, config.height); // Stretch to full screen
+  bg.setDepth(-1); // Send background behind everything
+
+  // Player setup
+  player = this.physics.add.sprite(config.width / 2, config.height - 100, 'dude');
+  player.setCollideWorldBounds(true);
+
+  // 🔽 Add this block to scale the character adaptively
+  const targetWidthPercent = 0.12; // You can set this between 0.05 and 0.12
+  const scale = (config.width * targetWidthPercent) / player.width;
+  player.setScale(scale);
+
+  // Animations
+  this.anims.create({ key: 'left', frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }), frameRate: 10, repeat: -1 });
+  this.anims.create({ key: 'turn', frames: [ { key: 'dude', frame: 4 } ], frameRate: 20 });
+  this.anims.create({ key: 'right', frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }), frameRate: 10, repeat: -1 });
+
+  cursors = this.input.keyboard.createCursorKeys();
+  items = this.physics.add.group();
+
+  scoreText = this.add.text(16, 16, 'Estudio: 0', {
+    fontSize: '5em',
+    fill: '#000'
+  });
+
+  // Power bar + label
+  speedLabel = this.add.text(12 , 80, 'Hábitos', {fontSize: '4em', fill: '#000'});
+  powerBarBg = this.add.rectangle(12 , 120, 200, 20, 0x888888).setOrigin(0, 0);
+  powerBarFill = this.add.rectangle(12 , 120, 200, 20, 0x00ff00).setOrigin(0, 0);
+
+
+  this.time.addEvent({
+    delay: 1000,
+    callback: dropItem,
+    callbackScope: this,
+    loop: true
+  });
+
+  // Pause Button
+  let isPaused = false;
+   const pauseBtn = document.getElementById('pauseBtn');
+   pauseBtn.addEventListener('click', () => {
+    if (!isPaused) {
+      this.scene.pause();
+      soundtrackStop();
+      pauseBtn.textContent = '▶ Seguir';
+    } else {
+      this.scene.resume();
+      soundtrackResume();
+      pauseBtn.textContent = '⏸ Pausa';
+    }
+    isPaused = !isPaused;
+  });
+
+
+  this.physics.add.overlap(player, items, collectItem, null, this);
+
+  // Touch control handlers
+  document.getElementById('leftBtn').addEventListener('touchstart', () => moveLeft = true);
+  document.getElementById('leftBtn').addEventListener('touchend', () => moveLeft = false);
+  document.getElementById('rightBtn').addEventListener('touchstart', () => moveRight = true);
+  document.getElementById('rightBtn').addEventListener('touchend', () => moveRight = false);
+
+
+}
+
+function update() {
+  if (cursors.left.isDown || moveLeft) {
+    player.setVelocityX(-moveSpeed);
+    player.anims.play('left', true);
+  } else if (cursors.right.isDown || moveRight) {
+    player.setVelocityX(moveSpeed);
+    player.anims.play('right', true);
+  } else {
+    player.setVelocityX(0);
+    player.anims.play('turn');
+  }
+
+  // Update power bar width
+  const barWidth = 200 * (moveSpeed / MAX_SPEED);
+  powerBarFill.width = Phaser.Math.Clamp(barWidth, 0, 200);
+}
+
+function dropItem() {
+  const x = Phaser.Math.Between(50, config.width - 50);
+  const types = ['apple', 'chicken', 'books', 'study', 'beer', 'chocolate', 'weed'];
+  const type = Phaser.Utils.Array.GetRandom(types);
+
+  const item = items.create(x, 10, type);
+  item.setData('type', type);
+  item.setVelocityY(200);
+
+  // Scale item to 5% of screen width
+  const scaleFactor = (config.width * 0.09) / item.width; // 0.09 = 9%
+  item.setScale(scaleFactor);
+}
+
+function collectItem(player, item) {
+  const type = item.getData('type');
+
+
+  if (type === 'apple') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 10), applePlay();
+  else if (type === 'chicken') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), chickenPlay();
+  else if (type === 'chocolate') moveSpeed = Math.min(MAX_SPEED, moveSpeed + 20), eatPlay();
+  else if (type === 'books') score += 30, successPlay();
+  else if (type === 'study') score += 30, successPlay();
+  else if (type === 'beer') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 30), score -= 30, losePlay();
+  else if (type === 'weed') moveSpeed = Math.max(MIN_SPEED, moveSpeed - 60), score -= 60, losePlay();
+
+  item.destroy();
+  scoreText.setText('Estudio: ' + score);
+  checkGameOver();
+
+}
+
+function checkGameOver() {
+  if (score >= 1000) {
+//    game.scene.pause(); // Pause the game
+    game.destroy(true, false) // Kills the game
+    youwinPlay();
+    document.getElementById("youWin").style.display = "block"; // Showing end message!
+    document.getElementById("leftBtn").style.display = "none"; // Hiding UI elements!
+    document.getElementById("rightBtn").style.display = "none"; // Hiding UI elements!
+    document.getElementById("pauseBtn").style.display = "none"; // Hiding UI elements!
+    setTimeout(function() { location.replace("../index.html") }, 1000 * 30) // Timed redirect (30 seconds)!
+//  window.location.href = "../index.html"; // Redirect
+  }
+}
+
+
+function soundtrackPlay() {
+leftBtn = document.getElementById("leftBtn")
+rightBtn = document.getElementById("rightBtn")
+
+document.addEventListener('keydown', (event) => {
+ if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+  document.getElementById("soundtrack").muted = false;
+  soundtrack.play();
+  }
+ });
+
+element.addEventListener('touchstart', (event) => {
+ soundtrack.play()
+ });
+} // END OF SOUNDTRACK FUNCTION!
+
+function soundtrackStop() {
+ document.getElementById("soundtrack").muted = false;
+ soundtrack.pause();
+}
+
+function soundtrackResume() {
+ document.getElementById("soundtrack").muted = false;
+ soundtrack.play();
+}
+
+function applePlay() {
+ document.getElementById("apple").muted = false;
+ apple.play();
+}
+
+function eatPlay() {
+ document.getElementById("eat").muted = false;
+ eat.play();
+}
+
+function chickenPlay() {
+ document.getElementById("chicken").muted = false;
+ chicken.play();
+}
+
+function successPlay() {
+ document.getElementById("success").muted = false;
+ success.play();
+}
+
+function drinkPlay() {
+ document.getElementById("drink").muted = false;
+ drink.play();
+}
+
+function losePlay() {
+ document.getElementById("lose").muted = false;
+ lose.play();
+}
+
+function youwinPlay() {
+ document.getElementById("youwin").muted = false;
+ youwin.play();
+}
+
+// END OF FULL SCRIPT!!
+</script>
+
+
+<script type="text/javascript">
+function checkMobile() {
+
+// DECLARING ELEMENTS
+leftBtn = document.getElementById('leftBtn')
+leftBtn = document.getElementById('leftBtn')
+
+// CHECKING MOBILE ENVIRONMENT!
+ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+  leftBtn.style.display = "block"
+  rightBtn.style.display = "block"
+ }
+ else {
+  leftBtn.style.display = "none"
+  rightBtn.style.display = "none"
+ }
+}
+</script>
+
+
+</body>
+</html>
