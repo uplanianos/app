@@ -49,20 +49,41 @@ a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
 }
 
 .title {
-  margin: auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'div div div div div div div div div div';
+  gap: 25px;
   width: 95%;
-  padding: 12px;
   background-color: #151B54; /* For browsers that do not support gradients */
+  font-size: 32px; font-weight: bold; color: #FFFFFF;
+  text-align: center; align-content: center;
+  margin: auto;
+  padding-top: 34px;
+  padding-bottom: 34px;
+  padding-left: 8%;
+  padding-right: 8%;
   border: 1px solid white;
   border-radius: 12px;
-}
-
-.uplanianos-h1-glow {
-  font-size: 32px;
-  color: #FFFFFF;
-  text-align: center;
   animation: glow 2s ease-in-out infinite alternate;
 }
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 900px) {
+.title {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'div div div div div'
+    'div div div div div';
+  gap: 0px;
+  width: max-content;
+ }
+div.letters { padding-left: 12px; padding-right: 12px; }
+}
+
 
 @-webkit-keyframes glow {
   from { text-shadow: 0 0 10px #999, 0 0 20px #999, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073; }
