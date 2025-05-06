@@ -14,7 +14,7 @@ p	{color: white;}
 h1	{color: white;}
 a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
 a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
-a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px corflowerblue; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px cornflowerblue; }
 a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
 
 .gradeScaleLinked { color: hotpink; text-decoration: none; cursor: pointer; font-size: smaller; }

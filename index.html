@@ -18,7 +18,22 @@
 <body>
 
 
-<div class="main">
+<div id="developer" class="developer" style="display: none;">
+ <big><b>Uplanianos</b></big> permite a los estudiantes optimizar sus actividades académicas desde confeccionar el horario de clases, revisar información importante como
+ el calendario académico, reglamento del estudiante y escalas de notas.<br>
+ <br>
+ Las distintas herramientas permiten además calcular el promedio de asignaturas integrales y con porcentajes, calcular del porcentaje de pruebas, porcentaje de asistencia,
+ revisar fechas importantes, simular el examen acumulativo especial, entre otras.<br>
+ <br>
+ La innovación fue conceptualizada y desarrollada originalmente el año 2023, actualizando permanentemente desde esa fecha tanto en el presente formato <i>Web</i>, como
+ en su versión <i>Android</i> por su servidor, <b>prof. Juan Edo. Méndez</b>.<br>
+ <br>
+ <b>Contacto:</b><br>
+ juan.mendez@upla.cl<br>
+</div>
+
+
+<div id="mainDiv" class="main" style="display: block;">
     <br>
     <div class="title">
 	<div class="letters" style="color: red;">U</div>
@@ -26,7 +41,7 @@
 	<div class="letters" style="color: blue;">L</div>
 	<div class="letters" style="color: purple;">A</div>
 	<div class="letters" style="color: yellow;">N</div>
-	<div class="letters" style="color: turquoise;">I</div>
+	<div class="letters" style="color: turquoise;" onclick="doThis()">I</div>
 	<div class="letters" style="color: lightgreen;">A</div>
 	<div class="letters" style="color: orange;">N</div>
 	<div class="letters" style="color: lightblue;">O</div>
@@ -207,11 +222,13 @@ var doTheLoop = setInterval(function(){
   if (randomNumber == 4) { div4.style.display = "block"; randomCount++ } else {div4.style.display = "none" }
   if (randomNumber == 5) { div5.style.display = "block"; randomCount++ } else {div5.style.display = "none" }
   if (randomNumber == 6) { div6.style.display = "block"; randomCount++ } else {div6.style.display = "none" }
+
   // STOP THE TICKER AFTER 10 RANDOMIZAIZATIONS (WHEN TICKER N°1 REPEATS)!
-  if (randomNumber == 1 && randomCount >= 10) { clearInterval(doTheLoop)
-  console.log("Cycle complete!") // CHECKS WHEN CYCLE FINISHES!
-  }
- console.log(randomCount, "Ticker N°"+randomNumber) // CHECKS RANDOM NUMBER & REPETITION!
+  if (randomNumber == 1 && randomCount >= 10) { clearInterval(doTheLoop);
+
+  }; // console.log("Cycle complete!") // CHECKS WHEN CYCLE FINISHES!
+
+ // console.log(randomCount, "Ticker N°"+randomNumber) // CHECKS RANDOM NUMBER & REPETITION!
  },1000 * 4 ); // EVERY "X" SECONDS
 }
 
@@ -259,6 +276,27 @@ getDate()
 </script>
 
 
+<script type="text/javascript">
+var clicks = 0
+let mainDiv = document.getElementById("mainDiv")
+let developer = document.getElementById("developer")
+
+function doThis() {
+ clicks++
+ console.log("Developer clicks: "+clicks)
+ if (clicks >= 10) {
+  mainDiv.style.display = "none"
+  developer.style.display = "block"
+  setTimeout('resetMain()', 1000 * 30)
+  clicks = 0;
+ } // End of IF statement!
+}
+
+function resetMain() {
+ mainDiv.style.display = "block"
+ developer.style.display = "none"
+}
+</script>
 
 </body>
 </html>

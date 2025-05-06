@@ -8,6 +8,24 @@ body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
 	user-select: none; /* Standard syntax */
 }
 
+div.developer {
+ position: absolute;
+ left: 1%;
+ right: 1%;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 90%;
+ height: max-content;
+ background-color: blue;
+ color: white;
+ font-size: 3.8vmin;
+ word-wrap: break-word;
+ margin: auto;
+ padding: 20px;
+ border: 4px solid white;
+ border-radius: 12px;
+}
+
 body::-webkit-scrollbar { display: none; }
 
 p	{color: white;}
