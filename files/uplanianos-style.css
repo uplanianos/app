@@ -31,9 +31,9 @@ body::-webkit-scrollbar { display: none; }
 p	{color: white;}
 h1	{color: white;}
 a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
-a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
-a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px corflowerblue; }
-a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px cornflowerblue; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
+a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px purple; }
 
 .counter { position: absolute; left: 6px; bottom: 12px; color: white; font-size: 6px; opacity: 0.2; pointer-events: none; }
 
@@ -277,6 +277,26 @@ div.letters { padding-left: 12px; padding-right: 12px; }
   text-align: center;
   cursor: alias;
 }
+
+div.newBadge {
+ position: relative;
+ display: grid;
+ top: -10px;
+ left: -6px;
+ width: 30px;
+ place-content: center;
+ margin-bottom: -32px;
+ font-family: Tahoma;
+ font-weight: bold;
+ color: #FFFFFF;
+ border: 4px solid cornflowerblue;
+ box-shadow: 3px 3px 6px navy;
+ aspect-ratio: 1;
+ border-radius: 50%;
+ background: linear-gradient(45deg, #FFF, red); /* the gradient coloration */
+ transform: rotate(-25deg);"
+}
+
 
 .slideInfoLeft {position: sticky; bottom: 14px; left: 0px; height: 54px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}
 .slideInfoRight {position: sticky; bottom: 14px; right: 0px; height: 54px; font-size: 26px; color: lightgray; background-color: #FFFFFF33; padding: 6px; border: 1px solid #FFFFFF88; border-radius: 12px;}

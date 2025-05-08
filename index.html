@@ -19,7 +19,7 @@
 
 <div id="developer" class="developer" style="display: none;">
  <big><b>Uplanianos</b></big> permite a los estudiantes optimizar sus actividades académicas desde confeccionar el horario de clases, revisar información importante como
- el calendario académico, reglamento del estudiante y escalas de notas.<br>
+ el calendario académico, reglamento del estudiante y ver escalas de notas.<br>
  <br>
  Las distintas herramientas permiten además calcular el promedio de asignaturas integrales y con porcentajes, calcular del porcentaje de pruebas, porcentaje de asistencia,
  revisar fechas importantes, simular el examen acumulativo especial, entre otras.<br>
@@ -56,7 +56,7 @@
      <a href="avance.html"><div class="purple-iris-bubble"><p>AVANCE<br>CURRICULAR</p></div></a>
      <a href="manual-estudiante.html"><div class="pink-plum-bubble"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
      <a href="notas.html"><div class="pumpkin-bubble"><p>ESCALAS<br>DE NOTAS</p></div></a>
-     <a href="sigueparo.html"><div class="candy-red-bubble" style="width: 140px;"><p>PARO<br>TRACKER</p></div></a>
+     <a href="sigueparo.html"><div class="candy-red-bubble" style="width: 140px;"><div class="newBadge">New!</div><p>PARO<br>TRACKER</p></div></a>
      <button onclick="sideScrollInfo()" onMouseOver="sideScrollInfo()" class="slideInfoRight" id="slideInfoRight">&#8250;</button>
     </div>
 
@@ -66,16 +66,17 @@
      <a href="integrales.html?x=2&g1=0.0&g2=0.0"><div class="pumpkin-bubble"><p>PROMEDIOS<br>INTEGRALES</p></div></a>
      <a href="promedios.html"><div class="pale-blue-bubble"><p>PROMEDIO EN<br>PORCENTAJES</p></div></a>
      <a href="pruebas.html?total=100&puntos=0"><div class="purple-iris-bubble"><p>CÁLCULO<br>DE PRUEBAS</p></div></a>
-     <a href="countdown.html"><div class="candy-red-bubble" style="width: 142px;"><p>CUENTA<br>REGRESIVA</p></div></a>
+     <a href="countdown.html"><div class="candy-red-bubble" style="width: 140px; padding: 4px 0px 4px 0px;"><p>CUENTA<br>REGRESIVA</p></div></a>
      <a href="asistencia.html?tipo=2&clases=12&asiste=0"><div class="small-grass-bubble"><p>SIMULADOR<br>DE ASISTENCIA</p></div></a>
      <a href="examen.html?promedio=3.5&examen=4.0"><div class="pumpkin-bubble"><p>SIMULADOR<br>DE EXAMEN</p></div></a>
      <a href="justify.html"><div class="pale-blue-bubble"><p>JUSTIFICAR<br>INASISTENCIA</p></div></a>
-     <a href="junaeb.html"><div class="pink-plum-bubble"><p>DESCARGA<br>JUNAEB</p></div></a>
+     <a href="junaeb.html"><div class="pink-plum-bubble"><div class="newBadge">New!</div><p>DESCARGA<br>JUNAEB</p></div></a>
      <a href="timebox.html"><div class="pumpkin-bubble"><p>PLANIFICADOR<br>DE ESTUDIO</p></div></a>
-     <a href="estudio.html"><div class="small-grass-bubble"><p>PREGUNTAS<br>DE ESTUDIO</p></div></a>
+     <a href="estudio.html"><div class="small-grass-bubble"><div class="newBadge">New!</div><p>PREGUNTAS<br>DE ESTUDIO</p></div></a>
      <a href="voting.html"><div class="pale-blue-bubble"><p>VOTACIÓN<br>UPLANIANA</p></div></a>
-     <a href="english.html"><div class="purple-iris-bubble"><p>TALLER<br>INGLÉS SELLO</p></div></a>
-     <a href="install.html"><div class="candy-red-bubble" style="width: 142px;"><p>INSTALACIÓN<br>ANDROID</p></div></a>
+     <a href="english.html"><div class="purple-iris-bubble"><div class="newBadge">New!</div><p>TALLER<br>INGLÉS SELLO</p></div></a>
+     <a href="https://uplanianos.github.io/play/" target="play"><div class="pink-plum-bubble"><div class="newBadge" style="padding-left: 4px;">Demo!</div><p>STUDY<br>OR CRASH</p></div></a>
+     <a href="install.html"><div class="candy-red-bubble" style="width: 140px; padding: 4px 0px 4px 0px;"><p>INSTALACIÓN<br>ANDROID</p></div></a>
      <a href="upladisticas.html"><div class="pale-neon-yellow-bubble"><p style="color: #666; font-color: #616D7E;">UPLANIANOS<br>STATS</p></div></a>
     <button onclick="sideScrollTools()" onMouseOver="sideScrollTools()" class="slideToolsRight" id="slideToolsRight">&#8250;</button>
     </div>
@@ -221,13 +222,14 @@ var doTheLoop = setInterval(function(){
   if (randomNumber == 4) { div4.style.display = "block"; randomCount++ } else {div4.style.display = "none" }
   if (randomNumber == 5) { div5.style.display = "block"; randomCount++ } else {div5.style.display = "none" }
   if (randomNumber == 6) { div6.style.display = "block"; randomCount++ } else {div6.style.display = "none" }
+  console.log(randomCount, "Ticker N°"+randomNumber) // CHECKS RANDOM NUMBER & REPETITION!
+ 
+ // STOP THE TICKER AFTER 10 RANDOMIZAIZATIONS (WHEN TICKER N°1 REPEATS)!
+  if (randomNumber == 1 && randomCount >= 10) {
+  clearInterval(doTheLoop)
+  console.log("Cycle complete!")
+  };
 
-  // STOP THE TICKER AFTER 10 RANDOMIZAIZATIONS (WHEN TICKER N°1 REPEATS)!
-  if (randomNumber == 1 && randomCount >= 10) { clearInterval(doTheLoop);
-
-  }; // console.log("Cycle complete!") // CHECKS WHEN CYCLE FINISHES!
-
- // console.log(randomCount, "Ticker N°"+randomNumber) // CHECKS RANDOM NUMBER & REPETITION!
  },1000 * 4 ); // EVERY "X" SECONDS
 }
 
