@@ -77,7 +77,7 @@
      <a href="english.html"><div class="purple-iris-bubble"><div class="newBadge">New!</div><p>TALLER<br>INGLÉS SELLO</p></div></a>
      <a href="https://uplanianos.github.io/play/" target="play"><div class="pink-plum-bubble"><div class="newBadge" style="padding-left: 4px;">Demo!</div><p>STUDY<br>OR CRASH</p></div></a>
      <a href="install.html"><div class="candy-red-bubble" style="width: 140px; padding: 4px 0px 4px 0px;"><p>INSTALACIÓN<br>ANDROID</p></div></a>
-     <a href="upladisticas.html"><div class="pale-neon-yellow-bubble"><p style="color: #666; font-color: #616D7E;">UPLANIANOS<br>STATS</p></div></a>
+     <a href="upladisticas.html"><div class="pumpkin-bubble"><p>UPLANIANOS<br>STATS</p></div></a>
     <button onclick="sideScrollTools()" onMouseOver="sideScrollTools()" class="slideToolsRight" id="slideToolsRight">&#8250;</button>
     </div>
     <br>
@@ -141,8 +141,8 @@ function sideScrollInfo() {
 const slideInfoRight = document.getElementById('slideInfoRight');
 const slideInfoLeft = document.getElementById('slideInfoLeft');
 const infoArea = document.getElementById('infoDiv');
-    slideInfoRight.onclick = function() { infoArea.scrollLeft += 500};
-    slideInfoLeft.onclick = function() { infoArea.scrollLeft -= 500};
+ slideInfoRight.onclick = function() { infoArea.scrollLeft += 412; setTimeout('unfocusButtons()', 1000 * 1.5) }
+ slideInfoLeft.onclick = function() { infoArea.scrollLeft -= 412; setTimeout('unfocusButtons()', 1000 * 1.5) }
 }
 </script>
 
@@ -152,8 +152,15 @@ function sideScrollTools() {
 const slideToolsRight = document.getElementById('slideToolsRight');
 const slideToolsLeft = document.getElementById('slideToolsLeft');
 const toolsArea = document.getElementById('toolsDiv');
-    slideToolsRight.onclick = function() { toolsArea.scrollLeft += 632};
-    slideToolsLeft.onclick = function() { toolsArea.scrollLeft -= 632};
+ slideToolsRight.onclick = function() { toolsArea.scrollLeft += 712; setTimeout('unfocusButtons()', 1000 * 1.5) }
+ slideToolsLeft.onclick = function() { toolsArea.scrollLeft -= 712; setTimeout('unfocusButtons()', 1000 * 1.5) }
+}
+
+function unfocusButtons() {
+ document.getElementById('slideInfoLeft').blur()
+ document.getElementById('slideInfoRight').blur()
+ document.getElementById('slideToolsLeft').blur()
+ document.getElementById('slideToolsRight').blur()
 }
 </script>
 
@@ -188,11 +195,11 @@ counter.value++; // console.log(counter.value)
 
 function demoSlide1() {
 document.getElementById('slideToolsRight').focus(); 
-document.getElementById('toolsDiv').scrollLeft += 632;}
+document.getElementById('toolsDiv').scrollLeft += 650;}
 
 function demoSlide2() {
 document.getElementById('slideToolsLeft').focus();
-document.getElementById('toolsDiv').scrollLeft -= 632;}
+document.getElementById('toolsDiv').scrollLeft -= 650;}
 
 function demoSlide3() {
 document.getElementById('slideToolsLeft').blur();}

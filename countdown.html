@@ -63,9 +63,14 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 </script> 
 
 
-<div class="grid-item" style="font-size: 14px; margin: 12px; margin-left: 5%; margin-right: 5%; padding: 12px; background-color: #A7C7E7; /* Pastel Blue */">
+<div style="font-size: 16px; color: white; margin-left: 5%; margin-right: 5%; padding: 6px; ">
 <b>Primer Semestre, 2025:</b>
 </div>
+
+	<div id="progressBarDiv" style="display: flex; width: 90%; background-color: lightgray; margin-left: auto; margin-right: auto; border: 2px solid white; border-radius: 6px;">
+	 <div id="progressBar" style="width: 0%; height: 40px; background-color: #A7C7E7 /* Pastel Blue */; text-align: center; align-content: center; border-radius: 6px;">&nbsp;0%</div>
+	</div>
+	<br>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
 	  <br><font class="checkpoint">📅 Inicio de clases (17 de Marzo):</font><br>
@@ -196,6 +201,54 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 
 <br><br>
 </div>
+
+
+
+
+<script type="text/javascript">
+function getProgress() {
+// ELEMENT TO MODIFY (WITH CSS STYLE)!
+var progressBar = document.getElementById("progressBar")
+
+// FUNCTIONALITY PARAMETERS!
+var duration = 1000 * 3; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// GETTING NUMBER OF DAYS!
+var oneDay = 1000 * 60 * 60 * 24
+var firstClass = new Date("March 17, 2025 00:00:00").getTime()
+var finalClass = new Date("July 18, 2025 00:00:00").getTime()
+// SETTING UP VARIABLES!
+var isNow = new Date()
+var currentDays = isNow - firstClass
+var semesterDays = finalClass - firstClass
+// CONVERTING!
+var termProgress = Math.floor(currentDays / oneDay); // console.log("Progress",termProgress)
+var termDuration = Math.floor(semesterDays / oneDay); // console.log("Duration",termDuration)
+
+distance = Math.abs(termProgress * 100 / termDuration); // console.log(distance.toFixed(2))
+
+if (distance == 0) {$("#progressBar").css("width", "0%") }
+if (distance > 0) {
+ var doTheLoop = setInterval(function(){
+  i++;
+  $("#progressBar").css("width", i + "%")
+  $("#progressBar").text(i + "%")
+  if (i >= distance) { clearInterval(doTheLoop) }
+  if (i >= 100) { clearInterval(doTheLoop)  }
+  if (i >= 0 && i < 25) { progressBar.style.backgroundColor = "#FF3131"; progressBar.style.transition = "background-color 0.2s" }
+  if (i >= 25 && i < 50) { progressBar.style.backgroundColor = "#CC99C9"; progressBar.style.transition = "background-color 0.6s" }
+  if (i >= 50 && i < 85) { progressBar.style.backgroundColor = "#0096FF"; progressBar.style.transition = "background-color 0.6s" }
+  if (i >= 85 && i <= 100) { progressBar.style.backgroundColor = "#00A36C"; progressBar.style.transition = "background-color 0.6s" }
+  }, percent)
+ }
+}
+</script>
+
+
+
+
 
 
 <script type="text/javascript">
@@ -459,8 +512,9 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
-runCountdown();
-knowledgeProgress();
+runCountdown()
+knowledgeProgress()
+getProgress()
 }
 </script>
 
