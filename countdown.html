@@ -217,8 +217,11 @@ var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var oneDay = 1000 * 60 * 60 * 24
-var firstClass = new Date("March 17, 2025 00:00:00").getTime()
-var finalClass = new Date("July 18, 2025 00:00:00").getTime()
+var firstClass = new Date("2025-03-17T00:00:00").getTime()
+var finalClass = new Date("2025-07-19T00:00:00").getTime() // Midnight, next day!
+// OLD DATE FORMAT - DEPRACATED!
+// var firstClass = new Date("March 17, 2025 00:00:00").getTime()
+// var finalClass = new Date("July 19, 2025 00:00:00").getTime()
 // SETTING UP VARIABLES!
 var isNow = new Date()
 var currentDays = isNow - firstClass
@@ -276,7 +279,9 @@ thisTime = "yellow"
 function startClass() {
 classStart = document.querySelectorAll("p.startClassNumbers");
 // START WORKING
-var countDownDate = new Date("March 17, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-03-17T08:00:00").getTime();
+// var countDownDate = new Date("March 17, 2025 08:00:00").getTime(); // OLD DATE FORMAT!
+
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();
@@ -309,7 +314,8 @@ var doTheLoop = setInterval(function(){
 function firstTest() {
 firstTest = document.querySelectorAll("p.firstTestNumbers");
 // START WORKING
-var countDownDate = new Date("April 28, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-04-28T08:00:00").getTime();
+// var countDownDate = new Date("April 28, 2025 08:00:00").getTime(); // OLD DATE FORMA!
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();
@@ -343,7 +349,8 @@ var doTheLoop = setInterval(function(){
 function secondTest() {
 secondTest = document.querySelectorAll("p.secondTestNumbers");
 // START WORKING
-var countDownDate = new Date("May 26, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-05-26T08:00:00").getTime();
+// var countDownDate = new Date("May 26, 2025 08:00:00").getTime() // OLD DATE FORMAT!
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();
@@ -377,7 +384,8 @@ var doTheLoop = setInterval(function(){
 function thirdTest() {
 thirdTest = document.querySelectorAll("p.thirdTestNumbers");
 // START WORKING
-var countDownDate = new Date("June 30, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-06-30T08:00:00").getTime();
+// var countDownDate = new Date("June 30, 2025 08:00:00").getTime() // OLD DATE FORMAT
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();
@@ -411,7 +419,8 @@ var doTheLoop = setInterval(function(){
 function specialExam() {
 specialExam = document.querySelectorAll("p.specialExamNumbers");
 // START WORKING
-var countDownDate = new Date("July 14, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-07-14T08:00:00").getTime();
+// var countDownDate = new Date("July 14, 2025 08:00:00").getTime() // OLD DATE FORMAT!
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();
@@ -445,7 +454,8 @@ var doTheLoop = setInterval(function(){
 function lastDay() {
 lastDay = document.querySelectorAll("p.lastDayNumbers");
 // START WORKING
-var countDownDate = new Date("July 18, 2025 08:00:00").getTime();
+var countDownDate = new Date("2025-07-18T08:00:00").getTime();
+// var countDownDate = new Date("July 18, 2025 08:00:00").getTime() // OLD DATE FORMAT!
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
   var now = new Date().getTime();

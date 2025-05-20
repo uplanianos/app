@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html lang="en-US">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <link rel="stylesheet" href="files/panel-style.css">
+ <title>Uplanianos - Panel de Profe</title>
+</head>
+
+
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+refreshTime()
+checkBoxes()
+drawAttendance()
+termProgress()
+yearProgress()
+}
+</script>
+
+
+
+<body>
+<div class="top">
+
+<div style="position: absolute; top: 10px; left: 10px;">
+ <a href="index.html"><button class="topButtons" title="Volver a página inicial!" value="Volver a página inicial!">&nbsp;&larrhk;&nbsp;</button></a>
+ </div>
+
+<div id="title" class="title">PANEL DE PROFE!</div>
+
+<div id="questButton" style="position: absolute; top: 10px; right: 52px; display: none;">
+ <button class="topButtons" value="Preguntas?" title="Abrir preguntas!" onclick="slideQuestUp(); hideRandomizer()">&nbsp;❓&nbsp;</button></a>
+ </div>
+<div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
+ <button class="topButtons" value="Borrar?" title="Borrar preguntas!" onclick="doDelete()">🗑️</button></a>
+ </div>
+
+<div style="position: absolute; top: 10px; right: 12px;">
+ <button id="fullscreen" class="topButtons" title="Pantalla completa!" onclick="activate(document.documentElement);">🚀</button>
+ <button id="minimize" class="topButtons" title="Minimizar pantalla!" style="display: none;" onclick="deactivate()">❌</button>
+ </div>
+</div>
+
+<div class="bottom">
+📅 <span id="bottomTime">12/12/0000 - ⏰ 00:00:00 ?</span>
+</div>
+
+
+<div id="main-flex" class="main-flex">
+
+  <!-- ATTENDANCE CHECK DIV -->
+ <div style="background-color: white; margin: 6px; padding: 6px; border: 2px solid white; border-radius: 12px">
+ <div style="display: flex; height: 20px; align-items: center; background-color: green; margin: -6px; border-radius: 12px 12px 0 0; padding: 6px;"><b>Cartola asistencia:</b></div>
+  <div style="margin-left: 92%; margin-top: -28px; cursor: pointer;" onclick="clearRoll()">🗑️</div>
+  <div class="attendanceWrapper" style="display: flex; margin: 6px -6px -6px; border-radius: 0px 0px 6px 6px;">
+   <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
+	<b>Revisión:</b><br>
+	<input type="checkbox" id="checkMon" onchange="checkBoxes()">Lunes<br>
+	<input type="checkbox" id="checkTue" onchange="checkBoxes()">Martes<br>
+	<input type="checkbox" id="checkWed" onchange="checkBoxes()">Miércoles<br>
+	<input type="checkbox" id="checkThu" onchange="checkBoxes()">Jueves<br>
+	<input type="checkbox" id="checkFri" onchange="checkBoxes()">Viernes<br>
+	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isTue" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isWed" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
+   </div>
+   <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
+	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
+	Progreso: <span id="rollCall">0%</span>
+   </div>
+  </div>
+ </div>
+ <!-- END OF ATTENDANCE CHECK DIV -->
+
+
+ <!-- WEEK PLANNER DIV -->
+ <div style="background-color: white; margin: 6px; padding: 6px; border: 2px solid white; border-radius: 12px">
+  <div style="display: flex; height: 20px; align-items: center; background-color: #CC0000; margin: -6px; border-radius: 12px 12px 0 0; padding: 6px;"><b>Programación Semanal:</b></div>
+  <div style="margin-left: 92%; margin-top: -28px; cursor: pointer;" onclick="clearPlanner()">🗑️</div>
+  <div class="plannerWrapper">
+	<div>Lunes:	<textarea id="planMon" class="plannerDays" placeholder="Actividades del lunes."></textarea></div>
+	<div>Martes:	<textarea id="planTue" class="plannerDays" placeholder="Actividades del martes."></textarea></div>
+	<div>Miércoles:	<textarea id="planWed" class="plannerDays" placeholder="Actividades del miércoles."></textarea></div>
+	<div>Jueves:	<textarea id="planThu" class="plannerDays" placeholder="Actividades del jueves."></textarea></div>
+	<div>Viernes:	<textarea id="planFri" class="plannerDays" placeholder="Actividades del viernes."></textarea></div>
+  </div>
+ </div>
+ <!-- END OF WEEK PLANNER DIV -->
+
+
+ <!-- SEMESTER PROGRESS DIV -->
+ <div style="background-color: cornflowerblue; margin: 6px; padding: 6px; border: 2px solid white; border-radius: 12px">
+  <b>Progreso semestral:</b>
+  <div class="semesterWrapper" style="background-color: white; margin: 6px -6px -6px; border-radius: 0px 0px 6px 6px;">
+	<!-- SEMESTER PROGRESS BAR-->
+	 <div id="semesterBar" style="width: 0%; height: 40px; background-color: #A7C7E7 /* Pastel Blue */; color: #333; text-align: center; align-content: center; border-radius: 0 0 12px 12px;">
+	&nbsp;0%
+	</div>
+  </div>
+ </div>
+ <!-- END OF SEMESTER PROGRESS DIV -->
+
+
+ <!-- YEAR PROGRESS DIV -->
+ <div style="background-color: cornflowerblue; margin: 6px; padding: 6px; border: 2px solid white; border-radius: 12px">
+  <b>Progreso anual:</b>
+  <div class="semesterWrapper" style="background-color: white; margin: 6px -6px -6px; border-radius: 0px 0px 6px 6px;">
+	<!-- SEMESTER PROGRESS BAR-->
+	 <div id="yearBar" style="width: 0%; height: 40px; background-color: #A7C7E7 /* Pastel Blue */; color: #333; text-align: center; align-content: center; border-radius: 0 0 12px 12px;">
+	&nbsp;0%
+	</div>
+  </div>
+ </div>
+ <!-- END OF YEAR PROGRESS DIV -->
+
+
+ <!-- DRINKS DIV -->
+ <div style="background-color: white; margin: 6px; padding: 6px; border: 2px solid white; border-radius: 12px">
+  <div style="display: flex; height: 20px; align-items: center; background-color: #008888; margin: -6px; border-radius: 12px 12px 0 0; padding: 6px;"><b>Cafecito / Tecito:</b></div>
+  <br>
+  🚧🚧🚧🚧🚧🚧<br>
+ <br>
+ </div>
+ <!-- END OF DRINKS DIV -->
+
+
+<!-- END OF MAIN FLEX -->
+</div>
+
+
+</body>
+
+
+
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript">
+// CHECK ATTENDANCE!
+isMon = document.getElementById("isMon")
+isTue = document.getElementById("isTue")
+isWed = document.getElementById("isWed")
+isThu = document.getElementById("isThu")
+isFri = document.getElementById("isFri")
+checkMon = document.getElementById("checkMon")
+checkTue = document.getElementById("checkTue")
+checkWed = document.getElementById("checkWed")
+checkThu = document.getElementById("checkThu")
+checkFri = document.getElementById("checkFri")
+
+// PROGRESS VALUES
+var monVal = 0
+var tueVal = 0
+var wedVal = 0
+var thuVal = 0
+var friVal = 0
+var rollProgress = 0
+var rollPending = 100
+
+function checkBoxes() {
+if (isMon.value == 1) {checkMon.checked = true}
+if (isTue.value == 1) {checkTue.checked = true}
+if (isWed.value == 1) {checkWed.checked = true}
+if (isThu.value == 1) {checkThu.checked = true}
+if (isFri.value == 1) {checkFri.checked = true}
+if (checkMon.checked === true) {isMon.value = 1; monVal = 20 }
+if (checkTue.checked === true) {isTue.value = 1; tueVal = 20 }
+if (checkWed.checked === true) {isWed.value = 1; wedVal = 20 }
+if (checkThu.checked === true) {isThu.value = 1; thuVal = 20 }
+if (checkFri.checked === true) {isFri.value = 1; friVal = 20 }
+
+rollProgress = monVal + tueVal + wedVal + thuVal + friVal
+rollPending = 100 - rollProgress
+totalPercent = rollPending + rollProgress
+
+document.getElementById("rollCall").innerText = rollProgress+"%"
+drawAttendance()
+
+// CHECKING VALUES
+// console.log(rollProgress, rollPending,totalPercent)
+
+}
+
+// CLEAR ATTENDANCE!
+function clearRoll() {
+isMon.value = 0; checkMon.checked = false; monVal = 0
+isTue.value = 0; checkTue.checked = false; tueVal = 0
+isWed.value = 0; checkWed.checked = false; wedVal = 0
+isThu.value = 0; checkThu.checked = false; thuVal = 0
+isFri.value = 0; checkFri.checked = false; friVal = 0
+checkBoxes()
+drawAttendance()
+}
+
+
+
+// CLEAR PLANNER!
+function clearPlanner() {
+document.getElementById("planMon").value = ""
+document.getElementById("planTue").value = ""
+document.getElementById("planWed").value = ""
+document.getElementById("planThu").value = ""
+document.getElementById("planFri").value = ""
+}
+
+
+// ATTENDANCE PROGRESS PIE CHART!
+const canvas = document.getElementById('rollCanvas');
+const ctx = canvas.getContext('2d');
+
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const radius = 100;
+
+// Function to draw the attendance!
+function drawAttendance() {
+
+const grayPercent = rollPending
+const greenPercent = rollProgress
+
+// Ensure total percentage doesn't exceed 100%
+// var totalPercent = Math.round(grayPercent + greenPercent)
+// if (totalPercent = Infinity) { totalPercent = 100.000 } // DRAWS INITIAL BORDER!
+// if (totalPercent !== 100) { return }
+
+const grayEnd = (grayPercent / 100) * 2 * Math.PI
+const greenEnd = grayEnd + (greenPercent / 100) * 2 * Math.PI
+
+// Clear previous circle
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+// Draw the blue arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, 0, grayEnd);
+ctx.closePath();
+ctx.fillStyle = 'lightgray';
+ctx.fill();
+
+// Draw the red arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, grayEnd, greenEnd);
+ctx.closePath();
+ctx.fillStyle = '#00EE00';
+ctx.fill();
+
+// BORDER
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+ctx.strokeStyle = '#00EE00';
+ctx.stroke();
+
+}
+
+
+// PROGRESS GLOBAL VARIABLES
+var oneDay = 1000 * 60 * 60 * 24
+var isNow = new Date()
+
+// SEMESTER PROGRESS FUNCTION
+function termProgress() {
+// ELEMENT TO MODIFY (WITH CSS STYLE)!
+var semesterBar = document.getElementById("semesterBar")
+
+// FUNCTIONALITY PARAMETERS!
+var duration = 1000 * 2; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// GETTING NUMBER OF DAYS!
+var firstClass = new Date("2025-03-17T00:00:00").getTime()
+var finalClass = new Date("2025-07-19T00:00:00").getTime() // Midnight, next day!
+
+// SETTING UP VARIABLES!
+var currentDays = isNow - firstClass
+var semesterDays = finalClass - firstClass
+
+// CONVERTING!
+var termProgress = Math.floor(currentDays / oneDay)
+var termDuration = Math.floor(semesterDays / oneDay)
+
+distance = Math.abs(termProgress * 100 / termDuration)
+
+if (distance == 0) {$("#semesterBar").css("width", "0%") }
+if (distance > 0) {
+ var doTheLoop = setInterval(function(){
+  i++;
+  $("#semesterBar").css("width", i + "%")
+  $("#semesterBar").text(i + "%")
+  if (i >= distance) { clearInterval(doTheLoop) }
+  if (i >= 100) { clearInterval(doTheLoop)  }
+  if (i >= 0 && i < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
+  if (i >= 20 && i < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 40 && i < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 60 && i <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 80 && i <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
+  }, percent)
+ }
+}
+
+
+// SEMESTER PROGRESS FUNCTION
+function yearProgress() {
+// ELEMENT TO MODIFY (WITH CSS STYLE)!
+var yearBar = document.getElementById("yearBar")
+
+// FUNCTIONALITY PARAMETERS!
+var duration = 1000 * 2; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var iYear = 0; // Animation starts from Zero!
+
+// GETTING NUMBER OF DAYS!
+var firstDay = new Date("2025-01-01T00:00:00").getTime()
+var lastDay = new Date("2026-01-01T00:00:00").getTime() // Midnight, next day!
+
+// SETTING UP VARIABLES!
+var currentDays = isNow - firstDay
+var semesterDays = firstDay - lastDay
+
+// CONVERTING!
+var termProgress = Math.floor(currentDays / oneDay)
+var termDuration = Math.floor(semesterDays / oneDay)
+
+distanceYear = Math.abs(termProgress * 100 / termDuration)
+
+if (distanceYear == 0) {$("#yearBar").css("width", "0%") }
+if (distanceYear > 0) {
+ var doTheLoop = setInterval(function(){
+  iYear++;
+  $("#yearBar").css("width", iYear + "%")
+  $("#yearBar").text(iYear + "%")
+  if (iYear >= distanceYear) { clearInterval(doTheLoop) }
+  if (iYear >= 100) { clearInterval(doTheLoop)  }
+  if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
+  if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 40 && iYear < 60) { yearBar.style.backgroundColor = "#FFFF0066"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
+  }, percent)
+ }
+}
+</script>
+
+
+
+<script type="text/javascript">
+// ENTER FULL SCREEN
+function activate(ele) { if (ele.requestFullscreen) {
+  ele.requestFullscreen();
+  document.getElementById('fullscreen').style.display = 'none';
+  document.getElementById('minimize').style.display = 'inline';
+  }
+}
+
+
+// EXIT FULL SCREEN
+function deactivate() { if (document.exitFullscreen) {
+ document.exitFullscreen();
+ document.getElementById('fullscreen').style.display = 'none';
+ document.getElementById('fullscreen').style.display = 'inline';
+ document.getElementById('minimize').style.display = 'none';
+ }
+}
+
+
+function refreshTime() {
+const bottomTime = document.getElementById("bottomTime")
+// const dateString = new Date().toDateString() // Date Format
+// const dateString = new Date().toString() // Full String!
+const dateString = new Date().toLocaleString()
+const formattedString = dateString.replace(", ", " - ⏰ ")
+bottomTime.textContent = formattedString
+}
+setInterval(refreshTime, 1000)
+
+</script>
+
+
+
+</html>
