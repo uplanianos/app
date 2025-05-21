@@ -309,7 +309,7 @@ var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var firstClass = new Date("2025-03-17T00:00:00").getTime()
-var finalClass = new Date("2025-07-19T00:00:00").getTime() // Midnight, next day!
+var finalClass = new Date("2025-07-18T23:59:59").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstClass
@@ -350,8 +350,8 @@ var percent = duration / 100; // 1 percent of duration!
 var iYear = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
-var firstDay = new Date("2025-01-01T00:00:00").getTime()
-var lastDay = new Date("2026-01-01T00:00:00").getTime() // Midnight, next day!
+var firstDay =	new Date("2025-01-01T00:00:00").getTime()
+var lastDay =	new Date("2025-12-31T23:59:59").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstDay
