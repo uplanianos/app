@@ -150,6 +150,8 @@ body::-webkit-scrollbar { display: none; }
  width: 60px;
  height: 60px;
  font-size: 42px;
+ text-align: center;
+ align-items: center;
  border: 3px solid black;
  border-radius: 12px;
  cursor: pointer;
