@@ -45,7 +45,7 @@ body::-webkit-scrollbar { display: none; }
 }
 
 .topButtons {
- font-size: min(14px, 2.6vw);
+ font-size: min(14px, 4vw);
  border: 2px solid darkgray;
  border-radius: 5px 5px;
  cursor: pointer;
@@ -54,15 +54,14 @@ body::-webkit-scrollbar { display: none; }
 .topButtons:hover { background-color: #CFE0E8; } /* Grayish Blue: #CFE0E8; */
 .topButtons:active { background-color: lightblue; }
 
-
 .title {
  text-align: center;
  text-shadow: 2px 2px 5px gray;
  font-size: min(1.2em, 4.5vmin);
  font-weight: bold;
  margin-top: 12px;
+ margin-right: 5%;
 }
-
 
 .main-flex {
  display: grid;
@@ -79,6 +78,53 @@ body::-webkit-scrollbar { display: none; }
  color: white;
  margin: 50px 6px;
  padding: 6px;
+}
+
+.widgetDivs {
+ background-color: white;
+ margin: 6px;
+ padding: 6px;
+ border: 2px solid white;
+ border-radius: 12px
+}
+
+.widgetTitle { 
+ display: flex;
+ height: 20px;
+ align-items: center;
+ margin: -6px;
+ border-radius: 12px 12px 0 0;
+ padding: 6px;
+}
+
+.trashIcon {
+ margin-left: 92%;
+ margin-top: -26px;
+ cursor: pointer;
+}
+
+.trashIcon:hover { text-shadow: 1px 1px 18px white; }
+
+.progressWrapper {
+ background-color: white;
+ margin: 6px -6px -6px;
+ border-radius: 0px 0px 6px 6px;
+}
+
+.progressBar {
+ width: 0%;
+ height: 40px;
+ background-color: #A7C7E7 /* Pastel Blue */;
+ color: #333;
+ text-align: center;
+ align-content: center;
+ border-radius: 0 0 12px 12px;
+}
+
+.doubleColumnWrapper {
+ display: flex;
+ margin: 6px -6px -6px;
+ border-radius: 0px 0px 6px 6px;
 }
 
 .rollCanvas { display: flex; width: 132px; height: 132px; margin-top: 1%; margin-left: auto; margin-right: auto; }
@@ -98,6 +144,35 @@ body::-webkit-scrollbar { display: none; }
 
 .plannerDays {width: 96%; height: 130px; resize: none; }
 
+.coffeeButton {
+ background-color: lightgreen;
+ margin: auto;
+ width: 60px;
+ height: 60px;
+ font-size: 42px;
+ border: 3px solid black;
+ border-radius: 12px;
+ cursor: pointer;
+ user-select:
+ none; outline: 0;
+}
+
+.coffeeButton:hover { background-color: red; }
+
+.coffeeCups {
+ position: absolute;
+ margin-top: 20px;
+ margin-left: 32px;
+ width: 64px;
+ background-color: transparent;
+ font-size: 54px; color: red;
+ font-weight: bold;
+ text-align: center;
+ padding: 20px;
+ text-shadow: 1px 1px 6px white;
+ border: 0px;
+}
+
 .bottom {
  position: fixed;
  left: 0px;
@@ -112,7 +187,6 @@ body::-webkit-scrollbar { display: none; }
  border: 2px solid #FFFFFF88;
  border-style: solid hidden hidden hidden; /* top right bottom left */
 }
-
 
 
 /* Use a media query to add a break point at 800px: */
