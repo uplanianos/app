@@ -147,16 +147,15 @@ body::-webkit-scrollbar { display: none; }
 .coffeeButton {
  background-color: lightgreen;
  margin: auto;
- width: 60px;
- height: 60px;
+ width: 64px;
+ height: 64px;
  font-size: 42px;
- text-align: center;
- align-items: center;
+ padding: 6px;
  border: 3px solid black;
  border-radius: 12px;
  cursor: pointer;
- user-select:
- none; outline: 0;
+ user-select: none;
+ outline: 0;
 }
 
 .coffeeButton:hover { background-color: red; }
