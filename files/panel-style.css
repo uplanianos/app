@@ -187,15 +187,16 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 }
 
 .toolsDiv {
- margin-top: 12px;
- 
- padding: 10px;
+ margin: 10px;
+ padding: 10px 0 0 0;
 }
 
 .toolsDiv::-webkit-scrollbar { display: none; }
 
 .sliderDiv {
- display: inline-block;
+ display: flex;
+ align-items: bottom;
+ gap: 6px;
  width: 200px;
 }
 
