@@ -6,7 +6,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/panel-style.css">
- <title>Uplanianos - Panel de Profe</title>
+ <title>Uplanianos - Panel de Profes</title>
 </head>
 
 
@@ -54,6 +54,7 @@ drawAttendance()
 termProgress()
 yearProgress()
 coffeeTime()
+makeToolsMove()
 }
 </script>
 
@@ -66,11 +67,8 @@ coffeeTime()
  <a href="index.html"><button class="topButtons" title="Volver a página inicial!" value="Volver a página inicial!">&nbsp;&larrhk;&nbsp;</button></a>
  </div>
 
-<div id="title" class="title">PANEL DE PROFE!</div>
+<div id="title" class="title">PANEL DE PROFES!</div>
 
-<div id="questButton" style="position: absolute; top: 10px; right: 52px; display: none;">
- <button class="topButtons" value="Preguntas?" title="Abrir preguntas!" onclick="slideQuestUp(); hideRandomizer()">&nbsp;❓&nbsp;</button></a>
- </div>
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
  <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee()">🗑️</button></a>
  </div>
@@ -182,8 +180,9 @@ coffeeTime()
  <!-- TOOLS DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b></div>
-    <div class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch;">
-	<div class="sliderDiv">
+    <div id="toolsDiv" class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
+	<div id="sliderDiv" class="sliderDiv">
+
 	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
 	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
 	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
@@ -501,6 +500,22 @@ function clearCoffee() {
  howManyCups = 0
  coffeeCups.value = "0"
  energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 5%, white 10%)'
+}
+
+
+function makeToolsMove() {
+let isIntersected = false;
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    let count = 0;
+    if (entry.intersectionRatio > 0 && !isIntersected) {
+      isIntersected = true;
+	setTimeout(function() { document.getElementById("toolsDiv").scrollLeft += 20 }, 1000 * 1 )
+    }
+  });
+});
+
+observer.observe(document.querySelector('.toolsDiv'))
 }
 
 </script>
