@@ -151,7 +151,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  padding: 12px 24px 6px 12px;
 }
 
-.plannerDays {width: 96%; height: 130px; resize: none; }
+.plannerDays {width: 92%; height: 120px; resize: none; padding: 6px;}
 
 .coffeeButton {
  display: grid;
@@ -188,7 +188,8 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 .toolsDiv {
  margin-top: 12px;
- padding: 6px;
+ 
+ padding: 10px;
 }
 
 .toolsDiv::-webkit-scrollbar { display: none; }
@@ -245,7 +246,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .helpSpan {
  display: inline-block;
  width: 120px;
- background-color: #FF000066;
+ background-color: #CC000033;
  border: 1px solid lightgray;
  border-radius: 12px;
  text-align: center;
@@ -253,9 +254,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  cursor: pointer;
 }
 
-.sliderIcon {
- font-size: 60px;
-}
+.sliderIcon { font-size: 60px; }
 
 .bottom {
  position: fixed;
