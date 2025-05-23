@@ -32,6 +32,12 @@ body::-webkit-scrollbar { display: none; }
 ::-webkit-scrollbar-track { background: #4EA5FF; border: 1px solid gray; }
 ::-webkit-scrollbar-thumb { background: #FEFAE0; border: 1px solid gray; }
 ::-webkit-scrollbar-thumb:hover { background: #FEFAE0; border: 1px solid gray; }
+body::-webkit-scrollbar { display: none; }
+
+a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px #00008866; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px cornflowerblue; }
+a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; text-shadow: 1px 1px 12px pink; }
 
 .top {
  background-color: #FEFAE0;
@@ -99,8 +105,11 @@ body::-webkit-scrollbar { display: none; }
 
 .trashIcon {
  margin-left: 92%;
- margin-top: -26px;
+ margin-top: -30px;
+ font-size: 20px;
  cursor: pointer;
+ user-select: none;
+ outline: 0;
 }
 
 .trashIcon:hover { text-shadow: 1px 1px 18px white; }
@@ -175,6 +184,77 @@ body::-webkit-scrollbar { display: none; }
  padding: 20px;
  text-shadow: 1px 1px 6px white;
  border: 0px;
+}
+
+.toolsDiv {
+ margin-top: 12px;
+ padding: 6px;
+}
+
+.toolsDiv::-webkit-scrollbar { display: none; }
+
+.sliderDiv {
+ display: inline-block;
+ width: 200px;
+}
+
+.toolSpan {
+ display: inline-block;
+ width: 120px;
+ background-color: #0000FF33;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.tidySpan {
+ display: inline-block;
+ width: 120px;
+ background-color: #50C87866;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.linkSpan {
+ display: inline-block;
+ width: 120px;
+ background-color: #CF9FFF88;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.uplaSpan {
+ display: inline-block;
+ width: 120px;
+ background-color: #C4B45466;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.helpSpan {
+ display: inline-block;
+ width: 120px;
+ background-color: #FF000066;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.sliderIcon {
+ font-size: 60px;
 }
 
 .bottom {

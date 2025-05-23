@@ -119,8 +119,8 @@ coffeeTime()
  <div class="widgetDivs">
  <div class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
   <div class="trashIcon" onclick="clearRoll()">🗑️</div>
-  <div class="doubleColumnWrapper">
-   <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
+   <div class="doubleColumnWrapper">
+    <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
 	<b>Revisión:</b><br>
 	<input type="checkbox" id="checkMon" onchange="checkBoxes()">Lunes<br>
 	<input type="checkbox" id="checkTue" onchange="checkBoxes()">Martes<br>
@@ -132,12 +132,12 @@ coffeeTime()
 	<input type="number" id="isWed" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
-   </div>
-   <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
+    </div>
+    <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
 	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
 	Progreso: <span id="rollCall">0%</span>
-   </div>
-  </div>
+    </div>
+  </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
  <!-- END OF ATTENDANCE CHECK DIV -->
 
@@ -145,13 +145,13 @@ coffeeTime()
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000;"><b>Programación Semanal:</b></div>
   <div class="trashIcon" onclick="clearPlanner()">🗑️</div>
-  <div class="plannerWrapper">
+   <div class="plannerWrapper">
 	<div>Lunes:	<textarea id="planMon" class="plannerDays" placeholder="Actividades del lunes."></textarea></div>
 	<div>Martes:	<textarea id="planTue" class="plannerDays" placeholder="Actividades del martes."></textarea></div>
 	<div>Miércoles:	<textarea id="planWed" class="plannerDays" placeholder="Actividades del miércoles."></textarea></div>
 	<div>Jueves:	<textarea id="planThu" class="plannerDays" placeholder="Actividades del jueves."></textarea></div>
 	<div>Viernes:	<textarea id="planFri" class="plannerDays" placeholder="Actividades del viernes."></textarea></div>
-  </div>
+   </div><!-- END OF PLANNER WRAPPER -->
  </div>
  <!-- END OF WEEK PLANNER DIV -->
 
@@ -164,19 +164,67 @@ coffeeTime()
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
   <div class="trashIcon" onclick="clearCoffee()">🗑️</div>
-  <div class="doubleColumnWrapper" style="margin-top: 12px;">
+   <div class="doubleColumnWrapper" style="margin-top: 12px;">
 	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
 	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
 	 </div>
 	<div style="width: 65%;">
 	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, brown 0%, orange 0%, white 0%)">
-	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" value="0">
+	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
 	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
 	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="media/coffee-meter.png">
 	 </div>
 	</div>
+  </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
  <!-- END OF DRINKS DIV -->
+
+ <!-- TOOLS DIV -->
+ <div class="widgetDivs">
+  <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b></div>
+    <div class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch;">
+	<div class="sliderDiv">
+	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
+	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
+	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
+
+	 <a href="https://eaulaeva2.upla.cl/my/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🌎</font><br>E-Aula<br>Institucional</span></a>
+	 <a href="https://acceso.upla.cl/sinte/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🗃️</font><br>Portal<br>Sinte</span></a>
+
+	 <a href="integrales.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
+	 <a href="promedios.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
+	 <a href="pruebas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
+	 <a href="notas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
+	 <a href="examen.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
+	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
+	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
+	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
+
+	 <a href="https://classroom.google.com/" target="classroom"><span class="linkSpan"><font class="sliderIcon">🏫</font><br>Google<br>Classroom</span></a>
+	 <a href="https://drive.google.com/" target="drive"><span class="linkSpan"><font class="sliderIcon">🗂️</font><br>Google<br>Drive</span></a>
+	 <a href="https://meet.google.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">📹</font><br>Google<br>Meet</span></a>
+	 <a href="https://classroomscreen.com/app/" target="screen"><span class="linkSpan"><font class="sliderIcon">🖥️</font><br>Pizarra<br>en Línea</span></a>
+
+	 <a href="https://chatgpt.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">🤖</font><br>Chat<br>GPT</span></a>
+
+	 <a href="https://create.kahoot.it/my-library/" target="quiz"><span class="linkSpan"><font class="sliderIcon">🕹️</font><br>Kahoot<br>(web)</span></a>
+	 <a href="https://nearpod.com/library/" target="quiz"><span class="linkSpan"><font class="sliderIcon">👩‍💻</font><br>Nearpod<br>(web)</span></a>
+	 <a href="https://wordwall.net/about/template/quiz" target="quiz"><span class="linkSpan"><font class="sliderIcon">🧩</font><br>Wordwall<br>(web)</span></a>
+	 <a href="https://quizizz.com/" target="quiz"><span class="linkSpan"><font class="sliderIcon">🧠</font><br>Quizziz<br>(web)</span></a>
+	 <a href="https://quizlet.com/" target="quiz"><span class="linkSpan"><font class="sliderIcon">🧠</font><br>Quizlet<br>(web)</span></a>
+
+	 <a href="https://dictation.io/speech" target="audio"><span class="linkSpan"><font class="sliderIcon">🎙️</font><br>Dictado<br>en Línea</span></a>
+	 <a href="https://vocaroo.com/" target="audio"><span class="linkSpan"><font class="sliderIcon">💿</font><br>Grabadora<br>de Audio</span></a>
+
+	 <a href="https://maestra.ai/tools/web-captioner" target="tools"><span class="linkSpan"><font class="sliderIcon">🗨️</font><br>Subtítulos<br>(Maestra)</span></a>
+	 <a href="https://zipcaptions.app/" target="tools"><span class="linkSpan"><font class="sliderIcon">💬</font><br>Subtítulos<br>(ZipCaptions)</span></a>
+
+	 <a href="https://medicina.uc.cl/categoria_publicacion/manuales/" target="help"><span class="helpSpan"><font class="sliderIcon">🆘</font><br>Manuales<br>Emergencia</span></a>
+	</div><!-- END OF SLIDER DIV -->
+    </div><!-- END OF TOOLS DIV -->
+ </div><!-- END OF WIDGET DIV -->
+ <!-- END OF WEEK PLANNER DIV -->
+
 
 
 <!-- END OF MAIN FLEX -->
@@ -202,13 +250,14 @@ checkThu = document.getElementById("checkThu")
 checkFri = document.getElementById("checkFri")
 
 // PROGRESS VALUES
-var monVal = 0
-var tueVal = 0
-var wedVal = 0
-var thuVal = 0
-var friVal = 0
+var valMon = 0
+var valTue = 0
+var valWed = 0
+var valThu = 0
+var valFri = 0
 var rollProgress = 0
 var rollPending = 100
+
 
 function checkBoxes() {
 if (isMon.value == 1) {checkMon.checked = true}
@@ -216,13 +265,13 @@ if (isTue.value == 1) {checkTue.checked = true}
 if (isWed.value == 1) {checkWed.checked = true}
 if (isThu.value == 1) {checkThu.checked = true}
 if (isFri.value == 1) {checkFri.checked = true}
-if (checkMon.checked === true) {isMon.value = 1; monVal = 20 }
-if (checkTue.checked === true) {isTue.value = 1; tueVal = 20 }
-if (checkWed.checked === true) {isWed.value = 1; wedVal = 20 }
-if (checkThu.checked === true) {isThu.value = 1; thuVal = 20 }
-if (checkFri.checked === true) {isFri.value = 1; friVal = 20 }
+if (checkMon.checked === true) {isMon.value = 1; valMon = 20 }
+if (checkTue.checked === true) {isTue.value = 1; valTue = 20 }
+if (checkWed.checked === true) {isWed.value = 1; valWed = 20 }
+if (checkThu.checked === true) {isThu.value = 1; valThu = 20 }
+if (checkFri.checked === true) {isFri.value = 1; valFri = 20 }
 
-rollProgress = monVal + tueVal + wedVal + thuVal + friVal
+rollProgress = valMon + valTue + valWed + valThu + valFri
 rollPending = 100 - rollProgress
 totalPercent = rollPending + rollProgress
 
@@ -231,8 +280,9 @@ drawAttendance()
 
 // CHECKING VALUES
 // console.log(rollProgress, rollPending,totalPercent)
-
 }
+
+
 
 // CLEAR ATTENDANCE!
 function clearRoll() {
