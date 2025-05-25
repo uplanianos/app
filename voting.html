@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -62,8 +61,6 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
 </script> 
 
-<div class="desarrollo" align="center" style="display: none;"><b>EN DESARROLLO!</b></div>
-<br>
 
 <div class="grid-item-slider" style="padding: 12px;">
 
@@ -150,7 +147,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 </div>	<!- End of "Votes Result" Div ->
 
-<div id="shareButton" class="voteShareButton" style="display: none;" onclick="shareLink()">COMPARTIR</div>
+<div id="shareButton" class="voteShareButton" style="display: none;" onclick="shareLink()">¿COMPARTIR?</div>
 
 <br>
 
@@ -572,6 +569,7 @@ var counts4 = document.getElementById('counts4')
 var motion5 = document.getElementById('motion5')
 var counts5 = document.getElementById('counts5')
 
+
 function getLinkValues() {
 if (urlAmount >= 2 && urlAmount <= 5) {howMany.value = urlAmount; initialSetup() }
 if (url1Motion !== null) {motion1.value = url1Motion; initialSetup() }
@@ -591,6 +589,22 @@ if (url5Amount !== null) {counts5.value = url5Amount; initialSetup() }
 
 }
 
+
+// ====================
+/*
+// CHECKING FOR EMPTY SPACES IN LINK...
+// ENEDED UP USING ONLY 1 LINE BELOW!
+function checkSpaces() {
+if (input.value.includes(' ')) {
+ console.log("Input has blank space!\nReplacing empty spaces!")
+ input.value = input.value.replaceAll(' ', '%20');
+ console.log(input.value)
+ }
+}
+*/
+// ====================
+
+
 function shareLink() {
  var shareButton = document.getElementById("shareButton")
  var thisURL = "https://uplanianos.github.io/app/voting.html++++++"
@@ -599,57 +613,57 @@ function shareLink() {
  if (howMany.value == 2) {
 	theVotes =
 	"?cv=" + howMany.value +
-	"&m1=" + motion1.value +
+	"&m1=" + motion1.value.replaceAll(' ', '%20') +
 	"&v1=" + counts1.value +
-	"&m2=" + motion2.value +
+	"&m2=" + motion2.value.replaceAll(' ', '%20') +
 	"&v2=" + counts2.value;
  }
  if (howMany.value == 3) {
 	theVotes =
 	"?cv=" + howMany.value +
-	"&m1=" + motion1.value +
+	"&m1=" + motion1.value.replaceAll(' ', '%20') +
 	"&v1=" + counts1.value +
-	"&m2=" + motion2.value +
+	"&m2=" + motion2.value.replaceAll(' ', '%20') +
 	"&v2=" + counts2.value +
-	"&m3=" + motion3.value +
+	"&m3=" + motion3.value.replaceAll(' ', '%20') +
 	"&v3=" + counts3.value;
  }
  if (howMany.value == 4) {
 	theVotes =
 	"?cv=" + howMany.value +
-	"&m1=" + motion1.value +
+	"&m1=" + motion1.value.replaceAll(' ', '%20') +
 	"&v1=" + counts1.value +
-	"&m2=" + motion2.value +
+	"&m2=" + motion2.value.replaceAll(' ', '%20') +
 	"&v2=" + counts2.value +
-	"&m3=" + motion3.value +
+	"&m3=" + motion3.value.replaceAll(' ', '%20') +
 	"&v3=" + counts3.value +
-	"&m4=" + motion4.value +
+	"&m4=" + motion4.value.replaceAll(' ', '%20') +
 	"&v4=" + counts4.value;
  }
  if (howMany.value == 5) {
 	theVotes =
 	"?cv=" + howMany.value +
-	"&m1=" + motion1.value +
+	"&m1=" + motion1.value.replaceAll(' ', '%20') +
 	"&v1=" + counts1.value +
-	"&m2=" + motion2.value +
+	"&m2=" + motion2.value.replaceAll(' ', '%20') +
 	"&v2=" + counts2.value +
-	"&m3=" + motion3.value +
+	"&m3=" + motion3.value.replaceAll(' ', '%20') +
 	"&v3=" + counts3.value +
-	"&m4=" + motion4.value +
+	"&m4=" + motion4.value.replaceAll(' ', '%20') +
 	"&v4=" + counts4.value +
-	"&m5=" + motion5.value +
+	"&m5=" + motion5.value.replaceAll(' ', '%20') +
 	"&v5=" + counts5.value;
  }
  // COPYING GENERATED LINK!
  navigator.clipboard.writeText(trunURL+theVotes)
  // UPDATING BUTTON
- shareButton.innerHTML = "COPIADO!"
- shareButton.style.backgroundColor = "blue"
+ shareButton.innerHTML = "COPIANDO 🗳️ !"
+ shareButton.style.backgroundColor = "green"
  // UPDATING LINK DYNAMIC WARNING!
- setTimeout(function() { shareButton.innerHTML = "NUEVO..."; shareButton.style.backgroundColor = "red" }, 2500)
- setTimeout(function() { shareButton.innerHTML = "LINK..." }, 3000)
- setTimeout(function() { shareButton.innerHTML = "AHORA..." }, 3500)
- setTimeout(function() { shareButton.innerHTML = "YA!"; shareButton.style.color = "yellow"; shareButton.style.fontWeight = "bold" }, 4000)
+ setTimeout(function() { shareButton.innerHTML = "ABRIENDO..."; shareButton.style.backgroundColor = "red" }, 2500)
+ setTimeout(function() { shareButton.innerHTML = "NUEVO..." }, 3000)
+ setTimeout(function() { shareButton.innerHTML = "LINK..." }, 3500)
+ setTimeout(function() { shareButton.innerHTML = "AHORA YA!"; shareButton.style.color = "yellow"; shareButton.style.fontWeight = "bold" }, 4000)
  // REDIRECTION TO NEW URL!
  setTimeout(function() { location.replace(trunURL+theVotes) }, 4500)
 }

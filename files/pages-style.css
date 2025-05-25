@@ -1049,9 +1049,6 @@ div.clearJunaeb { position: relative; top: -14px; text-align: right; margin-righ
 /* VOTE FLEX GRID */
 /* VOTE FLEX GRID */
 
-@font-face { font-family: 'Pricedown'; /*name to be used below*/ src: url('../fonts/Pricedown.otf'); /*URL to font*/ }
-div.desarrollo { position: relative; font-family: 'Pricedown'; color: darkred; text-align: center; font-size: 32px;}
-
 .grid-voting {
   display: grid;
   grid-template-columns: auto auto 200px 12% 16%;
@@ -1072,17 +1069,27 @@ div.desarrollo { position: relative; font-family: 'Pricedown'; color: darkred; t
 
 input.voteMotion {
  height: 40px; width: 42%;
- text-align: center; font-size: 12px; font-family: 'CashRegister'; letter-spacing: 0.2em;
- background-color: orange; color: white;
- border: 3px solid white; border-radius: 6px;
+ font-family: monospace;
  text-transform: capitalize;
+ font-weight: bold;
+ font-size: 14px;
+ letter-spacing: 0.2em;
+ text-align: center;
+ background-color: orange;
+ color: white;
+ border: 3px solid white;
+ border-radius: 6px;
  margin: 1px;
  cursor: text;
 }
 
 input.votesCount {
  height: 40px; width: 15%;
- text-align: center; font-size: 12px; font-family: 'CashRegister';
+ font-family: monospace;
+ text-transform: capitalize;
+ font-weight: bold;
+ font-size: 14px;
+ text-align: center;
  background-color: orange; color: white;
  border: 3px solid white; border-radius: 6px;
  margin: 1px; padding: 0px; padding-left: 3px;
@@ -1158,7 +1165,7 @@ div.voteSummary {
  #myCanvas { width: 90%; height: 95%; margin-left: auto; margin-right: auto; padding-left: 3px; }
 }
 
-div.voteShareButton { width: 200px; background-color: green; font-size: 14px; text-align: center; margin: auto; padding: 6px; padding-left: 8px; padding-right: 12px; margin-top: 12px; border: 3px solid white; border-radius: 6px; cursor: pointer; }
+div.voteShareButton { width: 200px; height: 36px; background-color: cornflowerblue; font-size: 14px; text-align: center; margin: auto; padding: 6px; padding-left: 8px; padding-right: 12px; margin-top: 12px; border: 3px solid white; border-radius: 6px; cursor: pointer; }
 
 /* END VOTE FLEX GRID */
 /* END VOTE FLEX GRID */
