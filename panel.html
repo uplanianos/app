@@ -48,13 +48,13 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
-refreshTime()
-checkBoxes()
-drawAttendance()
 termProgress()
 yearProgress()
+checkBoxes()
+drawAttendance()
 coffeeTime()
-makeToolsMove()
+toolsDivMemory()
+refreshTime()
 }
 </script>
 
@@ -70,7 +70,7 @@ makeToolsMove()
 <div id="title" class="title">PANEL DE PROFES!</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee()">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1950'">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -183,21 +183,23 @@ makeToolsMove()
     <div id="toolsDiv" class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
 	<div id="sliderDiv" class="sliderDiv">
 
-	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
-	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
-	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
-	 <a href="countdown.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏱️</font><br>Recuento<br>Evaluaciones</span></a>
-	 <a href="sigueparo.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🛑</font><br>Paro<br>Tracker</span></a>
-	 <a href="estudio.html" target="promedios"><span class="toolSpan"><img src="panel/question.png" height="78px"><br>Preguntas<br>de Estudio</span></a>
+	<input type="number" id="slidePosition" style="display: none;" value="1950">
 
-	 <a href="integrales.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
-	 <a href="promedios.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
-	 <a href="pruebas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
-	 <a href="notas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
-	 <a href="examen.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
-	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
-	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
 	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
+	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
+	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
+	 <a href="examen.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
+	 <a href="notas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
+	 <a href="pruebas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
+	 <a href="promedios.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
+	 <a href="integrales.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
+
+	 <a href="estudio.html" target="promedios"><span class="toolSpan"><img src="panel/question.png" height="78px"><br>Preguntas<br>de Estudio</span></a>
+	 <a href="sigueparo.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🛑</font><br>Paro<br>Tracker</span></a>
+	 <a href="countdown.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏱️</font><br>Recuento<br>Evaluaciones</span></a>
+	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
+	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
+	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
 
 	 <a href="https://eaulaeva2.upla.cl/my/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🌎</font><br>E-Aula<br>Institucional</span></a>
 	 <a href="https://acceso.upla.cl/sinte/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🗃️</font><br>Portal<br>Sinte</span></a>
@@ -503,6 +505,31 @@ function clearCoffee() {
 }
 
 
+function toolsDivMemory() {
+toolsDiv.scrollLeft = slidePosition.value
+}
+
+
+// REFRESH TIME
+function refreshTime() {
+const bottomTime = document.getElementById("bottomTime")
+// const dateString = new Date().toDateString() // Date Format
+// const dateString = new Date().toString() // Full String!
+const dateString = new Date().toLocaleString()
+const formattedString = dateString.replace(", ", " - ⏰ ")
+bottomTime.textContent = formattedString
+
+// UPDATING "TOOLS DIV MEMORY" EVERY SECOND!
+slidePosition.value = Math.round(toolsDiv.scrollLeft)
+
+}
+setInterval(refreshTime, 1000)
+
+
+/*
+// ==================================================
+// ORIGINAL SCRIPT FOR "TOOLS DIV" - NOT USED ANYMORE
+// ==================================================
 function makeToolsMove() {
 let isIntersected = false;
 const observer = new IntersectionObserver((entries, observer) => {
@@ -514,9 +541,12 @@ const observer = new IntersectionObserver((entries, observer) => {
     }
   });
 });
-
 observer.observe(document.querySelector('.toolsDiv'))
 }
+// ==================================================
+// ORIGINAL SCRIPT FOR "TOOLS DIV" - NOT USED ANYMORE
+// ==================================================
+*/
 
 </script>
 
@@ -531,7 +561,6 @@ function activate(ele) { if (ele.requestFullscreen) {
   }
 }
 
-
 // EXIT FULL SCREEN
 function deactivate() { if (document.exitFullscreen) {
  document.exitFullscreen();
@@ -540,19 +569,6 @@ function deactivate() { if (document.exitFullscreen) {
  document.getElementById('minimize').style.display = 'none';
  }
 }
-
-
-function refreshTime() {
-const bottomTime = document.getElementById("bottomTime")
-// const dateString = new Date().toDateString() // Date Format
-// const dateString = new Date().toString() // Full String!
-const dateString = new Date().toLocaleString()
-const formattedString = dateString.replace(", ", " - ⏰ ")
-bottomTime.textContent = formattedString
-}
-setInterval(refreshTime, 1000)
-
-
 </script>
 
 
