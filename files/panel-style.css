@@ -191,6 +191,14 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  padding: 10px 0 0 0;
 }
 
+.toolsDivArrows {
+ background-color: gray;
+ font-weight: bold;
+ padding: 2px 14px 4px 14px;
+ border-radius: 12px;
+ cursor: pointer;
+}
+
 .toolsDiv::-webkit-scrollbar { display: none; }
 
 .sliderDiv {
@@ -315,3 +323,5 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  border-radius: 0px 0px 6px 6px;
  padding: 12px 24px 6px 12px;
 }
+
+.toolsDivArrows { display: none; }

@@ -179,7 +179,12 @@ refreshTime()
 
  <!-- TOOLS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b></div>
+  <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b>
+
+	<span id="slideLeft" class="toolsDivArrows" style="margin-left: 20%;" onclick="moveSliderRight()"> < </span>
+	<span id="slideRight" class="toolsDivArrows" style="margin-left: 01%;" onclick="moveSliderLeft()"> > </span>
+  </div>
+
     <div id="toolsDiv" class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
 	<div id="sliderDiv" class="sliderDiv">
 
@@ -293,11 +298,11 @@ drawAttendance()
 
 // CLEAR ATTENDANCE!
 function clearRoll() {
-isMon.value = 0; checkMon.checked = false; monVal = 0
-isTue.value = 0; checkTue.checked = false; tueVal = 0
-isWed.value = 0; checkWed.checked = false; wedVal = 0
-isThu.value = 0; checkThu.checked = false; thuVal = 0
-isFri.value = 0; checkFri.checked = false; friVal = 0
+isMon.value = 0; checkMon.checked = false; valMon = 0
+isTue.value = 0; checkTue.checked = false; valTue = 0
+isWed.value = 0; checkWed.checked = false; valWed = 0
+isThu.value = 0; checkThu.checked = false; valThu = 0
+isFri.value = 0; checkFri.checked = false; valFri = 0
 checkBoxes()
 drawAttendance()
 }
@@ -505,12 +510,15 @@ function clearCoffee() {
 }
 
 
-function toolsDivMemory() {
-toolsDiv.scrollLeft = slidePosition.value
-}
+// "TOOLS DIV" MOVING FUNCTIONS
+function toolsDivMemory() { toolsDiv.scrollLeft = slidePosition.value }
+function moveSliderLeft() { toolsDiv.scrollLeft += 500 }
+function moveSliderRight() { toolsDiv.scrollLeft -= 500 }
 
 
-// REFRESH TIME
+// ==================================================
+// REFRESH TIME & SLIDER POSITION FUNCTION
+// ==================================================
 function refreshTime() {
 const bottomTime = document.getElementById("bottomTime")
 // const dateString = new Date().toDateString() // Date Format
@@ -524,6 +532,9 @@ slidePosition.value = Math.round(toolsDiv.scrollLeft)
 
 }
 setInterval(refreshTime, 1000)
+
+// END OF "// REFRESH TIME & SLIDER POSITION" FUNCTION
+// ==================================================
 
 
 /*
