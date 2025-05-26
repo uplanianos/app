@@ -69,6 +69,19 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  margin-right: 5%;
 }
 
+.deletedAlert {
+ position: absolute;
+ display: grid;
+ top: 50%; transform: translateY(-50%);
+ left: 50%; transform: translateX(-50%);
+ width: 150px; height: 50px;
+ text-align: center; align-items: center;
+ background-color: #FF0000aa; color: yellow;
+ font-weight: bold;
+ border: 3px solid white;
+ border-radius: 18px;
+}
+
 .main-flex {
  display: grid;
  grid-template-columns: 30% auto;
@@ -191,13 +204,18 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  padding: 10px 0 0 0;
 }
 
-.toolsDivArrows {
- background-color: gray;
- font-weight: bold;
- padding: 2px 14px 4px 14px;
- border-radius: 12px;
- cursor: pointer;
+.toolsDivArrows { position: absolute; right: 4%; }
+
+.toolArrow {
+ background-color: cornflowerblue;
+ color: #FFFFFF66;
+ font-size: 14px;
+ padding: 2px 6px 2px 6px;
+ border: 2px solid black;
+ cursor: pointer; 
 }
+
+.toolArrow:hover { font-weight: bold; color: white; }
 
 .toolsDiv::-webkit-scrollbar { display: none; }
 

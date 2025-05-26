@@ -70,7 +70,7 @@ refreshTime()
 <div id="title" class="title">PANEL DE PROFES!</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1815'">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee(); deletedAlert(); toolsDiv.scrollLeft='1815'">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -83,6 +83,8 @@ refreshTime()
 📅 <span id="bottomTime">12/12/0000 - ⏰ 00:00:00 ?</span>
 </div>
 
+
+<div id="deletedAlert" class="deletedAlert" style="visibility: hidden;">BORRADO!</div>
 
 
 <div id="main-flex" class="main-flex">
@@ -116,7 +118,7 @@ refreshTime()
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
  <div class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
-  <div class="trashIcon" onclick="clearRoll()">🗑️</div>
+  <div class="trashIcon" onclick="clearRoll(); deletedAlert()">🗑️</div>
    <div class="doubleColumnWrapper">
     <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
 	<b>Revisión:</b><br>
@@ -142,7 +144,7 @@ refreshTime()
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000;"><b>Programación Semanal:</b></div>
-  <div class="trashIcon" onclick="clearPlanner()">🗑️</div>
+  <div class="trashIcon" onclick="clearPlanner(); deletedAlert()">🗑️</div>
    <div class="plannerWrapper">
 	<div>Lunes:	<textarea id="planMon" class="plannerDays" placeholder="Actividades del lunes."></textarea></div>
 	<div>Martes:	<textarea id="planTue" class="plannerDays" placeholder="Actividades del martes."></textarea></div>
@@ -161,13 +163,13 @@ refreshTime()
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div class="trashIcon" onclick="clearCoffee()">🗑️</div>
+  <div class="trashIcon" onclick="clearCoffee(); deletedAlert()">🗑️</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
 	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
 	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
 	 </div>
 	<div style="width: 65%;">
-	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 0%, orange 0%, white 0%)">
+	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%)">
 	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
 	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
 	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
@@ -180,9 +182,10 @@ refreshTime()
  <!-- TOOLS DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b>
-
-	<span id="slideLeft" class="toolsDivArrows" style="margin-left: 20%;" onclick="moveSliderRight()"> < </span>
-	<span id="slideRight" class="toolsDivArrows" style="margin-left: 01%;" onclick="moveSliderLeft()"> > </span>
+	<div class="toolsDivArrows">
+	<span id="slideLeft" class="toolArrow" onclick="moveSliderRight()">🢀</span>
+	<span id="slideRight" class="toolArrow" onclick="moveSliderLeft()">🢂</span>
+	</div>
   </div>
 
     <div id="toolsDiv" class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
@@ -295,7 +298,6 @@ drawAttendance()
 }
 
 
-
 // CLEAR ATTENDANCE!
 function clearRoll() {
 isMon.value = 0; checkMon.checked = false; valMon = 0
@@ -306,7 +308,6 @@ isFri.value = 0; checkFri.checked = false; valFri = 0
 checkBoxes()
 drawAttendance()
 }
-
 
 
 // CLEAR PLANNER!
@@ -365,8 +366,8 @@ ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
 ctx.strokeStyle = '#00EE00';
 ctx.stroke();
-
 }
+// END OF ATTENDANCE FUNCTION!
 
 
 // PROGRESS GLOBAL VARIABLES
@@ -455,6 +456,8 @@ if (distanceYear > 0) {
   }, percent)
  }
 }
+// END OF "SEMESTER PROGRESS" FUNCTION!
+// ==================================================
 
 
 // COFFEE + MORE ENERGY FUNCTION!
@@ -481,32 +484,35 @@ coffeeCups = document.getElementById("coffeeCups")
 halfLife = currentTime - coffeeTime.value
 // console.log(currentTime,coffeeTime.value,halfLife); // There are 60,000 milliseconds in one minute.
 
-if (halfLife > 0)	 { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)' }
-if (halfLife > 60000*05) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 84%, white 86%)' }
-if (halfLife > 60000*10) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 80%, white 82%)' }
-if (halfLife > 60000*15) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 74%, white 76%)' }
-if (halfLife > 60000*20) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 70%, white 72%)' }
-if (halfLife > 60000*25) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 64%, white 66%)' }
-if (halfLife > 60000*30) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 60%, white 62%)' }
-if (halfLife > 60000*35) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 54%, white 56%)' }
-if (halfLife > 60000*40) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 50%, white 52%)' }
-if (halfLife > 60000*45) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 44%, white 46%)' }
-if (halfLife > 60000*50) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 40%, white 42%)' }
-if (halfLife > 60000*55) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 34%, white 36%)' }
-if (halfLife > 60000*60) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 30%, white 32%)' }
-if (halfLife > 60000*65) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 24%, white 26%)' }
-if (halfLife > 60000*70) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 20%, white 22%)' }
-if (halfLife > 60000*75) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 14%, white 16%)' }
-if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
-if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 04%, white 06%)' }
-if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
+if (coffeeCups.value > 0) {
+ if (halfLife > 0)	 { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)' }
+ if (halfLife > 60000*05) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 84%, white 86%)' }
+ if (halfLife > 60000*10) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 80%, white 82%)' }
+ if (halfLife > 60000*15) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 74%, white 76%)' }
+ if (halfLife > 60000*20) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 70%, white 72%)' }
+ if (halfLife > 60000*25) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 64%, white 66%)' }
+ if (halfLife > 60000*30) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 60%, white 62%)' }
+ if (halfLife > 60000*35) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 54%, white 56%)' }
+ if (halfLife > 60000*40) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 50%, white 52%)' }
+ if (halfLife > 60000*45) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 44%, white 46%)' }
+ if (halfLife > 60000*50) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 40%, white 42%)' }
+ if (halfLife > 60000*55) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 34%, white 36%)' }
+ if (halfLife > 60000*60) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 30%, white 32%)' }
+ if (halfLife > 60000*65) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 24%, white 26%)' }
+ if (halfLife > 60000*70) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 20%, white 22%)' }
+ if (halfLife > 60000*75) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 14%, white 16%)' }
+ if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
+ if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 04%, white 06%)' }
+ if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
+ }
 }
 
 
 function clearCoffee() {
- howManyCups = 0
- coffeeCups.value = "0"
- energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 5%, white 10%)'
+howManyCups = 0
+coffeeCups.value = "0"
+halfLife = 0
+energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
 }
 
 
@@ -564,6 +570,13 @@ observer.observe(document.querySelector('.toolsDiv'))
 
 
 <script type="text/javascript">
+// DELETED MESSAGE!
+function deletedAlert() {
+let deletedAlert = document.getElementById("deletedAlert")
+deletedAlert.style.visibility = "visible"
+setTimeout(function() { deletedAlert.style.visibility = "hidden" }, 1000 * 1 )
+}
+
 // ENTER FULL SCREEN
 function activate(ele) { if (ele.requestFullscreen) {
   ele.requestFullscreen();
