@@ -473,9 +473,22 @@ ctx.fill();
 // BORDER
 ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.strokeStyle = "#00000088";
+ctx.strokeStyle = "#000000cc";
+ctx.lineWidth = 2;
 ctx.stroke();
 
+/*
+// TRYING TO ADD SOME TEXT!
+ ctx.fillStyle = this.color
+ ctx.beginPath()
+ ctx.arc(centerX, centerY, this.size, 0, Math.PI * 2)
+ ctx.fill()
+ ctx.closePath()
+  if (this.exploded) return;
+ ctx.fillStyle = 'black';
+ ctx.font = "20px Tahoma";
+ ctx.fillText("Hello", centerX - 20, centerY - 96);
+*/
 }
 
 // Initial draw
