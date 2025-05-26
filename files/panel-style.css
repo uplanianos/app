@@ -209,13 +209,14 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .toolArrow {
  background-color: cornflowerblue;
  color: #FFFFFF66;
- font-size: 14px;
- padding: 2px 6px 2px 6px;
+ font-size: 18px;
+ font-weight: bold;
+ padding: 0 6px 2px 6px;
  border: 2px solid black;
  cursor: pointer; 
 }
 
-.toolArrow:hover { font-weight: bold; color: white; }
+.toolArrow:hover { color: white; }
 
 .toolsDiv::-webkit-scrollbar { display: none; }
 
