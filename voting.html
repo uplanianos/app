@@ -439,18 +439,16 @@ ctx.closePath();
 ctx.fillStyle = 'cornflowerblue';
 ctx.fill();
 
-// RESULTS IN TEXT!
-ctx.fillStyle = 'black';
-ctx.zindex=10;
-if (pie1 >= pie2) {
- ctx.fillText(motion1.value, centerX + 25, centerY + 10);
- ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 25, centerY + 20);
+// RESULTS FOR MOTION 1!
+if (pie1 > pie2) {
+ ctx.zindex=1;
+ ctx.font = '12px Tahoma';
+ ctx.fillStyle = 'white';
+ ctx.fillText(motion1.value, centerX + 20, centerY + 15);
+ ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 20, centerY + 30);
+ // ctx.rotate(radius);
 }
 
-if (pie1 < pie2) {
- ctx.fillText(motion2.value, centerX + 25, centerY + 10);
- ctx.fillText('('+pie2.toFixed(2)+'%)', centerX + 25, centerY + 20);
-}
 
 // Draw the red arc
 ctx.beginPath();
@@ -459,6 +457,16 @@ ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
 ctx.closePath();
 ctx.fillStyle = '#DD0000';
 ctx.fill();
+
+// RESULTS FOR MOTION 2!
+if (pie1 < pie2) {
+ ctx.zindex=1;
+ ctx.font = '12px Tahoma';
+ ctx.fillStyle = 'white';
+ ctx.fillText(motion2.value, centerX - 80, centerY - 15);
+ ctx.fillText('('+pie2.toFixed(2)+'%)', centerX - 80, centerY );
+}
+
 
 // Draw the orange arc
 ctx.beginPath();
