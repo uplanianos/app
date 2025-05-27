@@ -78,7 +78,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
  <!- GRID ->
  <!- GRID ->
  <!- GRID ->
- <div class="grid-voting" style="width: 96%; margin-left: auto; margin-right: auto;">
+ <div class="grid-voting">
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
    <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues()">
@@ -367,23 +367,23 @@ var motion5Span = document.getElementById("motion5Span")
 // CHECKING FOR EMPTY NAMES / AND ZERO VALUES BEFORE UPDATING
 // EMPTY PROPOSALS WITH ZERO VOTES ARE EXCLUDED FROM THE "SUMMARY" OR "PIE CHART GRAPH"
  if (motion1.value !== "" && parseInt(counts1.value) > 0) {
-  motion1Span.innerText = "- " + motion1.value.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(2) + "%)."
+  motion1Span.innerText = "- " + motion1.value.toString() + ": " + counts1.value + " (" + parseFloat(pie1).toFixed(1) + "%)."
   motion1Span.style.display = "block" } else { motion1Span.style.display = "none" }
 
  if (motion2.value !== "" && parseInt(counts2.value) > 0) {
-  motion2Span.innerText = "- " + motion2.value.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(2) + "%)."
+  motion2Span.innerText = "- " + motion2.value.toString() + ": " + counts2.value + " (" + parseFloat(pie2).toFixed(1) + "%)."
   motion2Span.style.display = "block" } else { motion2Span.style.display = "none" }
 
  if (motion3.value !== "" && parseInt(counts3.value) > 0) {
-  motion3Span.innerText = "- " + motion3.value.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(2) + "%)."
+  motion3Span.innerText = "- " + motion3.value.toString() + ": " + counts3.value + " (" + parseFloat(pie3).toFixed(1) + "%)."
   motion3Span.style.display = "block" } else { motion3Span.style.display = "none" }
 
  if (motion4.value !== "" && parseInt(counts4.value) > 0) {
-  motion4Span.innerText = "- " + motion4.value.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(2) + "%)."
+  motion4Span.innerText = "- " + motion4.value.toString() + ": " + counts4.value + " (" + parseFloat(pie4).toFixed(1) + "%)."
   motion4Span.style.display = "block" } else { motion4Span.style.display = "none" }
 
  if (motion5.value !== "" && parseInt(counts5.value) > 0) {
-  motion5Span.innerText = "- " + motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(2) + "%)."
+  motion5Span.innerText = "- " + motion5.value.toString() + ": " + counts5.value + " (" + parseFloat(pie5).toFixed(1) + "%)."
   motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
 
  if (totalVotes.value !== "" || totalVotes.value !== Undefined || totalVotes.value !== NaN) {
@@ -406,6 +406,7 @@ const ctx = canvas.getContext('2d');
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 const radius = 100.00;
+
 
 // Function to draw the circle based on the input percentages
 function drawCircle(pie1,pie2,pie3,pie4,pie5,finalPercent) {
@@ -435,15 +436,28 @@ ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.arc(centerX, centerY, radius, 0, blueEnd);
 ctx.closePath();
-ctx.fillStyle = 'blue';
+ctx.fillStyle = 'cornflowerblue';
 ctx.fill();
+
+// RESULTS IN TEXT!
+ctx.fillStyle = 'black';
+ctx.zindex=10;
+if (pie1 >= pie2) {
+ ctx.fillText(motion1.value, centerX + 25, centerY + 10);
+ ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 25, centerY + 20);
+}
+
+if (pie1 < pie2) {
+ ctx.fillText(motion2.value, centerX + 25, centerY + 10);
+ ctx.fillText('('+pie2.toFixed(2)+'%)', centerX + 25, centerY + 20);
+}
 
 // Draw the red arc
 ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
 ctx.closePath();
-ctx.fillStyle = 'red';
+ctx.fillStyle = '#DD0000';
 ctx.fill();
 
 // Draw the orange arc
