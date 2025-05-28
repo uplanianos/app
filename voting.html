@@ -134,13 +134,13 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div><big><b>Resultado:</b></big></div><br>
  <div class="voteResult">
 
-  <div id="voteSummary" class="voteSummary"><b>MOCIÓN / VOTOS:</b><br>
+  <div id="voteSummary" class="voteSummary"><b><u>PROPUESTAS / VOTOS:</u></b><br>
    <span id="motion1Span" style="color: blue;	display: none;">N°1: 0 votos (0%).</span>
    <span id="motion2Span" style="color: red;	display: none;">N°2: 0 votos (0%).</span>
    <span id="motion3Span" style="color: orange;	display: none;">N°3: 0 votos (0%).</span>
    <span id="motion4Span" style="color: green;	display: none;">N°4: 0 votos (0%).</span>
    <span id="motion5Span" style="color: purple;	display: none;">N°5: 0 votos (0%).</span>
-   <span id="motionTotal" style="color: black;	display: none;">0 Votos.</span>
+   <span id="motionTotal" style="color: black;	display: none;">Total: 0 Votos.</span>
   </div>
 
  <canvas id="myCanvas" class="myCanvas" width="232" height="232"></canvas>
@@ -387,7 +387,7 @@ var motion5Span = document.getElementById("motion5Span")
   motion5Span.style.display = "block" } else { motion5Span.style.display = "none" }
 
  if (totalVotes.value !== "" || totalVotes.value !== Undefined || totalVotes.value !== NaN) {
-  motionTotal.innerText = finalCount + " votos (" + parseInt(finalPercent) + "%)."
+  motionTotal.innerText = "Total: " + finalCount + " votos (" + parseInt(finalPercent) + "%)."
   motionTotal.style.display = "block"
   motionTotal.style.lineHeight = "3"
   motionTotal.style.textDecoration = "overline solid blue"

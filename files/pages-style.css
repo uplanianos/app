@@ -1181,7 +1181,7 @@ div.voteSummary {
  padding: 12px;
  }
 
-#myCanvas { height: 95%; width: 95%; margin-top: 6px; background-color: white;}
+#myCanvas { height: 100%; width: 98%; padding-top: 6px; padding-right: 12px; background-color: white;}
 
 @media screen and (max-width: 800px) {
  #divResult { margin-left: 35%; background-color: white; }
