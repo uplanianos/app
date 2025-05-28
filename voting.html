@@ -442,10 +442,11 @@ ctx.fill();
 // RESULTS FOR MOTION 1!
 if (pie1 > pie2) {
  ctx.zindex=1;
- ctx.font = '12px Tahoma';
  ctx.fillStyle = 'white';
- ctx.fillText(motion1.value, centerX + 20, centerY + 15);
- ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 20, centerY + 30);
+ ctx.font = 'normal 12px Tahoma';
+ ctx.fillText(motion1.value, centerX + 15, centerY + 15);
+ ctx.font = 'italic 10px Arial';
+ ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 15, centerY + 25);
  // ctx.rotate(radius);
 }
 
@@ -461,10 +462,11 @@ ctx.fill();
 // RESULTS FOR MOTION 2!
 if (pie1 < pie2) {
  ctx.zindex=1;
- ctx.font = '12px Tahoma';
  ctx.fillStyle = 'white';
- ctx.fillText(motion2.value, centerX - 80, centerY - 15);
- ctx.fillText('('+pie2.toFixed(2)+'%)', centerX - 80, centerY );
+ ctx.font = 'normal 12px Tahoma';
+ ctx.fillText(motion2.value, centerX - 90, centerY);
+ ctx.font = 'italic 10px Arial';
+ ctx.fillText('('+pie2.toFixed(2)+'%)', centerX - 90, centerY + 10);
 }
 
 
