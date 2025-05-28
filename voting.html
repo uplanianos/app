@@ -497,28 +497,27 @@ if (pie1 < pie2) { // RESULTS FOR MOTION 2!
 
 // TEXT AROUND THE ARC!
 function drawTextAlongArc(ctx, str, centerX, centerY, radius, angle){
- ctx.save();
- ctx.translate(centerX + 5, centerY - 5);
- ctx.rotate(-2 * angle / 10);
- ctx.rotate(-1 * (angle / str.length) / 1);
- for (var n = 0; n < str.length; n++) {
- ctx.rotate(angle / str.length);
- ctx.save();
- ctx.translate(12, -1 * radius);
- var char = str[n];
- ctx.fillText(char, 0, 0);
- ctx.restore();
- }
-ctx.restore();
+	ctx.save();
+	ctx.translate(centerX + 4, centerY - 4);
+	ctx.rotate(-2 * angle / 18);
+	ctx.rotate(-1 * (angle / str.length) / 1);
+	for (var n = 0; n < str.length; n++) {
+	ctx.rotate(angle / str.length);
+	ctx.save();
+	ctx.translate(12, -1 * radius);
+	var char = str[n];
+	ctx.fillText(char, 0, 0);
+	ctx.restore();
+	}
+  ctx.restore();
 }
 
 var sumVars = (pie2 + pie3 + pie4 + pie5).toFixed(1)
-var theVars = 'Demás variables ('+ sumVars + '% )'
-var angle = Math.PI * 0.6; // radians
-ctx.font = 'italic 10px Verdana';
+var theVars = 'Otras propuestas: '+ sumVars + '%'
+var angle = Math.PI * 0.5; // radians
+ctx.font = 'italic 9px Verdana';
 
 drawTextAlongArc(ctx, theVars, centerX, centerY, radius, angle);
-
 
 }
 
