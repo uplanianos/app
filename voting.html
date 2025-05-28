@@ -143,7 +143,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
    <span id="motionTotal" style="color: black;	display: none;">0 Votos.</span>
   </div>
 
- <canvas id="myCanvas" class="myCanvas" width="212" height="212"></canvas>
+ <canvas id="myCanvas" class="myCanvas" width="232" height="232"></canvas>
 
 </div>	<!- End of "Votes Result" Div ->
 
@@ -439,18 +439,6 @@ ctx.closePath();
 ctx.fillStyle = 'cornflowerblue';
 ctx.fill();
 
-// RESULTS FOR MOTION 1!
-if (pie1 > pie2) {
- ctx.zindex=1;
- ctx.fillStyle = 'white';
- ctx.font = 'normal 12px Tahoma';
- ctx.fillText(motion1.value, centerX + 15, centerY + 15);
- ctx.font = 'italic 10px Arial';
- ctx.fillText('('+pie1.toFixed(2)+'%)', centerX + 15, centerY + 25);
- // ctx.rotate(radius);
-}
-
-
 // Draw the red arc
 ctx.beginPath();
 ctx.moveTo(centerX, centerY);
@@ -458,17 +446,6 @@ ctx.arc(centerX, centerY, radius, blueEnd, redEnd);
 ctx.closePath();
 ctx.fillStyle = '#DD0000';
 ctx.fill();
-
-// RESULTS FOR MOTION 2!
-if (pie1 < pie2) {
- ctx.zindex=1;
- ctx.fillStyle = 'white';
- ctx.font = 'normal 12px Tahoma';
- ctx.fillText(motion2.value, centerX - 90, centerY);
- ctx.font = 'italic 10px Arial';
- ctx.fillText('('+pie2.toFixed(2)+'%)', centerX - 90, centerY + 10);
-}
-
 
 // Draw the orange arc
 ctx.beginPath();
@@ -501,19 +478,51 @@ ctx.strokeStyle = "#000000cc";
 ctx.lineWidth = 2;
 ctx.stroke();
 
-/*
-// TRYING TO ADD SOME TEXT!
- ctx.fillStyle = this.color
- ctx.beginPath()
- ctx.arc(centerX, centerY, this.size, 0, Math.PI * 2)
- ctx.fill()
- ctx.closePath()
-  if (this.exploded) return;
- ctx.fillStyle = 'black';
- ctx.font = "20px Tahoma";
- ctx.fillText("Hello", centerX - 20, centerY - 96);
-*/
+
+// TEXT PARAMETERS
+ctx.zindex=1;
+ctx.fillStyle = 'blue';
+ctx.font = 'normal 12px Tahoma';
+
+if (pie1 > pie2) { // RESULTS FOR MOTION 1!
+ ctx.fillText(motion1.value, centerX + 15, centerY + 15);
+ ctx.font = 'italic 10px Arial';
+ ctx.fillText('('+pie1.toFixed(1)+'%)', centerX + 15, centerY + 25); }
+
+if (pie1 < pie2) { // RESULTS FOR MOTION 2!
+ ctx.fillStyle = 'white';
+ ctx.fillText(motion2.value, centerX - 90, centerY);
+ ctx.font = 'italic 10px Arial';
+ ctx.fillText('('+pie2.toFixed(1)+'%)', centerX - 90, centerY + 10); }
+
+// TEXT AROUND THE ARC!
+function drawTextAlongArc(ctx, str, centerX, centerY, radius, angle){
+ ctx.save();
+ ctx.translate(centerX + 5, centerY - 5);
+ ctx.rotate(-2 * angle / 10);
+ ctx.rotate(-1 * (angle / str.length) / 1);
+ for (var n = 0; n < str.length; n++) {
+ ctx.rotate(angle / str.length);
+ ctx.save();
+ ctx.translate(12, -1 * radius);
+ var char = str[n];
+ ctx.fillText(char, 0, 0);
+ ctx.restore();
+ }
+ctx.restore();
 }
+
+var sumVars = (pie2 + pie3 + pie4 + pie5).toFixed(1)
+var theVars = 'Demás variables ('+ sumVars + '% )'
+var angle = Math.PI * 0.6; // radians
+ctx.font = 'italic 10px Verdana';
+
+drawTextAlongArc(ctx, theVars, centerX, centerY, radius, angle);
+
+
+}
+
+
 
 // Initial draw
 // drawCircle();
