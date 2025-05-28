@@ -7,6 +7,8 @@ body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
 	text-justify: inter-word;
 }
 
+body::-webkit-scrollbar { display: none; }
+
 p	{ color: white; }
 h1	{ color: white; }
 a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
@@ -91,10 +93,11 @@ ol	{ padding-left: 18px; }
 
 
 .arrowTop {
+ position: relative;
+ top: 32px;
+ left: 94%;
  width: max-content;
- font-size: 28px;
- margin-top: -36px;
- margin-left: 94%;
+ font-size: 32px;
 }
 
 .referencias { color: white; margin-left: auto; margin-right: 50px; }
