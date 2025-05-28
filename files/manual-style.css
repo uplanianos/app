@@ -1,0 +1,100 @@
+
+body {	font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+	background-color: black;
+	margin-left: 0px;
+	margin-right: 0px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+p	{ color: white; }
+h1	{ color: white; }
+a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px red; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px cornflowerblue; }
+a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
+
+derogado { color: red; }
+blue { color: blue; }
+
+ul	{ padding-left: 18px; }
+ol	{ padding-left: 18px; }
+
+.return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
+
+
+/* MAIN DIV SETTINGS */
+
+.main {
+  margin: auto;
+  background-color: #151B54; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 500% 100%;
+  border: 1px solid navy;
+  float: center;
+  padding: 0px;
+  width: 60%; /* The width is 60%, by default */
+  border-radius: 24px;
+  font-size: 16px;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+.main {
+  /* The width is 100%, when the viewport is 800px or smaller */ 
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  border: 0px solid navy;
+  border-radius: 0px;
+  font-size: 14px;
+  min-height: 100%;
+  }
+}
+
+.labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; }
+
+.grid-container-pages {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto;
+  background-color: transparent;
+  row-gap: 16px;
+  padding: 1px;
+}
+
+.grid-item {background-color: lightyellow; border: 1px solid #6495ED /* Cornflower Blue */; padding: 12px; padding-right: 6%; border-radius: 6px; }
+.grid-item-title {background-color: cornflowerblue; border: 1px solid lightgray; padding: 6px; text-align: center; }
+.grid-item-blue {background-color: lightblue; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px; }
+.grid-item-green {background-color: lightgreen; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px; }
+.grid-item-pink {background-color: pink; border: 1px solid lightgray; padding: 6px; text-align: left; border-radius: 6px; }
+
+
+/* TITLE MENU */
+.titleMenu {
+  width: 32px; height: 30px;
+  font-size: 15px; color: white; font-weight: normal;
+  background-color: #0096FF22; transition: background-color 0.6s;
+  border: 1px solid #0096FF22; border-radius: 6px 6px 6px 6px;
+  margin-top: -6px; margin-bottom: -6px; margin-right: 4px;
+  padding-left: 8px; padding-top: 2px;
+  appearance: none; /* Hides little arrow */
+}
+
+.titleMenu:hover { background-color: #0096FF88; color: white; outline: none; font-weight: bold;}
+.titleMenu:active { background-color: #66AAFF; color: white; outline: none; font-weight: bold;}
+.titleMenu:focus { background-color: #0096FF; color: white; outline: none; font-weight: bold; border-radius: 6px 6px 0px 0px;}
+
+
+.arrowTop {
+ width: max-content;
+ font-size: 28px;
+ margin-top: -36px;
+ margin-left: 94%;
+}
+
+.referencias { color: white; margin-left: auto; margin-right: 50px; }
