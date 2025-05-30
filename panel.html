@@ -24,12 +24,15 @@
 
 
 <script type="text/javascript">
+var c1t1 = document.getElementById('c1t1');
+
 window.onbeforeunload = function() {
      $('input').each(function(){
         var id = $(this).attr('id');
         var value = $(this).val();
        localStorage.setItem(id, value);
     });
+    // Textarea!
      $('textarea').each(function(){
         var id = $(this).attr('id');
         var value = $(this).val();
@@ -37,24 +40,29 @@ window.onbeforeunload = function() {
     });
 }
 
+
 window.onload = function() {
     $('input').each(function(){
        var id = $(this).attr('id');
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+    // Textarea!
     $('textarea').each(function(){
        var id = $(this).attr('id');
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+
+// Load other functions!
 termProgress()
 yearProgress()
-checkBoxes()
+checkAttendance()
 drawAttendance()
 coffeeTime()
 toolsDivMemory()
 refreshTime()
+checkTests()
 }
 </script>
 
@@ -114,32 +122,75 @@ refreshTime()
  <!-- SECOND LEVEL -->
  <!-- SECOND LEVEL -->
 
-
- <!-- ATTENDANCE CHECK DIV -->
+ <!-- TESTS DIV -->
  <div class="widgetDivs">
- <div class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
-  <div class="trashIcon" onclick="clearRoll(); deletedAlert()">🗑️</div>
-   <div class="doubleColumnWrapper">
-    <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
-	<b>Revisión:</b><br>
-	<input type="checkbox" id="checkMon" onchange="checkBoxes()">Lunes<br>
-	<input type="checkbox" id="checkTue" onchange="checkBoxes()">Martes<br>
-	<input type="checkbox" id="checkWed" onchange="checkBoxes()">Miércoles<br>
-	<input type="checkbox" id="checkThu" onchange="checkBoxes()">Jueves<br>
-	<input type="checkbox" id="checkFri" onchange="checkBoxes()">Viernes<br>
-	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
-	<input type="number" id="isTue" min="0" max="1" step="1" style="display: none;">
-	<input type="number" id="isWed" min="0" max="1" step="1" style="display: none;">
-	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
-	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
-    </div>
-    <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
-	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
-	Progreso: <span id="rollCall">0%</span>
-    </div>
-  </div><!-- END OF DOUBLE COLUMN WRAPPER -->
+  <div class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
+  <div class="trashIcon" onclick="clearTests(); deletedAlert()">🗑️</div>
+	<!--  MAIN TESTS WRAPPER -->
+	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
+
+		<div style="display: flex; align-items: center; padding: 3px;">
+		 <div class="testSubject">Asignaturas:</div>
+		 <div class="testGrades">N°1</div>
+		 <div class="testGrades">N°2</div>
+		 <div class="testGrades">N°3</div>
+		</div>
+
+		<div style="display: flex; align-items: center;  padding: 3px;">
+		 <div class="testSubject"><input id="class01" class="assessment" type="text" placeholder="Asignatura 1"></div>
+		 <div id="c1t1Div" class="testGrades"><input type="checkbox" id="c1t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c1t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c1t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c1t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c1t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c1t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+		<div style="display: flex; align-items: center;  padding: 3px;">
+		 <div class="testSubject"><input id="class02" class="assessment" type="text" placeholder="Asignatura 2"></div>
+		 <div class="testGrades"><input type="checkbox" id="c2t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c2t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c2t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c2t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c2t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c2t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+		<div style="display: flex; align-items: center;  padding: 3px;">
+		 <div class="testSubject"><input id="class03" class="assessment" type="text" placeholder="Asignatura 3"></div>
+		 <div class="testGrades"><input type="checkbox" id="c3t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c3t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c3t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c3t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c3t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c3t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+		<div style="display: flex; align-items: center;  padding: 3px;">
+		 <div class="testSubject"><input id="class04" class="assessment" type="text" placeholder="Asignatura 4"></div>
+		 <div class="testGrades"><input type="checkbox" id="c4t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c4t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c4t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c4t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c4t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c4t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+		<div style="display: flex; align-items: center;  padding: 3px;">
+		 <div class="testSubject"><input id="class05" class="assessment" type="text" placeholder="Asignatura 5"></div>
+		 <div class="testGrades"><input type="checkbox" id="c5t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c5t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c5t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c5t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c5t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c5t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+	<!--  END OF MAIN TESTS WRAPPER -->
+	</div>
  </div>
- <!-- END OF ATTENDANCE CHECK DIV -->
+ <!-- END OF TESTS DIV -->
+
 
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
@@ -156,28 +207,35 @@ refreshTime()
  <!-- END OF WEEK PLANNER DIV -->
 
 
+
  <!-- THIRD LEVEL -->
  <!-- THIRD LEVEL -->
 
-
- <!-- DRINKS DIV -->
+ <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div class="trashIcon" onclick="clearCoffee(); deletedAlert()">🗑️</div>
-   <div class="doubleColumnWrapper" style="margin-top: 12px;">
-	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
-	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
-	 </div>
-	<div style="width: 65%;">
-	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%)">
-	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
-	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
-	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
-	 </div>
-	</div>
+ <div class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
+  <div class="trashIcon" onclick="clearRoll(); deletedAlert()">🗑️</div>
+   <div class="doubleColumnWrapper">
+    <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
+	<b>Revisión:</b><br>
+	<input type="checkbox" id="checkMon" onchange="checkAttendance()">Lunes<br>
+	<input type="checkbox" id="checkTue" onchange="checkAttendance()">Martes<br>
+	<input type="checkbox" id="checkWed" onchange="checkAttendance()">Miércoles<br>
+	<input type="checkbox" id="checkThu" onchange="checkAttendance()">Jueves<br>
+	<input type="checkbox" id="checkFri" onchange="checkAttendance()">Viernes<br>
+	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isTue" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isWed" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
+	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
+    </div>
+    <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
+	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
+	Progreso: <span id="rollCall">0%</span>
+    </div>
   </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
- <!-- END OF DRINKS DIV -->
+ <!-- END OF ATTENDANCE CHECK DIV -->
 
  <!-- TOOLS DIV -->
  <div class="widgetDivs">
@@ -242,6 +300,30 @@ refreshTime()
 
 
 
+ <!-- FOURTH LEVEL -->
+ <!-- FOURTH LEVEL -->
+
+ <!-- DRINKS DIV -->
+ <div class="widgetDivs">
+  <div class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
+  <div class="trashIcon" onclick="clearCoffee(); deletedAlert()">🗑️</div>
+   <div class="doubleColumnWrapper" style="margin-top: 12px;">
+	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
+	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
+	 </div>
+	<div style="width: 65%;">
+	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
+	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
+	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
+	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
+	 </div>
+	</div>
+  </div><!-- END OF DOUBLE COLUMN WRAPPER -->
+ </div>
+ <!-- END OF DRINKS DIV -->
+
+
+
 <!-- END OF MAIN FLEX -->
 </div>
 
@@ -249,10 +331,106 @@ refreshTime()
 </body>
 
 
-
 <!-- FUNCTION SCRIPTS -->
 <script type="text/javascript">
-// CHECK ATTENDANCE!
+
+// ==================================================
+// SEMESTER AND YEAR PROGRESS FUNCTIONS
+// ==================================================
+
+// PROGRESS GLOBAL VARIABLES
+var oneDay = 1000 * 60 * 60 * 24
+var isNow = new Date()
+
+// SEMESTER PROGRESS FUNCTION
+function termProgress() {
+// ELEMENT TO MODIFY (WITH CSS STYLE)!
+var semesterBar = document.getElementById("semesterBar")
+
+// FUNCTIONALITY PARAMETERS!
+var duration = 1000 * 2; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// GETTING NUMBER OF DAYS!
+var firstClass = new Date("2025-03-17T00:00:00").getTime()
+var finalClass = new Date("2025-07-18T23:59:59").getTime()
+
+// SETTING UP VARIABLES!
+var currentDays = isNow - firstClass
+var semesterDays = finalClass - firstClass
+
+// CONVERTING!
+var termProgress = Math.floor(currentDays / oneDay)
+var termDuration = Math.floor(semesterDays / oneDay)
+
+distance = Math.abs(termProgress * 100 / termDuration)
+
+if (distance == 0) {$("#semesterBar").css("width", "0%") }
+if (distance > 0) {
+ var doTheLoop = setInterval(function(){
+  i++;
+  $("#semesterBar").css("width", i + "%")
+  $("#semesterBar").text(i + "%")
+  if (i >= distance) { clearInterval(doTheLoop) }
+  if (i >= 100) { clearInterval(doTheLoop)  }
+  if (i >= 0 && i < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
+  if (i >= 20 && i < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 40 && i < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 60 && i <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
+  if (i >= 80 && i <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
+  }, percent)
+ }
+}
+
+
+// YEAR PROGRESS FUNCTION
+function yearProgress() {
+// ELEMENT TO MODIFY (WITH CSS STYLE)!
+var yearBar = document.getElementById("yearBar")
+
+// FUNCTIONALITY PARAMETERS!
+var duration = 1000 * 2; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var iYear = 0; // Animation starts from Zero!
+
+// GETTING NUMBER OF DAYS!
+var firstDay =	new Date("2025-01-01T00:00:00").getTime()
+var lastDay =	new Date("2025-12-31T23:59:59").getTime()
+
+// SETTING UP VARIABLES!
+var currentDays = isNow - firstDay
+var semesterDays = firstDay - lastDay
+
+// CONVERTING!
+var termProgress = Math.floor(currentDays / oneDay)
+var termDuration = Math.floor(semesterDays / oneDay)
+
+distanceYear = Math.abs(termProgress * 100 / termDuration)
+
+if (distanceYear == 0) {$("#yearBar").css("width", "0%") }
+if (distanceYear > 0) {
+ var doTheLoop = setInterval(function(){
+  iYear++;
+  $("#yearBar").css("width", iYear + "%")
+  $("#yearBar").text(iYear + "%")
+  if (iYear >= distanceYear) { clearInterval(doTheLoop) }
+  if (iYear >= 100) { clearInterval(doTheLoop)  }
+  if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
+  if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 40 && iYear < 60) { yearBar.style.backgroundColor = "#FFFF0066"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
+  }, percent)
+ }
+}
+// END OF "SEMESTER PROGRESS" FUNCTION!
+// ==================================================
+
+
+// ==================================================
+// CHECK ATTENDANCE FUNCTION!
+// ==================================================
 isMon = document.getElementById("isMon")
 isTue = document.getElementById("isTue")
 isWed = document.getElementById("isWed")
@@ -274,7 +452,7 @@ var rollProgress = 0
 var rollPending = 100
 
 
-function checkBoxes() {
+function checkAttendance() {
 if (isMon.value == 1) {checkMon.checked = true}
 if (isTue.value == 1) {checkTue.checked = true}
 if (isWed.value == 1) {checkWed.checked = true}
@@ -298,29 +476,9 @@ drawAttendance()
 }
 
 
-// CLEAR ATTENDANCE!
-function clearRoll() {
-isMon.value = 0; checkMon.checked = false; valMon = 0
-isTue.value = 0; checkTue.checked = false; valTue = 0
-isWed.value = 0; checkWed.checked = false; valWed = 0
-isThu.value = 0; checkThu.checked = false; valThu = 0
-isFri.value = 0; checkFri.checked = false; valFri = 0
-checkBoxes()
-drawAttendance()
-}
-
-
-// CLEAR PLANNER!
-function clearPlanner() {
-document.getElementById("planMon").value = ""
-document.getElementById("planTue").value = ""
-document.getElementById("planWed").value = ""
-document.getElementById("planThu").value = ""
-document.getElementById("planFri").value = ""
-}
-
-
+// ==================================================
 // ATTENDANCE PROGRESS PIE CHART!
+// ==================================================
 const canvas = document.getElementById('rollCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -370,97 +528,133 @@ ctx.stroke();
 // END OF ATTENDANCE FUNCTION!
 
 
-// PROGRESS GLOBAL VARIABLES
-var oneDay = 1000 * 60 * 60 * 24
-var isNow = new Date()
-
-// SEMESTER PROGRESS FUNCTION
-function termProgress() {
-// ELEMENT TO MODIFY (WITH CSS STYLE)!
-var semesterBar = document.getElementById("semesterBar")
-
-// FUNCTIONALITY PARAMETERS!
-var duration = 1000 * 2; // Animation duration!
-var percent = duration / 100; // 1 percent of duration!
-var i = 0; // Animation starts from Zero!
-
-// GETTING NUMBER OF DAYS!
-var firstClass = new Date("2025-03-17T00:00:00").getTime()
-var finalClass = new Date("2025-07-18T23:59:59").getTime()
-
-// SETTING UP VARIABLES!
-var currentDays = isNow - firstClass
-var semesterDays = finalClass - firstClass
-
-// CONVERTING!
-var termProgress = Math.floor(currentDays / oneDay)
-var termDuration = Math.floor(semesterDays / oneDay)
-
-distance = Math.abs(termProgress * 100 / termDuration)
-
-if (distance == 0) {$("#semesterBar").css("width", "0%") }
-if (distance > 0) {
- var doTheLoop = setInterval(function(){
-  i++;
-  $("#semesterBar").css("width", i + "%")
-  $("#semesterBar").text(i + "%")
-  if (i >= distance) { clearInterval(doTheLoop) }
-  if (i >= 100) { clearInterval(doTheLoop)  }
-  if (i >= 0 && i < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
-  if (i >= 20 && i < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 40 && i < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 60 && i <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 80 && i <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
-  }, percent)
- }
-}
-
-
-// SEMESTER PROGRESS FUNCTION
-function yearProgress() {
-// ELEMENT TO MODIFY (WITH CSS STYLE)!
-var yearBar = document.getElementById("yearBar")
-
-// FUNCTIONALITY PARAMETERS!
-var duration = 1000 * 2; // Animation duration!
-var percent = duration / 100; // 1 percent of duration!
-var iYear = 0; // Animation starts from Zero!
-
-// GETTING NUMBER OF DAYS!
-var firstDay =	new Date("2025-01-01T00:00:00").getTime()
-var lastDay =	new Date("2025-12-31T23:59:59").getTime()
-
-// SETTING UP VARIABLES!
-var currentDays = isNow - firstDay
-var semesterDays = firstDay - lastDay
-
-// CONVERTING!
-var termProgress = Math.floor(currentDays / oneDay)
-var termDuration = Math.floor(semesterDays / oneDay)
-
-distanceYear = Math.abs(termProgress * 100 / termDuration)
-
-if (distanceYear == 0) {$("#yearBar").css("width", "0%") }
-if (distanceYear > 0) {
- var doTheLoop = setInterval(function(){
-  iYear++;
-  $("#yearBar").css("width", iYear + "%")
-  $("#yearBar").text(iYear + "%")
-  if (iYear >= distanceYear) { clearInterval(doTheLoop) }
-  if (iYear >= 100) { clearInterval(doTheLoop)  }
-  if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
-  if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
-  if (iYear >= 40 && iYear < 60) { yearBar.style.backgroundColor = "#FFFF0066"; yearBar.style.transition = "background-color 0.6s" }
-  if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
-  if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
-  }, percent)
- }
-}
-// END OF "SEMESTER PROGRESS" FUNCTION!
 // ==================================================
+// ADD A CHECK TO "GLOBAL TESTS" FUNCTION
+// ==================================================
+function checkThisTest(input) {
+var checkedInput = input+'isChecked'
+const checkbox = document.getElementById(input);
+const isChecked = document.getElementById(checkedInput);
+// console.log(input,checkbox,checkedInput,isChecked)
+// CHECKING THE BOXES!
+ if (isChecked.value == 1) {checkbox.checked = true}
+ if (checkbox.checked === true) {isChecked.value = 1}
+}
+
+// DECLARING "GLOBAL TESTS" ELEMENTS
+class01 = document.getElementById("class01")
+class02 = document.getElementById("class02")
+class03 = document.getElementById("class03")
+class04 = document.getElementById("class04")
+class05 = document.getElementById("class05")
+c1t1 = document.getElementById("c1t1")
+c1t2 = document.getElementById("c1t2")
+c1t3 = document.getElementById("c1t3")
+c2t1 = document.getElementById("c2t1")
+c2t2 = document.getElementById("c2t2")
+c2t3 = document.getElementById("c2t3")
+c3t1 = document.getElementById("c3t1")
+c3t2 = document.getElementById("c3t2")
+c3t3 = document.getElementById("c3t3")
+c4t1 = document.getElementById("c4t1")
+c4t2 = document.getElementById("c4t2")
+c4t3 = document.getElementById("c4t3")
+c5t1 = document.getElementById("c5t1")
+c5t2 = document.getElementById("c5t2")
+c5t3 = document.getElementById("c5t3")
+c1t1isCheck = document.getElementById("c1t1isCheck")
+c1t2isCheck = document.getElementById("c1t1isCheck")
+c1t3isCheck = document.getElementById("c1t1isCheck")
+c2t1isCheck = document.getElementById("c2t1isCheck")
+c2t2isCheck = document.getElementById("c2t1isCheck")
+c2t3isCheck = document.getElementById("c2t1isCheck")
+c3t1isCheck = document.getElementById("c3t1isCheck")
+c3t2isCheck = document.getElementById("c3t1isCheck")
+c3t3isCheck = document.getElementById("c3t1isCheck")
+c4t1isCheck = document.getElementById("c4t1isCheck")
+c4t2isCheck = document.getElementById("c4t1isCheck")
+c4t3isCheck = document.getElementById("c4t1isCheck")
+c5t1isCheck = document.getElementById("c5t1isCheck")
+c5t2isCheck = document.getElementById("c5t1isCheck")
+c5t3isCheck = document.getElementById("c5t1isCheck")
+
+// ==================================================
+// ONLOAD "TEST CHECKS" FUNCTION
+// ==================================================
+// CHECK TESTS FUNCTION!
+function checkTests() {
+// TEST N°1
+if (c1t1isChecked.value == 1) {c1t1.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
+if (c1t2isChecked.value == 1) {c1t2.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
+if (c1t3isChecked.value == 1) {c1t3.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+// TEST N°2
+if (c2t1isChecked.value == 1) {c2t1.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
+if (c2t2isChecked.value == 1) {c2t2.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
+if (c2t3isChecked.value == 1) {c2t3.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+// TEST N°3
+if (c3t1isChecked.value == 1) {c3t1.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
+if (c3t2isChecked.value == 1) {c3t2.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
+if (c3t3isChecked.value == 1) {c3t3.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+// TEST N°4
+if (c4t1isChecked.value == 1) {c4t1.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
+if (c4t2isChecked.value == 1) {c4t2.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
+if (c4t3isChecked.value == 1) {c4t3.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+// TEST N°5
+if (c5t1isChecked.value == 1) {c5t1.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
+if (c5t2isChecked.value == 1) {c5t2.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
+if (c5t3isChecked.value == 1) {c5t3.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+
+}
+
+// ==================================================
+// CLEAR "GLOBAL TESTS" FUNCTION
+// ==================================================
+function clearTests() {
+var Assessment = document.querySelectorAll("input.assessment");
+for(let theInfo of Assessment) { theInfo.value = "" }
+
+var theBoxes = document.querySelectorAll("input.theBoxes");
+for(let checks of theBoxes) { checks.checked = false }
+
+var Checked = document.querySelectorAll("input.isChecked");
+for(let areChecked of Checked) { areChecked.value = "0" }
+
+// CHECK INPUTS!
+// console.log(Assessment,theBoxes,Checked)
+}
 
 
-// COFFEE + MORE ENERGY FUNCTION!
+// ==================================================
+// CLEAR ATTENDANCE FUNCTION!
+// ==================================================
+function clearRoll() {
+isMon.value = 0; checkMon.checked = false; valMon = 0
+isTue.value = 0; checkTue.checked = false; valTue = 0
+isWed.value = 0; checkWed.checked = false; valWed = 0
+isThu.value = 0; checkThu.checked = false; valThu = 0
+isFri.value = 0; checkFri.checked = false; valFri = 0
+checkAttendance()
+drawAttendance()
+}
+
+
+
+// ==================================================
+// CLEAR PLANNER FUNCTION
+// ==================================================
+function clearPlanner() {
+document.getElementById("planMon").value = ""
+document.getElementById("planTue").value = ""
+document.getElementById("planWed").value = ""
+document.getElementById("planThu").value = ""
+document.getElementById("planFri").value = ""
+}
+
+
+
+// ==================================================
+// "COFFEE ENERGY" FUNCTION!
+// ==================================================
 coffeeCups = document.getElementById("coffeeCups")
 energyLevel = document.getElementById("energyLevel")
 
@@ -507,7 +701,9 @@ if (coffeeCups.value > 0) {
  }
 }
 
-
+// ==================================================
+// CLEAR "COFFEE ENERGY" FUNCTION!
+// ==================================================
 function clearCoffee() {
 howManyCups = 0
 coffeeCups.value = "0"
@@ -516,7 +712,9 @@ energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, wh
 }
 
 
-// "TOOLS DIV" MOVING FUNCTIONS
+// ==================================================
+// "TOOLS DIV" MOVING FUNCTION
+// ==================================================
 function toolsDivMemory() { toolsDiv.scrollLeft = slidePosition.value }
 function moveSliderLeft() { toolsDiv.scrollLeft += 500 }
 function moveSliderRight() { toolsDiv.scrollLeft -= 500 }
