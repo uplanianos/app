@@ -102,7 +102,7 @@ checkTests()
 
  <!-- SEMESTER PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Progreso semestral:</b></div>
+  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance semestral:</b></div>
   <div class="progressWrapper">
 	 <div id="semesterBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -111,7 +111,7 @@ checkTests()
 
  <!-- YEAR PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Progreso anual:</b></div>
+  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance anual:</b></div>
   <div class="progressWrapper">
 	 <div id="yearBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -539,6 +539,7 @@ const isChecked = document.getElementById(checkedInput);
 // CHECKING THE BOXES!
  if (isChecked.value == 1) {checkbox.checked = true}
  if (checkbox.checked === true) {isChecked.value = 1}
+checkTests()
 }
 
 // DECLARING "GLOBAL TESTS" ELEMENTS
@@ -584,26 +585,67 @@ c5t3isCheck = document.getElementById("c5t1isCheck")
 // CHECK TESTS FUNCTION!
 function checkTests() {
 // TEST N°1
-if (c1t1isChecked.value == 1) {c1t1.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
-if (c1t2isChecked.value == 1) {c1t2.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
-if (c1t3isChecked.value == 1) {c1t3.checked = true; class01.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+if (c1t1isChecked.value == 1) {c1t1.checked = true; testProgress() }
+if (c1t2isChecked.value == 1) {c1t2.checked = true; testProgress() }
+if (c1t3isChecked.value == 1) {c1t3.checked = true; testProgress() }
 // TEST N°2
-if (c2t1isChecked.value == 1) {c2t1.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
-if (c2t2isChecked.value == 1) {c2t2.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
-if (c2t3isChecked.value == 1) {c2t3.checked = true; class02.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+if (c2t1isChecked.value == 1) {c2t1.checked = true; testProgress() }
+if (c2t2isChecked.value == 1) {c2t2.checked = true; testProgress() }
+if (c2t3isChecked.value == 1) {c2t3.checked = true; testProgress()}
 // TEST N°3
-if (c3t1isChecked.value == 1) {c3t1.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
-if (c3t2isChecked.value == 1) {c3t2.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
-if (c3t3isChecked.value == 1) {c3t3.checked = true; class03.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+if (c3t1isChecked.value == 1) {c3t1.checked = true; testProgress() }
+if (c3t2isChecked.value == 1) {c3t2.checked = true; testProgress() }
+if (c3t3isChecked.value == 1) {c3t3.checked = true; testProgress() }
 // TEST N°4
-if (c4t1isChecked.value == 1) {c4t1.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
-if (c4t2isChecked.value == 1) {c4t2.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
-if (c4t3isChecked.value == 1) {c4t3.checked = true; class04.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+if (c4t1isChecked.value == 1) {c4t1.checked = true; testProgress() }
+if (c4t2isChecked.value == 1) {c4t2.checked = true; testProgress() }
+if (c4t3isChecked.value == 1) {c4t3.checked = true; testProgress() }
 // TEST N°5
-if (c5t1isChecked.value == 1) {c5t1.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)" }
-if (c5t2isChecked.value == 1) {c5t2.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)" }
-if (c5t3isChecked.value == 1) {c5t3.checked = true; class05.style.background = "linear-gradient(to right, lightgreen 100%, white 100%)" }
+if (c5t1isChecked.value == 1) {c5t1.checked = true; testProgress() }
+if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
+if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
+}
 
+function testProgress() {
+// STYLE VARIABLES
+var test1 = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)"
+var test2 = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)"
+var test3 = "linear-gradient(to right, lightgreen 100%, white 100%)"
+
+// CHECKING TEST N°1
+if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1 }
+if (c1t1.checked && c1t2.checked) { class01.style.background = test2 }
+if (c1t1.checked && c1t3.checked) { class01.style.background = test2 }
+if (c1t2.checked && c1t3.checked) { class01.style.background = test2 }
+if (c1t1.checked && c1t2.checked && c1t3.checked) { class01.style.background = test3 }
+
+// CHECKING TEST N°2
+if (c2t1.checked || c2t2.checked || c2t3.checked) { class02.style.background = test1 }
+if (c2t1.checked && c2t2.checked) { class02.style.background = test2 }
+if (c2t1.checked && c2t3.checked) { class02.style.background = test2 }
+if (c2t2.checked && c2t3.checked) { class02.style.background = test2 }
+if (c2t1.checked && c2t2.checked && c2t3.checked) { class02.style.background = test3 }
+
+// CHECKING TEST N°3
+if (c3t1.checked || c3t2.checked || c3t3.checked) { class03.style.background = test1 }
+if (c3t1.checked && c3t2.checked) { class03.style.background = test2 }
+if (c3t1.checked && c3t3.checked) { class03.style.background = test2 }
+if (c3t2.checked && c3t3.checked) { class03.style.background = test2 }
+if (c3t1.checked && c3t2.checked && c3t3.checked) { class03.style.background = test3 }
+
+// CHECKING TEST N°4
+if (c4t1.checked || c4t2.checked || c4t3.checked) { class04.style.background = test1 }
+if (c4t1.checked && c4t2.checked) { class04.style.background = test2 }
+if (c4t1.checked && c4t3.checked) { class04.style.background = test2 }
+if (c4t2.checked && c4t3.checked) { class04.style.background = test2 }
+if (c4t1.checked && c4t2.checked && c4t3.checked) { class04.style.background = test3 }
+
+// CHECKING TEST N°5
+if (c5t1.checked || c5t2.checked || c5t3.checked) { class05.style.background = test1 }
+if (c5t1.checked && c5t2.checked) { class05.style.background = test2 }
+if (c5t1.checked && c5t3.checked) { class05.style.background = test2 }
+if (c5t2.checked && c5t3.checked) { class05.style.background = test2 }
+if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3 }
 }
 
 // ==================================================
@@ -611,7 +653,7 @@ if (c5t3isChecked.value == 1) {c5t3.checked = true; class05.style.background = "
 // ==================================================
 function clearTests() {
 var Assessment = document.querySelectorAll("input.assessment");
-for(let theInfo of Assessment) { theInfo.value = "" }
+for(let theInfo of Assessment) { theInfo.value = ""; theInfo.style.background = "#FFFFCC88" }
 
 var theBoxes = document.querySelectorAll("input.theBoxes");
 for(let checks of theBoxes) { checks.checked = false }
