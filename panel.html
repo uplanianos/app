@@ -24,8 +24,6 @@
 
 
 <script type="text/javascript">
-var c1t1 = document.getElementById('c1t1');
-
 window.onbeforeunload = function() {
      $('input').each(function(){
         var id = $(this).attr('id');
@@ -78,7 +76,7 @@ checkTests()
 <div id="title" class="title">PANEL DE PROFES!</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearPlanner(); clearCoffee(); deletedAlert(); toolsDiv.scrollLeft='1815'">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests(); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1815'">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -91,8 +89,6 @@ checkTests()
 📅 <span id="bottomTime">12/12/0000 - ⏰ 00:00:00 ?</span>
 </div>
 
-
-<div id="deletedAlert" class="deletedAlert" style="visibility: hidden;">BORRADO!</div>
 
 
 <div id="main-flex" class="main-flex">
@@ -124,8 +120,8 @@ checkTests()
 
  <!-- TESTS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
-  <div class="trashIcon" onclick="clearTests(); deletedAlert()">🗑️</div>
+  <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
+  <div class="trashIcon" onclick="clearTests()">🗑️</div>
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
 
@@ -194,8 +190,8 @@ checkTests()
 
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: #CC0000;"><b>Programación Semanal:</b></div>
-  <div class="trashIcon" onclick="clearPlanner(); deletedAlert()">🗑️</div>
+  <div id="plannerTitle" class="widgetTitle" style="background-color: #CC0000;"><b>Programación Semanal:</b></div>
+  <div class="trashIcon" onclick="clearPlanner()">🗑️</div>
    <div class="plannerWrapper">
 	<div>Lunes:	<textarea id="planMon" class="plannerDays" placeholder="Actividades del lunes."></textarea></div>
 	<div>Martes:	<textarea id="planTue" class="plannerDays" placeholder="Actividades del martes."></textarea></div>
@@ -213,8 +209,8 @@ checkTests()
 
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
- <div class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
-  <div class="trashIcon" onclick="clearRoll(); deletedAlert()">🗑️</div>
+ <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
+  <div class="trashIcon" onclick="clearRoll()">🗑️</div>
    <div class="doubleColumnWrapper">
     <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
 	<b>Revisión:</b><br>
@@ -305,12 +301,10 @@ checkTests()
 
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div class="trashIcon" onclick="clearCoffee(); deletedAlert()">🗑️</div>
+  <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
+  <div class="trashIcon" onclick="clearCoffee()">🗑️</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
-	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
-	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
-	 </div>
+
 	<div style="width: 65%;">
 	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
 	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
@@ -318,6 +312,11 @@ checkTests()
 	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
 	 </div>
 	</div>
+
+	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
+	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
+	 </div>
+
   </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
  <!-- END OF DRINKS DIV -->
@@ -492,11 +491,6 @@ function drawAttendance() {
 const grayPercent = rollPending
 const greenPercent = rollProgress
 
-// Ensure total percentage doesn't exceed 100%
-// var totalPercent = Math.round(grayPercent + greenPercent)
-// if (totalPercent = Infinity) { totalPercent = 100.000 } // DRAWS INITIAL BORDER!
-// if (totalPercent !== 100) { return }
-
 const grayEnd = (grayPercent / 100) * 2 * Math.PI
 const greenEnd = grayEnd + (greenPercent / 100) * 2 * Math.PI
 
@@ -649,35 +643,81 @@ if (c5t2.checked && c5t3.checked) { class05.style.background = test2 }
 if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3 }
 }
 
+
+
 // ==================================================
 // CLEAR "GLOBAL TESTS" FUNCTION
 // ==================================================
 function clearTests() {
-var Assessment = document.querySelectorAll("input.assessment");
-for(let theInfo of Assessment) { theInfo.value = ""; theInfo.style.background = "#FFFFCC88" }
+// DECLARING ELEMENTS!
+var testTitle = document.getElementById("testTitle")
+testTitle.innerHTML = "BORRANDO&nbsp;PRUEBAS..."
+testTitle.style.background = "red"
 
-var theBoxes = document.querySelectorAll("input.theBoxes");
-for(let checks of theBoxes) { checks.checked = false }
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
 
-var Checked = document.querySelectorAll("input.isChecked");
-for(let areChecked of Checked) { areChecked.value = "0" }
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#testTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  testTitle.innerHTML = "Pruebas Integrales:"
+  testTitle.style.background = "#FF8800"
 
-// CHECK INPUTS!
-// console.log(Assessment,theBoxes,Checked)
+  // DELETING TEST TITLES!
+  var Assessment = document.querySelectorAll("input.assessment");
+  for(let theInfo of Assessment) { theInfo.value = ""; theInfo.style.background = "#FFFFCC88" }
+  // DELETING TEST BOXES!
+  var theBoxes = document.querySelectorAll("input.theBoxes");
+  for(let checks of theBoxes) { checks.checked = false }
+  // DELETING TEST MEMORY!
+  var Checked = document.querySelectorAll("input.isChecked");
+  for(let areChecked of Checked) { areChecked.value = "0" }
+
+  }
+ }, percent)
 }
+
 
 
 // ==================================================
 // CLEAR ATTENDANCE FUNCTION!
 // ==================================================
 function clearRoll() {
-isMon.value = 0; checkMon.checked = false; valMon = 0
-isTue.value = 0; checkTue.checked = false; valTue = 0
-isWed.value = 0; checkWed.checked = false; valWed = 0
-isThu.value = 0; checkThu.checked = false; valThu = 0
-isFri.value = 0; checkFri.checked = false; valFri = 0
-checkAttendance()
-drawAttendance()
+// DECLARING ELEMENTS!
+var attendanceTitle = document.getElementById("attendanceTitle")
+attendanceTitle.innerHTML = "BORRANDO&nbsp;ASISTENCIA..."
+attendanceTitle.style.background = "red"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#attendanceTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  attendanceTitle.innerHTML = "Carotal Asistencia:"
+  attendanceTitle.style.background = "#008800"
+
+  // DELETING ELEMENTS!
+  isMon.value = 0; checkMon.checked = false; valMon = 0
+  isTue.value = 0; checkTue.checked = false; valTue = 0
+  isWed.value = 0; checkWed.checked = false; valWed = 0
+  isThu.value = 0; checkThu.checked = false; valThu = 0
+  isFri.value = 0; checkFri.checked = false; valFri = 0
+  checkAttendance()
+  drawAttendance()
+
+  }
+ }, percent)
 }
 
 
@@ -686,11 +726,31 @@ drawAttendance()
 // CLEAR PLANNER FUNCTION
 // ==================================================
 function clearPlanner() {
-document.getElementById("planMon").value = ""
-document.getElementById("planTue").value = ""
-document.getElementById("planWed").value = ""
-document.getElementById("planThu").value = ""
-document.getElementById("planFri").value = ""
+// DECLARING ELEMENTS!
+var plannerTitle = document.getElementById("plannerTitle")
+plannerTitle.innerHTML = "BORRANDO&nbsp;PLANIFICACIÓN..."
+plannerTitle.style.background = "red"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#plannerTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  plannerTitle.innerHTML = "Programación Semanal:"
+  plannerTitle.style.background = "#CC0000"
+
+  // DELETING ELEMENTS!
+  var Planning = document.querySelectorAll("textarea.plannerDays");
+  for(let Plans of Planning) { Plans.value = ""; }
+
+  }
+ }, percent)
 }
 
 
@@ -744,14 +804,38 @@ if (coffeeCups.value > 0) {
  }
 }
 
+
 // ==================================================
 // CLEAR "COFFEE ENERGY" FUNCTION!
 // ==================================================
 function clearCoffee() {
-howManyCups = 0
-coffeeCups.value = "0"
-halfLife = 0
-energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
+// DECLARING ELEMENTS!
+var coffeeTitle = document.getElementById("coffeeTitle")
+coffeeTitle.innerHTML = "REINICIANDO&nbsp;ENERGÍA..."
+coffeeTitle.style.background = "red"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#coffeeTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  coffeeTitle.innerHTML = "Niveles de Energía:"
+  coffeeTitle.style.background = "#FF8800"
+
+  // DELETING ELEMENTS
+  howManyCups = 0
+  coffeeCups.value = "0"
+  halfLife = 0
+  energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
+
+  }
+ }, percent)
 }
 
 
@@ -811,13 +895,6 @@ observer.observe(document.querySelector('.toolsDiv'))
 
 
 <script type="text/javascript">
-// DELETED MESSAGE!
-function deletedAlert() {
-let deletedAlert = document.getElementById("deletedAlert")
-deletedAlert.style.visibility = "visible"
-setTimeout(function() { deletedAlert.style.visibility = "hidden" }, 1000 * 1 )
-}
-
 // ENTER FULL SCREEN
 function activate(ele) { if (ele.requestFullscreen) {
   ele.requestFullscreen();
