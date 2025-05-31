@@ -9,6 +9,8 @@
  <title>Uplanianos - Panel de Control</title>
 </head>
 
+<audio id="horn" src="media/horn.mp3" preload="auto" display="none"></audio>
+
 
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
 <script src="scripts/jquery-3.7.1.slim.js"></script>
@@ -67,13 +69,13 @@ checkTests()
 
 
 <body>
-<div class="top">
+<div id="top" class="top">
 
 <div style="position: absolute; top: 10px; left: 10px;">
  <a href="index.html"><button class="topButtons" title="Volver a página inicial!" value="Volver a página inicial!">&nbsp;&larrhk;&nbsp;</button></a>
  </div>
 
-<div id="title" class="title">PANEL DE CONTROL!</div>
+<div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
  <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1815'">🗑️</button></a>
@@ -172,11 +174,11 @@ checkTests()
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
 
-		<div style="display: flex; align-items: center; padding: 3px;">
+		<div style="display: flex; align-items: center; padding: 3px; margin-right: -6px;">
 		 <div class="testSubject">Asignaturas:</div>
-		 <div class="testGrades">N°1</div>
-		 <div class="testGrades">N°2</div>
-		 <div class="testGrades">N°3</div>
+		 <div class="testGrades">1°</div>
+		 <div class="testGrades">2°</div>
+		 <div class="testGrades">3°</div>
 		</div>
 
 		<div style="display: flex; align-items: center;  padding: 3px;">
@@ -436,6 +438,206 @@ if (distanceYear > 0) {
 // ==================================================
 
 
+
+// ==================================================
+// ADD A CHECK TO "GLOBAL TESTS" FUNCTION
+// ==================================================
+function checkThisTest(input) {
+var checkedInput = input+'isChecked'
+const checkbox = document.getElementById(input);
+const isChecked = document.getElementById(checkedInput);
+// console.log(input,checkbox,checkedInput,isChecked)
+// CHECKING THE BOXES!
+ if (isChecked.value == 1) {checkbox.checked = true}
+ if (checkbox.checked === true) {isChecked.value = 1}
+checkTests()
+}
+
+// DECLARING "GLOBAL TESTS" ELEMENTS
+class01 = document.getElementById("class01")
+class02 = document.getElementById("class02")
+class03 = document.getElementById("class03")
+class04 = document.getElementById("class04")
+class05 = document.getElementById("class05")
+c1t1 = document.getElementById("c1t1")
+c1t2 = document.getElementById("c1t2")
+c1t3 = document.getElementById("c1t3")
+c2t1 = document.getElementById("c2t1")
+c2t2 = document.getElementById("c2t2")
+c2t3 = document.getElementById("c2t3")
+c3t1 = document.getElementById("c3t1")
+c3t2 = document.getElementById("c3t2")
+c3t3 = document.getElementById("c3t3")
+c4t1 = document.getElementById("c4t1")
+c4t2 = document.getElementById("c4t2")
+c4t3 = document.getElementById("c4t3")
+c5t1 = document.getElementById("c5t1")
+c5t2 = document.getElementById("c5t2")
+c5t3 = document.getElementById("c5t3")
+c1t1isCheck = document.getElementById("c1t1isCheck")
+c1t2isCheck = document.getElementById("c1t1isCheck")
+c1t3isCheck = document.getElementById("c1t1isCheck")
+c2t1isCheck = document.getElementById("c2t1isCheck")
+c2t2isCheck = document.getElementById("c2t1isCheck")
+c2t3isCheck = document.getElementById("c2t1isCheck")
+c3t1isCheck = document.getElementById("c3t1isCheck")
+c3t2isCheck = document.getElementById("c3t1isCheck")
+c3t3isCheck = document.getElementById("c3t1isCheck")
+c4t1isCheck = document.getElementById("c4t1isCheck")
+c4t2isCheck = document.getElementById("c4t1isCheck")
+c4t3isCheck = document.getElementById("c4t1isCheck")
+c5t1isCheck = document.getElementById("c5t1isCheck")
+c5t2isCheck = document.getElementById("c5t1isCheck")
+c5t3isCheck = document.getElementById("c5t1isCheck")
+
+// ==================================================
+// ONLOAD "TEST CHECKS" FUNCTION
+// ==================================================
+// CHECK TESTS FUNCTION!
+function checkTests() {
+// TEST N°1
+if (c1t1isChecked.value == 1) {c1t1.checked = true; testProgress() }
+if (c1t2isChecked.value == 1) {c1t2.checked = true; testProgress() }
+if (c1t3isChecked.value == 1) {c1t3.checked = true; testProgress() }
+// TEST N°2
+if (c2t1isChecked.value == 1) {c2t1.checked = true; testProgress() }
+if (c2t2isChecked.value == 1) {c2t2.checked = true; testProgress() }
+if (c2t3isChecked.value == 1) {c2t3.checked = true; testProgress()}
+// TEST N°3
+if (c3t1isChecked.value == 1) {c3t1.checked = true; testProgress() }
+if (c3t2isChecked.value == 1) {c3t2.checked = true; testProgress() }
+if (c3t3isChecked.value == 1) {c3t3.checked = true; testProgress() }
+// TEST N°4
+if (c4t1isChecked.value == 1) {c4t1.checked = true; testProgress() }
+if (c4t2isChecked.value == 1) {c4t2.checked = true; testProgress() }
+if (c4t3isChecked.value == 1) {c4t3.checked = true; testProgress() }
+// TEST N°5
+if (c5t1isChecked.value == 1) {c5t1.checked = true; testProgress() }
+if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
+if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
+}
+
+
+// UPDATING WORK PROGRESS
+function testProgress() {
+// STYLE VARIABLES
+var test1 = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)"
+var test2 = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)"
+var test3 = "linear-gradient(to right, lightgreen 100%, white 100%)"
+
+// SETTING UP VARIABLES!
+var doIt = 0
+var doingIt = 0
+
+// CHECKING TEST N°1
+if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1; doIt++ }
+if (c1t1.checked && c1t2.checked || c1t1.checked && c1t3.checked || c1t2.checked && c1t3.checked) { class01.style.background = test2; doIt++ }
+if (c1t1.checked && c1t2.checked && c1t3.checked) { class01.style.background = test3; doIt++ }
+
+// CHECKING TEST N°2
+if (c2t1.checked || c2t2.checked || c2t3.checked) { class02.style.background = test1; doIt++ }
+if (c2t1.checked && c2t2.checked || c2t1.checked && c2t3.checked || c2t2.checked && c2t3.checked) { class02.style.background = test2; doIt++ }
+if (c2t1.checked && c2t2.checked && c2t3.checked) { class02.style.background = test3; doIt++ }
+
+// CHECKING TEST N°3
+if (c3t1.checked || c3t2.checked || c3t3.checked) { class03.style.background = test1; doIt++ }
+if (c3t1.checked && c3t2.checked || c3t1.checked && c3t3.checked || c3t2.checked && c3t3.checked) { class03.style.background = test2; doIt++ }
+if (c3t1.checked && c3t2.checked && c3t3.checked) { class03.style.background = test3; doIt++ }
+
+// CHECKING TEST N°4
+if (c4t1.checked || c4t2.checked || c4t3.checked) { class04.style.background = test1; doIt++ }
+if (c4t1.checked && c4t2.checked || c4t1.checked && c4t3.checked || c4t2.checked && c4t3.checked) { class04.style.background = test2; doIt++ }
+if (c4t1.checked && c4t2.checked && c4t3.checked) { class04.style.background = test3; doIt++ }
+
+// CHECKING TEST N°5
+if (c5t1.checked || c5t2.checked || c5t3.checked) { class05.style.background = test1; doIt++ }
+if (c5t1.checked && c5t2.checked || c5t1.checked && c5t3.checked || c5t2.checked && c5t3.checked) { class05.style.background = test2; doIt++ }
+if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3; doIt++ }
+
+// GETTING PERCENTAGE!
+doingIt = Math.abs(doIt * 100 / 15).toFixed(0)
+
+// UPDATING MAIN TITLE!
+let maintitle = document.getElementById("title")
+maintitle.innerHTML = "Panel de Control (" + doingIt + '%)'
+
+let top = document.getElementById("top")
+if (doingIt >= 6) { top.style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)" }
+if (doingIt >= 7) { top.style.background = "linear-gradient(to right, lightgreen 7%, lightyellow 8%)" }
+if (doingIt >= 13) { top.style.background = "linear-gradient(to right, lightgreen 13%, lightyellow 14%)" }
+if (doingIt >= 20) { top.style.background = "linear-gradient(to right, lightgreen 20%, lightyellow 21%)" }
+if (doingIt >= 27) { top.style.background = "linear-gradient(to right, lightgreen 27%, lightyellow 28%)" }
+if (doingIt >= 33) { top.style.background = "linear-gradient(to right, lightgreen 33%, lightyellow 34%)" }
+if (doingIt >= 40) { top.style.background = "linear-gradient(to right, lightgreen 40%, lightyellow 41%)" }
+if (doingIt >= 47) { top.style.background = "linear-gradient(to right, lightgreen 47%, lightyellow 48%)" }
+if (doingIt >= 53) { top.style.background = "linear-gradient(to right, lightgreen 53%, lightyellow 54%)" }
+if (doingIt >= 60) { top.style.background = "linear-gradient(to right, lightgreen 60%, lightyellow 61%)" }
+if (doingIt >= 67) { top.style.background = "linear-gradient(to right, lightgreen 67%, lightyellow 68%)" }
+if (doingIt >= 73) { top.style.background = "linear-gradient(to right, lightgreen 73%, lightyellow 74%)" }
+if (doingIt >= 80) { top.style.background = "linear-gradient(to right, lightgreen 80%, lightyellow 81%)" }
+if (doingIt >= 87) { top.style.background = "linear-gradient(to right, lightgreen 87%, lightyellow 88%)" }
+if (doingIt >= 93) { top.style.background = "linear-gradient(to right, lightgreen 93%, lightyellow 94%)" }
+if (doingIt >= 100) { top.style.background = "linear-gradient(to right, lightgreen 100%, lightyellow 100%)"; youCelebrate() }
+}
+
+
+
+// ==================================================
+// CLEAR "GLOBAL TESTS" FUNCTION
+// ==================================================
+function clearTests(input) {
+// DECLARING ELEMENTS!
+document.getElementById("title").innerHTML = "Panel de Control"
+document.getElementById("top").style.backgroundColor = "lightyellow"
+document.getElementById("top").style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"
+
+var testTitle = document.getElementById("testTitle")
+testTitle.innerHTML = "BORRANDO..."
+testTitle.style.background = "red"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#testTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  testTitle.innerHTML = "Evaluaciones Integrales:"
+  testTitle.style.fontWeight = "bold"
+  testTitle.style.background = "#FF8800"
+
+  // DELETING TEST BOXES!
+  var theBoxes = document.querySelectorAll("input.theBoxes");
+  for(let checks of theBoxes) { checks.checked = false }
+
+  // DELETING TEST MEMORY!
+  var Checked = document.querySelectorAll("input.isChecked");
+  for(let areChecked of Checked) { areChecked.value = "0" }
+
+  // CLEARING TEST PROGRESS!
+  var Assessment = document.querySelectorAll("input.assessment");
+  let namesCompleted = false
+  for(let theInfo of Assessment) {
+	theInfo.style.background = "#FFFFCC88"
+	if (theInfo.value.length > 0) { namesCompleted = true }
+}
+
+  // CONFIRM TO DELETE CLASS NAMES!
+  if (namesCompleted && input !== 'bypass' && confirm("PRUEBAS BORRADAS!\n¿Desea además borrar las asignaturas?") == true) {
+  //  var Assessment = document.querySelectorAll("input.assessment");
+    for(let theInfo of Assessment) { theInfo.value = "" }
+    }
+
+  }
+ }, percent)
+}
+
+
+
 // ==================================================
 // CHECK ATTENDANCE FUNCTION!
 // ==================================================
@@ -530,179 +732,6 @@ ctx.lineWidth = 2;
 ctx.stroke();
 }
 // END OF ATTENDANCE FUNCTION!
-
-
-// ==================================================
-// ADD A CHECK TO "GLOBAL TESTS" FUNCTION
-// ==================================================
-function checkThisTest(input) {
-var checkedInput = input+'isChecked'
-const checkbox = document.getElementById(input);
-const isChecked = document.getElementById(checkedInput);
-// console.log(input,checkbox,checkedInput,isChecked)
-// CHECKING THE BOXES!
- if (isChecked.value == 1) {checkbox.checked = true}
- if (checkbox.checked === true) {isChecked.value = 1}
-checkTests()
-}
-
-// DECLARING "GLOBAL TESTS" ELEMENTS
-class01 = document.getElementById("class01")
-class02 = document.getElementById("class02")
-class03 = document.getElementById("class03")
-class04 = document.getElementById("class04")
-class05 = document.getElementById("class05")
-c1t1 = document.getElementById("c1t1")
-c1t2 = document.getElementById("c1t2")
-c1t3 = document.getElementById("c1t3")
-c2t1 = document.getElementById("c2t1")
-c2t2 = document.getElementById("c2t2")
-c2t3 = document.getElementById("c2t3")
-c3t1 = document.getElementById("c3t1")
-c3t2 = document.getElementById("c3t2")
-c3t3 = document.getElementById("c3t3")
-c4t1 = document.getElementById("c4t1")
-c4t2 = document.getElementById("c4t2")
-c4t3 = document.getElementById("c4t3")
-c5t1 = document.getElementById("c5t1")
-c5t2 = document.getElementById("c5t2")
-c5t3 = document.getElementById("c5t3")
-c1t1isCheck = document.getElementById("c1t1isCheck")
-c1t2isCheck = document.getElementById("c1t1isCheck")
-c1t3isCheck = document.getElementById("c1t1isCheck")
-c2t1isCheck = document.getElementById("c2t1isCheck")
-c2t2isCheck = document.getElementById("c2t1isCheck")
-c2t3isCheck = document.getElementById("c2t1isCheck")
-c3t1isCheck = document.getElementById("c3t1isCheck")
-c3t2isCheck = document.getElementById("c3t1isCheck")
-c3t3isCheck = document.getElementById("c3t1isCheck")
-c4t1isCheck = document.getElementById("c4t1isCheck")
-c4t2isCheck = document.getElementById("c4t1isCheck")
-c4t3isCheck = document.getElementById("c4t1isCheck")
-c5t1isCheck = document.getElementById("c5t1isCheck")
-c5t2isCheck = document.getElementById("c5t1isCheck")
-c5t3isCheck = document.getElementById("c5t1isCheck")
-
-// ==================================================
-// ONLOAD "TEST CHECKS" FUNCTION
-// ==================================================
-// CHECK TESTS FUNCTION!
-function checkTests() {
-// TEST N°1
-if (c1t1isChecked.value == 1) {c1t1.checked = true; testProgress() }
-if (c1t2isChecked.value == 1) {c1t2.checked = true; testProgress() }
-if (c1t3isChecked.value == 1) {c1t3.checked = true; testProgress() }
-// TEST N°2
-if (c2t1isChecked.value == 1) {c2t1.checked = true; testProgress() }
-if (c2t2isChecked.value == 1) {c2t2.checked = true; testProgress() }
-if (c2t3isChecked.value == 1) {c2t3.checked = true; testProgress()}
-// TEST N°3
-if (c3t1isChecked.value == 1) {c3t1.checked = true; testProgress() }
-if (c3t2isChecked.value == 1) {c3t2.checked = true; testProgress() }
-if (c3t3isChecked.value == 1) {c3t3.checked = true; testProgress() }
-// TEST N°4
-if (c4t1isChecked.value == 1) {c4t1.checked = true; testProgress() }
-if (c4t2isChecked.value == 1) {c4t2.checked = true; testProgress() }
-if (c4t3isChecked.value == 1) {c4t3.checked = true; testProgress() }
-// TEST N°5
-if (c5t1isChecked.value == 1) {c5t1.checked = true; testProgress() }
-if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
-if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
-}
-
-function testProgress() {
-// STYLE VARIABLES
-var test1 = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)"
-var test2 = "linear-gradient(to right, lightgreen 66%, #FFFFCC88 72%)"
-var test3 = "linear-gradient(to right, lightgreen 100%, white 100%)"
-
-// CHECKING TEST N°1
-if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1 }
-if (c1t1.checked && c1t2.checked) { class01.style.background = test2 }
-if (c1t1.checked && c1t3.checked) { class01.style.background = test2 }
-if (c1t2.checked && c1t3.checked) { class01.style.background = test2 }
-if (c1t1.checked && c1t2.checked && c1t3.checked) { class01.style.background = test3 }
-
-// CHECKING TEST N°2
-if (c2t1.checked || c2t2.checked || c2t3.checked) { class02.style.background = test1 }
-if (c2t1.checked && c2t2.checked) { class02.style.background = test2 }
-if (c2t1.checked && c2t3.checked) { class02.style.background = test2 }
-if (c2t2.checked && c2t3.checked) { class02.style.background = test2 }
-if (c2t1.checked && c2t2.checked && c2t3.checked) { class02.style.background = test3 }
-
-// CHECKING TEST N°3
-if (c3t1.checked || c3t2.checked || c3t3.checked) { class03.style.background = test1 }
-if (c3t1.checked && c3t2.checked) { class03.style.background = test2 }
-if (c3t1.checked && c3t3.checked) { class03.style.background = test2 }
-if (c3t2.checked && c3t3.checked) { class03.style.background = test2 }
-if (c3t1.checked && c3t2.checked && c3t3.checked) { class03.style.background = test3 }
-
-// CHECKING TEST N°4
-if (c4t1.checked || c4t2.checked || c4t3.checked) { class04.style.background = test1 }
-if (c4t1.checked && c4t2.checked) { class04.style.background = test2 }
-if (c4t1.checked && c4t3.checked) { class04.style.background = test2 }
-if (c4t2.checked && c4t3.checked) { class04.style.background = test2 }
-if (c4t1.checked && c4t2.checked && c4t3.checked) { class04.style.background = test3 }
-
-// CHECKING TEST N°5
-if (c5t1.checked || c5t2.checked || c5t3.checked) { class05.style.background = test1 }
-if (c5t1.checked && c5t2.checked) { class05.style.background = test2 }
-if (c5t1.checked && c5t3.checked) { class05.style.background = test2 }
-if (c5t2.checked && c5t3.checked) { class05.style.background = test2 }
-if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3 }
-}
-
-
-
-// ==================================================
-// CLEAR "GLOBAL TESTS" FUNCTION
-// ==================================================
-function clearTests(input) {
-// DECLARING ELEMENTS!
-var testTitle = document.getElementById("testTitle")
-testTitle.innerHTML = "BORRANDO..."
-testTitle.style.background = "red"
-
-// DELETE FUNCTIONALITY VARIABLES!
-var duration = 1000 * 0.1; // Animation duration!
-var percent = duration / 100; // 1 percent of duration!
-var i = 0; // Animation starts from Zero!
-
-// DOING THE LOOP!
-var doTheLoop = setInterval(function(){
- i++;
- $("#testTitle").css("width", i + "%")
- if (i >= 100) {
-  clearInterval(doTheLoop)
-  testTitle.innerHTML = "Evaluaciones Integrales:"
-  testTitle.style.fontWeight = "bold"
-  testTitle.style.background = "#FF8800"
-
-  // DELETING TEST BOXES!
-  var theBoxes = document.querySelectorAll("input.theBoxes");
-  for(let checks of theBoxes) { checks.checked = false }
-
-  // DELETING TEST MEMORY!
-  var Checked = document.querySelectorAll("input.isChecked");
-  for(let areChecked of Checked) { areChecked.value = "0" }
-
-  // CLEARING TEST PROGRESS!
-  var Assessment = document.querySelectorAll("input.assessment");
-  let namesCompleted = false
-  for(let theInfo of Assessment) {
-	theInfo.style.background = "#FFFFCC88"
-	if (theInfo.value.length > 0) { namesCompleted = true }
-}
-
-  // CONFIRM TO DELETE CLASS NAMES!
-  if (namesCompleted && input !== 'bypass' && confirm("PRUEBAS BORRADAS!\n¿Desea además borrar las asignaturas?") == true) {
-  //  var Assessment = document.querySelectorAll("input.assessment");
-    for(let theInfo of Assessment) { theInfo.value = "" }
-    }
-
-  }
- }, percent)
-}
 
 
 
@@ -935,6 +964,30 @@ function deactivate() { if (document.exitFullscreen) {
  document.getElementById('fullscreen').style.display = 'inline';
  document.getElementById('minimize').style.display = 'none';
  }
+}
+
+// CONFETTI FUNCTION!
+function youCelebrate() {
+const confettiWrapper = document.querySelector('.main-flex');
+
+// Generate confetti
+for (let i = 0; i < 12; i++) {
+ const confetti = document.createElement('div');
+ confetti.classList.add('confetti-piece');
+ confetti.style.left = `${Math.random() * 100}%`;
+ confetti.style.setProperty('--fall-duration', `${Math.random() * 3 + 3}s`);
+ confetti.style.setProperty('--confetti-color', getRandomColor());
+ confettiWrapper.appendChild(confetti);
+ }
+function getRandomColor() {
+ const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
+ return colors[Math.floor(Math.random() * colors.length)];
+ }
+
+horn.play().catch(error => {
+console.log("Auto play onload is disabled!")
+})
+
 }
 </script>
 
