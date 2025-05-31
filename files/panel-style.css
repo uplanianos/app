@@ -11,6 +11,8 @@ body {
  /* background-color: #D6CBD3; Mauve 2 */
  /* background-color: #E4D1D1; Peach */
  /* background-color: #F9D5E5; Purple */
+ /* background-color: #7F55B1; Pretty Purple */
+ /* background-color: #CCCCFF; Periwinkle */
   background-color: #151B54; /* For browsers that do not support gradients */
   background-image: linear-gradient(to bottom, black, #151B54, #36013F);
   background-repeat: no-repeat;
@@ -133,6 +135,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  width: 100%;
  border: 1px solid gray;
  border-style: hidden hidden solid hidden; /* top right bottom left */
+ z-index: 1;
 }
 
 .topButtons {
@@ -224,7 +227,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .toolSpan {
  display: inline-block;
  width: 120px;
- height: 136px;
+ height: 132px;
  background-color: #0000FF33;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -236,7 +239,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .tidySpan {
  display: inline-block;
  width: 120px;
- height: 136px;
+ height: 132px;
  background-color: #50C87866;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -248,7 +251,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .linkSpan {
  display: inline-block;
  width: 120px;
- height: 136px;
+ height: 132px;
  background-color: #CF9FFF88;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -260,7 +263,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .uplaSpan {
  display: inline-block;
  width: 120px;
- height: 136px;
+ height: 132px;
  background-color: #C4B45466;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -272,7 +275,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .helpSpan {
  display: inline-block;
  width: 120px;
- height: 136px;
+ height: 132px;
  background-color: #CC000033;
  border: 1px solid lightgray;
  border-radius: 12px;
