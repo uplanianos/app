@@ -17,15 +17,15 @@
 
 <body>
 
-<div id="developer" class="developer" style="display: none;">
+<div id="developer" class="developer" style="display: none; text-align: justify;">
  <big><b>Uplanianos</b></big> permite a los estudiantes optimizar sus actividades académicas desde confeccionar el horario de clases, revisar información importante como
  el calendario académico, reglamento del estudiante y ver escalas de notas.<br>
  <br>
  Las distintas herramientas permiten además calcular el promedio de asignaturas integrales y con porcentajes, calcular del porcentaje de pruebas, porcentaje de asistencia,
  revisar fechas importantes, simular el examen acumulativo especial, entre otras.<br>
  <br>
- La innovación fue conceptualizada y desarrollada originalmente el año 2023, actualizando permanentemente desde esa fecha tanto en el presente formato <i>Web</i>, como
- en su versión <i>Android</i> por su servidor, <b>prof. Juan Edo. Méndez</b>.<br>
+ La innovación fue conceptualizada y desarrollada originalmente el año 2023, actualizando permanentemente desde esa fecha, tanto en el presente formato <i>Web</i> como
+ en su versión <a href="install.html"><i>Android</i></a>, por el académico <b>Juan Edo. Méndez</b>, atento a sus sugerencias.<br>
  <br>
  <b>Contacto:</b><br>
  <span onclick="navigator.clipboard.writeText('juan.mendez@upla.cl');alert('Correo copiado!')" style="cursor: pointer;">juan.mendez@upla.cl</span><br>
@@ -36,11 +36,11 @@
     <br>
     <div class="title">
 	<div class="letters" style="color: red;">U</div>
-	<div class="letters" style="color: green; cursor: help;" onclick="location.href='panel.html';">P</div>
+	<div class="letters" style="color: green;">P</div>
 	<div class="letters" style="color: blue;">L</div>
 	<div class="letters" style="color: purple;">A</div>
 	<div class="letters" style="color: yellow;">N</div>
-	<div class="letters" style="color: turquoise; cursor: help" onclick="doThis()">I</div>
+	<div class="letters" style="color: turquoise; cursor: help" onclick="doThis()" id="I">I</div>
 	<div class="letters" style="color: lightgreen;">A</div>
 	<div class="letters" style="color: orange;">N</div>
 	<div class="letters" style="color: lightblue;">O</div>
@@ -53,10 +53,11 @@
      <a href="temporizador.html"><div class="candy-red-bubble" style="width: 150px;"><p>TEMPORIZADOR<br>DE CLASES</p></div></a>
      <a href="agenda.html"><div class="grass-green-bubble" style="width: 150px;"><p>AGENDA<br>SEMESTRAL</p></div></a>
      <a href="calendario.html"><div class="pale-blue-bubble"><p>CALENDARIO<br>ACADÉMICO</p></div></a>
-     <a href="avance.html"><div class="purple-iris-bubble"><p>AVANCE<br>CURRICULAR</p></div></a>
+     <a href="panel.html"><div class="pumpkin-bubble"><div class="newBadge">New!</div><p>PANEL<br>DE CONTROL</p></div></a>
      <a href="manual-estudiante.html"><div class="pink-plum-bubble"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
-     <a href="notas.html"><div class="pumpkin-bubble"><p>ESCALAS<br>DE NOTAS</p></div></a>
      <a href="sigueparo.html"><div class="candy-red-bubble" style="width: 140px;"><div class="newBadge">New!</div><p>PARO<br>TRACKER</p></div></a>
+     <a href="avance.html"><div class="purple-iris-bubble"><p>AVANCE<br>CURRICULAR</p></div></a>
+     <a href="notas.html"><div class="pumpkin-bubble"><p>ESCALAS<br>DE NOTAS</p></div></a>
      <button onclick="sideScrollInfo()" onMouseOver="sideScrollInfo()" class="slideInfoRight" id="slideInfoRight">&#8250;</button>
     </div>
 
@@ -289,15 +290,28 @@ var clicks = 0
 let mainDiv = document.getElementById("mainDiv")
 let developer = document.getElementById("developer")
 
+var fontSize = 12+'px'
+
 function doThis() {
  clicks++
  console.log("Developer clicks: "+clicks)
+
+ // CHANGING FONT SIZE
+ fontSize = '3'+clicks+'px'
+ document.getElementById("I").style.color = "blue"
+ document.getElementById("I").style.padding = clicks+'px'
+ document.getElementById("I").style.fontSize = fontSize
+
+ // IF STATEMENT!
  if (clicks >= 10) {
   mainDiv.style.display = "none"
   developer.style.display = "block"
   setTimeout('resetMain()', 1000 * 30)
   clicks = 0;
- } // End of IF statement!
+  document.getElementById("I").style.color = "turquoise"
+  document.getElementById("I").style.fontSize = "32px"
+  document.getElementById("I").style.padding = "0px";
+  } // End of IF statement!
 }
 
 function resetMain() {
