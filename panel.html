@@ -519,6 +519,9 @@ if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
 
 
 // UPDATING WORK PROGRESS
+
+var confettiStopped = true
+
 function testProgress() {
 // STYLE VARIABLES
 var test1 = "linear-gradient(to right, lightgreen 33%, #FFFFCC88 40%)"
@@ -577,7 +580,41 @@ if (doingIt >= 73) { top.style.background = "linear-gradient(to right, lightgree
 if (doingIt >= 80) { top.style.background = "linear-gradient(to right, lightgreen 80%, lightyellow 81%)" }
 if (doingIt >= 87) { top.style.background = "linear-gradient(to right, lightgreen 87%, lightyellow 88%)" }
 if (doingIt >= 93) { top.style.background = "linear-gradient(to right, lightgreen 93%, lightyellow 94%)" }
-if (doingIt >= 100) { top.style.background = "linear-gradient(to right, lightgreen 100%, lightyellow 100%)"; youCelebrate() }
+
+if (doingIt >= 100) {
+ top.style.background = "linear-gradient(to right, lightgreen 100%, lightyellow 100%)"
+ if (confettiStopped) { throwConfetti() }
+ }
+
+}
+
+// ==================================================
+// THRWO CONFETTI FUNCTION!
+// ==================================================
+function throwConfetti() {
+confettiStopped = false
+const confettiWrapper = document.querySelector('.main-flex');
+
+horn.play().catch(error => {
+ console.log("Auto play onload is disabled!")
+})
+
+
+// GENERATE CONFETTI!
+for (let i = 0; i <= 25; i++) {
+ const confetti = document.createElement('div');
+ confetti.classList.add('confetti-piece');
+ confetti.style.left = `${Math.random() * 100}%`;
+ confetti.style.setProperty('--fall-duration', `${Math.random() * 4 + 4}s`);
+ confetti.style.setProperty('--confetti-color', getRandomColor());
+ confettiWrapper.appendChild(confetti);
+ }
+
+function getRandomColor() {
+ const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4', 'red', 'blue'];
+ return colors[Math.floor(Math.random() * colors.length)];
+ }
+
 }
 
 
@@ -631,6 +668,9 @@ var doTheLoop = setInterval(function(){
   //  var Assessment = document.querySelectorAll("input.assessment");
     for(let theInfo of Assessment) { theInfo.value = "" }
     }
+
+  // RELOADING PAGE IF "CONFETTI FUNCTION" IS RUNNING!
+  if (!confettiStopped) { location.reload() }
 
   }
  }, percent)
@@ -949,6 +989,7 @@ observer.observe(document.querySelector('.toolsDiv'))
 
 
 <script type="text/javascript">
+
 // ENTER FULL SCREEN
 function activate(ele) { if (ele.requestFullscreen) {
   ele.requestFullscreen();
@@ -956,6 +997,7 @@ function activate(ele) { if (ele.requestFullscreen) {
   document.getElementById('minimize').style.display = 'inline';
   }
 }
+
 
 // EXIT FULL SCREEN
 function deactivate() { if (document.exitFullscreen) {
@@ -966,29 +1008,6 @@ function deactivate() { if (document.exitFullscreen) {
  }
 }
 
-// CONFETTI FUNCTION!
-function youCelebrate() {
-const confettiWrapper = document.querySelector('.main-flex');
-
-// Generate confetti
-for (let i = 0; i < 12; i++) {
- const confetti = document.createElement('div');
- confetti.classList.add('confetti-piece');
- confetti.style.left = `${Math.random() * 100}%`;
- confetti.style.setProperty('--fall-duration', `${Math.random() * 3 + 3}s`);
- confetti.style.setProperty('--confetti-color', getRandomColor());
- confettiWrapper.appendChild(confetti);
- }
-function getRandomColor() {
- const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
- return colors[Math.floor(Math.random() * colors.length)];
- }
-
-horn.play().catch(error => {
-console.log("Auto play onload is disabled!")
-})
-
-}
 </script>
 
 
