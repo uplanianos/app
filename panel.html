@@ -518,7 +518,7 @@ ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.arc(centerX, centerY, radius, 0, grayEnd);
 ctx.closePath();
-ctx.fillStyle = '#BBB';
+ctx.fillStyle = 'lightgray';
 ctx.fill();
 
 // Draw the next arc
@@ -526,14 +526,14 @@ ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.arc(centerX, centerY, radius, grayEnd, greenEnd);
 ctx.closePath();
-ctx.fillStyle = '#55EE55';
+ctx.fillStyle = '#44AA44';
 ctx.fill();
 
 // BORDER
 ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.strokeStyle = 'gray';
-ctx.lineWidth = 2;
+ctx.strokeStyle = 'darkgray';
+ctx.lineWidth = 3;
 ctx.stroke();
 }
 // END OF ATTENDANCE FUNCTION!
