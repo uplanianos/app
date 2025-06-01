@@ -59,10 +59,11 @@ termProgress()
 yearProgress()
 checkAttendance()
 drawAttendance()
+checkPlanner()
+checkTests()
 coffeeTime()
 toolsDivMemory()
 refreshTime()
-checkTests()
 }
 </script>
 
@@ -124,7 +125,7 @@ checkTests()
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
  <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
-  <div class="trashIcon" onclick="clearRoll()">🗑️</div>
+  <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">🗑️</div>
    <div class="doubleColumnWrapper">
     <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
 	<b>Revisión:</b><br>
@@ -151,13 +152,13 @@ checkTests()
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
   <div id="plannerTitle" class="widgetTitle" style="background-color: #554994"><b>Programación Semanal:</b></div>
-  <div class="trashIcon" onclick="clearPlanner()">🗑️</div>
+  <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">🗑️</div>
    <div class="plannerWrapper">
-	<div>Lunes:	<textarea id="planMon" class="plannerDays" placeholder="Actividades del lunes."></textarea></div>
-	<div>Martes:	<textarea id="planTue" class="plannerDays" placeholder="Actividades del martes."></textarea></div>
-	<div>Miércoles:	<textarea id="planWed" class="plannerDays" placeholder="Actividades del miércoles."></textarea></div>
-	<div>Jueves:	<textarea id="planThu" class="plannerDays" placeholder="Actividades del jueves."></textarea></div>
-	<div>Viernes:	<textarea id="planFri" class="plannerDays" placeholder="Actividades del viernes."></textarea></div>
+	<div>Lunes:	<textarea id="planMon" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del lunes."></textarea></div>
+	<div>Martes:	<textarea id="planTue" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del martes."></textarea></div>
+	<div>Miércoles:	<textarea id="planWed" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del miércoles."></textarea></div>
+	<div>Jueves:	<textarea id="planThu" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del jueves."></textarea></div>
+	<div>Viernes:	<textarea id="planFri" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del viernes."></textarea></div>
    </div><!-- END OF PLANNER WRAPPER -->
  </div>
  <!-- END OF WEEK PLANNER DIV -->
@@ -170,7 +171,7 @@ checkTests()
  <!-- TESTS DIV -->
  <div class="widgetDivs">
   <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
-  <div class="trashIcon" onclick="clearTests()">🗑️</div>
+  <div id="testTrash" class="trashIcon" onclick="clearTests()">🗑️</div>
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
 
@@ -253,7 +254,7 @@ checkTests()
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div class="trashIcon" onclick="clearCoffee()">🗑️</div>
+  <div id="eneryTrash" class="trashIcon" onclick="clearCoffee()">🗑️</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
 
 	<div style="width: 65%;">
@@ -439,14 +440,209 @@ if (distanceYear > 0) {
 
 
 
+
+
+// ==================================================
+// CHECK ATTENDANCE FUNCTION!
+// ==================================================
+isMon = document.getElementById("isMon")
+isTue = document.getElementById("isTue")
+isWed = document.getElementById("isWed")
+isThu = document.getElementById("isThu")
+isFri = document.getElementById("isFri")
+checkMon = document.getElementById("checkMon")
+checkTue = document.getElementById("checkTue")
+checkWed = document.getElementById("checkWed")
+checkThu = document.getElementById("checkThu")
+checkFri = document.getElementById("checkFri")
+
+// PROGRESS VALUES
+var valMon = 0
+var valTue = 0
+var valWed = 0
+var valThu = 0
+var valFri = 0
+var rollProgress = 0
+var rollPending = 100
+
+
+function checkAttendance() {
+if (isMon.value == 1) {checkMon.checked = true}
+if (isTue.value == 1) {checkTue.checked = true}
+if (isWed.value == 1) {checkWed.checked = true}
+if (isThu.value == 1) {checkThu.checked = true}
+if (isFri.value == 1) {checkFri.checked = true}
+if (checkMon.checked === true) {isMon.value = 1; valMon = 20 }
+if (checkTue.checked === true) {isTue.value = 1; valTue = 20 }
+if (checkWed.checked === true) {isWed.value = 1; valWed = 20 }
+if (checkThu.checked === true) {isThu.value = 1; valThu = 20 }
+if (checkFri.checked === true) {isFri.value = 1; valFri = 20 }
+
+rollProgress = valMon + valTue + valWed + valThu + valFri
+rollPending = 100 - rollProgress
+totalPercent = rollPending + rollProgress
+
+document.getElementById("rollCall").innerText = rollProgress+"%"
+drawAttendance()
+
+// UPDATING ATTENDANCE TRASH ICON (FULL)!
+if (rollProgress > 0) { document.getElementById("attendanceTrash").innerHTML = "🧺" }
+
+}
+
+
+// ==================================================
+// ATTENDANCE PROGRESS PIE CHART!
+// ==================================================
+const canvas = document.getElementById('rollCanvas');
+const ctx = canvas.getContext('2d');
+
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const radius = 100;
+
+// Function to draw the attendance!
+function drawAttendance() {
+
+const grayPercent = rollPending
+const greenPercent = rollProgress
+
+const grayEnd = (grayPercent / 100) * 2 * Math.PI
+const greenEnd = grayEnd + (greenPercent / 100) * 2 * Math.PI
+
+// Clear previous circle
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+// Draw the blue arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, 0, grayEnd);
+ctx.closePath();
+ctx.fillStyle = '#BBB';
+ctx.fill();
+
+// Draw the next arc
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radius, grayEnd, greenEnd);
+ctx.closePath();
+ctx.fillStyle = '#55EE55';
+ctx.fill();
+
+// BORDER
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+ctx.strokeStyle = 'gray';
+ctx.lineWidth = 2;
+ctx.stroke();
+}
+// END OF ATTENDANCE FUNCTION!
+
+
+
+// ==================================================
+// CLEAR ATTENDANCE FUNCTION!
+// ==================================================
+function clearRoll() {
+// DECLARING ELEMENTS!
+var attendanceTitle = document.getElementById("attendanceTitle")
+attendanceTitle.innerHTML = "BORRANDO..."
+attendanceTitle.style.fontWeight = "bold"
+attendanceTitle.style.background = "red"
+
+// UPDATING ATTENDANCE TRASH ICON (EMPTY)!
+document.getElementById("attendanceTrash").innerHTML = "🗑️"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#attendanceTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  attendanceTitle.innerHTML = "Carotal Asistencia:"
+  attendanceTitle.style.background = "#008800"
+
+  // DELETING ELEMENTS!
+  isMon.value = 0; checkMon.checked = false; valMon = 0
+  isTue.value = 0; checkTue.checked = false; valTue = 0
+  isWed.value = 0; checkWed.checked = false; valWed = 0
+  isThu.value = 0; checkThu.checked = false; valThu = 0
+  isFri.value = 0; checkFri.checked = false; valFri = 0
+  checkAttendance()
+  drawAttendance()
+
+  }
+ }, percent)
+}
+
+
+// ==================================================
+// CHECKING "PLANNER CONTENT" FUNCTION
+// ==================================================
+function checkPlanner() {
+// UPDATING PLANNER TRASH ICON (FULL)!
+var Planning = document.querySelectorAll("textarea.plannerDays")
+for(let Plans of Planning) {
+ if (Plans.value.length > 0) {
+   Plans.style.background = "#00CC0033"
+   document.getElementById("plannerTrash").innerHTML = "🧺"
+  }
+ }
+}
+
+
+// ==================================================
+// CLEAR PLANNER FUNCTION
+// ==================================================
+function clearPlanner() {
+// DECLARING ELEMENTS!
+var plannerTitle = document.getElementById("plannerTitle")
+plannerTitle.innerHTML = "BORRANDO..."
+plannerTitle.style.fontWeight = "bold"
+plannerTitle.style.background = "red"
+
+// UPDATING PLANNER TRASH ICON (EMPTY)!
+document.getElementById("plannerTrash").innerHTML = "🗑️"
+
+// DELETE FUNCTIONALITY VARIABLES!
+var duration = 1000 * 0.1; // Animation duration!
+var percent = duration / 100; // 1 percent of duration!
+var i = 0; // Animation starts from Zero!
+
+// DOING THE LOOP!
+var doTheLoop = setInterval(function(){
+ i++;
+ $("#plannerTitle").css("width", i + "%")
+ if (i >= 100) {
+  clearInterval(doTheLoop)
+  plannerTitle.innerHTML = "Programación Semanal:"
+  plannerTitle.style.background = "#CC0000"
+
+  // DELETING ELEMENTS!
+  var Planning = document.querySelectorAll("textarea.plannerDays");
+  for(let Plans of Planning) { Plans.value = ""; Plans.style.background = "lightyellow" }
+
+  }
+ }, percent)
+}
+
+
+
+
 // ==================================================
 // ADD A CHECK TO "GLOBAL TESTS" FUNCTION
 // ==================================================
 function checkThisTest(input) {
+// DECLARING VARIABLES!
 var checkedInput = input+'isChecked'
 const checkbox = document.getElementById(input);
 const isChecked = document.getElementById(checkedInput);
-// console.log(input,checkbox,checkedInput,isChecked)
+
 // CHECKING THE BOXES!
  if (isChecked.value == 1) {checkbox.checked = true}
  if (checkbox.checked === true) {isChecked.value = 1}
@@ -517,9 +713,7 @@ if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
 if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
 }
 
-
 // UPDATING WORK PROGRESS
-
 var confettiStopped = true
 
 function testProgress() {
@@ -531,6 +725,9 @@ var test3 = "linear-gradient(to right, lightgreen 100%, white 100%)"
 // SETTING UP VARIABLES!
 var doIt = 0
 var doingIt = 0
+
+// UPDATING TRASH ICON (FULL)!
+let testTrash = document.getElementById("testTrash")
 
 // CHECKING TEST N°1
 if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1; doIt++ }
@@ -565,7 +762,7 @@ let maintitle = document.getElementById("title")
 maintitle.innerHTML = "Panel de Control (" + doingIt + '%)'
 
 let top = document.getElementById("top")
-if (doingIt >= 6) { top.style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)" }
+if (doingIt >= 6) { top.style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"; testTrash.innerHTML = "🧺" }
 if (doingIt >= 7) { top.style.background = "linear-gradient(to right, lightgreen 7%, lightyellow 8%)" }
 if (doingIt >= 13) { top.style.background = "linear-gradient(to right, lightgreen 13%, lightyellow 14%)" }
 if (doingIt >= 20) { top.style.background = "linear-gradient(to right, lightgreen 20%, lightyellow 21%)" }
@@ -589,16 +786,14 @@ if (doingIt >= 100) {
 }
 
 // ==================================================
-// THRWO CONFETTI FUNCTION!
+// THROW CONFETTI FUNCTION!
 // ==================================================
 function throwConfetti() {
 confettiStopped = false
 const confettiWrapper = document.querySelector('.main-flex');
 
-horn.play().catch(error => {
- console.log("Auto play onload is disabled!")
-})
-
+// PLAY "HORN AUDIO" & CATCHING ONLOAD ERROR!
+horn.play().catch(error => { console.log("Auto play onload is disabled!") })
 
 // GENERATE CONFETTI!
 for (let i = 0; i <= 25; i++) {
@@ -609,12 +804,10 @@ for (let i = 0; i <= 25; i++) {
  confetti.style.setProperty('--confetti-color', getRandomColor());
  confettiWrapper.appendChild(confetti);
  }
-
 function getRandomColor() {
  const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4', 'red', 'blue'];
  return colors[Math.floor(Math.random() * colors.length)];
  }
-
 }
 
 
@@ -627,6 +820,9 @@ function clearTests(input) {
 document.getElementById("title").innerHTML = "Panel de Control"
 document.getElementById("top").style.backgroundColor = "lightyellow"
 document.getElementById("top").style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"
+
+// UPDATING TRASH ICON (EMPTY)!
+document.getElementById("testTrash").innerHTML = "🗑️"
 
 var testTitle = document.getElementById("testTitle")
 testTitle.innerHTML = "BORRANDO..."
@@ -679,176 +875,6 @@ var doTheLoop = setInterval(function(){
 
 
 // ==================================================
-// CHECK ATTENDANCE FUNCTION!
-// ==================================================
-isMon = document.getElementById("isMon")
-isTue = document.getElementById("isTue")
-isWed = document.getElementById("isWed")
-isThu = document.getElementById("isThu")
-isFri = document.getElementById("isFri")
-checkMon = document.getElementById("checkMon")
-checkTue = document.getElementById("checkTue")
-checkWed = document.getElementById("checkWed")
-checkThu = document.getElementById("checkThu")
-checkFri = document.getElementById("checkFri")
-
-// PROGRESS VALUES
-var valMon = 0
-var valTue = 0
-var valWed = 0
-var valThu = 0
-var valFri = 0
-var rollProgress = 0
-var rollPending = 100
-
-
-function checkAttendance() {
-if (isMon.value == 1) {checkMon.checked = true}
-if (isTue.value == 1) {checkTue.checked = true}
-if (isWed.value == 1) {checkWed.checked = true}
-if (isThu.value == 1) {checkThu.checked = true}
-if (isFri.value == 1) {checkFri.checked = true}
-if (checkMon.checked === true) {isMon.value = 1; valMon = 20 }
-if (checkTue.checked === true) {isTue.value = 1; valTue = 20 }
-if (checkWed.checked === true) {isWed.value = 1; valWed = 20 }
-if (checkThu.checked === true) {isThu.value = 1; valThu = 20 }
-if (checkFri.checked === true) {isFri.value = 1; valFri = 20 }
-
-rollProgress = valMon + valTue + valWed + valThu + valFri
-rollPending = 100 - rollProgress
-totalPercent = rollPending + rollProgress
-
-document.getElementById("rollCall").innerText = rollProgress+"%"
-drawAttendance()
-
-// CHECKING VALUES
-// console.log(rollProgress, rollPending,totalPercent)
-}
-
-
-// ==================================================
-// ATTENDANCE PROGRESS PIE CHART!
-// ==================================================
-const canvas = document.getElementById('rollCanvas');
-const ctx = canvas.getContext('2d');
-
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const radius = 100;
-
-// Function to draw the attendance!
-function drawAttendance() {
-
-const grayPercent = rollPending
-const greenPercent = rollProgress
-
-const grayEnd = (grayPercent / 100) * 2 * Math.PI
-const greenEnd = grayEnd + (greenPercent / 100) * 2 * Math.PI
-
-// Clear previous circle
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-// Draw the blue arc
-ctx.beginPath();
-ctx.moveTo(centerX, centerY);
-ctx.arc(centerX, centerY, radius, 0, grayEnd);
-ctx.closePath();
-ctx.fillStyle = '#BBB';
-ctx.fill();
-
-// Draw the next arc
-ctx.beginPath();
-ctx.moveTo(centerX, centerY);
-ctx.arc(centerX, centerY, radius, grayEnd, greenEnd);
-ctx.closePath();
-ctx.fillStyle = '#55EE55';
-ctx.fill();
-
-// BORDER
-ctx.beginPath();
-ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.strokeStyle = 'gray';
-ctx.lineWidth = 2;
-ctx.stroke();
-}
-// END OF ATTENDANCE FUNCTION!
-
-
-
-// ==================================================
-// CLEAR ATTENDANCE FUNCTION!
-// ==================================================
-function clearRoll() {
-// DECLARING ELEMENTS!
-var attendanceTitle = document.getElementById("attendanceTitle")
-attendanceTitle.innerHTML = "BORRANDO..."
-attendanceTitle.style.fontWeight = "bold"
-attendanceTitle.style.background = "red"
-
-// DELETE FUNCTIONALITY VARIABLES!
-var duration = 1000 * 0.1; // Animation duration!
-var percent = duration / 100; // 1 percent of duration!
-var i = 0; // Animation starts from Zero!
-
-// DOING THE LOOP!
-var doTheLoop = setInterval(function(){
- i++;
- $("#attendanceTitle").css("width", i + "%")
- if (i >= 100) {
-  clearInterval(doTheLoop)
-  attendanceTitle.innerHTML = "Carotal Asistencia:"
-  attendanceTitle.style.background = "#008800"
-
-  // DELETING ELEMENTS!
-  isMon.value = 0; checkMon.checked = false; valMon = 0
-  isTue.value = 0; checkTue.checked = false; valTue = 0
-  isWed.value = 0; checkWed.checked = false; valWed = 0
-  isThu.value = 0; checkThu.checked = false; valThu = 0
-  isFri.value = 0; checkFri.checked = false; valFri = 0
-  checkAttendance()
-  drawAttendance()
-
-  }
- }, percent)
-}
-
-
-
-// ==================================================
-// CLEAR PLANNER FUNCTION
-// ==================================================
-function clearPlanner() {
-// DECLARING ELEMENTS!
-var plannerTitle = document.getElementById("plannerTitle")
-plannerTitle.innerHTML = "BORRANDO..."
-plannerTitle.style.fontWeight = "bold"
-plannerTitle.style.background = "red"
-
-// DELETE FUNCTIONALITY VARIABLES!
-var duration = 1000 * 0.1; // Animation duration!
-var percent = duration / 100; // 1 percent of duration!
-var i = 0; // Animation starts from Zero!
-
-// DOING THE LOOP!
-var doTheLoop = setInterval(function(){
- i++;
- $("#plannerTitle").css("width", i + "%")
- if (i >= 100) {
-  clearInterval(doTheLoop)
-  plannerTitle.innerHTML = "Programación Semanal:"
-  plannerTitle.style.background = "#CC0000"
-
-  // DELETING ELEMENTS!
-  var Planning = document.querySelectorAll("textarea.plannerDays");
-  for(let Plans of Planning) { Plans.value = ""; }
-
-  }
- }, percent)
-}
-
-
-
-// ==================================================
 // "COFFEE ENERGY" FUNCTION!
 // ==================================================
 coffeeCups = document.getElementById("coffeeCups")
@@ -864,6 +890,7 @@ function coffeeButton() {
  coffeeCups.value = howManyCups
  energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)'
  coffeeTime.value = currentTime
+ if (howManyCups > 0) { document.getElementById("eneryTrash").innerHTML = "🧺" }
 }
 
 function coffeeTime() {
@@ -907,6 +934,9 @@ var coffeeTitle = document.getElementById("coffeeTitle")
 coffeeTitle.innerHTML = "REINICIANDO..."
 coffeeTitle.style.fontWeight = "bold"
 coffeeTitle.style.background = "red"
+
+// UPDATING "ENERGY LEVELS" TRASH ICON
+document.getElementById("eneryTrash").innerHTML = "🗑️"
 
 // DELETE FUNCTIONALITY VARIABLES!
 var duration = 1000 * 0.1; // Animation duration!
