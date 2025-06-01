@@ -254,7 +254,7 @@ refreshTime()
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div id="eneryTrash" class="trashIcon" onclick="clearCoffee()">🗑️</div>
+  <div id="energyTrash" class="trashIcon" onclick="clearCoffee()">🗑️</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
 
 	<div style="width: 65%;">
@@ -890,12 +890,16 @@ function coffeeButton() {
  coffeeCups.value = howManyCups
  energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)'
  coffeeTime.value = currentTime
- if (howManyCups > 0) { document.getElementById("eneryTrash").innerHTML = "🧺" }
+ // UPDATING "ENERGY LEVELS" TRASH ICON
+ document.getElementById("energyTrash").innerHTML = "🧺"
 }
 
 function coffeeTime() {
 coffeeTime = document.getElementById("coffeeTime")
 coffeeCups = document.getElementById("coffeeCups")
+
+// UPDATING "ENERGY LEVELS" TRASH ICON
+if (coffeeCups.value > 0) { document.getElementById("energyTrash").innerHTML = "🧺" }
 
 // DECREASING ENERGY LEVELS OVER 1.5 HOURS!
 halfLife = currentTime - coffeeTime.value
@@ -935,9 +939,6 @@ coffeeTitle.innerHTML = "REINICIANDO..."
 coffeeTitle.style.fontWeight = "bold"
 coffeeTitle.style.background = "red"
 
-// UPDATING "ENERGY LEVELS" TRASH ICON
-document.getElementById("eneryTrash").innerHTML = "🗑️"
-
 // DELETE FUNCTIONALITY VARIABLES!
 var duration = 1000 * 0.1; // Animation duration!
 var percent = duration / 100; // 1 percent of duration!
@@ -957,6 +958,9 @@ var doTheLoop = setInterval(function(){
   coffeeCups.value = "0"
   halfLife = 0
   energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
+
+  // UPDATING "ENERGY LEVELS" TRASH ICON
+  document.getElementById("energyTrash").innerHTML = "🗑️"
 
   }
  }, percent)
