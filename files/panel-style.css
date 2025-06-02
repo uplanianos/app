@@ -257,8 +257,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 .gradePointsElement {
  font-size: 0.8em;
- padding-top: 4px;
- padding-bottom: 4px;
+ padding: 0 4px 4px 0; /* TOP LEFT BOTTOM RIGHT */
 }
 
 .gradeScaleButton {
@@ -315,8 +314,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  text-align: center;
  border: 1px solid #666;
  border-radius: 12px;
- padding: 6px;
- padding-left: 12px; /* TOP LEFT BOTTOM RIGHT */
+ padding: 6px 6px 6px 12px; /* TOP LEFT BOTTOM RIGHT */
 }
 
 
