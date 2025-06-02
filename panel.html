@@ -1082,6 +1082,7 @@ function moveGradesRight() { gradeScaleDiv.scrollLeft += 500 }
 // ==================================================
 coffeeCups = document.getElementById("coffeeCups")
 energyLevel = document.getElementById("energyLevel")
+var halfLife = 0
 
 // SETTING COFFEE HALF-LIFE!
 const date = new Date()
@@ -1106,28 +1107,49 @@ if (coffeeCups.value > 0) { document.getElementById("energyTrash").innerHTML = "
 
 // DECREASING ENERGY LEVELS OVER 1.5 HOURS!
 halfLife = currentTime - coffeeTime.value
-// console.log(currentTime,coffeeTime.value,halfLife); // There are 60,000 milliseconds in one minute.
+// console.log(currentTime,coffeeTime.value,halfLife); // // 60.000 milliseconds = 1 minute!
 
+// CHECK "ENERGY LEVEL" ONLOAD!
+checkEnergyLevels()
+
+// CHECK "ENERGY LEVEL" EVERY MINUTE!
+setInterval(function(){ checkEnergyLevels() }, 60000 * 1) // 60.000 milliseconds = 1 minute!
+}
+
+
+// ==================================================
+// CHECKING ENERGY LEVELS FUNCTION!
+// ==================================================
+function checkEnergyLevels() {
+
+// RESETTING CURRENT TIME AND HALF-LIFE VALUE!
+const date = new Date()
+const currentTime = date.getTime()
+halfLife = currentTime - coffeeTime.value
+
+// CHECKING ENERGY LEVELS!
+// console.log("Energy level:",halfLife); // CHECKING VALUES
 if (coffeeCups.value > 0) {
- if (halfLife > 0)	 { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)' }
- if (halfLife > 60000*05) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 84%, white 86%)' }
- if (halfLife > 60000*10) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 80%, white 82%)' }
- if (halfLife > 60000*15) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 74%, white 76%)' }
- if (halfLife > 60000*20) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 70%, white 72%)' }
- if (halfLife > 60000*25) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 64%, white 66%)' }
- if (halfLife > 60000*30) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 60%, white 62%)' }
- if (halfLife > 60000*35) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 54%, white 56%)' }
- if (halfLife > 60000*40) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 50%, white 52%)' }
- if (halfLife > 60000*45) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 44%, white 46%)' }
- if (halfLife > 60000*50) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 40%, white 42%)' }
- if (halfLife > 60000*55) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 34%, white 36%)' }
- if (halfLife > 60000*60) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 30%, white 32%)' }
- if (halfLife > 60000*65) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 24%, white 26%)' }
- if (halfLife > 60000*70) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 20%, white 22%)' }
- if (halfLife > 60000*75) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 14%, white 16%)' }
- if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
- if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 04%, white 06%)' }
- if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
+ if (halfLife > 0)	  { energyLevel.style.background = 'linear-gradient(to top, orange 38%, green 95%, white 96%)' }
+ if (halfLife > 60000*05) { energyLevel.style.background = 'linear-gradient(to top, orange 36%, green 90%, white 92%)' }
+ if (halfLife > 60000*10) { energyLevel.style.background = 'linear-gradient(to top, orange 34%, green 85%, white 86%)' }
+ if (halfLife > 60000*15) { energyLevel.style.background = 'linear-gradient(to top, orange 32%, green 80%, white 82%)' }
+ if (halfLife > 60000*20) { energyLevel.style.background = 'linear-gradient(to top, orange 30%, green 75%, white 76%)' }
+ if (halfLife > 60000*25) { energyLevel.style.background = 'linear-gradient(to top, orange 28%, green 70%, white 72%)' }
+ if (halfLife > 60000*30) { energyLevel.style.background = 'linear-gradient(to top, orange 26%, green 65%, white 66%)' }
+ if (halfLife > 60000*35) { energyLevel.style.background = 'linear-gradient(to top, orange 24%, green 60%, white 62%)' }
+ if (halfLife > 60000*40) { energyLevel.style.background = 'linear-gradient(to top, orange 22%, green 55%, white 56%)' }
+ if (halfLife > 60000*45) { energyLevel.style.background = 'linear-gradient(to top, orange 20%, green 50%, white 52%)' }
+ if (halfLife > 60000*50) { energyLevel.style.background = 'linear-gradient(to top, orange 18%, green 45%, white 46%)' }
+ if (halfLife > 60000*55) { energyLevel.style.background = 'linear-gradient(to top, orange 16%, green 40%, white 42%)' }
+ if (halfLife > 60000*60) { energyLevel.style.background = 'linear-gradient(to top, orange 14%, green 35%, white 36%)' }
+ if (halfLife > 60000*65) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 30%, white 32%)' }
+ if (halfLife > 60000*70) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 25%, white 26%)' }
+ if (halfLife > 60000*75) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 20%, white 22%)' }
+ if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 15%, white 16%)' }
+ if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
+ if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 02%, green 05%, white 06%)' }
+ if (halfLife > 60000*95) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, red 02%)' }
  }
 }
 
