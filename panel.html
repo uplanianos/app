@@ -127,11 +127,11 @@ refreshTime()
  <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
   <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">⭕</div>
    <div class="doubleColumnWrapper">
-    <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
+    <div style="width: 40%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
 	<b>Revisión:</b><br>
 	<input type="checkbox" id="checkMon" onchange="checkAttendance()">Lunes<br>
 	<input type="checkbox" id="checkTue" onchange="checkAttendance()">Martes<br>
-	<input type="checkbox" id="checkWed" onchange="checkAttendance()">Miércoles<br>
+	<input type="checkbox" id="checkWed" onchange="checkAttendance()" style="font-size: 0.8em;">Miércoles<br>
 	<input type="checkbox" id="checkThu" onchange="checkAttendance()">Jueves<br>
 	<input type="checkbox" id="checkFri" onchange="checkAttendance()">Viernes<br>
 	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
@@ -140,7 +140,7 @@ refreshTime()
 	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
     </div>
-    <div style="width: 60%; color: #666; text-align: center; line-height: 1.6; padding: 6px; ">
+    <div style="width: 60%; color: #666; text-align: center; padding: 12px;">
 	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
 	Progreso: <span id="rollCall">0%</span>
     </div>
@@ -327,15 +327,15 @@ refreshTime()
   <div id="energyTrash" class="trashIcon" onclick="clearCoffee()">⭕</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
 
-	<div style="width: 65%;">
-	 <div id="energyLevel" style="margin: auto auto 6px auto; width: 200px; height: 150px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
+	<div style="width: 60%;">
+	 <div id="energyLevel" style="margin: auto; width: 180px; height: 140px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
 	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
 	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
 	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
 	 </div>
 	</div>
 
-	<div style="width: 35%; display: flex; text-align: center; align-items: center;">
+	<div style="width: 40%; display: flex; text-align: center; align-items: center;">
 	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
 	 </div>
 

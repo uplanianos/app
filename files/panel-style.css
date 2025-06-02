@@ -203,7 +203,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 .progressBar {
  width: 0%;
- height: 40px;
+ height: 30px;
  background-color: #A7C7E7 /* Pastel Blue */;
  color: #333;
  text-align: center;
@@ -216,7 +216,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 /* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
 /* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
 
-.rollCanvas { display: flex; width: 132px; height: 132px; margin-top: 1%; margin-left: auto; margin-right: auto; }
+.rollCanvas { display: flex; width: 125px; height: 125px; margin-top: 1%; margin-left: auto; margin-right: auto; }
 
 .plannerWrapper {
  display: grid;
@@ -231,7 +231,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  padding: 12px 24px 6px 12px;
 }
 
-.plannerDays { width: 94%; height: 125px; background-color: #FFFFCC88; padding: 6px; border-radius: 6px; resize: none; }
+.plannerDays { width: 94%; height: 112px; background-color: #FFFFCC88; padding: 6px; border-radius: 6px; resize: none; }
 
 /* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
 /* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
@@ -296,7 +296,6 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  gap: 0px;
  align-items: center;
  width: 300px;
-
 }
 
 .gradeSlider * { /* GRADE SCALECHILDREN */
@@ -332,7 +331,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  background-color: lightgreen;
  margin: auto;
  width: 60%;
- height: 60px;
+ height: 75px;
  font-size: 42px;
  text-align: center;
  align-items: center;
@@ -343,13 +342,12 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  user-select: none;
  outline: 0;
 }
-
 .coffeeButton:hover { background-color: red; }
 
 .coffeeCups {
  position: absolute;
- margin-top: 20px;
- margin-left: 32px;
+ margin-top: 18px;
+ margin-left: 24px;
  width: 64px;
  background-color: transparent;
  font-size: 54px; color: red;
@@ -390,7 +388,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .toolSpan {
  display: inline-block;
  width: 120px;
- height: 132px;
+ height: 125px;
  background-color: #0000FF33;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -402,7 +400,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .tidySpan {
  display: inline-block;
  width: 120px;
- height: 132px;
+ height: 125px;
  background-color: #50C87866;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -414,7 +412,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .linkSpan {
  display: inline-block;
  width: 120px;
- height: 132px;
+ height: 125px;
  background-color: #CF9FFF88;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -426,7 +424,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .uplaSpan {
  display: inline-block;
  width: 120px;
- height: 132px;
+ height: 125px;
  background-color: #C4B45466;
  border: 1px solid lightgray;
  border-radius: 12px;
@@ -438,7 +436,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .helpSpan {
  display: inline-block;
  width: 120px;
- height: 132px;
+ height: 125px;
  background-color: #CC000033;
  border: 1px solid lightgray;
  border-radius: 12px;
