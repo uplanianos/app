@@ -242,6 +242,12 @@ refreshTime()
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000; /* DARK RED */"><b>Escala de Notas:</b></div>
   <div id="gradeTrash" class="trashIcon" onclick="clearGrades()">⭕</div>
+
+	<div class="gradeDivArrows">
+	<span id="gradeLeft" class="toolArrow" onclick="moveGradesRight()">◄</span>
+	<span id="gradeRight" class="toolArrow" onclick="moveGradesLeft()">►</span>
+	</div>	
+
    <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
 
 	<div class="gradePointsDiv">
@@ -1035,6 +1041,13 @@ document.getElementById("gradeScale").style.color = "gray"
 document.getElementById("gradeTrash").innerHTML = "⭕"
 checkGrades()
 }
+
+
+// ==================================================
+// "GRADE DIV" MOVING FUNCTION
+// ==================================================
+function moveGradesLeft() { gradeScaleDiv.scrollLeft += 500 }
+function moveGradesRight() { gradeScaleDiv.scrollLeft -= 500 }
 
 
 // ==================================================

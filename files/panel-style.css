@@ -124,6 +124,43 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 
 
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+@keyframes confetti-fall {
+ 0% {
+ transform: translateY(-100%) rotate(0deg);
+ opacity: 1;
+ }
+ 100% {
+ transform: translateY(100vh) rotate(360deg);
+ opacity: 0.8;
+ }
+}
+
+.confetti-piece {
+ position: absolute;
+ width: 10px;
+ height: 20px;
+ background: var(--confetti-color, red);
+ opacity: 0.9;
+ animation: confetti-fall var(--fall-duration, 4s) linear infinite;
+}
+
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) { left: 10%; --confetti-color: #ff6347; --fall-duration: 3s; }
+.confetti-piece:nth-child(2) { left: 25%; --confetti-color: #ffa500; --fall-duration: 5s; }
+.confetti-piece:nth-child(3) { left: 40%; --confetti-color: #32cd32; --fall-duration: 4.5s; }
+.confetti-piece:nth-child(4) { left: 60%; --confetti-color: #1e90ff; --fall-duration: 3.5s; }
+.confetti-piece:nth-child(5) { left: 80%; --confetti-color: #ff69b4; --fall-duration: 6s; }
+
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+
+
 /* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
 /* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
 /* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
@@ -276,7 +313,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 }
 .gradeScaleButton:hover { background: lightgreen; color: white; }
 
-
+.gradeDivArrows { position: absolute; right: 8%; margin-top: -24px; user-select: none; }
 
 /* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
 /* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
@@ -326,7 +363,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 }
 .toolsDiv::-webkit-scrollbar { display: none; }
 
-.toolsDivArrows { position: absolute; right: 4%; }
+.toolsDivArrows { position: absolute; right: 8%; user-select: none; }
 
 .toolArrow {
  background-color: cornflowerblue;
@@ -427,42 +464,6 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 
 
-/* TESTING CONFETTI EFFECT */
-/* TESTING CONFETTI EFFECT */
-/* TESTING CONFETTI EFFECT */
-
-@keyframes confetti-fall {
- 0% {
- transform: translateY(-100%) rotate(0deg);
- opacity: 1;
- }
- 100% {
- transform: translateY(100vh) rotate(360deg);
- opacity: 0.8;
- }
-}
-
-.confetti-piece {
- position: absolute;
- width: 10px;
- height: 20px;
- background: var(--confetti-color, red);
- opacity: 0.9;
- animation: confetti-fall var(--fall-duration, 4s) linear infinite;
-}
-
-/* Randomize confetti properties */
-.confetti-piece:nth-child(1) { left: 10%; --confetti-color: #ff6347; --fall-duration: 3s; }
-.confetti-piece:nth-child(2) { left: 25%; --confetti-color: #ffa500; --fall-duration: 5s; }
-.confetti-piece:nth-child(3) { left: 40%; --confetti-color: #32cd32; --fall-duration: 4.5s; }
-.confetti-piece:nth-child(4) { left: 60%; --confetti-color: #1e90ff; --fall-duration: 3.5s; }
-.confetti-piece:nth-child(5) { left: 80%; --confetti-color: #ff69b4; --fall-duration: 6s; }
-
-/* TESTING CONFETTI EFFECT */
-/* TESTING CONFETTI EFFECT */
-/* TESTING CONFETTI EFFECT */
-
-
 /* Use a media query to add a break point at 800px: */
 /* Use a media query to add a break point at 800px: */
 /* Use a media query to add a break point at 800px: */
@@ -506,4 +507,5 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 .gradeNumberInput { width: 45px; font-size: 14px; padding: 6px; padding-right: 12px; /* TOP LEFT BOTTOM RIGHT */}
 
 .plannerDays { height: 88px; }
+.gradeDivArrows { display: none; }
 .toolsDivArrows { display: none; }
