@@ -9,7 +9,7 @@
  <title>Uplanianos - Panel de Control</title>
 </head>
 
-<audio id="horn" src="media/horn.mp3" preload="auto" display="none"></audio>
+<audio id="horn" src="panel/horn.mp3" preload="auto" display="none"></audio>
 
 
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
@@ -61,6 +61,7 @@ checkAttendance()
 drawAttendance()
 checkPlanner()
 checkTests()
+checkGrades()
 coffeeTime()
 toolsDivMemory()
 refreshTime()
@@ -124,7 +125,7 @@ refreshTime()
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
  <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
-  <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">✔️</div>
+  <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">⭕</div>
    <div class="doubleColumnWrapper">
     <div style="width: 40%; color: #666; padding: 12px; line-height: 1.6;">
 	<b>Revisión:</b><br>
@@ -151,7 +152,7 @@ refreshTime()
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
   <div id="plannerTitle" class="widgetTitle" style="background-color: #554994"><b>Programación Semanal:</b></div>
-  <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">✔️</div>
+  <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">⭕</div>
    <div class="plannerWrapper">
 	<div>Lunes:	<textarea id="planMon" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del lunes."></textarea></div>
 	<div>Martes:	<textarea id="planTue" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del martes."></textarea></div>
@@ -170,7 +171,7 @@ refreshTime()
  <!-- TESTS DIV -->
  <div class="widgetDivs">
   <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
-  <div id="testTrash" class="trashIcon" onclick="clearTests()">✔️</div>
+  <div id="testTrash" class="trashIcon" onclick="clearTests()">⭕</div>
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
 
@@ -240,9 +241,58 @@ refreshTime()
  <!-- "GRADE SCALES" DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000; /* DARK RED */"><b>Escala de Notas:</b></div>
-  <div style="display: flex-grid; background-color: #CCCCCC66; color: red; text-align: center; align-items: center; margin-top: 12px; padding: 12px;">
-	🚧🚧🚧🚧🚧🚧
-  </div>
+  <div id="gradeTrash" class="trashIcon" onclick="clearGrades()">⭕</div>
+   <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
+
+	<div class="gradePointsDiv">
+		Puntos: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="10" step="0.5" onchange="checkGrades()">
+		Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades()" style="padding-right: 0px; cursor: not-allowed;">
+		<div class="gradeScaleButton" onclick="changeScale(); checkGrades()">ESCALA</div>
+	 </div>
+
+	<div id="gradeScaleDiv" class="gradeScaleDiv">
+	<div id="gradeSlider" class="gradeSlider">
+		<!-- POINTS -->
+		<div style="width: 70px; background: cornflowerblue; color: white; opacity: 0.6; font-weight: bold;">Puntos:</div>
+		<div id="p100">Pts.</div> <div id="p99">Pts.</div> <div id="p98">Pts.</div> <div id="p97">Pts.</div> <div id="p96">Pts.</div>  <div id="p95">Pts.</div> <div id="p94">Pts.</div> <div id="p93">Pts.</div> <div id="p92">Pts.</div> <div id="p91">Pts.</div>
+		 <div id="p90">Pts.</div> <div id="p89">Pts.</div> <div id="p88">Pts.</div> <div id="p87">Pts.</div> <div id="p86">Pts.</div>  <div id="p85">Pts.</div> <div id="p84">Pts.</div> <div id="p83">Pts.</div> <div id="p82">Pts.</div> <div id="p81">Pts.</div>
+		 <div id="p80">Pts.</div> <div id="p79">Pts.</div> <div id="p78">Pts.</div> <div id="p77">Pts.</div> <div id="p76">Pts.</div>  <div id="p75">Pts.</div> <div id="p74">Pts.</div> <div id="p73">Pts.</div> <div id="p72">Pts.</div> <div id="p71">Pts.</div>
+		 <div id="p70">Pts.</div> <div id="p69">Pts.</div> <div id="p68">Pts.</div> <div id="p67">Pts.</div> <div id="p66">Pts.</div>  <div id="p65">Pts.</div> <div id="p64">Pts.</div> <div id="p63">Pts.</div> <div id="p62">Pts.</div> <div id="p61">Pts.</div>
+		 <div id="p60">Pts.</div> <div id="p59">Pts.</div> <div id="p58">Pts.</div> <div id="p57">Pts.</div> <div id="p56">Pts.</div>  <div id="p55">Pts.</div> <div id="p54">Pts.</div> <div id="p53">Pts.</div> <div id="p52">Pts.</div> <div id="p51">Pts.</div>
+		 <div id="p50">Pts.</div> <div id="p49">Pts.</div> <div id="p48">Pts.</div> <div id="p47">Pts.</div> <div id="p46">Pts.</div>  <div id="p45">Pts.</div> <div id="p44">Pts.</div> <div id="p43">Pts.</div> <div id="p42">Pts.</div> <div id="p41">Pts.</div>
+		 <div id="p40">Pts.</div> <div id="p39">Pts.</div> <div id="p38">Pts.</div> <div id="p37">Pts.</div> <div id="p36">Pts.</div>  <div id="p35">Pts.</div> <div id="p34">Pts.</div> <div id="p33">Pts.</div> <div id="p32">Pts.</div> <div id="p31">Pts.</div>
+		 <div id="p30">Pts.</div> <div id="p29">Pts.</div> <div id="p28">Pts.</div> <div id="p27">Pts.</div> <div id="p26">Pts.</div>  <div id="p25">Pts.</div> <div id="p24">Pts.</div> <div id="p23">Pts.</div> <div id="p22">Pts.</div> <div id="p21">Pts.</div>
+		 <div id="p20">Pts.</div> <div id="p19">Pts.</div> <div id="p18">Pts.</div> <div id="p17">Pts.</div> <div id="p16">Pts.</div>  <div id="p15">Pts.</div> <div id="p14">Pts.</div> <div id="p13">Pts.</div> <div id="p12">Pts.</div> <div id="p11">Pts.</div>
+		 <div id="p10">Pts.</div> <div id="p09">Pts.</div> <div id="p08">Pts.</div> <div id="p07">Pts.</div> <div id="p06">Pts.</div>  <div id="p05">Pts.</div> <div id="p04">Pts.</div> <div id="p03">Pts.</div> <div id="p02">Pts.</div> <div id="p01">Pts.</div>
+		<!-- PERCENTAGES -->
+		<div style="width: 70px; background: cornflowerblue; color: white; opacity: 0.6; font-weight: bold;">Porcentaje:</div>
+		<div id="x100">0%</div> <div id="x99">0%</div> <div id="x98">0%</div> <div id="x97">0%</div> <div id="x96">0%</div>  <div id="x95">0%</div> <div id="x94">0%</div> <div id="x93">0%</div> <div id="x92">0%</div> <div id="x91">0%</div>
+		 <div id="x90">0%</div> <div id="x89">0%</div> <div id="x88">0%</div> <div id="x87">0%</div> <div id="x86">0%</div>  <div id="x85">0%</div> <div id="x84">0%</div> <div id="x83">0%</div> <div id="x82">0%</div> <div id="x81">0%</div>
+		 <div id="x80">0%</div> <div id="x79">0%</div> <div id="x78">0%</div> <div id="x77">0%</div> <div id="x76">0%</div>  <div id="x75">0%</div> <div id="x74">0%</div> <div id="x73">0%</div> <div id="x72">0%</div> <div id="x71">0%</div>
+		 <div id="x70">0%</div> <div id="x69">0%</div> <div id="x68">0%</div> <div id="x67">0%</div> <div id="x66">0%</div>  <div id="x65">0%</div> <div id="x64">0%</div> <div id="x63">0%</div> <div id="x62">0%</div> <div id="x61">0%</div>
+		 <div id="x60">0%</div> <div id="x59">0%</div> <div id="x58">0%</div> <div id="x57">0%</div> <div id="x56">0%</div>  <div id="x55">0%</div> <div id="x54">0%</div> <div id="x53">0%</div> <div id="x52">0%</div> <div id="x51">0%</div>
+		 <div id="x50">0%</div> <div id="x49">0%</div> <div id="x48">0%</div> <div id="x47">0%</div> <div id="x46">0%</div>  <div id="x45">0%</div> <div id="x44">0%</div> <div id="x43">0%</div> <div id="x42">0%</div> <div id="x41">0%</div>
+		 <div id="x40">0%</div> <div id="x39">0%</div> <div id="x38">0%</div> <div id="x37">0%</div> <div id="x36">0%</div>  <div id="x35">0%</div> <div id="x34">0%</div> <div id="x33">0%</div> <div id="x32">0%</div> <div id="x31">0%</div>
+		 <div id="x30">0%</div> <div id="x29">0%</div> <div id="x28">0%</div> <div id="x27">0%</div> <div id="x26">0%</div>  <div id="x25">0%</div> <div id="x24">0%</div> <div id="x23">0%</div> <div id="x22">0%</div> <div id="x21">0%</div>
+		 <div id="x20">0%</div> <div id="x19">0%</div> <div id="x18">0%</div> <div id="x17">0%</div> <div id="x16">0%</div>  <div id="x15">0%</div> <div id="x14">0%</div> <div id="x13">0%</div> <div id="x12">0%</div> <div id="x11">0%</div>
+		 <div id="x10">0%</div> <div id="x09">0%</div> <div id="x08">0%</div> <div id="x07">0%</div> <div id="x06">0%</div>  <div id="x05">0%</div> <div id="x04">0%</div> <div id="x03">0%</div> <div id="x02">0%</div> <div id="x01">0%</div>
+		<!-- GRADES -->
+		<div style="width: 70px; background: cornflowerblue; color: white; opacity: 0.6; font-weight: bold;">Nota:</div>
+		<div id="g100">0.0</div> <div id="g99">0.0</div> <div id="g98">0.0</div> <div id="g97">0.0</div> <div id="g96">0.0</div>  <div id="g95">0.0</div> <div id="g94">0.0</div> <div id="g93">0.0</div> <div id="g92">0.0</div> <div id="g91">0.0</div>
+		 <div id="g90">0.0</div> <div id="g89">0.0</div> <div id="g88">0.0</div> <div id="g87">0.0</div> <div id="g86">0.0</div>  <div id="g85">0.0</div> <div id="g84">0.0</div> <div id="g83">0.0</div> <div id="g82">0.0</div> <div id="g81">0.0</div>
+		 <div id="g80">0.0</div> <div id="g79">0.0</div> <div id="g78">0.0</div> <div id="g77">0.0</div> <div id="g76">0.0</div>  <div id="g75">0.0</div> <div id="g74">0.0</div> <div id="g73">0.0</div> <div id="g72">0.0</div> <div id="g71">0.0</div>
+		 <div id="g70">0.0</div> <div id="g69">0.0</div> <div id="g68">0.0</div> <div id="g67">0.0</div> <div id="g66">0.0</div>  <div id="g65">0.0</div> <div id="g64">0.0</div> <div id="g63">0.0</div> <div id="g62">0.0</div> <div id="g61">0.0</div>
+		 <div id="g60">0.0</div> <div id="g59">0.0</div> <div id="g58">0.0</div> <div id="g57">0.0</div> <div id="g56">0.0</div>  <div id="g55">0.0</div> <div id="g54">0.0</div> <div id="g53">0.0</div> <div id="g52">0.0</div> <div id="g51">0.0</div>
+		 <div id="g50">0.0</div> <div id="g49">0.0</div> <div id="g48">0.0</div> <div id="g47">0.0</div> <div id="g46">0.0</div>  <div id="g45">0.0</div> <div id="g44">0.0</div> <div id="g43">0.0</div> <div id="g42">0.0</div> <div id="g41">0.0</div>
+		 <div id="g40">0.0</div> <div id="g39">0.0</div> <div id="g38">0.0</div> <div id="g37">0.0</div> <div id="g36">0.0</div>  <div id="g35">0.0</div> <div id="g34">0.0</div> <div id="g33">0.0</div> <div id="g32">0.0</div> <div id="g31">0.0</div>
+		 <div id="g30">0.0</div> <div id="g29">0.0</div> <div id="g28">0.0</div> <div id="g27">0.0</div> <div id="g26">0.0</div>  <div id="g25">0.0</div> <div id="g24">0.0</div> <div id="g23">0.0</div> <div id="g22">0.0</div> <div id="g21">0.0</div>
+		 <div id="g20">0.0</div> <div id="g19">0.0</div> <div id="g18">0.0</div> <div id="g17">0.0</div> <div id="g16">0.0</div>  <div id="g15">0.0</div> <div id="g14">0.0</div> <div id="g13">0.0</div> <div id="g12">0.0</div> <div id="g11">0.0</div>
+		 <div id="g10">0.0</div> <div id="g09">0.0</div> <div id="g08">0.0</div> <div id="g07">0.0</div> <div id="g06">0.0</div>  <div id="g05">0.0</div> <div id="g04">0.0</div> <div id="g03">0.0</div> <div id="g02">0.0</div> <div id="g01">0.0</div>
+
+	</div>
+	</div>
+
+   </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
  <!-- END OF "GRADE SCALES" DIV -->
 
@@ -253,7 +303,7 @@ refreshTime()
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div id="energyTrash" class="trashIcon" onclick="clearCoffee()">✔️</div>
+  <div id="energyTrash" class="trashIcon" onclick="clearCoffee()">⭕</div>
    <div class="doubleColumnWrapper" style="margin-top: 12px;">
 
 	<div style="width: 65%;">
@@ -279,8 +329,8 @@ refreshTime()
 	<span id="slideRight" class="toolArrow" onclick="moveSliderLeft()">►</span>
 	</div>
   </div>
-  <div id="toolsDiv" class="toolsDiv" style="overflow-x: scroll; white-space: nowrap; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
-	<div id="sliderDiv" class="sliderDiv">
+  <div id="toolsDiv" class="toolsDiv">
+	<div id="toolSlider" class="toolSlider">
 	<input type="number" id="slidePosition" style="display: none;" value="1815">
 	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
 	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
@@ -525,7 +575,7 @@ ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.arc(centerX, centerY, radius, grayEnd, greenEnd);
 ctx.closePath();
-ctx.fillStyle = '#44AA44';
+ctx.fillStyle = 'cornflowerblue'; // Medium Green ('#44AA44'), Periwinkle (#CCCCFF)
 ctx.fill();
 
 // BORDER
@@ -550,7 +600,7 @@ attendanceTitle.style.fontWeight = "bold"
 attendanceTitle.style.background = "red"
 
 // UPDATING ATTENDANCE TRASH ICON (EMPTY)!
-document.getElementById("attendanceTrash").innerHTML = "✔️"
+document.getElementById("attendanceTrash").innerHTML = "⭕"
 
 // DELETE FUNCTIONALITY VARIABLES!
 var duration = 1000 * 0.1; // Animation duration!
@@ -606,7 +656,7 @@ plannerTitle.style.fontWeight = "bold"
 plannerTitle.style.background = "red"
 
 // UPDATING PLANNER TRASH ICON (EMPTY)!
-document.getElementById("plannerTrash").innerHTML = "✔️"
+document.getElementById("plannerTrash").innerHTML = "⭕"
 
 // DELETE FUNCTIONALITY VARIABLES!
 var duration = 1000 * 0.1; // Animation duration!
@@ -821,7 +871,7 @@ document.getElementById("top").style.backgroundColor = "lightyellow"
 document.getElementById("top").style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"
 
 // UPDATING TRASH ICON (EMPTY)!
-document.getElementById("testTrash").innerHTML = "✔️"
+document.getElementById("testTrash").innerHTML = "⭕"
 
 var testTitle = document.getElementById("testTitle")
 testTitle.innerHTML = "BORRANDO..."
@@ -871,6 +921,120 @@ var doTheLoop = setInterval(function(){
  }, percent)
 }
 
+
+// ==================================================
+// "CHECK GRADES" FUNCTION!
+// ==================================================
+function checkGrades() {
+// DECLARING ELEMENTS!
+let gradePoints = document.getElementById("gradePoints")
+let gradeScale = document.getElementById("gradeScale")
+let gradeTrash = document.getElementById("gradeTrash")
+
+// CHECKING OTHER POINTS!
+if (gradePoints.value < 50 || gradePoints.value > 50) { gradeTrash.innerHTML = "❌" }
+
+// CHECKING GRADE SCALE COLOR!
+if (gradeScale.value == 70) { gradeScale.style.color = "red"; gradeTrash.innerHTML = "❌" }
+
+var testPoints = document.getElementById("gradePoints").value
+
+// =========================
+// FILL IN DATA TO CHART!
+// =========================
+// PERCENT VARIABLES
+let percentString = 'x00'
+let testPercents = document.getElementById(percentString)
+
+// =========================
+// POINTS VARIABLES
+let pointString = 'p00'
+let themPoints = document.getElementById(pointString)
+
+// =========================
+// TOTAL POINTS - NO CHANGE BEFORE THE LOOP!
+totalPoints = testPoints
+
+// =========================
+// GRADES VARIABLES
+let gradeString = 'g00'
+let testGrades = document.getElementById(gradeString)
+let finalGrade = 0.0 // "FINAL GRADE" VARIABLE!
+let multiNum = 0.0428571428571429 // 70% GRADE CALCULATION VARIABLE!
+
+// =========================
+// =========================
+// DOING THE LOOP
+for (let i = 100; i >= 1; i--) {
+ // CREATING THE "CUSTOM VARIABLES" NAMES
+ pointString = 'p'+i
+ percentString = 'x'+i
+ gradeString = 'g'+i
+ themPoints = document.getElementById(pointString)
+ testPercents = document.getElementById(percentString)
+ testGrades = document.getElementById(gradeString)
+
+ // CATCHING "CUSTOM VARIABLES" LOWER THAN 10
+ if (i < 10) {
+  pointString = 'p0'+i
+  percentString = 'x0'+i
+  gradeString = 'g0'+i
+  themPoints = document.getElementById(pointString)
+  testPercents = document.getElementById(percentString)
+  testGrades = document.getElementById(gradeString)
+ }
+
+// PRINTING "PERCENT" VALUES IN CHART (BEFORE POINTS ARE LOWERED)!
+percentResult = (testPoints * 100 / totalPoints).toFixed(0)
+testPercents.innerText = percentResult+'%'
+
+// PRINTING "TEST POINTS" INTO CHART!
+if (testPoints > 0) {
+ themPoints.innerText = ( testPoints-- )
+ } else { themPoints.innerText = '-' }
+
+// PRINTING "CALCULATED GRADES"!
+if (gradeScale.value == 60) {
+ if (percentResult < 60) { finalGrades = ((0.05*percentResult)+1).toFixed(1) }
+ if (percentResult >= 60) { finalGrades = ((0.075)*(percentResult-60)+4).toFixed(1) }
+ testGrades.innerText = finalGrades
+ }
+
+if (gradeScale.value == 70) {
+ if (percentResult < 70) { finalGrades = (multiNum*percentResult+1).toFixed(1) }
+ if (percentResult >= 70) { finalGrades = (0.1*(percentResult-70)+4).toFixed(1) }
+ testGrades.innerText = finalGrades
+ }
+
+ if (finalGrades >= 4.0) { testGrades.style.color = "blue" }
+ if (finalGrades < 4.0) { testGrades.style.color = "red" }
+
+ // =========================
+ // END OF THE LOOP!
+ }
+
+} // END OF FUNCTION!
+
+
+// ==================================================
+// "CHANGE SCALE" FUNCTION!
+// ==================================================
+function changeScale() {
+let gradeScale = document.getElementById("gradeScale")
+if (gradeScale.value == 60) {gradeScale.value = 70; gradeScale.style.color = "red" }
+else if (gradeScale.value == 70) {gradeScale.value = 60; gradeScale.style.color = "gray"  }
+}
+
+// ==================================================
+// "CLEAR GRADES" FUNCTION!
+// ==================================================
+function clearGrades() {
+document.getElementById("gradePoints").value = 100
+document.getElementById("gradeScale").value = 70
+document.getElementById("gradeScale").style.color = "gray"
+document.getElementById("gradeTrash").innerHTML = "⭕"
+checkGrades()
+}
 
 
 // ==================================================
@@ -959,7 +1123,7 @@ var doTheLoop = setInterval(function(){
   energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
 
   // UPDATING "ENERGY LEVELS" TRASH ICON
-  document.getElementById("energyTrash").innerHTML = "✔️"
+  document.getElementById("energyTrash").innerHTML = "⭕"
 
   }
  }, percent)

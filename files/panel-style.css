@@ -104,6 +104,8 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  border-radius: 0px 0px 6px 6px;
 }
 
+
+/* NOT USED - JUST FOR KEEPSAKE */
 .absolutelyCenteredDiv {
  position: absolute;
  display: grid;
@@ -177,10 +179,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 /* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
 /* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
 
-.assessment { background-color: #FFFFCC88; width: 96%; height: 20px; border: 1px solid gray; padding-left: 6px;}
-.testSubject { width: 55%; align-items: center; }
-.testGrades { width: 15%; align-items: center; text-align: center; }
-
+.rollCanvas { display: flex; width: 132px; height: 132px; margin-top: 1%; margin-left: auto; margin-right: auto; }
 
 .plannerWrapper {
  display: grid;
@@ -197,14 +196,135 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 .plannerDays { width: 94%; height: 125px; background-color: #FFFFCC88; padding: 6px; border-radius: 6px; resize: none; }
 
-
-
 /* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
 /* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
 /* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
 
-.rollCanvas { display: flex; width: 132px; height: 132px; margin-top: 1%; margin-left: auto; margin-right: auto; }
+.assessment { background-color: #FFFFCC88; width: 96%; height: 20px; border: 1px solid gray; padding-left: 6px;}
+.testSubject { width: 55%; align-items: center; }
+.testGrades { width: 15%; align-items: center; text-align: center; }
 
+
+.gradePointsDiv {
+ display: flex-grid;
+ width: 20%;
+ margin: auto;
+ text-align: center;
+ align-items: center;
+ background: lightblue; 
+ color: #666;
+ border: 1px solid gray;
+ border-radius: 12px;
+ padding: 12px;
+ line-height: 2.4;
+}
+
+.gradeScaleDiv {
+ width: 80%;
+ background: lightyellow;
+ margin: 6px;
+ overflow-x: scroll;
+ white-space: nowrap;
+ -webkit-overflow-scrolling: touch;
+ scroll-behavior: smooth;
+ border: 1px solid gray;
+}
+.gradeScaleDiv::-webkit-scrollbar { display: none; }
+
+.gradeSlider {
+ display: grid;
+ grid-template-columns: auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div'
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div'
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div';
+ gap: 0px;
+ align-items: center;
+ width: 300px;
+}
+
+.gradeSlider * { /* GRADE SCALECHILDREN */
+ width: 24px;
+ font-size: 12px;
+ text-align: center;
+ color: black;
+ padding: 16px;
+ border: 1px dotted lightgray;
+}
+
+.gradeNumberInput {
+ width: 55px;
+ background: lightyellow;
+ color: #666;
+ font-size: 16px;
+ text-align: center;
+ border: 1px solid #666;
+ border-radius: 12px;
+ padding: 6px;
+ padding-left: 12px; /* TOP LEFT BOTTOM RIGHT */
+}
+
+.gradeScaleButton {
+ background: pink;
+ padding: 3px;
+ border: 1px solid gray;
+ border-radius: 6px;
+ margin-top: 6px;
+ cursor: pointer;
+ user-select: none;
+}
+.gradeScaleButton:hover { background: lightgreen; color: white; }
+
+
+
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+
+.coffeeButton {
+ display: grid;
+ background-color: lightgreen;
+ margin: auto;
+ width: 60%;
+ height: 60px;
+ font-size: 42px;
+ text-align: center;
+ align-items: center;
+ padding: 6px;
+ border: 3px solid black;
+ border-radius: 12px;
+ cursor: pointer;
+ user-select: none;
+ outline: 0;
+}
+
+.coffeeButton:hover { background-color: red; }
+
+.coffeeCups {
+ position: absolute;
+ margin-top: 20px;
+ margin-left: 32px;
+ width: 64px;
+ background-color: transparent;
+ font-size: 54px; color: red;
+ font-weight: bold;
+ text-align: center;
+ padding: 20px;
+ text-shadow: 1px 1px 6px white;
+ border: 0px;
+}
+
+
+.toolsDiv {
+ margin: 10px 2px 10px 2px;
+ padding: 10px 0 0 0;
+ overflow-x: scroll;
+ white-space: nowrap;
+ -webkit-overflow-scrolling:
+ touch; scroll-behavior: smooth;
+}
+.toolsDiv::-webkit-scrollbar { display: none; }
 
 .toolsDivArrows { position: absolute; right: 4%; }
 
@@ -220,9 +340,7 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 
 .toolArrow:hover { color: white; }
 
-.toolsDiv::-webkit-scrollbar { display: none; }
-
-.sliderDiv { display: flex; align-items: bottom; gap: 6px; width: 200px; }
+.toolSlider { display: flex; align-items: center; gap: 6px; width: 200px; }
 
 .toolSpan {
  display: inline-block;
@@ -285,46 +403,6 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
 }
 
 .sliderIcon { font-size: 60px; }
-
-
-/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
-
-.coffeeButton {
- display: grid;
- background-color: lightgreen;
- margin: auto;
- width: 60%;
- height: 60px;
- font-size: 42px;
- text-align: center;
- align-items: center;
- padding: 6px;
- border: 3px solid black;
- border-radius: 12px;
- cursor: pointer;
- user-select: none;
- outline: 0;
-}
-
-.coffeeButton:hover { background-color: red; }
-
-.coffeeCups {
- position: absolute;
- margin-top: 20px;
- margin-left: 32px;
- width: 64px;
- background-color: transparent;
- font-size: 54px; color: red;
- font-weight: bold;
- text-align: center;
- padding: 20px;
- text-shadow: 1px 1px 6px white;
- border: 0px;
-}
-
-
-.toolsDiv { margin: 10px 2px 10px 2px; padding: 10px 0 0 0; }
-
 
 
 /* BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL */
@@ -423,6 +501,9 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
  padding: 12px 24px 6px 12px;
 }
 
-.plannerDays { height: 88px; }
+.gradePointsDiv { width: 30%;  line-height: 1.2; padding: 6px; }
+.gradeScaleDiv { width: 70%; }
+.gradeNumberInput { width: 45px; font-size: 14px; padding: 6px; padding-right: 12px; /* TOP LEFT BOTTOM RIGHT */}
 
+.plannerDays { height: 88px; }
 .toolsDivArrows { display: none; }
