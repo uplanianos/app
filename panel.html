@@ -251,15 +251,15 @@ refreshTime()
    <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
 
 	<div class="gradePointsDiv">
-		<div class="gradePointsElement">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades()"></div>
-		<div class="gradePointsElement">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades()" style="margin-right: 10px; cursor: not-allowed;"></div>
+		<div class="gradePointsChild">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades()"></div>
+		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades()" style="margin-right: 10px; cursor: not-allowed;"></div>
 		<div class="gradeScaleButton" onclick="changeScale(); checkGrades()">ESCALA</div>
 	 </div>
 
 	<div id="gradeScaleDiv" class="gradeScaleDiv">
-	<div id="gradeSlider" class="gradeSlider">
+	  <div id="gradeSlider" class="gradeSlider">
 		<!-- POINTS -->
-		<div style="width: 70px; background: orange; color: white; opacity: 0.6; font-weight: bold;">Puntos:</div>
+		<div style="width: 70px; background: orange; color: black; opacity: 0.5; font-weight: bold;">Puntos:</div>
 		<div id="p150">Pts.</div> <div id="p149">Pts.</div> <div id="p148">Pts.</div> <div id="p147">Pts.</div> <div id="p146">Pts.</div>  <div id="p145">Pts.</div> <div id="p144">Pts.</div> <div id="p143">Pts.</div> <div id="p142">Pts.</div> <div id="p141">Pts.</div>
 		<div id="p140">Pts.</div> <div id="p139">Pts.</div> <div id="p138">Pts.</div> <div id="p137">Pts.</div> <div id="p136">Pts.</div>  <div id="p135">Pts.</div> <div id="p134">Pts.</div> <div id="p133">Pts.</div> <div id="p132">Pts.</div> <div id="p131">Pts.</div>
 		<div id="p130">Pts.</div> <div id="p129">Pts.</div> <div id="p128">Pts.</div> <div id="p127">Pts.</div> <div id="p126">Pts.</div>  <div id="p125">Pts.</div> <div id="p124">Pts.</div> <div id="p123">Pts.</div> <div id="p122">Pts.</div> <div id="p121">Pts.</div>
@@ -276,7 +276,7 @@ refreshTime()
 		 <div id="p20">Pts.</div> <div id="p19">Pts.</div> <div id="p18">Pts.</div> <div id="p17">Pts.</div> <div id="p16">Pts.</div>  <div id="p15">Pts.</div> <div id="p14">Pts.</div> <div id="p13">Pts.</div> <div id="p12">Pts.</div> <div id="p11">Pts.</div>
 		 <div id="p10">Pts.</div> <div id="p09">Pts.</div> <div id="p08">Pts.</div> <div id="p07">Pts.</div> <div id="p06">Pts.</div>  <div id="p05">Pts.</div> <div id="p04">Pts.</div> <div id="p03">Pts.</div> <div id="p02">Pts.</div> <div id="p01">Pts.</div>
 		<!-- PERCENTAGES -->
-		<div style="width: 70px; background: orange; color: white; opacity: 0.6; font-weight: bold;">Porcentaje:</div>
+		<div style="width: 70px; background: orange; color: black; opacity: 0.5; font-weight: bold;">Porcentaje:</div>
 		<div id="x150">0%</div> <div id="x149">0%</div> <div id="x148">0%</div> <div id="x147">0%</div> <div id="x146">0%</div>  <div id="x145">0%</div> <div id="x144">0%</div> <div id="x143">0%</div> <div id="x142">0%</div> <div id="x141">0%</div>
 		<div id="x140">0%</div> <div id="x139">0%</div> <div id="x138">0%</div> <div id="x137">0%</div> <div id="x136">0%</div>  <div id="x135">0%</div> <div id="x134">0%</div> <div id="x133">0%</div> <div id="x132">0%</div> <div id="x131">0%</div>
 		<div id="x130">0%</div> <div id="x129">0%</div> <div id="x128">0%</div> <div id="x127">0%</div> <div id="x126">0%</div>  <div id="x125">0%</div> <div id="x124">0%</div> <div id="x123">0%</div> <div id="x122">0%</div> <div id="x121">0%</div>
@@ -293,7 +293,7 @@ refreshTime()
 		 <div id="x20">0%</div> <div id="x19">0%</div> <div id="x18">0%</div> <div id="x17">0%</div> <div id="x16">0%</div>  <div id="x15">0%</div> <div id="x14">0%</div> <div id="x13">0%</div> <div id="x12">0%</div> <div id="x11">0%</div>
 		 <div id="x10">0%</div> <div id="x09">0%</div> <div id="x08">0%</div> <div id="x07">0%</div> <div id="x06">0%</div>  <div id="x05">0%</div> <div id="x04">0%</div> <div id="x03">0%</div> <div id="x02">0%</div> <div id="x01">0%</div>
 		<!-- GRADES -->
-		<div style="width: 70px; background: orange; color: white; opacity: 0.6; font-weight: bold;">Nota:</div>
+		<div style="width: 70px; background: orange; color: black; opacity: 0.5; font-weight: bold;">Nota:</div>
 		<div id="g150">0.0</div> <div id="g149">0.0</div> <div id="g148">0.0</div> <div id="g147">0.0</div> <div id="g146">0.0</div>  <div id="g145">0.0</div> <div id="g144">0.0</div> <div id="g143">0.0</div> <div id="g142">0.0</div> <div id="g141">0.0</div>
 		<div id="g140">0.0</div> <div id="g139">0.0</div> <div id="g138">0.0</div> <div id="g137">0.0</div> <div id="g136">0.0</div>  <div id="g135">0.0</div> <div id="g134">0.0</div> <div id="g133">0.0</div> <div id="g132">0.0</div> <div id="g131">0.0</div>
 		<div id="g130">0.0</div> <div id="g129">0.0</div> <div id="g128">0.0</div> <div id="g127">0.0</div> <div id="g126">0.0</div>  <div id="g125">0.0</div> <div id="g124">0.0</div> <div id="g123">0.0</div> <div id="g122">0.0</div> <div id="g121">0.0</div>
@@ -309,8 +309,7 @@ refreshTime()
 		 <div id="g30">0.0</div> <div id="g29">0.0</div> <div id="g28">0.0</div> <div id="g27">0.0</div> <div id="g26">0.0</div>  <div id="g25">0.0</div> <div id="g24">0.0</div> <div id="g23">0.0</div> <div id="g22">0.0</div> <div id="g21">0.0</div>
 		 <div id="g20">0.0</div> <div id="g19">0.0</div> <div id="g18">0.0</div> <div id="g17">0.0</div> <div id="g16">0.0</div>  <div id="g15">0.0</div> <div id="g14">0.0</div> <div id="g13">0.0</div> <div id="g12">0.0</div> <div id="g11">0.0</div>
 		 <div id="g10">0.0</div> <div id="g09">0.0</div> <div id="g08">0.0</div> <div id="g07">0.0</div> <div id="g06">0.0</div>  <div id="g05">0.0</div> <div id="g04">0.0</div> <div id="g03">0.0</div> <div id="g02">0.0</div> <div id="g01">0.0</div>
-
-	</div>
+	  </div>
 	</div>
 
    </div><!-- END OF DOUBLE COLUMN WRAPPER -->
@@ -1149,7 +1148,7 @@ if (coffeeCups.value > 0) {
  if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 15%, white 16%)' }
  if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
  if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 02%, green 05%, white 06%)' }
- if (halfLife > 60000*95) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, red 02%)' }
+ if (halfLife > 60000*95) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
  }
 }
 
