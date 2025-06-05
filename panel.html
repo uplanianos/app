@@ -1275,6 +1275,7 @@ function classTimer() {
 const date = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const thisMonth = date.getMonth() // ZERO is January
+const thisYear = date.getFullYear()
 var thisDate = date.getDate()
 
 // SETTING RIGHT NOW
@@ -1319,7 +1320,7 @@ var classTime = "00:00:00"
 var thisEvent = "Classes"
 
 // SETTING UP PERIODS
-if (rightNow < 08.00) {classTime = period1}
+if (rightNow < 08.00) {classTime = period1; thisEvent = "Break"}
 if (rightNow >= 08.00 && rightNow < 09.15) {classTime = break1; thisEvent = "Classes"}
 if (rightNow >= 09.15 && rightNow < 09.30) {classTime = period2; thisEvent = "Break"}
 if (rightNow >= 09.30 && rightNow < 10.45) {classTime = break2; thisEvent = "Classes"}
@@ -1341,13 +1342,14 @@ if (rightNow >= 19.45) {classTime = midnight; thisEvent = "Break"}
 progressFunction(classTime, thisEvent)
 
 // DATE FORMATTING AND TIME VARIABLES
-var dateFormat = monthNames[thisMonth] + " " + thisDate + ", 2024 "
+var dateFormat = monthNames[thisMonth] + " " + thisDate + ", " + thisYear + " "
 
 // UPDATE FINAL COUNTDOWN DATE
 var finalDate = new Date(dateFormat+classTime).getTime()
 
 // ORIGINAL COUNTDOWN DATE (COMMENTED OUT)
 // var originalCountdown = new Date("Aug 7, 2024 10:45:00").getTime()
+// var finalDate = new Date("2025-06-04T00:00:00").getTime()
 
 // FORMATTED COUNTDOWN DATE
 var countdownDate = new Date(finalDate).getTime()
@@ -1367,9 +1369,10 @@ var countdownDate = new Date(finalDate).getTime()
 
  // Find the distance between now an the count down date
  var distance = countdownDate - now
+ // console.log(distance)
 
  // EXPIRED COUNTDOWN
- if (distance <= 0) { clearInterval(timeLoop) }
+ if (distance <= 0) { clearInterval(timeLoop); console.log("Period is over... refreshing page!"); setTimeout('location.reload()', 1000 * 5) }
 
  // END OF "TIME LOOP" INTERVAL
  }, 1000)
@@ -1433,7 +1436,10 @@ var clockTicking = setInterval(function() {
  const doubleMinutes = minutes.toString().padStart(2,0)
  let theTime = (doubleHour + ":" + doubleMinutes)
 
- // theTime = "13:28" // ERASE THIS!!!
+ // =========================
+ // TESTING - REMEMBER TO COMMENT THIS OUT!!!
+ // theTime = "16:29"
+ // =========================
 
  // TURNING TIMES INTO MILLISECONDS
  let starting = Number(theStart.split(':')[0]) * 60 * 60 * 1000 + Number(theStart.split(':')[1]) * 60 * 1000
@@ -1454,7 +1460,6 @@ var clockTicking = setInterval(function() {
    if (valuePercent < 80) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 80 && valuePercent <= 92) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 93) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
-   if (valuePercent > 100) { refreshCountdown() }
   }
   if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, purple ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
  // END OF PERCENT & PROGRESS BAR
@@ -1462,10 +1467,6 @@ var clockTicking = setInterval(function() {
 
  }, 1000 * 1)
  // END OF CLOCK TICKING INTERVAL
-
-
-// END OF COUNTDOWN REFRESH FUNCTION
-function refreshCountdown() { setTimeout('location.reload()', 1000 * 10); } // REFRESH 6 TIMES A MINUTE!
 
 
 } // END OF PROGRESS BAR FUNCTION

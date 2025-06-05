@@ -1250,6 +1250,45 @@ div.strike-label-wrapper { display: grid; }
 }
 
 
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+@keyframes confetti-fall {
+ 0% {
+ transform: translateY(-100%) rotate(0deg);
+ opacity: 1;
+ }
+ 100% {
+ transform: translateY(100vh) rotate(360deg);
+ opacity: 0.8;
+ }
+}
+
+.confetti-piece {
+ position: absolute;
+ width: 10px;
+ height: 20px;
+ background: var(--confetti-color, red);
+ opacity: 0.9;
+ animation: confetti-fall var(--fall-duration, 4s) linear infinite;
+}
+
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) { left: 10%; --confetti-color: #ff6347; --fall-duration: 3s; }
+.confetti-piece:nth-child(2) { left: 25%; --confetti-color: #ffa500; --fall-duration: 5s; }
+.confetti-piece:nth-child(3) { left: 40%; --confetti-color: #32cd32; --fall-duration: 4.5s; }
+.confetti-piece:nth-child(4) { left: 60%; --confetti-color: #1e90ff; --fall-duration: 3.5s; }
+.confetti-piece:nth-child(5) { left: 80%; --confetti-color: #ff69b4; --fall-duration: 6s; }
+
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+
+
+
+
 /* ENGLISH WORKSHOP BUTTON */
 input.English { font-size: 18px; color: white; background-color: green; border: 2px solid white; border-radius: 6px; padding: 12px 20px 12px 12px; cursor: pointer; }
 input.English:hover { color: yellow; background-color: #FF0000AA; outline: none; }

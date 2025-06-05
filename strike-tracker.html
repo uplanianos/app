@@ -10,10 +10,10 @@
 	<title>Uplanianos - Strike Tracker</title>
 </head>
 
-<body onload="checkCourses(); checkDaily(); checkWeekly();" class="paroTrackerBody">
+<body onload="checkCourses(); checkDaily(); checkWeekly()" class="paroTrackerBody">
 
-
-<div class="mainDiv" style="margin-top: 0px;">
+<div class="confetti" style="display: flex; width: 100%;">
+<div id="mainDiv" class="mainDiv" style="margin-top: 0px; width: 100%;">
 
 	<div id="todo-normal" class="todoNormal" style="margin-top: 0px;">📣 TODO NORMAL 🖒</div>
 	<div id="en-paro" class="enParo" style="display: none; margin-top: 0px;">📣 CARRERAS EN PARO❗</div>
@@ -130,6 +130,7 @@
 	<br>
 	</div>
 
+ </div>
 </div>
 
 
@@ -138,6 +139,7 @@
 // DEFINING ELEMENTS!
 const todoNormal = document.getElementById("todo-normal")
 const enParo = document.getElementById("en-paro")
+
 // FACULTIES MAIN WRAPPER
 const facArtsies = document.getElementById("fac-artsies")
 const facSportis = document.getElementById("fac-sportis")
@@ -168,6 +170,10 @@ var humanisSpan = document.querySelectorAll("span.humanis")
 var enginisSpan = document.querySelectorAll("span.enginis")
 
 function checkCourses() {
+
+// CONFETTI CHECKS
+if (todoNormal.style.display == "block") { throwConfetti() }
+
 // ARTS!
 let artsiesTotal = 6
 for(let Courses of artsiesSpan) {
@@ -413,6 +419,7 @@ var dailyLoop = setInterval(function() {
 
   // DISPLAY DIVS
   displaySaludis()
+
   // OTHER CHECKS
   overallCheck()
 
@@ -454,7 +461,7 @@ var weeklyLoop = setInterval(function() {
  // if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
  // if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
  // DURING DEADLINE
- if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block" }
+ if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block"; }
  // AFTER DEADLINE
  if (distance < 0) {
 
@@ -585,13 +592,38 @@ var weeklyLoop = setInterval(function() {
 </script>
 
 
-
 <script type="text/javascript">
 function overallCheck() {
 checkCourses()
 // checkCourses()
 }
 </script>
+
+
+
+<script type="text/javascript">
+// ==================================================
+// THROW CONFETTI FUNCTION!
+// ==================================================
+function throwConfetti() {
+const confettiWrapper = document.querySelector('.confetti')
+
+// GENERATE CONFETTI!
+for (let i = 0; i <= 25; i++) {
+ const confetti = document.createElement('div');
+ confetti.classList.add('confetti-piece');
+ confetti.style.left = `${Math.random() * 100}%`;
+ confetti.style.setProperty('--fall-duration', `${Math.random() * 4 + 4}s`);
+ confetti.style.setProperty('--confetti-color', getRandomColor());
+ confettiWrapper.appendChild(confetti);
+ }
+function getRandomColor() {
+ const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4', 'red', 'blue'];
+ return colors[Math.floor(Math.random() * colors.length)];
+ }
+}
+</script>
+
 
 
 
