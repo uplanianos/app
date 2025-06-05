@@ -1443,10 +1443,10 @@ var clockTicking = setInterval(function() {
  let valuePercent = parseFloat(value).toFixed(2)
 
   if (thisEvent == "Classes") {
-   if (valuePercent <= 59) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 60 && valuePercent <= 79) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 80) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
-   if (valuePercent >= 100) { refreshCountdown() }
+   if (valuePercent <= 66) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+   if (valuePercent >= 67 && valuePercent <= 94) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+   if (valuePercent >= 95) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
+   if (valuePercent > 100) { refreshCountdown() }
   }
   if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
  // END OF PERCENT & PROGRESS BAR
