@@ -127,11 +127,14 @@ refreshTime()
  <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
   <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">⭕</div>
    <div class="doubleColumnWrapper">
-    <div style="width: 40%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
+    <div style="width: 55%; color: #666; text-align: center; padding: 12px;">
+	<canvas id="rollCanvas" class="rollCanvas" width="212px" height="212px"></canvas>
+    </div>
+    <div style="width: 42%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
 	<b>Revisión:</b><br>
 	<input type="checkbox" id="checkMon" onchange="checkAttendance()">Lunes<br>
 	<input type="checkbox" id="checkTue" onchange="checkAttendance()">Martes<br>
-	<input type="checkbox" id="checkWed" onchange="checkAttendance()" style="font-size: 0.8em;">Miércoles<br>
+	<input type="checkbox" id="checkWed" onchange="checkAttendance()">Miércoles<br>
 	<input type="checkbox" id="checkThu" onchange="checkAttendance()">Jueves<br>
 	<input type="checkbox" id="checkFri" onchange="checkAttendance()">Viernes<br>
 	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
@@ -140,10 +143,7 @@ refreshTime()
 	<input type="number" id="isThu" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isFri" min="0" max="1" step="1" style="display: none;">
     </div>
-    <div style="width: 60%; color: #666; text-align: center; padding: 12px;">
-	<canvas id="rollCanvas" class="rollCanvas" width="212" height="212"></canvas>
-	Progreso: <span id="rollCall">0%</span>
-    </div>
+
   </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
  <!-- END OF ATTENDANCE CHECK DIV -->
@@ -551,7 +551,7 @@ rollProgress = valMon + valTue + valWed + valThu + valFri
 rollPending = 100 - rollProgress
 totalPercent = rollPending + rollProgress
 
-document.getElementById("rollCall").innerText = rollProgress+"%"
+// DARWING "PIE CHART"!
 drawAttendance()
 
 // UPDATING ATTENDANCE TRASH ICON (FULL)!
@@ -604,6 +604,22 @@ ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
 ctx.strokeStyle = 'darkgray';
 ctx.lineWidth = 3;
 ctx.stroke();
+
+// TEXT FORMATTING:
+const normalFont = 'normal 24px Tahoma'
+const boldFont = 'bold 24px Tahoma'
+
+// PROGRESS COLOR PARAMETERS
+if (rollProgress <= 20) {ctx.fillStyle = 'red'; ctx.font = normalFont }
+if (rollProgress == 40) {ctx.fillStyle = 'purple'; ctx.font = normalFont }
+if (rollProgress == 60) {ctx.fillStyle = 'navy'; ctx.font = normalFont }
+if (rollProgress == 80) {ctx.fillStyle = 'blue'; ctx.font = normalFont }
+if (rollProgress == 100) {ctx.fillStyle = 'white'; ctx.font = boldFont }
+
+// TEXT PARAMETERS
+ctx.zindex=1;
+ctx.fillText(rollProgress+'%', centerX + 12, centerY + 24);
+
 }
 // END OF ATTENDANCE FUNCTION!
 
