@@ -1368,15 +1368,11 @@ var countdownDate = new Date(finalDate).getTime()
 
  // EXPIRED COUNTDOWN
  if (distance <= 0) {
-   clearInterval(loop);
-   setTimeout('refreshCountdown()', 1000 * 60); // 15 SECOND TO REFRESH (4 TIMES A MINUTE!)!
+   clearInterval(loop); // setTimeout('refreshCountdown()', 1000 * 60); // REFRESH EVERY MINUTE!
    }
  }, 1000) // END OF INTERVAL
 
 } // END OF FULL SCRIPT
-
-// END OF COUNTDOWN REFRESH FUNCTION
-function refreshCountdown() { console.log("Refreshing!"); location.reload() }
 
 
 // PROGRESS BAR FUNCTION
@@ -1450,6 +1446,7 @@ var clockTicking = setInterval(function() {
    if (valuePercent <= 59) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 60 && valuePercent <= 79) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 80) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
+   if (valuePercent >= 100) { refreshCountdown() }
   }
   if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
  // END OF PERCENT & PROGRESS BAR
@@ -1457,6 +1454,11 @@ var clockTicking = setInterval(function() {
 
  }, 1000 * 1)
  // END OF CLOCK TICKING INTERVAL
+
+
+// END OF COUNTDOWN REFRESH FUNCTION
+function refreshCountdown() { location.reload() }
+
 
 } // END OF PROGRESS BAR FUNCTION
 </script>
