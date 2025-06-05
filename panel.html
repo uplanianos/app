@@ -65,7 +65,7 @@ checkGrades()
 coffeeTime()
 toolsDivMemory()
 refreshTime()
-startTimer()
+classTimer()
 }
 </script>
 
@@ -1267,7 +1267,7 @@ observer.observe(document.querySelector('.toolsDiv'))
 
 
 <script type="text/javascript">
-function startTimer() {
+function classTimer() {
 
 // SETTING CURRENT HOUR
 const date = new Date();
@@ -1312,7 +1312,7 @@ var rightNow = doubleHour+"."+doubleMinutes; // console.log(rightNow)
 
 // SETTING UP CLASS TIME (DEFAULT VALUE)
 var classTime = "00:00:00"
-	
+
 // SETTING UP EVENT (CLASSES OR BREAK)
 var thisEvent = "Classes"
 
@@ -1353,7 +1353,7 @@ var countdownDate = new Date(finalDate).getTime()
 // Update the count down every 1 second
 // Update the count down every 1 second
 // Update the count down every 1 second
- var loop = setInterval(function() {
+ var timeLoop = setInterval(function() {
 
  // Get todays date and time
  var now = new Date().getTime()
@@ -1367,12 +1367,12 @@ var countdownDate = new Date(finalDate).getTime()
  var distance = countdownDate - now
 
  // EXPIRED COUNTDOWN
- if (distance <= 0) {
-   clearInterval(loop); // setTimeout('refreshCountdown()', 1000 * 60); // REFRESH EVERY MINUTE!
-   }
- }, 1000) // END OF INTERVAL
+ if (distance <= 0) { clearInterval(timeLoop) }
 
-} // END OF FULL SCRIPT
+ // END OF "TIME LOOP" INTERVAL
+ }, 1000)
+
+} // END OF "CLASS TIMER" SCRIPT
 
 
 // PROGRESS BAR FUNCTION
@@ -1425,7 +1425,7 @@ var clockTicking = setInterval(function() {
  const doubleMinutes = minutes.toString().padStart(2,0)
  let theTime = (doubleHour + ":" + doubleMinutes)
 
- // theTime = "12:20" // ERASE THIS!!!
+ // theTime = "13:28" // ERASE THIS!!!
 
  // TURNING TIMES INTO MILLISECONDS
  let starting = Number(theStart.split(':')[0]) * 60 * 60 * 1000 + Number(theStart.split(':')[1]) * 60 * 1000
@@ -1443,12 +1443,12 @@ var clockTicking = setInterval(function() {
  let valuePercent = parseFloat(value).toFixed(2)
 
   if (thisEvent == "Classes") {
-   if (valuePercent <= 66) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+   if (valuePercent < 67) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 67 && valuePercent <= 94) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
    if (valuePercent >= 95) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
    if (valuePercent > 100) { refreshCountdown() }
   }
-  if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
+  if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, purple ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
  // END OF PERCENT & PROGRESS BAR
 
 
@@ -1457,7 +1457,7 @@ var clockTicking = setInterval(function() {
 
 
 // END OF COUNTDOWN REFRESH FUNCTION
-function refreshCountdown() { location.reload() }
+function refreshCountdown() { setTimeout('location.reload()', 1000 * 10); } // REFRESH 6 TIMES A MINUTE!
 
 
 } // END OF PROGRESS BAR FUNCTION
