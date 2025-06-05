@@ -91,6 +91,8 @@ classTimer()
 
 <div id="bottom" class="bottom" style="outline: none; -webkit-appearance: none !important;">
 📅 <span id="bottomTime">12/12/0000 - ⏰ 00:00:00 ?</span>
+<span id="classStart" style="position: absolute; left: 8px; bottom: 14px; font-size: 12px;">00:00</span>
+<span id="classEnd" style="position: absolute; right: 12px; bottom: 14px; font-size: 12px;">00:00</span>
 </div>
 
 
@@ -1412,6 +1414,12 @@ var theEnd = "24:00"
   if (classEnd == "19:45") {theStart = "18:30"; theEnd = "19:45"} // EIGTH PERIOD
   if (classEnd == "24:00") {theStart = "19:45"; theEnd = "24:00"} // END OF DAY
 
+
+  // PRINTINT CLASS START AND ENDING AROUND THE BOTTOM CLOCK!
+  document.getElementById("classStart").innerText = theStart
+  document.getElementById("classEnd").innerText = theEnd
+
+
 // CLOCK TICKING INTERVAL (EVERY SECOND)!!!
 // CLOCK TICKING INTERVAL (EVERY SECOND)!!!
 // CLOCK TICKING INTERVAL (EVERY SECOND)!!!
@@ -1443,9 +1451,9 @@ var clockTicking = setInterval(function() {
  let valuePercent = parseFloat(value).toFixed(2)
 
   if (thisEvent == "Classes") {
-   if (valuePercent < 67) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 67 && valuePercent <= 94) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 95) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
+   if (valuePercent < 80) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+   if (valuePercent >= 80 && valuePercent <= 92) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+   if (valuePercent >= 93) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
    if (valuePercent > 100) { refreshCountdown() }
   }
   if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, purple ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
