@@ -28,8 +28,8 @@
 	 Revalidación semanal en <span class="weeklyStrike" id="daysWeekly">-</span> días, 
 	 <span class="weeklyStrike" id="hoursWeekly">0</span> horas, 
 	 <span class="weeklyStrike" id="minutesWeekly">0</span> minutos y 
-	 <span class="weekleStrike" id="secondsWeekly">0 </span> segundos
-	 - Ver última <a href="voting.html?cv=4&m1=Sí%20paro&v1=21&m2=No%20paro&v2=7&m3=Abstención%20(quorum)&v3=2&m4=Sin%20voto&v4=3" target="_parent">votación</a>!
+	 <span class="weekleStrike" id="secondsWeekly">0 </span> segundos.
+	 <span style="display: none;">- Ver última <a href="voting.html?cv=4&m1=Sí%20paro&v1=21&m2=No%20paro&v2=7&m3=Abstención%20(quorum)&v3=2&m4=Sin%20voto&v4=3" target="_parent">votación</a>!</span>
 	</div>
 
 	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
@@ -64,11 +64,11 @@
 	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis()">
 	  <br><div>Facultad de Ciencias de la Salud</div><br>
 	 <ul class="tracker-list">
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="enfermeria">❌</span> Enfermería.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">❌</span> Fonoaudiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="enfermeria">✔️</span> Enfermería.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">✔️</span> Fonoaudiología.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">❌</span> Kinesiología.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">❌</span> Nutrición y Dietética.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">❌</span> Terapia Ocupacional.</li><br></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">✔️</span> Nutrición y Dietética.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">✔️</span> Terapia Ocupacional.</li><br></div>
 	 </ul>
 	</div>
 
@@ -331,8 +331,14 @@ for(let Courses of enginisDiv) {
 </script>
 
 
+
+
 <script type="text/javascript">
 function checkDaily() {
+
+// ==================================================
+// CHECK DAILY FUNCTION!
+// ==================================================
 
 // START WORKING
 var countDownDate = new Date("2025-04-20T00:00:00").getTime() // MIDNIGHT (NEXT DAY)!
@@ -434,11 +440,18 @@ var dailyLoop = setInterval(function() {
 </script>
 
 
+
+
+
 <script type="text/javascript">
 function checkWeekly() {
 
+// ==================================================
+// CHECK WEEKLY FUNCTION!
+// ==================================================
+
 // START WORKING
-var countDownDate = new Date("2025-06-04T00:00:00").getTime()
+var countDownDate = new Date("2025-06-14T00:00:00").getTime()
 var weeklyLoop = setInterval(function() {
 
  // FIXED VARIABLES
@@ -466,11 +479,11 @@ var weeklyLoop = setInterval(function() {
  if (distance < 0) {
 
   // SALUDIS
-  document.getElementById("enfermeria").innerHTML = "✔️"
-  document.getElementById("fonoaudiologia").innerHTML = "✔️"
+  // document.getElementById("enfermeria").innerHTML = "✔️"
+  // document.getElementById("fonoaudiologia").innerHTML = "✔️"
   document.getElementById("kinesiologia").innerHTML = "✔️"
-  document.getElementById("nutricion").innerHTML = "✔️"
-  document.getElementById("terapia").innerHTML = "✔️"
+  // document.getElementById("nutricion").innerHTML = "✔️"
+  // document.getElementById("terapia").innerHTML = "✔️"
 
   // ELEMENTIS
   document.getElementById("todo-normal").style.display = "block"
@@ -486,113 +499,127 @@ var weeklyLoop = setInterval(function() {
   }
  },1000);
 }
-
-
-// FULL STUDENT STRIKE!
-/*
-<script type="text/javascript">
-function checkWeekly() {
-
-// START WORKING
-var countDownDate = new Date("2025-06-04T00:00:00").getTime()
-var weeklyLoop = setInterval(function() {
-
- // FIXED VARIABLES
- var now = new Date().getTime();
- var distance = countDownDate - now;
-
- // DISTANCE CALCULATION
- var days = Math.floor(distance / (1000 * 60 * 60 * 24));
- var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
- var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
- var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
- // PRINT CLOCK!
- document.getElementById("daysWeekly").innerHTML = days;
- document.getElementById("hoursWeekly").innerHTML = hours;
- document.getElementById("minutesWeekly").innerHTML = minutes;
- document.getElementById("secondsWeekly").innerHTML = seconds;
- // ADDING LEFT-HAND ZEROS IN CLOCK FORMAT - COMMENTED OUT FOR TEXT FORMAT
- // if (hours < 10) { document.getElementById("hoursWeekly").innerHTML = "0" + hours }
- // if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
- // if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
- // DURING DEADLINE
- if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block" }
- // AFTER DEADLINE
- if (distance < 0) {
-  // ARTESIES
-  document.getElementById("dibujante").innerHTML = "✔️"
-  document.getElementById("diseno").innerHTML = "✔️"
-  document.getElementById("visuales").innerHTML = "✔️"
-  document.getElementById("musical").innerHTML = "✔️"
-  document.getElementById("artes").innerHTML = "✔️"
-  document.getElementById("teatro").innerHTML = "✔️"
-  // SPORTIES
-  document.getElementById("edufisica").innerHTML = "✔️"
-  document.getElementById("deportes").innerHTML = "✔️"
-  // EDUQUIS
-  document.getElementById("basica").innerHTML = "✔️"
-  document.getElementById("diferencial").innerHTML = "✔️"
-  document.getElementById("parvularia").innerHTML = "✔️"
-  // SALUDIS
-  document.getElementById("enfermeria").innerHTML = "✔️"
-  document.getElementById("fonoaudiologia").innerHTML = "✔️"
-  document.getElementById("kinesiologia").innerHTML = "✔️"
-  document.getElementById("nutricion").innerHTML = "✔️"
-  document.getElementById("terapia").innerHTML = "✔️"
-  // SOCIATS
-  document.getElementById("bibliotecologia").innerHTML = "✔️"
-  document.getElementById("derecho").innerHTML = "✔️"
-  document.getElementById("periodismo").innerHTML = "✔️"
-  document.getElementById("psicologia").innerHTML = "✔️"
-  document.getElementById("sociologia").innerHTML = "✔️"
-  // SCIENCE
-  document.getElementById("geografia").innerHTML = "✔️"
-  document.getElementById("biologia").innerHTML = "✔️"
-  document.getElementById("fisica").innerHTML = "✔️"
-  document.getElementById("matematica").innerHTML = "✔️"
-  document.getElementById("quimica").innerHTML = "✔️"
-  // HUMANIS
-  document.getElementById("turismo").innerHTML = "✔️"
-  document.getElementById("castellano").innerHTML = "✔️"
-  document.getElementById("filosofia").innerHTML = "✔️"
-  document.getElementById("historia").innerHTML = "✔️"
-  document.getElementById("ingles").innerHTML = "✔️"
-  document.getElementById("traduccion").innerHTML = "✔️"
-  // INGINIS
-  document.getElementById("estadistica").innerHTML = "✔️"
-  document.getElementById("ambiental").innerHTML = "✔️"
-  document.getElementById("cambiental").innerHTML = "✔️"
-  document.getElementById("cindustrial").innerHTML = "✔️"
-  document.getElementById("cinformatica").innerHTML = "✔️"
-  document.getElementById("comercial").innerHTML = "✔️"
-  document.getElementById("informatica").innerHTML = "✔️"
-  // ELEMENTIS
-  document.getElementById("todo-normal").style.display = "block"
-  document.getElementById("en-paro").style.display = "none"
-  document.getElementById("checkWeekly").style.display = "none"
-  // DISPLAY DIVS
-  displayArtsies()
-  displaySportis()
-  displayEduquis()
-  displaySaludis()
-  displaySociats()
-  displayScience()
-  displayHumanis()
-  displayEnginis()
-  // OTHER CHECKS
-  overallCheck()
-  clearInterval(weeklyLoop)
-  }
- },1000);
-}
-*/
-// END OF COMMENT OUT - FULL STRIKE!
-
 </script>
 
 
+
+	<script type="text/javascript">
+
+	// ==================================================
+	// CHECK WEEKLY FUNCTION - FULL STRIKE!
+	// ==================================================
+
+	/*
+	function checkWeekly() {
+
+	// START WORKING
+	var countDownDate = new Date("2025-06-04T00:00:00").getTime()
+	var weeklyLoop = setInterval(function() {
+
+	 // FIXED VARIABLES
+	 var now = new Date().getTime();
+	 var distance = countDownDate - now;
+
+	 // DISTANCE CALCULATION
+	 var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	 var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	 // PRINT CLOCK!
+	 document.getElementById("daysWeekly").innerHTML = days;
+	 document.getElementById("hoursWeekly").innerHTML = hours;
+	 document.getElementById("minutesWeekly").innerHTML = minutes;
+	 document.getElementById("secondsWeekly").innerHTML = seconds;
+	 // ADDING LEFT-HAND ZEROS IN CLOCK FORMAT - COMMENTED OUT FOR TEXT FORMAT
+	 // if (hours < 10) { document.getElementById("hoursWeekly").innerHTML = "0" + hours }
+	 // if (minutes < 10) { document.getElementById("minutesWeekly").innerHTML = "0" + minutes }
+	 // if (seconds < 10) { document.getElementById("secondsWeekly").innerHTML = "0" + seconds }
+
+	 // DURING DEADLINE
+	 if (distance >= 0) { document.getElementById("checkWeekly").style.display = "block" }
+
+	 // AFTER DEADLINE
+	 if (distance < 0) {
+	  // ARTESIES
+	  document.getElementById("dibujante").innerHTML = "✔️"
+	  document.getElementById("diseno").innerHTML = "✔️"
+	  document.getElementById("visuales").innerHTML = "✔️"
+	  document.getElementById("musical").innerHTML = "✔️"
+	  document.getElementById("artes").innerHTML = "✔️"
+	  document.getElementById("teatro").innerHTML = "✔️"
+	  // SPORTIES
+	  document.getElementById("edufisica").innerHTML = "✔️"
+	  document.getElementById("deportes").innerHTML = "✔️"
+	  // EDUQUIS
+	  document.getElementById("basica").innerHTML = "✔️"
+	  document.getElementById("diferencial").innerHTML = "✔️"
+	  document.getElementById("parvularia").innerHTML = "✔️"
+	  // SALUDIS
+	  document.getElementById("enfermeria").innerHTML = "✔️"
+	  document.getElementById("fonoaudiologia").innerHTML = "✔️"
+	  document.getElementById("kinesiologia").innerHTML = "✔️"
+	  document.getElementById("nutricion").innerHTML = "✔️"
+	  document.getElementById("terapia").innerHTML = "✔️"
+	  // SOCIATS
+	  document.getElementById("bibliotecologia").innerHTML = "✔️"
+	  document.getElementById("derecho").innerHTML = "✔️"
+	  document.getElementById("periodismo").innerHTML = "✔️"
+	  document.getElementById("psicologia").innerHTML = "✔️"
+	  document.getElementById("sociologia").innerHTML = "✔️"
+	  // SCIENCE
+	  document.getElementById("geografia").innerHTML = "✔️"
+	  document.getElementById("biologia").innerHTML = "✔️"
+	  document.getElementById("fisica").innerHTML = "✔️"
+	  document.getElementById("matematica").innerHTML = "✔️"
+	  document.getElementById("quimica").innerHTML = "✔️"
+	  // HUMANIS
+	  document.getElementById("turismo").innerHTML = "✔️"
+	  document.getElementById("castellano").innerHTML = "✔️"
+	  document.getElementById("filosofia").innerHTML = "✔️"
+	  document.getElementById("historia").innerHTML = "✔️"
+	  document.getElementById("ingles").innerHTML = "✔️"
+	  document.getElementById("traduccion").innerHTML = "✔️"
+	  // INGINIS
+	  document.getElementById("estadistica").innerHTML = "✔️"
+	  document.getElementById("ambiental").innerHTML = "✔️"
+	  document.getElementById("cambiental").innerHTML = "✔️"
+	  document.getElementById("cindustrial").innerHTML = "✔️"
+	  document.getElementById("cinformatica").innerHTML = "✔️"
+	  document.getElementById("comercial").innerHTML = "✔️"
+	  document.getElementById("informatica").innerHTML = "✔️"
+
+	  // ELEMENTIS
+	  document.getElementById("todo-normal").style.display = "block"
+	  document.getElementById("en-paro").style.display = "none"
+	  document.getElementById("checkWeekly").style.display = "none"
+
+	  // DISPLAY DIVS
+	  displayArtsies()
+	  displaySportis()
+	  displayEduquis()
+	  displaySaludis()
+	  displaySociats()
+	  displayScience()
+	  displayHumanis()
+	  displayEnginis()
+
+	  // OTHER CHECKS
+	  overallCheck()
+	  clearInterval(weeklyLoop)
+	  }
+	 },1000);
+	}
+	*/
+	// END OF COMMENT OUT - FULL STRIKE!
+</script>
+
+
+
 <script type="text/javascript">
+// ==================================================
+// COVERALL CHECK FUNCTION!
+// ==================================================
 function overallCheck() {
 checkCourses()
 // checkCourses()
