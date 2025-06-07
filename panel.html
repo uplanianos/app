@@ -1075,6 +1075,13 @@ if (gradeScale.value == 70) {
  // END OF THE LOOP!
  }
 
+// =========================
+// MOVE SCALE BACK AND FORTH!
+// =========================
+gradeScaleDiv.scrollLeft += 92
+setTimeout('moveGradesLeft()', 350)
+
+
 } // END OF FUNCTION!
 
 
@@ -1372,7 +1379,7 @@ var countdownDate = new Date(finalDate).getTime()
  // console.log(distance)
 
  // EXPIRED COUNTDOWN
- if (distance <= 0) { clearInterval(timeLoop); console.log("Period is over... refreshing page!"); setTimeout('location.reload()', 1000 * 5) }
+ if (distance <= 0) { clearInterval(timeLoop); console.log("Period is over... refreshing page!"); setTimeout('location.reload()', 1000 * 3) }
 
  // END OF "TIME LOOP" INTERVAL
  }, 1000)
