@@ -1274,15 +1274,15 @@ observer.observe(document.querySelector('.toolsDiv'))
 // ==================================================
 */
 
-</script>
 
-
-
-<script type="text/javascript">
+// ==============================
+// "CLASS TIMER" FUNCTION
+// ==============================
 function classTimer() {
 
 // SETTING CURRENT HOUR
 const date = new Date();
+const weekDay = date.getDay()
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const thisMonth = date.getMonth() // ZERO is January
 const thisYear = date.getFullYear()
@@ -1348,9 +1348,6 @@ if (rightNow >= 18.15 && rightNow < 18.30) {classTime = period8; thisEvent = "Br
 if (rightNow >= 18.30 && rightNow < 19.45) {classTime = break8; thisEvent = "Classes"}
 if (rightNow >= 19.45) {classTime = midnight; thisEvent = "Break"}
 
-// CALLING PROGRESS BAR FUNCTION & PASSING 'CLASS TIME' VALUE!!!
-progressFunction(classTime, thisEvent)
-
 // DATE FORMATTING AND TIME VARIABLES
 var dateFormat = monthNames[thisMonth] + " " + thisDate + ", " + thisYear + " "
 
@@ -1372,7 +1369,6 @@ var countdownDate = new Date(finalDate).getTime()
  // Get todays date and time
  var now = new Date().getTime()
 
-
  // COUNTDOWN FUNCTIONALITY
  // COUNTDOWN FUNCTIONALITY
  // COUNTDOWN FUNCTIONALITY
@@ -1387,12 +1383,26 @@ var countdownDate = new Date(finalDate).getTime()
  // END OF "TIME LOOP" INTERVAL
  }, 1000)
 
-} // END OF "CLASS TIMER" SCRIPT
+
+// ==============================
+// CALLING PROGRESS BAR FUNCTION & PASSING 'CLASS TIME' VALUE!!!
+// ONLY MONDAY TO FRIDAY!
+// ==============================
+
+if (weekDay >= 1 && weekDay <= 5) { progressFunction(classTime, thisEvent) }
+else {
+ document.getElementById("classStart").style.visibility = "hidden"
+ document.getElementById("classEnd").style.visibility = "hidden"
+ }
 
 
+} // END OF "CLASS TIMER" FUNCTION
+
+
+
+// ==============================
 // PROGRESS BAR FUNCTION
-// PROGRESS BAR FUNCTION
-// PROGRESS BAR FUNCTION
+// ==============================
 function progressFunction(classTime,thisEvent) {
 theBar = document.getElementById("bottom")
 
@@ -1492,6 +1502,11 @@ var clockTicking = setInterval(function() {
 
 
 } // END OF PROGRESS BAR FUNCTION
+
+
+// ==============================
+// END OF ALL MAIN FUNCTIONS
+// ==============================
 </script>
 
 
@@ -1518,6 +1533,9 @@ function deactivate() { if (document.exitFullscreen) {
 }
 
 </script>
+
+
+
 
 
 
