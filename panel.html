@@ -875,6 +875,7 @@ if (doingIt >= 100) {
 
 }
 
+
 // ==================================================
 // THROW CONFETTI FUNCTION!
 // ==================================================
@@ -974,6 +975,7 @@ if (gradeScale.value == 60) {gradeScale.value = 70; gradeScale.style.color = "re
 else if (gradeScale.value == 70) {gradeScale.value = 60; gradeScale.style.color = "darkgreen"  }
 checkGrades()
 }
+
 
 
 // ==================================================
@@ -1083,6 +1085,7 @@ setTimeout('gradeScaleDiv.scrollLeft = 0', 350)
 
 
 } // END OF FUNCTION!
+
 
 
 // ==================================================
@@ -1463,13 +1466,27 @@ var clockTicking = setInterval(function() {
  var value = (current-starting)/(ending-starting)*100
  let valuePercent = parseFloat(value).toFixed(2)
 
-  if (thisEvent == "Classes") {
-   if (valuePercent < 80) { theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 80 && valuePercent <= 92) {  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
-   if (valuePercent >= 93) {  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
-  }
-  if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, purple ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
- // END OF PERCENT & PROGRESS BAR
+ // ==============================
+ // CLASSES - BROKEN INTO COLORS BY MINUTES!
+ // ==============================
+
+ thisEvent = "Classes"
+
+ if (thisEvent == "Classes" && valuePercent < 60) { // 0 - 45 MINUTES
+  theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+
+ if (thisEvent == "Classes" && valuePercent >= 60 && valuePercent <= 80) { // 45 - 60 MINUTES
+  theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
+
+ if (thisEvent == "Classes" && valuePercent > 80) { // 60 - 75 MINUTES
+  theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
+
+ // BREAK - FULL EVENT (NO MINUTES)!
+ if (thisEvent == "Break") { theBar.style.background = 'linear-gradient(to right, purple ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%' }
+
+ // ==============================
+ // END OF PERCENT & PROGRESS BAR!
+ // ==============================
 
 
  }, 1000 * 1)
