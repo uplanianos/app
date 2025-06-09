@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Créditos Sello</title>
+</head>
+
+<body>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+
+
+<div class="main">
+    <div class="labels"><p>
+      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <option value="0" selected disabled="disabled">☰</option>
+      <option value="1">📖 Agenda</option>
+      <option value="2">✔️ Asistencia</option>
+      <option value="3">📁 Avance Curricular</option>
+      <option value="4">🗓️ Calendario Oficial</option>
+      <option value="5">⏲️ Cuenta Regresiva</option>
+      <option value="6">📈 Escala de Notas</option>
+      <option value="7">📚 Horario de Clases</option>
+      <option value="8">💊 Justificador</option>
+      <option value="9">📜 Manual Estudiante</option>
+      <option value="10">✍️ Nota de Pruebas</option>
+      <option value="11">🚫 Paro Tracker</option>
+      <option value="12">💯 Promedio Integral</option>
+      <option value="125">🧠 Preguntas Estudio</option>
+      <option value="13">📋 Simulador Examen</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+<!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
+    </select>
+    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Créditos Sello Misional.</p></div>
+
+<script type="text/javascript">
+document.getElementById('titleMenu').addEventListener('change', function() {
+ if (titleMenu.value == 1) {blurMenu(); window.location = "agenda.html"}
+ if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenu.value == 3) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "calendario.html"}
+ if (titleMenu.value == 5) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenu.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenu.value == 7) {blurMenu(); window.location = "horario.html"}
+ if (titleMenu.value == 8) {blurMenu(); window.location = "justify.html"}
+ if (titleMenu.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenu.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenu.value == 11) {blurMenu(); window.location = "sigueparo.html"}
+ if (titleMenu.value == 12) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenu.value == 125) {blurMenu(); window.location = "estudio.html"}
+ if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
+});
+
+function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
+</script> 
+
+	<br>
+	<div class="grid-item-slider">
+
+	 <br>
+
+	 <div>
+	  <b>Actividades realizadas:</b>
+	  <input type="button" id="moreButton" value="+" onclick="addMore()">
+	  <input type="button" id="lessButton" value="x" onclick="killLast()">
+	  <input type="number" id="howMany" value="1" min="1" max="9" step="1" style="display: none;">
+	  </div>
+
+	 <br>
+
+	 <div class="creditGrid" style="height: 50px; background: #FFFFFF88;">
+	  <div>N°</div>
+	  <div>Actividad certificada</div>
+	  <div>Horas</div>
+	  <div>Créditos</div>
+	 </div>
+
+	 <div id="divActivity1">
+	  <div class="creditGrid">
+	   <div>1</div>
+	   <div><input type="text" id="activity1" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours1" class="selloHours" value="0" min="0" step="0.1" onclick="checkOne()" onchange="checkOne()"></div>
+	   <div><input type="number" id="credits1" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity2">
+	  <div class="creditGrid">
+	   <div>2</div>
+	   <div><input type="text" id="activity2" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours2" class="selloHours" value="0" min="0" step="0.1" onclick="checkTwo()" onchange="checkTwo()"></div>
+	   <div><input type="number" id="credits2" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity3">
+	  <div class="creditGrid">
+	   <div>3</div>
+	   <div><input type="text" id="activity3" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours3" class="selloHours" value="0" min="0" step="0.1" onclick="checkThree()" onchange="checkThree()"></div>
+	   <div><input type="number" id="credits3" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity4">
+	  <div class="creditGrid">
+	   <div>4</div>
+	   <div><input type="text" id="activity4" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours4" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFour()"></div>
+	   <div><input type="number" id="credits4" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity5">
+	  <div class="creditGrid">
+	   <div>5</div>
+	   <div><input type="text" id="activity5" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours5" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFive()"></div>
+	   <div><input type="number" id="credits5" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity6">
+	  <div class="creditGrid">
+	   <div>6</div>
+	   <div><input type="text" id="activity6" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours6" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSix()"></div>
+	   <div><input type="number" id="credits6" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity7">
+	  <div class="creditGrid">
+	   <div>7</div>
+	   <div><input type="text" id="activity7" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours7" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeven()"></div>
+	   <div><input type="number" id="credits7" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity8">
+	  <div class="creditGrid">
+	   <div>8</div>
+	   <div><input type="text" id="activity8" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours8" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEight()"></div>
+	   <div><input type="number" id="credits8" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity9">
+	  <div class="creditGrid">
+	   <div>9</div>
+	   <div><input type="text" id="activity9" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours9" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNine()"></div>
+	   <div><input type="number" id="credits9" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity10">
+	  <div class="creditGrid">
+	   <div>10</div>
+	   <div><input type="text" id="activity10" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours10" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTen()"></div>
+	   <div><input type="number" id="credits10" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity11">
+	  <div class="creditGrid">
+	   <div>11</div>
+	   <div><input type="text" id="activity11" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours11" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEleven()"></div>
+	   <div><input type="number" id="credits11" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity12">
+	  <div class="creditGrid">
+	   <div>12</div>
+	   <div><input type="text" id="activity12" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours12" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwelve()"></div>
+	   <div><input type="number" id="credits12" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity13">
+	  <div class="creditGrid">
+	   <div>13</div>
+	   <div><input type="text" id="activity13" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours13" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkThirteen()"></div>
+	   <div><input type="number" id="credits13" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity14">
+	  <div class="creditGrid">
+	   <div>14</div>
+	   <div><input type="text" id="activity14" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours14" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFourteen()"></div>
+	   <div><input type="number" id="credits14" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity15">
+	  <div class="creditGrid">
+	   <div>15</div>
+	   <div><input type="text" id="activity15" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours15" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFifteen()"></div>
+	   <div><input type="number" id="credits15" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity16">
+	  <div class="creditGrid">
+	   <div>16</div>
+	   <div><input type="text" id="activity16" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours16" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSixteen()"></div>
+	   <div><input type="number" id="credits16" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity17">
+	  <div class="creditGrid">
+	   <div>17</div>
+	   <div><input type="text" id="activity17" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours17" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeventeen()"></div>
+	   <div><input type="number" id="credits17" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity18">
+	  <div class="creditGrid">
+	   <div>18</div>
+	   <div><input type="text" id="activity18" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours18" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEighteen()"></div>
+	   <div><input type="number" id="credits18" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity19">
+	  <div class="creditGrid">
+	   <div>19</div>
+	   <div><input type="text" id="activity19" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours19" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNineteen()"></div>
+	   <div><input type="number" id="credits19" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <div id="divActivity20">
+	  <div class="creditGrid">
+	   <div>20</div>
+	   <div><input type="text" id="activity20" class="selloActivity" placeholder="Actividad realizada..."></div>
+	   <div><input type="number" id="hours20" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwenty()"></div>
+	   <div><input type="number" id="credits20" class="selloCredits" value="0" disabled readonly></div>
+	  </div>
+	 </div>
+
+	 <br>
+
+	 <b>Creditaje:</b>
+
+	<br>
+
+	 <div class="creditGrid" style="height: 50px; background: #FFFFFF88;">
+	  <div></div>
+	  <div style="text-align: right; font-weight: bold;">TOTAL:</div>
+	  <div>Horas</div>
+	  <div>Créditos</div>
+	 </div>
+
+	 <div class="creditGrid">
+	  <div></div>
+	  <div style="text-align: right;">Realizadas:</div>
+	  <div><input type="number" id="totalHours" class="selloCredits" value="0" disabled readonly></div>
+	  <div><input type="number" id="totalCredits" class="selloCredits" value="0" disabled readonly></div>
+	 </div>
+
+	 <div class="creditGrid">
+	  <div></div>
+	  <div style="text-align: right;">Pendientes:</div>
+	  <div><input type="number" id="remainHours" class="selloCredits" value="0" disabled readonly></div>
+	  <div><input type="number" id="remainCredits" class="selloCredits" value="0" disabled readonly></div>
+	 </div>
+
+	 <div style="text-align: center;"><input type="button" id="clearCredits" class="clearCredits" value="BORRAR" onclick="clearCredits()"></div>
+
+	 <br>
+
+	<!- End of "grid-item-tools" Div ->
+	</div>
+
+    <br><br>
+  </div>
+
+<br><br>
+</div>
+
+
+
+<script type="text/javascript">
+// SETTING UP GLOBAL ELEMENTS!
+// SETTING UP GLOBAL ELEMENTS!
+// SETTING UP GLOBAL ELEMENTS!
+
+
+// DECLARING ELEMENTS!
+// DIVS
+var divActivity2 = document.getElementById("divActivity2")
+var divActivity3 = document.getElementById("divActivity3")
+var divActivity4 = document.getElementById("divActivity4")
+var divActivity5 = document.getElementById("divActivity5")
+var divActivity6 = document.getElementById("divActivity6")
+var divActivity7 = document.getElementById("divActivity7")
+var divActivity8 = document.getElementById("divActivity8")
+var divActivity9 = document.getElementById("divActivity9")
+var divActivity10 = document.getElementById("divActivity10")
+var divActivity11 = document.getElementById("divActivity11")
+var divActivity12 = document.getElementById("divActivity12")
+var divActivity13 = document.getElementById("divActivity13")
+var divActivity14 = document.getElementById("divActivity14")
+var divActivity15 = document.getElementById("divActivity15")
+var divActivity16 = document.getElementById("divActivity16")
+var divActivity17 = document.getElementById("divActivity17")
+var divActivity18 = document.getElementById("divActivity18")
+var divActivity19 = document.getElementById("divActivity19")
+var divActivity20 = document.getElementById("divActivity20")
+
+// INPUT VALUES (HOURS)
+var hours1 = document.getElementById("hours1")
+var hours2 = document.getElementById("hours2")
+var hours3 = document.getElementById("hours3")
+var hours4 = document.getElementById("hours4")
+var hours5 = document.getElementById("hours5")
+var hours6 = document.getElementById("hours6")
+var hours7 = document.getElementById("hours7")
+var hours8 = document.getElementById("hours8")
+var hours9 = document.getElementById("hours9")
+var hours10 = document.getElementById("hours10")
+var hours11 = document.getElementById("hours11")
+var hours12 = document.getElementById("hours12")
+var hours13 = document.getElementById("hours13")
+var hours14 = document.getElementById("hours14")
+var hours15 = document.getElementById("hours15")
+var hours16 = document.getElementById("hours16")
+var hours17 = document.getElementById("hours17")
+var hours18 = document.getElementById("hours18")
+var hours19 = document.getElementById("hours19")
+var hours20 = document.getElementById("hours20")
+
+// CREDITS VALUES (DISABLED)
+var credits1 = document.getElementById("credits1")
+var credits2 = document.getElementById("credits2")
+var credits3 = document.getElementById("credits3")
+var credits4 = document.getElementById("credits4")
+var credits5 = document.getElementById("credits5")
+var credits6 = document.getElementById("credits6")
+var credits7 = document.getElementById("credits7")
+var credits8 = document.getElementById("credits8")
+var credits9 = document.getElementById("credits9")
+var credits10 = document.getElementById("credits10")
+var credits11 = document.getElementById("credits11")
+var credits12 = document.getElementById("credits12")
+var credits13 = document.getElementById("credits13")
+var credits14 = document.getElementById("credits14")
+var credits15 = document.getElementById("credits15")
+var credits16 = document.getElementById("credits16")
+var credits17 = document.getElementById("credits17")
+var credits18 = document.getElementById("credits18")
+var credits19 = document.getElementById("credits19")
+var credits20 = document.getElementById("credits20")
+
+// CREDIT VARIABLES
+var howManyHours = 216
+var howManyCredits = 8
+var creditDecimal = 0.037037037037037
+
+
+// FINAL BALANCE ELEMENTS
+var totalHours = document.getElementById("totalHours")
+var totalCredits = document.getElementById("totalCredits")
+
+// REMAINING BALANCE ELEMENTS
+var remainingHours = document.getElementById("remainHours")
+var remainingCredits = document.getElementById("remainCredits")
+
+
+// ==============================
+// INITIAL SETUP (LOAD ON START)
+// ==============================
+function initialSetup() {
+
+// REMAINING HOURS
+remainHours.value = howManyHours
+remainCredits.value = howManyCredits
+
+// CHECKING PURCHASED AMOUNT
+var moreButton = document.getElementById("moreButton")
+var lessButton = document.getElementById("lessButton")
+var howMany = document.getElementById("howMany").value
+
+if (howMany == 1) {
+ divActivity2.style.display = "none"; divActivity3.style.display = "none";
+ divActivity4.style.display = "none"; divActivity5.style.display = "none";
+ divActivity6.style.display = "none"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "hidden";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 2) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "none";
+ divActivity4.style.display = "none"; divActivity5.style.display = "none";
+ divActivity6.style.display = "none"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 3) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block"
+ divActivity4.style.display = "none"; divActivity5.style.display = "none";
+ divActivity6.style.display = "none"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 4) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "none";
+ divActivity6.style.display = "none"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 5) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "none"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 6) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "none";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 7) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "none"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 8) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "none";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 9) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "none"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 10) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "none";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 11) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "none"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 12) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "none";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 13) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "none"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 14) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "none";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 15) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "none"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 16) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "block"; divActivity17.style.display = "none";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 17) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "block"; divActivity17.style.display = "block";
+ divActivity18.style.display = "none"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 18) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "block"; divActivity17.style.display = "block";
+ divActivity18.style.display = "block"; divActivity19.style.display = "none";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 19) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "block"; divActivity17.style.display = "block";
+ divActivity18.style.display = "block"; divActivity19.style.display = "block";
+ divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "visible" }
+
+if (howMany == 20) {
+ divActivity2.style.display = "block"; divActivity3.style.display = "block";
+ divActivity4.style.display = "block"; divActivity5.style.display = "block";
+ divActivity6.style.display = "block"; divActivity7.style.display = "block";
+ divActivity8.style.display = "block"; divActivity9.style.display = "block";
+ divActivity10.style.display = "block"; divActivity11.style.display = "block";
+ divActivity12.style.display = "block"; divActivity13.style.display = "block";
+ divActivity14.style.display = "block"; divActivity15.style.display = "block";
+ divActivity16.style.display = "block"; divActivity17.style.display = "block";
+ divActivity18.style.display = "block"; divActivity19.style.display = "block";
+ divActivity20.style.display = "block"; lessButton.style.visibility = "visible";
+ moreButton.style.visibility = "hidden" }
+
+// INITIAL BALANCE CHECKS!
+if (hours1.value === "" || hours1.value === null || hours1.value === undefined || hours1.value === NaN) { hours1.value = 0 }
+if (hours2.value === "" || hours2.value === null || hours2.value === undefined || hours2.value === NaN) { hours2.value = 0 }
+if (hours3.value === "" || hours3.value === null || hours3.value === undefined || hours3.value === NaN) { hours3.value = 0 }
+if (hours4.value === "" || hours4.value === null || hours4.value === undefined || hours4.value === NaN) { hours4.value = 0 }
+if (hours5.value === "" || hours5.value === null || hours5.value === undefined || hours5.value === NaN) { hours5.value = 0 }
+if (hours6.value === "" || hours6.value === null || hours6.value === undefined || hours6.value === NaN) { hours6.value = 0 }
+if (hours7.value === "" || hours7.value === null || hours7.value === undefined || hours7.value === NaN) { hours7.value = 0 }
+if (hours8.value === "" || hours8.value === null || hours8.value === undefined || hours8.value === NaN) { hours8.value = 0 }
+if (hours9.value === "" || hours9.value === null || hours9.value === undefined || hours9.value === NaN) { hours9.value = 0 }
+if (hours10.value === "" || hours10.value === null || hours10.value === undefined || hours10.value === NaN) { hours10.value = 0 }
+if (hours11.value === "" || hours11.value === null || hours11.value === undefined || hours11.value === NaN) { hours11.value = 0 }
+if (hours12.value === "" || hours12.value === null || hours12.value === undefined || hours12.value === NaN) { hours12.value = 0 }
+if (hours13.value === "" || hours13.value === null || hours13.value === undefined || hours13.value === NaN) { hours13.value = 0 }
+if (hours14.value === "" || hours14.value === null || hours14.value === undefined || hours14.value === NaN) { hours14.value = 0 }
+if (hours15.value === "" || hours15.value === null || hours15.value === undefined || hours15.value === NaN) { hours15.value = 0 }
+if (hours16.value === "" || hours16.value === null || hours16.value === undefined || hours16.value === NaN) { hours16.value = 0 }
+if (hours17.value === "" || hours17.value === null || hours17.value === undefined || hours17.value === NaN) { hours17.value = 0 }
+if (hours18.value === "" || hours18.value === null || hours18.value === undefined || hours18.value === NaN) { hours18.value = 0 }
+if (hours19.value === "" || hours19.value === null || hours19.value === undefined || hours19.value === NaN) { hours19.value = 0 }
+if (hours20.value === "" || hours20.value === null || hours20.value === undefined || hours20.value === NaN) { hours20.value = 0 }
+
+// CONVERTING HOURS INTO CREDITS ON LOAD!
+if (hours1.value > 0) { credits1.value = (hours1.value * creditDecimal).toFixed(2) }
+if (hours2.value > 0) { credits2.value = (hours2.value * creditDecimal).toFixed(2) }
+if (hours3.value > 0) { credits3.value = (hours3.value * creditDecimal).toFixed(2) }
+if (hours4.value > 0) { credits4.value = (hours4.value * creditDecimal).toFixed(2) }
+if (hours5.value > 0) { credits5.value = (hours5.value * creditDecimal).toFixed(2) }
+if (hours6.value > 0) { credits6.value = (hours6.value * creditDecimal).toFixed(2) }
+if (hours7.value > 0) { credits7.value = (hours7.value * creditDecimal).toFixed(2) }
+if (hours8.value > 0) { credits8.value = (hours8.value * creditDecimal).toFixed(2) }
+if (hours9.value > 0) { credits9.value = (hours9.value * creditDecimal).toFixed(2) }
+if (hours10.value > 0) { credits10.value = (hours10.value * creditDecimal).toFixed(2) }
+if (hours11.value > 0) { credits11.value = (hours11.value * creditDecimal).toFixed(2) }
+if (hours12.value > 0) { credits12.value = (hours12.value * creditDecimal).toFixed(2) }
+if (hours13.value > 0) { credits13.value = (hours13.value * creditDecimal).toFixed(2) }
+if (hours14.value > 0) { credits14.value = (hours14.value * creditDecimal).toFixed(2) }
+if (hours15.value > 0) { credits15.value = (hours15.value * creditDecimal).toFixed(2) }
+if (hours16.value > 0) { credits16.value = (hours16.value * creditDecimal).toFixed(2) }
+if (hours17.value > 0) { credits17.value = (hours17.value * creditDecimal).toFixed(2) }
+if (hours18.value > 0) { credits18.value = (hours18.value * creditDecimal).toFixed(2) }
+if (hours19.value > 0) { credits19.value = (hours19.value * creditDecimal).toFixed(2) }
+if (hours20.value > 0) { credits20.value = (hours20.value * creditDecimal).toFixed(2) }
+
+// ==============================
+// INITIAL CALCULATIONS (ON LOAD)!
+// ==============================
+
+// ADDING HOURS
+var addedHours = parseFloat(hours1.value) + parseFloat(hours2.value) + parseFloat(hours3.value) +
+		  parseFloat(hours4.value) + parseFloat(hours5.value) + parseFloat(hours6.value) +
+		  parseFloat(hours7.value) + parseFloat(hours8.value) + parseFloat(hours9.value) +
+		  parseFloat(hours10.value) + parseFloat(hours11.value) + parseFloat(hours12.value) +
+		  parseFloat(hours13.value) + parseFloat(hours14.value) + parseFloat(hours15.value) +
+		  parseFloat(hours16.value) + parseFloat(hours17.value) + parseFloat(hours18.value) +
+		  parseFloat(hours19.value) + parseFloat(hours20.value)
+
+// PRINT HOURS IF STILL REMAINING!
+if (addedHours <= 216) {
+ var hoursPending = howManyHours - addedHours
+
+ // PRINTING TOTAL & REMAINING HOURS
+ totalHours.value = addedHours
+ remainHours.value = hoursPending.toFixed(1).replaceAll('.0', '')
+ } else { remainHours.value = 0.0 }
+
+// ==============================
+
+// ADDING CREDITS
+var addedCredits = parseFloat(credits1.value) + parseFloat(credits2.value) + parseFloat(credits3.value) +
+		 parseFloat(credits4.value) + parseFloat(credits5.value) + parseFloat(credits6.value) +
+		 parseFloat(credits7.value) + parseFloat(credits8.value) + parseFloat(credits9.value) +
+		 parseFloat(credits10.value) + parseFloat(credits11.value) + parseFloat(credits12.value) +
+		 parseFloat(credits13.value) + parseFloat(credits14.value) + parseFloat(credits15.value) +
+		 parseFloat(credits16.value) + parseFloat(credits17.value) + parseFloat(credits18.value) +
+		 parseFloat(credits19.value) + parseFloat(credits20.value)
+
+if (addedCredits <= 8) {
+ // PRINT CREDITS IF STILL REMAINING!
+ var creditsPending = howManyCredits - addedCredits
+
+ // PRINTINT TOTAL CREDITS
+ totalCredits.value = addedCredits.toFixed(2).replaceAll('.00', '')
+ remainCredits.value = creditsPending.toFixed(2).replaceAll('.00', '')
+ } else { remainCredits.value = 0.0 }
+
+}
+
+
+function checkOne() {
+var hours1 = document.getElementById("hours1")
+credits1.value = (hours1.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkTwo() {
+var hours2 = document.getElementById("hours2")
+credits2.value = (hours2.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkThree() {
+var hours3 = document.getElementById("hours3")
+credits3.value = (hours3.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkFour() {
+var hours4 = document.getElementById("hours4")
+credits4.value = (hours4.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkFive() {
+var hours5 = document.getElementById("hours5")
+credits5.value = (hours5.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkSix() {
+var hours6 = document.getElementById("hours6")
+credits6.value = (hours6.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkSeven() {
+var hours7 = document.getElementById("hours7")
+credits7.value = (hours7.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkEight() {
+var hours8 = document.getElementById("hours8")
+credits8.value = (hours8.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkNine() {
+var hours9 = document.getElementById("hours9")
+credits9.value = (hours9.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkTen() {
+var hours10 = document.getElementById("hours10")
+credits10.value = (hours10.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkEleven() {
+var hours11 = document.getElementById("hours11")
+credits11.value = (hours11.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkTwelve() {
+var hours12 = document.getElementById("hours12")
+credits12.value = (hours12.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkThirteen() {
+var hours13 = document.getElementById("hours13")
+credits13.value = (hours13.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkFourteen() {
+var hours14 = document.getElementById("hours14")
+credits14.value = (hours14.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkFifteen() {
+var hours15 = document.getElementById("hours15")
+credits15.value = (hours15.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkSixteen() {
+var hours16 = document.getElementById("hours16")
+credits16.value = (hours16.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkSeventeen() {
+var hours17 = document.getElementById("hours17")
+credits17.value = (hours17.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkEighteen() {
+var hours18 = document.getElementById("hours18")
+credits18.value = (hours18.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkNineteen() {
+var hours19 = document.getElementById("hours19")
+credits19.value = (hours19.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+function checkTwenty() {
+var hours20 = document.getElementById("hours20")
+credits20.value = (hours20.value * creditDecimal).toFixed(2).replaceAll('.00', '')
+initialSetup()
+}
+
+
+// =========================
+// CLEAR CREDITS FUNCTION
+// =========================
+
+function clearCredits() {
+// CLEARING ACTIVITIES!
+Activities = document.querySelectorAll('input.selloActivity')
+for(let total of Activities) { total.value = "" }
+
+// CLEARING HOURS!
+Hours = document.querySelectorAll('input.selloHours')
+for(let total of Hours) { total.value = "0" }
+
+// CLEARING CREDITS
+Credits = document.querySelectorAll('input.selloCredits')
+for(let total of Credits) { total.value = "0" }
+
+// RESETTING STUFF!
+document.getElementById("howMany").value = "1"
+initialSetup()
+}
+
+
+// =========================
+// ADD MORE FUNCTION
+// =========================
+
+function addMore() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+var divActivity2 = document.getElementById("divActivity2")
+var divActivity3 = document.getElementById("divActivity3")
+var divActivity4 = document.getElementById("divActivity4")
+var divActivity5 = document.getElementById("divActivity5")
+var divActivity6 = document.getElementById("divActivity6")
+var divActivity7 = document.getElementById("divActivity7")
+var divActivity8 = document.getElementById("divActivity8")
+var divActivity9 = document.getElementById("divActivity9")
+var divActivity10 = document.getElementById("divActivity10")
+var divActivity11 = document.getElementById("divActivity11")
+var divActivity12 = document.getElementById("divActivity12")
+var divActivity13 = document.getElementById("divActivity13")
+var divActivity14 = document.getElementById("divActivity14")
+var divActivity15 = document.getElementById("divActivity15")
+var divActivity16 = document.getElementById("divActivity16")
+var divActivity17 = document.getElementById("divActivity17")
+var divActivity18 = document.getElementById("divActivity18")
+var divActivity19 = document.getElementById("divActivity19")
+var divActivity20 = document.getElementById("divActivity20")
+if (amount >= 1 && amount <= 19) { amount++; howMany.value = amount; initialSetup() }
+}
+
+
+// =========================
+// KILL LAST FUNCTION
+// =========================
+
+function killLast() {
+var howMany = document.getElementById("howMany")
+amount = howMany.value
+if (amount > 1 && amount <= 20) { amount--; howMany.value = amount }
+
+// DELETE LAST VALUE!
+var thisActivity
+var theseHours
+var theCredits
+var maxValue = amount+1
+if (maxValue >= 2 && maxValue <= 20) {
+ for (let step = 1; step <= maxValue; step++) {
+  thisActivity = "activity" + maxValue
+  theseHours = "hours" + maxValue
+  theCredits = "credits" + maxValue
+  document.getElementById(thisActivity).value = ""
+  document.getElementById(theseHours).value = 0
+  document.getElementById(theCredits).value = (0).toFixed(2).replaceAll('.00', '')
+  initialSetup()
+  }
+ }
+}
+
+// END OF SCRIPT!
+</script>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// CALLS TO ANOTHER FUNCTION!!
+initialSetup()
+
+}
+</script>
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+
+</body>
+</html>

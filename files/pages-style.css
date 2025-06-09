@@ -637,7 +637,35 @@ textarea.agendaTaskFull:hover {outline: none !important; border-color: #719ECE; 
 textarea.agendaTaskFull:active {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 textarea.agendaTaskFull:focus {outline: none !important; border-color: #719ECE; box-shadow: 0 0 20px #719ECE;}
 
-/* END END END ENDEND END */
+/* END END END END END END */
+
+
+
+/* "CRÉDITOS SELLO" SETTINGS */
+
+.creditGrid {
+ display: grid;
+ grid-template-rows: auto;
+ grid-template-columns: 5% auto 20% 20%;
+ grid-template-areas: 'div div div div';
+ gap: 12px;
+ background: #FFFFFF33;
+ text-align: center;
+ align-items: center;
+ border-radius: 12px;
+ padding: 6px;
+ margin: 6px;
+}
+
+input.selloActivity { width: 95%; height: 30px; padding: 3px; border: 1px solid gray; border-radius: 6px; text-transform: capitalize; }
+input.selloHours[type=number] { width: 95%; height: 30px; border: 1px solid gray; border-radius: 6px; padding: 3px; padding-left: 18px; }
+input.selloCredits[type=number] { background: #FFFFCCee; cursor: not-allowed; width: 95%; height: 30px; border: 1px solid gray; border-radius: 6px; padding: 3px; padding-left: 18px; }
+
+input.clearCredits { width: 50%; height: 32px; background: darkred; color: white; padding: 6px; border: 1px solid white; border-radius: 6px; }
+input.clearCredits:hover { background: orange; }
+
+/* END END END END END END */
+
 
 
 
@@ -1348,6 +1376,14 @@ button {display: none; visibility: hidden;}
 .return {display:none; visibility: hidden;}
 ::placeholder {color: white; opacity: 0; /* Firefox */ }
 ::-ms-input-placeholder { color: white; /* Edge 12 -18 */}
+
+/* CREDITS CALCULATOR */
+div.grid-item-slider { background-color: #DDDDDDEE; color: #333; border: 2px solid gray; }
+#moreButton,#lessButton { display: none; visibility: hidden; }
+input.clearCredits { display: none; visibility: hidden; }
+
+/* VOTING */
+div.grid-voting { display: none; visibility: hidden; }
 
 }
 

@@ -108,10 +108,13 @@ div.letters { padding-left: 12px; padding-right: 12px; }
   to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6; }
 }
 
+/* ALL LEVEL */
 .labels { margin-left: 20px; margin-right: 20px; padding: 0px; padding-top: 12px; width: auto; }
 
-.info-div { font-size: 16px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; cursor: e-resize; }
 
+/* INFO LEVEL */
+
+.info-div { font-size: 16px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; cursor: e-resize; }
 .info-div::-webkit-scrollbar { display: none; }
 
 .info-bubble {
@@ -138,13 +141,14 @@ div.letters { padding-left: 12px; padding-right: 12px; }
   text-align: center;
 }
 
-.grass-green-bubble {
+
+.pale-blue-bubble-top {
   display: inline-block;
   width: 160px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding: 6px;
-  background-color: #3F9B0B;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #5E81D1;
   border: 1px solid white;
   border-radius: 12px;
   text-align: center;
@@ -162,24 +166,59 @@ div.letters { padding-left: 12px; padding-right: 12px; }
   text-align: center;
 }
 
-.info-bubble-off {
+.grass-green-bubble {
   display: inline-block;
-  width: 150px;
+  width: 160px;
   margin-left: 4px;
   margin-right: 4px;
   padding: 6px;
-  background-color: #666;
-  border: 1px solid lightgray;
+  background-color: #3F9B0B;
+  border: 1px solid white;
   border-radius: 12px;
   text-align: center;
-  cursor: alias;
 }
 
-.font-bubble-off { color: darkgray; }
+.pumpkin-bubble-top {
+  display: inline-block;
+  width: 160px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #F87217;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.purple-iris-bubble-top {
+  display: inline-block;
+  width: 160px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #571B7E;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pink-plum-bubble-top {
+  display: inline-block;
+  width: 160px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 4px;
+  background-color: #B93B8F;
+  border: 1px solid white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* TOOLS LEVEL */
 
 .tools-div { font-size: 14px; margin-left: 0px; margin-right: 0px; text-align: center; padding: 6px; overflow-x: scroll; white-space: nowrap; cursor: e-resize; }
-
 .tools-div::-webkit-scrollbar { display: none; }
+
 
 .pumpkin-bubble {
   display: inline-block;
