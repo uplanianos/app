@@ -1480,13 +1480,13 @@ var clockTicking = setInterval(function() {
  // CLASSES - BROKEN INTO COLORS BY MINUTES!
  // ==============================
 
- if (thisEvent == "Classes" && valuePercent < 60) { // 0 - 45 MINUTES
+ if (thisEvent == "Classes" && valuePercent < 80) { // -60 MINUTES
   theBar.style.background = 'linear-gradient(to right, lightgreen ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
 
- if (thisEvent == "Classes" && valuePercent >= 60 && valuePercent <= 80) { // 45 - 60 MINUTES
+ if (thisEvent == "Classes" && valuePercent >= 80 && valuePercent <= 93.3) { // 60 - 70 MINUTES
   theBar.style.background = 'linear-gradient(to right, orange ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)' }
 
- if (thisEvent == "Classes" && valuePercent > 80) { // 60 - 75 MINUTES
+ if (thisEvent == "Classes" && valuePercent > 93.3) { // +70 MINUTES
   theBar.style.background = 'linear-gradient(to right, red ' + valuePercent + '%, cornflowerblue ' + valuePercent + '%)'  }
 
  // BREAK - FULL EVENT (NO MINUTES)!
