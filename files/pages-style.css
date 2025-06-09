@@ -661,8 +661,10 @@ input.selloActivity { width: 95%; height: 30px; padding: 3px; border: 1px solid 
 input.selloHours[type=number] { width: 95%; height: 30px; border: 1px solid gray; border-radius: 6px; padding: 3px; padding-left: 18px; }
 input.selloCredits[type=number] { background: #FFFFCCee; cursor: not-allowed; width: 95%; height: 30px; border: 1px solid gray; border-radius: 6px; padding: 3px; padding-left: 18px; }
 
-input.clearCredits { width: 50%; height: 32px; background: darkred; color: white; padding: 6px; border: 1px solid white; border-radius: 6px; }
+input.clearCredits { width: 50%; height: 32px; background: darkred; color: white; margin: 12px; padding: 6px; border: 1px solid white; border-radius: 6px; }
 input.clearCredits:hover { background: orange; }
+
+.creditFooter { display: flex-grid; width: 75%; background: lightyellow; font-size: 12px; text-align: center; align-items: center; margin: auto; padding: 12px; border: 1px solid gray; border-radius: 12px; visibility: hidden; }
 
 /* END END END END END END */
 
@@ -1378,9 +1380,11 @@ button {display: none; visibility: hidden;}
 ::-ms-input-placeholder { color: white; /* Edge 12 -18 */}
 
 /* CREDITS CALCULATOR */
-div.grid-item-slider { background-color: #DDDDDDEE; color: #333; border: 2px solid gray; }
+div.grid-item-slider { background-color: #0000CC22; color: #333; border: 2px solid gray; }
+div.creditGrid { border: 1px solid lightgray; }
 #moreButton,#lessButton { display: none; visibility: hidden; }
 input.clearCredits { display: none; visibility: hidden; }
+div.creditFooter { visibility: visible; }
 
 /* VOTING */
 div.grid-voting { display: none; visibility: hidden; }
