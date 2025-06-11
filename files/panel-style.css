@@ -55,7 +55,6 @@ a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; te
     'div div'
     'div div'
     'div div'
-    'div div'
     'div div';
  gap: 0px;
  background-color: #FFFFFF33; border-radius: 12px;
@@ -496,7 +495,10 @@ div.gradesOrangeColumn {
     'div'
     'div'
     'div'
-    'div;
+    'div'
+    'div'
+    'div'
+    'div';
  gap: 0px;
 }
 
