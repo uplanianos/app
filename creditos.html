@@ -70,7 +70,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 	  <b>Actividades realizadas:</b>
 	  <input type="button" id="moreButton" value="+" onclick="addMore()">
 	  <input type="button" id="lessButton" value="x" onclick="killLast()">
-	  <input type="number" id="howMany" value="1" min="1" max="9" step="1" style="display: none;">
+	  <input type="number" id="howManyActivities" value="1" min="1" max="9" step="1" style="display: none;">
 	  </div>
 
 	 <br>
@@ -406,9 +406,9 @@ remainCredits.value = howManyCredits
 // CHECKING PURCHASED AMOUNT
 var moreButton = document.getElementById("moreButton")
 var lessButton = document.getElementById("lessButton")
-var howMany = document.getElementById("howMany").value
+var howManyActivities = document.getElementById("howManyActivities").value
 
-if (howMany == 1) {
+if (howManyActivities == 1) {
  divActivity2.style.display = "none"; divActivity3.style.display = "none";
  divActivity4.style.display = "none"; divActivity5.style.display = "none";
  divActivity6.style.display = "none"; divActivity7.style.display = "none";
@@ -421,7 +421,7 @@ if (howMany == 1) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "hidden";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 2) {
+if (howManyActivities == 2) {
  divActivity2.style.display = "block"; divActivity3.style.display = "none";
  divActivity4.style.display = "none"; divActivity5.style.display = "none";
  divActivity6.style.display = "none"; divActivity7.style.display = "none";
@@ -434,7 +434,7 @@ if (howMany == 2) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 3) {
+if (howManyActivities == 3) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block"
  divActivity4.style.display = "none"; divActivity5.style.display = "none";
  divActivity6.style.display = "none"; divActivity7.style.display = "none";
@@ -447,7 +447,7 @@ if (howMany == 3) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 4) {
+if (howManyActivities == 4) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "none";
  divActivity6.style.display = "none"; divActivity7.style.display = "none";
@@ -460,7 +460,7 @@ if (howMany == 4) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 5) {
+if (howManyActivities == 5) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "none"; divActivity7.style.display = "none";
@@ -473,7 +473,7 @@ if (howMany == 5) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 6) {
+if (howManyActivities == 6) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "none";
@@ -486,7 +486,7 @@ if (howMany == 6) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 7) {
+if (howManyActivities == 7) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -499,7 +499,7 @@ if (howMany == 7) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 8) {
+if (howManyActivities == 8) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -512,7 +512,7 @@ if (howMany == 8) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 9) {
+if (howManyActivities == 9) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -525,7 +525,7 @@ if (howMany == 9) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 10) {
+if (howManyActivities == 10) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -538,7 +538,7 @@ if (howMany == 10) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 11) {
+if (howManyActivities == 11) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -551,7 +551,7 @@ if (howMany == 11) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 12) {
+if (howManyActivities == 12) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -564,7 +564,7 @@ if (howMany == 12) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 13) {
+if (howManyActivities == 13) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -577,7 +577,7 @@ if (howMany == 13) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 14) {
+if (howManyActivities == 14) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -590,7 +590,7 @@ if (howMany == 14) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 15) {
+if (howManyActivities == 15) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -603,7 +603,7 @@ if (howMany == 15) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 16) {
+if (howManyActivities == 16) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -616,7 +616,7 @@ if (howMany == 16) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 17) {
+if (howManyActivities == 17) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -629,7 +629,7 @@ if (howMany == 17) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 18) {
+if (howManyActivities == 18) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -642,7 +642,7 @@ if (howMany == 18) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 19) {
+if (howManyActivities == 19) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -655,7 +655,7 @@ if (howMany == 19) {
  divActivity20.style.display = "none"; lessButton.style.visibility = "visible";
  moreButton.style.visibility = "visible" }
 
-if (howMany == 20) {
+if (howManyActivities == 20) {
  divActivity2.style.display = "block"; divActivity3.style.display = "block";
  divActivity4.style.display = "block"; divActivity5.style.display = "block";
  divActivity6.style.display = "block"; divActivity7.style.display = "block";
@@ -896,8 +896,9 @@ Credits = document.querySelectorAll('input.selloCredits')
 for(let total of Credits) { total.value = "0" }
 
 // RESETTING STUFF!
-document.getElementById("howMany").value = "1"
+document.getElementById("howManyActivities").value = "1"
 initialSetup()
+
 }
 
 
@@ -906,8 +907,8 @@ initialSetup()
 // =========================
 
 function addMore() {
-var howMany = document.getElementById("howMany")
-amount = howMany.value
+var howManyActivities = document.getElementById("howManyActivities")
+amount = howManyActivities.value
 var divActivity2 = document.getElementById("divActivity2")
 var divActivity3 = document.getElementById("divActivity3")
 var divActivity4 = document.getElementById("divActivity4")
@@ -927,7 +928,7 @@ var divActivity17 = document.getElementById("divActivity17")
 var divActivity18 = document.getElementById("divActivity18")
 var divActivity19 = document.getElementById("divActivity19")
 var divActivity20 = document.getElementById("divActivity20")
-if (amount >= 1 && amount <= 19) { amount++; howMany.value = amount; initialSetup() }
+if (amount >= 1 && amount <= 19) { amount++; howManyActivities.value = amount; initialSetup() }
 }
 
 
@@ -936,9 +937,9 @@ if (amount >= 1 && amount <= 19) { amount++; howMany.value = amount; initialSetu
 // =========================
 
 function killLast() {
-var howMany = document.getElementById("howMany")
-amount = howMany.value
-if (amount > 1 && amount <= 20) { amount--; howMany.value = amount }
+var howManyActivities = document.getElementById("howManyActivities")
+amount = howManyActivities.value
+if (amount > 1 && amount <= 20) { amount--; howManyActivities.value = amount }
 
 // DELETE LAST VALUE!
 var thisActivity
