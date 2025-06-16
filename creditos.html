@@ -59,7 +59,66 @@ document.getElementById('titleMenu').addEventListener('change', function() {
 });
 
 function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
-</script> 
+</script>
+
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('input').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+
+window.onload = function() {
+    $('input').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+
+// CALLS TO ANOTHER FUNCTION!!
+initialSetup()
+appleDetector()
+}
+</script>
+
+
+
+<!- APPLE DETECTOR FUNCTION ->
+<!- APPLE DETECTOR FUNCTION ->
+<!- APPLE DETECTOR FUNCTION ->
+
+<script type="text/javascript">
+function appleDetector() {
+
+// APPLE WARNING ELEMENT!
+appleWarning = document.getElementById("appleWarning")
+
+// CHECKING APPLE MOBILE ENVIRONMENT!
+if (/webOS|iPhone|iPad|iPod|BB|PlayBook|IEMobile/i.test(navigator.userAgent)) { appleWarning.style.display = "flex-grid" }
+ else { appleWarning.style.display = "none" }
+}
+</script>
+
+<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
+<b>AVISO:</b> Para uso en plataforma i-Phone, activar funcionalidad de Javascript!<br>[ Configuración > Safari > Avanzado > JavaScript > ON ]
+</div>
+
+<!- END OF "APPLE DETECTOR" ->
+<!- END OF "APPLE DETECTOR" ->
+<!- END OF "APPLE DETECTOR" ->
+
+
 
 	<br>
 	<div class="grid-item-slider">
@@ -962,35 +1021,6 @@ if (maxValue >= 2 && maxValue <= 20) {
 // END OF SCRIPT!
 </script>
 
-
-
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-
-window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-
-// CALLS TO ANOTHER FUNCTION!!
-initialSetup()
-
-}
-</script>
 
 
 
