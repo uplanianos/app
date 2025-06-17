@@ -92,40 +92,36 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 // THIS CALLS TO OTHER FUNCTION ON LOAD!
-appleDetector()
 updateInstructions()
 highlightCells()
 getLinkValues()
 checkDates()
 studyProgress()
+detectJS()
 }
 </script>
 
 
 
-<!- APPLE DETECTOR FUNCTION ->
-<!- APPLE DETECTOR FUNCTION ->
-<!- APPLE DETECTOR FUNCTION ->
+<!- JAVASCRIPT DETECTOR ->
+<!- JAVASCRIPT DETECTOR ->
+<!- JAVASCRIPT DETECTOR ->
 
 <script type="text/javascript">
-function appleDetector() {
-
-// APPLE WARNING ELEMENT!
-appleWarning = document.getElementById("appleWarning")
-
-// CHECKING APPLE MOBILE ENVIRONMENT!
-if (/webOS|iPhone|iPad|iPod|BB|PlayBook|IEMobile/i.test(navigator.userAgent)) { appleWarning.style.display = "flex-grid" }
- else { appleWarning.style.display = "none" }
+function detectJS() {
+ document.getElementById("appleWarning").style.display = "none"
 }
 </script>
 
 <div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
-<b>AVISO:</b> Para uso en plataforma i-Phone, activar funcionalidad de Javascript!<br>[ Configuración > Safari > Avanzado > JavaScript > ON ]
+<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
+[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
+[ Configuración > Safari > Avanzado > JavaScript > ON ]
 </div>
 
-<!- END OF "APPLE DETECTOR" ->
-<!- END OF "APPLE DETECTOR" ->
-<!- END OF "APPLE DETECTOR" ->
+<!- END OF "JS DETECTOR" ->
+<!- END OF "JS DETECTOR" ->
+<!- END OF "JS DETECTOR" ->
 
 
 
