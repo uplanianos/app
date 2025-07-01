@@ -106,7 +106,7 @@ function detectJS() {
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1950'">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1954'">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -380,7 +380,7 @@ function detectJS() {
   </div>
   <div id="toolsDiv" class="toolsDiv">
 	<div id="toolSlider" class="toolSlider">
-	<input type="number" id="slidePosition" style="display: none;" value="1950">
+	<input type="number" id="slidePosition" style="display: none;" value="1954">
 	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
 	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
 	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
@@ -1256,8 +1256,8 @@ var doTheLoop = setInterval(function(){
 // "TOOLS DIV" MOVING FUNCTION
 // ==================================================
 function toolsDivMemory() { toolsDiv.scrollLeft = slidePosition.value }
-function moveSliderLeft() { toolsDiv.scrollLeft -= 500 }
-function moveSliderRight() { toolsDiv.scrollLeft += 500 }
+function moveSliderLeft() { toolsDiv.scrollLeft -= 500;  /* console.log(slidePosition.value) */  }
+function moveSliderRight() { toolsDiv.scrollLeft += 500; /* console.log(slidePosition.value) */ }
 
 
 // ==================================================
@@ -1531,7 +1531,6 @@ var clockTicking = setInterval(function() {
 
 
 } // END OF PROGRESS BAR FUNCTION
-
 
 // ==============================
 // END OF ALL MAIN FUNCTIONS
