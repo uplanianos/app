@@ -199,16 +199,16 @@ function detectJS() {
   <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
   <div id="testTrash" class="trashIcon" onclick="clearTests()">⭕</div>
 	<!--  MAIN TESTS WRAPPER -->
-	<div style="background-color: transparent; color: #666; margin-top: 6px; padding: 3px;">
+	<div style="background-color: transparent; color: #666; margin-top: 3px; padding: 1px;">
 
-		<div style="display: flex; align-items: center; padding: 3px; margin-right: -6px;">
+		<div style="display: flex; align-items: center; padding: 2px; margin-right: -6px;">
 		 <div class="testSubject">Asignaturas:</div>
 		 <div class="testGrades">1°</div>
 		 <div class="testGrades">2°</div>
 		 <div class="testGrades">3°</div>
 		</div>
 
-		<div style="display: flex; align-items: center;  padding: 3px;">
+		<div style="display: flex; align-items: center; padding: 1px;">
 		 <div class="testSubject"><input id="class01" class="assessment" type="text" placeholder="Asignatura 1"></div>
 		 <div id="c1t1Div" class="testGrades"><input type="checkbox" id="c1t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c1t2" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -218,7 +218,7 @@ function detectJS() {
 		 <input type="number" id="c1t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
-		<div style="display: flex; align-items: center;  padding: 3px;">
+		<div style="display: flex; align-items: center;  padding: 1px;">
 		 <div class="testSubject"><input id="class02" class="assessment" type="text" placeholder="Asignatura 2"></div>
 		 <div class="testGrades"><input type="checkbox" id="c2t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c2t2" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -228,7 +228,7 @@ function detectJS() {
 		 <input type="number" id="c2t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
-		<div style="display: flex; align-items: center;  padding: 3px;">
+		<div style="display: flex; align-items: center; padding: 1px;">
 		 <div class="testSubject"><input id="class03" class="assessment" type="text" placeholder="Asignatura 3"></div>
 		 <div class="testGrades"><input type="checkbox" id="c3t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c3t2" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -238,7 +238,7 @@ function detectJS() {
 		 <input type="number" id="c3t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
-		<div style="display: flex; align-items: center;  padding: 3px;">
+		<div style="display: flex; align-items: center; padding: 1px;">
 		 <div class="testSubject"><input id="class04" class="assessment" type="text" placeholder="Asignatura 4"></div>
 		 <div class="testGrades"><input type="checkbox" id="c4t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c4t2" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -248,7 +248,7 @@ function detectJS() {
 		 <input type="number" id="c4t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
-		<div style="display: flex; align-items: center;  padding: 3px;">
+		<div style="display: flex; align-items: center; padding: 1px;">
 		 <div class="testSubject"><input id="class05" class="assessment" type="text" placeholder="Asignatura 5"></div>
 		 <div class="testGrades"><input type="checkbox" id="c5t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c5t2" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -256,6 +256,16 @@ function detectJS() {
 		 <input type="number" id="c5t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		 <input type="number" id="c5t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		 <input type="number" id="c5t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		</div>
+
+		<div style="display: flex; align-items: center; padding: 1px;">
+		 <div class="testSubject"><input id="class06" class="assessment" type="text" placeholder="Asignatura 6"></div>
+		 <div class="testGrades"><input type="checkbox" id="c6t1" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c6t2" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testGrades"><input type="checkbox" id="c6t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <input type="number" id="c6t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c6t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
+		 <input type="number" id="c6t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
 	<!--  END OF MAIN TESTS WRAPPER -->
@@ -771,6 +781,7 @@ class02 = document.getElementById("class02")
 class03 = document.getElementById("class03")
 class04 = document.getElementById("class04")
 class05 = document.getElementById("class05")
+class06 = document.getElementById("class06")
 c1t1 = document.getElementById("c1t1")
 c1t2 = document.getElementById("c1t2")
 c1t3 = document.getElementById("c1t3")
@@ -786,47 +797,57 @@ c4t3 = document.getElementById("c4t3")
 c5t1 = document.getElementById("c5t1")
 c5t2 = document.getElementById("c5t2")
 c5t3 = document.getElementById("c5t3")
+c6t1 = document.getElementById("c6t1")
+c6t2 = document.getElementById("c6t2")
+c6t3 = document.getElementById("c6t3")
 c1t1isCheck = document.getElementById("c1t1isCheck")
-c1t2isCheck = document.getElementById("c1t1isCheck")
-c1t3isCheck = document.getElementById("c1t1isCheck")
+c1t2isCheck = document.getElementById("c1t2isCheck")
+c1t3isCheck = document.getElementById("c1t3isCheck")
 c2t1isCheck = document.getElementById("c2t1isCheck")
-c2t2isCheck = document.getElementById("c2t1isCheck")
-c2t3isCheck = document.getElementById("c2t1isCheck")
+c2t2isCheck = document.getElementById("c2t2isCheck")
+c2t3isCheck = document.getElementById("c2t3isCheck")
 c3t1isCheck = document.getElementById("c3t1isCheck")
-c3t2isCheck = document.getElementById("c3t1isCheck")
-c3t3isCheck = document.getElementById("c3t1isCheck")
+c3t2isCheck = document.getElementById("c3t2isCheck")
+c3t3isCheck = document.getElementById("c3t3isCheck")
 c4t1isCheck = document.getElementById("c4t1isCheck")
-c4t2isCheck = document.getElementById("c4t1isCheck")
-c4t3isCheck = document.getElementById("c4t1isCheck")
+c4t2isCheck = document.getElementById("c4t2isCheck")
+c4t3isCheck = document.getElementById("c4t3isCheck")
 c5t1isCheck = document.getElementById("c5t1isCheck")
-c5t2isCheck = document.getElementById("c5t1isCheck")
-c5t3isCheck = document.getElementById("c5t1isCheck")
+c5t2isCheck = document.getElementById("c5t2isCheck")
+c5t3isCheck = document.getElementById("c5t3isCheck")
+c6t1isCheck = document.getElementById("c6t1isCheck")
+c6t2isCheck = document.getElementById("c6t2isCheck")
+c6t3isCheck = document.getElementById("c6t3isCheck")
 
 // ==================================================
 // ONLOAD "TEST CHECKS" FUNCTION
 // ==================================================
 // CHECK TESTS FUNCTION!
 function checkTests() {
-// TEST N°1
+// CLASS N°1
 if (c1t1isChecked.value == 1) {c1t1.checked = true; testProgress() }
 if (c1t2isChecked.value == 1) {c1t2.checked = true; testProgress() }
 if (c1t3isChecked.value == 1) {c1t3.checked = true; testProgress() }
-// TEST N°2
+// CLASS N°2
 if (c2t1isChecked.value == 1) {c2t1.checked = true; testProgress() }
 if (c2t2isChecked.value == 1) {c2t2.checked = true; testProgress() }
 if (c2t3isChecked.value == 1) {c2t3.checked = true; testProgress()}
-// TEST N°3
+// CLASS N°3
 if (c3t1isChecked.value == 1) {c3t1.checked = true; testProgress() }
 if (c3t2isChecked.value == 1) {c3t2.checked = true; testProgress() }
 if (c3t3isChecked.value == 1) {c3t3.checked = true; testProgress() }
-// TEST N°4
+// CLASS N°4
 if (c4t1isChecked.value == 1) {c4t1.checked = true; testProgress() }
 if (c4t2isChecked.value == 1) {c4t2.checked = true; testProgress() }
 if (c4t3isChecked.value == 1) {c4t3.checked = true; testProgress() }
-// TEST N°5
+// CLASS N°5
 if (c5t1isChecked.value == 1) {c5t1.checked = true; testProgress() }
 if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
 if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
+// CLASS N°6
+if (c6t1isChecked.value == 1) {c6t1.checked = true; testProgress() }
+if (c6t2isChecked.value == 1) {c6t2.checked = true; testProgress() }
+if (c6t3isChecked.value == 1) {c6t3.checked = true; testProgress() }
 }
 
 
@@ -881,6 +902,13 @@ if (class05.value !== "") {
  if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3; doIt++ }
 }
 
+// CHECKING TEST N°6
+if (class06.value !== "") {
+ if (c6t1.checked || c6t2.checked || c6t3.checked) { class06.style.background = test1; doIt++ }
+ if (c6t1.checked && c6t2.checked || c6t1.checked && c6t3.checked || c6t2.checked && c6t3.checked) { class06.style.background = test2; doIt++ }
+ if (c6t1.checked && c6t2.checked && c6t3.checked) { class06.style.background = test3; doIt++ }
+}
+
 // CREATING AMOUNT VARIABLE WITH NAMED CLASSES!
 namedClasses = 0
 if (class01.value !== "") { namedClasses += 3 }
@@ -888,35 +916,45 @@ if (class02.value !== "") { namedClasses += 3 }
 if (class03.value !== "") { namedClasses += 3 }
 if (class04.value !== "") { namedClasses += 3 }
 if (class05.value !== "") { namedClasses += 3 }
+if (class06.value !== "") { namedClasses += 3 }
 
 // GETTING PERCENTAGE OF TESTS DONE AGAINST AMOUNT OF "NAMED CLASSES"!
 doingIt = Math.abs(doIt * 100 / namedClasses).toFixed(0)
 
 // CHECKING CLASS NAMES AREN'T EMPTY - THEN, UPDATING MAIN TITLE!
 let maintitle = document.getElementById("title")
-if (class01.value !== "" || class02.value !== "" || class03.value !== "" || class04.value !== "" || class05.value !== "") {
+if (class01.value !== "" || class02.value !== "" || class03.value !== "" || class04.value !== "" || class05.value !== "" || class06.value !== "") {
  maintitle.innerHTML = "Panel de Control (" + doingIt + '%)'
 }
 
-// UPDATING TRASH ICON (FULL)!
+
+// SETTING UP ELEMENTS!
+let top = document.getElementById("top")
 let testTrash = document.getElementById("testTrash")
 
-let top = document.getElementById("top")
-if (doingIt >= 6) { top.style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"; testTrash.innerHTML = "❌" }
-if (doingIt >= 7) { top.style.background = "linear-gradient(to right, lightgreen 7%, lightyellow 8%)" }
-if (doingIt >= 13) { top.style.background = "linear-gradient(to right, lightgreen 13%, lightyellow 14%)" }
-if (doingIt >= 20) { top.style.background = "linear-gradient(to right, lightgreen 20%, lightyellow 21%)" }
-if (doingIt >= 27) { top.style.background = "linear-gradient(to right, lightgreen 27%, lightyellow 28%)" }
-if (doingIt >= 33) { top.style.background = "linear-gradient(to right, lightgreen 33%, lightyellow 34%)" }
-if (doingIt >= 40) { top.style.background = "linear-gradient(to right, lightgreen 40%, lightyellow 41%)" }
-if (doingIt >= 47) { top.style.background = "linear-gradient(to right, lightgreen 47%, lightyellow 48%)" }
-if (doingIt >= 53) { top.style.background = "linear-gradient(to right, lightgreen 53%, lightyellow 54%)" }
-if (doingIt >= 60) { top.style.background = "linear-gradient(to right, lightgreen 60%, lightyellow 61%)" }
+// SETTING UP CUSTOM PERCENTAGE + 1 (FOR YELLOW AREA)!
+let plusPercent = Math.abs(doingIt)+1
+
+// UPDATING TOP BAR WITH CUSTOM PERCENTAGE!
+if (doingIt > 0) { top.style.background = 'linear-gradient(to right, lightgreen ' + doingIt + '%, lightyellow ' + plusPercent + '%)'; testTrash.innerHTML = "❌" }
+else { top.style.background = "linear-gradient(to right, lightgreen 0%, lightyellow 0%)"; testTrash.innerHTML = "⭕" }
+
+/* OLD HARCODED PERCENTAGES - NOS USED ANYMORE!
+if (doingIt >= 6) { top.style.background = "linear-gradient(to right, lightgreen 6%, lightyellow 7%)" }
+if (doingIt >= 13) { top.style.background = "linear-gradient(to right, lightgreen 13%, lightyellow 13%)" }
+if (doingIt >= 20) { top.style.background = "linear-gradient(to right, lightgreen 20%, lightyellow 20%)" }
+if (doingIt >= 27) { top.style.background = "linear-gradient(to right, lightgreen 27%, lightyellow 27%)" }
+if (doingIt >= 33) { top.style.background = "linear-gradient(to right, lightgreen 33%, lightyellow 33%)" }
+if (doingIt >= 40) { top.style.background = "linear-gradient(to right, lightgreen 40%, lightyellow 40%)" }
+if (doingIt >= 47) { top.style.background = "linear-gradient(to right, lightgreen 47%, lightyellow 47%)" }
+if (doingIt >= 53) { top.style.background = "linear-gradient(to right, lightgreen 53%, lightyellow 53%)" }
+if (doingIt >= 60) { top.style.background = "linear-gradient(to right, lightgreen 60%, lightyellow 60%)" }
 if (doingIt >= 67) { top.style.background = "linear-gradient(to right, lightgreen 67%, lightyellow 68%)" }
 if (doingIt >= 73) { top.style.background = "linear-gradient(to right, lightgreen 73%, lightyellow 74%)" }
 if (doingIt >= 80) { top.style.background = "linear-gradient(to right, lightgreen 80%, lightyellow 81%)" }
 if (doingIt >= 87) { top.style.background = "linear-gradient(to right, lightgreen 87%, lightyellow 88%)" }
 if (doingIt >= 93) { top.style.background = "linear-gradient(to right, lightgreen 93%, lightyellow 94%)" }
+*/
 
 if (doingIt >= 100 && namedClasses > 0) {
  top.style.background = "linear-gradient(to right, lightgreen 100%, lightyellow 100%)"
