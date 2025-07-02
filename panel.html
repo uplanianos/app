@@ -93,9 +93,6 @@ function detectJS() {
 <!- END OF "JS DETECTOR" ->
 
 
-
-
-
 <body>
 <div id="top" class="top">
 
@@ -832,7 +829,11 @@ if (c5t2isChecked.value == 1) {c5t2.checked = true; testProgress() }
 if (c5t3isChecked.value == 1) {c5t3.checked = true; testProgress() }
 }
 
-// UPDATING WORK PROGRESS
+
+// ==============================
+// UPDATING TEST PROGRESS FUNCTION
+// ==============================
+
 var confettiStopped = true
 
 function testProgress() {
@@ -846,36 +847,56 @@ var doIt = 0
 var doingIt = 0
 
 // CHECKING TEST N°1
-if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1; doIt++ }
-if (c1t1.checked && c1t2.checked || c1t1.checked && c1t3.checked || c1t2.checked && c1t3.checked) { class01.style.background = test2; doIt++ }
-if (c1t1.checked && c1t2.checked && c1t3.checked) { class01.style.background = test3; doIt++ }
+if (class01.value !== "") {
+ if (c1t1.checked || c1t2.checked || c1t3.checked) { class01.style.background = test1; doIt++ }
+ if (c1t1.checked && c1t2.checked || c1t1.checked && c1t3.checked || c1t2.checked && c1t3.checked) { class01.style.background = test2; doIt++ }
+ if (c1t1.checked && c1t2.checked && c1t3.checked) { class01.style.background = test3; doIt++ }
+}
 
 // CHECKING TEST N°2
-if (c2t1.checked || c2t2.checked || c2t3.checked) { class02.style.background = test1; doIt++ }
-if (c2t1.checked && c2t2.checked || c2t1.checked && c2t3.checked || c2t2.checked && c2t3.checked) { class02.style.background = test2; doIt++ }
-if (c2t1.checked && c2t2.checked && c2t3.checked) { class02.style.background = test3; doIt++ }
+if (class02.value !== "") {
+ if (c2t1.checked || c2t2.checked || c2t3.checked) { class02.style.background = test1; doIt++ }
+ if (c2t1.checked && c2t2.checked || c2t1.checked && c2t3.checked || c2t2.checked && c2t3.checked) { class02.style.background = test2; doIt++ }
+ if (c2t1.checked && c2t2.checked && c2t3.checked) { class02.style.background = test3; doIt++ }
+}
 
 // CHECKING TEST N°3
-if (c3t1.checked || c3t2.checked || c3t3.checked) { class03.style.background = test1; doIt++ }
-if (c3t1.checked && c3t2.checked || c3t1.checked && c3t3.checked || c3t2.checked && c3t3.checked) { class03.style.background = test2; doIt++ }
-if (c3t1.checked && c3t2.checked && c3t3.checked) { class03.style.background = test3; doIt++ }
+if (class03.value !== "") {
+ if (c3t1.checked || c3t2.checked || c3t3.checked) { class03.style.background = test1; doIt++ }
+ if (c3t1.checked && c3t2.checked || c3t1.checked && c3t3.checked || c3t2.checked && c3t3.checked) { class03.style.background = test2; doIt++ }
+ if (c3t1.checked && c3t2.checked && c3t3.checked) { class03.style.background = test3; doIt++ }
+}
 
 // CHECKING TEST N°4
-if (c4t1.checked || c4t2.checked || c4t3.checked) { class04.style.background = test1; doIt++ }
-if (c4t1.checked && c4t2.checked || c4t1.checked && c4t3.checked || c4t2.checked && c4t3.checked) { class04.style.background = test2; doIt++ }
-if (c4t1.checked && c4t2.checked && c4t3.checked) { class04.style.background = test3; doIt++ }
+if (class04.value !== "") {
+ if (c4t1.checked || c4t2.checked || c4t3.checked) { class04.style.background = test1; doIt++ }
+ if (c4t1.checked && c4t2.checked || c4t1.checked && c4t3.checked || c4t2.checked && c4t3.checked) { class04.style.background = test2; doIt++ }
+ if (c4t1.checked && c4t2.checked && c4t3.checked) { class04.style.background = test3; doIt++ }
+}
 
 // CHECKING TEST N°5
-if (c5t1.checked || c5t2.checked || c5t3.checked) { class05.style.background = test1; doIt++ }
-if (c5t1.checked && c5t2.checked || c5t1.checked && c5t3.checked || c5t2.checked && c5t3.checked) { class05.style.background = test2; doIt++ }
-if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3; doIt++ }
+if (class05.value !== "") {
+ if (c5t1.checked || c5t2.checked || c5t3.checked) { class05.style.background = test1; doIt++ }
+ if (c5t1.checked && c5t2.checked || c5t1.checked && c5t3.checked || c5t2.checked && c5t3.checked) { class05.style.background = test2; doIt++ }
+ if (c5t1.checked && c5t2.checked && c5t3.checked) { class05.style.background = test3; doIt++ }
+}
 
-// GETTING PERCENTAGE!
-doingIt = Math.abs(doIt * 100 / 15).toFixed(0)
+// CREATING AMOUNT VARIABLE WITH NAMED CLASSES!
+namedClasses = 0
+if (class01.value !== "") { namedClasses += 3 }
+if (class02.value !== "") { namedClasses += 3 }
+if (class03.value !== "") { namedClasses += 3 }
+if (class04.value !== "") { namedClasses += 3 }
+if (class05.value !== "") { namedClasses += 3 }
 
-// UPDATING MAIN TITLE!
+// GETTING PERCENTAGE OF TESTS DONE AGAINST AMOUNT OF "NAMED CLASSES"!
+doingIt = Math.abs(doIt * 100 / namedClasses).toFixed(0)
+
+// CHECKING CLASS NAMES AREN'T EMPTY - THEN, UPDATING MAIN TITLE!
 let maintitle = document.getElementById("title")
-maintitle.innerHTML = "Panel de Control (" + doingIt + '%)'
+if (class01.value !== "" || class02.value !== "" || class03.value !== "" || class04.value !== "" || class05.value !== "") {
+ maintitle.innerHTML = "Panel de Control (" + doingIt + '%)'
+}
 
 // UPDATING TRASH ICON (FULL)!
 let testTrash = document.getElementById("testTrash")
@@ -897,7 +918,7 @@ if (doingIt >= 80) { top.style.background = "linear-gradient(to right, lightgree
 if (doingIt >= 87) { top.style.background = "linear-gradient(to right, lightgreen 87%, lightyellow 88%)" }
 if (doingIt >= 93) { top.style.background = "linear-gradient(to right, lightgreen 93%, lightyellow 94%)" }
 
-if (doingIt >= 100) {
+if (doingIt >= 100 && namedClasses > 0) {
  top.style.background = "linear-gradient(to right, lightgreen 100%, lightyellow 100%)"
  if (confettiStopped) { throwConfetti() }
  }
