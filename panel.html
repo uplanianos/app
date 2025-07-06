@@ -62,7 +62,7 @@ drawAttendance()
 checkPlanner()
 checkTests()
 checkGrades()
-coffeeTime()
+energyTime()
 toolsDivMemory()
 refreshTime()
 classTimer()
@@ -359,20 +359,27 @@ function detectJS() {
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div id="energyTrash" class="trashIcon" onclick="clearCoffee()">⭕</div>
-   <div class="doubleColumnWrapper" style="margin-top: 12px;">
+  <div id="energyTrash" class="trashIcon" onclick="clearEnergy()">⭕</div>
+   <div class="doubleColumnWrapper" style="align-items: center; margin: auto; margin-top: 3%;">
 
-	<div style="width: 60%;">
-	 <div id="energyLevel" style="margin: auto; width: 180px; height: 140px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
+	<div style="width: 50%;">
+	 <div id="coffeeLevel" style="margin: auto; width: 180px; height: 140px; background: linear-gradient(to top, yellow 1%, green 1%, white 0%);">
 	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
 	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
-	  <img style="width: 102%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
+	  <img style="width: 103%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
+	  <div class="coffeeButton" style="width: 32px; position: relative; transform: translateY(-120%); left: 25%;" onclick="coffeeButton()">➕</div>
 	 </div>
 	</div>
 
-	<div style="width: 40%; display: flex; text-align: center; align-items: center;">
-	 <div class="coffeeButton" onclick="coffeeButton()">➕</div>
+	<div style="width: 50%;">
+	 <div id="waterLevel" style="margin: auto; width: 90px; height: 126px; background: linear-gradient(to top, lightblue 1%, cornflowerblue 1%, white 0%);">
+	 <input type="text" id="waterCups" class="waterCups" disabled readonly="readonly" readonly value="0">
+	 <input type="text" id="hydrationTime" disabled readonly="readonly" value="0" style="display: none;">
+	  <img style="width: 100%;" src="panel/hydration-meter.png">
+	  <div class="waterButton" style="width: 32px; position: relative; transform: translateY(-110%); left: 40%;" onclick="waterButton()">➕</div>
+
 	 </div>
+	</div>
 
   </div><!-- END OF DOUBLE COLUMN WRAPPER -->
  </div>
@@ -1196,44 +1203,87 @@ function moveGradesLeft() { gradeScaleDiv.scrollLeft -= 500 }
 function moveGradesRight() { gradeScaleDiv.scrollLeft += 500 }
 
 
-// ==================================================
-// "COFFEE ENERGY" FUNCTION!
-// ==================================================
-coffeeCups = document.getElementById("coffeeCups")
-energyLevel = document.getElementById("energyLevel")
-var halfLife = 0
 
-// SETTING COFFEE HALF-LIFE!
+
+// ==================================================
+// "ENERGY LEVELS" PARAMETERS & VARIABLES!
+// ==================================================
+
+// SETTING ENERGY LEVELS ELEMENTS!
 const date = new Date()
 const currentTime = date.getTime()
 
+// COFFEE LEVELS ELEMENTS & VARIABLES
+coffeeCups = document.getElementById("coffeeCups")
+coffeeLevel = document.getElementById("coffeeLevel")
+var caffeine = 0
+
+// WATER LEVELS & VARIABLES
+waterCups = document.getElementById("waterCups")
+waterLevel = document.getElementById("waterLevel")
+var hydrated = 0
+
+
+// ==================================================
+// "COFFEE BUTTON" FUNCTION!
+// ==================================================
+
+// "COFFEE BUTTON" FUNCTION
 function coffeeButton() {
  howManyCups = parseInt(coffeeCups.value)
  howManyCups++
  coffeeCups.value = howManyCups
- energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)'
+ coffeeLevel.style.background = 'linear-gradient(to top, orange 12%, green 90%, white 92%)'
  coffeeTime.value = currentTime
  // UPDATING "ENERGY LEVELS" TRASH ICON
  document.getElementById("energyTrash").innerHTML = "❌"
 }
 
-function coffeeTime() {
+
+// ==================================================
+// "WATER BUTTON" FUNCTION!
+// ==================================================
+
+function waterButton() {
+ howMuchWater = parseInt(waterCups.value)
+ howMuchWater++
+ waterCups.value = howMuchWater
+ waterLevel.style.background = 'linear-gradient(to top, lightblue 86%, cornflowerblue 94%, white 96%)'
+ hydrationTime.value = currentTime
+ // UPDATING "ENERGY LEVELS" TRASH ICON
+ document.getElementById("energyTrash").innerHTML = "❌"
+}
+
+
+// ==================================================
+// "CHECK ENERGY" FUNCTION!
+// ==================================================
+function energyTime() {
+
+// CHECKING COFFEE TIME & UPDATING TRASH ICON!
 coffeeTime = document.getElementById("coffeeTime")
 coffeeCups = document.getElementById("coffeeCups")
-
-// UPDATING "ENERGY LEVELS" TRASH ICON
 if (coffeeCups.value > 0) { document.getElementById("energyTrash").innerHTML = "❌" }
 
+// CHECKING WATER TIME & UPDATING TRASH ICON!!
+hydrationTime = document.getElementById("hydrationTime")
+waterCups = document.getElementById("waterCups")
+if (waterCups.value > 0) { document.getElementById("energyTrash").innerHTML = "❌" }
+
+
 // DECREASING ENERGY LEVELS OVER 1.5 HOURS!
-halfLife = currentTime - coffeeTime.value
-// console.log(currentTime,coffeeTime.value,halfLife); // // 60.000 milliseconds = 1 minute!
+caffeine = currentTime - coffeeTime.value
+hydration = currentTime - hydrationTime.value
+// console.log(currentTime,coffeeTime.value,caffeine,hydrationTime.value,hydration); // 60.000 milliseconds = 1 minute!
 
 // CHECK "ENERGY LEVEL" ONLOAD!
 checkEnergyLevels()
 
 // CHECK "ENERGY LEVEL" EVERY MINUTE!
 setInterval(function(){ checkEnergyLevels() }, 60000 * 1) // 60.000 milliseconds = 1 minute!
+
 }
+
 
 
 // ==================================================
@@ -1244,39 +1294,64 @@ function checkEnergyLevels() {
 // RESETTING CURRENT TIME AND HALF-LIFE VALUE!
 const date = new Date()
 const currentTime = date.getTime()
-halfLife = currentTime - coffeeTime.value
+caffeine = currentTime - coffeeTime.value
+hydration = currentTime - hydrationTime.value
 
-// CHECKING ENERGY LEVELS!
-// console.log("Energy level:",halfLife); // CHECKING VALUES
+// CHECKING CAFFEINE LEVELS!
 if (coffeeCups.value > 0) {
- if (halfLife > 0)	  { energyLevel.style.background = 'linear-gradient(to top, orange 38%, green 95%, white 96%)' }
- if (halfLife > 60000*05) { energyLevel.style.background = 'linear-gradient(to top, orange 36%, green 90%, white 92%)' }
- if (halfLife > 60000*10) { energyLevel.style.background = 'linear-gradient(to top, orange 34%, green 85%, white 86%)' }
- if (halfLife > 60000*15) { energyLevel.style.background = 'linear-gradient(to top, orange 32%, green 80%, white 82%)' }
- if (halfLife > 60000*20) { energyLevel.style.background = 'linear-gradient(to top, orange 30%, green 75%, white 76%)' }
- if (halfLife > 60000*25) { energyLevel.style.background = 'linear-gradient(to top, orange 28%, green 70%, white 72%)' }
- if (halfLife > 60000*30) { energyLevel.style.background = 'linear-gradient(to top, orange 26%, green 65%, white 66%)' }
- if (halfLife > 60000*35) { energyLevel.style.background = 'linear-gradient(to top, orange 24%, green 60%, white 62%)' }
- if (halfLife > 60000*40) { energyLevel.style.background = 'linear-gradient(to top, orange 22%, green 55%, white 56%)' }
- if (halfLife > 60000*45) { energyLevel.style.background = 'linear-gradient(to top, orange 20%, green 50%, white 52%)' }
- if (halfLife > 60000*50) { energyLevel.style.background = 'linear-gradient(to top, orange 18%, green 45%, white 46%)' }
- if (halfLife > 60000*55) { energyLevel.style.background = 'linear-gradient(to top, orange 16%, green 40%, white 42%)' }
- if (halfLife > 60000*60) { energyLevel.style.background = 'linear-gradient(to top, orange 14%, green 35%, white 36%)' }
- if (halfLife > 60000*65) { energyLevel.style.background = 'linear-gradient(to top, orange 12%, green 30%, white 32%)' }
- if (halfLife > 60000*70) { energyLevel.style.background = 'linear-gradient(to top, orange 10%, green 25%, white 26%)' }
- if (halfLife > 60000*75) { energyLevel.style.background = 'linear-gradient(to top, orange 08%, green 20%, white 22%)' }
- if (halfLife > 60000*80) { energyLevel.style.background = 'linear-gradient(to top, orange 06%, green 15%, white 16%)' }
- if (halfLife > 60000*85) { energyLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
- if (halfLife > 60000*90) { energyLevel.style.background = 'linear-gradient(to top, orange 02%, green 05%, white 06%)' }
- if (halfLife > 60000*95) { energyLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
+ if (caffeine > 0)	  { coffeeLevel.style.background = 'linear-gradient(to top, orange 38%, green 95%, white 96%)' }
+ if (caffeine > 60000*05) { coffeeLevel.style.background = 'linear-gradient(to top, orange 36%, green 90%, white 92%)' }
+ if (caffeine > 60000*10) { coffeeLevel.style.background = 'linear-gradient(to top, orange 34%, green 85%, white 86%)' }
+ if (caffeine > 60000*15) { coffeeLevel.style.background = 'linear-gradient(to top, orange 32%, green 80%, white 82%)' }
+ if (caffeine > 60000*20) { coffeeLevel.style.background = 'linear-gradient(to top, orange 30%, green 75%, white 76%)' }
+ if (caffeine > 60000*25) { coffeeLevel.style.background = 'linear-gradient(to top, orange 28%, green 70%, white 72%)' }
+ if (caffeine > 60000*30) { coffeeLevel.style.background = 'linear-gradient(to top, orange 26%, green 65%, white 66%)' }
+ if (caffeine > 60000*35) { coffeeLevel.style.background = 'linear-gradient(to top, orange 24%, green 60%, white 62%)' }
+ if (caffeine > 60000*40) { coffeeLevel.style.background = 'linear-gradient(to top, orange 22%, green 55%, white 56%)' }
+ if (caffeine > 60000*45) { coffeeLevel.style.background = 'linear-gradient(to top, orange 20%, green 50%, white 52%)' }
+ if (caffeine > 60000*50) { coffeeLevel.style.background = 'linear-gradient(to top, orange 18%, green 45%, white 46%)' }
+ if (caffeine > 60000*55) { coffeeLevel.style.background = 'linear-gradient(to top, orange 16%, green 40%, white 42%)' }
+ if (caffeine > 60000*60) { coffeeLevel.style.background = 'linear-gradient(to top, orange 14%, green 35%, white 36%)' }
+ if (caffeine > 60000*65) { coffeeLevel.style.background = 'linear-gradient(to top, orange 12%, green 30%, white 32%)' }
+ if (caffeine > 60000*70) { coffeeLevel.style.background = 'linear-gradient(to top, orange 10%, green 25%, white 26%)' }
+ if (caffeine > 60000*75) { coffeeLevel.style.background = 'linear-gradient(to top, orange 08%, green 20%, white 22%)' }
+ if (caffeine > 60000*80) { coffeeLevel.style.background = 'linear-gradient(to top, orange 06%, green 15%, white 16%)' }
+ if (caffeine > 60000*85) { coffeeLevel.style.background = 'linear-gradient(to top, orange 04%, green 10%, white 12%)' }
+ if (caffeine > 60000*90) { coffeeLevel.style.background = 'linear-gradient(to top, orange 02%, green 05%, white 06%)' }
+ if (caffeine > 60000*95) { coffeeLevel.style.background = 'linear-gradient(to top, orange 00%, green 00%, white 00%)' }
  }
+
+// CHECKING HYDRATION LEVELS!
+if (waterCups.value > 0) {
+ if (hydration > 0)	   { waterLevel.style.background = 'linear-gradient(to top, lightblue 84%, cornflowerblue 94%, white 96%)' }
+ if (hydration > 60000*05) { waterLevel.style.background = 'linear-gradient(to top, lightblue 82%, cornflowerblue 90%, white 92%)' }
+ if (hydration > 60000*10) { waterLevel.style.background = 'linear-gradient(to top, lightblue 80%, cornflowerblue 85%, white 86%)' }
+ if (hydration > 60000*15) { waterLevel.style.background = 'linear-gradient(to top, lightblue 75%, cornflowerblue 80%, white 82%)' }
+ if (hydration > 60000*20) { waterLevel.style.background = 'linear-gradient(to top, lightblue 70%, cornflowerblue 75%, white 76%)' }
+ if (hydration > 60000*25) { waterLevel.style.background = 'linear-gradient(to top, lightblue 65%, cornflowerblue 70%, white 72%)' }
+ if (hydration > 60000*30) { waterLevel.style.background = 'linear-gradient(to top, lightblue 60%, cornflowerblue 65%, white 66%)' }
+ if (hydration > 60000*35) { waterLevel.style.background = 'linear-gradient(to top, lightblue 55%, cornflowerblue 60%, white 62%)' }
+ if (hydration > 60000*40) { waterLevel.style.background = 'linear-gradient(to top, lightblue 50%, cornflowerblue 55%, white 56%)' }
+ if (hydration > 60000*45) { waterLevel.style.background = 'linear-gradient(to top, lightblue 45%, cornflowerblue 50%, white 52%)' }
+ if (hydration > 60000*50) { waterLevel.style.background = 'linear-gradient(to top, lightblue 40%, cornflowerblue 45%, white 46%)' }
+ if (hydration > 60000*55) { waterLevel.style.background = 'linear-gradient(to top, lightblue 35%, cornflowerblue 40%, white 42%)' }
+ if (hydration > 60000*60) { waterLevel.style.background = 'linear-gradient(to top, lightblue 30%, cornflowerblue 35%, white 36%)' }
+ if (hydration > 60000*65) { waterLevel.style.background = 'linear-gradient(to top, lightblue 25%, cornflowerblue 30%, white 32%)' }
+ if (hydration > 60000*70) { waterLevel.style.background = 'linear-gradient(to top, lightblue 20%, cornflowerblue 25%, white 26%)' }
+ if (hydration > 60000*75) { waterLevel.style.background = 'linear-gradient(to top, lightblue 15%, cornflowerblue 20%, white 22%)' }
+ if (hydration > 60000*80) { waterLevel.style.background = 'linear-gradient(to top, lightblue 10%, cornflowerblue 15%, white 16%)' }
+ if (hydration > 60000*85) { waterLevel.style.background = 'linear-gradient(to top, lightblue 08%, cornflowerblue 10%, white 12%)' }
+ if (hydration > 60000*90) { waterLevel.style.background = 'linear-gradient(to top, lightblue 02%, cornflowerblue 05%, white 06%)' }
+ if (hydration > 60000*95) { waterLevel.style.background = 'linear-gradient(to top, lightblue 00%, cornflowerblue 00%, white 00%)' }
+ }
+
 }
 
 
 // ==================================================
-// CLEAR "COFFEE ENERGY" FUNCTION!
+// CLEAR "ENERGY LEVELS" FUNCTION!
 // ==================================================
-function clearCoffee() {
+function clearEnergy() {
 // DECLARING ELEMENTS!
 var coffeeTitle = document.getElementById("coffeeTitle")
 coffeeTitle.innerHTML = "REINICIANDO..."
@@ -1297,11 +1372,17 @@ var doTheLoop = setInterval(function(){
   coffeeTitle.innerHTML = "Niveles de Energía:"
   coffeeTitle.style.background = "#008888"
 
-  // DELETING ELEMENTS
+  // DELETING COFFEE
   howManyCups = 0
   coffeeCups.value = "0"
-  halfLife = 0
-  energyLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
+  caffeine = 0
+  coffeeLevel.style.background = 'linear-gradient(to top, yellow 0%, orange 0%, white 0%)'
+
+  // DELETING WATER
+  howMuchWater = 0
+  waterCups.value = "0"
+  hydration = 0
+  waterLevel.style.background = 'linear-gradient(to top, lightblue 0%, cornflowerblue 0%, white 0%)'
 
   // UPDATING "ENERGY LEVELS" TRASH ICON
   document.getElementById("energyTrash").innerHTML = "⭕"
@@ -1309,6 +1390,8 @@ var doTheLoop = setInterval(function(){
   }
  }, percent)
 }
+
+
 
 
 // ==================================================
