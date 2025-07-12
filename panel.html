@@ -103,7 +103,7 @@ function detectJS() {
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearCoffee(); toolsDiv.scrollLeft='1954'">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearEnergy(); toolsDiv.scrollLeft='1954'">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -127,7 +127,7 @@ function detectJS() {
 
  <!-- SEMESTER PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;semestral: </b>&nbsp;8/Agosto</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;semestral:</b>&nbsp;8/Agosto</div>
   <div class="progressWrapper">
 	 <div id="semesterBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -150,14 +150,14 @@ function detectJS() {
 
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
- <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Cartola asistencia:</b></div>
+ <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Asistencia Semanal:</b></div>
   <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">⭕</div>
    <div class="doubleColumnWrapper">
     <div style="width: 55%; color: #666; text-align: center; padding: 12px;">
 	<canvas id="rollCanvas" class="rollCanvas" width="212px" height="212px"></canvas>
     </div>
     <div style="width: 42%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
-	<b>Revisión:</b><br>
+	<small><u>Progreso</u>:</small><br>
 	<input type="checkbox" id="checkMon" onchange="checkAttendance()">Lunes<br>
 	<input type="checkbox" id="checkTue" onchange="checkAttendance()">Martes<br>
 	<input type="checkbox" id="checkWed" onchange="checkAttendance()">Miércoles<br>
@@ -202,7 +202,7 @@ function detectJS() {
 	<div style="background-color: transparent; color: #666; margin-top: 3px; padding: 1px;">
 
 		<div style="display: flex; align-items: center; padding: 2px; margin-right: -6px;">
-		 <div class="testSubject">Asignaturas:</div>
+		 <div class="testSubject"><small>Asignaturas:</small></div>
 		 <div class="testGrades">1°</div>
 		 <div class="testGrades">2°</div>
 		 <div class="testGrades">3°</div>
