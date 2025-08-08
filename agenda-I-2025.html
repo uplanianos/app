@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Agenda de Pruebas</title>
+</head>
+
+<body>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
+<div id="deleteAnim" style="display: none; position: absolute; width: 100%; height: 100vh; justify-content: center; align-items: center; font-size: 6vh;">🗑️<br><br><br><br></div>
+
+
+<div class="main" style="margin-bottom: 3%">
+<div class="labels"><p id="mainLabel"><div><p>
+      <select class="titleMenu" id="titleMenu" name="titleMenu" >
+      <option value="0" selected disabled="disabled">☰</option>
+      <option value="1">📖 Agenda</option>
+      <option value="110">&#x27A5; 📑 Integrales</option>
+      <option value="111">&#x27A5; 📥 Descargar</option>
+      <option value="112">&#x27A5; ❌ Borrar</option>
+      <option value="2">✔️ Asistencia</option>
+      <option value="3">📁 Avance Curricular</option>
+      <option value="4">🗓️ Calendario Oficial</option>
+      <option value="5">⏲️ Cuenta Regresiva</option>
+      <option value="6">📈 Escala de Notas</option>
+      <option value="7">📚 Horario de Clases</option>
+      <option value="8">💊 Justificador</option>
+      <option value="9">📜 Manual Estudiante</option>
+      <option value="10">✍️ Nota de Pruebas</option>
+      <option value="11">🚫 Paro Tracker</option>
+      <option value="12">💯 Promedio Integral</option>
+      <option value="125">🧠 Preguntas Estudio</option>
+      <option value="13">📋 Simulador Examen</option>
+      <option value="14">⏳ Temporizador</option>
+      <option value="15">📝 Timebox (Upla)</option>
+<!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
+    </select>
+    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Agenda de Evaluaciones.</p></div>
+
+<script type="text/javascript">
+document.getElementById('titleMenu').addEventListener('change', function() {
+ if (titleMenu.value == 1) {blurMenu(); window.location.replace("agenda.html")}
+ if (titleMenu.value == 110) {blurMenu(); window.location.replace("agenda.html?i1=abr28m&i2=may26m&i3=jun30m&ex=jul14t&c=Asignatura")}
+ if (titleMenu.value == 111) {setTimeout('blurMenu()', 1000); window.print()}
+ if (titleMenu.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
+ if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
+ if (titleMenu.value == 3) {blurMenu(); window.location = "avance.html"}
+ if (titleMenu.value == 4) {blurMenu(); window.location = "calendario.html"}
+ if (titleMenu.value == 5) {blurMenu(); window.location = "countdown.html"}
+ if (titleMenu.value == 6) {blurMenu(); window.location = "notas.html?escala=70"}
+ if (titleMenu.value == 7) {blurMenu(); window.location = "horario.html"}
+ if (titleMenu.value == 8) {blurMenu(); window.location = "justify.html"}
+ if (titleMenu.value == 9) {blurMenu(); window.location = "manual-estudiante.html"}
+ if (titleMenu.value == 10) {blurMenu(); window.location = "pruebas.html?total=100&puntos=0"}
+ if (titleMenu.value == 11) {blurMenu(); window.location = "sigueparo.html"}
+ if (titleMenu.value == 12) {blurMenu(); window.location = "integrales.html?x=2&g1=0.0&g2=0.0"}
+ if (titleMenu.value == 125) {blurMenu(); window.location = "estudio.html"}
+ if (titleMenu.value == 13) {blurMenu(); window.location = "examen.html?promedio=3.5&examen=4.0"}
+ if (titleMenu.value == 14) {blurMenu(); window.location = "temporizador.html"}
+ if (titleMenu.value == 15) {blurMenu(); window.location = "timebox.html"}
+ if (titleMenu.value == 16) {blurMenu(); window.location = "upladisticas.html"}
+});
+
+function blurMenu(){document.getElementById('titleMenu').value = 0; document.getElementById('titleMenu').blur();}
+</script>
+</div>
+
+
+
+<!- SAVE FUNCTION ->
+<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
+<script src="scripts/jquery-3.7.1.slim.js"></script>
+<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
+<!- https://jquery.com/download/ ->
+
+<script type="text/javascript">
+window.onbeforeunload = function() {
+     $('textarea').each(function(){
+        var id = $(this).attr('id');
+        var value = $(this).val();
+       localStorage.setItem(id, value);
+    });
+}
+window.onload = function() {
+    $('textarea').each(function(){
+       var id = $(this).attr('id');
+       var text2 = localStorage.getItem(id);
+       if (text2 !== null) $('#'+id).val(text2);
+    });
+// THIS CALLS TO OTHER FUNCTION ON LOAD!
+updateInstructions()
+highlightCells()
+getLinkValues()
+checkDates()
+studyProgress()
+detectJS()
+}
+</script>
+
+
+
+<!- JAVASCRIPT DETECTOR ->
+<!- JAVASCRIPT DETECTOR ->
+<!- JAVASCRIPT DETECTOR ->
+
+<script type="text/javascript">
+function detectJS() {
+ document.getElementById("appleWarning").style.display = "none"
+}
+</script>
+
+<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
+<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
+[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
+[ Configuración > Safari > Avanzado > JavaScript > ON ]
+</div>
+
+<!- END OF "JS DETECTOR" ->
+<!- END OF "JS DETECTOR" ->
+<!- END OF "JS DETECTOR" ->
+
+
+
+<div class="grid-container-pages" style="grid-auto-flow: flow">
+
+<div class="grid-item" id="theInstructions" style="font-size: 14px; background-color: #A7C7E7; /* Pastel Blue */">
+Agenda tus evaluaciones programadas!	
+</div>
+
+
+<div class="grid-agenda" id="grid-agenda" style="width: 95%; margin-left: auto; margin-right: auto;">
+
+ <div class="theMonths" style="grid-area: theMonths; font-size: 16px; background-color: #FFF; border: 0px hidden white; margin-top: -16px;">
+    <div id="agendaMar"><b>Marzo</b></div>
+    <div id="agendaApr"><b>Abril</b></div>
+    <div id="agendaMay"><b>Mayo</b></div>
+    <div id="agendaJun"><b>Junio</b></div>
+    <div id="agendaJul"><b>Julio</b></div>
+ </div>
+
+ <div class="select" style="grid-area: select;">Mes:
+    <button class="agendaMonth" id="clickMar" onclick="clickMar();">03</button>
+    <button class="agendaMonth" id="clickApr" onclick="clickApr();">04</button>
+    <button class="agendaMonth" id="clickMay" onclick="clickMay();">05</button>
+    <button class="agendaMonth" id="clickJun" onclick="clickJun();">06</button>
+    <button class="agendaMonth" id="clickJul" onclick="clickJul();">7/8</button>
+    <button class="agendaMonth" onclick="location.replace('agenda-full.html')">Full</button>
+ </div>
+
+ <div class="title" style="grid-area: top1;">Semana</div>
+ <div class="title" style="grid-area: top2;">Día</div>
+ <div class="title" style="grid-area: top3;">Mañana</div>
+ <div class="title" style="grid-area: top4;">Tarde</div>
+
+
+
+<!- MARCH ->
+ <div class="days3">Lunes</div> <div class="days3">10</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar10m" placeholder="* Semana Inducción"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar10t" placeholder="*"></textarea></div>
+
+ <div class="days3">Martes</div> <div class="days3">11</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar11m" placeholder="*"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar6t" placeholder="*"></textarea></div>
+
+ <div class="days3">Miércoles</div> <div class="days3">12</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar12m" placeholder="*"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar12t" placeholder="*"></textarea></div>
+
+ <div class="days3">Jueves</div> <div class="days3">13</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar13m" placeholder="*"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar13t" placeholder="*"></textarea></div>
+
+ <div class="days3">Viernes</div> <div class="days3">14</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar14m" placeholder="*"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar14t" placeholder="*"></textarea></div>
+
+
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">17</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar17m" placeholder="* Inicio Clases!"></textarea></div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar17t"></textarea></div>
+
+ <div class="days3">Martes</div> <div class="days3">18</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar18m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar18t"></textarea></div>
+
+ <div class="days3">Miércoles</div> <div class="days3">19</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar19m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar19t"></textarea></div>
+
+ <div class="days3">Miércoles</div> <div class="days3">20</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar20m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar20t"></textarea></div>
+
+ <div class="days3">Viernes</div> <div class="days3">21</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar21m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar21t"></textarea></div>
+
+
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">24</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar24m"></textarea></div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar24t"></textarea></div>
+
+ <div class="days3">Martes</div> <div class="days3">25</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar25m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar25t"></textarea></div>
+
+ <div class="days3">Miércoles</div> <div class="days3">26</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar26m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar26t"></textarea></div>
+
+ <div class="days3">Jueves</div> <div class="days3">27</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar27m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar27t"></textarea></div>
+
+ <div class="days3">Viernes</div> <div class="days3">28</div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar28m"></textarea></div>
+ <div class="days3"><textarea class="agendaTask" maxlength="50" id="mar28t"></textarea></div>
+
+
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;">31</div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar31m"></textarea></div>
+ <div class="days3" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="mar31t"></textarea></div>
+
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">Martes</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">1</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">Miércoles</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">2</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">Jueves</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">3</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">Viernes</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px; color: gray;">4</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days3" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+
+
+<!- APRIL ->
+
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">31</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days4">Martes</div> <div class="days4">1</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr1m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr1t"></textarea></div>
+
+ <div class="days4">Miércoles</div> <div class="days4">2</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr2m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr2t"></textarea></div>
+
+ <div class="days4">Jueves</div> <div class="days4">3</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr3m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr3t"></textarea></div>
+
+ <div class="days4">Viernes</div> <div class="days4">4</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr4m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr4t"></textarea></div>
+
+
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;">Lunes</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;">7</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray; color: darkgreen; background-color: white;"><textarea class="agendaTask" maxlength="50" id="abr7m" placeholder="* Bienvenida (clases)" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray; color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="abr7t" placeholder="* Actividades (PM)" style="background-color: transparent;"></textarea></div>
+
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;">Martes</div> <div class="days4" style="color: darkgreen; background-color: #00FF0033;">8</div>
+ <div class="days4" style="color: darkgreen; background-color: white;"><textarea class="agendaTask" maxlength="50" id="abr8m" placeholder="* Clases (AM)" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="abr8t" placeholder="* Actividades (PM)" style="background-color: transparent"></textarea></div>
+
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;">Miércoles</div> <div class="days4" style="color: darkgreen; background-color: #00FF0033;">9</div>
+ <div class="days4" style="color: darkgreen; background-color: white;"><textarea class="agendaTask" maxlength="50" id="abr9m" placeholder="* Clases (AM)" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="abr9t" placeholder="* Actividades (PM)" style="background-color: transparent;"></textarea></div>
+
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;">Jueves</div> <div class="days4" style="color: darkgreen; background-color: #00FF0033;">10</div>
+ <div class="days4" style="color: darkgreen; background-color: white;"><textarea class="agendaTask" maxlength="50" id="abr10m" placeholder="* Clases (AM)" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="abr10t" placeholder="* Actividades (PM)" style="background-color: transparent;"></textarea></div>
+
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;">Viernes</div> <div class="days4" style="color: darkgreen; background-color: #00FF0033;">11</div>
+ <div class="days4" style="color: darkgreen; background-color: white;"><textarea class="agendaTask" maxlength="50" id="abr11m" placeholder="* Clases (AM)" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="color: darkgreen; background-color: #00FF0033;"><textarea class="agendaTask" maxlength="50" id="abr11t" placeholder="* Actividades (PM)" style="background-color: transparent;"></textarea></div>
+
+
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">14</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="abr14m"></textarea></div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="abr14t"></textarea></div>
+
+ <div class="days4">Martes</div> <div class="days4">15</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr15m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr15t"></textarea></div>
+
+ <div class="days4">Miércoles</div> <div class="days4">16</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr16m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr16t"></textarea></div>
+
+ <div class="days4">Jueves</div> <div class="days4">17</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr17m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr17t"></textarea></div>
+
+ <div class="days4" style="background-color: #FF313133; color: red;">Viernes</div> <div class="days4" style="background-color: #FF313133; color: red;">18</div>
+ <div class="days4" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="abr18m" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+ <div class="days4" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="abr18t" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+
+
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">21</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="abr21m"></textarea></div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="abr21t"></textarea></div>
+
+ <div class="days4">Martes</div> <div class="days4">22</div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr22m"></textarea></div>
+ <div class="days4"><textarea class="agendaTask" maxlength="50" id="abr22t" placeholder="Inicio paro!"></textarea></div>
+
+ <div class="days4">Miércoles</div> <div class="days4">23</div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr23m" placeholder="Paro!"></textarea></div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr23t" placeholder="Paro!"></textarea></div>
+
+ <div class="days4">Jueves</div> <div class="days4">24</div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr24m" placeholder="Paro!"></textarea></div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr24t" placeholder="Paro!"></textarea></div>
+
+ <div class="days4">Viernes</div> <div class="days4">25</div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr25m" placeholder="Paro!"></textarea></div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr25t" placeholder="Paro!"></textarea></div>
+
+
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;">28</div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="abr28m" placeholder="Paro!"></textarea></div>
+ <div class="days4" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="abr28t" placeholder="Paro!"></textarea></div>
+
+ <div class="days4">Martes</div> <div class="days4">29</div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr29m" placeholder="Paro!"></textarea></div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr29t" placeholder="Paro!"></textarea></div>
+
+ <div class="days4">Miércoles</div> <div class="days4">30</div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr30m" placeholder="Paro!"></textarea></div>
+ <div class="days4"><textarea class="agendaParo" maxlength="50" id="abr30t" placeholder="Paro!"></textarea></div>
+
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">Jueves</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">1</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">Viernes</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px; color: gray;">2</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days4" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+
+<!- MAY ->
+
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">28</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">Martes</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">29</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">Miércoles</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px; color: gray;">30</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days5" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days5" style="background-color: #FF313133; color: red;">Jueves</div> <div class="days5" style="background-color: #FF313133; color: red;">1</div>
+ <div class="days5" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="may1m" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+ <div class="days5" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="mat1t" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+
+ <div class="days5">Viernes</div> <div class="days5">2</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may2m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may2t" placeholder="Paro!"></textarea></div>
+
+
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">5</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may5m" placeholder="Paro!"></textarea></div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may5t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Martes</div> <div class="days5">6</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may6m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may6t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Miércoles</div> <div class="days5">7</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may7m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may7t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Jueves</div> <div class="days5">8</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may8m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may8t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Viernes</div> <div class="days5">9</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may9m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may9t" placeholder="Paro!"></textarea></div>
+
+
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">12</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may12m" placeholder="Paro!"></textarea></div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may12t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Martes</div> <div class="days5">13</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may13m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may13t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Miércoles</div> <div class="days5">14</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may14m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may14t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Jueves</div> <div class="days5">15</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may15m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may15t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Viernes</div> <div class="days5">16</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may16m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may16t" placeholder="Paro!"></textarea></div>
+
+
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">19</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may19m" placeholder="Paro!"></textarea></div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may19t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Martes</div> <div class="days5">20</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may20m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may20t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5" style="background-color: #FF313133; color: red;">Miércoles</div> <div class="days5" style="background-color: #FF313133; color: red;">21</div>
+ <div class="days5" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="may21m" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+ <div class="days5" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="may21t" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+
+ <div class="days5">Jueves</div> <div class="days5">22</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may22m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may22t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Viernes</div> <div class="days5">23</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may23m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may23t" placeholder="Paro!"></textarea></div>
+
+
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;">26</div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may26m" placeholder="Paro!"></textarea></div>
+ <div class="days5" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaParo" maxlength="50" id="may26t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Martes</div> <div class="days5">27</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may27m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may27t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Miércoles</div> <div class="days5">28</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may28m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may28t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Jueves</div> <div class="days5">29</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may29m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may29t" placeholder="Paro!"></textarea></div>
+
+ <div class="days5">Viernes</div> <div class="days5">30</div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may30m" placeholder="Paro!"></textarea></div>
+ <div class="days5"><textarea class="agendaParo" maxlength="50" id="may30t" placeholder="Paro!"></textarea></div>
+
+
+
+<!- JUNE ->
+
+ <div class="days6">Lunes</div> <div class="days6">2</div>
+ <div class="days6"><textarea class="agendaParo" maxlength="50" id="jun2m" placeholder="Paro!" style="background-color: transparent;"></textarea></div>
+ <div class="days6"><textarea class="agendaParo" maxlength="50" id="jun2t" placeholder="Paro!" style="background-color: transparent;"></textarea></div>
+
+ <div class="days6">Martes</div> <div class="days6">3</div>
+ <div class="days6"><textarea class="agendaParo" maxlength="50" id="jun3m" placeholder="Paro!" style="background-color: transparent;"></textarea></div>
+ <div class="days6"><textarea class="agendaParo" maxlength="50" id="jun3t" placeholder="Paro!" style="background-color: transparent"></textarea></div>
+
+ <div class="days6">Miércoles</div> <div class="days6">4</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun4m" style="background-color: transparent;"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun4t" style="background-color: transparent;"></textarea></div>
+
+ <div class="days6">Jueves</div> <div class="days6">5</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun5m" style="background-color: transparent;"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun5t" style="background-color: transparent;"></textarea></div>
+
+ <div class="days6">Viernes</div> <div class="days6">6</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun6m" style="background-color: transparent;"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun6t" style="background-color: transparent;"></textarea></div>
+
+
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">9</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun9m" placeholder="* Reinicio (Artes & Ciencias)."></textarea></div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun9t"></textarea></div>
+
+ <div class="days6">Martes</div> <div class="days6">10</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun10m" placeholder="* Reapertura (Casa Central)."></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun10t"></textarea></div>
+
+ <div class="days6">Miércoles</div> <div class="days6">11</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun11m" placeholder="* Reinicio (Deporte, Educación, Humanidades & Salud)."></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun11t"></textarea></div>
+
+ <div class="days6">Jueves</div> <div class="days6">12</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun12m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun12t"></textarea></div>
+
+ <div class="days6">Viernes</div> <div class="days6">13</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun13m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun13t"></textarea></div>
+
+
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">16</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun16m"></textarea></div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun16t"></textarea></div>
+
+ <div class="days6">Martes</div> <div class="days6">17</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun17m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun17t"></textarea></div>
+
+ <div class="days6">Miércoles</div> <div class="days6">18</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun18m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun18t"></textarea></div>
+
+ <div class="days6">Jueves</div> <div class="days6">19</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun19m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun19t"></textarea></div>
+
+ <div class="days6" style="background-color: #FF313133; color: red;">Viernes</div> <div class="days6" style="background-color: #FF313133; color: red;">20</div>
+ <div class="days6" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="jun20m" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+ <div class="days6" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="jun20t" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+
+
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">23</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun23m"></textarea></div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun23t"></textarea></div>
+
+ <div class="days6">Martes</div> <div class="days6">24</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun24m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun24t"></textarea></div>
+
+ <div class="days6">Miércoles</div> <div class="days6">25</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun25m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun25t"></textarea></div>
+
+ <div class="days6">Jueves</div> <div class="days6">26</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun26m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun26t"></textarea></div>
+
+ <div class="days6">Viernes</div> <div class="days6">27</div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun27m"></textarea></div>
+ <div class="days6"><textarea class="agendaTask" maxlength="50" id="jun27t"></textarea></div>
+
+
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;">30</div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun30m"></textarea></div>
+ <div class="days6" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jun30t"></textarea></div>
+
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">Martes</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">1</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">Miércoles</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">2</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">Jueves</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">3</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">Viernes</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px; color: gray;">4</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days6" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+
+<!- JULY ->
+
+ <div class="days7" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
+ <div class="days7" style="background-color: #DDD; font-size: 10px; color: gray;">30</div>
+ <div class="days7" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days7" style="background-color: #DDD; font-size: 10px;">🚫</div>
+
+ <div class="days7">Martes</div> <div class="days7">1</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul1m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul1t"></textarea></div>
+
+ <div class="days7">Miércoles</div> <div class="days7">2</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul2m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul2t"></textarea></div>
+
+ <div class="days7">Jueves</div> <div class="days7">3</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul3m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul3t"></textarea></div>
+
+ <div class="days7">Viernes</div> <div class="days7">4</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul4m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul4t"></textarea></div>
+
+
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">7</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul7m"></textarea></div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul7t"></textarea></div>
+
+ <div class="days7">Martes</div> <div class="days7">8</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul8m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul8t"></textarea></div>
+
+ <div class="days7">Miércoles</div> <div class="days7">9</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul9m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul9t"></textarea></div>
+
+ <div class="days7">Jueves</div> <div class="days7">10</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul10m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul10t"></textarea></div>
+
+ <div class="days7">Viernes</div> <div class="days7">11</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul11m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul11t"></textarea></div>
+
+
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">14</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul14m"></textarea></div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul14t"></textarea></div>
+
+ <div class="days7">Martes</div> <div class="days7">15</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul15m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul15t"></textarea></div>
+
+ <div class="days7" style="background-color: #FF313133; color: red;">Miércoles</div> <div class="days7" style="background-color: #FF313133; color: red;">16</div>
+ <div class="days7" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="jul16m" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+ <div class="days7" style="background-color: #FF313133;"><textarea class="agendaTask" maxlength="50" id="jul16t" placeholder="Feriado" style="background-color: transparent;"></textarea></div>
+
+ <div class="days7">Jueves</div> <div class="days7">17</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul17m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul17t"></textarea></div>
+
+ <div class="days7">Viernes</div> <div class="days7">18</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul18m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul18t"></textarea></div>
+
+
+<!-- AFTER PARO -->
+<!-- AFTER PARO -->
+<!-- AFTER PARO -->
+
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">21</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul21m"></textarea></div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul21t"></textarea></div>
+
+ <div class="days7">Martes</div> <div class="days7">22</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul22m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul22t"></textarea></div>
+
+ <div class="days7">Miércoles</div> <div class="days7">23</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul23m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul23t"></textarea></div>
+
+ <div class="days7">Jueves</div> <div class="days7">24</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul24m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul24t"></textarea></div>
+
+ <div class="days7">Viernes</div> <div class="days7">25</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul25m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul25t"></textarea></div>
+
+
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;">28</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul28m"></textarea></div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="jul28t"></textarea></div>
+
+ <div class="days7">Martes</div> <div class="days7">29</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul29m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul29t"></textarea></div>
+
+ <div class="days7">Miércoles</div> <div class="days7">30</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul30m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul30t"></textarea></div>
+
+ <div class="days7">Jueves</div> <div class="days7">31</div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul31m"></textarea></div>
+ <div class="days7"><textarea class="agendaTask" maxlength="50" id="jul31t"></textarea></div>
+
+ <div class="days7" style="background-color: #eee;">Viernes</div>
+ <div class="days7" style="background-color: #eee;">Ago. 1</div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago1m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago1t"style="background-color: #eee; color: gray;"></textarea></div>
+
+<!-- AGOSTO -->
+
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray; background-color: #eee;">Lunes</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray; background-color: #eee;">Ago. 4</div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray; background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago4m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="margin-top: 20px; border: 1px dashed gray; background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago4t" style="background-color: #eee; color: gray;"></textarea></div>
+
+ <div class="days7" style="background-color: #eee;">Martes</div>
+ <div class="days7" style="background-color: #eee;">Ago. 5</div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago5m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago5t"style="background-color: #eee; color: gray;"></textarea></div>
+
+ <div class="days7" style="background-color: #eee;">Martes</div>
+ <div class="days7" style="background-color: #eee;">Ago. 6</div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago6m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago6t"style="background-color: #eee; color: gray;"></textarea></div>
+
+ <div class="days7" style="background-color: #eee;">Martes</div>
+ <div class="days7" style="background-color: #eee;">Ago. 7</div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago7m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago7t"style="background-color: #eee; color: gray;"></textarea></div>
+
+ <div class="days7" style="background-color: #eee;">Martes</div>
+ <div class="days7" style="background-color: #eee;">Ago. 8</div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago8m" style="background-color: #eee; color: gray;"></textarea></div>
+ <div class="days7" style="background-color: #eee;"><textarea class="agendaTask" maxlength="50" id="ago8t"style="background-color: #eee; color: gray;"></textarea></div>
+
+
+
+
+ <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px; border: 0px; border-style: hidden; padding-top: 18px;">
+ Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font></div>
+
+
+<!- END OF GRID-CURRICULUM ->
+</div>
+
+<!- END OF GRID CONTAINER ->
+</div>
+
+<!- END OF MAIN ->
+</div>
+
+
+
+
+<script type="text/javascript">
+function updateInstructions() {
+  for (let i=0; i<11; i++) {
+  theUpdate(i);
+  }
+}
+
+function theUpdate(i) {
+  setTimeout(function() {
+    // console.log("Las instrucciones se actualizarán " + i + "/10.");
+    firstText = "Agenda tus evaluaciones programadas!";
+    secondText = "Organiza entre períodos de mañana y tarde.";
+    if (i % 2 === 0) {theInstructions.innerHTML = firstText};
+    if (i % 2 === 1) {theInstructions.innerHTML = secondText};
+  }, 3000 * i);
+}
+</script>
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+
+
+<script type="text/javascript">
+function checkDates() {
+const date = new Date();
+let thisMonth = date.getMonth()
+var elMes = 0 // For current date
+
+// Months go from 0 (Jan.) to 11 (Dec.)!
+if (thisMonth == 0) {clickMar(); elMes = "ene"}
+if (thisMonth == 1) {clickMar(); elMes = "feb"}
+if (thisMonth == 2) {clickMar(); elMes = "mar"}
+if (thisMonth == 3) {clickApr(); elMes = "abr"}
+if (thisMonth == 4) {clickMay(); elMes = "may"}
+if (thisMonth == 5) {clickJun(); elMes = "jun"}
+if (thisMonth == 6) {clickJul(); elMes = "jul"}
+if (thisMonth == 7) {clickJul(); elMes = "ago"}
+if (thisMonth == 8) {clickJul(); elMes = "sep"}
+if (thisMonth == 9) {clickJul(); elMes = "oct"}
+if (thisMonth == 10) {clickJul(); elMes = "nov"}
+if (thisMonth == 11) {clickJul(); elMes = "dic"}
+
+
+// HIGHLITGHTING THE CURRENT DATE CELL
+var thisDate = date.getDate()
+
+// CHECKING IF MONTHS BELONG TO FIRST SEMESTER!
+if (thisMonth < 2) { console.log("No classes yet!"); clickMar() }
+if (thisMonth > 6) { console.log("1st Semester is finished!"); clickJul() }
+if (thisMonth >= 2 && thisMonth <= 6) {
+var thisFormat = elMes+thisDate
+ if (
+  // CHECK BEFORE CLASSES IN MARCH
+  thisFormat != "mar1" && thisFormat != "mar2" &&
+  thisFormat != "mar3" && thisFormat != "mar4" &&
+  thisFormat != "mar5" && thisFormat != "mar6" &&
+  thisFormat != "mar7" && thisFormat != "mar8" &&
+  thisFormat != "mar9" &&
+  // CHECK MARCH
+  thisFormat != "mar15" && thisFormat != "mar16" &&
+  thisFormat != "mar22" && thisFormat != "mar23" &&
+  thisFormat != "mar29" && thisFormat != "mar30" &&
+  // CHECK APRIL
+  thisFormat != "abr5" && thisFormat != "abr6" &&
+  thisFormat != "abr12" && thisFormat != "abr13" &&
+  thisFormat != "abr19" && thisFormat != "abr20" &&
+  thisFormat != "abr26" && thisFormat != "abr27" &&
+  // CHECK MAY
+  thisFormat != "may3" && thisFormat != "may4" &&
+  thisFormat != "may10" && thisFormat != "may11" &&
+  thisFormat != "may17" && thisFormat != "may18" &&
+  thisFormat != "may25" && thisFormat != "may26" &&
+  // CHECK JUNE
+  thisFormat != "jun1" &&
+  thisFormat != "jun7" && thisFormat != "jun8" &&
+  thisFormat != "jun14" && thisFormat != "jun15" &&
+  thisFormat != "jun21" && thisFormat != "jun22" &&
+  thisFormat != "jun28" && thisFormat != "jun29" &&
+  // CHECK JULY
+  thisFormat != "jul5" && thisFormat != "jul6" &&
+  thisFormat != "jul12" && thisFormat != "jul13" &&
+  thisFormat != "jul19" && thisFormat != "jul20" &&
+  thisFormat != "jul21" && thisFormat != "jul22" &&
+  thisFormat != "jul23" && thisFormat != "jul24" &&
+  thisFormat != "jul25" && thisFormat != "jul26" &&
+  thisFormat != "jul27" && thisFormat != "jul28" &&
+  thisFormat != "jul29" && thisFormat != "jul30" &&
+  thisFormat != "jul31" && thisFormat != "ago1" &&
+  thisFormat != "ago4" && thisFormat != "ago5" &&
+  thisFormat != "ago6" && thisFormat != "ago7" &&
+  thisFormat != "ago8") { underlineDate(thisFormat) }
+  else { console.log("No classes on this date!") }
+  }
+ else { console.log("Highlight Date Out of Range!") }
+}
+
+
+function underlineDate(thisFormat) {
+var thisMorn = document.getElementById(thisFormat+"m")
+var thisNoon = document.getElementById(thisFormat+"t")
+thisMorn.style.color = "red"; thisMorn.style.border = "2px solid #FF000088"; thisMorn.style.borderStyle = "hidden hidden solid hidden"; thisMorn.style.boxShadow = "0 3px #FF000088"
+thisNoon.style.color = "red"; thisNoon.style.border = "2px solid #FF000088"; thisNoon.style.borderStyle = "hidden hidden solid hidden"; thisNoon.style.boxShadow = "0 3px #FF000088"
+}
+</script>
+
+
+<script type="text/javascript">
+function clickMar() {
+
+document.getElementById("agendaMar").style.display = "block";
+document.getElementById("agendaApr").style.display = "none";
+document.getElementById("agendaMay").style.display = "none";
+document.getElementById("agendaJun").style.display = "none";
+document.getElementById("agendaJul").style.display = "none";
+
+March = document.querySelectorAll("div.days3");
+for(let cells of March) {cells.style.display = "block";
+  if (cells.style.display == "block") { document.getElementById("clickMar").focus(); }
+  }
+
+April = document.querySelectorAll("div.days4");
+for(let cells of April){ cells.style.display = "none" }
+
+May = document.querySelectorAll("div.days5");
+for(let cells of May){ cells.style.display = "none" }
+
+June = document.querySelectorAll("div.days6");
+for(let cells of June){ cells.style.display = "none" }
+
+July = document.querySelectorAll("div.days7");
+for(let cells of July){ cells.style.display = "none" }
+
+}
+</script>
+
+
+<script type="text/javascript">
+function clickApr() {
+
+document.getElementById("agendaMar").style.display = "none";
+document.getElementById("agendaApr").style.display = "block";
+document.getElementById("agendaMay").style.display = "none";
+document.getElementById("agendaJun").style.display = "none";
+document.getElementById("agendaJul").style.display = "none";
+
+March = document.querySelectorAll("div.days3");
+for(let cells of March){ cells.style.display = "none" }
+
+April = document.querySelectorAll("div.days4");
+for(let cells of April) {cells.style.display = "block";
+  if (cells.style.display == "block") { document.getElementById("clickApr").focus(); }
+  }
+
+May = document.querySelectorAll("div.days5");
+for(let cells of May){ cells.style.display = "none" }
+
+June = document.querySelectorAll("div.days6");
+for(let cells of June){ cells.style.display = "none" }
+
+July = document.querySelectorAll("div.days7");
+for(let cells of July){ cells.style.display = "none" }
+
+}
+</script>
+
+
+<script type="text/javascript">
+function clickMay() {
+
+document.getElementById("agendaMar").style.display = "none";
+document.getElementById("agendaApr").style.display = "none";
+document.getElementById("agendaMay").style.display = "block";
+document.getElementById("agendaJun").style.display = "none";
+document.getElementById("agendaJul").style.display = "none";
+
+March = document.querySelectorAll("div.days3");
+for(let cells of March){ cells.style.display = "none" }
+
+April = document.querySelectorAll("div.days4");
+for(let cells of April){ cells.style.display = "none" }
+
+May = document.querySelectorAll("div.days5");
+for(let cells of May) {cells.style.display = "block";
+  if (cells.style.display == "block") { document.getElementById("clickMay").focus(); }
+  }
+
+June = document.querySelectorAll("div.days6");
+for(let cells of June){ cells.style.display = "none" }
+
+July = document.querySelectorAll("div.days7");
+for(let cells of July){ cells.style.display = "none" }
+
+}
+</script>
+
+
+<script type="text/javascript">
+function clickJun() {
+
+document.getElementById("agendaMar").style.display = "none";
+document.getElementById("agendaApr").style.display = "none";
+document.getElementById("agendaMay").style.display = "none";
+document.getElementById("agendaJun").style.display = "block";
+document.getElementById("agendaJul").style.display = "none";
+
+March = document.querySelectorAll("div.days3");
+for(let cells of March){ cells.style.display = "none" }
+
+April = document.querySelectorAll("div.days4");
+for(let cells of April){ cells.style.display = "none" }
+
+May = document.querySelectorAll("div.days5");
+for(let cells of May){ cells.style.display = "none" }
+
+June = document.querySelectorAll("div.days6");
+for(let cells of June) {cells.style.display = "block";
+  if (cells.style.display == "block") { document.getElementById("clickJun").focus(); }
+  }
+
+July = document.querySelectorAll("div.days7");
+for(let cells of July){ cells.style.display = "none" }
+
+}
+</script>
+
+
+<script type="text/javascript">
+function clickJul() {
+
+document.getElementById("agendaMar").style.display = "none";
+document.getElementById("agendaApr").style.display = "none";
+document.getElementById("agendaMay").style.display = "none";
+document.getElementById("agendaJun").style.display = "none";
+document.getElementById("agendaJul").style.display = "block";
+
+March = document.querySelectorAll("div.days3");
+for(let cells of March){ cells.style.display = "none" }
+
+April = document.querySelectorAll("div.days4");
+for(let cells of April){ cells.style.display = "none" }
+
+May = document.querySelectorAll("div.days5");
+for(let cells of May){ cells.style.display = "none" }
+
+June = document.querySelectorAll("div.days6");
+for(let cells of June){ cells.style.display = "none" }
+
+July = document.querySelectorAll("div.days7");
+for(let cells of July) {cells.style.display = "block";
+  if (cells.style.display == "block") { document.getElementById("clickJul").focus(); }
+  }
+
+}
+</script>
+
+
+<!- CHECK BEFORE DELETING ->
+<script type="text/javascript">
+function doDelete() {
+  agendaFull = document.getElementById("grid-agenda")
+  deleteAnim = document.getElementById("deleteAnim")
+  if (confirm('¿Desea borrar todos los meses?')) {    setTimeout(function() { agendaFull.style.opacity = "0.80" }, 1000 * 0.1)
+    setTimeout(function() { agendaFull.style.opacity = "0.60" }, 1000 * 0.2)
+    setTimeout(function() { agendaFull.style.opacity = "0.45" }, 1000 * 0.3)
+    setTimeout(function() { agendaFull.style.opacity = "0.20" }, 1000 * 0.4)
+    setTimeout(function() { agendaFull.style.opacity = "0" }, 1000 * 0.5)
+    setTimeout(function() { clearSchedule(); deleteAnim.style.display = "flex" }, 1000 * 0.6)
+    setTimeout(function() { window.location = "agenda.html" }, 1000 * 1)
+  }
+  else { console.log("Eso estuvo cerca!") }
+}
+</script>
+
+<!- DELETE BUTTON FUNCTION ->
+<script type="text/javascript">
+function clearSchedule() {
+fullCalendar = document.querySelectorAll('textarea.agendaTask');
+for(let dates of fullCalendar) {dates.value = ""};
+}
+</script>
+
+
+
+<!- HIGHLIGHT USED CELLS ->
+<script type="text/javascript">
+function highlightCells() {
+const Agenda = document.getElementsByClassName('agendaTask');
+Array.from(Agenda).forEach (task => {
+  if (task.value.length > 0) {task.style.backgroundColor="#FFFF6EAA"}
+  })
+}
+</script>
+
+
+
+<script type="text/javascript">
+function getLinkValues() {
+
+// GETTING VALUE FROM LINK & UPDATING DATES
+var i1 = (new URLSearchParams(window.location.search)).get("i1");
+var i2 = (new URLSearchParams(window.location.search)).get("i2");
+var i3 = (new URLSearchParams(window.location.search)).get("i3");
+var ex = (new URLSearchParams(window.location.search)).get("ex");
+var c = (new URLSearchParams(window.location.search)).get("c");
+
+// SETTING TEST STING VALUES
+let text1 = "► Integral 1";
+let text2 = "► Integral 2";
+let text3 = "► Integral 3";
+let exam = "► Examen";
+
+// CHECK DATE FORMAT (REGULAR EXPRESSION)
+var regex = /^[a-z]{3}(0?[1-9]|[12][0-9]|3[01])[m|t]$/;
+// PHRASE = 3 characters & month days 0 upto 31 & m or t
+
+// SETTING DATES & STYLES
+if (i1 !== null && regex.exec(i1)) {
+  document.getElementById(i1).value = text1
+  document.getElementById(i1).style.color = "red"
+  document.getElementById(i1).style.fontWeight = "Bold"
+  document.getElementById(i1).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°1 sin fecha!")};
+if (i2 !== null && regex.exec(i2)) {
+  document.getElementById(i2).value = text2
+  document.getElementById(i2).style.color = "red"
+  document.getElementById(i2).style.fontWeight = "Bold"
+  document.getElementById(i2).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°2 sin fecha!")};
+if (i3 !== null && regex.exec(i3)) {
+  document.getElementById(i3).value = text3
+  document.getElementById(i3).style.color = "red"
+  document.getElementById(i3).style.fontWeight = "Bold"
+  document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
+  else {console.log("Integral N°3 sin fecha!")};
+if (ex !== null && regex.exec(ex)) {
+  document.getElementById(ex).value = exam
+  document.getElementById(ex).style.color = "yellow"
+  document.getElementById(ex).style.fontWeight = "Bold"
+  document.getElementById(ex).style.backgroundColor = "red"}
+  else {console.log("Examen final sin fecha!")};
+
+// ADDING CLASS TO TESTS
+var regexClass = /[a-z]/; // Regular characters.
+if (c !== null && regexClass.exec(c) ) {
+  if (i1 !== null && regex.exec(i1)) {
+    document.getElementById(i1).value = text1 + " (" + c + ")"
+    document.getElementById(i1).style.color = "red"
+    document.getElementById(i1).style.fontWeight = "Bold"
+    document.getElementById(i1).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°1 sin fecha!")};
+  if (i2 !== null && regex.exec(i2)) {
+    document.getElementById(i2).value = text2 + " (" + c + ")"
+    document.getElementById(i2).style.color = "red"
+    document.getElementById(i2).style.fontWeight = "Bold"
+    document.getElementById(i2).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°2 sin fecha!")};
+  if (i3 !== null && regex.exec(i3)) {
+    document.getElementById(i3).value = text3 + " (" + c + ")"
+    document.getElementById(i3).style.color = "red"
+    document.getElementById(i3).style.fontWeight = "Bold"
+    document.getElementById(i3).style.backgroundColor = "#FFFF6EAA"}
+    else {console.log("Integral N°3 sin fecha!")};
+  if (ex !== null && regex.exec(ex)) {
+    document.getElementById(ex).value = exam + " (" + c + ")"
+    document.getElementById(ex).style.color = "yellow"
+    document.getElementById(ex).style.fontWeight = "Bold"
+    document.getElementById(ex).style.backgroundColor = "red"}
+    else {console.log("Examen final sin fecha!")};
+    }
+else {console.log("Asignatura sin nombre!")}
+
+}
+
+// /=====================================================================\
+// | Mañana: /agenda.html?i1=sep23m&i2=oct28m&i3=dic9m&ex=dic16m&c=Clase |
+// | Tarde-: /agenda.html?i1=sep23t&i2=oct28t&i3=dic9t&ex=dic16t&c=Clase |
+// \=====================================================================/
+
+</script>
+
+
+<!- USER STATS PROGRESS COUNTER ->
+<div>
+<textarea class="progressArea" id="studyProgress" style="top: 10px">0</textarea>
+</div>
+<!- USER STATS PROGRESS COUNTER ->
+
+
+<script type="text/javascript">
+function studyProgress() {
+// =========================
+// USER STATS CALCULATION
+// =========================
+
+// DECLARING VARIABLES!
+var studyProgress = document.getElementById("studyProgress").value
+var additionValue = 0.5
+var newProgress = parseFloat(studyProgress) + parseFloat(additionValue);
+ if (studyProgress < 100) { 
+    document.getElementById("studyProgress").value = newProgress.toFixed(2);
+    // console.log("El nuevo progreso es de " + newProgress.toFixed(1));
+  }
+ if (studyProgress >= 100) {document.getElementById("studyProgress").value = 100}
+}
+</script>
+
+
+
+</body>
+</html>
