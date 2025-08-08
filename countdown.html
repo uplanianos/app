@@ -64,7 +64,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 
 
 <div style="font-size: 16px; color: white; margin-left: 5%; margin-right: 5%; padding: 6px; ">
-<b>Avance - I, 2025 (8 de agosto):</b>
+<b>Avance - II, 2025 (26 de Diciembre):</b>
 </div>
 
 	<div id="progressBarDiv" style="display: flex; width: 90%; background-color: lightgray; margin-left: auto; margin-right: auto; border: 2px solid white; border-radius: 6px;">
@@ -73,7 +73,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	<br>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Inicio de clases (17 de Marzo):</font><br>
+	  <br><font class="checkpoint">📅 Inicio de clases (18 de Agosto):</font><br>
 	  <div class="countdown">
 	    <div><p class="startClassNumbers" id="weeksStart">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="startClassNumbers">:</p></div>
@@ -93,7 +93,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Primera Integral (28 de Abril):</font><br>
+	  <br><font class="checkpoint">📅 Primera Integral (6 de Octubre):</font><br>
 	  <div class="countdown">
 	    <div><p class="firstTestNumbers" id="weeksFirst">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="firstTestNumbers">:</p></div>
@@ -113,7 +113,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Segunda Integral (30 de Junio):</font><br>
+	  <br><font class="checkpoint">📅 Segunda Integral (3 de Noviembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="secondTestNumbers" id="weeksSecond">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="secondTestNumbers">:</p></div>
@@ -133,7 +133,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Tercera Integral (28 de Julio):</font><br>
+	  <br><font class="checkpoint">📅 Tercera Integral (9 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="thirdTestNumbers" id="weeksThird">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="thirdTestNumbers">:</p></div>
@@ -153,7 +153,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Examen Especial (4 de Agosto):</font><br>
+	  <br><font class="checkpoint">📅 Examen Especial (22 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="specialExamNumbers" id="weeksExam">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="specialExamNumbers">:</p></div>
@@ -173,7 +173,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Cierre de Semestre (8 de Agosto):</font><br>
+	  <br><font class="checkpoint">📅 Cierre de Semestre (26 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="lastDayNumbers" id="weeksEnd">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="lastDayNumbers">:</p></div>
@@ -217,12 +217,12 @@ var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var oneDay = 1000 * 60 * 60 * 24
-var firstClass = new Date("2025-03-17T00:00:00").getTime()
-var finalClass = new Date("2025-08-09T00:00:00").getTime() // Midnight, next day!
+var firstClass = new Date("2025-08-08T00:00:00").getTime()
+var finalClass = new Date("2025-12-27T00:00:00").getTime() // Midnight, next day!
 
 // OLD DATE FORMAT - DEPRACATED!
-// var firstClass = new Date("March 17, 2025 00:00:00").getTime()
-// var finalClass = new Date("July 19, 2025 00:00:00").getTime()
+// var firstClass = new Date("August 8, 2025 00:00:00").getTime()
+// var finalClass = new Date("December 27, 2025 00:00:00").getTime()
 
 // SETTING UP VARIABLES!
 var isNow = new Date()
@@ -281,8 +281,8 @@ thisTime = "yellow"
 function startClass() {
 classStart = document.querySelectorAll("p.startClassNumbers");
 // START WORKING
-// var countDownDate = new Date("March 17, 2025 08:00:00").getTime(); // OLD DATE FORMAT!
-var countDownDate = new Date("2025-03-17T08:00:00").getTime();
+// var countDownDate = new Date("August 18, 2025 08:00:00").getTime(); // OLD DATE FORMAT!
+var countDownDate = new Date("2025-08-18T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -316,8 +316,8 @@ var doTheLoop = setInterval(function(){
 function firstTest() {
 firstTest = document.querySelectorAll("p.firstTestNumbers");
 // START WORKING
-// var countDownDate = new Date("April 28, 2025 08:00:00").getTime(); // OLD DATE FORMA!
-var countDownDate = new Date("2025-04-28T08:00:00").getTime();
+// var countDownDate = new Date("October 6, 2025 08:00:00").getTime(); // OLD DATE FORMA!
+var countDownDate = new Date("2025-10-06T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -352,8 +352,8 @@ var doTheLoop = setInterval(function(){
 function secondTest() {
 secondTest = document.querySelectorAll("p.secondTestNumbers");
 // START WORKING
-// var countDownDate = new Date("June 30, 2025 08:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2025-06-30T08:00:00").getTime();
+// var countDownDate = new Date("November 3, 2025 08:00:00").getTime() // OLD DATE FORMAT!
+var countDownDate = new Date("2025-11-06T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -388,8 +388,8 @@ var doTheLoop = setInterval(function(){
 function thirdTest() {
 thirdTest = document.querySelectorAll("p.thirdTestNumbers");
 // START WORKING
-// var countDownDate = new Date("July 28, 2025 08:00:00").getTime() // OLD DATE FORMAT
-var countDownDate = new Date("2025-07-28T08:00:00").getTime();
+// var countDownDate = new Date("December 9, 2025 08:00:00").getTime() // OLD DATE FORMAT
+var countDownDate = new Date("2025-12-06T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -424,8 +424,8 @@ var doTheLoop = setInterval(function(){
 function specialExam() {
 specialExam = document.querySelectorAll("p.specialExamNumbers");
 // START WORKING
-// var countDownDate = new Date("August 4, 2025 08:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2025-08-04T08:00:00").getTime();
+// var countDownDate = new Date("December 22, 2025 08:00:00").getTime() // OLD DATE FORMAT!
+var countDownDate = new Date("2025-12-22T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -460,8 +460,8 @@ var doTheLoop = setInterval(function(){
 function lastDay() {
 lastDay = document.querySelectorAll("p.lastDayNumbers");
 // START WORKING
-// var countDownDate = new Date("August 08, 2025 08:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2025-08-08T08:00:00").getTime();
+// var countDownDate = new Date("Decembner 26, 2025 08:00:00").getTime() // OLD DATE FORMAT!
+var countDownDate = new Date("2025-12-26T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
