@@ -740,13 +740,16 @@ var thisDate = date.getDate()
 if (thisMonth < 7) { console.log("2nd Semester is finished!"); clickDec() }
 if (thisMonth >= 7 && thisMonth <= 11) {
 var thisFormat = elMes+thisDate
+
+// WHY DID I USE DATES IN SPANISH? - IT'S BEYOND ME!
+
  if (
   // CHECK AUGUST
-  thisFormat != "aug2" && thisFormat != "aug3" &&
-  thisFormat != "aug9" && thisFormat != "aug10" &&
-  thisFormat != "aug16" && thisFormat != "aug17" &&
-  thisFormat != "aug23" && thisFormat != "aug24" &&
-  thisFormat != "aug30" && thisFormat != "aug31" &&
+  thisFormat != "ago2" && thisFormat != "ago3" &&
+  thisFormat != "ago9" && thisFormat != "ago10" &&
+  thisFormat != "ago16" && thisFormat != "ago17" &&
+  thisFormat != "ago23" && thisFormat != "ago24" &&
+  thisFormat != "ago30" && thisFormat != "ago31" &&
   // CHECK SEPTEMBER
   thisFormat != "sep6" && thisFormat != "sep7" &&
   thisFormat != "sep13" && thisFormat != "sep14" &&
@@ -764,12 +767,12 @@ var thisFormat = elMes+thisDate
   thisFormat != "nov22" && thisFormat != "nov23" &&
   thisFormat != "nov29" && thisFormat != "nov30" &&
   // CHECK DECEMBER
-  thisFormat != "dec6" && thisFormat != "dec7" &&
-  thisFormat != "dec13" && thisFormat != "dec14" &&
-  thisFormat != "dec20" && thisFormat != "dec21" &&
-  thisFormat != "dec20" && thisFormat != "dec21")
+  thisFormat != "dic6" && thisFormat != "dic7" &&
+  thisFormat != "dic13" && thisFormat != "dic14" &&
+  thisFormat != "dic20" && thisFormat != "dic21" &&
+  thisFormat != "dic20" && thisFormat != "dic21")
   { underlineDate(thisFormat) }
-  else { console.log("No classes on this date!") }
+  else { console.log("No classes today!") }
   }
  else { console.log("Highlight Date Out of Range!") }
 }
@@ -799,16 +802,16 @@ for(let cells of August) {cells.style.display = "block";
   }
 
 September = document.querySelectorAll("div.days9");
-for(let cells of September){ cells.style.display = "none" }
+for(let cells of September) { cells.style.display = "none" }
 
 October = document.querySelectorAll("div.days10");
-for(let cells of October){ cells.style.display = "none" }
+for(let cells of October) { cells.style.display = "none" }
 
 November = document.querySelectorAll("div.days11");
-for(let cells of November){ cells.style.display = "none" }
+for(let cells of November) { cells.style.display = "none" }
 
 December = document.querySelectorAll("div.days12");
-for(let cells of December){ cells.style.display = "none" }
+for(let cells of December) { cells.style.display = "none" }
 
 }
 </script>
@@ -824,7 +827,7 @@ document.getElementById("agendaNov").style.display = "none";
 document.getElementById("agendaDec").style.display = "none";
 
 August = document.querySelectorAll("div.days8");
-for(let cells of August){ cells.style.display = "none" }
+for(let cells of August) { cells.style.display = "none" }
 
 September = document.querySelectorAll("div.days9");
 for(let cells of September) {cells.style.display = "block";
@@ -832,13 +835,13 @@ for(let cells of September) {cells.style.display = "block";
   }
 
 October = document.querySelectorAll("div.days10");
-for(let cells of October){ cells.style.display = "none" }
+for(let cells of October) { cells.style.display = "none" }
 
 November = document.querySelectorAll("div.days11");
-for(let cells of November){ cells.style.display = "none" }
+for(let cells of November) { cells.style.display = "none" }
 
 December = document.querySelectorAll("div.days12");
-for(let cells of December){ cells.style.display = "none" }
+for(let cells of December) { cells.style.display = "none" }
 
 }
 </script>
@@ -854,10 +857,10 @@ document.getElementById("agendaNov").style.display = "none";
 document.getElementById("agendaDec").style.display = "none";
 
 August = document.querySelectorAll("div.days8");
-for(let cells of August){ cells.style.display = "none" }
+for(let cells of August) { cells.style.display = "none" }
 
 September = document.querySelectorAll("div.days9");
-for(let cells of September){ cells.style.display = "none" }
+for(let cells of September) { cells.style.display = "none" }
 
 October = document.querySelectorAll("div.days10");
 for(let cells of October) {cells.style.display = "block";
@@ -865,10 +868,10 @@ for(let cells of October) {cells.style.display = "block";
   }
 
 November = document.querySelectorAll("div.days11");
-for(let cells of November){ cells.style.display = "none" }
+for(let cells of November) { cells.style.display = "none" }
 
 December = document.querySelectorAll("div.days12");
-for(let cells of December){ cells.style.display = "none" }
+for(let cells of December) { cells.style.display = "none" }
 
 }
 </script>
@@ -884,13 +887,13 @@ document.getElementById("agendaNov").style.display = "block";
 document.getElementById("agendaDec").style.display = "none";
 
 August = document.querySelectorAll("div.days8");
-for(let cells of August){ cells.style.display = "none" }
+for(let cells of August) { cells.style.display = "none" }
 
 September = document.querySelectorAll("div.days9");
-for(let cells of September){ cells.style.display = "none" }
+for(let cells of September) { cells.style.display = "none" }
 
 October = document.querySelectorAll("div.days10");
-for(let cells of October){ cells.style.display = "none" }
+for(let cells of October) { cells.style.display = "none" }
 
 November = document.querySelectorAll("div.days11");
 for(let cells of November) {cells.style.display = "block";
@@ -898,7 +901,7 @@ for(let cells of November) {cells.style.display = "block";
   }
 
 December = document.querySelectorAll("div.days12");
-for(let cells of December){ cells.style.display = "none" }
+for(let cells of December) { cells.style.display = "none" }
 
 }
 </script>
@@ -914,16 +917,16 @@ document.getElementById("agendaNov").style.display = "none";
 document.getElementById("agendaDec").style.display = "block";
 
 August = document.querySelectorAll("div.days8");
-for(let cells of August){ cells.style.display = "none" }
+for(let cells of August) { cells.style.display = "none" }
 
 September = document.querySelectorAll("div.days9");
-for(let cells of September){ cells.style.display = "none" }
+for(let cells of September) { cells.style.display = "none" }
 
 October = document.querySelectorAll("div.days10");
-for(let cells of October){ cells.style.display = "none" }
+for(let cells of October) { cells.style.display = "none" }
 
 November = document.querySelectorAll("div.days11");
-for(let cells of November){ cells.style.display = "none" }
+for(let cells of November) { cells.style.display = "none" }
 
 December = document.querySelectorAll("div.days12");
 for(let cells of December) {cells.style.display = "block";
