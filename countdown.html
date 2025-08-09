@@ -217,10 +217,10 @@ var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var oneDay = 1000 * 60 * 60 * 24
-var firstClass = new Date("2025-08-08T00:00:00").getTime()
+var firstClass = new Date("2025-08-18T00:00:00").getTime()
 var finalClass = new Date("2025-12-27T00:00:00").getTime() // Midnight, next day!
 
-// OLD DATE FORMAT - DEPRACATED!
+// OLD DATE FORMAT - DEPRECATED!
 // var firstClass = new Date("August 8, 2025 00:00:00").getTime()
 // var finalClass = new Date("December 27, 2025 00:00:00").getTime()
 
@@ -228,14 +228,22 @@ var finalClass = new Date("2025-12-27T00:00:00").getTime() // Midnight, next day
 var isNow = new Date()
 var currentDays = isNow - firstClass
 var semesterDays = finalClass - firstClass
+
 // CONVERTING!
 var termProgress = Math.floor(currentDays / oneDay); // console.log("Progress",termProgress)
 var termDuration = Math.floor(semesterDays / oneDay); // console.log("Duration",termDuration)
 
+// CALCULATING DISTANCE FROM START TO FINISH (IN PERCENTAGE)!
 distance = Math.abs(termProgress * 100 / termDuration); // console.log(distance.toFixed(2))
 
+// This writes 0% in progress if termProgress is Zero!
+if (termProgress < 0 || currentDays < 0) { distance = -1, console.log("Not yet!") }
+
+// progressBar is 0% if distance is Zero, as in the same day!
 if (distance == 0) {$("#progressBar").css("width", "0%") }
-if (distance > 0) {
+
+// Loop writes distance and changes colors!
+if (distance >= 0) {
  var doTheLoop = setInterval(function(){
   i++;
   $("#progressBar").css("width", i + "%")
