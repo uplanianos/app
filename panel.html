@@ -127,7 +127,7 @@ function detectJS() {
 
  <!-- SEMESTER PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;semestral:</b>&nbsp;8/Agosto</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;II,&nbsp;2025:</b>&nbsp;Diciembre&nbsp;26</div>
   <div class="progressWrapper">
 	 <div id="semesterBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -136,7 +136,7 @@ function detectJS() {
 
  <!-- YEAR PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance&nbsp;anual: </b>&nbsp;31/Diciembre:</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance&nbsp;2025:</b>&nbsp;Diciembre&nbsp;31:</div>
   <div class="progressWrapper">
 	 <div id="yearBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -476,8 +476,8 @@ var percent = duration / 100; // 1 percent of duration!
 var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
-var firstClass = new Date("2025-03-17T00:00:00").getTime()
-var finalClass = new Date("2025-08-08T23:59:59").getTime()
+var firstClass = new Date("2025-08-18T00:00:00").getTime()
+var finalClass = new Date("2025-12-27T00:00:00").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstClass
@@ -488,6 +488,7 @@ var termProgress = Math.floor(currentDays / oneDay)
 var termDuration = Math.floor(semesterDays / oneDay)
 
 distance = Math.abs(termProgress * 100 / termDuration)
+if (currentDays < 0 || termProgress < 0) { distance = -1 }
 
 if (distance == 0) {$("#semesterBar").css("width", "0%") }
 if (distance > 0) {
@@ -522,7 +523,7 @@ var iYear = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var firstDay =	new Date("2025-01-01T00:00:00").getTime()
-var lastDay =	new Date("2025-12-31T23:59:59").getTime()
+var lastDay =	new Date("2026-01-01T00:00:00").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstDay
