@@ -44,7 +44,7 @@
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 1) {blurMenu(); window.location.replace("agenda.html")}
- if (titleMenu.value == 110) {blurMenu(); window.location.replace("agenda.html?i1=oct6m&i2=nov3m&i3=dec9m&ex=dec22t&c=Curso")}
+ if (titleMenu.value == 110) {blurMenu(); window.location.replace("agenda.html?i1=oct6m&i2=nov3m&i3=dic9m&ex=dic22t&c=Curso")}
  if (titleMenu.value == 111) {setTimeout('blurMenu()', 1000); window.print()}
  if (titleMenu.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
  if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
@@ -942,13 +942,13 @@ for(let cells of December) {cells.style.display = "block";
 function doDelete() {
   agendaFull = document.getElementById("grid-agenda")
   deleteAnim = document.getElementById("deleteAnim")
-  if (confirm('¿Desea borrar todos los meses?')) {    setTimeout(function() { agendaFull.style.opacity = "0.80" }, 1000 * 0.1)
+  if (confirm('¿Desea borrar todos los meses?')) { setTimeout(function() { agendaFull.style.opacity = "0.80" }, 1000 * 0.1)
     setTimeout(function() { agendaFull.style.opacity = "0.60" }, 1000 * 0.2)
     setTimeout(function() { agendaFull.style.opacity = "0.45" }, 1000 * 0.3)
     setTimeout(function() { agendaFull.style.opacity = "0.20" }, 1000 * 0.4)
     setTimeout(function() { agendaFull.style.opacity = "0" }, 1000 * 0.5)
     setTimeout(function() { clearSchedule(); deleteAnim.style.display = "flex" }, 1000 * 0.6)
-    setTimeout(function() { window.location = "agenda.html" }, 1000 * 1)
+    setTimeout(function() { window.location = "agenda.html" }, 1000 * 1.2)
   }
   else { console.log("Eso estuvo cerca!") }
 }
