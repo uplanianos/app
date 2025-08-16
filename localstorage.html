@@ -35,7 +35,7 @@
       <option value="15">📝 Timebox (Upla)</option>
 <!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
     </select>
-    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Votación Uplaniana.</p></div>
+    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Test 18:47!</p></div>
 
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
@@ -65,8 +65,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div class="grid-item-slider" style="padding: 12px; text-align: center;">
 
   <br>
-  <input type="text"	id="motion1"	name="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
-  <input type="text"	id="motion2"	name="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
+  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
+  <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
   <br>
   <br>
 
@@ -93,31 +93,23 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
-  $('input').each(function(){
-    var id = $(this).attr('id')
-    var value = $(this).val()
-    localStorage.setItem(id, value)
 
+    // var motion1 = document.getElementById("motion1").value
+    // var motion2 = document.getElementById("motion1").value
     // localStorage.setItem(motion1, value)
     // localStorage.setItem(motion2, value)
-    localStorage.motion1 = motion1.value
-    localStorage.motion2 = motion2.value
-
-  })
+    if (typeof(Storage) !== "undefined") {
+     localStorage.motion1 = document.getElementById("motion1").value
+     localStorage.motion2 = document.getElementById("motion2").value
+    }
 }
 
 window.onload = function() {
-  $('input').each(function(){
-    var id = $(this).attr('id');
-    var userInput = localStorage.getItem(id);
-    if (userInput !== null) $('#'+id).val(userInput);
 
     // console.log(motion1.value, motion2.value)
     console.log(localStorage.motion1, localStorage.motion2)
     document.getElementById("motion1").value = localStorage.motion1
     document.getElementById("motion2").value = localStorage.motion2
-
-  })
 
 }
 </script>
