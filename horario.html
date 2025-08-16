@@ -75,52 +75,121 @@ function exitSoon(){window.location = "index.html"}
 
 
 <!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+// SAVING FIRST PERIOD
+localStorage.one1 = document.getElementById("one1").value
+localStorage.one2 = document.getElementById("one2").value
+localStorage.one3 = document.getElementById("one3").value
+localStorage.one4 = document.getElementById("one4").value
+localStorage.one5 = document.getElementById("one5").value
+// SAVING SECOND PERIOD
+localStorage.two1 = document.getElementById("two1").value
+localStorage.two2 = document.getElementById("two2").value
+localStorage.two3 = document.getElementById("two3").value
+localStorage.two4 = document.getElementById("two4").value
+localStorage.two5 = document.getElementById("two5").value
+// SAVING THIRD PERIOD
+localStorage.three1 = document.getElementById("three1").value
+localStorage.three2 = document.getElementById("three2").value
+localStorage.three3 = document.getElementById("three3").value
+localStorage.three4 = document.getElementById("three4").value
+localStorage.three5 = document.getElementById("three5").value
+// SAVING FOURTH PERIOD
+localStorage.four1 = document.getElementById("four1").value
+localStorage.four2 = document.getElementById("four2").value
+localStorage.four3 = document.getElementById("four3").value
+localStorage.four4 = document.getElementById("four4").value
+localStorage.four5 = document.getElementById("four5").value
+// SAVING FIFTH PERIOD
+localStorage.five1 = document.getElementById("five1").value
+localStorage.five2 = document.getElementById("five2").value
+localStorage.five3 = document.getElementById("five3").value
+localStorage.five4 = document.getElementById("five4").value
+localStorage.five5 = document.getElementById("five5").value
+// SAVING SIXTH PERIOD
+localStorage.six1 = document.getElementById("six1").value
+localStorage.six2 = document.getElementById("six2").value
+localStorage.six3 = document.getElementById("six3").value
+localStorage.six4 = document.getElementById("six4").value
+localStorage.six5 = document.getElementById("six5").value
+// SAVING SEVENTH PERIOD
+localStorage.seven1 = document.getElementById("seven1").value
+localStorage.seven2 = document.getElementById("seven2").value
+localStorage.seven3 = document.getElementById("seven3").value
+localStorage.seven4 = document.getElementById("seven4").value
+localStorage.seven5 = document.getElementById("seven5").value
+// SAVING EIGHTH PERIOD
+localStorage.eight1 = document.getElementById("eight1").value
+localStorage.eight2 = document.getElementById("eight2").value
+localStorage.eight3 = document.getElementById("eight3").value
+localStorage.eight4 = document.getElementById("eight4").value
+localStorage.eight5 = document.getElementById("eight5").value
 }
+
 window.onload = function() {
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
+// LOAD PERIOD 1!
+document.getElementById("one1").value = localStorage.one1
+document.getElementById("one2").value = localStorage.one2
+document.getElementById("one3").value = localStorage.one3
+document.getElementById("one4").value = localStorage.one4
+document.getElementById("one5").value = localStorage.one5
+
+// LOAD PERIOD 2!
+document.getElementById("two1").value = localStorage.two1
+document.getElementById("two2").value = localStorage.two2
+document.getElementById("two3").value = localStorage.two3
+document.getElementById("two4").value = localStorage.two4
+document.getElementById("two5").value = localStorage.two5
+
+// LOAD PERIOD 3!
+document.getElementById("three1").value = localStorage.three1
+document.getElementById("three2").value = localStorage.three2
+document.getElementById("three3").value = localStorage.three3
+document.getElementById("three4").value = localStorage.three4
+document.getElementById("three5").value = localStorage.three5
+
+// LOAD PERIOD 4!
+document.getElementById("four1").value = localStorage.four1
+document.getElementById("four2").value = localStorage.four2
+document.getElementById("four3").value = localStorage.four3
+document.getElementById("four4").value = localStorage.four4
+document.getElementById("four5").value = localStorage.four5
+
+// LOAD PERIOD 5!
+document.getElementById("five1").value = localStorage.five1
+document.getElementById("five2").value = localStorage.five2
+document.getElementById("five3").value = localStorage.five3
+document.getElementById("five4").value = localStorage.five4
+document.getElementById("five5").value = localStorage.five5
+
+// LOAD PERIOD 6!
+document.getElementById("six1").value = localStorage.six1
+document.getElementById("six2").value = localStorage.six2
+document.getElementById("six3").value = localStorage.six3
+document.getElementById("six4").value = localStorage.six4
+document.getElementById("six5").value = localStorage.six5
+
+// LOAD PERIOD 7!
+document.getElementById("seven1").value = localStorage.seven1
+document.getElementById("seven2").value = localStorage.seven2
+document.getElementById("seven3").value = localStorage.seven3
+document.getElementById("seven4").value = localStorage.seven4
+document.getElementById("seven5").value = localStorage.seven5
+
+// LOAD PERIOD 8!
+document.getElementById("eight1").value = localStorage.eight1
+document.getElementById("eight2").value = localStorage.eight2
+document.getElementById("eight3").value = localStorage.eight3
+document.getElementById("eight4").value = localStorage.eight4
+document.getElementById("eight5").value = localStorage.eight5
+
+// LOAD OTHER FUNCTIONS
 withinCells()
-detectJS()
 }
+
 </script>
-
-
-
-
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-
-<script type="text/javascript">
-function detectJS() {
- document.getElementById("appleWarning").style.display = "none"
-}
-</script>
-
-<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
-<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
-[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
-[ Configuración > Safari > Avanzado > JavaScript > ON ]
-</div>
-
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
 
 
 
@@ -344,12 +413,12 @@ scheduleName = document.getElementById("scheduleName");
 developedBy = "Desarrollado por Uplanianos: <font color='blue'><u>https://www.instagram.com/uplanianos/</u></font>"
 const monthsOfTheYear = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 if (month >= 1 && month <= 5) {
-    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - PRIMER SEMESTRE, " + year;
+    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - I, " + year;
     document.title = "Uplanianos - Horario - I, " + year;
     document.getElementById("foot").innerHTML = developedBy + " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
 if (month >= 6 && month <= 11) {
-    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - SEGUNDO SEMESTRE, " + year;
+    scheduleName.innerHTML = "<a href='index.html'>UPLANIANOS:</a> HORARIO - II, " + year;
     document.title = "Uplanianos - Horario - II, " + year;
     document.getElementById("foot").innerHTML = developedBy + " - Impreso el " + dateDay + " de " + monthsOfTheYear[month] + ", " + year + ".";
     }
