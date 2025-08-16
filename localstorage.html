@@ -98,6 +98,7 @@ window.onbeforeunload = function() {
     var value = $(this).val()
     localStorage.setItem(id, value)
 
+    localStorage.setItem(motion1, value)
     localStorage.setItem(motion2, value)
 
   })
@@ -109,9 +110,9 @@ window.onload = function() {
     var userInput = localStorage.getItem(id);
     if (userInput !== null) $('#'+id).val(userInput);
 
-    // console.log(motion2.value)
-    motion2.innerHTML = motion2
-
+    console.log(motion1.value, motion2.value)
+    document.getElementById("motion1").innerTEXT = motion1.value
+    document.getElementById("motion2").innerHTML = motion2.value
 
   })
 
