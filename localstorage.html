@@ -98,8 +98,10 @@ window.onbeforeunload = function() {
     var value = $(this).val()
     localStorage.setItem(id, value)
 
-    localStorage.setItem(motion1, value)
-    localStorage.setItem(motion2, value)
+    // localStorage.setItem(motion1, value)
+    // localStorage.setItem(motion2, value)
+    localStorage.motion1 = motion1.value
+    localStorage.motion2 = motion2.value
 
   })
 }
@@ -111,7 +113,7 @@ window.onload = function() {
     if (userInput !== null) $('#'+id).val(userInput);
 
     // console.log(motion1.value, motion2.value)
-    // console.log(localStorage.motion1)
+    console.log(localStorage.motion1, localStorage.motion2)
     document.getElementById("motion1").value = localStorage.motion1
     document.getElementById("motion2").value = localStorage.motion2
 
