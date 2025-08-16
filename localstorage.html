@@ -66,7 +66,6 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
   <br>
   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
-  <input type="text"	id="testing"	class="voteMotion" value="" placeholder="Save Test" name="testing" onblur="saveValue(event)" onchange="saveValue(event)">
   <br>
   <br>
 
@@ -83,49 +82,59 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+  $('input').each(function(){
+    var id = $(this).attr('id');
+    var value = $(this).val();
+    localStorage.setItem(id, value);
+  });
 }
 
 window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
+  $('input').each(function(){
+    var id = $(this).attr('id');
+    var text2 = localStorage.getItem(id);
+    if (text2 !== null) $('#'+id).val(text2);
+
+    if (typeof(Storage) !== "undefined") {
+      if (localStorage.id) { localStorage.id = Input(localStorage.id) } 
+    }
+
+  });
 
 }
 </script>
 
 
-<script type="text/javascript">
-function saveValue(event) {
-var nameArr = ["testing"];
-var inputs = [...document.getElementsByClassName('inputs')];
 
-inputs.forEach(function(el) {
-  console.log()
-  el.value = getSavedValue(el.testing);
-})
 
-function saveValue(e) {
-  var testing = e.target.testing;
-  var val = e.target.value;
-  localStorage.setItem(testing, val);
- }
+<script>
+function clickCounter() {
 
-function getSavedValue(v) {
-  if (!localStorage.getItem(v)) {
-    return "";
+  const x = document.getElementById("result");
+
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+
+    x.innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s)!";
+  } else {
+    x.innerHTML = "Sorry, no Web storage support!";
   }
-  return localStorage.getItem(v);
- }
 
 }
 </script>
+
+<h1>localStorage</h1>
+
+<button onclick="clickCounter()" type="button">Click me!</button>
+<p id="result"></p>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count.</p>
+
+
 
 
 </body>
