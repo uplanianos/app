@@ -65,10 +65,20 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div class="grid-item-slider" style="padding: 12px; text-align: center;">
 
   <br>
-  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
-  <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
+  <input type="text"	id="motion1"	name="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
+  <input type="text"	id="motion2"	name="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
   <br>
   <br>
+
+<h1>localStorage</h1>
+
+<button onclick="clickCounter()" type="button">Click me!</button>
+<p id="result"></p>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count.</p>
+
+
+
 
 </div>
 <br>
@@ -87,6 +97,9 @@ window.onbeforeunload = function() {
     var id = $(this).attr('id')
     var value = $(this).val()
     localStorage.setItem(id, value)
+
+    localStorage.setItem(motion2, value)
+
   })
 }
 
@@ -96,15 +109,9 @@ window.onload = function() {
     var userInput = localStorage.getItem(id);
     if (userInput !== null) $('#'+id).val(userInput);
 
-    console.log(userInput)
+    // console.log(motion2.value)
+    motion2.innerHTML = motion2
 
-    if (typeof(Storage) !== "undefined") {
-      if (localStorage = userInput) {
-	var input = userInput
-	console.log("Loading", input);
-	id = userInput
-	}
-    }
 
   })
 
@@ -133,14 +140,6 @@ function clickCounter() {
 
 }
 </script>
-
-<h1>localStorage</h1>
-
-<button onclick="clickCounter()" type="button">Click me!</button>
-<p id="result"></p>
-<p>Click the button to see the counter increase.</p>
-<p>Close the browser tab (or window), and try again, and the counter will continue to count.</p>
-
 
 
 
