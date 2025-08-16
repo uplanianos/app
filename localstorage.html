@@ -65,8 +65,8 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div class="grid-item-slider" style="padding: 12px; text-align: center;">
 
   <br>
-  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
-  <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
+  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="saveUserInput()">
+  <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="saveUserInput()">
   <br>
   <br>
 
@@ -86,10 +86,6 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 
 <!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
@@ -134,6 +130,11 @@ function clickCounter() {
     x.innerHTML = "Sorry, no Web storage support!";
   }
 
+}
+
+function saveUserInput() {
+  localStorage.motion1 = document.getElementById("motion1").value
+  localStorage.motion2 = document.getElementById("motion2").value
 }
 </script>
 
