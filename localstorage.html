@@ -110,9 +110,10 @@ window.onload = function() {
     var userInput = localStorage.getItem(id);
     if (userInput !== null) $('#'+id).val(userInput);
 
-    console.log(motion1.value, motion2.value)
-    document.getElementById("motion1").innerTEXT = motion1.value
-    document.getElementById("motion2").innerHTML = motion2.value
+    // console.log(motion1.value, motion2.value)
+    // console.log(localStorage.motion1)
+    document.getElementById("motion1").value = motion1.value
+    document.getElementById("motion2").value = motion2.value
 
   })
 
