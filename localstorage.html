@@ -66,6 +66,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
   <br>
   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
+  <input type="text"	id="testing"	class="voteMotion" value="" placeholder="Save Test" name="testing" onblur="saveValue(event)" onchange="saveValue(event)">
   <br>
   <br>
 
@@ -76,7 +77,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <!- SAVE FUNCTION ->
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="https://code.jquery.com/jquery-4.0.0-rc.1.js"></script>
+<script src="scripts/jquery-3.7.1.slim.js"></script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 <!- https://jquery.com/download/ ->
 
@@ -95,6 +96,33 @@ window.onload = function() {
        var text2 = localStorage.getItem(id);
        if (text2 !== null) $('#'+id).val(text2);
     });
+
+}
+</script>
+
+
+<script type="text/javascript">
+function saveValue(event) {
+var nameArr = ["testing"];
+var inputs = [...document.getElementsByClassName('inputs')];
+
+inputs.forEach(function(el) {
+  console.log()
+  el.value = getSavedValue(el.testing);
+})
+
+function saveValue(e) {
+  var testing = e.target.testing;
+  var val = e.target.value;
+  localStorage.setItem(testing, val);
+ }
+
+function getSavedValue(v) {
+  if (!localStorage.getItem(v)) {
+    return "";
+  }
+  return localStorage.getItem(v);
+ }
 
 }
 </script>
