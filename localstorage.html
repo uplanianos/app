@@ -88,6 +88,12 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
         function loadData() {
             const savedData = localStorage.getItem('mySavedData');
             document.getElementById('displayData').textContent = savedData || 'No data saved.';
+
+		$('input').each(function(){
+		 var id = $(this).attr('id');
+		 var value = $(this).val();
+		 localStorage.setItem(id, value);
+		})
         }
 
         function clearData() {
@@ -140,8 +146,6 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 
-// LOAD INPUT DATA (IPHONE)!
-input = localStorage.getItem('id')
 
 // CALLS TO ANOTHER FUNCTION!!
 initialSetup()
