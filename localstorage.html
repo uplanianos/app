@@ -66,6 +66,7 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
   <br>
   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
+  <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2">
   <br>
   <br>
 
@@ -83,23 +84,29 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <script type="text/javascript">
 window.onbeforeunload = function() {
   $('input').each(function(){
-    var id = $(this).attr('id');
-    var value = $(this).val();
-    localStorage.setItem(id, value);
-  });
+    var id = $(this).attr('id')
+    var value = $(this).val()
+    localStorage.setItem(id, value)
+  })
 }
 
 window.onload = function() {
   $('input').each(function(){
     var id = $(this).attr('id');
-    var text2 = localStorage.getItem(id);
-    if (text2 !== null) $('#'+id).val(text2);
+    var userInput = localStorage.getItem(id);
+    if (userInput !== null) $('#'+id).val(userInput);
+
+    console.log(userInput)
 
     if (typeof(Storage) !== "undefined") {
-      if (localStorage.id) { localStorage.id = Input(localStorage.id) } 
+      if (localStorage = userInput) {
+	var input = userInput
+	console.log("Loading", input);
+	id = userInput
+	}
     }
 
-  });
+  })
 
 }
 </script>
