@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="files/pages-style.css">
 	<title>Data Save Test</title>
 </head>
+	
+
 
 <body>
-<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
-
 
 <div class="main" style="background-color: transparent; left-margin: 200px;">
     <div class="labels"><p>
@@ -65,68 +65,18 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 <div class="grid-item-slider" style="padding: 12px; text-align: center;">
 
   <br>
-  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues()">
+  <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1">
   <br>
   <br>
-
-<h1>LocalStorage Example</h1>
-
-    <input type="text" id="dataInput" placeholder="Enter data">
-    <button onclick="saveData()">Save Data</button>
-    <button onclick="loadData()">Load Data</button>
-    <button onclick="clearData()">Clear Data</button>
-
-    <p>Saved Data: <span id="displayData"></span></p>
-
-    <script>
-        function saveData() {
-            const data = document.getElementById('dataInput').value;
-            localStorage.setItem('mySavedData', data);
-            alert('Data saved!');
-        }
-
-        function loadData() {
-            const savedData = localStorage.getItem('mySavedData');
-            document.getElementById('displayData').textContent = savedData || 'No data saved.';
-
-		$('input').each(function(){
-		 var id = $(this).attr('id');
-		 var value = $(this).val();
-		 localStorage.setItem(id, value);
-		})
-        }
-
-        function clearData() {
-            localStorage.removeItem('mySavedData'); // Or localStorage.clear() to clear all data for the origin
-            document.getElementById('displayData').textContent = '';
-            alert('Data cleared!');
-        }
-
-        // Load data when the page loads
-        window.onload = loadData;
-    </script>
-
 
 </div>
 <br>
 
 
-<script type="text/javascript">
-// SETTING UP GLOBAL VALUES!
-
-// TEST INPUT FIELD
-function initialSetup() {
-var motion1 = document.getElementById("motion1")
-}
-
-</script>
-
-
-
 
 <!- SAVE FUNCTION ->
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
+<script src="https://code.jquery.com/jquery-4.0.0-rc.1.js"></script>
 <!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
 <!- https://jquery.com/download/ ->
 
@@ -146,28 +96,6 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 
-
-// CALLS TO ANOTHER FUNCTION!!
-initialSetup()
-loadData()
-}
-</script>
-
-
-
-
-
-
-<script type="text/javascript">
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("return").style.top = "6px"; 
-  } else {
-    document.getElementById("return").style.top = "-40px"; 
-  }
-  prevScrollpos = currentScrollPos;
 }
 </script>
 
