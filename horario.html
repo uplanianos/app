@@ -78,8 +78,12 @@ function exitSoon(){window.location = "index.html"}
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
-
 if (typeof(Storage) !== "undefined") {
+ saveData()
+ }
+}
+
+function saveData() {
   // SAVING FIRST PERIOD
   localStorage.one1 = document.getElementById("one1").value
   localStorage.one2 = document.getElementById("one2").value
@@ -129,15 +133,20 @@ if (typeof(Storage) !== "undefined") {
   localStorage.eight4 = document.getElementById("eight4").value
   localStorage.eight5 = document.getElementById("eight5").value
   }
-}
 
 window.onload = function() {
+// LOAD OTHER FUNCTIONS
+loadData()
+withinCells()
+}
+
+function loadData() {
 // LOAD PERIOD 1!
-document.getElementById("one1").value = localStorage.one1
-document.getElementById("one2").value = localStorage.one2
-document.getElementById("one3").value = localStorage.one3
-document.getElementById("one4").value = localStorage.one4
-document.getElementById("one5").value = localStorage.one5
+document.getElementById("one1").value = localStorage.one1 || ""
+document.getElementById("one2").value = localStorage.one2 || ""
+document.getElementById("one3").value = localStorage.one3 || ""
+document.getElementById("one4").value = localStorage.one4 || ""
+document.getElementById("one5").value = localStorage.one5 || ""
 
 // LOAD PERIOD 2!
 document.getElementById("two1").value = localStorage.two1
@@ -187,11 +196,6 @@ document.getElementById("eight2").value = localStorage.eight2
 document.getElementById("eight3").value = localStorage.eight3
 document.getElementById("eight4").value = localStorage.eight4
 document.getElementById("eight5").value = localStorage.eight5
-
-
-
-// LOAD OTHER FUNCTIONS
-withinCells()
 }
 
 </script>
@@ -212,67 +216,67 @@ withinCells()
 
  <div class="yellowDiv" id="period1">1</div>
  <div class="yellowDiv" id="hours01">08:00<br>09:15</div>
- <div><textarea class="scheduleArea" maxlength="70" id="one1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="one2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="one3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="one4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="one5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="one5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period2">2</div>
  <div class="yellowDiv" id="hours02">09:30<br>10:45</div>
- <div><textarea class="scheduleArea" maxlength="70" id="two1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="two2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="two3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="two4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="two5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="two5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period3">3</div>
  <div class="yellowDiv" id="hours03">11:00<br>12:15</div>
- <div><textarea class="scheduleArea" maxlength="70" id="three1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="three2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="three3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="three4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="three5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="three5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period4">4</div>
  <div class="yellowDiv" id="hours04">12:30<br>13:45</div>
- <div><textarea class="scheduleArea" maxlength="70" id="four1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="four2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="four3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="four4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="four5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="four5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period5">5</div>
  <div class="yellowDiv" id="hours05">14:00<br>15:15</div>
- <div><textarea class="scheduleArea" maxlength="70" id="five1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="five2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="five3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="five4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="five5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="five5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period6">6</div>
  <div class="yellowDiv" id="hours06">15:30<br>16:45</div>
- <div><textarea class="scheduleArea" maxlength="70" id="six1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="six2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="six3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="six4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="six5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="six5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period7">7</div>
  <div class="yellowDiv" id="hours07">17:00<br>18:15</div>
- <div><textarea class="scheduleArea" maxlength="70" id="seven1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="seven2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="seven3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="seven4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="seven5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="seven5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div class="yellowDiv" id="period8">8</div>
  <div class="yellowDiv" id="hours08">18:30<br>19:45</div>
- <div><textarea class="scheduleArea" maxlength="70" id="eight1" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="eight2" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="eight3" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="eight4" onChange="withinCells()"></textarea></div>
- <div><textarea class="scheduleArea" maxlength="70" id="eight5" onChange="withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight1" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight2" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight3" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight4" onChange="saveData(); withinCells()"></textarea></div>
+ <div><textarea class="scheduleArea" maxlength="70" id="eight5" onChange="saveData(); withinCells()"></textarea></div>
 
  <div id="foot" class="foot" style="grid-area: fin; text-align: center; font-size: 12px; border: 0px; border-style: hidden; padding-top: 18px;">
  Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
