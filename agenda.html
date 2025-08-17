@@ -1177,14 +1177,14 @@ for(let cells of December) {cells.style.display = "block";
 function doDelete() {
   agendaFull = document.getElementById("grid-agenda")
   deleteAnim = document.getElementById("deleteAnim")
-  if (confirm('¿Desea borrar todos los meses?')) { setTimeout(function() { agendaFull.style.opacity = "0.80" }, 1000 * 0.1)
+  if (confirm('¿Desea borrar todos los meses?')) {
+    setTimeout(function() { agendaFull.style.opacity = "0.80" }, 1000 * 0.1)
     setTimeout(function() { agendaFull.style.opacity = "0.60" }, 1000 * 0.2)
     setTimeout(function() { agendaFull.style.opacity = "0.45" }, 1000 * 0.3)
     setTimeout(function() { agendaFull.style.opacity = "0.20" }, 1000 * 0.4)
     setTimeout(function() { agendaFull.style.opacity = "0" }, 1000 * 0.5)
-    setTimeout(function() { clearSchedule(); deleteAnim.style.display = "flex" }, 1000 * 0.6)
-    setTimeout(function() { window.location = "agenda.html" }, 1000 * 1.2)
-    saveData()
+    setTimeout(function() { clearSchedule(); saveData(); deleteAnim.style.display = "flex" }, 1000 * 0.6)
+    setTimeout(function() { saveData(); window.location = "agenda.html" }, 1000 * 1.2)
   }
   else { console.log("Eso estuvo cerca!") }
 }
