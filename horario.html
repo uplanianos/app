@@ -309,6 +309,7 @@ function doDelete() {
 function deleteAll() {
   const schedule = document.querySelectorAll("textarea")
   for (let cells of schedule) { cells.value = '' }
+  saveData()
 }
 </script>
 
@@ -386,7 +387,7 @@ const schedule = document.querySelectorAll("textarea")
   if (cells.value.length >= 65) { cells.style.backgroundColor = lightPink }
  }
 
-rightNow();
+rightNow()
 
 }
 </script>
