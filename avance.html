@@ -78,51 +78,190 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+if (typeof(Storage) !== "undefined") { saveData() }
 }
+
+function saveData() {
+// SAVING FIRST YEAR
+localStorage.first01 = document.getElementById("first01").value; localStorage.firstGrade01 = document.getElementById("firstGrade01").value
+localStorage.first02 = document.getElementById("first02").value; localStorage.firstGrade02 = document.getElementById("firstGrade02").value
+localStorage.first03 = document.getElementById("first03").value; localStorage.firstGrade03 = document.getElementById("firstGrade03").value
+localStorage.first04 = document.getElementById("first04").value; localStorage.firstGrade04 = document.getElementById("firstGrade04").value
+localStorage.first05 = document.getElementById("first05").value; localStorage.firstGrade05 = document.getElementById("firstGrade05").value
+localStorage.first06 = document.getElementById("first06").value; localStorage.firstGrade06 = document.getElementById("firstGrade06").value
+localStorage.first07 = document.getElementById("first07").value; localStorage.firstGrade07 = document.getElementById("firstGrade07").value
+localStorage.first08 = document.getElementById("first08").value; localStorage.firstGrade08 = document.getElementById("firstGrade08").value
+localStorage.first09 = document.getElementById("first09").value; localStorage.firstGrade09 = document.getElementById("firstGrade09").value
+localStorage.first10 = document.getElementById("first10").value; localStorage.firstGrade10 = document.getElementById("firstGrade10").value
+localStorage.first11 = document.getElementById("first11").value; localStorage.firstGrade11 = document.getElementById("firstGrade11").value
+localStorage.first12 = document.getElementById("first12").value; localStorage.firstGrade12 = document.getElementById("firstGrade12").value
+localStorage.first13 = document.getElementById("first13").value; localStorage.firstGrade13 = document.getElementById("firstGrade13").value
+localStorage.first14 = document.getElementById("first14").value; localStorage.firstGrade14 = document.getElementById("firstGrade14").value
+localStorage.first15 = document.getElementById("first15").value; localStorage.firstGrade15 = document.getElementById("firstGrade15").value
+
+// SAVING SECOND YEAR
+localStorage.second01 = document.getElementById("second01").value; localStorage.secondGrade01 = document.getElementById("secondGrade01").value
+localStorage.second02 = document.getElementById("second02").value; localStorage.secondGrade02 = document.getElementById("secondGrade02").value
+localStorage.second03 = document.getElementById("second03").value; localStorage.secondGrade03 = document.getElementById("secondGrade03").value
+localStorage.second04 = document.getElementById("second04").value; localStorage.secondGrade04 = document.getElementById("secondGrade04").value
+localStorage.second05 = document.getElementById("second05").value; localStorage.secondGrade05 = document.getElementById("secondGrade05").value
+localStorage.second06 = document.getElementById("second06").value; localStorage.secondGrade06 = document.getElementById("secondGrade06").value
+localStorage.second07 = document.getElementById("second07").value; localStorage.secondGrade07 = document.getElementById("secondGrade07").value
+localStorage.second08 = document.getElementById("second08").value; localStorage.secondGrade08 = document.getElementById("secondGrade08").value
+localStorage.second09 = document.getElementById("second09").value; localStorage.secondGrade09 = document.getElementById("secondGrade09").value
+localStorage.second10 = document.getElementById("second10").value; localStorage.secondGrade10 = document.getElementById("secondGrade10").value
+localStorage.second11 = document.getElementById("second11").value; localStorage.secondGrade11 = document.getElementById("secondGrade11").value
+localStorage.second12 = document.getElementById("second12").value; localStorage.secondGrade12 = document.getElementById("secondGrade12").value
+localStorage.second13 = document.getElementById("second13").value; localStorage.secondGrade13 = document.getElementById("secondGrade13").value
+localStorage.second14 = document.getElementById("second14").value; localStorage.secondGrade14 = document.getElementById("secondGrade14").value
+localStorage.second15 = document.getElementById("second15").value; localStorage.secondGrade15 = document.getElementById("secondGrade15").value
+
+// SAVING THIRD YEAR
+localStorage.third01 = document.getElementById("third01").value; localStorage.thirdGrade01 = document.getElementById("thirdGrade01").value
+localStorage.third02 = document.getElementById("third02").value; localStorage.thirdGrade02 = document.getElementById("thirdGrade02").value
+localStorage.third03 = document.getElementById("third03").value; localStorage.thirdGrade03 = document.getElementById("thirdGrade03").value
+localStorage.third04 = document.getElementById("third04").value; localStorage.thirdGrade04 = document.getElementById("thirdGrade04").value
+localStorage.third05 = document.getElementById("third05").value; localStorage.thirdGrade05 = document.getElementById("thirdGrade05").value
+localStorage.third06 = document.getElementById("third06").value; localStorage.thirdGrade06 = document.getElementById("thirdGrade06").value
+localStorage.third07 = document.getElementById("third07").value; localStorage.thirdGrade07 = document.getElementById("thirdGrade07").value
+localStorage.third08 = document.getElementById("third08").value; localStorage.thirdGrade08 = document.getElementById("thirdGrade08").value
+localStorage.third09 = document.getElementById("third09").value; localStorage.thirdGrade09 = document.getElementById("thirdGrade09").value
+localStorage.third10 = document.getElementById("third10").value; localStorage.thirdGrade10 = document.getElementById("thirdGrade10").value
+localStorage.third11 = document.getElementById("third11").value; localStorage.thirdGrade11 = document.getElementById("thirdGrade11").value
+localStorage.third12 = document.getElementById("third12").value; localStorage.thirdGrade12 = document.getElementById("thirdGrade12").value
+localStorage.third13 = document.getElementById("third13").value; localStorage.thirdGrade13 = document.getElementById("thirdGrade13").value
+localStorage.third14 = document.getElementById("third14").value; localStorage.thirdGrade14 = document.getElementById("thirdGrade14").value
+localStorage.third15 = document.getElementById("third15").value; localStorage.thirdGrade15 = document.getElementById("thirdGrade15").value
+
+// SAVING FOURTH YEAR
+localStorage.fourth01 = document.getElementById("fourth01").value; localStorage.fourthGrade01 = document.getElementById("fourthGrade01").value
+localStorage.fourth02 = document.getElementById("fourth02").value; localStorage.fourthGrade02 = document.getElementById("fourthGrade02").value
+localStorage.fourth03 = document.getElementById("fourth03").value; localStorage.fourthGrade03 = document.getElementById("fourthGrade03").value
+localStorage.fourth04 = document.getElementById("fourth04").value; localStorage.fourthGrade04 = document.getElementById("fourthGrade04").value
+localStorage.fourth05 = document.getElementById("fourth05").value; localStorage.fourthGrade05 = document.getElementById("fourthGrade05").value
+localStorage.fourth06 = document.getElementById("fourth06").value; localStorage.fourthGrade06 = document.getElementById("fourthGrade06").value
+localStorage.fourth07 = document.getElementById("fourth07").value; localStorage.fourthGrade07 = document.getElementById("fourthGrade07").value
+localStorage.fourth08 = document.getElementById("fourth08").value; localStorage.fourthGrade08 = document.getElementById("fourthGrade08").value
+localStorage.fourth09 = document.getElementById("fourth09").value; localStorage.fourthGrade09 = document.getElementById("fourthGrade09").value
+localStorage.fourth10 = document.getElementById("fourth10").value; localStorage.fourthGrade10 = document.getElementById("fourthGrade10").value
+localStorage.fourth11 = document.getElementById("fourth11").value; localStorage.fourthGrade11 = document.getElementById("fourthGrade11").value
+localStorage.fourth12 = document.getElementById("fourth12").value; localStorage.fourthGrade12 = document.getElementById("fourthGrade12").value
+localStorage.fourth13 = document.getElementById("fourth13").value; localStorage.fourthGrade13 = document.getElementById("fourthGrade13").value
+localStorage.fourth14 = document.getElementById("fourth14").value; localStorage.fourthGrade14 = document.getElementById("fourthGrade14").value
+localStorage.fourth15 = document.getElementById("fourth15").value; localStorage.fourthGrade15 = document.getElementById("fourthGrade15").value
+
+// SAVING SECOND YEAR
+localStorage.fifth01 = document.getElementById("fifth01").value; localStorage.fifthGrade01 = document.getElementById("fifthGrade01").value
+localStorage.fifth02 = document.getElementById("fifth02").value; localStorage.fifthGrade02 = document.getElementById("fifthGrade02").value
+localStorage.fifth03 = document.getElementById("fifth03").value; localStorage.fifthGrade03 = document.getElementById("fifthGrade03").value
+localStorage.fifth04 = document.getElementById("fifth04").value; localStorage.fifthGrade04 = document.getElementById("fifthGrade04").value
+localStorage.fifth05 = document.getElementById("fifth05").value; localStorage.fifthGrade05 = document.getElementById("fifthGrade05").value
+localStorage.fifth06 = document.getElementById("fifth06").value; localStorage.fifthGrade06 = document.getElementById("fifthGrade06").value
+localStorage.fifth07 = document.getElementById("fifth07").value; localStorage.fifthGrade07 = document.getElementById("fifthGrade07").value
+localStorage.fifth08 = document.getElementById("fifth08").value; localStorage.fifthGrade08 = document.getElementById("fifthGrade08").value
+localStorage.fifth09 = document.getElementById("fifth09").value; localStorage.fifthGrade09 = document.getElementById("fifthGrade09").value
+localStorage.fifth10 = document.getElementById("fifth10").value; localStorage.fifthGrade10 = document.getElementById("fifthGrade10").value
+localStorage.fifth11 = document.getElementById("fifth11").value; localStorage.fifthGrade11 = document.getElementById("fifthGrade11").value
+localStorage.fifth12 = document.getElementById("fifth12").value; localStorage.fifthGrade12 = document.getElementById("fifthGrade12").value
+localStorage.fifth13 = document.getElementById("fifth13").value; localStorage.fifthGrade13 = document.getElementById("fifthGrade13").value
+localStorage.fifth14 = document.getElementById("fifth14").value; localStorage.fifthGrade14 = document.getElementById("fifthGrade14").value
+localStorage.fifth15 = document.getElementById("fifth15").value; localStorage.fifthGrade15 = document.getElementById("fifthGrade15").value
+}
+
 window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
 // THIS CALLS TO OTHER FUNCTION ON LOAD!
+loadData()
+// OTHER FUNCTION!
 updateInstructions()
 highlightFirstYear()
 colorTheGrades()
 colorTheAverages()
-detectJS()
 }
-</script>
 
-
-
-
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-
-<script type="text/javascript">
-function detectJS() {
- document.getElementById("appleWarning").style.display = "none"
+function loadData() {
+// LOAD FIRST YEAR
+document.getElementById("first01").value = localStorage.first01 || ""; document.getElementById("firstGrade01").value = localStorage.firstGrade01 || ""
+document.getElementById("first02").value = localStorage.first02 || ""; document.getElementById("firstGrade02").value = localStorage.firstGrade02 || ""
+document.getElementById("first03").value = localStorage.first03 || ""; document.getElementById("firstGrade03").value = localStorage.firstGrade03 || ""
+document.getElementById("first04").value = localStorage.first04 || ""; document.getElementById("firstGrade04").value = localStorage.firstGrade04 || ""
+document.getElementById("first05").value = localStorage.first05 || ""; document.getElementById("firstGrade05").value = localStorage.firstGrade05 || ""
+document.getElementById("first06").value = localStorage.first06 || ""; document.getElementById("firstGrade06").value = localStorage.firstGrade06 || ""
+document.getElementById("first07").value = localStorage.first07 || ""; document.getElementById("firstGrade07").value = localStorage.firstGrade07 || ""
+document.getElementById("first08").value = localStorage.first08 || ""; document.getElementById("firstGrade08").value = localStorage.firstGrade08 || ""
+document.getElementById("first09").value = localStorage.first09 || ""; document.getElementById("firstGrade09").value = localStorage.firstGrade09 || ""
+document.getElementById("first10").value = localStorage.first10 || ""; document.getElementById("firstGrade10").value = localStorage.firstGrade10 || ""
+document.getElementById("first11").value = localStorage.first11 || ""; document.getElementById("firstGrade11").value = localStorage.firstGrade11 || ""
+document.getElementById("first12").value = localStorage.first12 || ""; document.getElementById("firstGrade12").value = localStorage.firstGrade12 || ""
+document.getElementById("first13").value = localStorage.first13 || ""; document.getElementById("firstGrade13").value = localStorage.firstGrade13 || ""
+document.getElementById("first14").value = localStorage.first14 || ""; document.getElementById("firstGrade14").value = localStorage.firstGrade14 || ""
+document.getElementById("first15").value = localStorage.first15 || ""; document.getElementById("firstGrade15").value = localStorage.firstGrade15 || ""
+// LOAD SECOND YEAR
+document.getElementById("second01").value = localStorage.second01 || ""; document.getElementById("secondGrade01").value = localStorage.secondGrade01 || ""
+document.getElementById("second02").value = localStorage.second02 || ""; document.getElementById("secondGrade02").value = localStorage.secondGrade02 || ""
+document.getElementById("second03").value = localStorage.second03 || ""; document.getElementById("secondGrade03").value = localStorage.secondGrade03 || ""
+document.getElementById("second04").value = localStorage.second04 || ""; document.getElementById("secondGrade04").value = localStorage.secondGrade04 || ""
+document.getElementById("second05").value = localStorage.second05 || ""; document.getElementById("secondGrade05").value = localStorage.secondGrade05 || ""
+document.getElementById("second06").value = localStorage.second06 || ""; document.getElementById("secondGrade06").value = localStorage.secondGrade06 || ""
+document.getElementById("second07").value = localStorage.second07 || ""; document.getElementById("secondGrade07").value = localStorage.secondGrade07 || ""
+document.getElementById("second08").value = localStorage.second08 || ""; document.getElementById("secondGrade08").value = localStorage.secondGrade08 || ""
+document.getElementById("second09").value = localStorage.second09 || ""; document.getElementById("secondGrade09").value = localStorage.secondGrade09 || ""
+document.getElementById("second10").value = localStorage.second10 || ""; document.getElementById("secondGrade10").value = localStorage.secondGrade10 || ""
+document.getElementById("second11").value = localStorage.second11 || ""; document.getElementById("secondGrade11").value = localStorage.secondGrade11 || ""
+document.getElementById("second12").value = localStorage.second12 || ""; document.getElementById("secondGrade12").value = localStorage.secondGrade12 || ""
+document.getElementById("second13").value = localStorage.second13 || ""; document.getElementById("secondGrade13").value = localStorage.secondGrade13 || ""
+document.getElementById("second14").value = localStorage.second14 || ""; document.getElementById("secondGrade14").value = localStorage.secondGrade14 || ""
+document.getElementById("second15").value = localStorage.second15 || ""; document.getElementById("secondGrade15").value = localStorage.secondGrade15 || ""
+// LOAD THIRD YEAR
+document.getElementById("third01").value = localStorage.third01 || ""; document.getElementById("thirdGrade01").value = localStorage.thirdGrade01 || ""
+document.getElementById("third02").value = localStorage.third02 || ""; document.getElementById("thirdGrade02").value = localStorage.thirdGrade02 || ""
+document.getElementById("third03").value = localStorage.third03 || ""; document.getElementById("thirdGrade03").value = localStorage.thirdGrade03 || ""
+document.getElementById("third04").value = localStorage.third04 || ""; document.getElementById("thirdGrade04").value = localStorage.thirdGrade04 || ""
+document.getElementById("third05").value = localStorage.third05 || ""; document.getElementById("thirdGrade05").value = localStorage.thirdGrade05 || ""
+document.getElementById("third06").value = localStorage.third06 || ""; document.getElementById("thirdGrade06").value = localStorage.thirdGrade06 || ""
+document.getElementById("third07").value = localStorage.third07 || ""; document.getElementById("thirdGrade07").value = localStorage.thirdGrade07 || ""
+document.getElementById("third08").value = localStorage.third08 || ""; document.getElementById("thirdGrade08").value = localStorage.thirdGrade08 || ""
+document.getElementById("third09").value = localStorage.third09 || ""; document.getElementById("thirdGrade09").value = localStorage.thirdGrade09 || ""
+document.getElementById("third10").value = localStorage.third10 || ""; document.getElementById("thirdGrade10").value = localStorage.thirdGrade10 || ""
+document.getElementById("third11").value = localStorage.third11 || ""; document.getElementById("thirdGrade11").value = localStorage.thirdGrade11 || ""
+document.getElementById("third12").value = localStorage.third12 || ""; document.getElementById("thirdGrade12").value = localStorage.thirdGrade12 || ""
+document.getElementById("third13").value = localStorage.third13 || ""; document.getElementById("thirdGrade13").value = localStorage.thirdGrade13 || ""
+document.getElementById("third14").value = localStorage.third14 || ""; document.getElementById("thirdGrade14").value = localStorage.thirdGrade14 || ""
+document.getElementById("third15").value = localStorage.third15 || ""; document.getElementById("thirdGrade15").value = localStorage.thirdGrade15 || ""
+// LOAD FOURTH YEAR
+document.getElementById("fourth01").value = localStorage.fourth01 || ""; document.getElementById("fourthGrade01").value = localStorage.fourthGrade01 || ""
+document.getElementById("fourth02").value = localStorage.fourth02 || ""; document.getElementById("fourthGrade02").value = localStorage.fourthGrade02 || ""
+document.getElementById("fourth03").value = localStorage.fourth03 || ""; document.getElementById("fourthGrade03").value = localStorage.fourthGrade03 || ""
+document.getElementById("fourth04").value = localStorage.fourth04 || ""; document.getElementById("fourthGrade04").value = localStorage.fourthGrade04 || ""
+document.getElementById("fourth05").value = localStorage.fourth05 || ""; document.getElementById("fourthGrade05").value = localStorage.fourthGrade05 || ""
+document.getElementById("fourth06").value = localStorage.fourth06 || ""; document.getElementById("fourthGrade06").value = localStorage.fourthGrade06 || ""
+document.getElementById("fourth07").value = localStorage.fourth07 || ""; document.getElementById("fourthGrade07").value = localStorage.fourthGrade07 || ""
+document.getElementById("fourth08").value = localStorage.fourth08 || ""; document.getElementById("fourthGrade08").value = localStorage.fourthGrade08 || ""
+document.getElementById("fourth09").value = localStorage.fourth09 || ""; document.getElementById("fourthGrade09").value = localStorage.fourthGrade09 || ""
+document.getElementById("fourth10").value = localStorage.fourth10 || ""; document.getElementById("fourthGrade10").value = localStorage.fourthGrade10 || ""
+document.getElementById("fourth11").value = localStorage.fourth11 || ""; document.getElementById("fourthGrade11").value = localStorage.fourthGrade11 || ""
+document.getElementById("fourth12").value = localStorage.fourth12 || ""; document.getElementById("fourthGrade12").value = localStorage.fourthGrade12 || ""
+document.getElementById("fourth13").value = localStorage.fourth13 || ""; document.getElementById("fourthGrade13").value = localStorage.fourthGrade13 || ""
+document.getElementById("fourth14").value = localStorage.fourth14 || ""; document.getElementById("fourthGrade14").value = localStorage.fourthGrade14 || ""
+document.getElementById("fourth15").value = localStorage.fourth15 || ""; document.getElementById("fourthGrade15").value = localStorage.fourthGrade15 || ""
+// LOAD FIFTH YEAR
+document.getElementById("fifth01").value = localStorage.fifth01 || ""; document.getElementById("fifthGrade01").value = localStorage.fifthGrade01 || ""
+document.getElementById("fifth02").value = localStorage.fifth02 || ""; document.getElementById("fifthGrade02").value = localStorage.fifthGrade02 || ""
+document.getElementById("fifth03").value = localStorage.fifth03 || ""; document.getElementById("fifthGrade03").value = localStorage.fifthGrade03 || ""
+document.getElementById("fifth04").value = localStorage.fifth04 || ""; document.getElementById("fifthGrade04").value = localStorage.fifthGrade04 || ""
+document.getElementById("fifth05").value = localStorage.fifth05 || ""; document.getElementById("fifthGrade05").value = localStorage.fifthGrade05 || ""
+document.getElementById("fifth06").value = localStorage.fifth06 || ""; document.getElementById("fifthGrade06").value = localStorage.fifthGrade06 || ""
+document.getElementById("fifth07").value = localStorage.fifth07 || ""; document.getElementById("fifthGrade07").value = localStorage.fifthGrade07 || ""
+document.getElementById("fifth08").value = localStorage.fifth08 || ""; document.getElementById("fifthGrade08").value = localStorage.fifthGrade08 || ""
+document.getElementById("fifth09").value = localStorage.fifth09 || ""; document.getElementById("fifthGrade09").value = localStorage.fifthGrade09 || ""
+document.getElementById("fifth10").value = localStorage.fifth10 || ""; document.getElementById("fifthGrade10").value = localStorage.fifthGrade10 || ""
+document.getElementById("fifth11").value = localStorage.fifth11 || ""; document.getElementById("fifthGrade11").value = localStorage.fifthGrade11 || ""
+document.getElementById("fifth12").value = localStorage.fifth12 || ""; document.getElementById("fifthGrade12").value = localStorage.fifthGrade12 || ""
+document.getElementById("fifth13").value = localStorage.fifth13 || ""; document.getElementById("fifthGrade13").value = localStorage.fifthGrade13 || ""
+document.getElementById("fifth14").value = localStorage.fifth14 || ""; document.getElementById("fifthGrade14").value = localStorage.fifthGrade14 || ""
+document.getElementById("fifth15").value = localStorage.fifth15 || ""; document.getElementById("fifthGrade15").value = localStorage.fifthGrade15 || ""
 }
+
 </script>
-
-<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
-<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
-[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
-[ Configuración > Safari > Avanzado > JavaScript > ON ]
-</div>
-
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-
-
 
 
 
@@ -159,63 +298,63 @@ Completa con tus asignaturas cursadas!
 
 <!- FIRST YEAR ->
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first01" placeholder="Asignatura 1"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first01" placeholder="Asignatura 1" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst();"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first02" placeholder="Asignatura 2"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first02" placeholder="Asignatura 2" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade02" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first03" placeholder="Asignatura 3"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first03" placeholder="Asignatura 3" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade03" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first04" placeholder="Asignatura 4"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first04" placeholder="Asignatura 4" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade04" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first05" placeholder="Asignatura 5"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first05" placeholder="Asignatura 5" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade05" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first06" placeholder="Asignatura 6"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first06" placeholder="Asignatura 6" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade06" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first07" placeholder="Asignatura 7"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first07" placeholder="Asignatura 7" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade07" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first08" placeholder="Asignatura 8"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first08" placeholder="Asignatura 8" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade08" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first09" placeholder="Asignatura 9"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first09" placeholder="Asignatura 9" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade09" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first10" placeholder="Asignatura 10"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first10" placeholder="Asignatura 10" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade10" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first11" placeholder="Asignatura 11"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first11" placeholder="Asignatura 11" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade11" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first12" placeholder="Asignatura 12"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first12" placeholder="Asignatura 12" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade12" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first13" placeholder="Asignatura 13"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first13" placeholder="Asignatura 13" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade13" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first14" placeholder="Asignatura 14"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first14" placeholder="Asignatura 14" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade14" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1year; padding-top: 8px;">1°</div>
- <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first15" placeholder="Asignatura 15"></div>
+ <div class="first" style="grid-area: 1grade;"><input type="text" class="className" id="first15" placeholder="Asignatura 15" onChange="saveData()"></div>
  <div class="first" style="grid-area: 1class;"><input type="number" class="classGrade" id="firstGrade15" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFirst()"></div>
 
  <div class="first" style="grid-area: 1this; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;"></div>
@@ -225,63 +364,63 @@ Completa con tus asignaturas cursadas!
 
 <!- SECOND YEAR ->
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second01" placeholder="Asignatura 1"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second01" placeholder="Asignatura 1" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second02" placeholder="Asignatura 2"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second02" placeholder="Asignatura 2" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade02" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second03" placeholder="Asignatura 3"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second03" placeholder="Asignatura 3" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade03" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second04" placeholder="Asignatura 4"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second04" placeholder="Asignatura 4" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade04" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second05" placeholder="Asignatura 5"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second05" placeholder="Asignatura 5" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade05" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second06" placeholder="Asignatura 6"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second06" placeholder="Asignatura 6" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade06" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second07" placeholder="Asignatura 7"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second07" placeholder="Asignatura 7" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade07" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second08" placeholder="Asignatura 8"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second08" placeholder="Asignatura 8" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade08" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second09" placeholder="Asignatura 9"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second09" placeholder="Asignatura 9" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade09" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second10" placeholder="Asignatura 10"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second10" placeholder="Asignatura 10" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade10" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second11" placeholder="Asignatura 11"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second11" placeholder="Asignatura 11" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade11" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second12" placeholder="Asignatura 12"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second12" placeholder="Asignatura 12" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade12" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second13" placeholder="Asignatura 13"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second13" placeholder="Asignatura 13" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade13" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second14" placeholder="Asignatura 14"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second14" placeholder="Asignatura 14" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade14" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2year; padding-top: 8px;">2°</div>
- <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second15" placeholder="Asignatura 15"></div>
+ <div class="second" style="grid-area: 2grade;"><input type="text" class="className" id="second15" placeholder="Asignatura 15" onChange="saveData()"></div>
  <div class="second" style="grid-area: 2class;"><input type="number" class="classGrade" id="secondGrade15" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageSecond()"></div>
 
  <div class="second" style="grid-area: 2this; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;"></div>
@@ -291,63 +430,63 @@ Completa con tus asignaturas cursadas!
 
 <!- THIRD YEAR ->
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third01" placeholder="Asignatura 1"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third01" placeholder="Asignatura 1" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third02" placeholder="Asignatura 2"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third02" placeholder="Asignatura 2" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade02" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third03" placeholder="Asignatura 3"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third03" placeholder="Asignatura 3" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade03" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third04" placeholder="Asignatura 4"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third04" placeholder="Asignatura 4" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade04" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third05" placeholder="Asignatura 5"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third05" placeholder="Asignatura 5" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade05" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third06" placeholder="Asignatura 6"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third06" placeholder="Asignatura 6" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade06" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third07" placeholder="Asignatura 7"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third07" placeholder="Asignatura 7" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade07" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third08" placeholder="Asignatura 8"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third08" placeholder="Asignatura 8" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade08" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third09" placeholder="Asignatura 9"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third09" placeholder="Asignatura 9" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade09" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third10" placeholder="Asignatura 10"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third10" placeholder="Asignatura 10" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade10" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third11" placeholder="Asignatura 11"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third11" placeholder="Asignatura 11" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade11" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third12" placeholder="Asignatura 12"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third12" placeholder="Asignatura 12" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade12" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third13" placeholder="Asignatura 13"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third13" placeholder="Asignatura 13" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade13" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third14" placeholder="Asignatura 14"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third14" placeholder="Asignatura 14" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade14" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3year; padding-top: 8px;">3°</div>
- <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third15" placeholder="Asignatura 15"></div>
+ <div class="third" style="grid-area: 3grade;"><input type="text" class="className" id="third15" placeholder="Asignatura 15" onChange="saveData()"></div>
  <div class="third" style="grid-area: 3class;"><input type="number" class="classGrade" id="thirdGrade15" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageThird()"></div>
 
  <div class="third" style="grid-area: 3this; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;"></div>
@@ -357,63 +496,63 @@ Completa con tus asignaturas cursadas!
 
 <!- FOURTH YEAR ->
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth01" placeholder="Asignatura 1"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth01" placeholder="Asignatura 1" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth02" placeholder="Asignatura 2"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth02" placeholder="Asignatura 2" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade02" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth03" placeholder="Asignatura 3"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth03" placeholder="Asignatura 3" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade03" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth04" placeholder="Asignatura 4"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth04" placeholder="Asignatura 4" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade04" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth05" placeholder="Asignatura 5"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth05" placeholder="Asignatura 5" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade05" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth06" placeholder="Asignatura 6"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth06" placeholder="Asignatura 6" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade06" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth07" placeholder="Asignatura 7"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth07" placeholder="Asignatura 7" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade07" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth08" placeholder="Asignatura 8"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth08" placeholder="Asignatura 8" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade08" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth09" placeholder="Asignatura 9"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth09" placeholder="Asignatura 9" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade09" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth10" placeholder="Asignatura 10"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth10" placeholder="Asignatura 10" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade10" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth11" placeholder="Asignatura 11"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth11" placeholder="Asignatura 11" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade11" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth12" placeholder="Asignatura 12"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth12" placeholder="Asignatura 12" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade12" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth13" placeholder="Asignatura 13"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth13" placeholder="Asignatura 13" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade13" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth14" placeholder="Asignatura 14"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth14" placeholder="Asignatura 14" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade14" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3year; padding-top: 8px;">4°</div>
- <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth15" placeholder="Asignatura 15"></div>
+ <div class="fourth" style="grid-area: 3grade;"><input type="text" class="className" id="fourth15" placeholder="Asignatura 15" onChange="saveData()"></div>
  <div class="fourth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fourthGrade15" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFourth()"></div>
 
  <div class="fourth" style="grid-area: 3this; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;"></div>
@@ -423,63 +562,63 @@ Completa con tus asignaturas cursadas!
 
 <!- FIFTH YEAR ->
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth01" placeholder="Asignatura 1"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth01" placeholder="Asignatura 1" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade01" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth02" placeholder="Asignatura 2"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth02" placeholder="Asignatura 2" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade02" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth03" placeholder="Asignatura 3"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth03" placeholder="Asignatura 3" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade03" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth04" placeholder="Asignatura 4"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth04" placeholder="Asignatura 4" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade04" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth05" placeholder="Asignatura 5"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth05" placeholder="Asignatura 5" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade05" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth06" placeholder="Asignatura 6"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth06" placeholder="Asignatura 6" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade06" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth07" placeholder="Asignatura 7"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth07" placeholder="Asignatura 7" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade07" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth08" placeholder="Asignatura 8"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth08" placeholder="Asignatura 8" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade08" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth09" placeholder="Asignatura 9"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth09" placeholder="Asignatura 9" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade09" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth10" placeholder="Asignatura 10"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth10" placeholder="Asignatura 10" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade10" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth11" placeholder="Asignatura 11"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth11" placeholder="Asignatura 11" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade11" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth12" placeholder="Asignatura 12"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth12" placeholder="Asignatura 12" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade12" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth13" placeholder="Asignatura 13"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth13" placeholder="Asignatura 13" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade13" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth14" placeholder="Asignatura 14"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth14" placeholder="Asignatura 14" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade14" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3year; padding-top: 8px;">5°</div>
- <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth15" placeholder="Asignatura 15"></div>
+ <div class="fifth" style="grid-area: 3grade;"><input type="text" class="className" id="fifth15" placeholder="Asignatura 15" onChange="saveData()"></div>
  <div class="fifth" style="grid-area: 3class;"><input type="number" class="classGrade" id="fifthGrade15" min="0.0" max="7.0" step="0.1" value="0.0" onFocus="focusOn(this);" onChange="check(this); averageFifth()"></div>
 
  <div class="fifth" style="grid-area: 3this; margin-bottom: 6px; padding-top: 12px; border: 1px dashed gray; border-style: hidden;"></div>
@@ -569,22 +708,25 @@ var theNumber = parseFloat(input.value);
 
 <script type="text/javascript">
 function averageFirst() {
+// SAVA DATA
+saveData()
+
 // FIRST YEAR GRADES
-grade01 = document.getElementById("firstGrade01").value;
-grade02 = document.getElementById("firstGrade02").value;
-grade03 = document.getElementById("firstGrade03").value;
-grade04 = document.getElementById("firstGrade04").value;
-grade05 = document.getElementById("firstGrade05").value;
-grade06 = document.getElementById("firstGrade06").value;
-grade07 = document.getElementById("firstGrade07").value;
-grade08 = document.getElementById("firstGrade08").value;
-grade09 = document.getElementById("firstGrade09").value;
-grade10 = document.getElementById("firstGrade10").value;
-grade11 = document.getElementById("firstGrade11").value;
-grade12 = document.getElementById("firstGrade12").value;
-grade13 = document.getElementById("firstGrade13").value;
-grade14 = document.getElementById("firstGrade14").value;
-grade15 = document.getElementById("firstGrade15").value;
+grade01 = document.getElementById("firstGrade01").value
+grade02 = document.getElementById("firstGrade02").value
+grade03 = document.getElementById("firstGrade03").value
+grade04 = document.getElementById("firstGrade04").value
+grade05 = document.getElementById("firstGrade05").value
+grade06 = document.getElementById("firstGrade06").value
+grade07 = document.getElementById("firstGrade07").value
+grade08 = document.getElementById("firstGrade08").value
+grade09 = document.getElementById("firstGrade09").value
+grade10 = document.getElementById("firstGrade10").value
+grade11 = document.getElementById("firstGrade11").value
+grade12 = document.getElementById("firstGrade12").value
+grade13 = document.getElementById("firstGrade13").value
+grade14 = document.getElementById("firstGrade14").value
+grade15 = document.getElementById("firstGrade15").value
 
 // AMOUNT OF SUBJECTS
 var amount = 0
@@ -603,6 +745,7 @@ if (grade12 >= "1.0") {amount = amount+1;}
 if (grade13 >= "1.0") {amount = amount+1;}
 if (grade14 >= "1.0") {amount = amount+1;}
 if (grade15 >= "1.0") {amount = amount+1;}
+
 if (amount > 0) {
 // DO THE MATH!
   var theSum = parseFloat(grade01) + parseFloat(grade02) + parseFloat(grade03) + parseFloat(grade04) + parseFloat(grade05) +
@@ -622,6 +765,9 @@ if (amount == 0) {return false}
 
 <script type="text/javascript">
 function averageSecond() {
+// SAVA DATA
+saveData()
+
 // SECOND YEAR GRADES
 grade01 = document.getElementById("secondGrade01").value;
 grade02 = document.getElementById("secondGrade02").value;
@@ -675,6 +821,9 @@ if (amount == 0) {return false}
 
 <script type="text/javascript">
 function averageThird() {
+// SAVA DATA
+saveData()
+
 // THIRD YEAR GRADES
 grade01 = document.getElementById("thirdGrade01").value;
 grade02 = document.getElementById("thirdGrade02").value;
@@ -729,6 +878,9 @@ if (amount == 0) {return false}
 
 <script type="text/javascript">
 function averageFourth() {
+// SAVA DATA
+saveData()
+
 // FOURTH YEAR GRADES
 grade01 = document.getElementById("fourthGrade01").value;
 grade02 = document.getElementById("fourthGrade02").value;
@@ -783,6 +935,9 @@ if (amount == 0) {return false}
 
 <script type="text/javascript">
 function averageFifth() {
+// SAVA DATA
+saveData()
+
 // FOURTH YEAR GRADES
 grade01 = document.getElementById("fifthGrade01").value;
 grade02 = document.getElementById("fifthGrade02").value;
@@ -1206,6 +1361,7 @@ allGrades = document.querySelectorAll('input[type="number"]');
 for(let marks of allGrades) {marks.value = "0.0"; marks.style.color = "#1434A4";};
 // console.log(allGrades);
 
+saveData()
 colorTheGrades;
 colorTheAverages;
 }
