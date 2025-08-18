@@ -160,7 +160,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearEnergy(); toolsDiv.scrollLeft='1954'">🗑️</button></a>
+ <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearEnergy(); toolsDiv.scrollLeft='1954'; saveData()">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -254,7 +254,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- TESTS DIV -->
  <div class="widgetDivs">
   <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
-  <div id="testTrash" class="trashIcon" onclick="clearTests()">⭕</div>
+  <div id="testTrash" class="trashIcon" onclick="clearTests(); saveData()">⭕</div>
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 3px; padding: 1px;">
 
@@ -334,11 +334,11 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- "GRADE SCALES" DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000; /* DARK RED */"><b>Escala de Notas:</b></div>
-  <div id="gradeTrash" class="trashIcon" onclick="clearGrades()">⭕</div>
+  <div id="gradeTrash" class="trashIcon" onclick="clearGrades(); saveData()">⭕</div>
 
 	<div class="gradeDivArrows">
-	<span id="gradeLeft" class="toolArrow" onclick="moveGradesLeft()">◄</span>
-	<span id="gradeRight" class="toolArrow" onclick="moveGradesRight()">►</span>
+	<span id="gradeLeft" class="toolArrow" onclick="moveGradesLeft(); saveData()">◄</span>
+	<span id="gradeRight" class="toolArrow" onclick="moveGradesRight(); saveData()">►</span>
 	</div>	
 
    <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
@@ -346,7 +346,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	<div class="gradePointsDiv">
 		<div class="gradePointsChild">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades(); saveData()"></div>
 		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades(); saveData()" style="margin-right: 10px; cursor: not-allowed;"></div>
-		<div class="gradeScaleButton" onclick="changeScale(); checkGrades()">ESCALA</div>
+		<div class="gradeScaleButton" onclick="changeScale(); checkGrades(); saveData()">ESCALA</div>
 	 </div>
 
 	<div id="gradeScaleDiv" class="gradeScaleDiv">
@@ -416,7 +416,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div id="energyTrash" class="trashIcon" onclick="clearEnergy()">⭕</div>
+  <div id="energyTrash" class="trashIcon" onclick="clearEnergy(); saveData()">⭕</div>
    <div class="doubleColumnWrapper" style="align-items: center; margin: auto; margin-top: 3%;">
 
 	<div style="width: 50%;">
@@ -424,7 +424,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	  <input type="text" id="coffeeCups" class="coffeeCups" disabled readonly="readonly" readonly value="0">
 	  <input type="text" id="coffeeTime" disabled readonly="readonly" value="0" style="display: none;">
 	  <img style="width: 103%; height: 101%; margin-left: -1px;" src="panel/coffee-meter.png">
-	  <div class="coffeeButton" style="width: 32px; position: relative; transform: translateY(-120%); left: 25%;" onclick="coffeeButton()">➕</div>
+	  <div class="coffeeButton" style="width: 32px; position: relative; transform: translateY(-120%); left: 25%;" onclick="coffeeButton(); saveData()">➕</div>
 	 </div>
 	</div>
 
@@ -433,7 +433,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	 <input type="text" id="waterCups" class="waterCups" disabled readonly="readonly" readonly value="0">
 	 <input type="text" id="hydrationTime" disabled readonly="readonly" value="0" style="display: none;">
 	  <img style="width: 100%;" src="panel/hydration-meter.png">
-	  <div class="waterButton" style="width: 32px; position: relative; transform: translateY(-110%); left: 40%;" onclick="waterButton()">➕</div>
+	  <div class="waterButton" style="width: 32px; position: relative; transform: translateY(-110%); left: 40%;" onclick="waterButton(); saveData()">➕</div>
 
 	 </div>
 	</div>
@@ -445,8 +445,8 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: purple;"><b>Herramientas:</b>
 	<div class="toolsDivArrows">
-	<span id="slideLeft" class="toolArrow" onclick="moveSliderLeft()">◄</span>
-	<span id="slideRight" class="toolArrow" onclick="moveSliderRight()">►</span>
+	<span id="slideLeft" class="toolArrow" onclick="moveSliderLeft(); saveData()">◄</span>
+	<span id="slideRight" class="toolArrow" onclick="moveSliderRight(); saveData()">►</span>
 	</div>
   </div>
   <div id="toolsDiv" class="toolsDiv">
