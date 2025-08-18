@@ -12,49 +12,72 @@
 <audio id="horn" src="panel/horn.mp3" preload="auto" display="none"></audio>
 
 
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-    // Textarea!
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+saveData()
+}
+
+function saveData() {
+// DAILY PLANNER!
+localStorage.planMon = document.getElementById("planMon").value
+localStorage.planTue = document.getElementById("planTue").value
+localStorage.planWed = document.getElementById("planWed").value
+localStorage.planThu = document.getElementById("planThu").value
+localStorage.planFri = document.getElementById("planFri").value
+// ATTENDANCE
+localStorage.isMon = document.getElementById("isMon").value
+localStorage.isTue = document.getElementById("isTue").value
+localStorage.isWed = document.getElementById("isWed").value
+localStorage.isThu = document.getElementById("isThu").value
+localStorage.isFri = document.getElementById("isFri").value
+// SUBJECTS & TESTS N°1
+localStorage.class01 = document.getElementById("class01").value
+localStorage.c1t1isChecked = document.getElementById("c1t1isChecked").value
+localStorage.c1t2isChecked = document.getElementById("c1t2isChecked").value
+localStorage.c1t3isChecked = document.getElementById("c1t3isChecked").value
+// SUBJECTS & TESTS N°2
+localStorage.class02 = document.getElementById("class02").value
+localStorage.c2t1isChecked = document.getElementById("c2t1isChecked").value
+localStorage.c2t2isChecked = document.getElementById("c2t2isChecked").value
+localStorage.c2t3isChecked = document.getElementById("c2t3isChecked").value
+// SUBJECTS & TESTS N°3
+localStorage.class03 = document.getElementById("class03").value
+localStorage.c3t1isChecked = document.getElementById("c3t1isChecked").value
+localStorage.c3t2isChecked = document.getElementById("c3t2isChecked").value
+localStorage.c3t3isChecked = document.getElementById("c3t3isChecked").value
+// SUBJECTS & TESTS N°4
+localStorage.class04 = document.getElementById("class04").value
+localStorage.c4t1isChecked = document.getElementById("c4t1isChecked").value
+localStorage.c4t2isChecked = document.getElementById("c4t2isChecked").value
+localStorage.c4t3isChecked = document.getElementById("c4t3isChecked").value
+// SUBJECTS & TESTS N°5
+localStorage.class05 = document.getElementById("class05").value
+localStorage.c5t1isChecked = document.getElementById("c5t1isChecked").value
+localStorage.c5t2isChecked = document.getElementById("c5t2isChecked").value
+localStorage.c5t3isChecked = document.getElementById("c5t3isChecked").value
+// SUBJECTS & TESTS N°6
+localStorage.class06 = document.getElementById("class06").value
+localStorage.c6t1isChecked = document.getElementById("c6t1isChecked").value
+localStorage.c6t2isChecked = document.getElementById("c6t2isChecked").value
+localStorage.c6t3isChecked = document.getElementById("c6t3isChecked").value
+// GRADE SCALE!
+localStorage.gradePoints = document.getElementById("gradePoints").value
+localStorage.gradeScale = document.getElementById("gradeScale").value
+// DRINKS!
+localStorage.coffeeCups = document.getElementById("coffeeCups").value
+localStorage.coffeeTime = document.getElementById("coffeeTime").value
+localStorage.waterCups = document.getElementById("waterCups").value
+localStorage.hydrationTime = document.getElementById("hydrationTime").value
+// TOOL SLIDER POSITION
+localStorage.slidePosition = document.getElementById("slidePosition").value
+// console.log("Data saved!")
 }
 
 
 window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-    // Textarea!
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-
-// Load other functions!
+// LOAD DATA
+loadData()
+// OTHER FUNCTIONS!
 termProgress()
 yearProgress()
 checkAttendance()
@@ -66,31 +89,65 @@ energyTime()
 toolsDivMemory()
 refreshTime()
 classTimer()
-detectJS()
 }
-</script>
 
+function loadData() {
+// LOAD DAY PLANNER
+document.getElementById("planMon").value = localStorage.planMon || ""
+document.getElementById("planTue").value = localStorage.planTue || ""
+document.getElementById("planWed").value = localStorage.planWed || ""
+document.getElementById("planThu").value = localStorage.planThu || ""
+document.getElementById("planFri").value = localStorage.planFri || ""
+// ATTENDANCE
+document.getElementById("isMon").value = localStorage.isMon || "0"
+document.getElementById("isTue").value = localStorage.isTue || "0"
+document.getElementById("isWed").value = localStorage.isWed || "0"
+document.getElementById("isThu").value = localStorage.isThu || "0"
+document.getElementById("isFri").value = localStorage.isFri || "0"
+// CLASS & TESTS N°1
+document.getElementById("class01").value = localStorage.class01 || ""
+document.getElementById("c1t1isChecked").value = localStorage.c1t1isChecked || "0"
+document.getElementById("c1t2isChecked").value = localStorage.c1t2isChecked || "0"
+document.getElementById("c1t3isChecked").value = localStorage.c1t3isChecked || "0"
+// CLASS & TESTS N°2
+document.getElementById("class02").value = localStorage.class02 || ""
+document.getElementById("c2t1isChecked").value = localStorage.c2t1isChecked || "0"
+document.getElementById("c2t2isChecked").value = localStorage.c2t2isChecked || "0"
+document.getElementById("c2t3isChecked").value = localStorage.c2t3isChecked || "0"
+// CLASS & TESTS N°3
+document.getElementById("class03").value = localStorage.class03 || ""
+document.getElementById("c3t1isChecked").value = localStorage.c3t1isChecked || "0"
+document.getElementById("c3t2isChecked").value = localStorage.c3t2isChecked || "0"
+document.getElementById("c3t3isChecked").value = localStorage.c3t3isChecked || "0"
+// CLASS & TESTS N°4
+document.getElementById("class04").value = localStorage.class04 || ""
+document.getElementById("c4t1isChecked").value = localStorage.c4t1isChecked || "0"
+document.getElementById("c4t2isChecked").value = localStorage.c4t2isChecked || "0"
+document.getElementById("c4t3isChecked").value = localStorage.c4t3isChecked || "0"
+// CLASS & TESTS N°5
+document.getElementById("class05").value = localStorage.class05 || ""
+document.getElementById("c5t1isChecked").value = localStorage.c5t1isChecked || "0"
+document.getElementById("c5t2isChecked").value = localStorage.c5t2isChecked || "0"
+document.getElementById("c5t3isChecked").value = localStorage.c5t3isChecked || "0"
+// CLASS & TESTS N°6
+document.getElementById("class06").value = localStorage.class06 || ""
+document.getElementById("c6t1isChecked").value = localStorage.c6t1isChecked || "0"
+document.getElementById("c6t2isChecked").value = localStorage.c6t2isChecked || "0"
+document.getElementById("c6t3isChecked").value = localStorage.c6t3isChecked || "0"
 
-
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-
-<script type="text/javascript">
-function detectJS() {
- document.getElementById("appleWarning").style.display = "none"
+// GRADE SCALE
+document.getElementById("gradePoints").value = localStorage.gradePoints || "100"
+document.getElementById("gradeScale").value = localStorage.gradeScale 	|| "70"
+// LOAD DRINKS
+document.getElementById("coffeeCups").value = localStorage.coffeeCups || "0"
+document.getElementById("coffeeTime").value = localStorage.coffeeTime || "0"
+document.getElementById("waterCups").value = localStorage.waterCups || "0"
+document.getElementById("hydrationTime").value = localStorage.hydrationTime || "0"
+// TOOL SLIDER POSITION
+document.getElementById("slidePosition").value = localStorage.slidePosition || "1956"
 }
+
 </script>
-
-<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
-<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
-[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
-[ Configuración > Safari > Avanzado > JavaScript > ON ]
-</div>
-
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
 
 
 <body>
@@ -158,11 +215,11 @@ function detectJS() {
     </div>
     <div style="width: 42%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
 	<small><u>Progreso</u>:</small><br>
-	<input type="checkbox" id="checkMon" onchange="checkAttendance()">Lunes<br>
-	<input type="checkbox" id="checkTue" onchange="checkAttendance()">Martes<br>
-	<input type="checkbox" id="checkWed" onchange="checkAttendance()">Miércoles<br>
-	<input type="checkbox" id="checkThu" onchange="checkAttendance()">Jueves<br>
-	<input type="checkbox" id="checkFri" onchange="checkAttendance()">Viernes<br>
+	<input type="checkbox" id="checkMon" onchange="checkAttendance(); saveData()">Lunes<br>
+	<input type="checkbox" id="checkTue" onchange="checkAttendance(); saveData()">Martes<br>
+	<input type="checkbox" id="checkWed" onchange="checkAttendance(); saveData()">Miércoles<br>
+	<input type="checkbox" id="checkThu" onchange="checkAttendance(); saveData()">Jueves<br>
+	<input type="checkbox" id="checkFri" onchange="checkAttendance(); saveData()">Viernes<br>
 	<input type="number" id="isMon" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isTue" min="0" max="1" step="1" style="display: none;">
 	<input type="number" id="isWed" min="0" max="1" step="1" style="display: none;">
@@ -180,11 +237,11 @@ function detectJS() {
   <div id="plannerTitle" class="widgetTitle" style="background-color: #554994"><b>Programación Semanal:</b></div>
   <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">⭕</div>
    <div class="plannerWrapper">
-	<div>Lunes:	<textarea id="planMon" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del lunes."></textarea></div>
-	<div>Martes:	<textarea id="planTue" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del martes."></textarea></div>
-	<div>Miércoles:	<textarea id="planWed" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del miércoles."></textarea></div>
-	<div>Jueves:	<textarea id="planThu" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del jueves."></textarea></div>
-	<div>Viernes:	<textarea id="planFri" class="plannerDays" onchange="checkPlanner()" placeholder="Actividades del viernes."></textarea></div>
+	<div>Lunes:	<textarea id="planMon" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del lunes."></textarea></div>
+	<div>Martes:	<textarea id="planTue" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del martes."></textarea></div>
+	<div>Miércoles:	<textarea id="planWed" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del miércoles."></textarea></div>
+	<div>Jueves:	<textarea id="planThu" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del jueves."></textarea></div>
+	<div>Viernes:	<textarea id="planFri" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del viernes."></textarea></div>
    </div><!-- END OF PLANNER WRAPPER -->
  </div>
  <!-- END OF WEEK PLANNER DIV -->
@@ -209,17 +266,17 @@ function detectJS() {
 		</div>
 
 		<div style="display: flex; align-items: center; padding: 1px;">
-		 <div class="testSubject"><input id="class01" class="assessment" type="text" placeholder="Asignatura 1" onchange="checkTests()"></div>
-		 <div id="c1t1Div" class="testGrades"><input type="checkbox" id="c1t1" class="theBoxes" onchange="checkThisTest(id)"></div>
-		 <div class="testGrades"><input type="checkbox" id="c1t2" class="theBoxes" onchange="checkThisTest(id)"></div>
-		 <div class="testGrades"><input type="checkbox" id="c1t3" class="theBoxes" onchange="checkThisTest(id)"></div>
+		 <div class="testSubject"><input id="class01" class="assessment" type="text" placeholder="Asignatura 1" onchange="checkTests(); saveData()"></div>
+		 <div class="testGrades"><input type="checkbox" id="c1t1" class="theBoxes" onchange="checkThisTest(id); saveData()"></div>
+		 <div class="testGrades"><input type="checkbox" id="c1t2" class="theBoxes" onchange="checkThisTest(id); saveData()"></div>
+		 <div class="testGrades"><input type="checkbox" id="c1t3" class="theBoxes" onchange="checkThisTest(id); saveData()"></div>
 		 <input type="number" id="c1t1isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		 <input type="number" id="c1t2isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		 <input type="number" id="c1t3isChecked" class="isChecked" min="0" max="1" step="1" style="display: none; width: 24px;" disabled>
 		</div>
 
 		<div style="display: flex; align-items: center;  padding: 1px;">
-		 <div class="testSubject"><input id="class02" class="assessment" type="text" placeholder="Asignatura 2" onchange="checkTests()"></div>
+		 <div class="testSubject"><input id="class02" class="assessment" type="text" placeholder="Asignatura 2" onchange="checkTests(); saveData()"></div>
 		 <div class="testGrades"><input type="checkbox" id="c2t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c2t2" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c2t3" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -229,7 +286,7 @@ function detectJS() {
 		</div>
 
 		<div style="display: flex; align-items: center; padding: 1px;">
-		 <div class="testSubject"><input id="class03" class="assessment" type="text" placeholder="Asignatura 3" onchange="checkTests()"></div>
+		 <div class="testSubject"><input id="class03" class="assessment" type="text" placeholder="Asignatura 3" onchange="checkTests(); saveData()"></div>
 		 <div class="testGrades"><input type="checkbox" id="c3t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c3t2" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c3t3" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -239,7 +296,7 @@ function detectJS() {
 		</div>
 
 		<div style="display: flex; align-items: center; padding: 1px;">
-		 <div class="testSubject"><input id="class04" class="assessment" type="text" placeholder="Asignatura 4" onchange="checkTests()"></div>
+		 <div class="testSubject"><input id="class04" class="assessment" type="text" placeholder="Asignatura 4" onchange="checkTests(); saveData()"></div>
 		 <div class="testGrades"><input type="checkbox" id="c4t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c4t2" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c4t3" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -249,7 +306,7 @@ function detectJS() {
 		</div>
 
 		<div style="display: flex; align-items: center; padding: 1px;">
-		 <div class="testSubject"><input id="class05" class="assessment" type="text" placeholder="Asignatura 5" onchange="checkTests()"></div>
+		 <div class="testSubject"><input id="class05" class="assessment" type="text" placeholder="Asignatura 5" onchange="checkTests(); saveData()"></div>
 		 <div class="testGrades"><input type="checkbox" id="c5t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c5t2" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c5t3" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -259,7 +316,7 @@ function detectJS() {
 		</div>
 
 		<div style="display: flex; align-items: center; padding: 1px;">
-		 <div class="testSubject"><input id="class06" class="assessment" type="text" placeholder="Asignatura 6" onchange="checkTests()"></div>
+		 <div class="testSubject"><input id="class06" class="assessment" type="text" placeholder="Asignatura 6" onchange="checkTests(); saveData()"></div>
 		 <div class="testGrades"><input type="checkbox" id="c6t1" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c6t2" class="theBoxes" onchange="checkThisTest(id)"></div>
 		 <div class="testGrades"><input type="checkbox" id="c6t3" class="theBoxes" onchange="checkThisTest(id)"></div>
@@ -287,8 +344,8 @@ function detectJS() {
    <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
 
 	<div class="gradePointsDiv">
-		<div class="gradePointsChild">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades()"></div>
-		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades()" style="margin-right: 10px; cursor: not-allowed;"></div>
+		<div class="gradePointsChild">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades(); saveData()"></div>
+		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades(); saveData()" style="margin-right: 10px; cursor: not-allowed;"></div>
 		<div class="gradeScaleButton" onclick="changeScale(); checkGrades()">ESCALA</div>
 	 </div>
 
@@ -394,7 +451,7 @@ function detectJS() {
   </div>
   <div id="toolsDiv" class="toolsDiv">
 	<div id="toolSlider" class="toolSlider">
-	<input type="number" id="slidePosition" style="display: none;" value="1954">
+	<input type="number" id="slidePosition" style="display: none;" value="1956">
 	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
 	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
 	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
@@ -473,7 +530,7 @@ var semesterBar = document.getElementById("semesterBar")
 // FUNCTIONALITY PARAMETERS!
 var duration = 1000 * 2; // Animation duration!
 var percent = duration / 100; // 1 percent of duration!
-var i = 0; // Animation starts from Zero!
+var iTerm = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var firstClass = new Date("2025-08-18T00:00:00").getTime()
@@ -490,19 +547,20 @@ var termDuration = Math.floor(semesterDays / oneDay)
 distance = Math.abs(termProgress * 100 / termDuration)
 if (currentDays < 0 || termProgress < 0) { distance = -1 }
 
-if (distance == 0) {$("#semesterBar").css("width", "0%") }
+if (distance == 0) { semesterBar.style.width = "0%" }
 if (distance > 0) {
  var doTheLoop = setInterval(function(){
-  i++;
-  $("#semesterBar").css("width", i + "%")
-  $("#semesterBar").text(i + "%")
-  if (i >= distance) { clearInterval(doTheLoop) }
-  if (i >= 100) { clearInterval(doTheLoop)  }
-  if (i >= 0 && i < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
-  if (i >= 20 && i < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 40 && i < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 60 && i <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
-  if (i >= 80 && i <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
+  iTerm++;
+  var semesterBarProgress = iTerm + "%"
+  semesterBar.style.width = semesterBarProgress
+  semesterBar.innerHTML = semesterBarProgress
+  if (iTerm >= distance) { clearInterval(doTheLoop) }
+  if (iTerm >= 100) { clearInterval(doTheLoop)  }
+  if (iTerm >= 0 && iTerm < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
+  if (iTerm >= 20 && iTerm < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 40 && iTerm < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 60 && iTerm <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 80 && iTerm <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
   }, percent)
  }
 }
@@ -535,12 +593,13 @@ var termDuration = Math.floor(semesterDays / oneDay)
 
 distanceYear = Math.abs(termProgress * 100 / termDuration)
 
-if (distanceYear == 0) {$("#yearBar").css("width", "0%") }
+if (distanceYear == 0) { yearBar.style.width = "0%" }
 if (distanceYear > 0) {
  var doTheLoop = setInterval(function(){
   iYear++;
-  $("#yearBar").css("width", iYear + "%")
-  $("#yearBar").text(iYear + "%")
+  var yearBarProgress = iYear + "%"
+  yearBar.style.width = yearBarProgress
+  yearBar.innerHTML = yearBarProgress
   if (iYear >= distanceYear) { clearInterval(doTheLoop) }
   if (iYear >= 100) { clearInterval(doTheLoop)  }
   if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
@@ -693,10 +752,11 @@ var i = 0; // Animation starts from Zero!
 // DOING THE LOOP!
 var doTheLoop = setInterval(function(){
  i++;
- $("#attendanceTitle").css("width", i + "%")
+ var attendanceProgress = i + "%"
+ attendanceTitle.style.width = attendanceProgress
  if (i >= 100) {
   clearInterval(doTheLoop)
-  attendanceTitle.innerHTML = "Carotal Asistencia:"
+  attendanceTitle.innerHTML = "Asistencia Semanal:"
   attendanceTitle.style.background = "#008800"
 
   // DELETING ELEMENTS!
@@ -707,6 +767,7 @@ var doTheLoop = setInterval(function(){
   isFri.value = 0; checkFri.checked = false; valFri = 0
   checkAttendance()
   drawAttendance()
+  saveData()
 
   }
  }, percent)
@@ -751,7 +812,8 @@ var i = 0; // Animation starts from Zero!
 // DOING THE LOOP!
 var doTheLoop = setInterval(function(){
  i++;
- $("#plannerTitle").css("width", i + "%")
+ var plannerProgress = i + "%"
+ plannerTitle.style.width = plannerProgress
  if (i >= 100) {
   clearInterval(doTheLoop)
   plannerTitle.innerHTML = "Programación Semanal:"
@@ -759,7 +821,7 @@ var doTheLoop = setInterval(function(){
 
   // DELETING ELEMENTS!
   var Planning = document.querySelectorAll("textarea.plannerDays");
-  for(let Plans of Planning) { Plans.value = ""; Plans.style.background = "lightyellow" }
+  for(let Plans of Planning) { Plans.value = ""; saveData(); Plans.style.background = "lightyellow" }
 
   }
  }, percent)
@@ -1023,7 +1085,8 @@ var i = 0; // Animation starts from Zero!
 // DOING THE LOOP!
 var doTheLoop = setInterval(function(){
  i++;
- $("#testTitle").css("width", i + "%")
+ var testTitleProgress = i + "%"
+ testTitle.style.width = testTitleProgress
  if (i >= 100) {
   clearInterval(doTheLoop)
   testTitle.innerHTML = "Evaluaciones Integrales:"
@@ -1044,12 +1107,15 @@ var doTheLoop = setInterval(function(){
   for(let theInfo of Assessment) {
 	theInfo.style.background = "#FFFFCC88"
 	if (theInfo.value.length > 0) { namesCompleted = true }
+
+  // SAVE DATA!
+  saveData()
 }
 
   // CONFIRM TO DELETE CLASS NAMES!
   if (namesCompleted && input !== 'bypass' && confirm("PRUEBAS BORRADAS!\n¿Desea además borrar las asignaturas?") == true) {
   //  var Assessment = document.querySelectorAll("input.assessment");
-    for(let theInfo of Assessment) { theInfo.value = "" }
+    for(let theInfo of Assessment) { theInfo.value = ""; saveData() }
     }
 
   // RELOADING PAGE IF "CONFETTI FUNCTION" IS RUNNING!
@@ -1367,7 +1433,8 @@ var i = 0; // Animation starts from Zero!
 // DOING THE LOOP!
 var doTheLoop = setInterval(function(){
  i++;
- $("#coffeeTitle").css("width", i + "%")
+ var energyProgress = i + "%"
+ coffeeTitle.style.width = energyProgress
  if (i >= 100) {
   clearInterval(doTheLoop)
   coffeeTitle.innerHTML = "Niveles de Energía:"
