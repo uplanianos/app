@@ -63,57 +63,68 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 
 
 
-
 <!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+// SAVING ALL INPUT DATA!
+localStorage.howManyActivities = document.getElementById("howManyActivities").value
+localStorage.activity1 = document.getElementById("activity1").value; localStorage.hours1 = document.getElementById("hours1").value
+localStorage.activity2 = document.getElementById("activity2").value; localStorage.hours2 = document.getElementById("hours2").value
+localStorage.activity3 = document.getElementById("activity3").value; localStorage.hours3 = document.getElementById("hours3").value
+localStorage.activity4 = document.getElementById("activity4").value; localStorage.hours4 = document.getElementById("hours4").value
+localStorage.activity5 = document.getElementById("activity5").value; localStorage.hours5 = document.getElementById("hours5").value
+localStorage.activity6 = document.getElementById("activity6").value; localStorage.hours6 = document.getElementById("hours6").value
+localStorage.activity7 = document.getElementById("activity7").value; localStorage.hours7 = document.getElementById("hours7").value
+localStorage.activity8 = document.getElementById("activity8").value; localStorage.hours8 = document.getElementById("hours8").value
+localStorage.activity9 = document.getElementById("activity9").value; localStorage.hours9 = document.getElementById("hours9").value
+localStorage.activity10 = document.getElementById("activity10").value; localStorage.hours10 = document.getElementById("hours10").value
+localStorage.activity11 = document.getElementById("activity11").value; localStorage.hours11 = document.getElementById("hours11").value
+localStorage.activity12 = document.getElementById("activity12").value; localStorage.hours12 = document.getElementById("hours12").value
+localStorage.activity13 = document.getElementById("activity13").value; localStorage.hours13 = document.getElementById("hours13").value
+localStorage.activity14 = document.getElementById("activity14").value; localStorage.hours14 = document.getElementById("hours14").value
+localStorage.activity15 = document.getElementById("activity15").value; localStorage.hours15 = document.getElementById("hours15").value
+localStorage.activity16 = document.getElementById("activity16").value; localStorage.hours16 = document.getElementById("hours16").value
+localStorage.activity17 = document.getElementById("activity17").value; localStorage.hours17 = document.getElementById("hours17").value
+localStorage.activity18 = document.getElementById("activity18").value; localStorage.hours18 = document.getElementById("hours18").value
+localStorage.activity19 = document.getElementById("activity19").value; localStorage.hours19 = document.getElementById("hours19").value
+localStorage.activity20 = document.getElementById("activity20").value; localStorage.hours20 = document.getElementById("hours20").value
 }
 
 window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-
+// LOAD DATA!
+loadData()
 // CALLS TO ANOTHER FUNCTION!!
 initialSetup()
-detectJS()
+}
+
+function loadData() {
+document.getElementById("howManyActivities").value = localStorage.howManyActivities || "1";
+document.getElementById("activity1").value = localStorage.activity1 || ""; document.getElementById("hours1").value = localStorage.hours1 || "0"
+document.getElementById("activity2").value = localStorage.activity2 || ""; document.getElementById("hours2").value = localStorage.hours2 || "0"
+document.getElementById("activity3").value = localStorage.activity3 || ""; document.getElementById("hours3").value = localStorage.hours3 || "0"
+document.getElementById("activity4").value = localStorage.activity4 || ""; document.getElementById("hours4").value = localStorage.hours4 || "0"
+document.getElementById("activity5").value = localStorage.activity5 || ""; document.getElementById("hours5").value = localStorage.hours5 || "0"
+document.getElementById("activity6").value = localStorage.activity6 || ""; document.getElementById("hours6").value = localStorage.hours6 || "0"
+document.getElementById("activity7").value = localStorage.activity7 || ""; document.getElementById("hours7").value = localStorage.hours7 || "0"
+document.getElementById("activity8").value = localStorage.activity8 || ""; document.getElementById("hours8").value = localStorage.hours8 || "0"
+document.getElementById("activity9").value = localStorage.activity9 || ""; document.getElementById("hours9").value = localStorage.hours9 || "0"
+document.getElementById("activity10").value = localStorage.activity10 || ""; document.getElementById("hours10").value = localStorage.hours10 || "0"
+document.getElementById("activity11").value = localStorage.activity11 || ""; document.getElementById("hours11").value = localStorage.hours11 || "0"
+document.getElementById("activity12").value = localStorage.activity12 || ""; document.getElementById("hours12").value = localStorage.hours12 || "0"
+document.getElementById("activity13").value = localStorage.activity13 || ""; document.getElementById("hours13").value = localStorage.hours13 || "0"
+document.getElementById("activity14").value = localStorage.activity14 || ""; document.getElementById("hours14").value = localStorage.hours14 || "0"
+document.getElementById("activity15").value = localStorage.activity15 || ""; document.getElementById("hours15").value = localStorage.hours15 || "0"
+document.getElementById("activity16").value = localStorage.activity16 || ""; document.getElementById("hours16").value = localStorage.hours16 || "0"
+document.getElementById("activity17").value = localStorage.activity17 || ""; document.getElementById("hours17").value = localStorage.hours17 || "0"
+document.getElementById("activity18").value = localStorage.activity18 || ""; document.getElementById("hours18").value = localStorage.hours18 || "0"
+document.getElementById("activity19").value = localStorage.activity19 || ""; document.getElementById("hours19").value = localStorage.hours19 || "0"
+document.getElementById("activity20").value = localStorage.activity20 || ""; document.getElementById("hours20").value = localStorage.hours20 || "0"
 }
 </script>
-
-
-
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-<!- JAVASCRIPT DETECTOR ->
-
-<script type="text/javascript">
-function detectJS() {
- document.getElementById("appleWarning").style.display = "none"
-}
-</script>
-
-<div id="appleWarning" style="position: absolute; top: 24%; transform: translateY(-24%); left: 50%; transform: translateX(-50%); width: 60%; display: flex-grid; margin: auto; text-align: center; align-items: center; padding: 12px; border: 3px solid black; border-radius: 12px; background: red; line-break: auto;">
-<b>AVISO:</b> Para correcta funcionalidad, activar Javascript!<br>
-[ Chrome... > Config. > Privacidad & Seg. > Sitios > JavaScript > Permitir ]<br>
-[ Configuración > Safari > Avanzado > JavaScript > ON ]
-</div>
-
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-<!- END OF "JS DETECTOR" ->
-
 
 
 	<br>
@@ -140,8 +151,8 @@ function detectJS() {
 	 <div id="divActivity1">
 	  <div class="creditGrid">
 	   <div>1</div>
-	   <div><input type="text" id="activity1" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours1" class="selloHours" value="0" min="0" step="0.1" onclick="checkOne()" onchange="checkOne()"></div>
+	   <div><input type="text" id="activity1" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours1" class="selloHours" value="0" min="0" step="0.1" onclick="checkOne()" onchange="checkOne(); saveData()"></div>
 	   <div><input type="number" id="credits1" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -149,8 +160,8 @@ function detectJS() {
 	 <div id="divActivity2">
 	  <div class="creditGrid">
 	   <div>2</div>
-	   <div><input type="text" id="activity2" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours2" class="selloHours" value="0" min="0" step="0.1" onclick="checkTwo()" onchange="checkTwo()"></div>
+	   <div><input type="text" id="activity2" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours2" class="selloHours" value="0" min="0" step="0.1" onclick="checkTwo()" onchange="checkTwo(); saveData()"></div>
 	   <div><input type="number" id="credits2" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -158,8 +169,8 @@ function detectJS() {
 	 <div id="divActivity3">
 	  <div class="creditGrid">
 	   <div>3</div>
-	   <div><input type="text" id="activity3" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours3" class="selloHours" value="0" min="0" step="0.1" onclick="checkThree()" onchange="checkThree()"></div>
+	   <div><input type="text" id="activity3" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours3" class="selloHours" value="0" min="0" step="0.1" onclick="checkThree()" onchange="checkThree(); saveData()"></div>
 	   <div><input type="number" id="credits3" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -167,8 +178,8 @@ function detectJS() {
 	 <div id="divActivity4">
 	  <div class="creditGrid">
 	   <div>4</div>
-	   <div><input type="text" id="activity4" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours4" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFour()"></div>
+	   <div><input type="text" id="activity4" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours4" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFour(); saveData()"></div>
 	   <div><input type="number" id="credits4" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -176,8 +187,8 @@ function detectJS() {
 	 <div id="divActivity5">
 	  <div class="creditGrid">
 	   <div>5</div>
-	   <div><input type="text" id="activity5" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours5" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFive()"></div>
+	   <div><input type="text" id="activity5" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours5" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFive(); saveData()"></div>
 	   <div><input type="number" id="credits5" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -185,8 +196,8 @@ function detectJS() {
 	 <div id="divActivity6">
 	  <div class="creditGrid">
 	   <div>6</div>
-	   <div><input type="text" id="activity6" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours6" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSix()"></div>
+	   <div><input type="text" id="activity6" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours6" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSix(); saveData()"></div>
 	   <div><input type="number" id="credits6" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -194,8 +205,8 @@ function detectJS() {
 	 <div id="divActivity7">
 	  <div class="creditGrid">
 	   <div>7</div>
-	   <div><input type="text" id="activity7" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours7" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeven()"></div>
+	   <div><input type="text" id="activity7" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours7" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeven(); saveData()"></div>
 	   <div><input type="number" id="credits7" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -203,8 +214,8 @@ function detectJS() {
 	 <div id="divActivity8">
 	  <div class="creditGrid">
 	   <div>8</div>
-	   <div><input type="text" id="activity8" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours8" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEight()"></div>
+	   <div><input type="text" id="activity8" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours8" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEight(); saveData()"></div>
 	   <div><input type="number" id="credits8" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -212,8 +223,8 @@ function detectJS() {
 	 <div id="divActivity9">
 	  <div class="creditGrid">
 	   <div>9</div>
-	   <div><input type="text" id="activity9" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours9" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNine()"></div>
+	   <div><input type="text" id="activity9" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours9" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNine(); saveData()"></div>
 	   <div><input type="number" id="credits9" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -221,8 +232,8 @@ function detectJS() {
 	 <div id="divActivity10">
 	  <div class="creditGrid">
 	   <div>10</div>
-	   <div><input type="text" id="activity10" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours10" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTen()"></div>
+	   <div><input type="text" id="activity10" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours10" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTen(); saveData()"></div>
 	   <div><input type="number" id="credits10" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -230,8 +241,8 @@ function detectJS() {
 	 <div id="divActivity11">
 	  <div class="creditGrid">
 	   <div>11</div>
-	   <div><input type="text" id="activity11" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours11" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEleven()"></div>
+	   <div><input type="text" id="activity11" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours11" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEleven(); saveData()"></div>
 	   <div><input type="number" id="credits11" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -239,8 +250,8 @@ function detectJS() {
 	 <div id="divActivity12">
 	  <div class="creditGrid">
 	   <div>12</div>
-	   <div><input type="text" id="activity12" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours12" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwelve()"></div>
+	   <div><input type="text" id="activity12" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours12" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwelve(); saveData()"></div>
 	   <div><input type="number" id="credits12" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -248,8 +259,8 @@ function detectJS() {
 	 <div id="divActivity13">
 	  <div class="creditGrid">
 	   <div>13</div>
-	   <div><input type="text" id="activity13" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours13" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkThirteen()"></div>
+	   <div><input type="text" id="activity13" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours13" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkThirteen(); saveData()"></div>
 	   <div><input type="number" id="credits13" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -257,8 +268,8 @@ function detectJS() {
 	 <div id="divActivity14">
 	  <div class="creditGrid">
 	   <div>14</div>
-	   <div><input type="text" id="activity14" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours14" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFourteen()"></div>
+	   <div><input type="text" id="activity14" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours14" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFourteen(); saveData()"></div>
 	   <div><input type="number" id="credits14" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -266,8 +277,8 @@ function detectJS() {
 	 <div id="divActivity15">
 	  <div class="creditGrid">
 	   <div>15</div>
-	   <div><input type="text" id="activity15" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours15" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFifteen()"></div>
+	   <div><input type="text" id="activity15" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours15" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkFifteen(); saveData()"></div>
 	   <div><input type="number" id="credits15" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -275,8 +286,8 @@ function detectJS() {
 	 <div id="divActivity16">
 	  <div class="creditGrid">
 	   <div>16</div>
-	   <div><input type="text" id="activity16" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours16" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSixteen()"></div>
+	   <div><input type="text" id="activity16" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours16" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSixteen(); saveData()"></div>
 	   <div><input type="number" id="credits16" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -284,8 +295,8 @@ function detectJS() {
 	 <div id="divActivity17">
 	  <div class="creditGrid">
 	   <div>17</div>
-	   <div><input type="text" id="activity17" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours17" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeventeen()"></div>
+	   <div><input type="text" id="activity17" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours17" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkSeventeen(); saveData()"></div>
 	   <div><input type="number" id="credits17" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -293,8 +304,8 @@ function detectJS() {
 	 <div id="divActivity18">
 	  <div class="creditGrid">
 	   <div>18</div>
-	   <div><input type="text" id="activity18" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours18" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEighteen()"></div>
+	   <div><input type="text" id="activity18" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours18" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkEighteen(); saveData()"></div>
 	   <div><input type="number" id="credits18" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -302,8 +313,8 @@ function detectJS() {
 	 <div id="divActivity19">
 	  <div class="creditGrid">
 	   <div>19</div>
-	   <div><input type="text" id="activity19" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours19" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNineteen()"></div>
+	   <div><input type="text" id="activity19" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours19" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkNineteen(); saveData()"></div>
 	   <div><input type="number" id="credits19" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
@@ -311,8 +322,8 @@ function detectJS() {
 	 <div id="divActivity20">
 	  <div class="creditGrid">
 	   <div>20</div>
-	   <div><input type="text" id="activity20" class="selloActivity" placeholder="Actividad realizada..."></div>
-	   <div><input type="number" id="hours20" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwenty()"></div>
+	   <div><input type="text" id="activity20" class="selloActivity" placeholder="Actividad realizada..." onchange="saveData()"></div>
+	   <div><input type="number" id="hours20" class="selloHours" value="0" min="0" step="0.1" onclick="checkFour()" onchange="checkTwenty(); saveData()"></div>
 	   <div><input type="number" id="credits20" class="selloCredits" value="0" disabled readonly></div>
 	  </div>
 	 </div>
