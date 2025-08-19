@@ -35,7 +35,7 @@
       <option value="15">📝 Timebox (Upla)</option>
 <!-- DISABLED     <option value="16">📊 Upladísticas</option> -->
     </select>
-    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Créditos Sello Misional.</p></div>
+    <a href="index.html" style="text-decoration: none;"><b>Uplanianos App:</b></a> Créditos Sello.</p></div>
 
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
@@ -134,8 +134,8 @@ document.getElementById("activity20").value = localStorage.activity20 || ""; doc
 
 	 <div>
 	  <b>Actividades realizadas:</b>
-	  <input type="button" id="moreButton" value="+" onclick="addMore()">
-	  <input type="button" id="lessButton" value="x" onclick="killLast()">
+	  <input type="button" id="moreButton" value="+" onclick="addMore(); saveData()">
+	  <input type="button" id="lessButton" value="x" onclick="killLast(); saveData()">
 	  <input type="number" id="howManyActivities" value="1" min="1" max="9" step="1" style="display: none;">
 	  </div>
 
