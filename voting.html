@@ -118,7 +118,7 @@ document.getElementById("motion5").value = localStorage.motion5 || ""; document.
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
    <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues(); savaData()">
-   <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled onchange="savaData()">
    <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More(); saveData()">
    <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less(); saveData()">
   </div>

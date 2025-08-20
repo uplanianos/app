@@ -1155,23 +1155,29 @@ input.votesCount {
 input.votesCount[type=number]::-webkit-inner-spin-button { display: none;}
 
 input.votesPlus {
- height: 40px; width: 40px;
- text-align: center; font-size: 14px;
- background-color: green; color: white;
+ height: 40px;
+ width: 40px;
+ background-color: green;
+ font-size: 14px; color: white;
  border: 3px solid white; border-radius: 6px;
  margin: 1px; padding-bottom: 5px;
  cursor: pointer;
+ text-align: center;
+ display: flex-grid; justify-content: center; align-items: center;
 }
 input.votesPlus:hover { background-color: lightgreen; }
 input.votesPlus:active { background-color: orange; }
 
 input.votesLess {
- height: 40px; width: 40px;
- text-align: center; font-size: 14px;
- background-color: darkred; color: white;
+ height: 40px;
+ width: 40px;
+ background-color: darkred;
+ font-size: 14px; color: white;
  border: 3px solid white; border-radius: 6px;
  margin: 1px; padding-bottom: 5px;
  cursor: pointer;
+ text-align: center;
+ display: flex-grid; justify-content: center; align-items: center;
 }
 input.votesLess:hover { background-color: pink; }
 input.votesLess:active { background-color: orange; }
