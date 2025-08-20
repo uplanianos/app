@@ -281,6 +281,9 @@ function clearButton() {
  // RESET NUMBER OF MOTIONES!
  document.getElementById("howMany").value = "2"
 
+ // SAVE DATA!
+ saveData()
+
  // HIDING SUMMARY
  // document.getElementById("voteSummary").style.display = "none"
 
@@ -643,7 +646,7 @@ if (url5Amount !== null) {counts5.value = url5Amount; initialSetup() }
 // ====================
 /*
 // CHECKING FOR EMPTY SPACES IN LINK...
-// ENEDED UP USING ONLY 1 LINE BELOW!
+// ENDED UP USING ONLY 1 LINE BELOW!
 function checkSpaces() {
 if (input.value.includes(' ')) {
  console.log("Input has blank space!\nReplacing empty spaces!")
