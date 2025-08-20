@@ -62,14 +62,51 @@ function blurMenu(){document.getElementById('titleMenu').value = 0; document.get
 </script> 
 
 
+
+<!- SAVE FUNCTION ->
+<script type="text/javascript">
+window.onbeforeunload = function() {
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+localStorage.howMany = document.getElementById("howMany").value
+localStorage.motion1 = document.getElementById("motion1").value; localStorage.counts1 = document.getElementById("counts1").value
+localStorage.motion2 = document.getElementById("motion2").value; localStorage.counts2 = document.getElementById("counts2").value
+localStorage.motion3 = document.getElementById("motion3").value; localStorage.counts3 = document.getElementById("counts3").value
+localStorage.motion4 = document.getElementById("motion4").value; localStorage.counts4 = document.getElementById("counts4").value
+localStorage.motion5 = document.getElementById("motion5").value; localStorage.counts5 = document.getElementById("counts5").value
+}
+
+window.onload = function() {
+// LOAD DATA!
+loadData()
+// CALLS TO ANOTHER FUNCTION!!
+initialSetup()
+getLinkValues()
+}
+
+function loadData() {
+console.log(howMany.value)
+document.getElementById("howMany").value = localStorage.howMany || "1"
+document.getElementById("motion1").value = localStorage.motion1 || ""; document.getElementById("counts1").value = localStorage.counts1 || "0"
+document.getElementById("motion2").value = localStorage.motion2 || ""; document.getElementById("counts2").value = localStorage.counts2 || "0"
+document.getElementById("motion3").value = localStorage.motion3 || ""; document.getElementById("counts3").value = localStorage.counts3 || "0"
+document.getElementById("motion4").value = localStorage.motion4 || ""; document.getElementById("counts4").value = localStorage.counts4 || "0"
+document.getElementById("motion5").value = localStorage.motion5 || ""; document.getElementById("counts5").value = localStorage.counts5 || "0"
+}
+</script>
+
+
+
 <div class="grid-item-slider" style="padding: 12px;">
 
 <br>
 
 <div>
  <b>Propuestas:</b>
- <input type="button" id="moreButton" value="+" onclick="doMore()">
- <input type="button" id="lessButton" value="x" onclick="doLess()">
+ <input type="button" id="moreButton" value="+" onclick="doMore(); saveData()">
+ <input type="button" id="lessButton" value="x" onclick="doLess(); saveData()">
  <input type="number" id="howMany" value="2" min="2" max="5" step="1" style="display: none;" disabled readonly>
 </div>
 
@@ -552,38 +589,6 @@ function shareButton5() {
 
 // END OF MAIN SCRIPT
 </script>
-
-
-
-
-<!- SAVE FUNCTION ->
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
-
-<script type="text/javascript">
-window.onbeforeunload = function() {
-     $('input').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
-}
-
-window.onload = function() {
-    $('input').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
-
-// CALLS TO ANOTHER FUNCTION!!
-initialSetup()
-getLinkValues()
-}
-</script>
-
 
 
 
