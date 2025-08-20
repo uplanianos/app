@@ -87,7 +87,6 @@ getLinkValues()
 }
 
 function loadData() {
-console.log(howMany.value)
 document.getElementById("howMany").value = localStorage.howMany || "1"
 document.getElementById("motion1").value = localStorage.motion1 || ""; document.getElementById("counts1").value = localStorage.counts1 || "0"
 document.getElementById("motion2").value = localStorage.motion2 || ""; document.getElementById("counts2").value = localStorage.counts2 || "0"
@@ -118,38 +117,38 @@ document.getElementById("motion5").value = localStorage.motion5 || ""; document.
  <div class="grid-voting">
 
   <div id="divMotion1" style="grid-area: divMotion1;">1
-   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues()">
-   <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
-   <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More()">
-   <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less()">
+   <input type="text"	id="motion1"	class="voteMotion" value="" placeholder="Moción N°1" onchange="getValues(); savaData()">
+   <input type="number"	id="counts1"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="button"	id="vote1More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote1More(); saveData()">
+   <input type="button"	id="vote1Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote1Less(); saveData()">
   </div>
 
   <div id="divMotion2" style="grid-area: divMotion2; display: none;">2
-   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="getValues()">
-   <input type="number"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
-   <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More()">
-   <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less()">
+   <input type="text"	id="motion2"	class="voteMotion" value="" placeholder="Moción N°2" onchange="getValues(); savaData()">
+   <input type="number"	id="counts2"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="button"	id="vote2More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote2More(); saveData()">
+   <input type="button"	id="vote2Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote2Less(); saveData()">
   </div>
 
   <div id="divMotion3" style="grid-area: divMotion3; display: none;">3
-   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="getValues()">
-   <input type="number"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
-   <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More()">
-   <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less()">
+   <input type="text"	id="motion3"	class="voteMotion" value="" placeholder="Moción N°3" onchange="getValues(); savaData()">
+   <input type="number"	id="counts3"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="button"	id="vote3More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote3More(); saveData()">
+   <input type="button"	id="vote3Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote3Less(); saveData()">
   </div>
 
   <div id="divMotion4" style="grid-area: divMotion4; display: none;">4
-   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="getValues()">
-   <input type="number"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
-   <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More()">
-   <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less()">
+   <input type="text"	id="motion4"	class="voteMotion" value="" placeholder="Moción N°4" onchange="getValues(); savaData()">
+   <input type="number"	id="counts4"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="button"	id="vote4More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote4More(); saveData()">
+   <input type="button"	id="vote4Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote4Less(); saveData()">
   </div>
 
   <div id="divMotion5" style="grid-area: divMotion5; display: none;">5
-   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="getValues()">
-   <input type="number"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onselect="buttonFlash.call(this)">
-   <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More()">
-   <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less()">
+   <input type="text"	id="motion5"	class="voteMotion" value="" placeholder="Moción N°5" onchange="getValues(); savaData()">
+   <input type="number"	id="counts5"	class="votesCount" value="0" min="0" step="1" disabled readonly onchange="savaData()">
+   <input type="button"	id="vote5More"	class="votesPlus" value="➕" tabindex="-1" onclick="vote5More(); saveData()">
+   <input type="button"	id="vote5Less"	class="votesLess" value="➖" tabindex="-1" onclick="vote5Less(); saveData()">
   </div>
 
   <div class="divTotalVotes" style="grid-area: divTotal;">Total:
@@ -191,18 +190,6 @@ document.getElementById("motion5").value = localStorage.motion5 || ""; document.
 </div><!- End of "Main" Div ->
 
 <br>
-
-
-<script type="text/javascript">
-// RED FLASH FOR PLUS BUTTON
-// WHEN VOTES DOUBLE CLICKED - SELECTED
-var buttonFlash = function() {
- var focusWhich = "vote" + this.id.slice(6) + "More"
- var onThisOne = document.getElementById(focusWhich)
- onThisOne.style.backgroundColor = "red"
- setTimeout(function() { onThisOne.style.backgroundColor = "" }, 500);
-}
-</script>
 
 
 <script type="text/javascript">
