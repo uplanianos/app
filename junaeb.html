@@ -111,33 +111,32 @@ document.getElementById("receipt6").value = localStorage.receipt6 || "0"
 
 	 <div style="text-align: center;">
 	  Boleta N°1:<span class="money">$</span>
-	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onclick="checkOne(); saveData()" onchange="adjustBalance(month)">
+	  <input type="number" id="receipt1" class="junaeb-compras" value="0" min="0" step="1" onclick="checkOne()" onchange="adjustBalance(month); saveData()">
 	 </div>
 	  
 	 <div id="divReceipt2" style="text-align: center; display: none;">
 	  Boleta N°2:<span class="money">$</span>
-	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onclick="checkTwo(); saveData()" onchange="adjustBalance(month)">
-
+	  <input type="number" id="receipt2" class="junaeb-compras" value="0" min="0" step="1" onclick="checkTwo()" onchange="adjustBalance(month); saveData()">
 	 </div>
 
 	 <div id="divReceipt3" style="text-align: center; display: none;">
 	  Boleta N°3:<span class="money">$</span>
-	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onclick="checkThree(); saveData()" onchange="adjustBalance(month)">
+	  <input type="number" id="receipt3" class="junaeb-compras" value="0" min="0" step="1" onclick="checkThree()" onchange="adjustBalance(month); saveData()">
 	 </div>
 
 	 <div id="divReceipt4" style="text-align: center; display: none;">
 	  Boleta N°4:<span class="money">$</span>
-	  <input type="number" id="receipt4" class="junaeb-compras" value="0" min="0" step="1" onclick="checkFour(); saveData()" onchange="adjustBalance(month)">
+	  <input type="number" id="receipt4" class="junaeb-compras" value="0" min="0" step="1" onclick="checkFour()" onchange="adjustBalance(month); saveData()">
 	 </div>
 
 	 <div id="divReceipt5" style="text-align: center; display: none;">
 	  Boleta N°5:<span class="money">$</span>
-	  <input type="number" id="receipt5" class="junaeb-compras" value="0" min="0" step="1" onclick="checkFive(); saveData()" onchange="adjustBalance(month)">
+	  <input type="number" id="receipt5" class="junaeb-compras" value="0" min="0" step="1" onclick="checkFive()" onchange="adjustBalance(month); saveData()">
 	 </div>
 
 	 <div id="divReceipt6" style="text-align: center; display: none;">
 	  Boleta N°6:<span class="money">$</span>
-	  <input type="number" id="receipt6" class="junaeb-compras" value="0" min="0" step="1" onclick="checkSixZero(); saveData()" onchange="adjustBalance(month)">
+	  <input type="number" id="receipt6" class="junaeb-compras" value="0" min="0" step="1" onclick="checkSixZero()" onchange="adjustBalance(month); saveData()">
 	 </div>
 
 	 <br>
