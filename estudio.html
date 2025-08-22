@@ -7,34 +7,62 @@
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/estudio-style.css">
  <title>Uplanianos - Preguntas de Estudio</title>
-
-<!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
-<script src="scripts/jquery-3.7.1.slim.js"></script>
-<!- https://stackoverflow.com/questions/39155511/html-save-text-in-textarea ->
-<!- https://jquery.com/download/ ->
 </head>
 
 <audio id="shuffle" src="media/shuffle.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 <audio id="answer" src="media/answer.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 
+<!- SAVE FUNCTION ->
 <script type="text/javascript">
 window.onbeforeunload = function() {
-     $('textarea').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-    });
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+localStorage.questAmount = document.getElementById("questAmount").value
+localStorage.q1 = document.getElementById("q1").value; localStorage.a1 = document.getElementById("a1").value
+localStorage.q2 = document.getElementById("q2").value; localStorage.a2 = document.getElementById("a2").value
+localStorage.q3 = document.getElementById("q3").value; localStorage.a3 = document.getElementById("a3").value
+localStorage.q4 = document.getElementById("q4").value; localStorage.a4 = document.getElementById("a4").value
+localStorage.q5 = document.getElementById("q5").value; localStorage.a5 = document.getElementById("a5").value
+localStorage.q6 = document.getElementById("q6").value; localStorage.a6 = document.getElementById("a6").value
+localStorage.q7 = document.getElementById("q7").value; localStorage.a7 = document.getElementById("a7").value
+localStorage.q8 = document.getElementById("q8").value; localStorage.a8 = document.getElementById("a8").value
+localStorage.q9 = document.getElementById("q9").value; localStorage.a9 = document.getElementById("a9").value
+localStorage.q10 = document.getElementById("q10").value; localStorage.a10 = document.getElementById("a10").value
+localStorage.q11 = document.getElementById("q11").value; localStorage.a11 = document.getElementById("a11").value
+localStorage.q12 = document.getElementById("q12").value; localStorage.a12 = document.getElementById("a12").value
+localStorage.q13 = document.getElementById("q13").value; localStorage.a13 = document.getElementById("a13").value
+localStorage.q14 = document.getElementById("q14").value; localStorage.a14 = document.getElementById("a14").value
+localStorage.q15 = document.getElementById("q15").value; localStorage.a15 = document.getElementById("a15").value
 }
 
 window.onload = function() {
-    $('textarea').each(function(){
-       var id = $(this).attr('id');
-       var text2 = localStorage.getItem(id);
-       if (text2 !== null) $('#'+id).val(text2);
-    });
+// LOAD DATA
+loadData()
 // CALL FUNCTIONS ONLOAD!
 loadQuestions();
+}
+
+function loadData() {
+// LOAD DATA!
+document.getElementById("questAmount").value = localStorage.questAmount || "6"
+document.getElementById("q1").value = localStorage.q1 || ""; document.getElementById("a1").value = localStorage.a1 || ""
+document.getElementById("q2").value = localStorage.q2 || ""; document.getElementById("a2").value = localStorage.a2 || ""
+document.getElementById("q3").value = localStorage.q3 || ""; document.getElementById("a3").value = localStorage.a3 || ""
+document.getElementById("q4").value = localStorage.q4 || ""; document.getElementById("a4").value = localStorage.a4 || ""
+document.getElementById("q5").value = localStorage.q5 || ""; document.getElementById("a5").value = localStorage.a5 || ""
+document.getElementById("q6").value = localStorage.q6 || ""; document.getElementById("a6").value = localStorage.a6 || ""
+document.getElementById("q7").value = localStorage.q7 || ""; document.getElementById("a7").value = localStorage.a7 || ""
+document.getElementById("q8").value = localStorage.q8 || ""; document.getElementById("a8").value = localStorage.a8 || ""
+document.getElementById("q9").value = localStorage.q9 || ""; document.getElementById("a9").value = localStorage.a9 || ""
+document.getElementById("q10").value = localStorage.q10 || ""; document.getElementById("a10").value = localStorage.a10 || ""
+document.getElementById("q11").value = localStorage.q11 || ""; document.getElementById("a11").value = localStorage.a11 || ""
+document.getElementById("q12").value = localStorage.q12 || ""; document.getElementById("a12").value = localStorage.a12 || ""
+document.getElementById("q13").value = localStorage.q13 || ""; document.getElementById("a13").value = localStorage.a13 || ""
+document.getElementById("q14").value = localStorage.q14 || ""; document.getElementById("a14").value = localStorage.a14 || ""
+document.getElementById("q15").value = localStorage.q15 || ""; document.getElementById("a15").value = localStorage.a15 || ""
 }
 </script>
 
@@ -79,58 +107,58 @@ loadQuestions();
 
 <div class="questions" id="questions" style="display: block; visibility: visible;">
 <span style="padding-left: 75px;"><b>Preguntas:</b></span><br><br>
- <div class="addQuestButton" id="addQuestButton" onclick="showMoreQs()" title="Agregar pregunta!">➕</div>
- <div class="deleteQuestButton" id="deleteQuestButton" onclick="showLessQs()" title="Borrar última pregunta!">➖</div>
+ <div class="addQuestButton" id="addQuestButton" onclick="showMoreQs(); saveData()" title="Agregar pregunta!">➕</div>
+ <div class="deleteQuestButton" id="deleteQuestButton" onclick="showLessQs(); saveData()" title="Borrar última pregunta!">➖</div>
 <span class="answerTitle"><b>Respuestas:</b></span>
  <div class="closeButton" onclick="slideQuestDown(); showRandomizer()" title="Cerrar preguntas!">❌</div>
 
 <textarea id="questAmount" class="questAmount" rows="1" cols="auto" maxlength="5" style="display: none;">6</textarea>
 
-<div class="questList">01. <textarea id="q1" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°1"></textarea>
-<textarea id="a1" class="answers" rows="1" cols="auto" placeholder="Respuesta N°1"></textarea><br></div>
+<div class="questList">01. <textarea id="q1" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°1" onchange="saveData()"></textarea>
+<textarea id="a1" class="answers" rows="1" cols="auto" placeholder="Respuesta N°1" onchange="saveData()"></textarea><br></div>
 
-<div class="questList">02. <textarea id="q2" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°2"></textarea>
-<textarea id="a2" class="answers" rows="1" cols="auto" placeholder="Respuesta N°2"></textarea><br></div>
+<div class="questList">02. <textarea id="q2" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°2" onchange="saveData()"></textarea>
+<textarea id="a2" class="answers" rows="1" cols="auto" placeholder="Respuesta N°2" onchange="saveData()"></textarea><br></div>
 
-<div class="questList">03. <textarea id="q3" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°3"></textarea>
-<textarea id="a3" class="answers" rows="1" cols="auto" placeholder="Respuesta N°3"></textarea><br></div>
+<div class="questList">03. <textarea id="q3" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°3" onchange="saveData()"></textarea>
+<textarea id="a3" class="answers" rows="1" cols="auto" placeholder="Respuesta N°3" onchange="saveData()"></textarea><br></div>
 
-<div class="questList">04. <textarea id="q4" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°4"></textarea>
-<textarea id="a4" class="answers" rows="1" cols="auto" placeholder="Respuesta N°4"></textarea><br></div>
+<div class="questList">04. <textarea id="q4" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°4" onchange="saveData()"></textarea>
+<textarea id="a4" class="answers" rows="1" cols="auto" placeholder="Respuesta N°4" onchange="saveData()"></textarea><br></div>
 
-<div class="questList">05. <textarea id="q5" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°5"></textarea>
-<textarea id="a5" class="answers" rows="1" cols="auto" placeholder="Respuesta N°5"></textarea><br></div>
+<div class="questList">05. <textarea id="q5" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°5" onchange="saveData()"></textarea>
+<textarea id="a5" class="answers" rows="1" cols="auto" placeholder="Respuesta N°5" onchange="saveData()"></textarea><br></div>
 
-<div class="questList">06. <textarea id="q6" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°6"></textarea>
-<textarea id="a6" class="answers" rows="1" cols="auto" placeholder="Respuesta N°6"></textarea><br></div>
+<div class="questList">06. <textarea id="q6" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°6" onchange="saveData()"></textarea>
+<textarea id="a6" class="answers" rows="1" cols="auto" placeholder="Respuesta N°6" onchange="saveData()"></textarea><br></div>
 
 <!-- HIDDEN DIVS -->
-<div class="questList" id="list7" style="display: none;">07. <textarea id="q7" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°7"></textarea>
-<textarea id="a7" class="answers" rows="1" cols="auto" placeholder="Respuesta N°7"></textarea><br></div>
+<div class="questList" id="list7" style="display: none;">07. <textarea id="q7" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°7" onchange="saveData()"></textarea>
+<textarea id="a7" class="answers" rows="1" cols="auto" placeholder="Respuesta N°7" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list8" style="display: none;">08. <textarea id="q8" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°8"></textarea>
-<textarea id="a8" class="answers" rows="1" cols="auto" placeholder="Respuesta N°8"></textarea><br></div>
+<div class="questList" id="list8" style="display: none;">08. <textarea id="q8" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°8" onchange="saveData()"></textarea>
+<textarea id="a8" class="answers" rows="1" cols="auto" placeholder="Respuesta N°8" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list9" style="display: none;">09. <textarea id="q9" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°9"></textarea>
-<textarea id="a9" class="answers" rows="1" cols="auto" placeholder="Respuesta N°9"></textarea><br></div>
+<div class="questList" id="list9" style="display: none;">09. <textarea id="q9" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°9" onchange="saveData()"></textarea>
+<textarea id="a9" class="answers" rows="1" cols="auto" placeholder="Respuesta N°9" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list10" style="display: none;">10. <textarea id="q10" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°10"></textarea>
-<textarea id="a10" class="answers" rows="1" cols="auto" placeholder="Respuesta N°10"></textarea><br></div>
+<div class="questList" id="list10" style="display: none;">10. <textarea id="q10" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°10" onchange="saveData()"></textarea>
+<textarea id="a10" class="answers" rows="1" cols="auto" placeholder="Respuesta N°10" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list11" style="display: none;">11. <textarea id="q11" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°11"></textarea>
-<textarea id="a11" class="answers" rows="1" cols="auto" placeholder="Respuesta N°11"></textarea><br></div>
+<div class="questList" id="list11" style="display: none;">11. <textarea id="q11" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°11" onchange="saveData()"></textarea>
+<textarea id="a11" class="answers" rows="1" cols="auto" placeholder="Respuesta N°11" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list12" style="display: none;">12. <textarea id="q12" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°12"></textarea>
-<textarea id="a12" class="answers" rows="1" cols="auto" placeholder="Respuesta N°12"></textarea><br></div>
+<div class="questList" id="list12" style="display: none;">12. <textarea id="q12" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°12" onchange="saveData()"></textarea>
+<textarea id="a12" class="answers" rows="1" cols="auto" placeholder="Respuesta N°12" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list13" style="display: none;">13. <textarea id="q13" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°13"></textarea>
-<textarea id="a13" class="answers" rows="1" cols="auto" placeholder="Respuesta N°13"></textarea><br></div>
+<div class="questList" id="list13" style="display: none;">13. <textarea id="q13" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°13" onchange="saveData()"></textarea>
+<textarea id="a13" class="answers" rows="1" cols="auto" placeholder="Respuesta N°13" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list14" style="display: none;">14. <textarea id="q14" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°14"></textarea>
-<textarea id="a14" class="answers" rows="1" cols="auto" placeholder="Respuesta N°14"></textarea><br></div>
+<div class="questList" id="list14" style="display: none;">14. <textarea id="q14" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°14" onchange="saveData()"></textarea>
+<textarea id="a14" class="answers" rows="1" cols="auto" placeholder="Respuesta N°14" onchange="saveData()"></textarea><br></div>
 
-<div class="questList" id="list15" style="display: none;">15. <textarea id="q15" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°15"></textarea>
-<textarea id="a15" class="answers" rows="1" cols="auto" placeholder="Respuesta N°15"></textarea><br></div>
+<div class="questList" id="list15" style="display: none;">15. <textarea id="q15" class="studyQs" rows="1" cols="auto" placeholder="Pregunta N°15" onchange="saveData()"></textarea>
+<textarea id="a15" class="answers" rows="1" cols="auto" placeholder="Respuesta N°15" onchange="saveData()"></textarea><br></div>
 
 <br>
 <div id="goButton" class="actionButton" onclick="slideQuestDown(); showRandomizer()" title="Iniciar sesión de estudio!">Comenzar!</div>
