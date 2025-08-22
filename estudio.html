@@ -97,8 +97,8 @@ document.getElementById("q15").value = localStorage.q15 || ""; document.getEleme
  <br>
  <div id="randomQs" class="randomQs" style="margin-top: 6px; margin-bottom: 16px;">Tus preguntas aleatorias<br>aparecerán aquí!!</div>
 
- <div id="answerButton" class="studyButton" style="left: 15%; display: none;" title="Mostrar respuesta!" onclick="getAnswer()">Respuesta!</div>
- <div id="randomButton" class="studyButton" style="right: 15%;" title="Mostrar pregunta aleatoria!" onclick="goRandomize()">Preguntar?</div>
+ <div id="answerButton" class="studyButton" style="left: 15%; display: none;" title="Mostrar respuesta!" onclick="getAnswer(); saveData()">Respuesta!</div>
+ <div id="randomButton" class="studyButton" style="right: 15%;" title="Mostrar pregunta aleatoria!" onclick="goRandomize(); saveData()">Preguntar?</div>
  <br>
  <div id="audioOn" class="audioToggle" onclick="enableAudio()" style="cursor: pointer;" title="Activar sonido!">🔈</div>
  <div id="audioOff" class="audioToggle" onclick="disableAudio()" style="cursor: pointer; display: none;" title="Desactiva sonido!">🔊</div>
@@ -161,7 +161,7 @@ document.getElementById("q15").value = localStorage.q15 || ""; document.getEleme
 <textarea id="a15" class="answers" rows="1" cols="auto" placeholder="Respuesta N°15" onchange="saveData()"></textarea><br></div>
 
 <br>
-<div id="goButton" class="actionButton" onclick="slideQuestDown(); showRandomizer()" title="Iniciar sesión de estudio!">Comenzar!</div>
+<div id="goButton" class="actionButton" onclick="slideQuestDown(); showRandomizer(); saveData()" title="Iniciar sesión de estudio!">Comenzar!</div>
 <br>
  <div id="trivia" class="trivia">
   <span>Preguntas:</span>
