@@ -87,7 +87,8 @@ body::-webkit-scrollbar { display: none; }
 
 .randomQs {
  margin: auto;
- flex; justify-content: center;
+ display: flex;
+ justify-content: center;
  align-items: center;
  margin-top: 3%;
  margin-bottom: 3%;
@@ -170,7 +171,7 @@ textarea.theQs {
 }
 
 textarea.studyQs {
- width: 65%;
+ width: 60%;
  height: 26px;
  background-color: #DBF9DB;
  font-size: min(11px, 2vw);
@@ -188,7 +189,7 @@ textarea.studyQs {
 }
 
 textarea.answers {
- width: 25%;
+ width: 30%;
  height: 26px;
  background-color: #F9D5E5;
  font-size: min(11px, 2vw);
@@ -322,7 +323,7 @@ div#answerButton:active { color: #CCCCFF; background-color: #CF9FFF; }
 
 @media screen and (max-width: 800px) {
  textarea.theQs { width: 82%; height: 32px; }
- textarea.studyQs { width: 60%; height: 42px; padding: 1px; margin-left: 1px; margin-right: 1px;}
+ textarea.studyQs { width: 55%; height: 42px; padding: 1px; margin-left: 1px; margin-right: 1px;}
  textarea.answers { width: 30%; height: 42px; padding: 1px; margin-left: 1px; margin-right: 1px;}
 
  .title {margin-top: 12px;}
