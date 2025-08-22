@@ -20,7 +20,7 @@ a:visited	{ color: cornflowerblue; text-shadow: 1px 1px 12px pink; }
 .gradeScaleLinked { color: hotpink; text-decoration: none; cursor: pointer; font-size: smaller; }
 .gradeScaleActive { color: cornflowerblue; text-decoration: none; cursor: pointer; font-size: larger; font-weight: bold; }
 
-::placeholder {font-size: min(14px, 2vw); color: #33333366; opacity: 85; /* Firefox */ }
+::placeholder {font-size: min(14px, 3vw); color: #33333366; opacity: 85; /* Firefox */ }
 ::-ms-input-placeholder { color: darkgray; /* Edge 12 -18 */}
 
 ul	{ padding-left: 18px; }
@@ -1394,7 +1394,6 @@ div.creditFooter { visibility: visible; }
 
 /* VOTING */
 div.grid-voting { display: none; visibility: hidden; }
-
 }
 
 
