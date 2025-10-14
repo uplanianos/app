@@ -237,11 +237,11 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
   <div id="plannerTitle" class="widgetTitle" style="background-color: #554994"><b>Programación Semanal:</b></div>
   <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">⭕</div>
    <div class="plannerWrapper">
-	<div>Lunes:	<textarea id="planMon" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del lunes."></textarea></div>
-	<div>Martes:	<textarea id="planTue" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del martes."></textarea></div>
-	<div>Miércoles:	<textarea id="planWed" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del miércoles."></textarea></div>
-	<div>Jueves:	<textarea id="planThu" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del jueves."></textarea></div>
-	<div>Viernes:	<textarea id="planFri" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del viernes."></textarea></div>
+	<div>Lunes	<span id="thisMon"></span>: <textarea id="planMon" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del lunes."></textarea></div>
+	<div>Martes	<span id="thisTue"></span>: <textarea id="planTue" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del martes."></textarea></div>
+	<div>Miércoles	<span id="thisWed"></span>: <textarea id="planWed" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del miércoles."></textarea></div>
+	<div>Jueves	<span id="thisThu"></span>: <textarea id="planThu" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del jueves."></textarea></div>
+	<div>Viernes	<span id="thisFri"></span>: <textarea id="planFri" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del viernes."></textarea></div>
    </div><!-- END OF PLANNER WRAPPER -->
  </div>
  <!-- END OF WEEK PLANNER DIV -->
@@ -802,6 +802,13 @@ var thisTue = thisDay.getDate() + 1
 var thisWed = thisDay.getDate() + 2
 var thisThu = thisDay.getDate() + 3
 var thisFri = thisDay.getDate() + 4
+
+// PRINTING DATES INTO DAY TITLES!
+document.getElementById("thisMon").innerHTML = thisMon
+document.getElementById("thisTue").innerHTML = thisTue
+document.getElementById("thisWed").innerHTML = thisWed
+document.getElementById("thisThu").innerHTML = thisThu
+document.getElementById("thisFri").innerHTML = thisFri
 
 // PRINTING PLACEHOLDER TEXT WITH DATES!
 document.getElementById("planMon").placeholder = "Actividades del lunes (" + thisMon + ")."
