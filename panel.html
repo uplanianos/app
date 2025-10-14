@@ -845,8 +845,9 @@ var doTheLoop = setInterval(function(){
  plannerTitle.style.width = plannerProgress
  if (i >= 100) {
   clearInterval(doTheLoop)
+  // RESETTING TITLE & COLOR
   plannerTitle.innerHTML = "Programación Semanal:"
-  plannerTitle.style.background = "#CC0000"
+  plannerTitle.style.background = "#554994"
 
   // DELETING ELEMENTS!
   var Planning = document.querySelectorAll("textarea.plannerDays");
