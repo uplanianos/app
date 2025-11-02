@@ -551,11 +551,22 @@ if (distance > 0) {
   semesterBar.innerHTML = semesterBarProgress
   if (iTerm >= distance) { clearInterval(doTheLoop) }
   if (iTerm >= 100) { clearInterval(doTheLoop)  }
-  if (iTerm >= 0 && iTerm < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
-  if (iTerm >= 20 && iTerm < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 0 && iTerm < 20) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.3s" }
+  if (iTerm >= 20 && iTerm < 40) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
   if (iTerm >= 40 && iTerm < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
-  if (iTerm >= 60 && iTerm <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
-  if (iTerm >= 80 && iTerm <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 60 && iTerm <= 80) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  if (iTerm >= 80 && iTerm <= 100) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.6s" }
+
+  // ────────────────────
+  // ORIGINAL COLOR - START
+  // if (iTerm >= 0 && iTerm < 20) { semesterBar.style.backgroundColor = "#FF0000CC"; semesterBar.style.transition = "background-color 0.3s" }
+  // if (iTerm >= 20 && iTerm < 40) { semesterBar.style.backgroundColor = "#FF000088"; semesterBar.style.transition = "background-color 0.6s" }
+  // if (iTerm >= 40 && iTerm < 60) { semesterBar.style.backgroundColor = "#FFFF0066"; semesterBar.style.transition = "background-color 0.6s" }
+  // if (iTerm >= 60 && iTerm <= 80) { semesterBar.style.backgroundColor = "lightblue"; semesterBar.style.transition = "background-color 0.6s" }
+  // if (iTerm >= 80 && iTerm <= 100) { semesterBar.style.backgroundColor = "lightgreen"; semesterBar.style.transition = "background-color 0.6s" }
+  // ORIGINAL COLOR - END
+  // ────────────────────
+
   }, percent)
  }
 }
@@ -597,11 +608,20 @@ if (distanceYear > 0) {
   yearBar.innerHTML = yearBarProgress
   if (iYear >= distanceYear) { clearInterval(doTheLoop) }
   if (iYear >= 100) { clearInterval(doTheLoop)  }
-  if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
-  if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.3s" }
+  if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
   if (iYear >= 40 && iYear < 60) { yearBar.style.backgroundColor = "#FFFF0066"; yearBar.style.transition = "background-color 0.6s" }
-  if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
-  if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
+  if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.6s" }
+
+  // ORIGINAL COLOR - START
+  // if (iYear >= 0 && iYear < 20) { yearBar.style.backgroundColor = "#FF0000CC"; yearBar.style.transition = "background-color 0.3s" }
+  // if (iYear >= 20 && iYear < 40) { yearBar.style.backgroundColor = "#FF000088"; yearBar.style.transition = "background-color 0.6s" }
+  // if (iYear >= 40 && iYear < 60) { yearBar.style.backgroundColor = "#FFFF0066"; yearBar.style.transition = "background-color 0.6s" }
+  // if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
+  // if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
+  // ORIGINAL COLOR - END
+
   }, percent)
  }
 }
@@ -784,7 +804,9 @@ var Planning = document.querySelectorAll("textarea.plannerDays")
 
  }
 
+// =========================
 // ADDING CURRENT WEEKDAY'S DATES TO PLACEHOLDERS!
+// =========================
 thisDay = date
 
 // Get current day number, converting Sunday to 7
@@ -794,7 +816,13 @@ var day = thisDay.getDay() || 7
 if (day !== 1) // Only manipulate the date if it isn't Mon.
  // Set the hours to day number minus 1 & multiplied by negative 24
  thisDay.setHours(-24 * (day - 1))
- // console.log(thisDay); // will be Monday
+ // console.log(thisDay); // will be current Monday (date format)!
+
+// VARIABLES FOR MONTH & AMOUNT OF DAYS CALCULATIONS
+let currentMonth = date.getMonth()+1
+let currentMonday = date.getDate()
+// console.log(date.getMonth(), date.getDate())
+// console.log(currentMonth, currentMonday)
 
 // GETTING ONLY THE DATES FROM CURRENT WEEK!
 var thisMon = thisDay.getDate()
@@ -802,6 +830,51 @@ var thisTue = thisDay.getDate() + 1
 var thisWed = thisDay.getDate() + 2
 var thisThu = thisDay.getDate() + 3
 var thisFri = thisDay.getDate() + 4
+
+// =========================
+// SETTING MONTH LENGTH
+let monthLength // console.log(monthLength)
+
+// FEBRUARY
+if (currentMonth == 2) {
+monthLength = 29 // console.log("This month has 29 days!")
+}
+
+// IF MONTHS HAVE 30 DAYS (April, June, September and November)
+if (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11) {
+monthLength = 30 // console.log("This month has 30 days!")
+}
+
+else {
+monthLength = 31 // console.log("This month has 31 days!")
+}
+// =========================
+
+
+// CHANGING DAYS ON MONTHS WITH 31 DAYS!
+if (monthLength == 31 && currentMonday == 28) {
+ var thisFri = thisDay.getDate() - 30
+}
+
+if (monthLength == 31 && currentMonday == 29) {
+ var thisThu = thisDay.getDate() - 30
+ var thisFri = thisDay.getDate() - 29
+}
+
+if (monthLength == 31 && currentMonday == 30) {
+ var thisWed = thisDay.getDate() - 30
+ var thisThu = thisDay.getDate() - 29
+ var thisFri = thisDay.getDate() - 28
+}
+
+if (monthLength == 31 && currentMonday == 31) {
+ var thisTue = thisDay.getDate() - 30
+ var thisWed = thisDay.getDate() - 29
+ var thisThu = thisDay.getDate() - 28
+ var thisFri = thisDay.getDate() - 27
+}
+// =========================
+
 
 // PRINTING DATES INTO DAY TITLES!
 document.getElementById("thisMon").innerHTML = thisMon
