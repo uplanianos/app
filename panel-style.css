@@ -1,0 +1,576 @@
+
+body {
+ /* background-color: #F1E3DD; Appricot */
+ /* background-color: #F9E1A8; Gelatto Yellow */
+ /* background-color: #E0E2E4; Grayish */
+ /* background-color: #CFE0E8; Grayish Blue */
+ /* background-color: #DBF9DB; Green */
+ /* background-color: #50C878; Green Emerald */
+ /* background-color: #98FB98; Green Mint */
+ /* background-color: #F0EFEF; Mauve 1 */
+ /* background-color: #D6CBD3; Mauve 2 */
+ /* background-color: #E4D1D1; Peach */
+ /* background-color: #F9D5E5; Purple */
+ /* background-color: #7F55B1; Pretty Purple */
+ /* background-color: #CCCCFF; Periwinkle */
+  background-color: #151B54; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 500% 100%;
+ font-family: Verdana, Helvetica, sans-serif;
+ font-color: black;
+ margin-top: 0px;
+ margin-left: 0px;
+ margin-right: 0px;
+ margin-bottom: 0px;
+}
+
+/* HIDDEN!
+body::-webkit-scrollbar { display: none; }
+*/
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #4EA5FF; border: 1px solid gray; }
+::-webkit-scrollbar-thumb { background: #FEFAE0; border: 1px solid gray; }
+::-webkit-scrollbar-thumb:hover { background: #FEFAE0; border: 1px solid gray; }
+body::-webkit-scrollbar { display: none; }
+
+a		{ color: cornflowerblue; text-decoration: none; cursor: pointer; }
+a:hover		{ color: cornflowerblue; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px #00008866; }
+a:active	{ color: red; text-decoration: none; cursor: pointer; text-shadow: 1px 1px 12px cornflowerblue; }
+a:visited	{ color: #26428B /* Dark Cornflower Blue / A little Transparent */; text-shadow: 1px 1px 12px pink; }
+
+
+/* GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES!!! */
+/* GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES!!! */
+/* GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES - GLOBAL VARIABLES!!! */
+
+.main-flex {
+ display: grid;
+ grid-template-columns: 30% auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div div'
+    'div div'
+    'div div'
+    'div div';
+ gap: 0px;
+ background-color: #FFFFFF33; border-radius: 12px;
+ color: white;
+ margin: 50px 6px;
+ padding: 3px;
+}
+
+.widgetDivs {
+ background-color: white;
+ margin: 6px;
+ padding: 6px;
+ border: 2px solid white;
+ border-radius: 12px
+}
+
+.widgetTitle { 
+ display: flex;
+ height: 20px;
+ align-items: center;
+ margin: -6px;
+ border-radius: 12px 12px 0 0;
+ padding: 6px;
+}
+
+.trashIcon {
+ margin-left: 92%;
+ margin-top: -30px;
+ font-size: 20px;
+ cursor: pointer;
+ user-select: none;
+ outline: 0;
+}
+
+.trashIcon:hover { text-shadow: 1px 1px 18px white; }
+
+.progressWrapper {
+ background-color: white;
+ margin: 6px -6px -6px;
+ border-radius: 0px 0px 6px 6px;
+}
+
+.doubleColumnWrapper {
+ display: flex;
+ margin: 6px -6px -6px;
+ border-radius: 0px 0px 6px 6px;
+}
+
+
+/* NOT USED - JUST FOR KEEPSAKE */
+.absolutelyCenteredDiv {
+ position: absolute;
+ display: grid;
+ top: 50%; transform: translateY(-50%);
+ left: 50%; transform: translateX(-50%);
+ width: 150px;
+ height: 50px;
+ text-align: center;
+ align-items: center;
+ background-color: #FF0000aa;
+ color: yellow;
+ font-weight: bold;
+ border: 3px solid white;
+ border-radius: 18px;
+}
+
+
+
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+@keyframes confetti-fall {
+ 0% {
+ transform: translateY(-100%) rotate(0deg);
+ opacity: 1;
+ }
+ 100% {
+ transform: translateY(100vh) rotate(360deg);
+ opacity: 0.8;
+ }
+}
+
+.confetti-piece {
+ position: absolute;
+ width: 10px;
+ height: 20px;
+ background: var(--confetti-color, red);
+ opacity: 0.9;
+ animation: confetti-fall var(--fall-duration, 4s) linear infinite;
+}
+
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) { left: 10%; --confetti-color: #ff6347; --fall-duration: 3s; }
+.confetti-piece:nth-child(2) { left: 25%; --confetti-color: #ffa500; --fall-duration: 5s; }
+.confetti-piece:nth-child(3) { left: 40%; --confetti-color: #32cd32; --fall-duration: 4.5s; }
+.confetti-piece:nth-child(4) { left: 60%; --confetti-color: #1e90ff; --fall-duration: 3.5s; }
+.confetti-piece:nth-child(5) { left: 80%; --confetti-color: #ff69b4; --fall-duration: 6s; }
+
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+/* CONFETTI EFFECT */
+
+
+
+/* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
+/* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
+/* TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL - TOP LEVEL!!! */
+
+.top {
+ background-color: #FEFAE0;
+ position: fixed;
+ left: 0px;
+ top: 0px;
+ height: 44px;
+ width: 100%;
+ border: 1px solid gray;
+ border-style: hidden hidden solid hidden; /* top right bottom left */
+ z-index: 1;
+}
+
+.topButtons {
+ font-size: min(14px, 4vw);
+ border: 2px solid darkgray;
+ border-radius: 5px 5px;
+ cursor: pointer;
+}
+
+.topButtons:hover { background-color: #CFE0E8; } /* Grayish Blue: #CFE0E8; */
+.topButtons:active { background-color: lightblue; }
+
+.title {
+ text-align: center;
+ text-shadow: 2px 2px 5px gray;
+ font-size: min(1.2em, 4.5vmin);
+ font-weight: bold;
+ margin-top: 12px;
+ margin-right: 5%;
+}
+
+
+/* LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE!!! */
+/* LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE!!! */
+/* LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE - LEVEL ONE!!! */
+
+.progressBar {
+ width: 0%;
+ height: 30px;
+ background-color: #A7C7E7 /* Pastel Blue */;
+ color: #333;
+ text-align: center;
+ align-content: center;
+ border-radius: 0 0 12px 12px;
+}
+
+
+/* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
+/* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
+/* LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO - LEVEL TWO */
+
+.rollCanvas { display: flex; width: 154px; height: 154px; margin-top: -6px; margin-left: auto; margin-right: auto; }
+
+.plannerWrapper {
+ display: grid;
+ grid-template-columns: auto auto auto auto auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div div div div div';
+ gap: 12px;
+ color: #666;
+ margin: 6px -6px 0;
+ border-radius: 0px 0px 6px 6px;
+ padding: 12px 24px 6px 12px;
+}
+
+.plannerDays { width: 94%; height: 112px; background-color: #FFFFCC88; padding: 6px; border-radius: 6px; resize: none; }
+
+/* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
+/* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
+/* LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE - LEVEL THREE!!! */
+
+.assessment { background-color: #FFFFCC88; width: 96%; height: 20px; border: 1px solid gray; padding-left: 6px;}
+.testSubject { width: 55%; align-items: center; }
+.testGrades { width: 15%; align-items: center; text-align: center; }
+
+
+.gradePointsDiv {
+ display: flex-grid;
+ width: 20%;
+ margin: auto;
+ text-align: center;
+ align-items: center;
+ background: lightblue; 
+ color: #666;
+ border: 1px solid gray;
+ border-radius: 12px;
+ padding: 12px;
+}
+
+.gradePointsChild {
+ font-size: 0.6em;
+ padding: 4px; /* TOP LEFT BOTTOM RIGHT */
+}
+
+div.gradesOrangeColumn {
+ width: 68px;
+ background: orange;
+ font-weight: bold;
+ text-align: left;
+ color: black;
+ opacity: 0.5;
+ padding-left: 6px;
+}
+
+.gradeScaleButton {
+ background: pink;
+ padding: 3px;
+ border: 1px solid gray;
+ border-radius: 6px;
+ margin-top: 6px;
+ cursor: pointer;
+ user-select: none;
+ padding: 12px;
+}
+.gradeScaleButton:hover { background: lightgreen; color: white; }
+
+.gradeScaleDiv {
+ width: 80%;
+ background: lightyellow;
+ margin: 6px auto auto 12px;
+ overflow-x: scroll;
+ white-space: nowrap;
+ -webkit-overflow-scrolling: touch;
+ scroll-behavior: smooth;
+ border: 1px dashed gray;
+}
+.gradeScaleDiv::-webkit-scrollbar { display: none; }
+
+.gradeSlider {
+ display: grid;
+ grid-template-columns: auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div'
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div'
+    'div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div';
+ gap: 0px;
+ align-items: center;
+ width: 300px;
+}
+
+.gradeSlider * { /* GRADE SCALE CHILDREN */
+ width: 24px;
+ font-size: 12px;
+ text-align: center;
+ margin: -0.4px;
+ color: black;
+ padding: 16px;
+ border: 1px dotted lightgray;
+}
+
+.gradeNumberInput {
+ width: 55px;
+ background: lightyellow;
+ color: #666;
+ font-size: 16px;
+ text-align: center;
+ border: 1px solid #666;
+ border-radius: 12px;
+ padding: 6px 6px 6px 12px; /* TOP LEFT BOTTOM RIGHT */
+}
+
+
+.gradeDivArrows { position: absolute; right: 8%; margin-top: -24px; user-select: none; }
+
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+/* LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR - LEVEL FOUR!!! */
+
+/* COFFEE!!! */
+.coffeeButton {
+ display: grid;
+ margin: auto;
+ text-align: center;
+ align-items: center;
+ font-size: 20px;
+ padding: 6px;
+ border: 3px solid black;
+ border-radius: 12px;
+ background: lightgreen;
+ cursor: pointer;
+ user-select: none;
+ outline: 0;
+}
+.coffeeButton:hover { background-color: orange; }
+
+.coffeeCups {
+ position: absolute;
+ margin-top: 18px;
+ margin-left: 24px;
+ width: 64px;
+ background-color: transparent;
+ font-size: 54px; color: red;
+ font-weight: bold;
+ text-align: center;
+ padding: 20px;
+ text-shadow: 1px 1px 6px white;
+ border: 0px;
+}
+
+
+/* WATER!!! */
+.waterButton {
+ display: grid;
+ margin: auto;
+ text-align: center;
+ align-items: center;
+ font-size: 20px;
+ padding: 6px;
+ border: 3px solid black;
+ border-radius: 12px;
+ background: cornflowerblue;
+ cursor: pointer;
+ user-select: none;
+ outline: 0;
+}
+.waterButton:hover { background-color: orange; }
+
+.waterCups {
+ position: absolute;
+ margin-top: 12px;
+ margin-left: -10px;
+ width: 72px;
+ background-color: transparent;
+ font-size: 54px; color: blue;
+ font-weight: bold;
+ text-align: center;
+ padding: 20px;
+ text-shadow: 1px 1px 6px white;
+ border: 0px;
+}
+
+
+/* TOOL STYLE !!! */
+/* TOOL STYLE !!! */
+/* TOOL STYLE !!! */
+
+.toolsDiv {
+ margin: 10px 2px 10px 2px;
+ padding: 10px 0 0 0;
+ overflow-x: scroll;
+ white-space: nowrap;
+ -webkit-overflow-scrolling:
+ touch; scroll-behavior: smooth;
+}
+.toolsDiv::-webkit-scrollbar { display: none; }
+
+.toolsDivArrows { position: absolute; right: 8%; user-select: none; }
+
+.toolArrow {
+ background-color: cornflowerblue;
+ color: #FFFFFF66;
+ font-size: 18px;
+ font-weight: bold;
+ padding: 0 6px 2px 6px;
+ border: 2px solid black;
+ cursor: pointer; 
+}
+
+.toolArrow:hover { color: white; }
+
+.toolSlider { display: flex; align-items: center; gap: 6px; width: 200px; }
+
+.toolSpan {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #0000FF33;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.tidySpan {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #50C87866;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.linkSpan {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #CF9FFF88;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.uplaSpan {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #C4B45466;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+
+.toolsAI {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #FF4433AA;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.helpSpan {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #CC000033;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
+.sliderIcon { font-size: 60px; }
+
+
+/* BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL */
+/* BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL */
+/* BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL - BOTTOM LEVEL */
+
+.bottom {
+ position: fixed;
+ left: 0px;
+ bottom: 0px;
+ height: 32px;
+ width: 100%;
+ text-align: center;
+ background-color: cornflowerblue;
+ font-size: min(1em, 4.5vmin);
+ color: white;
+ padding-top: 8px;
+ border: 2px solid #FFFFFF88;
+ border-style: solid hidden hidden hidden; /* top right bottom left */
+ z-index: 1;
+}
+
+
+
+/* Use a media query to add a break point at 800px: */
+/* Use a media query to add a break point at 800px: */
+/* Use a media query to add a break point at 800px: */
+
+@media screen and (max-width: 800px) {
+ .title {margin-top: 12px;}
+ .time {margin-top: 4px; margin-right: 4px;}
+
+.main-flex {
+ display: grid;
+ grid-template-columns: auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div'
+    'div'
+    'div'
+    'div'
+    'div'
+    'div'
+    'div'
+    'div';
+ gap: 0px;
+}
+
+.plannerWrapper {
+ display: grid;
+ grid-template-columns: auto;
+ grid-template-rows: auto;
+ grid-template-areas:
+    'div'
+    'div'
+    'div'
+    'div'
+    'div';
+ gap: 0px;
+ margin-left: -6px ;
+ margin-right: -24px ;
+ border-radius: 0px 0px 6px 6px;
+ padding: 12px 24px 6px 12px;
+}
+
+.gradePointsDiv { width: 30%; padding: 6px; }
+.gradeScaleDiv { width: 70%; }
+.gradeNumberInput { width: 45px; font-size: 14px; padding: 6px; padding-right: 12px; /* TOP LEFT BOTTOM RIGHT */}
+
+.plannerDays { height: 88px; }
+.gradeDivArrows { display: none; }
+.toolsDivArrows { display: none; }
