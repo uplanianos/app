@@ -476,6 +476,19 @@ div.gradesOrangeColumn {
  cursor: pointer;
 }
 
+
+.toolsAI {
+ display: inline-block;
+ width: 120px;
+ height: 125px;
+ background-color: #FF4433AA;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ text-align: center;
+ padding: 6px;
+ cursor: pointer;
+}
+
 .helpSpan {
  display: inline-block;
  width: 120px;
