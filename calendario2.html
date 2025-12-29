@@ -136,22 +136,6 @@ window.onload = function() {
        if (text2 !== null) $('#'+id).val(text2);
     });
 knowledgeProgress();
-pastSummer();
-}
-</script>
-
-
-
-<script type="text/javascript">
-function pastSummer() {
-// DECLARING ELEMENTS AND VARIABLES
-var oldDates = document.getElementById("dates2024") // DIV WITH OLD DATES
-const date = new Date() // SETTING UP DATE CONSTANT
-let thisYear = date.getFullYear() // CURRENT YEAR
-let thisMonth = date.getMonth() // CURRENT MONTH
-
-// HIDING OLDER DATES
-if (thisYear >= 2025 && thisMonth >= 2) { oldDates.style.display = "none" }
 }
 </script>
 
