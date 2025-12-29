@@ -184,7 +184,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 
  <!-- SEMESTER PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;II,&nbsp;2025:</b>&nbsp;Diciembre&nbsp;26</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;I,&nbsp;2026:</b>&nbsp;Julio&nbsp;17</div>
   <div class="progressWrapper">
 	 <div id="semesterBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -193,7 +193,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 
  <!-- YEAR PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance&nbsp;2025:</b>&nbsp;Diciembre&nbsp;31:</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue;"><b>Avance&nbsp;2026:</b>&nbsp;Diciembre&nbsp;31:</div>
   <div class="progressWrapper">
 	 <div id="yearBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -540,8 +540,8 @@ var percent = duration / 100; // 1 percent of duration!
 var iTerm = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
-var firstClass = new Date("2025-08-18T00:00:00").getTime()
-var finalClass = new Date("2025-12-27T00:00:00").getTime()
+var firstClass = new Date("2026-03-16T00:00:00").getTime()
+var finalClass = new Date("2026-07-18T00:00:00").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstClass
@@ -598,8 +598,8 @@ var percent = duration / 100; // 1 percent of duration!
 var iYear = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
-var firstDay =	new Date("2025-01-01T00:00:00").getTime()
-var lastDay =	new Date("2026-01-01T00:00:00").getTime()
+var firstDay =	new Date("2026-01-01T00:00:00").getTime()
+var lastDay =	new Date("2027-01-01T00:00:00").getTime()
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstDay
@@ -865,18 +865,18 @@ monthLength = 31 // console.log("This month has 31 days!")
 
 // CHANGING DAYS ON MONTHS WITH 31 DAYS!
 if (monthLength == 31 && currentMonday == 28) {
- var thisFri = thisDay.getDate() - 30
+ var thisFri = thisDay.getDate() - 27
 }
 
 if (monthLength == 31 && currentMonday == 29) {
- var thisThu = thisDay.getDate() - 30
- var thisFri = thisDay.getDate() - 29
+ var thisThu = thisDay.getDate() - 28
+ var thisFri = thisDay.getDate() - 27
 }
 
 if (monthLength == 31 && currentMonday == 30) {
- var thisWed = thisDay.getDate() - 30
- var thisThu = thisDay.getDate() - 29
- var thisFri = thisDay.getDate() - 28
+ var thisWed = thisDay.getDate() - 29
+ var thisThu = thisDay.getDate() - 38
+ var thisFri = thisDay.getDate() - 27
 }
 
 if (monthLength == 31 && currentMonday == 31) {
