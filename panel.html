@@ -554,7 +554,14 @@ var termDuration = Math.floor(semesterDays / oneDay)
 distance = Math.abs(termProgress * 100 / termDuration)
 if (currentDays < 0 || termProgress < 0) { distance = -1 }
 
-if (distance == 0) { semesterBar.style.width = "0%" }
+if (distance <= 0) {
+ semesterBar.style.width = "0%"; semesterBar.style.color = 'red'
+ // BLINK THE PROGRESS PERCENT EVERY SECOND!
+ var blinkProgress = setInterval(function(){
+  if (semesterBar.style.color == 'red') { semesterBar.style.color = 'darkgray' }
+  else { semesterBar.style.color = 'red' }
+ }, duration * 1)
+}
 if (distance > 0) {
  var doTheLoop = setInterval(function(){
   iTerm++;
@@ -611,10 +618,20 @@ var termDuration = Math.floor(semesterDays / oneDay)
 
 distanceYear = Math.abs(termProgress * 100 / termDuration)
 
+// ==============================
+// TRYING ROUND UP PERCENTAGES!
+// THIS WORKS, BUT ISN'T PART OF THE LOOP
+// SO, I'M ABANDONING THIS UPDATE.
+// ==============================
+// distanceYearDouble = Math.abs(distanceYear).toFixed(1)
+// var yearBarProgress = distanceYearDouble + "%"
+// console.log(distanceYearDouble)
+// ==============================
+
 if (distanceYear == 0) { yearBar.style.width = "0%" }
 if (distanceYear > 0) {
  var doTheLoop = setInterval(function(){
-  iYear++;
+  iYear++
   var yearBarProgress = iYear + "%"
   yearBar.style.width = yearBarProgress
   yearBar.innerHTML = yearBarProgress
@@ -633,6 +650,8 @@ if (distanceYear > 0) {
   // if (iYear >= 60 && iYear <= 80) { yearBar.style.backgroundColor = "lightblue"; yearBar.style.transition = "background-color 0.6s" }
   // if (iYear >= 80 && iYear <= 100) { yearBar.style.backgroundColor = "lightgreen"; yearBar.style.transition = "background-color 0.6s" }
   // ORIGINAL COLOR - END
+
+  // yearBar.innerHTML = distanceYearDouble + "%"
 
   }, percent)
  }
