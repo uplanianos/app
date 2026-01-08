@@ -80,12 +80,13 @@ li:before	{ padding-right: 6px; content: '-'; }
   padding: 1px;
 }
 
-.grid-item-title {background-color: cornflowerblue; border: 1px solid gray; padding: 6px; text-align: center; color: white;}
-.grid-item-blue {background-color: #93CCEA; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
-.grid-item {background-color: lightyellow; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
-.grid-item-green {background-color: lightgreen; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
-.grid-item-pink {background-color: pink; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
-.grid-item-gray {background-color: lightgray; border: 1px solid darkgray; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item-title {background: cornflowerblue; border: 1px solid gray; padding: 6px; text-align: center; color: white;}
+.grid-item-subtitle {background: #D2042D /* Cherry */; border: 1px solid gray; padding: 6px; text-align: center; color: white;}
+.grid-item-blue {background: #93CCEA; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item {background: lightyellow; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item-green {background: lightgreen; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item-pink {background: pink; border: 1px solid gray; padding: 6px; text-align: left; border-radius: 6px;}
+.grid-item-gray {background: lightgray; border: 1px solid darkgray; padding: 6px; text-align: left; border-radius: 6px;}
 
 
 
