@@ -845,9 +845,9 @@ var day = thisDay.getDay() || 7
 
 // GETTING MONDAY'S DATE
 if (day !== 1) // Only manipulate the date if it isn't Mon.
- // Set the hours to day number minus 1 & multiplied by negative 24
- thisDay.setHours(-24 * (day - 1))
- // console.log(thisDay); // will be current Monday (date format)!
+// Set the hours to day number minus 1 & multiplied by negative 24
+thisDay.setHours(-24 * (day - 1))
+// console.log(thisDay); // will be current Monday (date format)!
 
 // VARIABLES FOR MONTH & AMOUNT OF DAYS CALCULATIONS
 let currentMonth = date.getMonth()+1
@@ -864,46 +864,55 @@ var thisFri = thisDay.getDate() + 4
 
 // =========================
 // SETTING MONTH LENGTH
-let monthLength // console.log(monthLength)
+let monthLength
 
 // FEBRUARY
-if (currentMonth == 2) {
-monthLength = 29 // console.log("This month has 29 days!")
-}
+if (currentMonth == 2) { monthLength = 29 }
 
 // IF MONTHS HAVE 30 DAYS (April, June, September and November)
-if (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11) {
-monthLength = 30 // console.log("This month has 30 days!")
-}
+if (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11) { monthLength = 30 }
 
-else {
-monthLength = 31 // console.log("This month has 31 days!")
-}
+else { monthLength = 31 }
 // =========================
 
+// CHANGING DAYS ON MONTHS WITH 29 DAYS!
+if (monthLength == 29) {
+// console.log("This month has 29 days!") 
+ if (currentMonday == 26) { var thisFri = 1 }
+ if (currentMonday == 27) { var thisThu = 1; var thisFri = 2 }
+ if (currentMonday == 28) { var thisWed = 1; var thisThu = 3; var thisFri = 3 }
+ if (currentMonday == 29) { var thisTue = 1; var thisWed = 2; var thisThu = 3; var thisFri = 4 }
+}
+
+// =========================
+
+// CHANGING DAYS ON MONTHS WITH 30 DAYS!
+if (monthLength == 30) {
+// console.log("This month has 30 days!") 
+ if (currentMonday == 27) { var thisFri = 1 }
+ if (currentMonday == 28) { var thisThu = 1; var thisFri = 2 }
+ if (currentMonday == 29) { var thisWed = 1; var thisThu = 3; var thisFri = 3 }
+ if (currentMonday == 30) { var thisTue = 1; var thisWed = 2; var thisThu = 3; var thisFri = 4 }
+}
+
+// =========================
 
 // CHANGING DAYS ON MONTHS WITH 31 DAYS!
-if (monthLength == 31 && currentMonday == 28) {
- var thisFri = thisDay.getDate() - 27
+if (monthLength == 31) {
+// console.log("This month has 31 days!") 
+ if (currentMonday == 28) { var thisFri = thisDay.getDate() - 27 }
+ if (currentMonday == 29) { var thisThu = thisDay.getDate() - 28; var thisFri = thisDay.getDate() - 27 }
+ if (currentMonday == 30) {
+	var thisWed = thisDay.getDate() - 29
+	var thisThu = thisDay.getDate() - 38
+	var thisFri = thisDay.getDate() - 27 }
+ if (currentMonday == 31) {
+	var thisTue = thisDay.getDate() - 30
+	var thisWed = thisDay.getDate() - 29
+	var thisThu = thisDay.getDate() - 28
+	var thisFri = thisDay.getDate() - 27 }
 }
 
-if (monthLength == 31 && currentMonday == 29) {
- var thisThu = thisDay.getDate() - 28
- var thisFri = thisDay.getDate() - 27
-}
-
-if (monthLength == 31 && currentMonday == 30) {
- var thisWed = thisDay.getDate() - 29
- var thisThu = thisDay.getDate() - 38
- var thisFri = thisDay.getDate() - 27
-}
-
-if (monthLength == 31 && currentMonday == 31) {
- var thisTue = thisDay.getDate() - 30
- var thisWed = thisDay.getDate() - 29
- var thisThu = thisDay.getDate() - 28
- var thisFri = thisDay.getDate() - 27
-}
 // =========================
 
 
