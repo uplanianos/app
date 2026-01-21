@@ -145,7 +145,12 @@ document.getElementById("receipt6").value = localStorage.receipt6 || "0"
 	  <div style="text-align: center;">
 	  <span class="money">$</span>
 	  <input type="number" id="theBalance" class="junaeb-saldo" value="0" readonly tabindex="-1">
-	  </div><br>
+	  <br>
+	  <span style="font-size: 12px; padding: 6px;">Monto mensual: $48.000.-</span>
+	  <br>
+	  <br>
+	  </div>
+	  <br>
 	  <div id="clearJunaeb" class="clearJunaeb"><input type="button" id="resetJunaeb" value="BORRAR" onclick="clearGrades()">
 	 </div>
 
@@ -172,9 +177,9 @@ let month = d.getMonth() +1
 // Jan=0, Feb=1, Mar=2, Apr=3, May=4, Jun=5, Jul=6, Aug=7, etc... - Dec=11!
 
 // DECLARING VALUES PER SEMESTER!
-var theMoney = 47000
-var firstTerm = theMoney
-var secondTerm = theMoney + 1000
+var theMoney = 48000
+// var firstTerm = theMoney
+// var secondTerm = theMoney + 1000
 var budget
 var finalBalance
 
@@ -252,9 +257,12 @@ var expenses = parseInt(receipt1.value) + parseInt(receipt2.value) + parseInt(re
 		parseInt(receipt4.value) + parseInt(receipt5.value) + parseInt(receipt6.value)
 
 // UPDATING MONTHLY AMOUNT!
-if (month >= 1 && month <= 2) { theBalance.value = 0; theBalance.style.backgroundColor = "gray" }
-if (month >= 3 && month <= 7) { budget = firstTerm }
-if (month >= 8 && month <= 12) { budget = secondTerm }
+// if (month >= 1 && month <= 2) { theBalance.value = 0; theBalance.style.backgroundColor = "gray" }
+// if (month >= 3 && month <= 7) { budget = firstTerm }
+// if (month >= 8 && month <= 12) { budget = secondTerm }
+
+// CALCULATING TOTAL (WITHOUT MONTH / TERMN DIFFERENCE)
+budget = theMoney
 
 // ADDING VALUES INTO BALANCE!
 finalBalance = budget-expenses
