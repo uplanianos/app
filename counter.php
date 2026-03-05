@@ -2,7 +2,7 @@
 session_start();
 
 // Google App Script Web App URL
-$url = https://script.google.com/macros/s/AKfycbxsJWgBNT1agxWG6jedT1NAsnZFht4UkaevkFh8HuEGX8wFDP7sl7Pp5j6Z8OyH3APe/exec;
+$url = "https://script.google.com/macros/s/AKfycbxsJWgBNT1agxWG6jedT1NAsnZFht4UkaevkFh8HuEGX8wFDP7sl7Pp5j6Z8OyH3APe/exec";
 
 // Check if visitor has already visited in this session
 if(!isset($_SESSION['hasVisited'])){
@@ -15,6 +15,6 @@ if(!isset($_SESSION['hasVisited'])){
 // which is more complex; usually, you just record in sheets
 // and display a local text file instead)
 echo "Thank you for visiting!";
-// 
+//
 
 ?>
