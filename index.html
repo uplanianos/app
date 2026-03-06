@@ -85,11 +85,6 @@
     </div>
     <br>
 
-<!--
-    <iframe src="ticker.html" title="Uplanianos - Inform-inator" style="display: flex; width: 95%; height: 60px; text-align: center; border: 0; margin-left: auto; margin-right: auto; 
-padding: 0px;">
-    </iframe>
--->
 
 <div class="ticker">
 
@@ -116,20 +111,19 @@ padding: 0px;">
  <div id="div6" class="ticker-link" style="display: none;">Hay carreras <font color="red">en paro!✋</font><br>
  <small>🔎 <a class="ticker-link" href="sigueparo.html" target="_parent">Ver detalles!</a></small> 👈
  </div>
-
 </div>
 
 
-    <br>
+<!-- COUNTER CONTENT -->
+ <span id="visitCounter" style="display: flex; margin: auto; margin-top: 6px; align-items: center; justify-content: center;
+ height: 24px; width: 100px; background: #FFFFFF00; font-size: 10px; color: #666; border: 1px #666 solid; visibility: hidden;">
+ Visitas: 
+ </span>
+<!-- END OF COUNTER -->
+
+
     <br>
     </div>
-
-<! -- COMMENTED OUT! -->
-<! -- <div class="counter"> -->
-<! --  <a href='http://www.freevisitorcounters.com'>www.freevisitorcounters.com</a> -->
-<! --  <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=38a6d5789117af0afbba085a736f0fe5465d0da8'></script> -->
-<! --  <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1032905/t/5"></script> -->
-<! -- </div> -->
 
 </div>
 
@@ -257,6 +251,39 @@ var dateSpan = document.getElementById('dateSpan')
 
 
 
+<script type="text/javascript">
+function counterScript() {
+var spreadsheetId = "uplanianoVisits"
+var sheetName = "Counter"
+getSheetData(spreadsheetId, sheetName)
+}
+
+async function getSheetData(spreadsheetId, sheetName) {
+  const baseUrl = "https://script.google.com/macros/s/AKfycbyZh52HPj7iVtyirJXSE7bVX2Iglyq3OxGeuAE-OgYmhmqkmW43NDNBvtK3ZCiw7Spy/exec"
+  const params = { spreadsheetId: spreadsheetId, sheetName: sheetName }
+  const query = new URLSearchParams(params)
+  const url = `${baseUrl}?${query}`
+
+  try {
+    const response = await fetch(url);
+    // Get counter value!
+    const data = await response.json()
+    // console.log(data.values)
+    // HTML ELEMENT:
+    var counterElement = document.getElementById("visitCounter")
+    counterElement.innerText = "Visitas: " + data.values.toString()
+    if (data != undefined || data != null) { counterElement.style.visibility = "visible" }
+    // return data.values
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+</script>
+
+
+
+
 <!- SAVE FUNCTION ->
 <!- CONNECTED TO JQUERY WITH THE FOLLOWING SCRIPT ->
 <script src="scripts/jquery-3.7.1.slim.js"></script>
@@ -283,6 +310,7 @@ window.onload = function() {
 demoTheButtons()
 slideTicker()
 getDate()
+counterScript()
 }
 </script>
 
