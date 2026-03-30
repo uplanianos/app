@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <title>Uplanianos - Carrera Favorita!</title>
+
+<style>
+
+body {
+ background-color: #000000FF;
+ font-family: 'Roboto', Verdana, Helvetica, Sans-serif;
+ margin-left: 0px;
+ margin-right: 0px;
+ -webkit-user-select: none; /* Safari */
+ -ms-user-select: none; /* IE 10 and IE 11 */
+ user-select: none; /* Standard syntax */
+}
+
+body::-webkit-scrollbar { display: none; }
+
+ul {
+ padding-left: 30px;
+ margin-left: 12px;
+ text-indent: -12px;
+ line-height: 2.5;
+ list-style-type: none;
+}
+
+li:before {
+ padding-right: 6px;
+ content: '-';
+}
+
+.titleDiv {
+ width: 80%;
+ align: center;
+ font-size: 1em;
+ font-weight: bold;
+ color: white;
+ padding: 16px;
+}
+
+.grid-item-slider {
+ width: 90%;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: #151B54;
+ border: 1px solid white;
+ color: white;
+ padding: 6px;
+ padding-left: 18px;
+ text-align: left;
+ border-radius: 12px;
+}
+
+.tracker-list { list-style-type: none; margin: 0px; spacing: 0px; text-indent: -28px; }
+
+#fac-artsies { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #FF0066cc; cursor: zoom-in; }
+#fac-sportis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #9999FFcc; cursor: zoom-in; }
+#fac-eduquis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #FFFF00cc; cursor: zoom-in; }
+#fac-saludis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #33FF33cc; cursor: zoom-in; }
+#fac-sociats { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #FF0000aa; cursor: zoom-in; }
+#fac-science { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #008800ee; cursor: zoom-in; }
+#fac-humanis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #0099FFaa; cursor: zoom-in; }
+#fac-enginis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background: #FF00FFaa; cursor: zoom-in; }
+
+.likeButton {
+ width: 30px;
+ color: white;
+ font-size: 14px;
+ background: #6666FF;
+ border: 1px white solid;
+ border-radius: 6px;
+ padding: 4px 8px 4px 8px;
+ margin: 0px 6px 0px 0px;
+ cursor: pointer;
+ }
+
+.hateButton {
+ width: 30px;
+ color: white;
+ font-size: 14px;
+ background: #DD0000;
+ border: 1px white solid;
+ border-radius: 6px;
+ padding: 4px 8px 4px 8px;
+ cursor: pointer;
+ }
+
+.loader {
+ position: absolute;
+ top: 25%; left: 45%;
+ width: 8%;
+ --b: 8px;
+ padding: 1px;
+ aspect-ratio: 1;
+ border-radius: 50%;
+ background: conic-gradient(#0000 10%,#f03355) content-box;
+ -webkit-mask:
+  repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+  radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+ -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+ animation: l4 1s infinite steps(10);
+}
+@keyframes l4 {to{transform: rotate(1turn)}}
+
+}
+</style>
+</head>
+
+<audio id="likeArts" src="https://uplanianos.github.io/app/tugofwar/likeArts.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateArts" src="https://uplanianos.github.io/app/tugofwar/hateArts.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeSport" src="https://uplanianos.github.io/app/tugofwar/likeSport.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateSport" src="https://uplanianos.github.io/app/tugofwar/hateSport.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeEducs" src="https://uplanianos.github.io/app/tugofwar/likeEducs.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateEducs" src="https://uplanianos.github.io/app/tugofwar/hateEducs.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeSalud" src="https://uplanianos.github.io/app/tugofwar/likeSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateSalud" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeSociats" src="https://uplanianos.github.io/app/tugofwar/likeSociats.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateSociats" src="https://uplanianos.github.io/app/tugofwar/hateSociats.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeScience" src="https://uplanianos.github.io/app/tugofwar/likeScience.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateScience" src="https://uplanianos.github.io/app/tugofwar/hateScience.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeHumans" src="https://uplanianos.github.io/app/tugofwar/likeHumans.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateHumans" src="https://uplanianos.github.io/app/tugofwar/hateHumans.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeEngines" src="https://uplanianos.github.io/app/tugofwar/likeEngines.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateEngines" src="https://uplanianos.github.io/app/tugofwar/hateEngines.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<audio id="likeTics" src="https://uplanianos.github.io/app/tugofwar/likeTics.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="hateTics" src="https://uplanianos.github.io/app/tugofwar/hateTics.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+
+<body onload="likesAndDislikes()">
+
+
+<div id="loader" class="loader" style="display: block;"></div>
+
+<div id="allClasses" style="margin-top: 0px; width: 100%; display: none;">
+
+<div class="titleDiv">Convierte a tu carrera en la más favorita de todas!</div>
+
+	<div class="grid-item-slider" id="fac-artsies" onclick="displayArtsies()">
+	  <br><div>Facultad de Artes</div><br>
+	 <ul class="tracker-list">
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); dibujanteLike();"><span id="dibujanteLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); dibujanteHate();"><span id="dibujanteHate">0</span> 👎</span>
+		Dibujante Proyectista.</li></div>
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); disenoLike();"><span id="disenoLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); disenoHate();"><span id="disenoHate">0</span> 👎</span>
+		Diseño.</li></div>
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); visualsLike();"><span id="visualsLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); visualsHate();"><span id="visualsHate">0</span> 👎</span>
+		Pedagogía en Artes Visuales.</li></div>
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); musicalLike();"><span id="musicalLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); musicalHate();"><span id="musicalHate">0</span> 👎</span>
+		Pedagogía en Educación Musical.</li></div>
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); artsiesLike();"><span id="artsiesLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); artsiesHate();"><span id="artsiesHate">0</span> 👎</span>
+		Licenciatura en Arte.</li></div>
+	  <div class="artsies" style="display: none;"><li>
+		<span class="likeButton" onclick="displayArtsies(); theaterLike();"><span id="theaterLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayArtsies(); theaterHate();"><span id="theaterHate">0</span> 👎</span>
+		Teatro.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-sportis" onclick="displaySportis();">
+	  <br><div>Facultad de Ciencias de la Actividad Física y el Deporte</div><br>
+	 <ul class="tracker-list">
+	  <div class="sportis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySportis(); physicalLike();"><span id="physicalLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySportis(); physicalHate();"><span id="physicalHate">0</span> 👎</span>
+		Pedagogía en Educación Física.</li></div>
+	  <div class="sportis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySportis(); sportiesLike();"><span id="sportiesLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySportis(); sportiesHate();"><span id="sportiesHate">0</span> 👎</span>
+		Tecnología en Deportes y Recreación.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-eduquis" onclick="displayEduquis();">
+	  <br><div>Facultad de Ciencias de la Educación</div><br>
+	 <ul class="tracker-list">
+	  <div class="eduquis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEduquis(); basicalLike();"><span id="basicalLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEduquis(); basicalHate();"><span id="basicalHate">0</span> 👎</span>
+		Pedagogía en Educación Básica.</li></div>
+	  <div class="eduquis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEduquis(); specialLike();"><span id="specialLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEduquis(); specialHate();"><span id="specialHate">0</span> 👎</span>
+		Pedagogía en Educación Diferencial.</li></div>
+	  <div class="eduquis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEduquis(); nurseryLike();"><span id="nurseryLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEduquis(); nurseryHate();"><span id="nurseryHate">0</span> 👎</span>
+		Educación Parvularia.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-saludis" onclick="displaySaludis();">
+	  <br><div>Facultad de Ciencias de la Salud</div><br>
+	 <ul class="tracker-list">
+	  <div class="saludis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySaludis(); enfermisLike();"><span id="enfermisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySaludis(); enfermisHate();"><span id="enfermisHate">0</span> 👎</span>
+		Enfermería.</li></div>
+	  <div class="saludis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySaludis(); speechieLike();"><span id="speechieLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySaludis(); speechieHate();"><span id="speechieHate">0</span> 👎</span>
+		Fonoaudiología.</li></div>
+	  <div class="saludis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySaludis(); kinesisLike();"><span id="kinesisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySaludis(); kinesisHate();"><span id="kinesisHate">0</span> 👎</span>
+		Kinesiología.</li></div>
+	  <div class="saludis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySaludis(); nutritisLike();"><span id="nutritisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySaludis(); nutritisHate();"><span id="nutritisHate">0</span> 👎</span>
+		Nutrición y Dietética.</li></div>
+	  <div class="saludis" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySaludis(); therapyLike();"><span id="therapyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySaludis(); therapyHate();"><span id="therapyHate">0</span> 👎</span>
+		Terapia Ocupacional.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-sociats" onclick="displaySociats();">
+	  <br><div>Facultad de Ciencias Sociales</div><br>
+	 <ul class="tracker-list">
+	  <div class="sociats" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySociats(); librarisLike();"><span id="librarisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySociats(); librarisHate();"><span id="librarisHate">0</span> 👎</span>
+		Bibliotecología.</li></div>
+	  <div class="sociats" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySociats(); derechisLike();"><span id="derechisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySociats(); derechisHate();"><span id="derechisHate">0</span> 👎</span>
+		Derecho.</li></div>
+	  <div class="sociats" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySociats(); journalisLike();"><span id="journalisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySociats(); journalisHate();"><span id="journalisHate">0</span> 👎</span>
+		Periodismo.</li></div>
+	  <div class="sociats" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySociats(); psychologyLike();"><span id="psychologyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySociats(); psychologyHate();"><span id="psychologyHate">0</span> 👎</span>
+		Psicología.</li></div>
+	  <div class="sociats" style="display: none;"><li>
+		<span class="likeButton" onclick="displaySociats(); sociologyLike();"><span id="sociologyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displaySociats(); sociologyHate();"><span id="sociologyHate">0</span> 👎</span>
+		Sociología.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-science" onclick="displayScience();">
+	  <br><div>Facultad de Ciencias Naturales y Exactas</div><br>
+	 <ul class="tracker-list">
+	  <div class="science" style="display: none;"><li>
+		<span class="likeButton" onclick="displayScience(); geographLike();"><span id="geographLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayScience(); geographHate();"><span id="geographHate">0</span> 👎</span>
+		Geografía.</li></div>
+	  <div class="science" style="display: none;"><li>
+		<span class="likeButton" onclick="displayScience(); biologyLike();"><span id="biologyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayScience(); biologyHate();"><span id="biologyHate">0</span> 👎</span>
+		Pedagogía en Biología y Ciencias.</li></div>
+	  <div class="science" style="display: none;"><li>
+		<span class="likeButton" onclick="displayScience(); physicsLike();"><span id="physicsLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayScience(); physicsHate();"><span id="physicsHate">0</span> 👎</span>
+		Pedagogía en Física.</li></div>
+	  <div class="science" style="display: none;"><li>
+		<span class="likeButton" onclick="displayScience(); mathsLike();"><span id="mathsLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayScience(); mathsHate();"><span id="mathsHate">0</span> 👎</span>
+		Pedagogía en Matemáticas y Computación.</li></div>
+	  <div class="science" style="display: none;"><li>
+		<span class="likeButton" onclick="displayScience(); chemisLike();"><span id="chemisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayScience(); chemisHate();"><span id="chemisHate">0</span> 👎</span>
+		Pedagogía en Química y Ciencias.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-humanis" onclick="displayHumanis();">
+	  <br><div>Facultad de Humanidades</div><br>
+	 <ul class="tracker-list">
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); tourismLike();"><span id="tourismLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); tourismHate();"><span id="tourismHate">0</span> 👎</span>
+		Administración Turística Multilingüe.</li></div>
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); languageLike();"><span id="languageLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); languageHate();"><span id="languageHate">0</span> 👎</span>
+		Pedagogía en Castellano.</li></div>
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); philosLike();"><span id="philosLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); philosHate();"><span id="philosHate">0</span> 👎</span>
+		Pedagogía en Filosofía.</li></div>
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); historyLike();"><span id="historyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); historyHate();"><span id="historyHate">0</span> 👎</span>
+		Pedagogía en Historia y Geografía.</li></div>
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); englishLike();"><span id="englishLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); englishHate();"><span id="englishHate">0</span> 👎</span>
+		Pedagogía en Inglés.</li></div>
+	  <div class="humanis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayHumanis(); translyLike();"><span id="translyLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayHumanis(); translyHate();"><span id="translyHate">0</span> 👎</span>
+		Traducción e Interpretación Inglés – Español.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis();">
+	  <br><div>Facultad de Ingeniería</div><br>
+	 <ul class="tracker-list">
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); statisLike();"><span id="statisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); statisHate();"><span id="statisHate">0</span> 👎</span>
+		Estadística.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); ambientisLike();"><span id="ambientisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); ambientisHate();"><span id="ambientisHate">0</span> 👎</span>
+		Ingeniería Ambiental.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); civilambisLike();"><span id="civilambisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); civilambisHate();"><span id="civilambisHate">0</span> 👎</span>
+		Ingeniería Civil Ambiental.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); industrisLike();"><span id="industrisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); industrisHate();"><span id="industrisHate">0</span> 👎</span>
+		Ingeniería Civil Industrial.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); civilinfLike();"><span id="civilinfLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); civilinfHate();"><span id="civilinfHate">0</span> 👎</span>
+		Ingeniería Civil Informática.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); comercialLike();"><span id="comercialLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); comercialHate();"><span id="comercialHate">0</span> 👎</span>
+		Ingeniería Comercial.</li></div>
+	  <div class="enginis" style="display: none;"><li>
+		<span class="likeButton" onclick="displayEnginis(); informisLike();"><span id="informisLike">0</span> 👍</span>
+		<span class="hateButton" onclick="displayEnginis(); informisHate();"><span id="informisHate">0</span> 👎</span>
+		Ingeniería Informática.</li><br></div>
+	 </ul>
+	</div>
+
+	<br>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+// DEFINING ELEMENTS!
+// FACULTIES MAIN WRAPPER
+const facArtsies = document.getElementById("fac-artsies")
+const facSportis = document.getElementById("fac-sportis")
+const facEduquis = document.getElementById("fac-eduquis")
+const facSaludis = document.getElementById("fac-saludis")
+const facSociats = document.getElementById("fac-sociats")
+const facScience = document.getElementById("fac-science")
+const facHumanis = document.getElementById("fac-humanis")
+const facEnginis = document.getElementById("fac-enginis")
+// DIV ELEMENTS
+var artsiesDiv = document.querySelectorAll("div.artsies")
+var sportisDiv = document.querySelectorAll("div.sportis")
+var eduquisDiv = document.querySelectorAll("div.eduquis")
+var saludisDiv = document.querySelectorAll("div.saludis")
+var sociatsDiv = document.querySelectorAll("div.sociats")
+var scienceDiv = document.querySelectorAll("div.science")
+var humanisDiv = document.querySelectorAll("div.humanis")
+var enginisDiv = document.querySelectorAll("div.enginis")
+
+
+// DISPAY FUNCTIONS FOR EACH DIV (ON CLICK)!
+function displayArtsies() {
+for(let Courses of artsiesDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-artsies").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-artsies").style.cursor = "zoom-in"; }
+ }
+}
+
+function displaySportis() {
+for(let Courses of sportisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-sportis").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-sportis").style.cursor = "zoom-in"; }
+ }
+}
+
+function displayEduquis() {
+for(let Courses of eduquisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-eduquis").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-eduquis").style.cursor = "zoom-in"; }
+ }
+}
+
+function displaySaludis() {
+for(let Courses of saludisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-saludis").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-saludis").style.cursor = "zoom-in"; }
+ }
+}
+
+function displaySociats() {
+for(let Courses of sociatsDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-sociats").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-sociats").style.cursor = "zoom-in"; }
+ }
+}
+
+function displayScience() {
+for(let Courses of scienceDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-science").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-science").style.cursor = "zoom-in"; }
+ }
+}
+
+function displayHumanis() {
+for(let Courses of humanisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-humanis").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; ; document.getElementById("fac-humanis").style.cursor = "zoom-in"; }
+ }
+}
+
+function displayEnginis() {
+for(let Courses of enginisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block"; document.getElementById("fac-enginis").style.cursor = "zoom-out"; }
+ else { Courses.style.display = "none"; document.getElementById("fac-enginis").style.cursor = "zoom-in"; }
+ }
+}
+
+
+// ====================
+// LIKES AND DISLIKES
+// ====================
+
+// ==========
+// ARTS
+// ==========
+
+// DIBUJANTE
+function dibujanteLike() {
+var dibujanteLike = document.getElementById("dibujanteLike")
+var dibujanteHate = document.getElementById("dibujanteHate")
+i = dibujanteLike.innerText
+m = dibujanteHate.innerText
+i++
+dibujanteLike.innerText = i
+if (m > 0) {m--; dibujanteHate.innerText = m}
+likeArts()
+// GOOGLE SCRIPT!
+google.script.run.dibujanteLike()
+}
+
+function dibujanteHate() {
+var dibujanteLike = document.getElementById("dibujanteLike")
+var dibujanteHate = document.getElementById("dibujanteHate")
+i = dibujanteHate.innerText
+m = dibujanteLike.innerText
+i++
+dibujanteHate.innerText = i
+if (m > 0) {m--; dibujanteLike.innerText = m}
+hateArts()
+google.script.run.dibujanteHate()
+}
+
+// DESIGN
+function disenoLike() {
+var disenoLike = document.getElementById("disenoLike")
+var disenoHate = document.getElementById("disenoHate")
+i = disenoLike.innerText
+m = disenoHate.innerText
+i++
+disenoLike.innerText = i
+if (m > 0) {m--; disenoHate.innerText = m}
+likeArts()
+google.script.run.disenoLike()
+}
+
+function disenoHate() {
+var disenoLike = document.getElementById("disenoLike")
+var disenoHate = document.getElementById("disenoHate")
+i = disenoHate.innerText
+m = disenoLike.innerText
+i++
+disenoHate.innerText = i
+if (m > 0) {m--; disenoLike.innerText = m}
+hateArts()
+google.script.run.disenoHate()
+}
+
+// DESIGN
+function visualsLike() {
+var visualsLike = document.getElementById("visualsLike")
+var visualsHate = document.getElementById("visualsHate")
+i = visualsLike.innerText
+m = visualsHate.innerText
+i++
+visualsLike.innerText = i
+if (m > 0) {m--; visualsHate.innerText = m}
+likeArts()
+google.script.run.visualsLike()
+}
+
+function visualsHate() {
+var visualsLike = document.getElementById("visualsLike")
+var visualsHate = document.getElementById("visualsHate")
+i = visualsHate.innerText
+m = visualsLike.innerText
+i++
+visualsHate.innerText = i
+if (m > 0) {m--; visualsLike.innerText = m}
+hateArts()
+google.script.run.visualsHate()
+}
+
+
+// MUSIC
+function musicalLike() {
+var musicalLike = document.getElementById("musicalLike")
+var musicalHate = document.getElementById("musicalHate")
+i = musicalLike.innerText
+m = musicalHate.innerText
+i++
+musicalLike.innerText = i
+if (m > 0) {m--; musicalHate.innerText = m}
+likeArts()
+google.script.run.musicalLike()
+}
+
+function musicalHate() {
+var musicalLike = document.getElementById("musicalLike")
+var musicalHate = document.getElementById("musicalHate")
+i = musicalHate.innerText
+m = musicalLike.innerText
+i++
+musicalHate.innerText = i
+if (m > 0) {m--; musicalLike.innerText = m}
+hateArts()
+google.script.run.musicalHate()
+}
+
+// LIC. ARTSIES
+function artsiesLike() {
+var artsiesLike = document.getElementById("artsiesLike")
+var artsiesHate = document.getElementById("artsiesHate")
+i = artsiesLike.innerText
+m = artsiesHate.innerText
+i++
+artsiesLike.innerText = i
+if (m > 0) {m--; artsiesHate.innerText = m}
+likeArts()
+google.script.run.artsiesLike()
+}
+
+function artsiesHate() {
+var artsiesLike = document.getElementById("artsiesLike")
+var artsiesHate = document.getElementById("artsiesHate")
+i = artsiesHate.innerText
+m = artsiesLike.innerText
+i++
+artsiesHate.innerText = i
+if (m > 0) {m--; artsiesLike.innerText = m}
+hateArts()
+google.script.run.artsiesHate()
+}
+
+
+// THEATER
+function theaterLike() {
+var theaterLike = document.getElementById("theaterLike")
+var theaterHate = document.getElementById("theaterHate")
+i = theaterLike.innerText
+m = theaterHate.innerText
+i++
+theaterLike.innerText = i
+if (m > 0) {m--; theaterHate.innerText = m}
+likeArts()
+google.script.run.theaterLike()
+}
+
+function theaterHate() {
+var theaterLike = document.getElementById("theaterLike")
+var theaterHate = document.getElementById("theaterHate")
+i = theaterHate.innerText
+m = theaterLike.innerText
+i++
+theaterHate.innerText = i
+if (m > 0) {m--; theaterLike.innerText = m}
+hateArts()
+google.script.run.artsiesHate()
+}
+
+// ==========
+// PHYSICAL EDUCATION
+// ==========
+
+// PHYSICAL EDUCATION
+function physicalLike() {
+var physicalLike = document.getElementById("physicalLike")
+var physicalHate = document.getElementById("physicalHate")
+i = physicalLike.innerText
+m = physicalHate.innerText
+i++
+physicalLike.innerText = i
+if (m > 0) {m--; physicalHate.innerText = m}
+likeSport()
+google.script.run.physicalLike()
+}
+
+function physicalHate() {
+var physicalLike = document.getElementById("physicalLike")
+var physicalHate = document.getElementById("physicalHate")
+i = physicalHate.innerText
+m = physicalLike.innerText
+i++
+physicalHate.innerText = i
+if (m > 0) {m--; physicalLike.innerText = m}
+hateSport()
+google.script.run.physicalHate()
+}
+
+// SPORTIES
+function sportiesLike() {
+var sportiesLike = document.getElementById("sportiesLike")
+var sportiesHate = document.getElementById("sportiesHate")
+i = sportiesLike.innerText
+m = sportiesHate.innerText
+i++
+sportiesLike.innerText = i
+if (m > 0) {m--; sportiesHate.innerText = m}
+likeSport()
+google.script.run.sportiesLike()
+}
+
+function sportiesHate() {
+var sportiesLike = document.getElementById("sportiesLike")
+var sportiesHate = document.getElementById("sportiesHate")
+i = sportiesHate.innerText
+m = sportiesLike.innerText
+i++
+sportiesHate.innerText = i
+if (m > 0) {m--; sportiesLike.innerText = m}
+hateSport()
+google.script.run.sportiesHate()
+}
+
+// ==========
+// EDUCATION
+// ==========
+
+// ED. BASICA
+function basicalLike() {
+var basicalLike = document.getElementById("basicalLike")
+var basicalHate = document.getElementById("basicalHate")
+i = basicalLike.innerText
+m = basicalHate.innerText
+i++
+basicalLike.innerText = i
+if (m > 0) {m--; basicalHate.innerText = m}
+likeEdus()
+google.script.run.basicalLike()
+}
+
+function basicalHate() {
+var basicalLike = document.getElementById("basicalLike")
+var basicalHate = document.getElementById("basicalHate")
+i = basicalHate.innerText
+m = basicalLike.innerText
+i++
+basicalHate.innerText = i
+if (m > 0) {m--; basicalLike.innerText = m}
+hateEdus()
+google.script.run.basicalHate()
+}
+
+
+// SPECIAL
+function specialLike() {
+var specialLike = document.getElementById("specialLike")
+var specialHate = document.getElementById("specialHate")
+i = specialLike.innerText
+m = specialHate.innerText
+i++
+specialLike.innerText = i
+if (m > 0) {m--; specialHate.innerText = m}
+likeEdus()
+google.script.run.specialLike()
+}
+
+function specialHate() {
+var specialLike = document.getElementById("specialLike")
+var specialHate = document.getElementById("specialHate")
+i = specialHate.innerText
+m = specialLike.innerText
+i++
+specialHate.innerText = i
+if (m > 0) {m--; specialLike.innerText = m}
+hateEdus()
+google.script.run.specialHate()
+}
+
+
+// NURSERY
+function nurseryLike() {
+var nurseryLike = document.getElementById("nurseryLike")
+var nurseryHate = document.getElementById("nurseryHate")
+i = nurseryLike.innerText
+m = nurseryHate.innerText
+i++
+nurseryLike.innerText = i
+if (m > 0) {m--; nurseryHate.innerText = m}
+likeEdus()
+google.script.run.nurseryLike()
+}
+
+function nurseryHate() {
+var nurseryLike = document.getElementById("nurseryLike")
+var nurseryHate = document.getElementById("nurseryHate")
+i = nurseryHate.innerText
+m = nurseryLike.innerText
+i++
+nurseryHate.innerText = i
+if (m > 0) {m--; nurseryLike.innerText = m}
+hateEdus()
+google.script.run.nurseryHate()
+}
+
+
+// ==========
+// SALUD
+// ==========
+
+// ENFERMIS
+function enfermisLike() {
+var enfermisLike = document.getElementById("enfermisLike")
+var enfermisHate = document.getElementById("enfermisHate")
+i = enfermisLike.innerText
+m = enfermisHate.innerText
+i++
+enfermisLike.innerText = i
+if (m > 0) {m--; enfermisHate.innerText = m}
+likeSalud()
+google.script.run.enfermisLike()
+}
+
+function enfermisHate() {
+var enfermisLike = document.getElementById("enfermisLike")
+var enfermisHate = document.getElementById("enfermisHate")
+i = enfermisHate.innerText
+m = enfermisLike.innerText
+i++
+enfermisHate.innerText = i
+if (m > 0) {m--; enfermisLike.innerText = m}
+hateSalud()
+google.script.run.enfermisHate()
+}
+
+
+// SPEECH THERAPY
+function speechieLike() {
+var speechieLike = document.getElementById("speechieLike")
+var speechieHate = document.getElementById("speechieHate")
+i = speechieLike.innerText
+m = speechieHate.innerText
+i++
+speechieLike.innerText = i
+if (m > 0) {m--; speechieHate.innerText = m}
+likeSalud()
+google.script.run.speechieLike()
+}
+
+function speechieHate() {
+var speechieLike = document.getElementById("speechieLike")
+var speechieHate = document.getElementById("speechieHate")
+i = speechieHate.innerText
+m = speechieLike.innerText
+i++
+speechieHate.innerText = i
+if (m > 0) {m--; speechieLike.innerText = m}
+hateSalud()
+google.script.run.speechieHate()
+}
+
+
+// KINESIOLOGY
+function kinesisLike() {
+var kinesisLike = document.getElementById("kinesisLike")
+var kinesisHate = document.getElementById("kinesisHate")
+i = kinesisLike.innerText
+m = kinesisHate.innerText
+i++
+kinesisLike.innerText = i
+if (m > 0) {m--; kinesisHate.innerText = m}
+likeSalud()
+google.script.run.kinesisLike()
+}
+
+function kinesisHate() {
+var kinesisLike = document.getElementById("kinesisLike")
+var kinesisHate = document.getElementById("kinesisHate")
+i = kinesisHate.innerText
+m = kinesisLike.innerText
+i++
+kinesisHate.innerText = i
+if (m > 0) {m--; kinesisLike.innerText = m}
+hateSalud()
+google.script.run.kinesisHate()
+}
+
+// NUTRITION
+function nutritisLike() {
+var nutritisLike = document.getElementById("nutritisLike")
+var nutritisHate = document.getElementById("nutritisHate")
+i = nutritisLike.innerText
+m = nutritisHate.innerText
+i++
+nutritisLike.innerText = i
+if (m > 0) {m--; nutritisHate.innerText = m}
+likeSalud()
+google.script.run.nutritisLike()
+}
+
+function nutritisHate() {
+var nutritisLike = document.getElementById("nutritisLike")
+var nutritisHate = document.getElementById("nutritisHate")
+i = nutritisHate.innerText
+m = nutritisLike.innerText
+i++
+nutritisHate.innerText = i
+if (m > 0) {m--; nutritisLike.innerText = m}
+hateSalud()
+google.script.run.nutritisHate()
+}
+
+// THERAPY
+function therapyLike() {
+var therapyLike = document.getElementById("therapyLike")
+var therapyHate = document.getElementById("therapyHate")
+i = therapyLike.innerText
+m = therapyHate.innerText
+i++
+therapyLike.innerText = i
+if (m > 0) {m--; therapyHate.innerText = m}
+likeSalud()
+google.script.run.therapyLike()
+}
+
+function therapyHate() {
+var therapyLike = document.getElementById("therapyLike")
+var therapyHate = document.getElementById("therapyHate")
+i = therapyHate.innerText
+m = therapyLike.innerText
+i++
+therapyHate.innerText = i
+if (m > 0) {m--; therapyLike.innerText = m}
+hateSalud()
+google.script.run.therapyHate()
+}
+
+
+// ==========
+// SOCIALS
+// ==========
+
+// LIBRARIANS
+function librarisLike() {
+var librarisLike = document.getElementById("librarisLike")
+var librarisHate = document.getElementById("librarisHate")
+i = librarisLike.innerText
+m = librarisHate.innerText
+i++
+librarisLike.innerText = i
+if (m > 0) {m--; librarisHate.innerText = m}
+likeSociats()
+google.script.run.librarisLike()
+}
+
+function librarisHate() {
+var librarisLike = document.getElementById("librarisLike")
+var librarisHate = document.getElementById("librarisHate")
+i = librarisHate.innerText
+m = librarisLike.innerText
+i++
+librarisHate.innerText = i
+if (m > 0) {m--; librarisLike.innerText = m}
+hateSociats()
+google.script.run.librarisHate()
+}
+
+
+// LAW SCHOOL
+function derechisLike() {
+var derechisLike = document.getElementById("derechisLike")
+var derechisHate = document.getElementById("derechisHate")
+i = derechisLike.innerText
+m = derechisHate.innerText
+i++
+derechisLike.innerText = i
+if (m > 0) {m--; derechisHate.innerText = m}
+likeSociats()
+google.script.run.derechisLike()
+}
+
+function derechisHate() {
+var derechisLike = document.getElementById("derechisLike")
+var derechisHate = document.getElementById("derechisHate")
+i = derechisHate.innerText
+m = derechisLike.innerText
+i++
+derechisHate.innerText = i
+if (m > 0) {m--; derechisLike.innerText = m}
+hateSociats()
+google.script.run.derechisHate()
+}
+
+// JOURNALISM
+function journalisLike() {
+var journalisLike = document.getElementById("journalisLike")
+var journalisHate = document.getElementById("journalisHate")
+i = journalisLike.innerText
+m = journalisHate.innerText
+i++
+journalisLike.innerText = i
+if (m > 0) {m--; journalisHate.innerText = m}
+likeSociats()
+google.script.run.journalisLike()
+}
+
+function journalisHate() {
+var journalisLike = document.getElementById("journalisLike")
+var journalisHate = document.getElementById("journalisHate")
+i = journalisHate.innerText
+m = journalisLike.innerText
+i++
+journalisHate.innerText = i
+if (m > 0) {m--; journalisLike.innerText = m}
+hateSociats()
+google.script.run.journalisHate()
+}
+
+// PSYCOLOGY
+function psychologyLike() {
+var psychologyLike = document.getElementById("psychologyLike")
+var psychologyHate = document.getElementById("psychologyHate")
+i = psychologyLike.innerText
+m = psychologyHate.innerText
+i++
+psychologyLike.innerText = i
+if (m > 0) {m--; psychologyHate.innerText = m}
+likeSociats()
+google.script.run.psychologyLike()
+}
+
+function psychologyHate() {
+var psychologyLike = document.getElementById("psychologyLike")
+var psychologyHate = document.getElementById("psychologyHate")
+i = psychologyHate.innerText
+m = psychologyLike.innerText
+i++
+psychologyHate.innerText = i
+if (m > 0) {m--; psychologyLike.innerText = m}
+hateSociats()
+google.script.run.psychologyHate()
+}
+
+// SOCIOLOGY
+function sociologyLike() {
+var sociologyLike = document.getElementById("sociologyLike")
+var sociologyHate = document.getElementById("sociologyHate")
+i = sociologyLike.innerText
+m = sociologyHate.innerText
+i++
+sociologyLike.innerText = i
+if (m > 0) {m--; sociologyHate.innerText = m}
+likeSociats()
+google.script.run.sociologyLike()
+}
+
+function sociologyHate() {
+var sociologyLike = document.getElementById("sociologyLike")
+var sociologyHate = document.getElementById("sociologyHate")
+i = sociologyHate.innerText
+m = sociologyLike.innerText
+i++
+sociologyHate.innerText = i
+if (m > 0) {m--; sociologyLike.innerText = m}
+hateSociats()
+google.script.run.sociologyHate()
+}
+
+
+// ==========
+// SCIENCES
+// ==========
+
+// GEOGRAPHY
+function geographLike() {
+var geographLike = document.getElementById("geographLike")
+var geographHate = document.getElementById("geographHate")
+i = geographLike.innerText
+m = geographHate.innerText
+i++
+geographLike.innerText = i
+if (m > 0) {m--; geographHate.innerText = m}
+likeScience()
+google.script.run.geographLike()
+}
+
+function geographHate() {
+var geographLike = document.getElementById("geographLike")
+var geographHate = document.getElementById("geographHate")
+i = geographHate.innerText
+m = geographLike.innerText
+i++
+geographHate.innerText = i
+if (m > 0) {m--; geographLike.innerText = m}
+hateScience()
+google.script.run.geographHate()
+}
+
+// BIOLOGY
+function biologyLike() {
+var biologyLike = document.getElementById("biologyLike")
+var biologyHate = document.getElementById("biologyHate")
+i = biologyLike.innerText
+m = biologyHate.innerText
+i++
+biologyLike.innerText = i
+if (m > 0) {m--; biologyHate.innerText = m}
+likeScience()
+google.script.run.biologyLike()
+}
+
+function biologyHate() {
+var biologyLike = document.getElementById("biologyLike")
+var biologyHate = document.getElementById("biologyHate")
+i = biologyHate.innerText
+m = biologyLike.innerText
+i++
+biologyHate.innerText = i
+if (m > 0) {m--; biologyLike.innerText = m}
+hateScience()
+google.script.run.biologyHate()
+}
+
+// PHYSICS
+function physicsLike() {
+var physicsLike = document.getElementById("physicsLike")
+var physicsHate = document.getElementById("physicsHate")
+i = physicsLike.innerText
+m = physicsHate.innerText
+i++
+physicsLike.innerText = i
+if (m > 0) {m--; physicsHate.innerText = m}
+likeScience()
+google.script.run.physicsLike()
+}
+
+function physicsHate() {
+var physicsLike = document.getElementById("physicsLike")
+var physicsHate = document.getElementById("physicsHate")
+i = physicsHate.innerText
+m = physicsLike.innerText
+i++
+physicsHate.innerText = i
+if (m > 0) {m--; physicsLike.innerText = m}
+hateScience()
+google.script.run.physicsHate()
+}
+
+// MATH
+function mathsLike() {
+var mathsLike = document.getElementById("mathsLike")
+var mathsHate = document.getElementById("mathsHate")
+i = mathsLike.innerText
+m = mathsHate.innerText
+i++
+mathsLike.innerText = i
+if (m > 0) {m--; mathsHate.innerText = m}
+likeScience()
+google.script.run.mathsLike()
+}
+
+function mathsHate() {
+var mathsLike = document.getElementById("mathsLike")
+var mathsHate = document.getElementById("mathsHate")
+i = mathsHate.innerText
+m = mathsLike.innerText
+i++
+mathsHate.innerText = i
+if (m > 0) {m--; mathsLike.innerText = m}
+hateScience()
+google.script.run.mathsHate()
+}
+
+// CHEMISTRY
+function chemisLike() {
+var chemisLike = document.getElementById("chemisLike")
+var chemisHate = document.getElementById("chemisHate")
+i = chemisLike.innerText
+m = chemisHate.innerText
+i++
+chemisLike.innerText = i
+if (m > 0) {m--; chemisHate.innerText = m}
+likeScience()
+google.script.run.chemisLike()
+}
+
+function chemisHate() {
+var chemisLike = document.getElementById("chemisLike")
+var chemisHate = document.getElementById("chemisHate")
+i = chemisHate.innerText
+m = chemisLike.innerText
+i++
+chemisHate.innerText = i
+if (m > 0) {m--; chemisLike.innerText = m}
+hateScience()
+google.script.run.chemisHate()
+}
+
+
+// ==========
+// HUMANITIES
+// ==========
+
+// TOURISM
+function tourismLike() {
+var tourismLike = document.getElementById("tourismLike")
+var tourismHate = document.getElementById("tourismHate")
+i = tourismLike.innerText
+m = tourismHate.innerText
+i++
+tourismLike.innerText = i
+if (m > 0) {m--; tourismHate.innerText = m}
+likeHumans()
+google.script.run.tourismLike()
+}
+
+function tourismHate() {
+var tourismLike = document.getElementById("tourismLike")
+var tourismHate = document.getElementById("tourismHate")
+i = tourismHate.innerText
+m = tourismLike.innerText
+i++
+tourismHate.innerText = i
+if (m > 0) {m--; tourismLike.innerText = m}
+hateHumans()
+google.script.run.tourismHate()
+}
+
+// LANGUAGE
+function languageLike() {
+var languageLike = document.getElementById("languageLike")
+var languageHate = document.getElementById("languageHate")
+i = languageLike.innerText
+m = languageHate.innerText
+i++
+languageLike.innerText = i
+if (m > 0) {m--; languageHate.innerText = m}
+likeHumans()
+google.script.run.languageLike()
+}
+
+function languageHate() {
+var languageLike = document.getElementById("languageLike")
+var languageHate = document.getElementById("languageHate")
+i = languageHate.innerText
+m = languageLike.innerText
+i++
+languageHate.innerText = i
+if (m > 0) {m--; languageLike.innerText = m}
+hateHumans()
+google.script.run.languageHate()
+}
+
+// PHILOSOPHY
+function philosLike() {
+var philosLike = document.getElementById("philosLike")
+var philosHate = document.getElementById("philosHate")
+i = philosLike.innerText
+m = philosHate.innerText
+i++
+philosLike.innerText = i
+if (m > 0) {m--; philosHate.innerText = m}
+likeHumans()
+google.script.run.philosLike()
+}
+
+function philosHate() {
+var philosLike = document.getElementById("philosLike")
+var philosHate = document.getElementById("philosHate")
+i = philosHate.innerText
+m = philosLike.innerText
+i++
+philosHate.innerText = i
+if (m > 0) {m--; philosLike.innerText = m}
+hateHumans()
+google.script.run.philosHate()
+}
+
+// HISTORY
+function historyLike() {
+var historyLike = document.getElementById("historyLike")
+var historyHate = document.getElementById("historyHate")
+i = historyLike.innerText
+m = historyHate.innerText
+i++
+historyLike.innerText = i
+if (m > 0) {m--; historyHate.innerText = m}
+likeHumans()
+google.script.run.historyLike()
+}
+
+function historyHate() {
+var historyLike = document.getElementById("historyLike")
+var historyHate = document.getElementById("historyHate")
+i = historyHate.innerText
+m = historyLike.innerText
+i++
+historyHate.innerText = i
+if (m > 0) {m--; historyLike.innerText = m}
+hateHumans()
+google.script.run.historyHate()
+}
+
+// ENGLISH
+function englishLike() {
+var englishLike = document.getElementById("englishLike")
+var englishHate = document.getElementById("englishHate")
+i = englishLike.innerText
+m = englishHate.innerText
+i++
+englishLike.innerText = i
+if (m > 0) {m--; englishHate.innerText = m}
+likeHumans()
+google.script.run.englishLike()
+}
+
+function englishHate() {
+var englishLike = document.getElementById("englishLike")
+var englishHate = document.getElementById("englishHate")
+i = englishHate.innerText
+m = englishLike.innerText
+i++
+englishHate.innerText = i
+if (m > 0) {m--; englishLike.innerText = m}
+hateHumans()
+google.script.run.englishHate()
+}
+
+// TRANSLATION
+function translyLike() {
+var translyLike = document.getElementById("translyLike")
+var translyHate = document.getElementById("translyHate")
+i = translyLike.innerText
+m = translyHate.innerText
+i++
+translyLike.innerText = i
+if (m > 0) {m--; translyHate.innerText = m}
+likeHumans()
+google.script.run.translyLike()
+}
+
+function translyHate() {
+var translyLike = document.getElementById("translyLike")
+var translyHate = document.getElementById("translyHate")
+i = translyHate.innerText
+m = translyLike.innerText
+i++
+translyHate.innerText = i
+if (m > 0) {m--; translyLike.innerText = m}
+hateHumans()
+google.script.run.translyHate()
+}
+
+
+// ==========
+// ENGINEERING
+// ==========
+
+// STATISTICS
+function statisLike() {
+var statisLike = document.getElementById("statisLike")
+var statisHate = document.getElementById("statisHate")
+i = statisLike.innerText
+m = statisHate.innerText
+i++
+statisLike.innerText = i
+if (m > 0) {m--; statisHate.innerText = m}
+likeEngine()
+google.script.run.statisLike()
+}
+
+function statisHate() {
+var statisLike = document.getElementById("statisLike")
+var statisHate = document.getElementById("statisHate")
+i = statisHate.innerText
+m = statisLike.innerText
+i++
+statisHate.innerText = i
+if (m > 0) {m--; statisLike.innerText = m}
+hateEngine()
+google.script.run.statisHate()
+}
+
+// ING. AMBIENTAL
+function ambientisLike() {
+var ambientisLike = document.getElementById("ambientisLike")
+var ambientisHate = document.getElementById("ambientisHate")
+i = ambientisLike.innerText
+m = ambientisHate.innerText
+i++
+ambientisLike.innerText = i
+if (m > 0) {m--; ambientisHate.innerText = m}
+likeEngine()
+google.script.run.ambientisLike()
+}
+
+function ambientisHate() {
+var ambientisLike = document.getElementById("ambientisLike")
+var ambientisHate = document.getElementById("ambientisHate")
+i = ambientisHate.innerText
+m = ambientisLike.innerText
+i++
+ambientisHate.innerText = i
+if (m > 0) {m--; ambientisLike.innerText = m}
+hateEngine()
+google.script.run.ambientisHate()
+}
+
+// ING. CIVIL AMBIENTAL
+function civilambisLike() {
+var civilambisLike = document.getElementById("civilambisLike")
+var civilambisHate = document.getElementById("civilambisHate")
+i = civilambisLike.innerText
+m = civilambisHate.innerText
+i++
+civilambisLike.innerText = i
+if (m > 0) {m--; civilambisHate.innerText = m}
+likeEngine()
+google.script.run.civilambisLike()
+}
+
+function civilambisHate() {
+var civilambisLike = document.getElementById("civilambisLike")
+var civilambisHate = document.getElementById("civilambisHate")
+i = civilambisHate.innerText
+m = civilambisLike.innerText
+i++
+civilambisHate.innerText = i
+if (m > 0) {m--; civilambisLike.innerText = m}
+hateEngine()
+google.script.run.civilambisHate()
+}
+
+// ING. CIVIL INDUSTRIAL
+function industrisLike() {
+var industrisLike = document.getElementById("industrisLike")
+var industrisHate = document.getElementById("industrisHate")
+i = industrisLike.innerText
+m = industrisHate.innerText
+i++
+industrisLike.innerText = i
+if (m > 0) {m--; industrisHate.innerText = m}
+likeEngine()
+google.script.run.industrisLike()
+}
+
+function industrisHate() {
+var industrisLike = document.getElementById("industrisLike")
+var industrisHate = document.getElementById("industrisHate")
+i = industrisHate.innerText
+m = industrisLike.innerText
+i++
+industrisHate.innerText = i
+if (m > 0) {m--; industrisLike.innerText = m}
+hateEngine()
+google.script.run.industrisHate()
+}
+
+// ING. CIVIL INFORMÁTICA
+function civilinfLike() {
+var civilinfLike = document.getElementById("civilinfLike")
+var civilinfHate = document.getElementById("civilinfHate")
+i = civilinfLike.innerText
+m = civilinfHate.innerText
+i++
+civilinfLike.innerText = i
+if (m > 0) {m--; civilinfHate.innerText = m}
+likeTics()
+google.script.run.civilinfLike()
+}
+
+function civilinfHate() {
+var civilinfLike = document.getElementById("civilinfLike")
+var civilinfHate = document.getElementById("civilinfHate")
+i = civilinfHate.innerText
+m = civilinfLike.innerText
+i++
+civilinfHate.innerText = i
+if (m > 0) {m--; civilinfLike.innerText = m}
+hateTics()
+google.script.run.civilinfHate()
+}
+
+// ING. COMERCIAL
+function comercialLike() {
+var comercialLike = document.getElementById("comercialLike")
+var comercialHate = document.getElementById("comercialHate")
+i = comercialLike.innerText
+m = comercialHate.innerText
+i++
+comercialLike.innerText = i
+if (m > 0) {m--; comercialHate.innerText = m}
+likeEngine()
+google.script.run.comercialLike()
+}
+
+function comercialHate() {
+var comercialLike = document.getElementById("comercialLike")
+var comercialHate = document.getElementById("comercialHate")
+i = comercialHate.innerText
+m = comercialLike.innerText
+i++
+comercialHate.innerText = i
+if (m > 0) {m--; comercialLike.innerText = m}
+hateEngine()
+google.script.run.comercialHate()
+}
+
+
+// ING. INFORMÁTICA
+function informisLike() {
+var informisLike = document.getElementById("informisLike")
+var informisHate = document.getElementById("informisHate")
+i = informisLike.innerText
+m = informisHate.innerText
+i++
+informisLike.innerText = i
+if (m > 0) {m--; informisHate.innerText = m}
+likeTics()
+google.script.run.informisLike()
+}
+
+function informisHate() {
+var informisLike = document.getElementById("informisLike")
+var informisHate = document.getElementById("informisHate")
+i = informisHate.innerText
+m = informisLike.innerText
+i++
+informisHate.innerText = i
+if (m > 0) {m--; informisLike.innerText = m}
+hateTics()
+google.script.run.informisHate()
+}
+
+
+
+// LIKES & DISLIKES DATA
+function likesAndDislikes() {
+
+// DATABASE FUNCTIONALITY
+var spreadsheetId = "uplanianWars"
+var sheetName = "TiraAfloja"
+getSheetData(spreadsheetId, sheetName)
+}
+
+async function getSheetData(spreadsheetId, sheetName) {
+const baseUrl = "https://script.google.com/macros/s/AKfycbwhaPOWQYvp3m2N0wtsRiOKAsKkzC88GE5xN5wtSIscLoqTQtKIusYObRmSCI3niiSO/exec";
+const params = { spreadsheetId: spreadsheetId, sheetName: sheetName }
+const query = new URLSearchParams(params)
+const url = `${baseUrl}?${query}`
+
+try {
+ const response = await fetch(url)
+ const data = await response.json();
+ // TESTING!!!
+ // console.log(data)
+ // console.log(data.dubujL,data.dibujH)
+ // HTML ELEMENT:
+ document.getElementById("dibujanteLike").innerText = data.dibujL;
+ document.getElementById("dibujanteHate").innerText = data.dibujH;
+ document.getElementById("disenoLike").innerText = data.disenL;
+ document.getElementById("disenoHate").innerText = data.disenH;
+ document.getElementById("visualsLike").innerText = data.artisL;
+ document.getElementById("visualsHate").innerText = data.artisH;
+ document.getElementById("musicalLike").innerText = data.musicL;
+ document.getElementById("musicalHate").innerText = data.musicH;
+ document.getElementById("artsiesLike").innerText = data.licarL;
+ document.getElementById("artsiesHate").innerText = data.licarH;
+ document.getElementById("theaterLike").innerText = data.teatrL;
+ document.getElementById("theaterHate").innerText = data.teatrH;
+
+ document.getElementById("physicalLike").innerText = data.edfisL;
+ document.getElementById("physicalHate").innerText = data.edfisH;
+ document.getElementById("sportiesLike").innerText = data.deporH;
+ document.getElementById("sportiesHate").innerText = data.deporH;
+
+ document.getElementById("basicalLike").innerText = data.basicL;
+ document.getElementById("basicalHate").innerText = data.basicH;
+ document.getElementById("specialLike").innerText = data.diferL;
+ document.getElementById("specialHate").innerText = data.diferH;
+ document.getElementById("nurseryLike").innerText = data.parvuL;
+ document.getElementById("nurseryHate").innerText = data.parvuH;
+
+ document.getElementById("enfermisLike").innerText = data.enferL;
+ document.getElementById("enfermisHate").innerText = data.enferH;
+ document.getElementById("speechieLike").innerText = data.fonoaL;
+ document.getElementById("speechieHate").innerText = data.fonoaH;
+ document.getElementById("kinesisLike").innerText = data.kinesL;
+ document.getElementById("kinesisHate").innerText = data.kinesH;
+ document.getElementById("nutritisLike").innerText = data.nutriL;
+ document.getElementById("nutritisHate").innerText = data.nutriH;
+ document.getElementById("therapyLike").innerText = data.terapL;
+ document.getElementById("therapyHate").innerText = data.terapH;
+
+ document.getElementById("librarisLike").innerText = data.bibliL;
+ document.getElementById("librarisHate").innerText = data.bibliH;
+ document.getElementById("derechisLike").innerText = data.derecL;
+ document.getElementById("derechisHate").innerText = data.derecH;
+ document.getElementById("journalisLike").innerText = data.perioL;
+ document.getElementById("journalisHate").innerText = data.perioH;
+ document.getElementById("psychologyLike").innerText = data.psicoL;
+ document.getElementById("psychologyHate").innerText = data.psicoH;
+ document.getElementById("sociologyLike").innerText = data.socioL;
+ document.getElementById("sociologyHate").innerText = data.socioH;
+
+ document.getElementById("geographLike").innerText = data.geogrL;
+ document.getElementById("geographHate").innerText = data.geogrH;
+ document.getElementById("biologyLike").innerText = data.bioloL;
+ document.getElementById("biologyHate").innerText = data.bioloH;
+ document.getElementById("physicsLike").innerText = data.fisicL;
+ document.getElementById("physicsHate").innerText = data.fisicH;
+ document.getElementById("mathsLike").innerText = data.matemL;
+ document.getElementById("mathsHate").innerText = data.matemH;
+ document.getElementById("chemisLike").innerText = data.quimiL;
+ document.getElementById("chemisHate").innerText = data.quimiH;
+
+ document.getElementById("tourismLike").innerText = data.turisL;
+ document.getElementById("tourismHate").innerText = data.turisH;
+ document.getElementById("languageLike").innerText = data.casteL;
+ document.getElementById("languageHate").innerText = data.casteH;
+ document.getElementById("philosLike").innerText = data.filosL;
+ document.getElementById("philosHate").innerText = data.filosH;
+ document.getElementById("historyLike").innerText = data.histoL;
+ document.getElementById("historyHate").innerText = data.histoH;
+ document.getElementById("englishLike").innerText = data.ingleL;
+ document.getElementById("englishHate").innerText = data.ingleH;
+ document.getElementById("translyLike").innerText = data.traduL;
+ document.getElementById("translyHate").innerText = data.traduH;
+
+ document.getElementById("statisLike").innerText = data.estadL;
+ document.getElementById("statisHate").innerText = data.estadH;
+ document.getElementById("ambientisLike").innerText = data.iambiL;
+ document.getElementById("ambientisHate").innerText = data.iambiH;
+ document.getElementById("civilambisLike").innerText = data.icambL;
+ document.getElementById("civilambisHate").innerText = data.icambH;
+ document.getElementById("industrisLike").innerText = data.icindL;
+ document.getElementById("industrisHate").innerText = data.icindH;
+ document.getElementById("civilinfLike").innerText = data.icinfL;
+ document.getElementById("civilinfHate").innerText = data.icinfH;
+ document.getElementById("comercialLike").innerText = data.icomeL;
+ document.getElementById("comercialHate").innerText = data.icomeH;
+ document.getElementById("informisLike").innerText = data.iinfoL;
+ document.getElementById("informisHate").innerText = data.iinfoH;
+
+ // DISPLAY ELEMENT AFTER LOADING
+ document.getElementById("loader").style.display = "none";
+ document.getElementById("allClasses").style.display = "block";
+
+ return data;
+ // CATCHING ERRORS!
+ } catch (error) {
+ console.error('ERROR DETECTED:', error);
+ }
+}
+
+
+// ARTS SOUNDS!
+function likeArts() {
+var likeArts = new Audio('https://uplanianos.github.io/app/tugofwar/likeArts.mp3')
+likeArts.play()
+}
+
+function hateArts() {
+var hateArts = new Audio('https://uplanianos.github.io/app/tugofwar/hateArts.mp3')
+hateArts.play()
+}
+
+// ARTS SOUNDS!
+function likeSport() {
+var likeSport = new Audio('https://uplanianos.github.io/app/tugofwar/likeSport.mp3')
+likeSport.play()
+}
+
+function hateSport() {
+var hateSport = new Audio('https://uplanianos.github.io/app/tugofwar/hateSport.mp3')
+hateSport.play()
+}
+
+// EDUCATION SOUNDS!
+function likeEdus() {
+var likeEdus = new Audio('https://uplanianos.github.io/app/tugofwar/likeEdus.mp3')
+likeEdus.play()
+}
+
+function hateEdus() {
+var hateEdus = new Audio('https://uplanianos.github.io/app/tugofwar/hateEdus.mp3')
+hateEdus.play()
+}
+
+// HEALTH SOUNDS!
+function likeSalud() {
+var likeSalud = new Audio('https://uplanianos.github.io/app/tugofwar/likeSalud.mp3')
+likeSalud.play()
+}
+
+function hateSalud() {
+var hateSalud = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
+hateSalud.play()
+}
+
+// SOCIAT SOUNDS!
+function likeSociats() {
+var likeSociats = new Audio('https://uplanianos.github.io/app/tugofwar/likeSociats.mp3')
+likeSociats.play()
+}
+
+function hateSociats() {
+var hateSociats = new Audio('https://uplanianos.github.io/app/tugofwar/hateSociats.mp3')
+hateSociats.play()
+}
+
+// SCIENCE SOUNDS!
+function likeScience() {
+var likeScience = new Audio('https://uplanianos.github.io/app/tugofwar/likeScience.mp3')
+likeScience.play()
+}
+
+function hateScience() {
+var hateScience = new Audio('https://uplanianos.github.io/app/tugofwar/hateScience.mp3')
+hateScience.play()
+}
+
+// HUMANITIES SOUNDS!
+function likeHumans() {
+var likeHumans = new Audio('https://uplanianos.github.io/app/tugofwar/likeHumans.mp3')
+likeHumans.play()
+}
+
+function hateHumans() {
+var hateHumans = new Audio('https://uplanianos.github.io/app/tugofwar/hateHumans.mp3')
+hateHumans.play()
+}
+
+// ENGINEERING SOUNDS!
+function likeEngine() {
+var likeEngine = new Audio('https://uplanianos.github.io/app/tugofwar/likeEngine.mp3')
+likeEngine.play()
+}
+
+function hateEngine() {
+var hateEngine = new Audio('https://uplanianos.github.io/app/tugofwar/hateEngine.mp3')
+hateEngine.play()
+}
+
+// IT SOUNDS!
+function likeTics() {
+var likeTics = new Audio('https://uplanianos.github.io/app/tugofwar/likeTics.mp3')
+likeTics.play()
+}
+
+function hateTics() {
+var hateTics = new Audio('https://uplanianos.github.io/app/tugofwar/hateTics.mp3')
+hateTics.play()
+}
+
+</script>
+
+
+
+
+</body>
+</html>
