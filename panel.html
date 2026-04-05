@@ -208,13 +208,13 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- ATTENDANCE CHECK DIV -->
  <div class="widgetDivs">
  <div id="attendanceTitle" class="widgetTitle" style="background-color: green;"><b>Asistencia Semanal:</b></div>
-  <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()">⭕</div>
+  <div id="attendanceTrash" class="trashIcon" onclick="clearRoll()" title="Borrar asistencia">⭕</div>
    <div class="doubleColumnWrapper">
     <div style="width: 55%; color: #666; text-align: center; padding: 12px;">
 	<canvas id="rollCanvas" class="rollCanvas" width="212px" height="212px"></canvas>
     </div>
     <div style="width: 42%; color: #666; padding: 6px; margin-left: 2%; line-height: 1.6;">
-	<small><u>Progreso</u>:</small><br>
+	<small><u>Registro</u>:</small><br>
 	<input type="checkbox" id="checkMon" onchange="checkAttendance(); saveData()">Lunes<br>
 	<input type="checkbox" id="checkTue" onchange="checkAttendance(); saveData()">Martes<br>
 	<input type="checkbox" id="checkWed" onchange="checkAttendance(); saveData()">Miércoles<br>
@@ -235,7 +235,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- WEEK PLANNER DIV -->
  <div class="widgetDivs">
   <div id="plannerTitle" class="widgetTitle" style="background-color: #554994"><b>Planificación Semanal:</b></div>
-  <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()">⭕</div>
+  <div id="plannerTrash" class="trashIcon" onclick="clearPlanner()" title="Borrar planificación">⭕</div>
    <div class="plannerWrapper">
 	<div>Lunes	<span id="thisMon"></span>: <textarea id="planMon" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del lunes."></textarea></div>
 	<div>Martes	<span id="thisTue"></span>: <textarea id="planTue" class="plannerDays" onchange="checkPlanner(); saveData()" placeholder="Actividades del martes."></textarea></div>
@@ -254,7 +254,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- TESTS DIV -->
  <div class="widgetDivs">
   <div id="testTitle" class="widgetTitle" style="background-color: #FF8800;"><b>Evaluaciones Integrales:</b></div>
-  <div id="testTrash" class="trashIcon" onclick="clearTests(); saveData()">⭕</div>
+  <div id="testTrash" class="trashIcon" onclick="clearTests(); saveData()" title="Borrar evaluaciones">⭕</div>
 	<!--  MAIN TESTS WRAPPER -->
 	<div style="background-color: transparent; color: #666; margin-top: 3px; padding: 1px;">
 
@@ -334,7 +334,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- "GRADE SCALES" DIV -->
  <div class="widgetDivs">
   <div class="widgetTitle" style="background-color: #CC0000; /* DARK RED */"><b>Escala de Notas:</b></div>
-  <div id="gradeTrash" class="trashIcon" onclick="clearGrades(); saveData()">⭕</div>
+  <div id="gradeTrash" class="trashIcon" onclick="clearGrades(); saveData()" title="Restablecer escala">⭕</div>
 
 	<div class="gradeDivArrows">
 	<span id="gradeLeft" class="toolArrow" onclick="moveGradesLeft(); saveData()">◄</span>
@@ -416,7 +416,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
  <!-- DRINKS DIV -->
  <div class="widgetDivs">
   <div id="coffeeTitle" class="widgetTitle" style="background-color: #008888;"><b>Nivel de Energía:</b></div>
-  <div id="energyTrash" class="trashIcon" onclick="clearEnergy(); saveData()">⭕</div>
+  <div id="energyTrash" class="trashIcon" onclick="clearEnergy(); saveData()" title="Restablecer niveles">⭕</div>
    <div class="doubleColumnWrapper" style="align-items: center; margin: auto; margin-top: 3%;">
 
 	<div style="width: 50%;">
