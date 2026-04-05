@@ -9,8 +9,8 @@
  <title>Uplanianos - Panel de Control</title>
 </head>
 
-<audio id="horn" src="panel/horn.mp3" preload="auto" display="none"></audio>
-
+<audio id="horn" src="panel/horn.mp3" preload="auto" display="none">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="reset" src="panel/reset.mp3" preload="auto" display="none">Your browser does not support the <code>audio</code> element.</audio>
 
 <script type="text/javascript">
 window.onbeforeunload = function() {
@@ -160,7 +160,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" value="Borrar?" title="Borrar todo!" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearEnergy(); toolsDiv.scrollLeft='1954'; saveData()">🗑️</button></a>
+ <button class="topButtons" title="Borrar todo?" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearGrades(); clearEnergy(); toolsDiv.scrollLeft='1954'; saveData(); resetAudio()">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -1608,6 +1608,19 @@ var doTheLoop = setInterval(function(){
  }, percent)
 }
 
+
+
+// =================
+// PLAY RESET AUDIO!
+// =================
+function resetAudio() {
+var resetAudio = new Audio('panel/reset.mp3')
+resetAudio.play()
+
+setTimeout('gradeScaleDiv.scrollLeft += 5000', 450)
+setTimeout('gradeScaleDiv.scrollLeft = 0', 3000)
+
+}
 
 
 
