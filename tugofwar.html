@@ -8,7 +8,6 @@
  <title>Uplanianos - Carrera Favorita!</title>
 
 <style>
-
 body {
  background-color: #000000FF;
  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
@@ -75,7 +74,7 @@ li:before {
  width: 30px;
  color: white;
  font-size: 14px;
- background: #6666FF;
+ background: #666666;
  border: 1px white solid;
  border-radius: 6px;
  padding: 4px 8px 4px 8px;
@@ -87,7 +86,7 @@ li:before {
  width: 30px;
  color: white;
  font-size: 14px;
- background: #DD0000;
+ background: #666666;
  border: 1px white solid;
  border-radius: 6px;
  padding: 4px 8px 4px 8px;
@@ -458,9 +457,8 @@ var dibujanteLike = document.getElementById("dibujanteLike")
 var dibujanteHate = document.getElementById("dibujanteHate")
 i = dibujanteLike.innerText
 m = dibujanteHate.innerText
-i++
-dibujanteLike.innerText = i
-if (m > 0) {m--; dibujanteHate.innerText = m}
+if (m == 0) {i++; dibujanteLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; dibujanteHate.innerText = m; checkButtonColors(); }
 likeArts()
 // GOOGLE SCRIPT!
 google.script.run.dibujanteLike()
@@ -471,9 +469,8 @@ var dibujanteLike = document.getElementById("dibujanteLike")
 var dibujanteHate = document.getElementById("dibujanteHate")
 i = dibujanteHate.innerText
 m = dibujanteLike.innerText
-i++
-dibujanteHate.innerText = i
-if (m > 0) {m--; dibujanteLike.innerText = m}
+if (m == 0) {i++; dibujanteHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; dibujanteLike.innerText = m; checkButtonColors(); }
 hateArts()
 google.script.run.dibujanteHate()
 }
@@ -484,9 +481,8 @@ var disenoLike = document.getElementById("disenoLike")
 var disenoHate = document.getElementById("disenoHate")
 i = disenoLike.innerText
 m = disenoHate.innerText
-i++
-disenoLike.innerText = i
-if (m > 0) {m--; disenoHate.innerText = m}
+if (m == 0) {i++; disenoLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; disenoHate.innerText = m; checkButtonColors(); }
 likeArts()
 google.script.run.disenoLike()
 }
@@ -496,22 +492,20 @@ var disenoLike = document.getElementById("disenoLike")
 var disenoHate = document.getElementById("disenoHate")
 i = disenoHate.innerText
 m = disenoLike.innerText
-i++
-disenoHate.innerText = i
-if (m > 0) {m--; disenoLike.innerText = m}
+if (m == 0) {i++; disenoHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; disenoLike.innerText = m; checkButtonColors(); }
 hateArts()
 google.script.run.disenoHate()
 }
 
-// DESIGN
+// VISUAL
 function visualsLike() {
 var visualsLike = document.getElementById("visualsLike")
 var visualsHate = document.getElementById("visualsHate")
 i = visualsLike.innerText
 m = visualsHate.innerText
-i++
-visualsLike.innerText = i
-if (m > 0) {m--; visualsHate.innerText = m}
+if (m == 0) {i++; visualsLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; visualsHate.innerText = m; checkButtonColors(); }
 likeArts()
 google.script.run.visualsLike()
 }
@@ -521,9 +515,8 @@ var visualsLike = document.getElementById("visualsLike")
 var visualsHate = document.getElementById("visualsHate")
 i = visualsHate.innerText
 m = visualsLike.innerText
-i++
-visualsHate.innerText = i
-if (m > 0) {m--; visualsLike.innerText = m}
+if (m == 0) {i++; visualsHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; visualsLike.innerText = m; checkButtonColors(); }
 hateArts()
 google.script.run.visualsHate()
 }
@@ -535,9 +528,8 @@ var musicalLike = document.getElementById("musicalLike")
 var musicalHate = document.getElementById("musicalHate")
 i = musicalLike.innerText
 m = musicalHate.innerText
-i++
-musicalLike.innerText = i
-if (m > 0) {m--; musicalHate.innerText = m}
+if (m == 0) {i++; musicalLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; musicalHate.innerText = m; checkButtonColors(); }
 likeArts()
 google.script.run.musicalLike()
 }
@@ -547,9 +539,8 @@ var musicalLike = document.getElementById("musicalLike")
 var musicalHate = document.getElementById("musicalHate")
 i = musicalHate.innerText
 m = musicalLike.innerText
-i++
-musicalHate.innerText = i
-if (m > 0) {m--; musicalLike.innerText = m}
+if (m == 0) {i++; musicalHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; musicalLike.innerText = m; checkButtonColors(); }
 hateArts()
 google.script.run.musicalHate()
 }
@@ -560,9 +551,8 @@ var artsiesLike = document.getElementById("artsiesLike")
 var artsiesHate = document.getElementById("artsiesHate")
 i = artsiesLike.innerText
 m = artsiesHate.innerText
-i++
-artsiesLike.innerText = i
-if (m > 0) {m--; artsiesHate.innerText = m}
+if (m == 0) {i++; artsiesLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; artsiesHate.innerText = m; checkButtonColors(); }
 likeArts()
 google.script.run.artsiesLike()
 }
@@ -572,9 +562,8 @@ var artsiesLike = document.getElementById("artsiesLike")
 var artsiesHate = document.getElementById("artsiesHate")
 i = artsiesHate.innerText
 m = artsiesLike.innerText
-i++
-artsiesHate.innerText = i
-if (m > 0) {m--; artsiesLike.innerText = m}
+if (m == 0) {i++; artsiesHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; artsiesLike.innerText = m; checkButtonColors(); }
 hateArts()
 google.script.run.artsiesHate()
 }
@@ -586,9 +575,8 @@ var theaterLike = document.getElementById("theaterLike")
 var theaterHate = document.getElementById("theaterHate")
 i = theaterLike.innerText
 m = theaterHate.innerText
-i++
-theaterLike.innerText = i
-if (m > 0) {m--; theaterHate.innerText = m}
+if (m == 0) {i++; theaterLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; theaterHate.innerText = m; checkButtonColors(); }
 likeArts()
 google.script.run.theaterLike()
 }
@@ -598,11 +586,10 @@ var theaterLike = document.getElementById("theaterLike")
 var theaterHate = document.getElementById("theaterHate")
 i = theaterHate.innerText
 m = theaterLike.innerText
-i++
-theaterHate.innerText = i
-if (m > 0) {m--; theaterLike.innerText = m}
+if (m == 0) {i++; theaterHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; theaterLike.innerText = m; checkButtonColors(); }
 hateArts()
-google.script.run.artsiesHate()
+google.script.run.theaterHate()
 }
 
 // ==========
@@ -615,9 +602,8 @@ var physicalLike = document.getElementById("physicalLike")
 var physicalHate = document.getElementById("physicalHate")
 i = physicalLike.innerText
 m = physicalHate.innerText
-i++
-physicalLike.innerText = i
-if (m > 0) {m--; physicalHate.innerText = m}
+if (m == 0) {i++; physicalLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; physicalHate.innerText = m; checkButtonColors(); }
 likeSport()
 google.script.run.physicalLike()
 }
@@ -627,9 +613,8 @@ var physicalLike = document.getElementById("physicalLike")
 var physicalHate = document.getElementById("physicalHate")
 i = physicalHate.innerText
 m = physicalLike.innerText
-i++
-physicalHate.innerText = i
-if (m > 0) {m--; physicalLike.innerText = m}
+if (m == 0) {i++; physicalHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; physicalLike.innerText = m; checkButtonColors(); }
 hateSport()
 google.script.run.physicalHate()
 }
@@ -640,9 +625,8 @@ var sportiesLike = document.getElementById("sportiesLike")
 var sportiesHate = document.getElementById("sportiesHate")
 i = sportiesLike.innerText
 m = sportiesHate.innerText
-i++
-sportiesLike.innerText = i
-if (m > 0) {m--; sportiesHate.innerText = m}
+if (m == 0) {i++; sportiesLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; sportiesHate.innerText = m; checkButtonColors(); }
 likeSport()
 google.script.run.sportiesLike()
 }
@@ -652,9 +636,8 @@ var sportiesLike = document.getElementById("sportiesLike")
 var sportiesHate = document.getElementById("sportiesHate")
 i = sportiesHate.innerText
 m = sportiesLike.innerText
-i++
-sportiesHate.innerText = i
-if (m > 0) {m--; sportiesLike.innerText = m}
+if (m == 0) {i++; sportiesHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; sportiesLike.innerText = m; checkButtonColors(); }
 hateSport()
 google.script.run.sportiesHate()
 }
@@ -669,9 +652,8 @@ var basicalLike = document.getElementById("basicalLike")
 var basicalHate = document.getElementById("basicalHate")
 i = basicalLike.innerText
 m = basicalHate.innerText
-i++
-basicalLike.innerText = i
-if (m > 0) {m--; basicalHate.innerText = m}
+if (m == 0) {i++; basicalLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; basicalHate.innerText = m; checkButtonColors(); }
 likeEdus()
 google.script.run.basicalLike()
 }
@@ -681,9 +663,8 @@ var basicalLike = document.getElementById("basicalLike")
 var basicalHate = document.getElementById("basicalHate")
 i = basicalHate.innerText
 m = basicalLike.innerText
-i++
-basicalHate.innerText = i
-if (m > 0) {m--; basicalLike.innerText = m}
+if (m == 0) {i++; basicalHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; basicalLike.innerText = m; checkButtonColors(); }
 hateEdus()
 google.script.run.basicalHate()
 }
@@ -695,9 +676,8 @@ var specialLike = document.getElementById("specialLike")
 var specialHate = document.getElementById("specialHate")
 i = specialLike.innerText
 m = specialHate.innerText
-i++
-specialLike.innerText = i
-if (m > 0) {m--; specialHate.innerText = m}
+if (m == 0) {i++; specialLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; specialHate.innerText = m; checkButtonColors(); }
 likeEdus()
 google.script.run.specialLike()
 }
@@ -707,9 +687,8 @@ var specialLike = document.getElementById("specialLike")
 var specialHate = document.getElementById("specialHate")
 i = specialHate.innerText
 m = specialLike.innerText
-i++
-specialHate.innerText = i
-if (m > 0) {m--; specialLike.innerText = m}
+if (m == 0) {i++; specialHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; specialLike.innerText = m; checkButtonColors(); }
 hateEdus()
 google.script.run.specialHate()
 }
@@ -721,9 +700,8 @@ var nurseryLike = document.getElementById("nurseryLike")
 var nurseryHate = document.getElementById("nurseryHate")
 i = nurseryLike.innerText
 m = nurseryHate.innerText
-i++
-nurseryLike.innerText = i
-if (m > 0) {m--; nurseryHate.innerText = m}
+if (m == 0) {i++; nurseryLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; nurseryHate.innerText = m; checkButtonColors(); }
 likeEdus()
 google.script.run.nurseryLike()
 }
@@ -733,9 +711,8 @@ var nurseryLike = document.getElementById("nurseryLike")
 var nurseryHate = document.getElementById("nurseryHate")
 i = nurseryHate.innerText
 m = nurseryLike.innerText
-i++
-nurseryHate.innerText = i
-if (m > 0) {m--; nurseryLike.innerText = m}
+if (m == 0) {i++; nurseryHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; nurseryLike.innerText = m; checkButtonColors(); }
 hateEdus()
 google.script.run.nurseryHate()
 }
@@ -751,9 +728,8 @@ var enfermisLike = document.getElementById("enfermisLike")
 var enfermisHate = document.getElementById("enfermisHate")
 i = enfermisLike.innerText
 m = enfermisHate.innerText
-i++
-enfermisLike.innerText = i
-if (m > 0) {m--; enfermisHate.innerText = m}
+if (m == 0) {i++; enfermisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; enfermisHate.innerText = m; checkButtonColors(); }
 likeSalud()
 google.script.run.enfermisLike()
 }
@@ -763,9 +739,8 @@ var enfermisLike = document.getElementById("enfermisLike")
 var enfermisHate = document.getElementById("enfermisHate")
 i = enfermisHate.innerText
 m = enfermisLike.innerText
-i++
-enfermisHate.innerText = i
-if (m > 0) {m--; enfermisLike.innerText = m}
+if (m == 0) {i++; enfermisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; enfermisLike.innerText = m; checkButtonColors(); }
 hateSalud()
 google.script.run.enfermisHate()
 }
@@ -777,9 +752,8 @@ var speechieLike = document.getElementById("speechieLike")
 var speechieHate = document.getElementById("speechieHate")
 i = speechieLike.innerText
 m = speechieHate.innerText
-i++
-speechieLike.innerText = i
-if (m > 0) {m--; speechieHate.innerText = m}
+if (m == 0) {i++; speechieLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; speechieHate.innerText = m; checkButtonColors(); }
 likeSalud()
 google.script.run.speechieLike()
 }
@@ -789,9 +763,8 @@ var speechieLike = document.getElementById("speechieLike")
 var speechieHate = document.getElementById("speechieHate")
 i = speechieHate.innerText
 m = speechieLike.innerText
-i++
-speechieHate.innerText = i
-if (m > 0) {m--; speechieLike.innerText = m}
+if (m == 0) {i++; speechieHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; speechieLike.innerText = m; checkButtonColors(); }
 hateSalud()
 google.script.run.speechieHate()
 }
@@ -803,9 +776,8 @@ var kinesisLike = document.getElementById("kinesisLike")
 var kinesisHate = document.getElementById("kinesisHate")
 i = kinesisLike.innerText
 m = kinesisHate.innerText
-i++
-kinesisLike.innerText = i
-if (m > 0) {m--; kinesisHate.innerText = m}
+if (m == 0) {i++; kinesisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; kinesisHate.innerText = m; checkButtonColors(); }
 likeSalud()
 google.script.run.kinesisLike()
 }
@@ -815,9 +787,8 @@ var kinesisLike = document.getElementById("kinesisLike")
 var kinesisHate = document.getElementById("kinesisHate")
 i = kinesisHate.innerText
 m = kinesisLike.innerText
-i++
-kinesisHate.innerText = i
-if (m > 0) {m--; kinesisLike.innerText = m}
+if (m == 0) {i++; kinesisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; kinesisLike.innerText = m; checkButtonColors(); }
 hateSalud()
 google.script.run.kinesisHate()
 }
@@ -828,9 +799,8 @@ var nutritisLike = document.getElementById("nutritisLike")
 var nutritisHate = document.getElementById("nutritisHate")
 i = nutritisLike.innerText
 m = nutritisHate.innerText
-i++
-nutritisLike.innerText = i
-if (m > 0) {m--; nutritisHate.innerText = m}
+if (m == 0) {i++; nutritisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; nutritisHate.innerText = m; checkButtonColors(); }
 likeSalud()
 google.script.run.nutritisLike()
 }
@@ -840,9 +810,8 @@ var nutritisLike = document.getElementById("nutritisLike")
 var nutritisHate = document.getElementById("nutritisHate")
 i = nutritisHate.innerText
 m = nutritisLike.innerText
-i++
-nutritisHate.innerText = i
-if (m > 0) {m--; nutritisLike.innerText = m}
+if (m == 0) {i++; nutritisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; nutritisLike.innerText = m; checkButtonColors(); }
 hateSalud()
 google.script.run.nutritisHate()
 }
@@ -853,9 +822,8 @@ var therapyLike = document.getElementById("therapyLike")
 var therapyHate = document.getElementById("therapyHate")
 i = therapyLike.innerText
 m = therapyHate.innerText
-i++
-therapyLike.innerText = i
-if (m > 0) {m--; therapyHate.innerText = m}
+if (m == 0) {i++; therapyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; therapyHate.innerText = m; checkButtonColors(); }
 likeSalud()
 google.script.run.therapyLike()
 }
@@ -865,9 +833,8 @@ var therapyLike = document.getElementById("therapyLike")
 var therapyHate = document.getElementById("therapyHate")
 i = therapyHate.innerText
 m = therapyLike.innerText
-i++
-therapyHate.innerText = i
-if (m > 0) {m--; therapyLike.innerText = m}
+if (m == 0) {i++; therapyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; therapyLike.innerText = m; checkButtonColors(); }
 hateSalud()
 google.script.run.therapyHate()
 }
@@ -883,9 +850,8 @@ var librarisLike = document.getElementById("librarisLike")
 var librarisHate = document.getElementById("librarisHate")
 i = librarisLike.innerText
 m = librarisHate.innerText
-i++
-librarisLike.innerText = i
-if (m > 0) {m--; librarisHate.innerText = m}
+if (m == 0) {i++; librarisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; librarisHate.innerText = m; checkButtonColors(); }
 likeSociats()
 google.script.run.librarisLike()
 }
@@ -895,9 +861,8 @@ var librarisLike = document.getElementById("librarisLike")
 var librarisHate = document.getElementById("librarisHate")
 i = librarisHate.innerText
 m = librarisLike.innerText
-i++
-librarisHate.innerText = i
-if (m > 0) {m--; librarisLike.innerText = m}
+if (m == 0) {i++; librarisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; librarisLike.innerText = m; checkButtonColors(); }
 hateSociats()
 google.script.run.librarisHate()
 }
@@ -909,9 +874,8 @@ var derechisLike = document.getElementById("derechisLike")
 var derechisHate = document.getElementById("derechisHate")
 i = derechisLike.innerText
 m = derechisHate.innerText
-i++
-derechisLike.innerText = i
-if (m > 0) {m--; derechisHate.innerText = m}
+if (m == 0) {i++; derechisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; derechisHate.innerText = m; checkButtonColors(); }
 likeSociats()
 google.script.run.derechisLike()
 }
@@ -921,9 +885,8 @@ var derechisLike = document.getElementById("derechisLike")
 var derechisHate = document.getElementById("derechisHate")
 i = derechisHate.innerText
 m = derechisLike.innerText
-i++
-derechisHate.innerText = i
-if (m > 0) {m--; derechisLike.innerText = m}
+if (m == 0) {i++; derechisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; derechisLike.innerText = m; checkButtonColors(); }
 hateSociats()
 google.script.run.derechisHate()
 }
@@ -934,9 +897,8 @@ var journalisLike = document.getElementById("journalisLike")
 var journalisHate = document.getElementById("journalisHate")
 i = journalisLike.innerText
 m = journalisHate.innerText
-i++
-journalisLike.innerText = i
-if (m > 0) {m--; journalisHate.innerText = m}
+if (m == 0) {i++; journalisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; journalisHate.innerText = m; checkButtonColors(); }
 likeSociats()
 google.script.run.journalisLike()
 }
@@ -946,9 +908,8 @@ var journalisLike = document.getElementById("journalisLike")
 var journalisHate = document.getElementById("journalisHate")
 i = journalisHate.innerText
 m = journalisLike.innerText
-i++
-journalisHate.innerText = i
-if (m > 0) {m--; journalisLike.innerText = m}
+if (m == 0) {i++; journalisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; journalisLike.innerText = m; checkButtonColors(); }
 hateSociats()
 google.script.run.journalisHate()
 }
@@ -959,9 +920,8 @@ var psychologyLike = document.getElementById("psychologyLike")
 var psychologyHate = document.getElementById("psychologyHate")
 i = psychologyLike.innerText
 m = psychologyHate.innerText
-i++
-psychologyLike.innerText = i
-if (m > 0) {m--; psychologyHate.innerText = m}
+if (m == 0) {i++; psychologyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; psychologyHate.innerText = m; checkButtonColors(); }
 likeSociats()
 google.script.run.psychologyLike()
 }
@@ -971,9 +931,8 @@ var psychologyLike = document.getElementById("psychologyLike")
 var psychologyHate = document.getElementById("psychologyHate")
 i = psychologyHate.innerText
 m = psychologyLike.innerText
-i++
-psychologyHate.innerText = i
-if (m > 0) {m--; psychologyLike.innerText = m}
+if (m == 0) {i++; psychologyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; psychologyLike.innerText = m; checkButtonColors(); }
 hateSociats()
 google.script.run.psychologyHate()
 }
@@ -984,9 +943,8 @@ var sociologyLike = document.getElementById("sociologyLike")
 var sociologyHate = document.getElementById("sociologyHate")
 i = sociologyLike.innerText
 m = sociologyHate.innerText
-i++
-sociologyLike.innerText = i
-if (m > 0) {m--; sociologyHate.innerText = m}
+if (m == 0) {i++; sociologyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; sociologyHate.innerText = m; checkButtonColors(); }
 likeSociats()
 google.script.run.sociologyLike()
 }
@@ -996,9 +954,8 @@ var sociologyLike = document.getElementById("sociologyLike")
 var sociologyHate = document.getElementById("sociologyHate")
 i = sociologyHate.innerText
 m = sociologyLike.innerText
-i++
-sociologyHate.innerText = i
-if (m > 0) {m--; sociologyLike.innerText = m}
+if (m == 0) {i++; sociologyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; sociologyLike.innerText = m; checkButtonColors(); }
 hateSociats()
 google.script.run.sociologyHate()
 }
@@ -1014,9 +971,8 @@ var geographLike = document.getElementById("geographLike")
 var geographHate = document.getElementById("geographHate")
 i = geographLike.innerText
 m = geographHate.innerText
-i++
-geographLike.innerText = i
-if (m > 0) {m--; geographHate.innerText = m}
+if (m == 0) {i++; geographLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; geographHate.innerText = m; checkButtonColors(); }
 likeScience()
 google.script.run.geographLike()
 }
@@ -1026,9 +982,8 @@ var geographLike = document.getElementById("geographLike")
 var geographHate = document.getElementById("geographHate")
 i = geographHate.innerText
 m = geographLike.innerText
-i++
-geographHate.innerText = i
-if (m > 0) {m--; geographLike.innerText = m}
+if (m == 0) {i++; geographHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; geographLike.innerText = m; checkButtonColors(); }
 hateScience()
 google.script.run.geographHate()
 }
@@ -1039,9 +994,8 @@ var biologyLike = document.getElementById("biologyLike")
 var biologyHate = document.getElementById("biologyHate")
 i = biologyLike.innerText
 m = biologyHate.innerText
-i++
-biologyLike.innerText = i
-if (m > 0) {m--; biologyHate.innerText = m}
+if (m == 0) {i++; biologyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; biologyHate.innerText = m; checkButtonColors(); }
 likeScience()
 google.script.run.biologyLike()
 }
@@ -1051,9 +1005,8 @@ var biologyLike = document.getElementById("biologyLike")
 var biologyHate = document.getElementById("biologyHate")
 i = biologyHate.innerText
 m = biologyLike.innerText
-i++
-biologyHate.innerText = i
-if (m > 0) {m--; biologyLike.innerText = m}
+if (m == 0) {i++; biologyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; biologyLike.innerText = m; checkButtonColors(); }
 hateScience()
 google.script.run.biologyHate()
 }
@@ -1064,9 +1017,8 @@ var physicsLike = document.getElementById("physicsLike")
 var physicsHate = document.getElementById("physicsHate")
 i = physicsLike.innerText
 m = physicsHate.innerText
-i++
-physicsLike.innerText = i
-if (m > 0) {m--; physicsHate.innerText = m}
+if (m == 0) {i++; physicsLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; physicsHate.innerText = m; checkButtonColors(); }
 likeScience()
 google.script.run.physicsLike()
 }
@@ -1076,9 +1028,8 @@ var physicsLike = document.getElementById("physicsLike")
 var physicsHate = document.getElementById("physicsHate")
 i = physicsHate.innerText
 m = physicsLike.innerText
-i++
-physicsHate.innerText = i
-if (m > 0) {m--; physicsLike.innerText = m}
+if (m == 0) {i++; physicsHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; physicsLike.innerText = m; checkButtonColors(); }
 hateScience()
 google.script.run.physicsHate()
 }
@@ -1089,9 +1040,8 @@ var mathsLike = document.getElementById("mathsLike")
 var mathsHate = document.getElementById("mathsHate")
 i = mathsLike.innerText
 m = mathsHate.innerText
-i++
-mathsLike.innerText = i
-if (m > 0) {m--; mathsHate.innerText = m}
+if (m == 0) {i++; mathsLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; mathsHate.innerText = m; checkButtonColors(); }
 likeScience()
 google.script.run.mathsLike()
 }
@@ -1101,9 +1051,8 @@ var mathsLike = document.getElementById("mathsLike")
 var mathsHate = document.getElementById("mathsHate")
 i = mathsHate.innerText
 m = mathsLike.innerText
-i++
-mathsHate.innerText = i
-if (m > 0) {m--; mathsLike.innerText = m}
+if (m == 0) {i++; mathsHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; mathsLike.innerText = m; checkButtonColors(); }
 hateScience()
 google.script.run.mathsHate()
 }
@@ -1114,9 +1063,8 @@ var chemisLike = document.getElementById("chemisLike")
 var chemisHate = document.getElementById("chemisHate")
 i = chemisLike.innerText
 m = chemisHate.innerText
-i++
-chemisLike.innerText = i
-if (m > 0) {m--; chemisHate.innerText = m}
+if (m == 0) {i++; chemisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; chemisHate.innerText = m; checkButtonColors(); }
 likeScience()
 google.script.run.chemisLike()
 }
@@ -1126,9 +1074,8 @@ var chemisLike = document.getElementById("chemisLike")
 var chemisHate = document.getElementById("chemisHate")
 i = chemisHate.innerText
 m = chemisLike.innerText
-i++
-chemisHate.innerText = i
-if (m > 0) {m--; chemisLike.innerText = m}
+if (m == 0) {i++; chemisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; chemisLike.innerText = m; checkButtonColors(); }
 hateScience()
 google.script.run.chemisHate()
 }
@@ -1144,9 +1091,8 @@ var tourismLike = document.getElementById("tourismLike")
 var tourismHate = document.getElementById("tourismHate")
 i = tourismLike.innerText
 m = tourismHate.innerText
-i++
-tourismLike.innerText = i
-if (m > 0) {m--; tourismHate.innerText = m}
+if (m == 0) {i++; tourismLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; tourismHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.tourismLike()
 }
@@ -1156,9 +1102,8 @@ var tourismLike = document.getElementById("tourismLike")
 var tourismHate = document.getElementById("tourismHate")
 i = tourismHate.innerText
 m = tourismLike.innerText
-i++
-tourismHate.innerText = i
-if (m > 0) {m--; tourismLike.innerText = m}
+if (m == 0) {i++; tourismHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; tourismLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.tourismHate()
 }
@@ -1169,9 +1114,8 @@ var languageLike = document.getElementById("languageLike")
 var languageHate = document.getElementById("languageHate")
 i = languageLike.innerText
 m = languageHate.innerText
-i++
-languageLike.innerText = i
-if (m > 0) {m--; languageHate.innerText = m}
+if (m == 0) {i++; languageLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; languageHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.languageLike()
 }
@@ -1181,9 +1125,8 @@ var languageLike = document.getElementById("languageLike")
 var languageHate = document.getElementById("languageHate")
 i = languageHate.innerText
 m = languageLike.innerText
-i++
-languageHate.innerText = i
-if (m > 0) {m--; languageLike.innerText = m}
+if (m == 0) {i++; languageHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; languageLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.languageHate()
 }
@@ -1194,9 +1137,8 @@ var philosLike = document.getElementById("philosLike")
 var philosHate = document.getElementById("philosHate")
 i = philosLike.innerText
 m = philosHate.innerText
-i++
-philosLike.innerText = i
-if (m > 0) {m--; philosHate.innerText = m}
+if (m == 0) {i++; philosLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; philosHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.philosLike()
 }
@@ -1206,9 +1148,8 @@ var philosLike = document.getElementById("philosLike")
 var philosHate = document.getElementById("philosHate")
 i = philosHate.innerText
 m = philosLike.innerText
-i++
-philosHate.innerText = i
-if (m > 0) {m--; philosLike.innerText = m}
+if (m == 0) {i++; philosHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; philosLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.philosHate()
 }
@@ -1219,9 +1160,8 @@ var historyLike = document.getElementById("historyLike")
 var historyHate = document.getElementById("historyHate")
 i = historyLike.innerText
 m = historyHate.innerText
-i++
-historyLike.innerText = i
-if (m > 0) {m--; historyHate.innerText = m}
+if (m == 0) {i++; historyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; historyHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.historyLike()
 }
@@ -1231,9 +1171,8 @@ var historyLike = document.getElementById("historyLike")
 var historyHate = document.getElementById("historyHate")
 i = historyHate.innerText
 m = historyLike.innerText
-i++
-historyHate.innerText = i
-if (m > 0) {m--; historyLike.innerText = m}
+if (m == 0) {i++; historyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; historyLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.historyHate()
 }
@@ -1244,9 +1183,8 @@ var englishLike = document.getElementById("englishLike")
 var englishHate = document.getElementById("englishHate")
 i = englishLike.innerText
 m = englishHate.innerText
-i++
-englishLike.innerText = i
-if (m > 0) {m--; englishHate.innerText = m}
+if (m == 0) {i++; englishLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; englishHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.englishLike()
 }
@@ -1256,9 +1194,8 @@ var englishLike = document.getElementById("englishLike")
 var englishHate = document.getElementById("englishHate")
 i = englishHate.innerText
 m = englishLike.innerText
-i++
-englishHate.innerText = i
-if (m > 0) {m--; englishLike.innerText = m}
+if (m == 0) {i++; englishHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; englishLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.englishHate()
 }
@@ -1269,9 +1206,8 @@ var translyLike = document.getElementById("translyLike")
 var translyHate = document.getElementById("translyHate")
 i = translyLike.innerText
 m = translyHate.innerText
-i++
-translyLike.innerText = i
-if (m > 0) {m--; translyHate.innerText = m}
+if (m == 0) {i++; translyLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; translyHate.innerText = m; checkButtonColors(); }
 likeHumans()
 google.script.run.translyLike()
 }
@@ -1281,9 +1217,8 @@ var translyLike = document.getElementById("translyLike")
 var translyHate = document.getElementById("translyHate")
 i = translyHate.innerText
 m = translyLike.innerText
-i++
-translyHate.innerText = i
-if (m > 0) {m--; translyLike.innerText = m}
+if (m == 0) {i++; translyHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; translyLike.innerText = m; checkButtonColors(); }
 hateHumans()
 google.script.run.translyHate()
 }
@@ -1299,9 +1234,8 @@ var statisLike = document.getElementById("statisLike")
 var statisHate = document.getElementById("statisHate")
 i = statisLike.innerText
 m = statisHate.innerText
-i++
-statisLike.innerText = i
-if (m > 0) {m--; statisHate.innerText = m}
+if (m == 0) {i++; statisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; statisHate.innerText = m; checkButtonColors(); }
 likeEngine()
 google.script.run.statisLike()
 }
@@ -1311,9 +1245,8 @@ var statisLike = document.getElementById("statisLike")
 var statisHate = document.getElementById("statisHate")
 i = statisHate.innerText
 m = statisLike.innerText
-i++
-statisHate.innerText = i
-if (m > 0) {m--; statisLike.innerText = m}
+if (m == 0) {i++; statisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; statisLike.innerText = m; checkButtonColors(); }
 hateEngine()
 google.script.run.statisHate()
 }
@@ -1324,9 +1257,8 @@ var ambientisLike = document.getElementById("ambientisLike")
 var ambientisHate = document.getElementById("ambientisHate")
 i = ambientisLike.innerText
 m = ambientisHate.innerText
-i++
-ambientisLike.innerText = i
-if (m > 0) {m--; ambientisHate.innerText = m}
+if (m == 0) {i++; ambientisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; ambientisHate.innerText = m; checkButtonColors(); }
 likeEngine()
 google.script.run.ambientisLike()
 }
@@ -1336,9 +1268,8 @@ var ambientisLike = document.getElementById("ambientisLike")
 var ambientisHate = document.getElementById("ambientisHate")
 i = ambientisHate.innerText
 m = ambientisLike.innerText
-i++
-ambientisHate.innerText = i
-if (m > 0) {m--; ambientisLike.innerText = m}
+if (m == 0) {i++; ambientisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; ambientisLike.innerText = m; checkButtonColors(); }
 hateEngine()
 google.script.run.ambientisHate()
 }
@@ -1349,9 +1280,8 @@ var civilambisLike = document.getElementById("civilambisLike")
 var civilambisHate = document.getElementById("civilambisHate")
 i = civilambisLike.innerText
 m = civilambisHate.innerText
-i++
-civilambisLike.innerText = i
-if (m > 0) {m--; civilambisHate.innerText = m}
+if (m == 0) {i++; civilambisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; civilambisHate.innerText = m; checkButtonColors(); }
 likeEngine()
 google.script.run.civilambisLike()
 }
@@ -1361,9 +1291,8 @@ var civilambisLike = document.getElementById("civilambisLike")
 var civilambisHate = document.getElementById("civilambisHate")
 i = civilambisHate.innerText
 m = civilambisLike.innerText
-i++
-civilambisHate.innerText = i
-if (m > 0) {m--; civilambisLike.innerText = m}
+if (m == 0) {i++; civilambisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; civilambisLike.innerText = m; checkButtonColors(); }
 hateEngine()
 google.script.run.civilambisHate()
 }
@@ -1374,9 +1303,8 @@ var industrisLike = document.getElementById("industrisLike")
 var industrisHate = document.getElementById("industrisHate")
 i = industrisLike.innerText
 m = industrisHate.innerText
-i++
-industrisLike.innerText = i
-if (m > 0) {m--; industrisHate.innerText = m}
+if (m == 0) {i++; industrisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; industrisHate.innerText = m; checkButtonColors(); }
 likeEngine()
 google.script.run.industrisLike()
 }
@@ -1386,9 +1314,8 @@ var industrisLike = document.getElementById("industrisLike")
 var industrisHate = document.getElementById("industrisHate")
 i = industrisHate.innerText
 m = industrisLike.innerText
-i++
-industrisHate.innerText = i
-if (m > 0) {m--; industrisLike.innerText = m}
+if (m == 0) {i++; industrisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; industrisLike.innerText = m; checkButtonColors(); }
 hateEngine()
 google.script.run.industrisHate()
 }
@@ -1399,9 +1326,8 @@ var civilinfLike = document.getElementById("civilinfLike")
 var civilinfHate = document.getElementById("civilinfHate")
 i = civilinfLike.innerText
 m = civilinfHate.innerText
-i++
-civilinfLike.innerText = i
-if (m > 0) {m--; civilinfHate.innerText = m}
+if (m == 0) {i++; civilinfLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; civilinfHate.innerText = m; checkButtonColors(); }
 likeTics()
 google.script.run.civilinfLike()
 }
@@ -1411,9 +1337,8 @@ var civilinfLike = document.getElementById("civilinfLike")
 var civilinfHate = document.getElementById("civilinfHate")
 i = civilinfHate.innerText
 m = civilinfLike.innerText
-i++
-civilinfHate.innerText = i
-if (m > 0) {m--; civilinfLike.innerText = m}
+if (m == 0) {i++; civilinfHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; civilinfLike.innerText = m; checkButtonColors(); }
 hateTics()
 google.script.run.civilinfHate()
 }
@@ -1424,9 +1349,8 @@ var comercialLike = document.getElementById("comercialLike")
 var comercialHate = document.getElementById("comercialHate")
 i = comercialLike.innerText
 m = comercialHate.innerText
-i++
-comercialLike.innerText = i
-if (m > 0) {m--; comercialHate.innerText = m}
+if (m == 0) {i++; comercialLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; comercialHate.innerText = m; checkButtonColors(); }
 likeEngine()
 google.script.run.comercialLike()
 }
@@ -1436,9 +1360,8 @@ var comercialLike = document.getElementById("comercialLike")
 var comercialHate = document.getElementById("comercialHate")
 i = comercialHate.innerText
 m = comercialLike.innerText
-i++
-comercialHate.innerText = i
-if (m > 0) {m--; comercialLike.innerText = m}
+if (m == 0) {i++; comercialHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; comercialLike.innerText = m; checkButtonColors(); }
 hateEngine()
 google.script.run.comercialHate()
 }
@@ -1450,9 +1373,8 @@ var informisLike = document.getElementById("informisLike")
 var informisHate = document.getElementById("informisHate")
 i = informisLike.innerText
 m = informisHate.innerText
-i++
-informisLike.innerText = i
-if (m > 0) {m--; informisHate.innerText = m}
+if (m == 0) {i++; informisLike.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; informisHate.innerText = m; checkButtonColors(); }
 likeTics()
 google.script.run.informisLike()
 }
@@ -1462,9 +1384,8 @@ var informisLike = document.getElementById("informisLike")
 var informisHate = document.getElementById("informisHate")
 i = informisHate.innerText
 m = informisLike.innerText
-i++
-informisHate.innerText = i
-if (m > 0) {m--; informisLike.innerText = m}
+if (m == 0) {i++; informisHate.innerText = i; checkButtonColors(); }
+if (m > 0) {m--; informisLike.innerText = m; checkButtonColors(); }
 hateTics()
 google.script.run.informisHate()
 }
@@ -1583,10 +1504,32 @@ try {
  document.getElementById("loader").style.display = "none";
  document.getElementById("allClasses").style.display = "block";
 
+ // DELAYING BUTTON COLOR CHANGE:
+ setTimeout(function() { checkButtonColors() }, 1000)
+
  return data;
  // CATCHING ERRORS!
  } catch (error) {
  console.error('ERROR DETECTED:', error);
+ }
+}
+
+
+function checkButtonColors() {
+ let isLiked = "#6666FF"
+ let isHated = "#DD0000"
+ let isBlank = "#666666"
+ // LIKE BUTTONS
+ const likeButtons = document.getElementsByClassName("likeButton")
+ for (let likes of likeButtons) {
+  if (likes.innerText !== "0 👍") { likes.style.backgroundColor = isLiked }
+  else { likes.style.backgroundColor = isBlank }
+ }
+ // HATE BUTTONS
+ const hateButtons = document.getElementsByClassName("hateButton")
+ for (let hates of hateButtons) {
+  if (hates.innerText !== "0 👎") { hates.style.backgroundColor = isHated }
+  else { hates.style.backgroundColor = isBlank }
  }
 }
 
