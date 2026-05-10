@@ -144,7 +144,7 @@ document.getElementById("coffeeTime").value = localStorage.coffeeTime || "0"
 document.getElementById("waterCups").value = localStorage.waterCups || "0"
 document.getElementById("hydrationTime").value = localStorage.hydrationTime || "0"
 // TOOL SLIDER POSITION
-document.getElementById("slidePosition").value = localStorage.slidePosition || "1956"
+document.getElementById("slidePosition").value = localStorage.slidePosition || "2094"
 }
 
 </script>
@@ -160,7 +160,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" title="Borrar todo?" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearGrades(); clearEnergy(); toolsDiv.scrollLeft='1954'; saveData(); resetAudio()">🗑️</button></a>
+ <button class="topButtons" title="Borrar todo?" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearGrades(); clearEnergy(); toolsDiv.scrollLeft='2094'; saveData(); resetAudio()">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -344,8 +344,8 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
    <div class="doubleColumnWrapper" style="margin: auto; margin-top: 2%;">
 
 	<div class="gradePointsDiv">
-		<div class="gradePointsChild">Total: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades(); saveData()"></div>
-		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades(); saveData()" style="margin-right: 10px; cursor: not-allowed;"></div>
+		<div class="gradePointsChild">Puntos: <input id="gradePoints" type="number" class="gradeNumberInput" value="100" min="1" step="1" onchange="checkGrades(); saveData()"></div>
+		<div class="gradePointsChild">Escala: <input id="gradeScale" type="number" class="gradeNumberInput" value="70" min="60" max="70" step="10" disabled onchange="checkGrades(); saveData()" style="background: #CCCCCCaa; margin-right: -2px; padding-right: 3px; padding-bottom: 3px; cursor: not-allowed;"></div>
 		<div class="gradeScaleButton" onclick="changeScale(); checkGrades(); saveData()">ESCALA</div>
 	 </div>
 
@@ -451,7 +451,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
   </div>
   <div id="toolsDiv" class="toolsDiv">
 	<div id="toolSlider" class="toolSlider">
-	<input type="number" id="slidePosition" style="display: none;" value="1956" onchange="saveData()">
+	<input type="number" id="slidePosition" style="display: none; width: 64px; text-align: right" value="2094" onchange="saveData()">
 	 <!-- LIGHT BLUE -->
 	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
 	 <a href="tirayafloja.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">❤️</font><br>Carrera<br>Favorita</span></a>
@@ -876,6 +876,8 @@ if (currentMonth == 2) { monthLength = 29 }
 if (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth == 11) { monthLength = 30 }
 
 else { monthLength = 31 }
+
+console.log(monthLength)
 
 // TESTING MONTH LENGTH [FOR THIS WEEK]!
 // console.log(currentMonth,monthLength)

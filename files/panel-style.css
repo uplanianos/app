@@ -318,10 +318,10 @@ div.gradesOrangeColumn {
 
 .gradeNumberInput {
  width: 55px;
- background: lightyellow;
  color: #666;
  font-size: 16px;
  text-align: center;
+ background: #66FF66cc;
  border: 1px solid #666;
  border-radius: 12px;
  padding: 6px 6px 6px 12px; /* TOP LEFT BOTTOM RIGHT */
