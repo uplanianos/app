@@ -111,8 +111,8 @@
 	 <ul class="tracker-list">
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="estadistica">✔️</span> Estadística.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="ambiental">✔️</span> Ingeniería Ambiental.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cambiental">✔️</span> Ingeniería Civil Ambiental.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cindustrial">❌</span> Ingeniería Civil Industrial.</li></div>
+	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cambiental">❌</span> Ingeniería Civil Ambiental.</li></div>
+	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cindustrial">✔️</span> Ingeniería Civil Industrial.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cinformatica">✔️</span> Ingeniería Civil Informática.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="comercial">✔️</span> Ingeniería Comercial.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="informatica">✔️</span> Ingeniería Informática.</li><br></div>
@@ -480,12 +480,8 @@ var weeklyLoop = setInterval(function() {
  // AFTER DEADLINE
  if (distance < 0) {
 
-  // SALUDIS
-  // document.getElementById("enfermeria").innerHTML = "✔️"
-  document.getElementById("fonoaudiologia").innerHTML = "✔️"
-  document.getElementById("kinesiologia").innerHTML = "✔️"
-  document.getElementById("nutricion").innerHTML = "✔️"
-  // document.getElementById("terapia").innerHTML = "✔️"
+  // ENGINIS
+  document.getElementById("cambiental").innerHTML = "✔️"
 
   // ELEMENTIS
   document.getElementById("todo-normal").style.display = "block"
@@ -493,8 +489,7 @@ var weeklyLoop = setInterval(function() {
   document.getElementById("checkWeekly").style.display = "none"
 
   // DISPLAY DIVS
-  // displaySaludis() // 2025
-  displayEnginis() // 2026
+  displayEnginis()
 
   // OTHER CHECKS
   overallCheck()
