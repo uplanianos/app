@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -64,9 +65,9 @@
 	  <br><div>Facultad de Ciencias de la Salud</div><br>
 	 <ul class="tracker-list">
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="enfermeria">✔️</span> Enfermería.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">❌</span> Fonoaudiología.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">❌</span> Kinesiología.</li></div>
-	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">❌</span> Nutrición y Dietética.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="fonoaudiologia">✔️</span> Fonoaudiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="kinesiologia">✔️</span> Kinesiología.</li></div>
+	  <div class="saludis" style="display: none;"><li><span class="saludis" id="nutricion">✔️</span> Nutrición y Dietética.</li></div>
 	  <div class="saludis" style="display: none;"><li><span class="saludis" id="terapia">✔️</span> Terapia Ocupacional.</li><br></div>
 	 </ul>
 	</div>
@@ -111,7 +112,7 @@
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="estadistica">✔️</span> Estadística.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="ambiental">✔️</span> Ingeniería Ambiental.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cambiental">✔️</span> Ingeniería Civil Ambiental.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cindustrial">✔️</span> Ingeniería Civil Industrial.</li></div>
+	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cindustrial">❌</span> Ingeniería Civil Industrial.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cinformatica">✔️</span> Ingeniería Civil Informática.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="comercial">✔️</span> Ingeniería Comercial.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="informatica">✔️</span> Ingeniería Informática.</li><br></div>
@@ -120,7 +121,7 @@
 
 	<div class="strike-label-wrapper">
 	 <div class="strike-label-bubbles" style="color: white; background-color: #FF0000cc; text-shadow: 1px 1px 1px black;">❌ En paro!</div>
-	 <div class="strike-label-bubbles" style="color: black; background-color: yellow;">✔️❌ Por carrera!</div>
+	 <div class="strike-label-bubbles" style="color: white; background-color: orange; text-shadow: 1px 1px 1px black;">✔️❌ Por carrera!</div>
 	 <div class="strike-label-bubbles" style="color: white; background-color: green; text-shadow: 1px 1px 1px black;">✔️ Todo normal!</div>
 	</div>
 
@@ -450,7 +451,7 @@ function checkWeekly() {
 // ==================================================
 
 // START WORKING
-var countDownDate = new Date("2025-06-14T00:00:00").getTime()
+var countDownDate = new Date("2026-05-16T00:00:00").getTime()
 var weeklyLoop = setInterval(function() {
 
  // FIXED VARIABLES
@@ -490,7 +491,8 @@ var weeklyLoop = setInterval(function() {
   document.getElementById("checkWeekly").style.display = "none"
 
   // DISPLAY DIVS
-  displaySaludis()
+  // displaySaludis() // 2025
+  displayEnginis() // 2026
 
   // OTHER CHECKS
   overallCheck()
@@ -509,6 +511,12 @@ var weeklyLoop = setInterval(function() {
 	// ==================================================
 
 	/*
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
+
+	console.log("FULL STRIKE - WEEKLY CHECK ENABLED")
+
 	function checkWeekly() {
 
 	// START WORKING
@@ -609,8 +617,13 @@ var weeklyLoop = setInterval(function() {
 	  }
 	 },1000);
 	}
-	*/
+
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
+	// COMMENTED OUT!!! - COMMENTED OUT!!!
 	// END OF COMMENT OUT - FULL STRIKE!
+	*/
+
 </script>
 
 
