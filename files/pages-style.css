@@ -1264,6 +1264,7 @@ span.onStrike { font-size: 14px; color: white; margin: 0px; spacing: 0px; }
 #fac-science { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 #fac-humanis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 #fac-enginis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
+#san-felipis { margin-bottom: 6px; padding: 0px; padding-left: 16px; cursor: pointer; background-color: green; }
 
 .tracker-list { list-style-type: none; margin: 0px; spacing: 0px; text-indent: -28px; }
 
@@ -1276,6 +1277,7 @@ div.science { margin-left: 20px; padding: 6px; }
 div.sociats { margin-left: 20px; padding: 6px; }
 div.humanis { margin-left: 20px; padding: 6px; }
 div.enginis { margin-left: 20px; padding: 6px; }
+div.felipis { margin-left: 20px; padding: 6px; }
 
 div.strike-label-wrapper { display: flex; width: max-content; margin-left: auto; margin-right: auto; }
 div.strike-label-bubbles { font-size: 10px; text-align: center; margin: 3px; padding: 4px; padding-left: 10px; padding-right: 8px; border: 1px solid white; border-radius: 4px; cursor: not-allowed;}
@@ -1286,6 +1288,7 @@ div.strike-label-bubbles { font-size: 10px; text-align: center; margin: 3px; pad
 div.strike-label-wrapper { display: grid; }
 #strike-footer { width: 85%;}
 }
+
 
 
 /* CONFETTI EFFECT */
