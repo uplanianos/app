@@ -108,13 +108,20 @@
 	<div class="grid-item-slider" id="fac-enginis" onclick="displayEnginis()">
 	  <br><div>Facultad de Ingeniería</div><br>
 	 <ul class="tracker-list">
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="estadistica">❌</span> Estadística.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="ambiental">❌</span> Ingeniería Ambiental.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cambiental">❌</span> Ingeniería Civil Ambiental.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cindustrial">❌</span> Ingeniería Civil Industrial.</li></div>
 	  <div class="enginis" style="display: none;"><li><span class="enginis" id="cinformatica">❌</span> Ingeniería Civil Informática.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="comercial">❌</span> Ingeniería Comercial.</li></div>
-	  <div class="enginis" style="display: none;"><li><span class="enginis" id="informatica">❌</span> Ingeniería Informática.</li><br></div>
+	  <div class="enginis" style="display: none;"><li><span class="enginis" id="comercial">❌</span> Ingeniería Comercial.</li><br></div>
+	 </ul>
+	</div>
+
+	<div class="grid-item-slider" id="san-felipis" onclick="displayFelipis()">
+	  <br><div>Sede San Felipe</div><br>
+	 <ul class="tracker-list">
+	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felinformis">✔️</span> Ingeniería Informática.</li></div>
+	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felcastelis">✔️</span> Pedagogía en Castellano.</li></div>
+	  <div class="felipis" style="display: none;"><li><span class="felipis" id="feldiferins">✔️</span> Pedagogía en Educación Diferencial.</li></div>
+	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felinglesis">✔️</span> Pedagogía en Inglés.</li><br></div>
 	 </ul>
 	</div>
 
@@ -150,6 +157,7 @@ const facSociats = document.getElementById("fac-sociats")
 const facScience = document.getElementById("fac-science")
 const facHumanis = document.getElementById("fac-humanis")
 const facEnginis = document.getElementById("fac-enginis")
+const sanFelipis = document.getElementById("san-felipis")
 // DIV ELEMENTS
 var sportisDiv = document.querySelectorAll("div.sportis")
 var artsiesDiv = document.querySelectorAll("div.artsies")
@@ -160,6 +168,7 @@ var sociatsDiv = document.querySelectorAll("div.sociats")
 var scienceDiv = document.querySelectorAll("div.science")
 var humanisDiv = document.querySelectorAll("div.humanis")
 var enginisDiv = document.querySelectorAll("div.enginis")
+var felipisDiv = document.querySelectorAll("div.felipis")
 // SPAN ELEMENTS
 var artsiesSpan = document.querySelectorAll("span.artsies")
 var sportisSpan = document.querySelectorAll("span.sportis")
@@ -169,6 +178,7 @@ var sociatsSpan = document.querySelectorAll("span.sociats")
 var scienceSpan = document.querySelectorAll("span.science")
 var humanisSpan = document.querySelectorAll("span.humanis")
 var enginisSpan = document.querySelectorAll("span.enginis")
+var felipisSpan = document.querySelectorAll("span.felipis")
 
 function checkCourses() {
 
@@ -189,7 +199,7 @@ let sportisTotal = 2
 for(let Courses of sportisSpan) {
  if (Courses.innerHTML == "❌") { sportisTotal-- }
  if (sportisTotal == 2) { facSportis.style.backgroundColor = "green" }
- if (sportisTotal == 1) { facSportis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (sportisTotal == 1) { facSportis.style.backgroundColor = "orange"; facSportis.style.textShadow = "1px 1px black" }
  if (sportisTotal == 0) { facSportis.style.backgroundColor = "red"; facSportis.style.opacity = "0.9"; facSportis.style.textShadow = "1px 1px black" }
  }
 
@@ -198,7 +208,7 @@ let eduquisTotal = 3
 for(let Courses of eduquisSpan) {
  if (Courses.innerHTML == "❌") { eduquisTotal-- }
  if (eduquisTotal == 3) { facEduquis.style.backgroundColor = "green" }
- if (eduquisTotal <= 2) { facEduquis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (eduquisTotal <= 2) { facEduquis.style.backgroundColor = "orange"; facEduquis.style.textShadow = "1px 1px black" }
  if (eduquisTotal  == 0) { facEduquis.style.backgroundColor = "red"; facEduquis.style.opacity = "0.9"; facEduquis.style.textShadow = "1px 1px black" }
  }
 
@@ -207,7 +217,7 @@ let saludisTotal = 5
 for(let Courses of saludisSpan) {
  if (Courses.innerHTML == "❌") { saludisTotal-- }
  if (saludisTotal == 5) { facSaludis.style.backgroundColor = "green" }
- if (saludisTotal <= 4) { facSaludis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (saludisTotal <= 4) { facSaludis.style.backgroundColor = "orange"; facSaludis.style.textShadow = "1px 1px black" }
  if (saludisTotal == 0) { facSaludis.style.backgroundColor = "red"; facSaludis.style.opacity = "0.9"; facSaludis.style.textShadow = "1px 1px black" }
  }
 
@@ -216,7 +226,7 @@ let sociatsTotal = 5
 for(let Courses of sociatsSpan) {
  if (Courses.innerHTML == "❌") { sociatsTotal-- }
  if (sociatsTotal == 5) { facSociats.style.backgroundColor = "green" }
- if (sociatsTotal <= 4) { facSociats.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (sociatsTotal <= 4) { facSociats.style.backgroundColor = "orange"; facSociats.style.textShadow = "1px 1px black" }
  if (sociatsTotal == 0) { facSociats.style.backgroundColor = "red"; facSociats.style.opacity = "0.9"; facSociats.style.textShadow = "1px 1px black" }
  }
 
@@ -225,7 +235,7 @@ let scienceTotal = 5
 for(let Courses of scienceSpan) {
  if (Courses.innerHTML == "❌") { scienceTotal-- }
  if (scienceTotal == 5) { facScience.style.backgroundColor = "green" }
- if (scienceTotal <= 4) { facScience.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (scienceTotal <= 4) { facScience.style.backgroundColor = "orange"; facScience.style.textShadow = "1px 1px black" }
  if (scienceTotal == 0) { facScience.style.backgroundColor = "red"; facScience.style.opacity = "0.9"; facScience.style.textShadow = "1px 1px black" }
  }
 
@@ -234,17 +244,26 @@ let humanisTotal = 6
 for(let Courses of humanisSpan) {
  if (Courses.innerHTML == "❌") { humanisTotal-- }
  if (humanisTotal == 6) { facHumanis.style.backgroundColor = "green" }
- if (humanisTotal <= 5) { facHumanis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (humanisTotal <= 5) { facHumanis.style.backgroundColor = "orange"; facHumanis.style.textShadow = "1px 1px black" }
  if (humanisTotal == 0) { facHumanis.style.backgroundColor = "red"; facHumanis.style.opacity = "0.9"; facHumanis.style.textShadow = "1px 1px black" }
  }
 
 // ENGINEERS!
-let enginisTotal = 7
+let enginisTotal = 4
 for(let Courses of enginisSpan) {
  if (Courses.innerHTML == "❌") { enginisTotal-- }
- if (enginisTotal == 7) { facEnginis.style.backgroundColor = "green" }
- if (enginisTotal <= 6) { facEnginis.style.backgroundColor = "orange"; facArtsies.style.textShadow = "1px 1px black" }
+ if (enginisTotal == 4) { facEnginis.style.backgroundColor = "green" }
+ if (enginisTotal <= 3) { facEnginis.style.backgroundColor = "orange"; facEnginis.style.textShadow = "1px 1px black" }
  if (enginisTotal == 0) { facEnginis.style.backgroundColor = "red"; facEnginis.style.opacity = "0.9"; facEnginis.style.textShadow = "1px 1px black" }
+ }
+
+// SENFELIPIS!
+let felipisTotal = 4
+for(let Courses of felipisSpan) {
+ if (Courses.innerHTML == "❌") { felipisTotal-- }
+ if (felipisTotal == 4) { sanFelipis.style.backgroundColor = "green" }
+ if (felipisTotal <= 3) { sanFelipis.style.backgroundColor = "orange"; facFelipis.style.textShadow = "1px 1px black" }
+ if (felipisTotal == 0) { sanFelipis.style.backgroundColor = "red"; facFelipis.style.opacity = "0.9"; facFelipis.style.textShadow = "1px 1px black" }
  }
 
 
@@ -257,6 +276,7 @@ for(let Courses of enginisSpan) {
 // if (facScience.style.backgroundColor == "green") { displayScience(); todoNormal.style.display = "block"; enParo.style.display = "none" }
 // if (facHumanis.style.backgroundColor == "green") { displayHumanis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
 // if (facEnginis.style.backgroundColor == "green") { displayEnginis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
+// if (sanFelipis.style.backgroundColor == "green") { displayFelipis(); todoNormal.style.display = "block"; enParo.style.display = "none" }
 
 
 // DISPLAY ORANGE & RED!
@@ -268,6 +288,7 @@ if (facSociats.style.backgroundColor == "orange" || facSociats.style.backgroundC
 if (facScience.style.backgroundColor == "orange" || facScience.style.backgroundColor == "red" ) { displayScience(); todoNormal.style.display = "none"; enParo.style.display = "block" }
 if (facHumanis.style.backgroundColor == "orange" || facHumanis.style.backgroundColor == "red" ) { displayHumanis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
 if (facEnginis.style.backgroundColor == "orange" || facEnginis.style.backgroundColor == "red" ) { displayEnginis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
+if (sanFelipis.style.backgroundColor == "orange" || sanFelipis.style.backgroundColor == "red" ) { displayFelipis(); todoNormal.style.display = "none"; enParo.style.display = "block" }
 
 // END OF CHECKCOURSES!
 }
@@ -325,6 +346,13 @@ for(let Courses of humanisDiv) {
 
 function displayEnginis() {
 for(let Courses of enginisDiv) {
+ if (Courses.style.display === "none") { Courses.style.display = "block" }
+ else { Courses.style.display = "none" }
+ }
+}
+
+function displayFelipis() {
+for(let Courses of felipisDiv) {
  if (Courses.style.display === "none") { Courses.style.display = "block" }
  else { Courses.style.display = "none" }
  }
@@ -411,13 +439,16 @@ var dailyLoop = setInterval(function() {
   document.getElementById("ingles").innerHTML = "✔️"
   document.getElementById("traduccion").innerHTML = "✔️"
   // INGINIS
-  document.getElementById("estadistica").innerHTML = "✔️"
-  document.getElementById("ambiental").innerHTML = "✔️"
   document.getElementById("cambiental").innerHTML = "✔️"
   document.getElementById("cindustrial").innerHTML = "✔️"
   document.getElementById("cinformatica").innerHTML = "✔️"
   document.getElementById("comercial").innerHTML = "✔️"
-  document.getElementById("informatica").innerHTML = "✔️"
+  // SANFELIPIS
+  document.getElementById("felinformis").innerHTML = "✔️"
+  document.getElementById("felcastelis").innerHTML = "✔️"
+  document.getElementById("feldiferins").innerHTML = "✔️"
+  document.getElementById("felinglesis").innerHTML = "✔️"
+
 
   // ELEMENTIS
   document.getElementById("todo-normal").style.display = "block"
@@ -433,6 +464,7 @@ var dailyLoop = setInterval(function() {
   // displayScience()
   // displayHumanis()
   // displayEnginis()
+  // displayFelipis()
 
   // OTHER CHECKS
   overallCheck()
@@ -496,6 +528,7 @@ var weeklyLoop = setInterval(function() {
 
   // ENGINIS
   document.getElementById("cambiental").innerHTML = "✔️"
+  document.getElementById("cindustrial").innerHTML = "✔️"
 
   // ELEMENTIS
   document.getElementById("todo-normal").style.display = "block"
@@ -609,13 +642,15 @@ COMMENTED OUT - COMMENTED OUT - COMMENTED OUT */
 	  document.getElementById("ingles").innerHTML = "✔️"
 	  document.getElementById("traduccion").innerHTML = "✔️"
 	  // INGINIS
-	  document.getElementById("estadistica").innerHTML = "✔️"
-	  document.getElementById("ambiental").innerHTML = "✔️"
 	  document.getElementById("cambiental").innerHTML = "✔️"
 	  document.getElementById("cindustrial").innerHTML = "✔️"
 	  document.getElementById("cinformatica").innerHTML = "✔️"
 	  document.getElementById("comercial").innerHTML = "✔️"
-	  document.getElementById("informatica").innerHTML = "✔️"
+	  // SANFELIPIS
+	  document.getElementById("felinformis").innerHTML = "✔️"
+	  document.getElementById("felcastelis").innerHTML = "✔️"
+	  document.getElementById("feldiferins").innerHTML = "✔️"
+	  document.getElementById("felinglesis").innerHTML = "✔️"
 
 	  // ELEMENTIS
 	  document.getElementById("todo-normal").style.display = "block"
@@ -631,6 +666,7 @@ COMMENTED OUT - COMMENTED OUT - COMMENTED OUT */
 	  displayScience()
 	  displayHumanis()
 	  displayEnginis()
+	  displayFelipis()
 
 	  // OTHER CHECKS
 	  overallCheck()
