@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="pizarra/whiteboard-style.css" />
 	<script src="pizarra/whiteboard-script.js"></script>
   </head>
-  <body>
+  <body onload="mobileCheck()">
 
 
 <div id="page">
@@ -49,12 +49,13 @@
 	<a id="new" class="pensize" onclick="ctx.lineWidth = 15"><div class="large">XL</div></a>
 
 	<a id="new" class="navbtn" onclick="newCanvas()">🧽 Borrar</a>
-	<a id="new" class="print_button" onclick="window.print()">🖨️ Impresión</a>
-	<a id="new" class="class_name_button" style="cursor: pointer;" onclick="getClassName()"><big>⇐📚</big> Asignatura</a>
+	<a id="printButton" class="print_button" onclick="window.print()">🖨️ Impresión</a>
+	<a id="classButton" class="class_name_button" style="cursor: pointer;" onclick="getClassName()"><big>⇐📚</big> Asignatura</a>
 
         <div id="the_class" class="title">Clases Uplanianas!</div>
 
-<script>
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript">
 function getClassName() {
   var person = prompt("ENTER NEW CLASS TITLE (Class, Unit, Topic or Date):", "Clases Uplanianas!");
   if (person != null) {
@@ -65,10 +66,41 @@ function getClassName() {
 
     </div>
 
-    <div id="content"></div>
+   <div id="content"></div>
+
+<div class="bgSelect" style="right: 06px; background-color: #000000;" onclick="backgroundColor(this.style.backgroundColor)"></div>
+<div class="bgSelect" style="right: 30px; background-color: #FFFFFF;" onclick="backgroundColor(this.style.backgroundColor)"></div>
+<div class="bgSelect" style="right: 54px; background-color: #0000FF;" onclick="backgroundColor(this.style.backgroundColor)"></div>
+<div class="bgSelect" style="right: 78px; background-color: #00b140;" onclick="backgroundColor(this.style.backgroundColor)"></div>
+
+<div style="position: absolute; left: 12px; bottom: 6px; font-size: 24px; display: none;" onclick="undo()">↶</div>
+
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript">
+function backgroundColor(input) {
+var color = input
+document.body.style.backgroundColor = color
+}
+</script>
 
 
-<script>
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript">
+function mobileCheck() {
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+ let className = document.getElementById("the_class")
+ let classButton = document.getElementById("classButton")
+ let printButton = document.getElementById("printButton")
+ className.style.visibility = "hidden"; className.style.display = "none"
+ classButton.style.visibility = "hidden"; classButton.style.display = "none"
+ printButton.style.visibility = "hidden"; printButton.style.display = "none"
+ }
+}
+</script>
+
+
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript">
 function closedForever() {
 	if (typeof(Storage) !== "undefined") {
 	  localStorage.setItem("warning", "closed");

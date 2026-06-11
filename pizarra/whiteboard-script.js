@@ -25,7 +25,7 @@ function newCanvas(){
 	// setup to trigger drawing on mouse or touch
     drawTouch();
     drawPointer();
-	drawMouse();
+    drawMouse();
 }
         
 function selectColor(el){
@@ -105,3 +105,10 @@ var drawMouse = function() {
 	document.getElementById("canvas").addEventListener("mousemove", move, false);
 	document.addEventListener("mouseup", stop, false);
 };
+
+
+function undo() { // WORKING!
+ var canvasPic = new Image();
+ canvasPic.src = cPushArray[cStep];
+ canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+}
