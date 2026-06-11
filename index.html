@@ -75,6 +75,7 @@
      <a href="junaeb.html"><div class="purple-iris-bubble"><p>DESCARGA<br>JUNAEB</p></div></a>
      <a href="timebox.html"><div class="pumpkin-bubble"><p>PLANIFICADOR<br>DE ESTUDIO</p></div></a>
      <a href="estudio.html"><div class="small-grass-bubble"><p>PREGUNTAS<br>DE ESTUDIO</p></div></a>
+     <a href="pizarra.html" id="boardButton"><div class="purple-iris-bubble"><p>PIZARRA<br>UPLANIANA</p></div></a>
      <a href="voting.html"><div class="pale-blue-bubble"><p>VOTACIÓN<br>UPLANIANA</p></div></a>
      <a href="tirayafloja.html"><div class="pink-plum-bubble"><div class="newBadge">New!</div><p>CARRERA<br>FAVORITA</p></div></a>
      <a href="justify.html"><div class="candy-red-bubble" style="width: 140px; padding: 4px 0px 4px 0px;"><p>JUSTIFICAR<br>INASISTENCIA</p></div></a>
@@ -183,6 +184,9 @@ counter.value++; // console.log(counter.value)
   slideInfoLeft.style.visibility = "hidden"; slideInfoLeft.style.display = "none"
   slideToolsRight.style.visibility = "hidden"; slideToolsRight.style.display = "none"
   slideToolsLeft.style.visibility = "hidden"; slideToolsLeft.style.display = "none"
+  // WHITEBOARD BUTTON
+  boardButton = document.getElementById('slideToolsLeft')
+  boardButton.style.visibility = "hidden"; boardButton.style.display = "none"
  }
  else if (counter.value <= 5) {
   setTimeout('demoSlide1()', 1000 * 0.4)

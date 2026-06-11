@@ -1,0 +1,114 @@
+
+body {
+    background-color: #00b140;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial;
+    /* prevent text selection on ui */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /* prevent scrolling in windows phone */
+    -ms-touch-action: none;
+    /* prevent selection highlight */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#content { position: relative; top: 45px; left: -1px; bottom: 45px; opacity: 1; }
+
+#canvas { height: 100%; width: 100%; cursor: url('pen.cur'), auto; }
+
+.navbtn {
+    cursor: url('eraser.cur'), auto; 
+    float:right;
+    padding: 8px 15px;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 14px;
+    color: #f9d19a;
+    text-shadow: 0px -1px #000;
+    border: solid 0px #111;
+    border-radius: 4px;
+    background-color: #404040;
+}
+
+.class_name_button {
+    cursor: text;
+    float:right;
+    margin-right: 4px;
+    padding: 8px 15px;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 14px;
+    color: #f9d19a;
+    text-shadow: 0px -1px #000;
+    border: solid 0px #111;
+    border-radius: 4px;
+    background-color: #404040;
+}
+
+.print_button {
+    cursor: copy;
+    float:right;
+    margin-right: 4px;
+    padding: 8px 15px;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 14px;
+    color: #f9d19a;
+    text-shadow: 0px -1px #000;
+    border: solid 0px #111;
+    border-radius: 4px;
+    background-color: #404040;
+}
+
+.pensize {
+    cursor: pointer; 
+    float:left;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-weight: normal;
+    line-height: 20px;
+    font-size: 12px;
+    color: #f9d19a;
+    text-shadow: 0px -1px #000;
+    border: solid 0px #111;
+    border-radius: 15px;
+    background-color: #404040;
+    cursor: url('pen.cur'), auto; 
+}
+
+.header, .footer { position: absolute; background-color: #2d2d2d; text-align: center; }
+
+.header { top: 0px; left: 0px; right: 0px; height: 32px; padding: 6px; border-bottom-style: dashed; border-color: gray; border-width: 1px; }
+
+.title { width: absolute; line-height: 30px; font-size: 20px; font-weight: bold; color: #eee; text-shadow: 0px -1px #000; padding: 0 60px; }
+
+.navbtn-hover, .navbtn: active { color: #222; text-shadow: 0px 1px #aaa; background-color: #aaa; box-shadow: 0 0 1px 1px #444, inset 0 1px 0 0 #ccc; }
+
+.palette-case { width: 260px; margin: auto; text-align: center; }
+
+.palette-box { float: left; padding: 2px 2px 2px 2px; }
+
+.palette { border: 1px solid #777; height: 26px; width: 26px; }
+
+.white { background-color: white; border: 1px dashed grey; cursor: url('eyedropper.cur'), auto; }
+
+.black { background-color: #000; cursor: url('eyedropper.cur'), auto; }
+
+.purple { background-color: purple; cursor: url('eyedropper.cur'), auto; }
+
+.blue { background-color: #22c; cursor: url('eyedropper.cur'), auto; }
+
+.green{ background-color: #2c2; cursor: url('eyedropper.cur'), auto; }
+
+.yellow { background-color: yellow; cursor: url('eyedropper.cur'), auto; }
+
+.orange { background-color: orange; cursor: url('eyedropper.cur'), auto; }
+
+.red { background-color: red; cursor: url('eyedropper.cur'), auto; }
+
+.brown { background-color: brown; cursor: url('eyedropper.cur'), auto; }
