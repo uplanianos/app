@@ -1,11 +1,11 @@
 
-var ctx, color = "white";	
+var ctx, color = "white";
+var lastStroke // This will catch the last mouse movement when drawing!
 
 document.addEventListener( "DOMContentLoaded", function(){
-
-	// setup a new canvas for drawing wait for device init
+    // setup a new canvas for drawing wait for device init
     setTimeout(function(){
-	   newCanvas();
+	newCanvas();
     }, 1000);
 
 }, false );
@@ -16,18 +16,18 @@ function newCanvas(){
     document.getElementById("content").style.height = window.innerHeight-48;
     var canvas = '<canvas id="canvas" width="'+window.innerWidth+'" height="'+(window.innerHeight-48)+'"></canvas>';
 	document.getElementById("content").innerHTML = canvas;
-    
+
     // setup canvas
 	ctx=document.getElementById("canvas").getContext("2d");
 	ctx.strokeStyle = color;
 	ctx.lineWidth = 6;
-	
-	// setup to trigger drawing on mouse or touch
+
+    // setup to trigger drawing on mouse or touch
     drawTouch();
     drawPointer();
     drawMouse();
 }
-        
+
 function selectColor(el){
     for(var i=0;i<document.getElementsByClassName("palette").length;i++){
         document.getElementsByClassName("palette")[i].style.borderColor = "#777";
@@ -56,9 +56,9 @@ var drawTouch = function() {
 		ctx.stroke();
 	};
     document.getElementById("canvas").addEventListener("touchstart", start, false);
-	document.getElementById("canvas").addEventListener("touchmove", move, false);
+    document.getElementById("canvas").addEventListener("touchmove", move, false);
 }; 
-    
+
 // prototype to	start drawing on pointer(microsoft ie) using canvas moveTo and lineTo
 var drawPointer = function() {
 	var start = function(e) {
@@ -77,8 +77,8 @@ var drawPointer = function() {
 		ctx.stroke();
     };
     document.getElementById("canvas").addEventListener("MSPointerDown", start, false);
-	document.getElementById("canvas").addEventListener("MSPointerMove", move, false);
-};        
+    document.getElementById("canvas").addEventListener("MSPointerMove", move, false);
+};
 
 // prototype to	start drawing on mouse using canvas moveTo and lineTo
 var drawMouse = function() {
@@ -96,19 +96,13 @@ var drawMouse = function() {
 			y = e.pageY-44;
 			ctx.lineTo(x,y);
 			ctx.stroke();
+			lastStroke = e // RECORDING THE LAST MOUSE MOVEMENT!
 		}
 	};
 	var stop = function(e) {
 		clicked = 0;
 	};
     document.getElementById("canvas").addEventListener("mousedown", start, false);
-	document.getElementById("canvas").addEventListener("mousemove", move, false);
-	document.addEventListener("mouseup", stop, false);
+    document.getElementById("canvas").addEventListener("mousemove", move, false);
+    document.addEventListener("mouseup", stop, false);
 };
-
-
-function undo() { // WORKING!
- var canvasPic = new Image();
- canvasPic.src = cPushArray[cStep];
- canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
-}
