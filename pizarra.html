@@ -73,7 +73,7 @@ function getClassName() {
 <div class="bgSelect" style="right: 54px; background-color: #0000FF;" onclick="backgroundColor(this.style.backgroundColor)"></div>
 <div class="bgSelect" style="right: 78px; background-color: #00b140;" onclick="backgroundColor(this.style.backgroundColor)"></div>
 
-<div style="position: absolute; left: 12px; bottom: 6px; font-size: 24px; display: none;" onclick="undo()">↶</div>
+<div style="position: absolute; left: 10px; bottom: 2px; font-size: 26px; font-weight: bold; color: #880000; cursor: pointer; display: block;" onclick="undo()">↶</div>
 
 <!-- FUNCTION SCRIPTS -->
 <script type="text/javascript">
@@ -111,6 +111,29 @@ if (localStorage.getItem("warning") === "closed") {
   document.getElementById("alert").style.display = "none"; }
 
 </script>
+
+
+<script type="text/javascript">
+function undo() { // IN PROGRESS!!
+if (lastStroke == undefined) { console.log("No drawing yet!") }
+else {
+  let bgColor = window.getComputedStyle(document.body).backgroundColor
+  ctx.strokeStyle = bgColor;
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.stroke(); ctx.stroke();
+  ctx.strokeStyle = color;
+  }
+}
+</script>
+
 
   </body>
 </html>
