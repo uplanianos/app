@@ -143,8 +143,13 @@ document.getElementById("coffeeCups").value = localStorage.coffeeCups || "0"
 document.getElementById("coffeeTime").value = localStorage.coffeeTime || "0"
 document.getElementById("waterCups").value = localStorage.waterCups || "0"
 document.getElementById("hydrationTime").value = localStorage.hydrationTime || "0"
+// --------------------
 // TOOL SLIDER POSITION
-document.getElementById("slidePosition").value = localStorage.slidePosition || "2094"
+// THE VARIABLES FOR THE "TOOL SLIDER" POSITION ARE:
+// "localStorage.slidePosition"
+// "toolsDiv.scrollLeft"
+// --------------------
+document.getElementById("slidePosition").value = localStorage.slidePosition || "2232"
 }
 
 </script>
@@ -160,7 +165,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 <div id="title" class="title">Panel de Control</div>
 
 <div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
- <button class="topButtons" title="Borrar todo?" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearGrades(); clearEnergy(); toolsDiv.scrollLeft='2094'; saveData(); resetAudio()">🗑️</button></a>
+ <button class="topButtons" title="Borrar todo?" onclick="clearRoll(); clearTests('bypass'); clearPlanner(); clearGrades(); clearEnergy(); toolsDiv.scrollLeft='2232'; saveData(); resetAudio()">🗑️</button></a>
  </div>
 
 <div style="position: absolute; top: 10px; right: 12px;">
@@ -452,17 +457,19 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
   <div id="toolsDiv" class="toolsDiv">
 	<div id="toolSlider" class="toolSlider">
 	<input type="number" id="slidePosition" style="display: none; width: 64px; text-align: right" value="2094" onchange="saveData()">
+	 <!-- PEACH -->
+	 <a href="asistencia.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
+	 <a href="examen.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
+	 <a href="promedios.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
+	 <a href="integrales.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
+	 <a href="pruebas.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
+	 <a href="notas.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
 	 <!-- LIGHT BLUE -->
-	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
-	 <a href="tirayafloja.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">❤️</font><br>Carrera<br>Favorita</span></a>
-	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
-	 <a href="asistencia.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
-	 <a href="examen.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
-	 <a href="notas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
-	 <a href="pruebas.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
-	 <a href="promedios.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
-	 <a href="integrales.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
 	 <a href="estudio.html" target="promedios"><span class="toolSpan"><img src="panel/question.png" height="78px"><br>Preguntas<br>de Estudio</span></a>
+	 <a href="pizarra.html" target="screen"><span class="toolSpan"><font class="sliderIcon" style="letter-spacing: -50px; margin-right: 36px;">🖼✍</font><br>Pizarra<br>Uplaniana</span></a>
+	 <a href="tirayafloja.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">❤️</font><br>Carrera<br>Favorita</span></a>
+	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
+	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
 	 <!-- LIGHT GREEN -->
 	 <a href="sigueparo.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🛑</font><br>Paro<br>Tracker</span></a>
 	 <a href="countdown.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏱️</font><br>Recuento<br>Evaluaciones</span></a>
@@ -474,36 +481,36 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	 <a href="https://acceso.upla.cl/sinte/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🗃️</font><br>Portal<br>Sinte</span></a>
 	 <a href="https://acceso.upla.cl/matricula_enlinea/" target="upla"><span class="uplaSpan"><font class="sliderIcon">📝</font><br>Matrícula<br>Online</span></a>
 	 <a href="https://eaulaeva2.upla.cl/my/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🌎</font><br>E-Aula<br>Institucional</span></a>
+	 <!-- LIGHT BLUE -->
+	 <a href="https://classroom.google.com/" target="classroom"><span class="toolSpan"><font class="sliderIcon">🏫</font><br>Google<br>Classroom</span></a>
+	 <a href="https://drive.google.com/" target="drive"><span class="toolSpan"><font class="sliderIcon">🗂️</font><br>Google<br>Drive</span></a>
+	 <a href="https://keep.google.com/" target="drive"><span class="toolSpan"><font class="sliderIcon">📋</font><br>Google<br>Keep</span></a>
+	 <a href="https://meet.google.com/" target="meet"><span class="toolSpan"><font class="sliderIcon">📹</font><br>Google<br>Meet</span></a>
+	 <!-- LIGHT GREEN -->
+	 <a href="https://classroomscreen.com/app/" target="screen"><span class="tidySpan"><font class="sliderIcon">🖥️</font><br>Pizarra<br>en Línea</span></a>
+	 <a href="https://paint.sumo.app/" target="screen"><span class="tidySpan"><font class="sliderIcon">🎨</font><br>Zumo<br>Paint</span></a>
+	 <a href="https://www.canva.com/" target="screen"><span class="tidySpan"><font class="sliderIcon">🖼️</font><br>Diseño<br>(Canva)</span></a>
 	 <!-- PINK -->
-	 <a href="https://classroom.google.com/" target="classroom"><span class="linkSpan"><font class="sliderIcon">🏫</font><br>Google<br>Classroom</span></a>
-	 <a href="https://drive.google.com/" target="drive"><span class="linkSpan"><font class="sliderIcon">🗂️</font><br>Google<br>Drive</span></a>
-	 <a href="https://keep.google.com/" target="drive"><span class="linkSpan"><font class="sliderIcon">📋</font><br>Google<br>Keep</span></a>
-	 <a href="https://meet.google.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">📹</font><br>Google<br>Meet</span></a>
-
-	 <a href="pizarra.html" target="screen"><span class="linkSpan"><font class="sliderIcon" style="letter-spacing: -50px; margin-right: 36px;">🖼✍</font><br>Pizarra<br>Uplaniana</span></a>
-	 <a href="https://classroomscreen.com/app/" target="screen"><span class="linkSpan"><font class="sliderIcon">🖥️</font><br>Pizarra<br>en Línea</span></a>
 	 <a href="https://create.kahoot.it/my-library/" target="quiz"><span class="linkSpan"><img src="panel/kahoot.png" height="78px"><br>Kahoot<br>(web)</span></a>
 	 <a href="https://nearpod.com/library/" target="quiz"><span class="linkSpan"><img src="panel/nearpod.png" height="78px"><br>Nearpod<br>(web)</span></a>
 	 <a href="https://wordwall.net/about/template/quiz" target="quiz"><span class="linkSpan"><font class="sliderIcon">🧩</font><br>Wordwall<br>(web)</span></a>
 	 <a href="https://quizizz.com/" target="quiz"><span class="linkSpan"><img src="panel/quizizz.png" height="78px"></font><br>Quizziz<br>(web)</span></a>
 	 <a href="https://quizlet.com/" target="quiz"><span class="linkSpan"><img src="panel/quizlet.png" height="78px"></font><br>Quizlet<br>(web)</span></a>
-	 <a href="https://dictation.io/speech" target="audio"><span class="linkSpan"><font class="sliderIcon">🎙️</font><br>Dictado<br>en Línea</span></a>
-	 <a href="https://vocaroo.com/" target="audio"><span class="linkSpan"><font class="sliderIcon">💿</font><br>Grabadora<br>de Audio</span></a>
-	 <a href="https://maestra.ai/tools/web-captioner" target="tools"><span class="linkSpan"><font class="sliderIcon">🗨️</font><br>Subtítulos<br>(Maestra)</span></a>
-	 <a href="https://zipcaptions.app/" target="tools"><span class="linkSpan"><font class="sliderIcon">💬</font><br>Subtítulos<br>(ZipCaptions)</span></a>
-	 <a href="https://mimiuchi.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">🗯️</font><br>Subtítulos<br>(Mimiuchi)</span></a>
-
-	 <a href="https://wetransfer.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">📤</font><br>Transferir<br>(wetransfer)</span></a>
-	 <a href="https://www.canva.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">🖼️</font><br>Diseño<br>(Canva)</span></a>
-	 <a href="https://www.deepl.com/" target="tools"><span class="linkSpan"><font class="sliderIcon">🌐</font><br>Traductor<br>(DeepL)</span></a>
-	 <a href="https://www.ilovepdf.com/pdf_to_word" target="tools"><span class="linkSpan"><font class="sliderIcon">📑</font><br>PDF a Word<br>(I❤️PDF)</span></a>
-	 <a href="https://qr.io/" target="tools"><span class="linkSpan"><font class="sliderIcon">🔳</font><br>Generar QR<br>(qr.io)</span></a>
-
+	 <!-- LIGHT BLUE -->
+	 <a href="https://dictation.io/speech" target="audio"><span class="toolSpan"><font class="sliderIcon">🎙️</font><br>Dictado<br>en Línea</span></a>
+	 <a href="https://vocaroo.com/" target="audio"><span class="toolSpan"><font class="sliderIcon">💿</font><br>Grabadora<br>de Audio</span></a>
+	 <a href="https://maestra.ai/tools/web-captioner" target="audio"><span class="toolSpan"><font class="sliderIcon">🗨️</font><br>Subtítulos<br>(Maestra)</span></a>
+	 <a href="https://zipcaptions.app/" target="audio"><span class="toolSpan"><font class="sliderIcon">💬</font><br>Subtítulos<br>(ZipCaptions)</span></a>
+	 <a href="https://mimiuchi.com/" target="audio"><span class="toolSpan"><font class="sliderIcon">🗯️</font><br>Subtítulos<br>(Mimiuchi)</span></a>
+	 <!-- LIGHT YELLOW -->
+	 <a href="https://wetransfer.com/" target="tools"><span class="uplaSpan"><font class="sliderIcon">📤</font><br>Transferir<br>(wetransfer)</span></a>
+	 <a href="https://www.deepl.com/" target="tools"><span class="uplaSpan"><font class="sliderIcon">🌐</font><br>Traductor<br>(DeepL)</span></a>
+	 <a href="https://www.ilovepdf.com/pdf_to_word" target="tools"><span class="uplaSpan"><font class="sliderIcon">📑</font><br>PDF a Word<br>(I❤️PDF)</span></a>
+	 <a href="https://qr.io/" target="tools"><span class="uplaSpan"><font class="sliderIcon">🔳</font><br>Generar QR<br>(qr.io)</span></a>
 	 <!-- RED -->
 	 <a href="https://chatgpt.com/" target="AI"><span class="toolsAI"><font class="sliderIcon">🤖</font><br>Chat<br>GPT</span></a>
 	 <a href="https://deepai.org/chat" target="AI"><span class="toolsAI"><font class="sliderIcon">🤖</font><br>DeepAI<br>Chat</span></a>
 	 <a href="http://z-image.ai/" target="AI" style="display: none;"><span class="toolsAI"><font class="sliderIcon">🤖</font><br>Z-Image AI<br>Image</span></a>
-
 	 <!-- PEACH -->
 	 <a href="https://horaoficial.cl/" target="help"><span class="helpSpan"><font class="sliderIcon">⌚</font><br>Hora<br>Oficial</span></a>
 	 <a href="https://medicina.uc.cl/categoria_publicacion/manuales/" target="help"><span class="helpSpan"><font class="sliderIcon">🆘</font><br>Manuales<br>Emergencia</span></a>
@@ -879,7 +886,8 @@ if (currentMonth == 4 || currentMonth == 6 || currentMonth == 9 || currentMonth 
 
 else { monthLength = 31 }
 
-console.log(monthLength)
+// CHECKING MONTH LENGTH!
+// console.log(monthLength)
 
 // TESTING MONTH LENGTH [FOR THIS WEEK]!
 // console.log(currentMonth,monthLength)
