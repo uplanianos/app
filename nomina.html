@@ -8,7 +8,7 @@
  <link rel="icon" href="media/uplanianos-icon.png">
  <title>Uplanianos - Nómina de Asitencia!</title>
 
-<style>
+<style>	
 body {
  background-color: #000000FF;
  background-image: linear-gradient(to bottom, black, #151B54, #36013F);
@@ -114,9 +114,9 @@ body::-webkit-scrollbar { display: none; }
  <span id="internetTime" style="display: none; visibility: hidden;">
  HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
  </span>
- ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisSubject" placeholder="* Nombre Asignatura"><br><br>
- ACADÉMICO/A:&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeacher" placeholder="* Apellido, Nombre"><br><br>
- TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="*Apellido Apellido"><br><br>
+ ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisClass" placeholder="* Nombre Asignatura"><br><br>
+ ACADÉMICO/A:&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
+ TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="* Apellido Apellido"><br><br>
  TUS NOMBRES:&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
  <div class="allButtons">
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;" onclick="rosterAction()">Nómina</div>
@@ -138,8 +138,8 @@ if (typeof(Storage) !== "undefined") { saveData() }
 }
 
 function saveData() {
- localStorage.thisSubject = document.getElementById("thisSubject").value
- localStorage.thisTeacher = document.getElementById("thisTeacher").value
+ localStorage.thisClass = document.getElementById("thisClass").value
+ localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
 }
@@ -152,8 +152,8 @@ window.onload = function() {
  rollCall()
 
 function loadData() {
- document.getElementById("thisSubject").value = localStorage.thisSubject || ""
- document.getElementById("thisTeacher").value = localStorage.thisTeacher || ""
+ document.getElementById("thisClass").value = localStorage.thisClass || ""
+ document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
  }
@@ -209,52 +209,20 @@ setInterval(() => {
  for(let studentInput of theFields) {
   if (studentInput.value !== "") { studentInput.style.backgroundColor = "#88FF88" }
   else { studentInput.style.backgroundColor = "" }
-
-// =====================
-// ONLINE TIME FUNCTION!
-// =====================
-try {
- let xhr = new XMLHttpRequest()  // XMLHttpRequest object
- let url = "http://worldclockapi.com/api/json/utc/now" // NTP URL
-
- // callback function to handle the response!
- xhr.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-  let response = JSON.parse(this.responseText) // Parse the response JSON
-  let ntpTime = response.currentDateTime // Get NTP time from responde!
-
-  // SETTING UP INTERNET TIME TO LOCAL!
-  let ntpHour = ntpTime.slice(11,13)-04
-  let ntpMins = ntpTime.slice(14,16)
-  let ntpLocalString = ntpHour + ":" + ntpMins
-
-  if (ntpTime !== null || ntpTime !== undefined) {
-    let interTime = document.getElementById("internetTime") // Span element!
-    interTime.style.display = "block"
-    interTime.style.visibility = "visible"
-    }
-  // Display the NTP time on the HTML page
-  // document.getElementById("ntpTime").value = ntpTime // FULL DATE!
-  // document.getElementById("ntpTime").value = ntpTime.slice(11,16) // Time only!
-  document.getElementById("ntpTime").value = ntpLocalString
-  }
  }
- // Send the GET request to fetch the NTP time
- xhr.open("GET", url, true); xhr.send()
- // END OF ONLINE TIME!
- } catch (error) { console.error('ERROR DETECTED:', error) }
-}
 
 
-// =====================
-// CHECKING STUDENT INPUT
-// =====================
+
+// ======================
+// CHECKING STUDENT INPUT!
+// ======================
 let inputReady = false // CHECKS STUDENT UNPUTS ARE READY!
-var thisClass = document.getElementById("thisSubject")
-var thisTeach = document.getElementById("thisTeacher")
+var thisClass = document.getElementById("thisClass")
+var thisTeach = document.getElementById("thisTeach")
 var lastNames = document.getElementById("lastNames")
 var firstNames = document.getElementById("firstNames")
-if (thisClass.value !== "" && thisTeach.value !== "" && lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true }
+if (thisClass.value !== "" && thisTeach.value !== "" &&
+    lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true }
 
 
 // ===========================
@@ -301,14 +269,14 @@ else if (thisHour == 18 && inputReady) { // CLASS PERIOD - 18:30
      if (thisMinute >= 46) { soLate() }
      }
 
-// ANY OTHER TIMES!
+// ANY OTHER TIME!
 else { noShow() }
 
 
 // ============
 // END TIME LOOP!
 // ============
-}, 1000);
+}, 1000)
 
 
 // ======================================
@@ -317,8 +285,8 @@ else { noShow() }
 var urlClass = (new URLSearchParams(window.location.search)).get("clase")
 var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
 // DECLARING CLASS ELEMENT
-var thisClass = document.getElementById("thisSubject")
-var thisTeach = document.getElementById("thisTeacher")
+var thisClass = document.getElementById("thisClass")
+var thisTeach = document.getElementById("thisTeach")
 thisClass.value = urlClass
 thisTeach.value = urlTeach
 // DISABLING CLASS FIELD
@@ -327,8 +295,14 @@ if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.c
 // DISABLING TEACHER FIELD
 if (thisTeach !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
 if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-// FORMAT: /nomina.html?class=Inglés Básico 2
-// FORMAT: /nomina.html?teach=Méndez, Juan
+// FORMAT: /nomina.html?clase=Inglés Básico 2
+// FORMAT: /nomina.html?profe=Méndez, Juan
+
+
+
+// CALL ONLINE TIME FUNCTION (ONCE)!
+getOnlineTime()
+
 
 
 // GOOGLE SCRIPT!
@@ -338,6 +312,47 @@ if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.c
 // END OF "ROLL CALL SCRIPT"!
 // ==========================
 }
+
+
+
+// =====================
+// ONLINE TIME FUNCTION!
+// =====================
+function getOnlineTime() {
+try {
+ let xhr = new XMLHttpRequest()  // XMLHttpRequest object
+ let url = "http://worldclockapi.com/api/json/utc/now" // NTP URL
+
+ // callback function to handle the response!
+ xhr.onreadystatechange = function() {
+ if (this.readyState == 4 && this.status == 200) {
+  let response = JSON.parse(this.responseText) // Parse the response JSON
+  let ntpTime = response.currentDateTime // Get NTP time from responde!
+
+  // SETTING UP INTERNET TIME TO LOCAL!
+  let ntpHour = ntpTime.slice(11,13)-04
+  let ntpMins = ntpTime.slice(14,16)
+  let ntpLocalString = ntpHour + ":" + ntpMins
+
+  if (ntpTime !== null || ntpTime !== undefined) {
+   let interTime = document.getElementById("internetTime") // Span element!
+   interTime.style.display = "block"
+   interTime.style.visibility = "visible"
+   }
+  // Display the NTP time on the HTML page
+  // document.getElementById("ntpTime").value = ntpTime // FULL DATE!
+  // document.getElementById("ntpTime").value = ntpTime.slice(11,16) // Time only!
+  document.getElementById("ntpTime").value = ntpLocalString
+  }
+ }
+  // Send the GET request to fetch the NTP time
+  xhr.open("GET", url, true); xhr.send()
+  // END OF ONLINE TIME!
+  } catch (error) { console.error('ERROR DETECTED:', error) }
+
+// END OF ONLINE TIME FUNCTION!
+}
+
 
 
 // ======================
