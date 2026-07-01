@@ -96,7 +96,7 @@ body::-webkit-scrollbar { display: none; }
 
 @media screen and (max-width: 800px) {
  .rollDiv { width: 80%; }
- .inputFields { margin-left: 3%; width: 275px; }
+ .inputFields { margin-left: 0%; width: 90%; }
  .allButtons { transform: translate(0px, 0px); }
 
 }
@@ -354,11 +354,11 @@ if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.c
 // ======================
 // CLASS PERIOD FUNCTIONS
 // ======================
-let hereBT = document.getElementById("attendButton")
-let listBT = document.getElementById("rosterButton")
-function onTime() { hereBT.style.display = "block"; hereBT.style.background = "green"; hereBT.innerHTML = "Presente!"; listBT.style.display = "none"; }
-function soLate() { hereBT.style.display = "block"; hereBT.style.background = "red"; hereBT.innerHTML = "LLegué tarde!"; listBT.style.display = "none"; }
-function noMore() { listBT.style.display = "block"; hereBT.style.display = "none"; }
+let attendBT = document.getElementById("attendButton")
+let rosterBT = document.getElementById("rosterButton")
+function onTime() { attendBT.style.display = "block"; attendBT.style.background = "green"; attendBT.innerHTML = "Presente!"; rosterBT.style.display = "none"; }
+function soLate() { attendBT.style.display = "block"; attendBT.style.background = "red"; attendBT.innerHTML = "LLegué tarde!"; rosterBT.style.display = "none"; }
+function noMore() { rosterBT.style.display = "block"; attendBT.style.display = "none"; }
 
 
 
