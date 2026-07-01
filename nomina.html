@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <title>Uplanianos - Nómina de Asitencia!</title>
+
+<style>
+body {
+ background-color: #000000FF;
+ background-image: linear-gradient(to bottom, black, #151B54, #36013F);
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 500% 100%;
+ font-family: Verdana, Tahoma, Helvetica, Sans-serif;
+ font-size: 12px;
+ margin-left: 0px;
+ margin-right: 0px;
+ -webkit-user-select: none; /* Safari */
+ -ms-user-select: none; /* IE 10 and IE 11 */
+ user-select: none; /* Standard syntax */
+}
+
+body::-webkit-scrollbar { display: none; }
+
+.titleDiv {
+ margin: auto;
+ margin-bottom: 12px;
+ width: 88%;
+ align: center;
+ font-size: 1em;
+ font-weight: bold;
+ color: white;
+ padding: 16px;
+ }
+
+.rollDiv {
+ margin: auto;
+ margin-bottom: 26px;
+ width: 50%;
+ color: white;
+ background: #AAAAFF88;
+ border: 2px dashed white;
+ border-radius: 16px;
+ padding: 12px;
+ }
+
+.inputFields {
+ display: flex-grid; width: 320px;
+ margin: auto; margin-left: 20%;
+ color: Blue; background: #FFF;
+ text-align: center; font-size: 14px;
+ font-family: Verdana, Tahoma;
+ border: 1px solid white;
+ border-radius: 12px;
+ padding: 10px;
+ text-transform: capitalize;
+ disabled: true;
+ }
+
+.inputFields::placeholder { opacity: 0.6; color: red; }
+.inputFields:focus { background-color: yellow; }
+
+.allButtons {
+ display: flex;
+ margin: auto;
+ margin-bottom: 10px;
+ transform: translate(15%, 0px);
+ width: max-content;
+ align-items: center;
+ justify-content: center;
+ background: #FFFFFF33;
+ border: 1px solid lightgray;
+ border-radius: 12px;
+ padding: 6px;
+ }
+
+.thisButton {
+ width: 112px;
+ text-align: center;
+ font-weight: bold;
+ color: lightgray;
+ border: 2px solid lightgray;
+ border-radius: 6px;
+ margin: 6px 32px;
+ padding: 6px 24px;
+ cursor: pointer;
+ }
+
+.thisButton:hover {
+ color: white;
+ border: 2px solid white;
+ }
+
+@media screen and (max-width: 800px) {
+ .rollDiv { width: 80%; }
+ .inputFields { margin-left: 3%; width: 275px; }
+ .allButtons { transform: translate(0px, 0px); }
+
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="titleDiv">Registro de Asistencia Automática:</div>
+ <div class="rollDiv"><form>
+ FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ HORA LOCAL:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ <span id="internetTime" style="display: none; visibility: hidden;">
+ HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="000-00-00T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ </span>
+ ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisSubject" placeholder="* Nombre Asignatura"><br><br>
+ ACADÉMICO/A:&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeacher" placeholder="* Apellido, Nombre"><br><br>
+ TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="*Apellido Apellido"><br><br>
+ TUS NOMBRES:&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
+ <div class="allButtons">
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina</div>
+  <div class="thisButton" id="attendButton" style="background: green; display: none;">Presente!</div>
+ </form></div>
+</div>
+
+</body>
+
+
+
+<!- SAVE FUNCTION ->
+<script type="text/javascript">
+// ==============================
+// LOCAL STORAGE - SAVE FUNCTION!
+// ==============================
+window.onbeforeunload = function() {
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+ localStorage.thisSubject = document.getElementById("thisSubject").value
+ localStorage.thisTeacher = document.getElementById("thisTeacher").value
+ localStorage.lastNames = document.getElementById("lastNames").value
+ localStorage.firstNames = document.getElementById("firstNames").value
+}
+// END OF "BEFORE LOAD"
+
+window.onload = function() {
+ // LOAD DATA!
+ loadData()
+ // CALLS TO ANOTHER FUNCTION!!
+ rollCall()
+
+function loadData() {
+ document.getElementById("thisSubject").value = localStorage.thisSubject || ""
+ document.getElementById("thisTeacher").value = localStorage.thisTeacher || ""
+ document.getElementById("lastNames").value = localStorage.lastNames || ""
+ document.getElementById("firstNames").value = localStorage.firstNames || ""
+ }
+
+// END OF ONLOAD
+}
+</script>
+
+
+<script type="text/javascript">
+// ===================
+// ROLL CALL FUNCTION!
+// ===================
+function rollCall() {
+// CREATING CURRENT DATE & TIME LOOP (REFRESHING EVERY SECOND)
+setInterval(() => {
+ // GETTING CURRENT DATE!
+ let thisDate = new Date()
+ // GETTING CURRENT MONTH AND DATE
+ let thisYear = thisDate.getFullYear()
+ let thisMonth = thisDate.getMonth()+1 // Jan. was zero!
+ let thisDay = thisDate.getDate()
+ // GETTING CURRENT HOUR AND MINUTES
+ let thisHour = thisDate.getHours()
+ let thisMinute = thisDate.getMinutes()
+
+ // SETTING UP & UPDATING ELEMENTS
+ // DOUBLE MONTH
+ var doubleMonth
+ if (thisMonth >= 1 && thisMonth <=9) { doubleMonth = "0" + thisMonth }
+ else { doubleMonth = thisMonth }
+ // DOUBLE DATE
+ var doubleDay
+ if (thisDay.toString().length == 1) { doubleDay = "0" + thisDay }
+ else { doubleDay = thisDay }
+ // UPDATING AUTO-DATE:
+ let autoDateString = thisYear + "-" + doubleMonth + "-" + doubleDay
+ var autoDate = document.getElementById("autoDate")
+ autoDate.value = autoDateString
+
+ // UPDATING AUTO-TIME
+ var autoTime = document.getElementById("autoTime")
+ if (thisHour.toString().length == 1 && thisMinute.toString().length == 1) { autoTime.value = "0" + thisHour + ":0" + thisMinute }
+ if (thisHour.toString().length == 1 && thisMinute.toString().length == 2) { autoTime.value = "0" + thisHour + ":" + thisMinute }
+ if (thisHour.toString().length == 2 && thisMinute.toString().length == 1) { autoTime.value = thisHour + ":0" + thisMinute }
+ if (thisHour.toString().length == 2 && thisMinute.toString().length == 2) { autoTime.value = thisHour + ":" + thisMinute }
+
+// CHECKING EMPTY FIELDS
+ let theFields = document.querySelectorAll(".inputFields")
+ for(let haveText of theFields) {
+  if (haveText.value !== "") { haveText.style.backgroundColor = "#88FF88" }
+  else { haveText.style.backgroundColor = "" }
+
+
+// =====================
+// ONLINE TIME FUNCTION!
+// =====================
+// Create a new XMLHttpRequest object
+let xhr = new XMLHttpRequest();
+
+// Define the URL to fetch the NTP time
+let url = "http://worldclockapi.com/api/json/utc/now";
+
+// Define the callback function to handle the response
+xhr.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+  // Parse the response JSON
+  let response = JSON.parse(this.responseText);
+  // Extract the NTP time from the response
+  let ntpTime = response.currentDateTime
+
+  // SETTING UP INTERNET TIME TO LOCAL!
+  let ntpHour = ntpTime.slice(11,13)-04
+  let ntpMins = ntpTime.slice(14,16)
+  let ntpLocalString = ntpHour + ":" + ntpMins
+
+  if (ntpTime !== null || ntpTime !== undefined) {
+    let interTime = document.getElementById("internetTime") // Span element!
+    interTime.style.display = "block"
+    interTime.style.visibility = "visible"
+    }
+  // Display the NTP time on the HTML page
+  // document.getElementById("ntpTime").value = ntpTime // FULL DATE!
+  // document.getElementById("ntpTime").value = ntpTime.slice(11,16) // Time only!
+  document.getElementById("ntpTime").value = ntpLocalString
+  }
+ }
+// Send the GET request to fetch the NTP time
+xhr.open("GET", url, true);
+xhr.send();
+}
+// =====
+
+
+// ===========================
+// TIME PERIODS FUNCTIONALITY!
+// ===========================
+
+// BEFORE 08:00
+if (thisHour <= 7) { noMore() }
+
+// CLASS PERIOD - 8:00
+if (thisHour == 8) {
+  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 09:30
+if (thisHour == 9) {
+  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+  if (thisMinute >= 46) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 11:00
+if (thisHour == 11) {
+  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 12:30
+if (thisHour == 12) {
+  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+  if (thisMinute >= 46) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 14:00
+if (thisHour == 14) {
+  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 15:30
+if (thisHour == 15) {
+  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+  if (thisMinute >= 46) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 17:00
+if (thisHour == 17) {
+  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+  else { noMore() }
+  }
+
+// CLASS PERIOD - 18:30
+if (thisHour == 18) {
+  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+  if (thisMinute >= 46) { soLate() }
+  else { noMore() }
+  }
+
+// AFTER 19:45
+if (thisHour == 19 && thisMinute > 45) { noMore() }
+if (thisHour >= 20) { noMore() }
+
+
+// END TIME LOOP!
+}, 1000);
+
+// GETTING INTERNET TIME [NTP - NOT WORKING]:
+// internetTime()
+
+
+// ======================================
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+var urlClass = (new URLSearchParams(window.location.search)).get("clase")
+var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+// DECLARING CLASS ELEMENT
+var thisClass = document.getElementById("thisSubject")
+var thisTeach = document.getElementById("thisTeacher")
+thisClass.value = urlClass
+thisTeach.value = urlTeach
+// DISABLING CLASS FIELD
+if (thisClass !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+// DISABLING TEACHER FIELD
+if (thisTeach !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
+// FORMAT: /nomina.html?class=Inglés Básico 2
+// FORMAT: /nomina.html?teach=Méndez, Juan
+
+
+// GOOGLE SCRIPT!
+// google.script.run.customScriptName()
+
+// ==========================
+// END OF "ROLL CALL SCRIPT"!
+// ==========================
+}
+
+
+// ======================
+// CLASS PERIOD FUNCTIONS
+// ======================
+let hereBT = document.getElementById("attendButton")
+let listBT = document.getElementById("rosterButton")
+function onTime() { hereBT.style.display = "block"; hereBT.style.background = "green"; hereBT.innerHTML = "Presente!"; listBT.style.display = "none"; }
+function soLate() { hereBT.style.display = "block"; hereBT.style.background = "red"; hereBT.innerHTML = "LLegué tarde!"; listBT.style.display = "none"; }
+function noMore() { listBT.style.display = "block"; hereBT.style.display = "none"; }
+
+
+
+// END OF JAVASCRIPT CODE!!
+</script>
+
+
+</html>
