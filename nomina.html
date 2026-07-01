@@ -3,6 +3,7 @@
 <html lang="en-US">
 <html>
 <head>
+ <meta http-equiv="refresh" content="300">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="icon" href="media/uplanianos-icon.png">
  <title>Uplanianos - Nómina de Asitencia!</title>
@@ -118,8 +119,8 @@ body::-webkit-scrollbar { display: none; }
  TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="*Apellido Apellido"><br><br>
  TUS NOMBRES:&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
  <div class="allButtons">
-  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina</div>
-  <div class="thisButton" id="attendButton" style="background: green; display: none;">Presente!</div>
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block;" onclick="rosterAction()">Nómina</div>
+  <div class="thisButton" id="attendButton" style="background: green; display: none;" onclick="enrollAction()">Presente!</div>
  </form></div>
 </div>
 
@@ -251,69 +252,53 @@ xhr.send();
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
-// BEFORE 08:00
-if (thisHour <= 7) { noMore() }
+if (thisHour <= 7) { noShow() } // BEFORE 08:00
 
-// CLASS PERIOD - 8:00
-if (thisHour == 8) {
-  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour ==  8) { // CLASS PERIOD - 8:00
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+     }
 
-// CLASS PERIOD - 09:30
-if (thisHour == 9) {
-  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-  if (thisMinute >= 46) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour ==  9) { // CLASS PERIOD - 09:30
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+     if (thisMinute >= 46) { soLate() }
+     }
 
-// CLASS PERIOD - 11:00
-if (thisHour == 11) {
-  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 11) { // CLASS PERIOD - 11:00
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+     }
 
-// CLASS PERIOD - 12:30
-if (thisHour == 12) {
-  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-  if (thisMinute >= 46) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 12) { // CLASS PERIOD - 12:30
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+     if (thisMinute >= 46) { soLate() }
+     }
 
-// CLASS PERIOD - 14:00
-if (thisHour == 14) {
-  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 14) { // CLASS PERIOD - 14:00
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+     }
 
-// CLASS PERIOD - 15:30
-if (thisHour == 15) {
-  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-  if (thisMinute >= 46) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 15) { // CLASS PERIOD - 15:30
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+     if (thisMinute >= 46) { soLate() }
+     }
 
-// CLASS PERIOD - 17:00
-if (thisHour == 17) {
-  if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-  if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 17) { // CLASS PERIOD - 17:00
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
+     }
 
-// CLASS PERIOD - 18:30
-if (thisHour == 18) {
-  if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-  if (thisMinute >= 46) { soLate() }
-  else { noMore() }
-  }
+else if (thisHour == 18) { // CLASS PERIOD - 18:30
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
+     if (thisMinute >= 46) { soLate() }
+     }
 
 // AFTER 19:45
-if (thisHour == 19 && thisMinute > 45) { noMore() }
-if (thisHour >= 20) { noMore() }
+else if (thisHour == 19 && thisMinute > 45) { noShow() }
+else if (thisHour >= 20) { noShow() }
 
+else { noShow(); console.log("Final else!") }
 
 // END TIME LOOP!
 }, 1000);
@@ -358,7 +343,10 @@ let attendBT = document.getElementById("attendButton")
 let rosterBT = document.getElementById("rosterButton")
 function onTime() { attendBT.style.display = "block"; attendBT.style.background = "green"; attendBT.innerHTML = "Presente!"; rosterBT.style.display = "none"; }
 function soLate() { attendBT.style.display = "block"; attendBT.style.background = "red"; attendBT.innerHTML = "LLegué tarde!"; rosterBT.style.display = "none"; }
-function noMore() { rosterBT.style.display = "block"; attendBT.style.display = "none"; }
+function noShow() { rosterBT.style.display = "block"; attendBT.style.display = "none"; }
+
+function rosterAction() { alert("Ver nómina!") }
+function enrollAction() { alert("Registrado!") }
 
 
 
