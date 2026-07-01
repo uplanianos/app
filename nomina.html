@@ -213,19 +213,16 @@ setInterval(() => {
 // =====================
 // ONLINE TIME FUNCTION!
 // =====================
- // Create a new XMLHttpRequest object
- let xhr = new XMLHttpRequest();
 
- // Define the URL to fetch the NTP time
- let url = "http://worldclockapi.com/api/json/utc/now";
+try {
+ let xhr = new XMLHttpRequest()  // XMLHttpRequest object
+ let url = "http://worldclockapi.com/api/json/utc/now" // NTO URL
 
- // Define the callback function to handle the response
+ // callback function to handle the response!
  xhr.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-  // Parse the response JSON
-  let response = JSON.parse(this.responseText);
-  // Extract the NTP time from the response
-  let ntpTime = response.currentDateTime
+  let response = JSON.parse(this.responseText) // Parse the response JSON
+  let ntpTime = response.currentDateTime // Get NTP time from responde!
 
   // SETTING UP INTERNET TIME TO LOCAL!
   let ntpHour = ntpTime.slice(11,13)-04
@@ -244,10 +241,11 @@ setInterval(() => {
   }
  }
  // Send the GET request to fetch the NTP time
- xhr.open("GET", url, true);
- xhr.send();
+ xhr.open("GET", url, true); xhr.send()
+ // END OF ONLINE TIME!
+ } catch (error) { console.error('ERROR DETECTED:', error) }
 }
-// =====
+
 
 // =====================
 // CHECKING STUDENT INPUT
@@ -263,8 +261,6 @@ if (thisClass.value !== "" && thisTeach.value !== "" && lastNames.value !== "" &
 // ===========================
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
-
-// if (thisHour <= 7) { noShow() } // BEFORE 08:00
 
 if (thisHour ==  8) { // CLASS PERIOD - 8:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
@@ -305,10 +301,6 @@ else if (thisHour == 18 && inputReady) { // CLASS PERIOD - 18:30
      if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
      if (thisMinute >= 46) { soLate() }
      }
-
-// AFTER 19:45
-// else if (thisHour == 19 && thisMinute > 45) { noShow() }
-// else if (thisHour >= 20) { noShow() }
 
 // ANY OTHER TIMES!
 else { noShow() }
