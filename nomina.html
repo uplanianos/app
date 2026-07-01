@@ -201,24 +201,26 @@ setInterval(() => {
  if (thisHour.toString().length == 2 && thisMinute.toString().length == 1) { autoTime.value = thisHour + ":0" + thisMinute }
  if (thisHour.toString().length == 2 && thisMinute.toString().length == 2) { autoTime.value = thisHour + ":" + thisMinute }
 
-// CHECKING EMPTY FIELDS
- let theFields = document.querySelectorAll(".inputFields")
- for(let haveText of theFields) {
-  if (haveText.value !== "") { haveText.style.backgroundColor = "#88FF88" }
-  else { haveText.style.backgroundColor = "" }
 
+// =====================
+// CHECKING EMPTY FIELDS!
+// =====================
+ let theFields = document.querySelectorAll(".inputFields")
+ for(let studentInput of theFields) {
+  if (studentInput.value !== "") { studentInput.style.backgroundColor = "#88FF88" }
+  else { studentInput.style.backgroundColor = "" }
 
 // =====================
 // ONLINE TIME FUNCTION!
 // =====================
-// Create a new XMLHttpRequest object
-let xhr = new XMLHttpRequest();
+ // Create a new XMLHttpRequest object
+ let xhr = new XMLHttpRequest();
 
-// Define the URL to fetch the NTP time
-let url = "http://worldclockapi.com/api/json/utc/now";
+ // Define the URL to fetch the NTP time
+ let url = "http://worldclockapi.com/api/json/utc/now";
 
-// Define the callback function to handle the response
-xhr.onreadystatechange = function() {
+ // Define the callback function to handle the response
+ xhr.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
   // Parse the response JSON
   let response = JSON.parse(this.responseText);
@@ -241,20 +243,30 @@ xhr.onreadystatechange = function() {
   document.getElementById("ntpTime").value = ntpLocalString
   }
  }
-// Send the GET request to fetch the NTP time
-xhr.open("GET", url, true);
-xhr.send();
+ // Send the GET request to fetch the NTP time
+ xhr.open("GET", url, true);
+ xhr.send();
 }
 // =====
+
+// =====================
+// CHECKING STUDENT INPUT
+// =====================
+let inputReady = false // CHECKS STUDENT UNPUTS ARE READY!
+var thisClass = document.getElementById("thisSubject")
+var thisTeach = document.getElementById("thisTeacher")
+var lastNames = document.getElementById("lastNames")
+var firstNames = document.getElementById("firstNames")
+if (thisClass.value !== "" && thisTeach.value !== "" && lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true }
 
 
 // ===========================
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
-if (thisHour <= 7) { noShow() } // BEFORE 08:00
+// if (thisHour <= 7) { noShow() } // BEFORE 08:00
 
-else if (thisHour ==  8) { // CLASS PERIOD - 8:00
+if (thisHour ==  8) { // CLASS PERIOD - 8:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
@@ -289,22 +301,23 @@ else if (thisHour == 17) { // CLASS PERIOD - 17:00
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
 
-else if (thisHour == 18) { // CLASS PERIOD - 18:30
+else if (thisHour == 18 && inputReady) { // CLASS PERIOD - 18:30
      if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
      if (thisMinute >= 46) { soLate() }
      }
 
 // AFTER 19:45
-else if (thisHour == 19 && thisMinute > 45) { noShow() }
-else if (thisHour >= 20) { noShow() }
+// else if (thisHour == 19 && thisMinute > 45) { noShow() }
+// else if (thisHour >= 20) { noShow() }
 
-else { noShow(); console.log("Final else!") }
+// ANY OTHER TIMES!
+else { noShow() }
 
+
+// ============
 // END TIME LOOP!
+// ============
 }, 1000);
-
-// GETTING INTERNET TIME [NTP - NOT WORKING]:
-// internetTime()
 
 
 // ======================================
@@ -345,9 +358,8 @@ function onTime() { attendBT.style.display = "block"; attendBT.style.background 
 function soLate() { attendBT.style.display = "block"; attendBT.style.background = "red"; attendBT.innerHTML = "LLegué tarde!"; rosterBT.style.display = "none"; }
 function noShow() { rosterBT.style.display = "block"; attendBT.style.display = "none"; }
 
-function rosterAction() { alert("Ver nómina!") }
 function enrollAction() { alert("Registrado!") }
-
+function rosterAction() { alert("Ver nómina!") }
 
 
 // END OF JAVASCRIPT CODE!!
