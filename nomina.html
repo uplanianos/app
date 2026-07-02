@@ -118,9 +118,13 @@ body::-webkit-scrollbar { display: none; }
  ACADÉMICO/A:&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
  TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="* Apellido Apellido"><br><br>
  TUS NOMBRES:&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
+ <span style="display: none;">
+ IS PRESENT?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="isPresent" value="false" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
+ </span>
  <div class="allButtons">
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;" onclick="rosterAction()">Nómina</div>
   <div class="thisButton" id="attendButton" style="background: green; display: none;" onclick="enrollAction()">Presente!</div>
+  <div style="display: none; padding: 12px 24px;"><input type="checkbox" id="isChecked"></div>
  </form></div>
 </div>
 
@@ -142,6 +146,12 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
+ localStorage.isPresent = document.getElementById("isPresent").value
+
+// TRYING CHECKBOX STUFF!
+// var isChecked = document.getElementById('isChecked')
+// localStorage.setItem('isPresent', checkbox.checked)
+
 }
 // END OF "BEFORE LOAD"
 
@@ -156,6 +166,12 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
+ document.getElementById("isPresent").value = localStorage.isPresent || ""
+
+// TRYING CHECKBOX STUFF!
+// var isChecked = JSON.parse(localStorage.getItem('isPresent'))
+// document.getElementById("isPresent").checked = localStorage.isPresent || false
+
  }
 
 // END OF ONLOAD
@@ -272,7 +288,11 @@ else if (thisHour == 18 && inputReady) { // CLASS PERIOD - 18:30
 else if (thisHour == 21) { onTime() }
 
 // ANY OTHER TIME!
-else { noShow() }
+else { noShow(); enableNames() }
+
+// DISABLING NAMES!
+if (isPresent.value == "true") { disableNames() }
+else { enableNames() }
 
 // ============
 // END TIME LOOP!
@@ -302,7 +322,9 @@ if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.c
 
 
 // CALL ONLINE TIME FUNCTION (ONCE)!
-getOnlineTime()
+// DISABLED!: script works locally,
+// but gives safety error online.
+// getOnlineTime()
 
 
 
@@ -314,10 +336,77 @@ getOnlineTime()
 // ==========================
 }
 
+	
+// ======================
+// CLASS PERIOD FUNCTIONS
+// ======================
+let isPresent = document.getElementById("isPresent")
+let attendBT = document.getElementById("attendButton")
+let rosterBT = document.getElementById("rosterButton")
+let lastNames = document.getElementById("lastNames")
+let firstNames = document.getElementById("firstNames")
+
+// ========
+// ON TIME!
+function onTime() {
+ attendBT.style.display = "block"
+ attendBT.style.background = "green"
+ attendBT.innerHTML = "Presente!"
+ rosterBT.style.display = "none"
+}
+
+// ========
+// SO LATE!
+function soLate() {
+ attendBT.style.display = "block"
+ attendBT.style.background = "red"
+ attendBT.innerHTML = "Tarde!"
+ rosterBT.style.display = "none"
+}
+
+// ========
+// NO SHOW!
+function noShow() {
+ isPresent.value = "false"
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
+}
+
+
+// ===============
+// FINAL FUNCTIONS!
+// ===============
+function enrollAction() { alert("Registrado!"); isPresent.value = "true"; disableNames() }
+function rosterAction() { alert("Ver nómina!") }
+
+
+// ==============
+// ENABLE NAMES
+function enableNames() {
+ isPresent.value = "false"
+ lastNames.disabled = false
+ firstNames.disabled = false
+ lastNames.style.cursor = ""
+ firstNames.style.cursor = ""
+}
+
+// ==============
+// DISABLE NAMES!
+function disableNames() {
+if (lastNames.value.length >= 3 && firstNames.value.length >= 3) {
+ setTimeout(function(){
+  lastNames.disabled = true; lastNames.style.cursor = "not-allowed";
+  firstNames.disabled = true; firstNames.style.cursor = "not-allowed"
+  }, 1000 * 2)
+ }
+}
+
+
 
 
 // =====================
 // ONLINE TIME FUNCTION!
+// (DISABLED FROM PREVIOUS SCRIPT)!
 // =====================
 function getOnlineTime() {
 try {
@@ -360,62 +449,6 @@ try {
 
 // END OF ONLINE TIME FUNCTION!
 }
-
-
-	
-// ======================
-// CLASS PERIOD FUNCTIONS
-// ======================
-let attendBT = document.getElementById("attendButton")
-let rosterBT = document.getElementById("rosterButton")
-let lastNames = document.getElementById("lastNames")
-
-// ========
-// ON TIME!
-function onTime() {
- attendBT.style.display = "block"
- attendBT.style.background = "green"
- attendBT.innerHTML = "Presente!"
- rosterBT.style.display = "none"
-}
-
-// ========
-// SO LATE!
-function soLate() {
- attendBT.style.display = "block"
- attendBT.style.background = "red"
- attendBT.innerHTML = "LLegué tarde!"
- rosterBT.style.display = "none"
-}
-
-// ========
-// NO SHOW!
-function noShow() {
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
- lastNames.disabled = false
- firstNames.disabled = false
-}
-
-
-// ===============
-// FINAL FUNCTIONS!
-// ===============
-function enrollAction() { alert("Registrado!"); disableNames() }
-function rosterAction() { alert("Ver nómina!") }
-
-
-// ==============
-// DISABLE NAMES!
-function disableNames() {
-if (lastNames.value.length >= 5 && firstNames.value.length >= 5) {
- setTimeout(function(){
-  lastNames.disabled = true; lastNames.style.cursor = "not-allowed";
-  firstNames.disabled = true; firstNames.style.cursor = "not-allowed"
-  }, 1000 * 3)
- }
-}
-
 
 
 
