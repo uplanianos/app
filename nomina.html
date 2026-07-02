@@ -229,37 +229,37 @@ if (thisClass.value !== "" && thisTeach.value !== "" &&
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
-if (thisHour ==  8) { // CLASS PERIOD - 8:00
+if (thisHour ==  8 && inputReady) { // CLASS PERIOD - 8:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
 
-else if (thisHour ==  9) { // CLASS PERIOD - 09:30
+else if (thisHour ==  9 && inputReady) { // CLASS PERIOD - 09:30
      if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
      if (thisMinute >= 46) { soLate() }
      }
 
-else if (thisHour == 11) { // CLASS PERIOD - 11:00
+else if (thisHour == 11 && inputReady) { // CLASS PERIOD - 11:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
 
-else if (thisHour == 12) { // CLASS PERIOD - 12:30
+else if (thisHour == 12 && inputReady) { // CLASS PERIOD - 12:30
      if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
      if (thisMinute >= 46) { soLate() }
      }
 
-else if (thisHour == 14) { // CLASS PERIOD - 14:00
+else if (thisHour == 14 && inputReady) { // CLASS PERIOD - 14:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
 
-else if (thisHour == 15) { // CLASS PERIOD - 15:30
+else if (thisHour == 15 && inputReady) { // CLASS PERIOD - 15:30
      if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
      if (thisMinute >= 46) { soLate() }
      }
 
-else if (thisHour == 17) { // CLASS PERIOD - 17:00
+else if (thisHour == 17 && inputReady) { // CLASS PERIOD - 17:00
      if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
      }
@@ -269,9 +269,10 @@ else if (thisHour == 18 && inputReady) { // CLASS PERIOD - 18:30
      if (thisMinute >= 46) { soLate() }
      }
 
+else if (thisHour == 21) { onTime() }
+
 // ANY OTHER TIME!
 else { noShow() }
-
 
 // ============
 // END TIME LOOP!
@@ -290,10 +291,10 @@ var thisTeach = document.getElementById("thisTeach")
 thisClass.value = urlClass
 thisTeach.value = urlTeach
 // DISABLING CLASS FIELD
-if (thisClass !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
 if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
 // DISABLING TEACHER FIELD
-if (thisTeach !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
 if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
 // FORMAT: /nomina.html?clase=Inglés Básico 2
 // FORMAT: /nomina.html?profe=Méndez, Juan
@@ -329,10 +330,17 @@ try {
   let response = JSON.parse(this.responseText) // Parse the response JSON
   let ntpTime = response.currentDateTime // Get NTP time from responde!
 
-  // SETTING UP INTERNET TIME TO LOCAL!
-  let ntpHour = ntpTime.slice(11,13)-04
+  // SETTING UP INTERNET HOURS!
+  let ntpHour = ntpTime.slice(11,13)
+  let netHourMinus = ntpHour-04
+  if (ntpHour == 00) { ntpHourMinus = "20" }
+  else if (ntpHour == 01) { ntpHourMinus = "21" }
+  else if (ntpHour == 02) { ntpHourMinus = "22" }
+  else if (ntpHour == 03) { ntpHourMinus = "23" }
+  else { ntpHourMinus = ntpHour-04 }
+  // SETTING UP INTERNET MINUTES!
   let ntpMins = ntpTime.slice(14,16)
-  let ntpLocalString = ntpHour + ":" + ntpMins
+  let ntpLocalString = ntpHourMinus + ":" + ntpMins
 
   if (ntpTime !== null || ntpTime !== undefined) {
    let interTime = document.getElementById("internetTime") // Span element!
@@ -354,18 +362,61 @@ try {
 }
 
 
-
+	
 // ======================
 // CLASS PERIOD FUNCTIONS
 // ======================
 let attendBT = document.getElementById("attendButton")
 let rosterBT = document.getElementById("rosterButton")
-function onTime() { attendBT.style.display = "block"; attendBT.style.background = "green"; attendBT.innerHTML = "Presente!"; rosterBT.style.display = "none"; }
-function soLate() { attendBT.style.display = "block"; attendBT.style.background = "red"; attendBT.innerHTML = "LLegué tarde!"; rosterBT.style.display = "none"; }
-function noShow() { rosterBT.style.display = "block"; attendBT.style.display = "none"; }
+let lastNames = document.getElementById("lastNames")
 
-function enrollAction() { alert("Registrado!") }
+// ========
+// ON TIME!
+function onTime() {
+ attendBT.style.display = "block"
+ attendBT.style.background = "green"
+ attendBT.innerHTML = "Presente!"
+ rosterBT.style.display = "none"
+}
+
+// ========
+// SO LATE!
+function soLate() {
+ attendBT.style.display = "block"
+ attendBT.style.background = "red"
+ attendBT.innerHTML = "LLegué tarde!"
+ rosterBT.style.display = "none"
+}
+
+// ========
+// NO SHOW!
+function noShow() {
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
+ lastNames.disabled = false
+ firstNames.disabled = false
+}
+
+
+// ===============
+// FINAL FUNCTIONS!
+// ===============
+function enrollAction() { alert("Registrado!"); disableNames() }
 function rosterAction() { alert("Ver nómina!") }
+
+
+// ==============
+// DISABLE NAMES!
+function disableNames() {
+if (lastNames.value.length >= 5 && firstNames.value.length >= 5) {
+ setTimeout(function(){
+  lastNames.disabled = true; lastNames.style.cursor = "not-allowed";
+  firstNames.disabled = true; firstNames.style.cursor = "not-allowed"
+  }, 1000 * 3)
+ }
+}
+
+
 
 
 // END OF JAVASCRIPT CODE!!
