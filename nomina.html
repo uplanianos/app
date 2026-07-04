@@ -65,7 +65,6 @@ body::-webkit-scrollbar { display: none; }
 .inputFields:focus { background-color: yellow; }
 
 .allButtons {
- display: flex;
  margin: auto;
  margin-bottom: 10px;
  transform: translate(20%, 0px);
@@ -125,7 +124,8 @@ body::-webkit-scrollbar { display: none; }
 
  <div class="allButtons">
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;" onclick="rosterAction()">Nómina</div>
-  <div class="thisButton" id="attendButton" style="background: green; display: none;" onclick="enrollAction()">Presente!</div>
+  <div class="thisButton" id="attendButton" style="background: green; display: none;" onclick="attendAction()">Presente!</div>
+  <div style="font-size: 10px;text-align: center; padding: 6px;" id="currentStatus">...</div>
  </div>
 </div>
 
@@ -172,7 +172,7 @@ function loadData() {
 
 <script type="text/javascript">
 // ===================
-// ROLL CALL FUNCTION!
+// MAIN FUNCTION!
 // ===================
 
 // DECLARING ALL ELLEMENTS
@@ -184,6 +184,7 @@ let firstNames = document.getElementById("firstNames")
 let isPresent = document.getElementById("isPresent")
 let attendBT = document.getElementById("attendButton")
 let rosterBT = document.getElementById("rosterButton")
+let currentStatus = document.getElementById("currentStatus")
 let inputReady = false // CHECKS STUDENT INPUTS ARE READY!
 // ===================
 
@@ -195,18 +196,22 @@ setTimeout(function(){
  console.log("Teacher: " + thisTeach.value)
  console.log("LNs: " + lastNames.value)
  console.log("FNs: " + firstNames.value)
- console.log("Attend: " + attendBT.style.display)
+ console.log("\nBUTTON DISPLAY:\nAttend: " + attendBT.style.display)
  console.log("Roster: " + rosterBT.style.display)
 }, 1000)
 setTimeout(function(){
- console.log("\nSTATUS CHECKS:")
+ console.log("\nCURRENT STATUS:")
 }, 1800)
 setTimeout(function(){
  console.log("Inputs: " + inputReady)
  console.log("Present: " + isPresent.value)
+ console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
 
 
+// ===================
+// ROLL CALL FUNCTION!
+// ===================
 function rollCall() {
 // CREATING CURRENT DATE & TIME LOOP (REFRESHING EVERY SECOND)
 setInterval(() => {
@@ -306,8 +311,8 @@ else if (thisHour == 18) { // CLASS PERIOD - 18:30
      }
 
 // TESTING HOUR - REMEMBER TO COMMENT OUT!
-else if (thisHour == 15 && inputReady) { onTime(); console.log("Testing!",inputReady) }
-// else if (thisHour == 21) { onTime(); console.log("Testing!") }
+// else if (thisHour == 15 && inputReady) { onTime(); console.log("Testing!") }
+// else if (thisHour == 22 && inputReady) { onTime(); console.log("Testing!") }
 
 // ANY OTHER TIME!
 else { noShow() }
@@ -351,48 +356,58 @@ if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.c
 // getOnlineTime()
 
 
-
-// GOOGLE SCRIPT!
+// ========================
+// GOOGLE SCRIPT FUNCTIONS!
+// ========================
 // google.script.run.customScriptName()
 
-// ==========================
-// END OF "ROLL CALL SCRIPT"!
-// ==========================
+// ============================
+// END OF MAIN SCRIPT FUNCTION!
+// ============================
 }
 
-	
+
 // ======================
 // CLASS PERIOD FUNCTIONS
 // ======================
 
+
+function onTime() {
 // ========
 // ON TIME!
-function onTime() {
+// ========
 if (inputReady) {
  attendBT.style.display = "block"
  attendBT.style.background = "green"
  attendBT.innerHTML = "Presente!"
  rosterBT.style.display = "none"
+ currentStatus.innerHTML = "Estás a tiempo... registrate!"
  }
 }
 
+
+function soLate() {
 // ========
 // SO LATE!
-function soLate() {
+// ========
 if (inputReady) {
  attendBT.style.display = "block"
  attendBT.style.background = "red"
  attendBT.innerHTML = "Tarde!"
  rosterBT.style.display = "none"
+ currentStatus.innerHTML = "A tiempo... pero con retraso!"
  }
 }
 
+
+function noShow() {
 // ========
 // NO SHOW!
-function noShow() {
+// ========
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  setTimeout(function(){ isPresent.value = "false" }, 1000)
+ currentStatus.innerHTML = "Inscripción finalizada!"
 }
 
 
@@ -400,15 +415,15 @@ function noShow() {
 // FINAL FUNCTIONS!
 // ===============
 
-// ===============
-// ROSTER ACTION!
+
 function rosterAction() {
+// ROSTER ACTION!
  alert("Ver nómina!")
 }
 
-// ===============
-// ENROLL ACTION
-function enrollAction() {
+
+function attendAction() {
+// ATTEND ACTION!
  isPresent.value = "true"
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
@@ -416,26 +431,25 @@ function enrollAction() {
 }
 
 
-// ==============
-// HIDE ATTEND BUTTON!
+
 function hideAttend() {
+// HIDE ATTEND BUTTON!
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
 }
 
 
-// ==============
-// ENABLE NAMES
 function enableNames() {
+// ENABLE NAMES
  lastNames.disabled = false
  firstNames.disabled = false
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
 }
 
-// ==============
-// DISABLE NAMES!
+
 function disableNames() {
+// DISABLE NAMES!
 if (lastNames.value.length >= 3 && firstNames.value.length >= 3) {
  setTimeout(function(){
   lastNames.disabled = true
