@@ -124,7 +124,7 @@ body::-webkit-scrollbar { display: none; }
 
  <div class="allButtons">
   <div style="font-size: 10px;text-align: center; padding: 6px;" id="currentStatus">...</div>
-  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Ver nómina!</div>
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina!</div>
   <div class="thisButton" id="attendButton" style="background: green; display: none;">Presente!</div>
  </div>
 
@@ -354,8 +354,8 @@ else { inputReady = false } // EMPTY INPUTS!
 let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
 if (theDiff <= 2000) { notPresent = false }
 else { notPresent = true }
-// checking!
-// console.log("Test time: 17:25",theDiff,"Absent: "+notPresent)
+// CHECKING!
+// console.log("Test time: 18:48",theDiff,"Absent: "+notPresent)
 
 
 
@@ -377,6 +377,8 @@ else if (inputReady && soLate && notPresent) {
  rosterBT.style.display = "none"
  currentStatus.innerHTML = "Tarde... registrar igualmente:"
 }
+
+else if (!notPresent) { currentStatus.innerHTML = "Registrado... revisa la nómina."}
 
 else {
  rosterBT.style.display = "block"
@@ -420,11 +422,30 @@ rosterBT.addEventListener("click", function() {
 // ========================
 // google.script.run.customScriptName()
 
+
+
+// ======================================
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+var urlClass = (new URLSearchParams(window.location.search)).get("clase")
+var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+// PRINTING CLASS ELEMENT
+thisClass.value = urlClass
+thisTeach.value = urlTeach
+// DISABLING CLASS FIELD
+if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+// DISABLING TEACHER FIELD
+if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
+// FORMAT: /nomina.html?clase=Inglés Básico 2
+// FORMAT: /nomina.html?profe=Méndez, Juan
+
+
 // ============================
 // END OF MAIN SCRIPT FUNCTION!
 // ============================
 }
-
 
 
 
@@ -455,28 +476,6 @@ function disableNames() {
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
 }
-
-
-
-
-// ======================================
-// GETTING CLASS NAME FROM LINK PARAMETER!
-// ======================================
-var urlClass = (new URLSearchParams(window.location.search)).get("clase")
-var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-// PRINTING CLASS ELEMENT
-thisClass.value = urlClass
-thisTeach.value = urlTeach
-// DISABLING CLASS FIELD
-if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
-if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
-// DISABLING TEACHER FIELD
-if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
-if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-// FORMAT: /nomina.html?clase=Inglés Básico 2
-// FORMAT: /nomina.html?profe=Méndez, Juan
-
-
 
 
 
