@@ -3,7 +3,7 @@
 <html lang="en-US">
 <html>
 <head>
- <meta http-equiv="refresh" content="300">
+ <meta http-equiv="refresh" content="180">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="icon" href="media/uplanianos-icon.png">
  <title>Uplanianos - Nómina de Asitencia!</title>
@@ -107,9 +107,9 @@ body::-webkit-scrollbar { display: none; }
 
 
 <div class="titleDiv">Registro de Asistencia Automática:</div>
- <div class="rollDiv"><form>
+ <div class="rollDiv">
  FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
- HORA LOCAL:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ HORA ACTUAL:&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
  <span id="internetTime" style="display: none; visibility: hidden;">
  HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
  </span>
@@ -119,14 +119,15 @@ body::-webkit-scrollbar { display: none; }
  TUS NOMBRES:&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
 
  <span style="display: none;">
- IS PRESENT?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="isPresent" value="false" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
+ ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
  </span>
 
  <div class="allButtons">
-  <div class="thisButton" id="rosterButton" style="background: blue; display: block;" onclick="rosterAction()">Nómina</div>
-  <div class="thisButton" id="attendButton" style="background: green; display: none;" onclick="attendAction()">Presente!</div>
   <div style="font-size: 10px;text-align: center; padding: 6px;" id="currentStatus">...</div>
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Ver nómina!</div>
+  <div class="thisButton" id="attendButton" style="background: green; display: none;">Presente!</div>
  </div>
+
 </div>
 
 </body>
@@ -147,7 +148,7 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
- localStorage.isPresent = document.getElementById("isPresent").value
+ localStorage.attendTime = document.getElementById("attendTime").value
 }
 // END OF "BEFORE LOAD"
 
@@ -162,7 +163,7 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
- document.getElementById("isPresent").value = localStorage.isPresent || ""
+ document.getElementById("attendTime").value = localStorage.attendTime || ""
  }
 
 // END OF ONLOAD
@@ -181,21 +182,31 @@ let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
 let firstNames = document.getElementById("firstNames")
-let isPresent = document.getElementById("isPresent")
-let attendBT = document.getElementById("attendButton")
+let attendTime = document.getElementById("attendTime")
+// BUTTONS
 let rosterBT = document.getElementById("rosterButton")
+let attendBT = document.getElementById("attendButton")
+// VARIABLES
 let currentStatus = document.getElementById("currentStatus")
-let inputReady = false // CHECKS STUDENT INPUTS ARE READY!
+let currentTime // IN MILLISECONDS, UPDATE LATER!
+let notPresent = true // CHECKS PREVIOUS ATTENDANCE!
+let inputReady // CHECKS STUDENT INPUTS ARE READY!
+// TIME VARIABLES
+let onTime = false
+let soLate = false
+let noShow = true
 // ===================
 
 
-// PERFORMING INITIAL CHECKS:
+// PERFORMING INITIAL CHECKS!
 console.log("INITIAL CHECKS:")
 setTimeout(function(){
  console.log("Class: " + thisClass.value)
  console.log("Teacher: " + thisTeach.value)
  console.log("LNs: " + lastNames.value)
  console.log("FNs: " + firstNames.value)
+ console.log("Attended: " + attendTime.value)
+ // Buttons!
  console.log("\nBUTTON DISPLAY:\nAttend: " + attendBT.style.display)
  console.log("Roster: " + rosterBT.style.display)
 }, 1000)
@@ -204,7 +215,6 @@ setTimeout(function(){
 }, 1800)
 setTimeout(function(){
  console.log("Inputs: " + inputReady)
- console.log("Present: " + isPresent.value)
  console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
 
@@ -217,6 +227,7 @@ function rollCall() {
 setInterval(() => {
  // GETTING CURRENT DATE!
  let thisDate = new Date()
+ currentTime = thisDate.getTime()
  // GETTING CURRENT MONTH AND DATE
  let thisYear = thisDate.getFullYear()
  let thisMonth = thisDate.getMonth()+1 // Jan. was zero!
@@ -224,6 +235,8 @@ setInterval(() => {
  // GETTING CURRENT HOUR AND MINUTES
  let thisHour = thisDate.getHours()
  let thisMinute = thisDate.getMinutes()
+ let thisSecond = thisDate.getSeconds()
+
 
  // SETTING UP & UPDATING ELEMENTS
  // DOUBLE MONTH
@@ -241,19 +254,86 @@ setInterval(() => {
 
  // UPDATING AUTO-TIME
  var autoTime = document.getElementById("autoTime")
- if (thisHour.toString().length == 1 && thisMinute.toString().length == 1) { autoTime.value = "0" + thisHour + ":0" + thisMinute }
- if (thisHour.toString().length == 1 && thisMinute.toString().length == 2) { autoTime.value = "0" + thisHour + ":" + thisMinute }
- if (thisHour.toString().length == 2 && thisMinute.toString().length == 1) { autoTime.value = thisHour + ":0" + thisMinute }
- if (thisHour.toString().length == 2 && thisMinute.toString().length == 2) { autoTime.value = thisHour + ":" + thisMinute }
+ thisHour = checkTime(thisHour)
+ thisMinute = checkTime(thisMinute)
+ thisSecond = checkTime(thisSecond)
+ autoTime.value = thisHour + ":" + thisMinute + ":" + thisSecond
 
 
-// =====================
-// CHECKING EMPTY FIELDS!
-// =====================
+// ===========================
+// TIME PERIODS FUNCTIONALITY!
+// ===========================
+
+// CLASS PERIOD - 8:00 (1)
+if (thisHour ==  8) {
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
+     }
+
+// CLASS PERIOD - 09:30 (2)
+else if (thisHour ==  9) {
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
+     if (thisMinute >= 46) { soLate = true }}
+else if (thisHour ==  10 && thisMinute == 00) { soLate = true }
+
+// CLASS PERIOD - 11:00 (3)
+else if (thisHour == 11) {
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
+     }
+
+// CLASS PERIOD - 12:30 (4)
+else if (thisHour == 12) {
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
+     if (thisMinute >= 46) { soLate = true }}
+else if (thisHour ==  13 && thisMinute == 00) { soLate = true }
+
+// CLASS PERIOD - 14:00 (5)
+else if (thisHour == 14) {
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
+     }
+
+// CLASS PERIOD - 15:30 (6)
+else if (thisHour == 15) {
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
+     if (thisMinute >= 46) { soLate = true }}
+else if (thisHour ==  16 && thisMinute == 00) { soLate = true }
+
+// CLASS PERIOD - 17:00 (7)
+else if (thisHour == 17) {
+     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
+     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
+     }
+
+// CLASS PERIOD - 18:30 (8)
+else if (thisHour == 18) {
+     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
+     if (thisMinute >= 46) { soLate = true }}
+else if (thisHour ==  19 && thisMinute == 00) { soLate = true }
+
+// TESTING - REMEMBER TO COMMENT OUT!
+// else if (thisHour == 21) {
+//     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
+//     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
+//     }
+
+// TESTING - REMEMBER TO COMMENT OUT!
+// else if (thisHour == 22) {
+//     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
+//     if (thisMinute >= 46) { soLate = true }
+//     }
+
+// ANY OTHER TIME - NO SHOW!
+else { noShow = true }
+
+
+// ========================
+// COLORING COMPLETE FIELDS!
+// ========================
  let theFields = document.querySelectorAll(".inputFields")
  for(let studentInput of theFields) {
   if (studentInput.value !== "") { studentInput.style.backgroundColor = "#88FF88" }
-  // if (studentInput.disabled) { studentInput.style.backgroundColor = "#FFCCAA" }
   else { studentInput.style.backgroundColor = "" }
  }
 
@@ -261,66 +341,49 @@ setInterval(() => {
 // ======================
 // CHECKING STUDENT INPUT!
 // ======================
+// INPUTS READY!
 if (thisClass.value !== "" && thisTeach.value !== "" &&
     lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true }
-else { inputReady = false }
+else { inputReady = false } // EMPTY INPUTS!
 
 
-// ===========================
-// TIME PERIODS FUNCTIONALITY!
-// ===========================
 
-if (thisHour ==  8) { // CLASS PERIOD - 8:00
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-     }
-
-else if (thisHour ==  9) { // CLASS PERIOD - 09:30
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-     if (thisMinute >= 46) { soLate() }
-     }
-
-else if (thisHour == 11) { // CLASS PERIOD - 11:00
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-     }
-
-else if (thisHour == 12) { // CLASS PERIOD - 12:30
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-     if (thisMinute >= 46) { soLate() }
-     }
-
-else if (thisHour == 14) { // CLASS PERIOD - 14:00
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-     }
-
-else if (thisHour == 15) { // CLASS PERIOD - 15:30
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-     if (thisMinute >= 46) { soLate() }
-     }
-
-else if (thisHour == 17) { // CLASS PERIOD - 17:00
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime() }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate() }
-     }
-
-else if (thisHour == 18) { // CLASS PERIOD - 18:30
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime() }
-     if (thisMinute >= 46) { soLate() }
-     }
-
-// TESTING HOUR - REMEMBER TO COMMENT OUT!
-// else if (thisHour == 15 && inputReady) { onTime(); console.log("Testing!") }
-// else if (thisHour == 22 && inputReady) { onTime(); console.log("Testing!") }
-
-// ANY OTHER TIME!
-else { noShow() }
+// ==============================
+// CHECKING PREVIOUS ATTENDANCE!
+// ==============================
+let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
+if (theDiff <= 2000) { notPresent = false }
+else { notPresent = true }
+// checking!
+// console.log("Test time: 17:25",theDiff,"Absent: "+notPresent)
 
 
-// DISABLING NAMES!
-if (isPresent.value == "true") { disableNames(); hideAttend() }
-else { enableNames() }
+
+// ===============
+// SHOW BUTTONS??
+// ===============
+if (inputReady && onTime && notPresent) {
+ attendBT.style.display = "block"
+ attendBT.style.background = "green"
+ attendBT.innerHTML = "PRESENTE!"
+ rosterBT.style.display = "none"
+ currentStatus.innerHTML = "Muy bien... estás a tiempo:"
+}
+
+else if (inputReady && soLate && notPresent) {
+ attendBT.style.display = "block"
+ attendBT.style.background = "red"
+ attendBT.innerHTML = "TARDE!"
+ rosterBT.style.display = "none"
+ currentStatus.innerHTML = "Tarde... registrar igualmente:"
+}
+
+else {
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
+ currentStatus.innerHTML = "Inscripción finalizada!"
+}
+
 
 
 // ============
@@ -329,24 +392,20 @@ else { enableNames() }
 }, 1000)
 
 
-// ======================================
-// GETTING CLASS NAME FROM LINK PARAMETER!
-// ======================================
-var urlClass = (new URLSearchParams(window.location.search)).get("clase")
-var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-// DECLARING CLASS ELEMENT
-var thisClass = document.getElementById("thisClass")
-var thisTeach = document.getElementById("thisTeach")
-thisClass.value = urlClass
-thisTeach.value = urlTeach
-// DISABLING CLASS FIELD
-if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
-if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
-// DISABLING TEACHER FIELD
-if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
-if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-// FORMAT: /nomina.html?clase=Inglés Básico 2
-// FORMAT: /nomina.html?profe=Méndez, Juan
+
+// ====================
+// BUTTON CLICK EVENTS!
+// ====================
+attendBT.addEventListener("click", function() {
+ alert("Registrando!")
+ attendTime.value = currentTime
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
+})
+
+rosterBT.addEventListener("click", function() {
+ alert("Ver nómina!")
+})
 
 
 
@@ -367,76 +426,17 @@ if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.c
 }
 
 
-// ======================
-// CLASS PERIOD FUNCTIONS
-// ======================
 
 
-function onTime() {
-// ========
-// ON TIME!
-// ========
-if (inputReady) {
- attendBT.style.display = "block"
- attendBT.style.background = "green"
- attendBT.innerHTML = "Presente!"
- rosterBT.style.display = "none"
- currentStatus.innerHTML = "Estás a tiempo... registrate!"
- }
+
+// ============================
+// CHECK ZERO TIME SCRIPT!
+// ============================
+function checkTime(i) {
+if (i < 10) { i = "0" + i }
+return i
 }
 
-
-function soLate() {
-// ========
-// SO LATE!
-// ========
-if (inputReady) {
- attendBT.style.display = "block"
- attendBT.style.background = "red"
- attendBT.innerHTML = "Tarde!"
- rosterBT.style.display = "none"
- currentStatus.innerHTML = "A tiempo... pero con retraso!"
- }
-}
-
-
-function noShow() {
-// ========
-// NO SHOW!
-// ========
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
- setTimeout(function(){ isPresent.value = "false" }, 1000)
- currentStatus.innerHTML = "Inscripción finalizada!"
-}
-
-
-// ===============
-// FINAL FUNCTIONS!
-// ===============
-
-
-function rosterAction() {
-// ROSTER ACTION!
- alert("Ver nómina!")
-}
-
-
-function attendAction() {
-// ATTEND ACTION!
- isPresent.value = "true"
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
- disableNames()
-}
-
-
-
-function hideAttend() {
-// HIDE ATTEND BUTTON!
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
-}
 
 
 function enableNames() {
@@ -450,15 +450,32 @@ function enableNames() {
 
 function disableNames() {
 // DISABLE NAMES!
-if (lastNames.value.length >= 3 && firstNames.value.length >= 3) {
- setTimeout(function(){
-  lastNames.disabled = true
-  firstNames.disabled = true
-  lastNames.style.cursor = "not-allowed"
-  firstNames.style.cursor = "not-allowed"
-  }, 2000)
- }
+ lastNames.disabled = true
+ firstNames.disabled = true
+ lastNames.style.cursor = "not-allowed"
+ firstNames.style.cursor = "not-allowed"
 }
+
+
+
+
+// ======================================
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+var urlClass = (new URLSearchParams(window.location.search)).get("clase")
+var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+// PRINTING CLASS ELEMENT
+thisClass.value = urlClass
+thisTeach.value = urlTeach
+// DISABLING CLASS FIELD
+if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+// DISABLING TEACHER FIELD
+if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
+// FORMAT: /nomina.html?clase=Inglés Básico 2
+// FORMAT: /nomina.html?profe=Méndez, Juan
+
 
 
 
