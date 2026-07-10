@@ -200,8 +200,7 @@ let soLate = false
 let noShow = true
 // ===================
 
-// /*
-// CHECKS ARE NOW DISABLED!!
+// /* // CHECKS ON/OFF TOGGLE!!
 // =========================
 // PERFORMING INITIAL CHECKS!
 console.log("INITIAL CHECKS:")
@@ -224,9 +223,8 @@ setTimeout(function(){
  console.log("Present: " + isPresent)
  console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
-// CHECKS ARE NOW DISABLED!!
 // =========================
-// */
+// */ CHECKS ON/OFF TOGGLE
 
 
 // ===================
@@ -246,7 +244,6 @@ setInterval(() => {
  let thisHour = thisDate.getHours()
  let thisMinute = thisDate.getMinutes()
  let thisSecond = thisDate.getSeconds()
-
 
  // SETTING UP & UPDATING ELEMENTS
  // DOUBLE MONTH
@@ -273,64 +270,61 @@ setInterval(() => {
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
-								// USE THIS NEW VARIABLE TO GET CURRENT PERIOD!
 let theTime = parseInt(thisHour+""+thisMinute)
-								// ADD THE RECESS BREAKS & MAKE BAR LIGHT YELLOW!
-								// BREAKS GO FROM 11 TO 18
 
 // CLASS PERIOD - 0:00 (0)
 if (theTime >= 0000 && theTime <= 0759) { thisPeriod = 0 }
 
 // CLASS PERIOD - 8:00 (1)
-else if (theTime >= 0800 && theTime <= 0914) { thisPeriod = 1 }
-else if (theTime >= 0915 && theTime <= 0929) { thisPeriod = 11 }
-else if (theTime >= 0800 && theTime <= 0814) { onTime }
-else if (theTime >= 0815 && theTime <= 0829) { soLate }
+else if (theTime >= 0800 && theTime <= 0814) { onTime = true; noShow = false }
+else if (theTime >= 0815 && theTime <= 0829) { soLate = true; noShow = false }
+else if (theTime >= 0800 && theTime <= 0914) { thisPeriod = 1; noShow = true }
+else if (theTime >= 0915 && theTime <= 0929) { thisPeriod = 11; noShow = true }
 
 // CLASS PERIOD - 09:30 (2)
-else if (theTime >= 0930 && theTime <= 1044) { thisPeriod = 2 }
-else if (theTime >= 1045 && theTime <= 1059) { thisPeriod = 12 }
-else if (theTime >= 0930 && theTime <= 0944) { onTime }
-else if (theTime >= 0945 && theTime <= 0959) { soLate }
+else if (theTime >= 0930 && theTime <= 0944) { onTime = true; noShow = false }
+else if (theTime >= 0945 && theTime <= 0959) { soLate = true; noShow = false }
+else if (theTime >= 0930 && theTime <= 1044) { thisPeriod = 2; noShow = true }
+else if (theTime >= 1045 && theTime <= 1059) { thisPeriod = 12; noShow = true }
 
 // CLASS PERIOD - 11:00 (3)
-else if (theTime >= 1100 && theTime <= 1214) { thisPeriod = 3 }
-else if (theTime >= 1215 && theTime <= 1229) { thisPeriod = 13 }
-else if (theTime >= 1100 && theTime <= 1114) { onTime }
-else if (theTime >= 1115 && theTime <= 1129) { soLate }
+else if (theTime >= 1100 && theTime <= 1114) { onTime = true; noShow = false }
+else if (theTime >= 1115 && theTime <= 1129) { soLate = true; noShow = false }
+else if (theTime >= 1100 && theTime <= 1214) { thisPeriod = 3; noShow = true }
+else if (theTime >= 1215 && theTime <= 1229) { thisPeriod = 13; noShow = true }
 
 // CLASS PERIOD - 12:30 (4)
-else if (theTime >= 1230 && theTime <= 1344) { thisPeriod = 4 }
-else if (theTime >= 1345 && theTime <= 1359) { thisPeriod = 14 }
-else if (theTime >= 1230 && theTime <= 1244) { onTime }
-else if (theTime >= 1245 && theTime <= 1259) { soLate }
+else if (theTime >= 1230 && theTime <= 1244) { onTime = true; noShow = false }
+else if (theTime >= 1245 && theTime <= 1259) { soLate = true; noShow = false }
+else if (theTime >= 1230 && theTime <= 1344) { thisPeriod = 4; noShow = true }
+else if (theTime >= 1345 && theTime <= 1359) { thisPeriod = 14; noShow = true }
 
 // CLASS PERIOD - 14:00 (5)
-else if (theTime >= 1400 && theTime <= 1514) { thisPeriod = 5 }
-else if (theTime >= 1515 && theTime <= 1529) { thisPeriod = 15 }
-else if (theTime >= 1400 && theTime <= 1414) { onTime }
-else if (theTime >= 1415 && theTime <= 1429) { soLate }
+else if (theTime >= 1400 && theTime <= 1414) { onTime = true; noShow = false }
+else if (theTime >= 1415 && theTime <= 1429) { soLate = true; noShow = false }
+else if (theTime >= 1400 && theTime <= 1514) { thisPeriod = 5; noShow = true }
+else if (theTime >= 1515 && theTime <= 1529) { thisPeriod = 15; noShow = true }
 
 // CLASS PERIOD - 15:30 (6)
-else if (theTime >= 1530 && theTime <= 1644) { thisPeriod = 6 }
-else if (theTime >= 1645 && theTime <= 1659) { thisPeriod = 16 }
-else if (theTime >= 1530 && theTime <= 1544) { onTime }
-else if (theTime >= 1545 && theTime <= 1559) { soLate }
+else if (theTime >= 1530 && theTime <= 1544) { onTime = true; noShow = false }
+else if (theTime >= 1545 && theTime <= 1559) { soLate = true; noShow = false }
+else if (theTime >= 1530 && theTime <= 1644) { thisPeriod = 6; noShow = true }
+else if (theTime >= 1645 && theTime <= 1659) { thisPeriod = 16; noShow = true }
 
 // CLASS PERIOD - 17:00 (7)
-else if (theTime >= 1700 && theTime <= 1814) { thisPeriod = 7 }
-else if (theTime >= 1815 && theTime <= 1829) { thisPeriod = 17 }
-else if (theTime >= 1700 && theTime <= 1714) { onTime }
-else if (theTime >= 1715 && theTime <= 1729) { soLate }
+else if (theTime >= 1700 && theTime <= 1714) { onTime = true; noShow = false }
+else if (theTime >= 1715 && theTime <= 1729) { soLate = true; noShow = false }
+else if (theTime >= 1700 && theTime <= 1814) { thisPeriod = 7; noShow = true }
+else if (theTime >= 1815 && theTime <= 1829) { thisPeriod = 17; noShow = true }
 
 // CLASS PERIOD - 18:30 (8)
-else if (theTime >= 1830 && theTime <= 1944) { thisPeriod = 8 }
-else if (theTime >= 1945 && theTime <= 2359) { thisPeriod = 18 }
-else if (theTime >= 1830 && theTime <= 1844) { onTime }
-else if (theTime >= 1845 && theTime <= 1859) { soLate }
+else if (theTime >= 1830 && theTime <= 1844) { onTime = true; noShow = false }
+else if (theTime >= 1845 && theTime <= 1859) { soLate = true; noShow = false }
+else if (theTime >= 1830 && theTime <= 1944) { thisPeriod = 8; noShow = true }
+else if (theTime >= 1945 && theTime <= 2359) { thisPeriod = 18; noShow = true }
 
 // ANY OTHER TIME - NO SHOW!
-else { noShow = true; thisPeriod = 24 }
+else if (!onTime || !soLate) { noShow = true; thisPeriod = 24 }
 
 
 // ==============================
@@ -339,8 +333,6 @@ else { noShow = true; thisPeriod = 24 }
 let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
 if (theDiff <= 2000) { isPresent = true }
 else { isPresent = false }
-// CHECKING!
-// console.log("Test time: 18:48",theDiff,"Present: "+isPresent)
 
 
 // ========================
@@ -348,7 +340,8 @@ else { isPresent = false }
 // ========================
  let theFields = document.querySelectorAll(".inputFields")
  for(let studentInput of theFields) {
-  if (studentInput.value !== "") { studentInput.style.backgroundColor = "#88FF88" }
+  if (studentInput.value !== "" &&  studentInput.disabled) { studentInput.style.backgroundColor = "#AAFFAAcc" }
+  else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
   else { studentInput.style.backgroundColor = "" }
  }
 
@@ -383,18 +376,17 @@ else if (inputReady && soLate && !isPresent) {
  enableNames()
 }
 
-else if (isPresent) {
- currentStatus.innerHTML = "Estás presente... revisa la nómina."
- disableNames()
-}
-
-else {
+else if (noShow && !isPresent) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Inscripción finalizada!"
  enableNames()
 }
 
+else if (isPresent) {
+ currentStatus.innerHTML = "Estás presente... revisa la nómina."
+ disableNames()
+}
 
 // =========================
 // CURRENT TIME PROGRESS BAR
@@ -428,22 +420,28 @@ else if (thisPeriod == 24) { barSet = new Date(dateString+'00:00:00'); barEnd = 
 else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
 
 // TESTING HOURS - REMEMBER TO COMMENT OUT!!
-// barSet = new Date(dateString+'21:38:00')
+// barSet = new Date(dateString+'21:00:00')
 // barEnd = new Date(dateString+'22:00:00')
 
 // GETTING PERIOD PROGRESS (PERCENTAGE)!
 let thisDiff = (currentTime - barSet)/(barEnd - barSet)*100
 let barPercent = parseFloat(thisDiff).toFixed(4)
 
-// BAR COLORS
+// BAR COLORS FOR CLASS PERIODS
 let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
 let barPinkie = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 let barPurple = 'linear-gradient(to right, #FFCCFFdd 0%, #FF66FFdd ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+// BAR COLORS FOR NIGHTS AND BREAKS
+let barBlacky = 'linear-gradient(to right, #FFCCFFdd 0%, #FF66FFdd ' + barPercent + '%, #fff ' + barPercent + '%, black 100%)'
+let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 
 // SETTING PROGRESS BAR
 if (barPercent >= 00 && barPercent <= 20) { autoTime.style.background = barGreeny }
 if (barPercent >= 21 && barPercent <= 40) { autoTime.style.background = barPinkie }
 if (barPercent >= 41) { autoTime.style.background = barPurple }
+// BREAKS
+if (thisPeriod ==  0 || thisPeriod == 18) { autoTime.style.background = barBlacky }
+if (thisPeriod >= 11 && thisPeriod <= 17) { autoTime.style.background = barYellow }
 
 // ============
 // END TIME LOOP!
