@@ -178,6 +178,8 @@ function loadData() {
 
 // DECLARING ALL ELLEMENTS
 // ===================
+// ALL FIXED INPUT ELEMENTS!
+let autoTime = document.getElementById("autoTime")
 let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
@@ -189,6 +191,7 @@ let attendBT = document.getElementById("attendButton")
 // VARIABLES
 let currentStatus = document.getElementById("currentStatus")
 let currentTime // IN MILLISECONDS, UPDATE LATER!
+let thisPeriod = 0 // UPDATED LATER IN PERIOD FUNCTIONS!
 let notPresent = true // CHECKS PREVIOUS ATTENDANCE!
 let inputReady // CHECKS STUDENT INPUTS ARE READY!
 // TIME VARIABLES
@@ -214,7 +217,9 @@ setTimeout(function(){
  console.log("\nCURRENT STATUS:")
 }, 1800)
 setTimeout(function(){
+ console.log("Period: " + thisPeriod)
  console.log("Inputs: " + inputReady)
+ console.log("Absent: " + isAbsent)
  console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
 
@@ -253,7 +258,6 @@ setInterval(() => {
  autoDate.value = autoDateString
 
  // UPDATING AUTO-TIME
- var autoTime = document.getElementById("autoTime")
  thisHour = checkTime(thisHour)
  thisMinute = checkTime(thisMinute)
  thisSecond = checkTime(thisSecond)
@@ -265,51 +269,55 @@ setInterval(() => {
 // ===========================
 
 // CLASS PERIOD - 8:00 (1)
-if (thisHour ==  8) {
+if (thisHour ==  8) { thisPeriod = 1
      if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
      }
 
 // CLASS PERIOD - 09:30 (2)
-else if (thisHour ==  9) {
+else if (thisHour ==  9) { thisPeriod = 2
      if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }}
-else if (thisHour ==  10 && thisMinute == 00) { soLate = true }
+     if (thisMinute >= 46) { soLate = true }
+     }
+else if (thisHour == 10 && thisMinute == 00) { soLate = true }
 
 // CLASS PERIOD - 11:00 (3)
-else if (thisHour == 11) {
+else if (thisHour == 11) { thisPeriod = 3
      if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
      }
 
 // CLASS PERIOD - 12:30 (4)
-else if (thisHour == 12) {
+else if (thisHour == 12) { thisPeriod=4
      if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }}
-else if (thisHour ==  13 && thisMinute == 00) { soLate = true }
+     if (thisMinute >= 46) { soLate = true }
+     }
+else if (thisHour == 13 && thisMinute == 00) { soLate = true }
 
 // CLASS PERIOD - 14:00 (5)
-else if (thisHour == 14) {
+else if (thisHour == 14) { thisPeriod = 5
      if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
      }
 
 // CLASS PERIOD - 15:30 (6)
-else if (thisHour == 15) {
+else if (thisHour == 15) { thisPeriod = 6
      if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }}
-else if (thisHour ==  16 && thisMinute == 00) { soLate = true }
+     if (thisMinute >= 46) { soLate = true }
+     }
+else if (thisHour == 16 && thisMinute == 00) { soLate = true }
 
 // CLASS PERIOD - 17:00 (7)
-else if (thisHour == 17) {
+else if (thisHour == 17) { thisPeriod = 7
      if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
      if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
      }
 
 // CLASS PERIOD - 18:30 (8)
-else if (thisHour == 18) {
+else if (thisHour == 18) { thisPeriod = 8
      if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }}
+     if (thisMinute >= 46) { soLate = true }
+     }
 else if (thisHour ==  19 && thisMinute == 00) { soLate = true }
 
 // TESTING - REMEMBER TO COMMENT OUT!
@@ -319,13 +327,23 @@ else if (thisHour ==  19 && thisMinute == 00) { soLate = true }
 //     }
 
 // TESTING - REMEMBER TO COMMENT OUT!
-// else if (thisHour == 22) {
+// else if (thisHour == 20) {
 //     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
 //     if (thisMinute >= 46) { soLate = true }
 //     }
 
 // ANY OTHER TIME - NO SHOW!
-else { noShow = true }
+else { noShow = true; thisPeriod = 0 }
+
+
+// ==============================
+// CHECKING PREVIOUS ATTENDANCE!
+// ==============================
+let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
+if (theDiff <= 2000) { isAbsent = true }
+else { isAbsent = false }
+// CHECKING!
+// console.log("Test time: 18:48",theDiff,"Absent: "+isAbsent)
 
 
 // ========================
@@ -347,18 +365,6 @@ if (thisClass.value !== "" && thisTeach.value !== "" &&
 else { inputReady = false } // EMPTY INPUTS!
 
 
-
-// ==============================
-// CHECKING PREVIOUS ATTENDANCE!
-// ==============================
-let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
-if (theDiff <= 2000) { notPresent = false }
-else { notPresent = true }
-// CHECKING!
-// console.log("Test time: 18:48",theDiff,"Absent: "+notPresent)
-
-
-
 // ===============
 // SHOW BUTTONS??
 // ===============
@@ -367,7 +373,8 @@ if (inputReady && onTime && notPresent) {
  attendBT.style.background = "green"
  attendBT.innerHTML = "PRESENTE!"
  rosterBT.style.display = "none"
- currentStatus.innerHTML = "Muy bien... estás a tiempo:"
+ currentStatus.innerHTML = "Muy bien... estás a tiempo!"
+ enableNames()
 }
 
 else if (inputReady && soLate && notPresent) {
@@ -375,10 +382,14 @@ else if (inputReady && soLate && notPresent) {
  attendBT.style.background = "red"
  attendBT.innerHTML = "TARDE!"
  rosterBT.style.display = "none"
- currentStatus.innerHTML = "Tarde... registrar igualmente:"
+ currentStatus.innerHTML = "Tarde... registrar igualmente!"
+ enableNames()
 }
 
-else if (!notPresent) { currentStatus.innerHTML = "Registrado... revisa la nómina."}
+else if (!notPresent) {
+ currentStatus.innerHTML = "Estás presente... revisa la nómina."
+ disableNames()
+}
 
 else {
  rosterBT.style.display = "block"
@@ -387,6 +398,30 @@ else {
 }
 
 
+// =========================
+// CURRENT TIME PROGRESS BAR
+// =========================
+let barSet
+let barEnd
+let barDif
+let dateString = thisYear + "-" + checkTime(thisMonth) + "-" + checkTime(thisDay) + "T"
+     if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'08:30:00') }
+else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:00:00') }
+else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'11:30:00') }
+else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:00:00') }
+else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'14:30:00') }
+else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:00:00') }
+else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'17:30:00') }
+else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:00:00') }
+else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
+
+// GETTING PERIOD PROGRESS (PERCENTAGE)!
+let thisDiff = (currentTime-barSet)/(barEnd-barSet)*100
+let barPercent = parseFloat(thisDiff).toFixed(4)
+
+// SETTING PROGRESS BAR
+if (barPercent <= 49) { autoTime.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, white 100%)' }
+if (barPercent >= 50) { autoTime.style.background = 'linear-gradient(to right, pink 0%, #FF3333dd ' + barPercent + '%, #fff ' + barPercent + '%, white 100%)' }
 
 // ============
 // END TIME LOOP!
