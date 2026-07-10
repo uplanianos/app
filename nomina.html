@@ -190,11 +190,11 @@ let rosterBT = document.getElementById("rosterButton")
 let attendBT = document.getElementById("attendButton")
 // VARIABLES
 let currentStatus = document.getElementById("currentStatus")
-let currentTime // IN MILLISECONDS, UPDATE LATER!
-let thisPeriod = 0 // UPDATED LATER IN PERIOD FUNCTIONS!
 let isPresent = false // CHECKS PREVIOUS ATTENDANCE!
 let inputReady // CHECKS STUDENT INPUTS ARE READY!
 // TIME VARIABLES
+let currentTime // IN MILLISECONDS, UPDATE LATER!
+let thisPeriod = 0 // UPDATED LATER IN PERIOD FUNCTIONS!
 let onTime = false
 let soLate = false
 let noShow = true
@@ -203,25 +203,18 @@ let noShow = true
 // /* // CHECKS ON/OFF TOGGLE!!
 // =========================
 // PERFORMING INITIAL CHECKS!
-console.log("INITIAL CHECKS:")
 setTimeout(function(){
- console.log("Class: " + thisClass.value)
- console.log("Teacher: " + thisTeach.value)
- console.log("LNs: " + lastNames.value)
- console.log("FNs: " + firstNames.value)
+ console.log("\nINTIAL CHECKS:")
  console.log("Attended: " + attendTime.value)
- // Buttons!
- console.log("\nBUTTON DISPLAY:\nAttend: " + attendBT.style.display)
- console.log("Roster: " + rosterBT.style.display)
+ console.log("\nVARIABLES:")
 }, 1000)
-setTimeout(function(){
- console.log("\nCURRENT STATUS:")
-}, 1800)
 setTimeout(function(){
  console.log("Period: " + thisPeriod)
  console.log("Inputs: " + inputReady)
  console.log("Present: " + isPresent)
- console.log("Status: " + currentStatus.innerHTML)
+ console.log("onTime: " + onTime)
+ console.log("soLate: " + soLate)
+ console.log("noShow: " + noShow)
 }, 2000)
 // =========================
 // */ CHECKS ON/OFF TOGGLE
@@ -340,7 +333,7 @@ else { isPresent = false }
 // ========================
  let theFields = document.querySelectorAll(".inputFields")
  for(let studentInput of theFields) {
-  if (studentInput.value !== "" &&  studentInput.disabled) { studentInput.style.backgroundColor = "#AAFFAAcc" }
+  if (studentInput.value !== "" &&  studentInput.disabled) { studentInput.style.backgroundColor = "#CCFFCCee" }
   else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
   else { studentInput.style.backgroundColor = "" }
  }
