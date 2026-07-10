@@ -200,7 +200,9 @@ let soLate = false
 let noShow = true
 // ===================
 
-
+/*
+// CHECKS ARE NOW DISABLED!!
+// =========================
 // PERFORMING INITIAL CHECKS!
 console.log("INITIAL CHECKS:")
 setTimeout(function(){
@@ -222,6 +224,9 @@ setTimeout(function(){
  console.log("Absent: " + isAbsent)
  console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
+// CHECKS ARE NOW DISABLED!!
+// =========================
+*/
 
 
 // ===================
@@ -405,23 +410,33 @@ let barSet
 let barEnd
 let barDif
 let dateString = thisYear + "-" + checkTime(thisMonth) + "-" + checkTime(thisDay) + "T"
-     if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'08:30:00') }
-else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:00:00') }
-else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'11:30:00') }
-else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:00:00') }
-else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'14:30:00') }
-else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:00:00') }
-else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'17:30:00') }
-else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:00:00') }
+     if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
+else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:45:00') }
+else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:15:00') }
+else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:45:00') }
+else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'15:15:00') }
+else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:45:00') }
+else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:15:00') }
+else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:45:00') }
 else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
 
+// TESTING HOURS - REMEMBER TO COMMENT OUT!!
+// barSet = new Date(dateString+'21:38:00')
+// barEnd = new Date(dateString+'22:00:00')
+
 // GETTING PERIOD PROGRESS (PERCENTAGE)!
-let thisDiff = (currentTime-barSet)/(barEnd-barSet)*100
+let thisDiff = (currentTime - barSet)/(barEnd - barSet)*100
 let barPercent = parseFloat(thisDiff).toFixed(4)
 
+// BAR COLORS
+let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
+let barPinkie = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+let barPurple = 'linear-gradient(to right, #FFCCFFdd 0%, #FF66FFdd ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+
 // SETTING PROGRESS BAR
-if (barPercent <= 49) { autoTime.style.background = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, white 100%)' }
-if (barPercent >= 50) { autoTime.style.background = 'linear-gradient(to right, pink 0%, #FF3333dd ' + barPercent + '%, #fff ' + barPercent + '%, white 100%)' }
+if (barPercent >= 00 && barPercent <= 20) { autoTime.style.background = barGreeny }
+if (barPercent >= 21 && barPercent <= 40) { autoTime.style.background = barPinkie }
+if (barPercent >= 41) { autoTime.style.background = barPurple }
 
 // ============
 // END TIME LOOP!
