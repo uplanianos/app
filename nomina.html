@@ -192,7 +192,7 @@ let attendBT = document.getElementById("attendButton")
 let currentStatus = document.getElementById("currentStatus")
 let currentTime // IN MILLISECONDS, UPDATE LATER!
 let thisPeriod = 0 // UPDATED LATER IN PERIOD FUNCTIONS!
-let notPresent = true // CHECKS PREVIOUS ATTENDANCE!
+let isPresent = false // CHECKS PREVIOUS ATTENDANCE!
 let inputReady // CHECKS STUDENT INPUTS ARE READY!
 // TIME VARIABLES
 let onTime = false
@@ -200,7 +200,7 @@ let soLate = false
 let noShow = true
 // ===================
 
-/*
+// /*
 // CHECKS ARE NOW DISABLED!!
 // =========================
 // PERFORMING INITIAL CHECKS!
@@ -221,12 +221,12 @@ setTimeout(function(){
 setTimeout(function(){
  console.log("Period: " + thisPeriod)
  console.log("Inputs: " + inputReady)
- console.log("Absent: " + isAbsent)
+ console.log("Present: " + isPresent)
  console.log("Status: " + currentStatus.innerHTML)
 }, 2000)
 // CHECKS ARE NOW DISABLED!!
 // =========================
-*/
+// */
 
 
 // ===================
@@ -273,82 +273,74 @@ setInterval(() => {
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
+								// USE THIS NEW VARIABLE TO GET CURRENT PERIOD!
+let theTime = parseInt(thisHour+""+thisMinute)
+								// ADD THE RECESS BREAKS & MAKE BAR LIGHT YELLOW!
+								// BREAKS GO FROM 11 TO 18
+
+// CLASS PERIOD - 0:00 (0)
+if (theTime >= 0000 && theTime <= 0759) { thisPeriod = 0 }
+
 // CLASS PERIOD - 8:00 (1)
-if (thisHour ==  8) { thisPeriod = 1
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
-     }
+else if (theTime >= 0800 && theTime <= 0914) { thisPeriod = 1 }
+else if (theTime >= 0915 && theTime <= 0929) { thisPeriod = 11 }
+else if (theTime >= 0800 && theTime <= 0814) { onTime }
+else if (theTime >= 0815 && theTime <= 0829) { soLate }
 
 // CLASS PERIOD - 09:30 (2)
-else if (thisHour ==  9) { thisPeriod = 2
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }
-     }
-else if (thisHour == 10 && thisMinute == 00) { soLate = true }
+else if (theTime >= 0930 && theTime <= 1044) { thisPeriod = 2 }
+else if (theTime >= 1045 && theTime <= 1059) { thisPeriod = 12 }
+else if (theTime >= 0930 && theTime <= 0944) { onTime }
+else if (theTime >= 0945 && theTime <= 0959) { soLate }
 
 // CLASS PERIOD - 11:00 (3)
-else if (thisHour == 11) { thisPeriod = 3
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
-     }
+else if (theTime >= 1100 && theTime <= 1214) { thisPeriod = 3 }
+else if (theTime >= 1215 && theTime <= 1229) { thisPeriod = 13 }
+else if (theTime >= 1100 && theTime <= 1114) { onTime }
+else if (theTime >= 1115 && theTime <= 1129) { soLate }
 
 // CLASS PERIOD - 12:30 (4)
-else if (thisHour == 12) { thisPeriod=4
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }
-     }
-else if (thisHour == 13 && thisMinute == 00) { soLate = true }
+else if (theTime >= 1230 && theTime <= 1344) { thisPeriod = 4 }
+else if (theTime >= 1345 && theTime <= 1359) { thisPeriod = 14 }
+else if (theTime >= 1230 && theTime <= 1244) { onTime }
+else if (theTime >= 1245 && theTime <= 1259) { soLate }
 
 // CLASS PERIOD - 14:00 (5)
-else if (thisHour == 14) { thisPeriod = 5
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
-     }
+else if (theTime >= 1400 && theTime <= 1514) { thisPeriod = 5 }
+else if (theTime >= 1515 && theTime <= 1529) { thisPeriod = 15 }
+else if (theTime >= 1400 && theTime <= 1414) { onTime }
+else if (theTime >= 1415 && theTime <= 1429) { soLate }
 
 // CLASS PERIOD - 15:30 (6)
-else if (thisHour == 15) { thisPeriod = 6
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }
-     }
-else if (thisHour == 16 && thisMinute == 00) { soLate = true }
+else if (theTime >= 1530 && theTime <= 1644) { thisPeriod = 6 }
+else if (theTime >= 1645 && theTime <= 1659) { thisPeriod = 16 }
+else if (theTime >= 1530 && theTime <= 1544) { onTime }
+else if (theTime >= 1545 && theTime <= 1559) { soLate }
 
 // CLASS PERIOD - 17:00 (7)
-else if (thisHour == 17) { thisPeriod = 7
-     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
-     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
-     }
+else if (theTime >= 1700 && theTime <= 1814) { thisPeriod = 7 }
+else if (theTime >= 1815 && theTime <= 1829) { thisPeriod = 17 }
+else if (theTime >= 1700 && theTime <= 1714) { onTime }
+else if (theTime >= 1715 && theTime <= 1729) { soLate }
 
 // CLASS PERIOD - 18:30 (8)
-else if (thisHour == 18) { thisPeriod = 8
-     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-     if (thisMinute >= 46) { soLate = true }
-     }
-else if (thisHour ==  19 && thisMinute == 00) { soLate = true }
-
-// TESTING - REMEMBER TO COMMENT OUT!
-// else if (thisHour == 21) {
-//     if (thisMinute >=  0 && thisMinute <= 15) { onTime = true }
-//     if (thisMinute >= 16 && thisMinute <= 30) { soLate = true }
-//     }
-
-// TESTING - REMEMBER TO COMMENT OUT!
-// else if (thisHour == 20) {
-//     if (thisMinute >= 30 && thisMinute <= 45) { onTime = true }
-//     if (thisMinute >= 46) { soLate = true }
-//     }
+else if (theTime >= 1830 && theTime <= 1944) { thisPeriod = 8 }
+else if (theTime >= 1945 && theTime <= 2359) { thisPeriod = 18 }
+else if (theTime >= 1830 && theTime <= 1844) { onTime }
+else if (theTime >= 1845 && theTime <= 1859) { soLate }
 
 // ANY OTHER TIME - NO SHOW!
-else { noShow = true; thisPeriod = 0 }
+else { noShow = true; thisPeriod = 24 }
 
 
 // ==============================
 // CHECKING PREVIOUS ATTENDANCE!
 // ==============================
 let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
-if (theDiff <= 2000) { isAbsent = true }
-else { isAbsent = false }
+if (theDiff <= 2000) { isPresent = true }
+else { isPresent = false }
 // CHECKING!
-// console.log("Test time: 18:48",theDiff,"Absent: "+isAbsent)
+// console.log("Test time: 18:48",theDiff,"Present: "+isPresent)
 
 
 // ========================
@@ -373,7 +365,7 @@ else { inputReady = false } // EMPTY INPUTS!
 // ===============
 // SHOW BUTTONS??
 // ===============
-if (inputReady && onTime && notPresent) {
+if (inputReady && onTime && !isPresent) {
  attendBT.style.display = "block"
  attendBT.style.background = "green"
  attendBT.innerHTML = "PRESENTE!"
@@ -382,7 +374,7 @@ if (inputReady && onTime && notPresent) {
  enableNames()
 }
 
-else if (inputReady && soLate && notPresent) {
+else if (inputReady && soLate && !isPresent) {
  attendBT.style.display = "block"
  attendBT.style.background = "red"
  attendBT.innerHTML = "TARDE!"
@@ -391,7 +383,7 @@ else if (inputReady && soLate && notPresent) {
  enableNames()
 }
 
-else if (!notPresent) {
+else if (isPresent) {
  currentStatus.innerHTML = "Estás presente... revisa la nómina."
  disableNames()
 }
@@ -400,6 +392,7 @@ else {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Inscripción finalizada!"
+ enableNames()
 }
 
 
@@ -410,7 +403,10 @@ let barSet
 let barEnd
 let barDif
 let dateString = thisYear + "-" + checkTime(thisMonth) + "-" + checkTime(thisDay) + "T"
-     if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
+// NIGHT TIME!
+if (thisPeriod == 0) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'07:59:59') }
+// CLASS PERIODS
+else if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
 else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:45:00') }
 else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:15:00') }
 else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:45:00') }
@@ -418,6 +414,17 @@ else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = n
 else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:45:00') }
 else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:15:00') }
 else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:45:00') }
+// BREAK PERIODS
+else if (thisPeriod == 11) { barSet = new Date(dateString+'09:15:00'); barEnd = new Date(dateString+'09:29:00') }
+else if (thisPeriod == 12) { barSet = new Date(dateString+'10:45:00'); barEnd = new Date(dateString+'10:59:00') }
+else if (thisPeriod == 13) { barSet = new Date(dateString+'12:15:00'); barEnd = new Date(dateString+'12:29:00') }
+else if (thisPeriod == 14) { barSet = new Date(dateString+'13:45:00'); barEnd = new Date(dateString+'13:59:00') }
+else if (thisPeriod == 15) { barSet = new Date(dateString+'15:15:00'); barEnd = new Date(dateString+'15:29:00') }
+else if (thisPeriod == 16) { barSet = new Date(dateString+'16:45:00'); barEnd = new Date(dateString+'16:59:00') }
+else if (thisPeriod == 17) { barSet = new Date(dateString+'18:15:00'); barEnd = new Date(dateString+'18:29:00') }
+else if (thisPeriod == 18) { barSet = new Date(dateString+'19:45:00'); barEnd = new Date(dateString+'23:59:59') }
+// NIGHT TIME AGAIN
+else if (thisPeriod == 24) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
 else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
 
 // TESTING HOURS - REMEMBER TO COMMENT OUT!!
@@ -449,14 +456,16 @@ if (barPercent >= 41) { autoTime.style.background = barPurple }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- alert("Registrando!")
  attendTime.value = currentTime
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
+ alert("Registrando!")
+ console.log("Registrando!")
 })
 
 rosterBT.addEventListener("click", function() {
- alert("Ver nómina!")
+ alert("Abriendo nómina!")
+ console.log("Abriendo nómina!")
 })
 
 
