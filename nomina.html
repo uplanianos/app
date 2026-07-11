@@ -51,7 +51,8 @@ body::-webkit-scrollbar { display: none; }
 .inputFields {
  display: flex-grid; width: 320px;
  margin: auto; margin-left: 20%;
- color: #0000CC; background: #FFF;
+ color: #0000CC;
+ background: #FFF;
  text-align: center; font-size: 14px;
  font-family: Verdana, Tahoma;
  border: 1px solid white;
@@ -63,6 +64,8 @@ body::-webkit-scrollbar { display: none; }
 
 .inputFields::placeholder { opacity: 0.6; color: red; }
 .inputFields:focus { background-color: yellow; }
+
+#autoTime {  }
 
 .allButtons {
  margin: auto;
@@ -106,26 +109,22 @@ body::-webkit-scrollbar { display: none; }
 <body>
 
 
-<div class="titleDiv">
+<div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
   <span id="reg" onClick="resetButton(this)">Registro</span> de
   <span id="asi" onClick="resetButton(this)">Asistencia</span>
   <span id="aut" onClick="resetButton(this)">Automática</span>:
  </div>
  <div class="rollDiv">
- FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
- HORA ACTUAL:&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ HORA ACTUAL:&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00:00" disabled style="cursor: not-allowed; background: #CCFFCCee"><br><br>
  <span id="internetTime" style="display: none; visibility: hidden;">
- HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
- </span>
+ HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br> </span>
  ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisClass" placeholder="* Nombre Asignatura"><br><br>
- ACADÉMICO/A:&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
+ DOCENTE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
  TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="* Apellido Apellido"><br><br>
  <span id="stu" onClick="resetButton(this)">TUS NOMBRES:</span>&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
-
- <span style="display: none;">
- ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
- </span>
-
+ <!-- RESET CLICKABLE ELEMENTS --><span style="display: none;">
+ ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br></span>
  <div class="allButtons">
   <div style="font-size: 10px;text-align: center; padding: 6px;" id="currentStatus">Completa tus datos!</div>
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina!</div>
@@ -133,6 +132,13 @@ body::-webkit-scrollbar { display: none; }
  </div>
 
 </div>
+
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
 
 </body>
 
@@ -183,6 +189,7 @@ function loadData() {
 // DECLARING ALL ELLEMENTS
 // ===================
 // ALL FIXED INPUT ELEMENTS!
+let autoDate = document.getElementById("autoDate")
 let autoTime = document.getElementById("autoTime")
 let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
@@ -208,8 +215,11 @@ let noShow = true
 // =========================
 // PERFORMING INITIAL CHECKS!
 setTimeout(function(){
- console.log("\nINTIAL CHECKS:")
+ let lastAttend = parseInt(attendTime.value)
+ let lastToLocale = new Date(lastAttend).toLocaleString()
+ console.log("\nLAST ATTENDANCE:")
  console.log("Attended: " + attendTime.value)
+ console.log("Converted: " + lastToLocale)
  console.log("\nVARIABLES:")
 }, 1000)
 setTimeout(function(){
@@ -221,7 +231,7 @@ setTimeout(function(){
  console.log("noShow: " + noShow)
 }, 1500)
 // =========================
-// */ CHECKS ON/OFF TOGGLE
+// */ // CHECKS ON/OFF TOGGLE
 
 
 // ===================
@@ -243,17 +253,9 @@ setInterval(() => {
  let thisSecond = thisDate.getSeconds()
 
  // SETTING UP & UPDATING ELEMENTS
- // DOUBLE MONTH
- var doubleMonth
- if (thisMonth >= 1 && thisMonth <=9) { doubleMonth = "0" + thisMonth }
- else { doubleMonth = thisMonth }
- // DOUBLE DATE
- var doubleDay
- if (thisDay.toString().length == 1) { doubleDay = "0" + thisDay }
- else { doubleDay = thisDay }
- // UPDATING AUTO-DATE:
- let autoDateString = thisYear + "-" + doubleMonth + "-" + doubleDay
- var autoDate = document.getElementById("autoDate")
+ thisMonth = checkTime(thisMonth)
+ thisDay = checkTime(thisDay)
+ autoDateString = thisYear + "-" + thisMonth + "-" + thisDay
  autoDate.value = autoDateString
 
  // UPDATING AUTO-TIME
@@ -267,9 +269,9 @@ setInterval(() => {
 // TIME PERIODS FUNCTIONALITY!
 // ===========================
 
-let theTime = parseInt(thisHour+""+thisMinute)
+let theTime = parseInt(thisHour+""+thisMinute) // FORMAT: 0800, or 1115, etc.
 
-// CLASS PERIOD - 0:00 (0)
+// CLASS PERIOD - 00:00 (0)
 if (theTime >= 0000 && theTime <= 0759) { thisPeriod = 0 }
 
 // CLASS PERIOD - 8:00 (1)
@@ -391,26 +393,26 @@ else if (isPresent) {
 let barSet
 let barEnd
 let barDif
-let dateString = thisYear + "-" + checkTime(thisMonth) + "-" + checkTime(thisDay) + "T"
+let dateString = autoDateString + "T"
 // NIGHT TIME!
 if (thisPeriod == 0) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'07:59:59') }
 // CLASS PERIODS
-else if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
-else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:45:00') }
-else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:15:00') }
-else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:45:00') }
-else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'15:15:00') }
-else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:45:00') }
-else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:15:00') }
-else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:45:00') }
+else if (thisPeriod == 1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:14:59') }
+else if (thisPeriod == 2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:44:59') }
+else if (thisPeriod == 3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:14:59') }
+else if (thisPeriod == 4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:44:59') }
+else if (thisPeriod == 5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'15:14:59') }
+else if (thisPeriod == 6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:44:59') }
+else if (thisPeriod == 7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:14:59') }
+else if (thisPeriod == 8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:44:59') }
 // BREAK PERIODS
-else if (thisPeriod == 11) { barSet = new Date(dateString+'09:15:00'); barEnd = new Date(dateString+'09:29:00') }
-else if (thisPeriod == 12) { barSet = new Date(dateString+'10:45:00'); barEnd = new Date(dateString+'10:59:00') }
-else if (thisPeriod == 13) { barSet = new Date(dateString+'12:15:00'); barEnd = new Date(dateString+'12:29:00') }
-else if (thisPeriod == 14) { barSet = new Date(dateString+'13:45:00'); barEnd = new Date(dateString+'13:59:00') }
-else if (thisPeriod == 15) { barSet = new Date(dateString+'15:15:00'); barEnd = new Date(dateString+'15:29:00') }
-else if (thisPeriod == 16) { barSet = new Date(dateString+'16:45:00'); barEnd = new Date(dateString+'16:59:00') }
-else if (thisPeriod == 17) { barSet = new Date(dateString+'18:15:00'); barEnd = new Date(dateString+'18:29:00') }
+else if (thisPeriod == 11) { barSet = new Date(dateString+'09:15:00'); barEnd = new Date(dateString+'09:29:59') }
+else if (thisPeriod == 12) { barSet = new Date(dateString+'10:45:00'); barEnd = new Date(dateString+'10:59:59') }
+else if (thisPeriod == 13) { barSet = new Date(dateString+'12:15:00'); barEnd = new Date(dateString+'12:29:59') }
+else if (thisPeriod == 14) { barSet = new Date(dateString+'13:45:00'); barEnd = new Date(dateString+'13:59:59') }
+else if (thisPeriod == 15) { barSet = new Date(dateString+'15:15:00'); barEnd = new Date(dateString+'15:29:59') }
+else if (thisPeriod == 16) { barSet = new Date(dateString+'16:45:00'); barEnd = new Date(dateString+'16:59:59') }
+else if (thisPeriod == 17) { barSet = new Date(dateString+'18:15:00'); barEnd = new Date(dateString+'18:29:59') }
 else if (thisPeriod == 18) { barSet = new Date(dateString+'19:45:00'); barEnd = new Date(dateString+'23:59:59') }
 // NIGHT TIME AGAIN
 else if (thisPeriod == 24) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
@@ -427,7 +429,7 @@ let barPercent = parseFloat(thisDiff).toFixed(4)
 // BAR COLORS FOR CLASS PERIODS
 let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
 let barPinkie = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
-let barPurple = 'linear-gradient(to right, #FFCCFFdd 0%, #FF66FFdd ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+let barPurple = 'linear-gradient(to right, #FFCCFFaa 0%, #FF66FFcc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 // BAR COLORS FOR NIGHTS AND BREAKS
 let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercent + '%, #8888CC ' + barPercent + '%, #8888CC 100%)'
 let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
@@ -482,20 +484,21 @@ rosterBT.addEventListener("click", function() {
 // ======================================
 // GETTING CLASS NAME FROM LINK PARAMETER!
 // ======================================
-var urlClass = (new URLSearchParams(window.location.search)).get("clase")
-var urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+let urlClass = (new URLSearchParams(window.location.search)).get("clase")
+let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
 // PRINTING CLASS ELEMENT
-thisClass.value = urlClass
-thisTeach.value = urlTeach
+if (urlClass !== null) { thisClass.value = urlClass }
+if (urlTeach !== null) { thisTeach.value = urlTeach }
+
 // DISABLING CLASS FIELD
-if (thisClass.value !== "" || thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
-if (thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+if (urlClass !== null && thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+
 // DISABLING TEACHER FIELD
-if (thisTeach.value !== "" || thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
-if (thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
+if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
 // FORMAT: /nomina.html?clase=Inglés Básico 2
 // FORMAT: /nomina.html?profe=Méndez, Juan
-
 
 // ============================
 // END OF MAIN SCRIPT FUNCTION!
