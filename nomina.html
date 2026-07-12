@@ -107,27 +107,38 @@ body::-webkit-scrollbar { display: none; }
 </style>
 </head>
 
-<body>
 
+<audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+<body>
 
 <div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
   <span id="reg" onClick="resetButton(this)">Registro</span> de
   <span id="asi" onClick="resetButton(this)">Asistencia</span>
   <span id="aut" onClick="resetButton(this)">Automática</span>:
  </div>
- <div class="rollDiv"><br>
+ <div class="rollDiv">
+ <br>
  FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
  HORA ACTUAL:&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00:00" disabled style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
 
  <span id="internetTime" style="display: none; visibility: hidden;">
- HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br></span>
+ HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ </span>
 
  ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisClass" placeholder="* Nombre Asignatura"><br><br>
  DOCENTE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
+
  TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="* Apellido Apellido"><br><br>
- <span id="stu" onClick="resetButton(this)">TUS NOMBRES:</span>&nbsp;&nbsp; <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
+ <span id="stu" onClick="resetButton(this)">TUS NOMBRES:</span>&nbsp;&nbsp;
+ <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
+
  <!-- RESET CLICKABLE ELEMENTS --><span style="display: none;">
- ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br></span>
+ ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
+ </span>
+
+ <br>
+
  <div class="allButtons">
   <div id="currentStatus" style="font-size: 10px;text-align: center; padding: 6px;">...</div>
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina!</div>
@@ -136,12 +147,10 @@ body::-webkit-scrollbar { display: none; }
 
 </div>
 
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
+ <br><br>
+ <br><br>
+ <br><br>
+ <br><br>
 
 </body>
 
@@ -476,6 +485,18 @@ rosterBT.addEventListener("click", function() {
  alert("Abriendo nómina!")
  console.log("Abriendo nómina!")
 })
+
+
+
+// DISABLED ELEMENTS SOUND
+// ====================
+let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
+autoDate.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+autoTime.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+thisClass.addEventListener("select", function() { if (thisClass.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisTeach.addEventListener("select", function() { if (thisTeach.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+lastNames.addEventListener("select", function() { if (lastNames.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+firstNames.addEventListener("select", function() { if (firstNames.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
