@@ -26,6 +26,8 @@ body {
 
 body::-webkit-scrollbar { display: none; }
 
+.return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
+
 .titleDiv {
  margin: auto;
  margin-bottom: 12px;
@@ -144,6 +146,7 @@ body::-webkit-scrollbar { display: none; }
 <audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 <body>
+<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
   <span id="reg" onClick="resetButton(this)">Registro</span> de
@@ -710,8 +713,26 @@ stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && a
 }
 
 
+
+// ======================
+// RETURN ARROW!!
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("return").style.top = "6px"; 
+  } else {
+    document.getElementById("return").style.top = "-40px"; 
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+
+
+
 // ======================
 // END OF JAVASCRIPT CODE!!
+
 </script>
 
 
