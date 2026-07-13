@@ -569,10 +569,10 @@ if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = fal
 let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
 autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
 autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-thisClass.addEventListener("select", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-thisTeach.addEventListener("select", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-lastNames.addEventListener("select", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-firstNames.addEventListener("select", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisClass.addEventListener("click", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+lastNames.addEventListener("click", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
