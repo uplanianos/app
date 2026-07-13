@@ -547,15 +547,15 @@ if (urlClass !== null) { thisClass.value = urlClass }
 if (urlTeach !== null) { thisTeach.value = urlTeach }
 
 // DISABLING CLASS FIELD
-// if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+// if (urlClass !== null && thisClass.value !== "") { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
 // if (urlClass !== null && thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
-if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.readOnly = true; thisClass.style.cursor = "not-allowed" }
+if (urlClass !== null && thisClass.value !== "") { thisClass.style.cursor = "not-allowed"; thisClass.readOnly = true; }
 if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false; thisClass.style.cursor = ""}
 
 // DISABLING TEACHER FIELD
-// if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+// if (urlTeach !== null && thisTeach.value !== "") { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
 // if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.readOnly = true; thisTeach.style.cursor = "not-allowed" }
+if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true; thisTeach.style.cursor = "not-allowed" }
 if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false; thisTeach.style.cursor = "not-allowed" }
 
 // =====
@@ -564,15 +564,15 @@ if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = fal
 
 
 
-// DISABLED ELEMENTS SOUND
+// READONLY ELEMENTS SOUND
 // ====================
 let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
 autoDate.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
 autoTime.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-thisClass.addEventListener("select", function() { if (thisClass.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-thisTeach.addEventListener("select", function() { if (thisTeach.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-lastNames.addEventListener("select", function() { if (lastNames.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-firstNames.addEventListener("select", function() { if (firstNames.disabled) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisClass.addEventListener("select", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisTeach.addEventListener("select", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+lastNames.addEventListener("select", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+firstNames.addEventListener("select", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
