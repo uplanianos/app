@@ -65,6 +65,8 @@ body::-webkit-scrollbar { display: none; }
 .theInputs::placeholder { opacity: 0.6; color: red; }
 .theInputs:focus { background-color: #FFFF66ee; outline: none; border: 1px solid #FF3333cc; }
 
+.theInputs[readonly] { cursor: not-allowed; }
+
 .buttonsDiv {
  display: grid;
  margin: auto;
@@ -252,8 +254,8 @@ let firstNames = document.getElementById("firstNames")
 let rollStatus = document.getElementById("attendance")
 let attendTime = document.getElementById("attendTime")
 // BUTTONS
-let rosterBT = document.getElementById("rosterButton")
 let attendBT = document.getElementById("attendButton")
+let rosterBT = document.getElementById("rosterButton")
 // VARIABLES
 let currentStatus = document.getElementById("currentStatus")
 let isPresent = false // CHECKS PREVIOUS ATTENDANCE!
@@ -268,7 +270,7 @@ let noShow = true
 
 
 
-// /* // CHECKS ON/OFF TOGGLE!!
+/* // CHECKS ON/OFF TOGGLE!!
 // =========================
 // PERFORMING INITIAL CHECKS!
 setTimeout(function(){
@@ -288,7 +290,7 @@ setTimeout(function(){
  console.log("noShow: " + noShow)
 }, 1500)
 // =========================
-// */ // CHECKS ON/OFF TOGGLE
+*/ // CHECKS ON/OFF TOGGLE
 
 
 
@@ -397,7 +399,7 @@ else { isPresent = false }
 // INPUTS READY!
 if (thisClass.value !== "" && thisTeach.value !== "" &&
     lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true; }
-else { inputReady = false } // EMPTY INPUTS!
+else { inputReady = false }
 
 
 
@@ -531,7 +533,7 @@ attendBT.addEventListener("click", function() {
 rosterBT.addEventListener("click", function() {
  let thisLink = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
  rosterBT.innerHTML = "Abriendo..."
- setTimeout(function(){ window.open(thisLink, 'theRoster') }, 1000)
+ setTimeout(function(){ window.open(thisLink, '_blank') }, 1000)
  setTimeout(function(){ rosterBT.innerHTML = "Nómina" }, 2000)
 })
 
@@ -547,16 +549,12 @@ if (urlClass !== null) { thisClass.value = urlClass }
 if (urlTeach !== null) { thisTeach.value = urlTeach }
 
 // DISABLING CLASS FIELD
-// if (urlClass !== null && thisClass.value !== "") { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
-// if (urlClass !== null && thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
-if (urlClass !== null && thisClass.value !== "") { thisClass.style.cursor = "not-allowed"; thisClass.readOnly = true; }
-if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false; thisClass.style.cursor = ""}
+if (urlClass !== null && thisClass.value !== "") { thisClass.readOnly = true }
+if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false }
 
 // DISABLING TEACHER FIELD
-// if (urlTeach !== null && thisTeach.value !== "") { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
-// if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true; thisTeach.style.cursor = "not-allowed" }
-if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false; thisTeach.style.cursor = "not-allowed" }
+if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
+if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
 
 // =====
 // FORMAT: nomina.html?clase=Inglés Básico 2&profe=Méndez, Juan
@@ -668,14 +666,15 @@ return i
 // ENABLE INPUTS!
 // =============
 function enableInput() {
- thisClass.disabled = false
- thisTeach.disabled = false
- lastNames.disabled = false
- firstNames.disabled = false
- thisClass.style.cursor = ""
- thisTeach.style.cursor = ""
+ lastNames.readOnly = false
+ firstNames.readOnly = false
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
+// ENABLING CLASS & TEACHER FIELD
+let urlClass = (new URLSearchParams(window.location.search)).get("clase")
+let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+if (urlClass == null && thisClass.value == "") { thisClass.readOnly = false }
+if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = true }
 }
 
 
@@ -683,10 +682,10 @@ function enableInput() {
 // DISABLE INPUT!
 // =============
 function disableInput() {
- thisClass.disabled = true
- thisTeach.disabled = true
- lastNames.disabled = true
- firstNames.disabled = true
+ thisClass.readOnly = true
+ thisTeach.readOnly = true
+ lastNames.readOnly = true
+ firstNames.readOnly = true
  thisClass.style.cursor = "not-allowed"
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"

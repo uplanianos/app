@@ -52,12 +52,15 @@
      <button onclick="sideScrollInfo()" onMouseOver="sideScrollInfo()" class="slideInfoLeft" id="slideInfoLeft">&#8249;</button>
      <a href="horario.html"><div class="pretty-blue-bubble"><p>HORARIO<br>DE CLASES</p></div></a>
      <a href="temporizador.html"><div class="candy-red-bubble"><p>TEMPORIZADOR<br>DE CLASES</p></div></a>
+
+     <a href="nomina.html"><div class="pink-plum-bubble-top"><p>NÓMINA DE<br>ASISTENCIA</p></div></a>
+
      <a href="agenda.html"><div class="grass-green-bubble"><p>AGENDA<br>SEMESTRAL</p></div></a>
      <a href="calendario.html"><div  class="pale-blue-bubble-top"><p>CALENDARIO<br>ACADÉMICO</p></div></a>
      <a href="panel.html"><div class="pumpkin-bubble-top"><div class="newBadge" style="margin-left: 2px">Profe!</div><p>PANEL<br>DE CONTROL</p></div></a>
-     <a href="manual-estudiante.html"><div class="pink-plum-bubble-top"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
+     <a href="manual-estudiante.html"><div class="purple-iris-bubble-top"><p>MANUAL DEL<br>ESTUDIANTE</p></div></a>
      <a href="sigueparo.html"><div class="candy-red-bubble"><div class="newBadge">New!</div><p>PARO<br>TRACKER</p></div></a>
-     <a href="avance.html"><div class="purple-iris-bubble-top"><p>AVANCE<br>CURRICULAR</p></div></a>
+     <a href="avance.html"><div class="pink-plum-bubble-top"><p>AVANCE<br>CURRICULAR</p></div></a>
      <a href="notas.html"><div class="pumpkin-bubble-top"><p>ESCALAS<br>DE NOTAS</p></div></a>
      <button onclick="sideScrollInfo()" onMouseOver="sideScrollInfo()" class="slideInfoRight" id="slideInfoRight">&#8250;</button>
     </div>
@@ -185,8 +188,8 @@ counter.value++; // console.log(counter.value)
   slideToolsRight.style.visibility = "hidden"; slideToolsRight.style.display = "none"
   slideToolsLeft.style.visibility = "hidden"; slideToolsLeft.style.display = "none"
   // WHITEBOARD BUTTON
-  boardButton = document.getElementById('boardButton')
-  boardButton.style.visibility = "hidden"; boardButton.style.display = "none"
+  // boardButton = document.getElementById('boardButton')
+  // boardButton.style.visibility = "hidden"; boardButton.style.display = "none"
  }
  else if (counter.value <= 5) {
   setTimeout('demoSlide1()', 1000 * 0.4)
