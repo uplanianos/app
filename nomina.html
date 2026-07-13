@@ -677,7 +677,7 @@ function enableInput() {
 let urlClass = (new URLSearchParams(window.location.search)).get("clase")
 let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
 if (urlClass == null && thisClass.value == "") { thisClass.readOnly = false }
-if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = true }
+if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = false }
 }
 
 
