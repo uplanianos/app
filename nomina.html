@@ -567,8 +567,8 @@ if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = fal
 // READONLY ELEMENTS SOUND
 // ====================
 let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
-autoDate.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-autoTime.addEventListener("select", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
 thisClass.addEventListener("select", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 thisTeach.addEventListener("select", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 lastNames.addEventListener("select", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
