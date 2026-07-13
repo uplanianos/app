@@ -48,25 +48,25 @@ body::-webkit-scrollbar { display: none; }
  padding: 12px;
  }
 
-.inputFields {
+.theInputs {
  display: flex-grid; width: 320px;
  margin: auto; margin-left: 20%;
  color: #0000CC;
  background: #FFF;
  text-align: center; font-size: 14px;
- font-family: Verdana, Tahoma;
+ font-family: Verdana, Tahoma, Helvetica, Sans-serif;
  border: 1px solid cornflowerblue;
  border-radius: 12px;
  padding: 8px;
  text-transform: capitalize;
- disabled: true;
  box-shadow: 4px 4px 4px 2px rgb(0 0 0 / 0.5);
  }
 
-.inputFields::placeholder { opacity: 0.6; color: red; }
-.inputFields:focus { background-color: #FFFF66ee; outline: none; border: 1px solid #FF3333cc; }
+.theInputs::placeholder { opacity: 0.6; color: red; }
+.theInputs:focus { background-color: #FFFF66ee; outline: none; border: 1px solid #FF3333cc; }
 
-.allButtons {
+.buttonsDiv {
+ display: grid;
  margin: auto;
  margin-bottom: 10px;
  transform: translate(20%, 0px);
@@ -98,10 +98,41 @@ body::-webkit-scrollbar { display: none; }
  box-shadow: 2px 3px 4px 2px rgb(0 0 0 / 0.1);
  }
 
+.theButtons {
+ margin: auto;
+ width: 164px;
+ font-size: 12px;
+ font-family: Verdana, Tahoma, Helvetica, Sans-serif;
+ font-weight: bold;
+ text-align: center;
+ color: lightgray;
+ border: 2px solid lightgray;
+ border-radius: 6px;
+ margin: 6px 32px;
+ padding: 6px 32px;
+ cursor: pointer;
+ }
+
+.theButtons:hover {
+ color: white;
+ border: 2px solid white;
+ box-shadow: 2px 3px 4px 2px rgb(0 0 0 / 0.1);
+ }
+
+.message {
+ display: none;
+ background: beige;
+ text-align: center;
+ margin: 12px;
+ padding: 6px;
+ border-radius: 6px;
+ border: 1px solid red;
+}
+
 @media screen and (max-width: 800px) {
  .rollDiv { width: 80%; }
- .inputFields { margin-left: 0%; width: 90%; }
- .allButtons { transform: translate(0px, 0px); }
+ .theInputs { margin-left: 2%; width: 90%; }
+ .buttonsDiv { transform: translate(0px, 0px); }
 
 }
 </style>
@@ -117,33 +148,45 @@ body::-webkit-scrollbar { display: none; }
   <span id="asi" onClick="resetButton(this)">Asistencia</span>
   <span id="aut" onClick="resetButton(this)">Automática</span>:
  </div>
+
  <div class="rollDiv">
+ <form id="attendClass">
  <br>
- FECHA DE HOY:&nbsp; <input type="text" class="inputFields" id="autoDate" value="0000-00-00" disabled style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
- HORA ACTUAL:&nbsp;&nbsp; <input type="text" class="inputFields" id="autoTime" value="00:00:00" disabled style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ FECHA DE HOY:&nbsp;
+ <input type="text" class="theInputs" id="autoDate" name="Fecha" value="0000-00-00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
 
- <span id="internetTime" style="display: none; visibility: hidden;">
- HORA ONLINE:&nbsp;&nbsp; <input type="text" class="inputFields" id="ntpTime" placeholder="T00:00?" disabled style="cursor: not-allowed; background: #FFAACC;"><br><br>
+ HORA ACTUAL:&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="autoTime" name="Hora" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+
+ ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="thisClass" name="Asignatura" placeholder="* Nombre Asignatura"><br><br>
+
+ DOCENTE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="thisTeach" name="Docente" placeholder="* Apellido, Nombre"><br><br>
+
+ TUS APELLIDOS:
+ <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido"><br><br>
+
+ <!-- RESET CLICKABLE ELEMENTS --><span id="stu" onClick="resetButton(this)">
+ TUS NOMBRES:</span>&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre"><br><br>
+
+ <span style="display: none;">
+ ASISTENCIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ <input type="text" class="theInputs" id="attendance" name="Asistencia" placeholder="Ausente?" value="Ausente" style="cursor: not-allowed; transform: translate(2px, 0px);"><br><br>
+ ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="attendTime" placeholder="1783945440162" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
  </span>
 
- ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisClass" placeholder="* Nombre Asignatura"><br><br>
- DOCENTE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="thisTeach" placeholder="* Apellido, Nombre"><br><br>
-
- TUS APELLIDOS: <input type="text" class="inputFields" id="lastNames" placeholder="* Apellido Apellido"><br><br>
- <span id="stu" onClick="resetButton(this)">TUS NOMBRES:</span>&nbsp;&nbsp;
- <input type="text" class="inputFields" id="firstNames" placeholder="* Nombre Nombre"><br><br>
-
- <!-- RESET CLICKABLE ELEMENTS --><span style="display: none;">
- ATTEND TIME:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="inputFields" id="attendTime" disabled style="cursor: not-allowed; text-transform: none;"><br><br>
- </span>
-
  <br>
 
- <div class="allButtons">
+ <div class="buttonsDiv">
   <div id="currentStatus" style="font-size: 10px;text-align: center; padding: 6px;">...</div>
   <div class="thisButton" id="rosterButton" style="background: blue; display: block;">Nómina!</div>
-  <div class="thisButton" id="attendButton" style="background: green; display: none;">Presente!</div>
+  <button class="theButtons" type="submit" id="attendButton" style="background: green; display: none;">PRESENTE!</button>
+  <div class="message" id="message"></div>
  </div>
+ </form>
 
 </div>
 
@@ -206,6 +249,7 @@ let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
 let firstNames = document.getElementById("firstNames")
+let rollStatus = document.getElementById("attendance")
 let attendTime = document.getElementById("attendTime")
 // BUTTONS
 let rosterBT = document.getElementById("rosterButton")
@@ -221,6 +265,7 @@ let onTime = false
 let soLate = false
 let noShow = true
 // ===================
+
 
 
 // /* // CHECKS ON/OFF TOGGLE!!
@@ -347,23 +392,25 @@ else { isPresent = false }
 
 
 
-// COLORING COMPLETE FIELDS!
-// ========================
-let theFields = document.querySelectorAll(".inputFields")
-for(let studentInput of theFields) {
-	if (studentInput.value !== "" && studentInput.disabled) { studentInput.style.backgroundColor = "#CCFFCCee" }
-   else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
-   else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "Completa tus datos!" }
-}
-
-
-
 // CHECKING STUDENT INPUT!
 // ======================
 // INPUTS READY!
 if (thisClass.value !== "" && thisTeach.value !== "" &&
-    lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true }
+    lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true; }
 else { inputReady = false } // EMPTY INPUTS!
+
+
+
+
+// COLORING COMPLETE FIELDS!
+// ========================
+let theFields = document.querySelectorAll(".theInputs")
+for(let studentInput of theFields) {
+	if (studentInput.value !== "" && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
+   else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
+   else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "Completa tus datos!" }
+}
+
 
 
 
@@ -372,38 +419,40 @@ else { inputReady = false } // EMPTY INPUTS!
 if (inputReady && onTime && !isPresent) {
  attendBT.style.display = "block"
  attendBT.style.background = "green"
- attendBT.innerHTML = "PRESENTE!"
+ attendBT.innerText = "PRESENTE!"
  rosterBT.style.display = "none"
  currentStatus.innerHTML = "Muy bien... estás a tiempo!"
- enableNames()
+ rollStatus.value = "Presente"
+ enableInput()
 }
 
 else if (inputReady && soLate && !isPresent) {
  attendBT.style.display = "block"
  attendBT.style.background = "red"
- attendBT.innerHTML = "TARDE!"
+ attendBT.innerText = "TARDE!"
  rosterBT.style.display = "none"
  currentStatus.innerHTML = "Tarde... registrar igualmente!"
- enableNames()
+ rollStatus.value = "Tarde"
+ enableInput()
 }
 
 else if (!inputReady) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Completa tus datos!"
- enableNames()
+ enableInput()
 }
 
 else if (noShow && !isPresent) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Inscripción finalizada!"
- enableNames()
+ enableInput()
 }
 
 else if (isPresent) {
  currentStatus.innerHTML = "Estás presente... revisa la nómina."
- disableNames()
+ disableInput()
 }
 
 
@@ -474,17 +523,44 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- attendTime.value = currentTime
+ // attendTime.value = currentTime
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
- alert("Registrando!")
- console.log("Registrando!")
 })
 
 rosterBT.addEventListener("click", function() {
- alert("Abriendo nómina!")
- console.log("Abriendo nómina!")
+ let thisLink = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
+ rosterBT.innerHTML = "Abriendo..."
+ setTimeout(function(){ window.open(thisLink, 'theRoster') }, 1000)
+ setTimeout(function(){ rosterBT.innerHTML = "Nómina" }, 2000)
 })
+
+
+
+
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+let urlClass = (new URLSearchParams(window.location.search)).get("clase")
+let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+// PRINTING CLASS ELEMENT
+if (urlClass !== null) { thisClass.value = urlClass }
+if (urlTeach !== null) { thisTeach.value = urlTeach }
+
+// DISABLING CLASS FIELD
+// if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
+// if (urlClass !== null && thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.readOnly = true; thisClass.style.cursor = "not-allowed" }
+if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false; thisClass.style.cursor = ""}
+
+// DISABLING TEACHER FIELD
+// if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
+// if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
+if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.readOnly = true; thisTeach.style.cursor = "not-allowed" }
+if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false; thisTeach.style.cursor = "not-allowed" }
+
+// =====
+// FORMAT: nomina.html?clase=Inglés Básico 2&profe=Méndez, Juan
+// =====
 
 
 
@@ -500,30 +576,74 @@ firstNames.addEventListener("select", function() { if (firstNames.disabled) {not
 
 
 
-// GETTING CLASS NAME FROM LINK PARAMETER!
-// ======================================
-let urlClass = (new URLSearchParams(window.location.search)).get("clase")
-let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-// PRINTING CLASS ELEMENT
-if (urlClass !== null) { thisClass.value = urlClass }
-if (urlTeach !== null) { thisTeach.value = urlTeach }
+// SUBMIT FORM FUNCTION
+// =========================
+const form = document.getElementById("attendClass");
+const submitButton = document.getElementById("attendButton");
+const messageDiv = document.getElementById("message");
 
-// DISABLING CLASS FIELD
-if (urlClass !== null && thisClass.value !== "" || urlClass !== null && thisClass.value.length > 0) { thisClass.disabled = true; thisClass.style.cursor = "not-allowed" }
-if (urlClass !== null && thisClass.value.length == 0) { thisClass.disabled = false; thisClass.style.cursor = "" }
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  
+  // DISABLE BUTTON
+  submitButton.disabled = true;
 
-// DISABLING TEACHER FIELD
-if (urlTeach !== null && thisTeach.value !== "" || urlTeach !== null && thisTeach.value.length > 0) { thisTeach.disabled = true; thisTeach.style.cursor = "not-allowed" }
-if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = false; thisTeach.style.cursor = "" }
-// FORMAT: /nomina.html?clase=Inglés Básico 2
-// FORMAT: /nomina.html?profe=Méndez, Juan
+  // DISPLAYING MESSAGE
+  message.textContent = "Enviando...";
+  messageDiv.style.display = "block";
+  messageDiv.style.backgroundColor = "beige";
+  messageDiv.style.color = "cornflowerblue";
+
+  try {
+    const formData = new FormData(this);
+    const formDataObj = {};
+
+    // Convert FormData to object
+    for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
+
+    // Submit form data
+    const scriptURL = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec";
+
+    const response = await fetch(scriptURL, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(formDataObj),
+        headers: { "Content-Type": "text/plain;charset=utf-8", },
+        });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+        messageDiv.textContent = data.message || "Asistencia exitosa!";
+        messageDiv.style.backgroundColor = "#48c78e";
+        messageDiv.style.color = "white";
+	attendTime.value = currentTime
+	currentStatus.innerHTML = "Estás presente... revisa la nómina."
+	rosterBT.style.display = "block"
+	attendBT.style.display = "none"
+        // form.reset();
+        } else { throw new Error(data.message || "Asistencia fallida!"); }
+    } catch (error) {
+        console.error("Error:", error);
+        messageDiv.textContent = "Error: " + error.message;
+        messageDiv.style.backgroundColor = "#f14668";
+        messageDiv.style.color = "white";
+        }
+    finally {
+	// RE-ENABLE BUTTON
+        submitButton.disabled = false;
+
+    setTimeout(() => {
+        messageDiv.textContent = "";
+        messageDiv.style.display = "none";
+        }, 3000);
+    }
+})
 
 
+// END OF SUBMIT FORM FUNCTION
+// =========================
 
-// CALL ONLINE TIME FUNCTION (ONCE)!
-// ================================
-// DISABLED!: script works locally, but gives safety error online.
-// getOnlineTime()
 
 
 
@@ -531,7 +651,6 @@ if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.disabled = fal
 // ============================ END OF MAIN SCRIPT FUNCTION! ============================ 
 // ============================ END OF MAIN SCRIPT FUNCTION! ============================ 
 }
-
 
 
 
@@ -546,22 +665,30 @@ return i
 
 
 // =============
-// ENABLE NAMES!
+// ENABLE INPUTS!
 // =============
-function enableNames() {
+function enableInput() {
+ thisClass.disabled = false
+ thisTeach.disabled = false
  lastNames.disabled = false
  firstNames.disabled = false
+ thisClass.style.cursor = ""
+ thisTeach.style.cursor = ""
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
 }
 
 
 // =============
-// DISABLE NAMES!
+// DISABLE INPUT!
 // =============
-function disableNames() {
+function disableInput() {
+ thisClass.disabled = true
+ thisTeach.disabled = true
  lastNames.disabled = true
  firstNames.disabled = true
+ thisClass.style.cursor = "not-allowed"
+ thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
 }
@@ -581,54 +708,6 @@ asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && a
 aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
 stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
 // END OF RESET BUTTON
-}
-
-
-
-// =====================
-// ONLINE TIME FUNCTION!
-// (DISABLED FROM PREVIOUS SCRIPT)!
-// =====================
-function getOnlineTime() {
-try {
- let xhr = new XMLHttpRequest()  // XMLHttpRequest object
- let url = "http://worldclockapi.com/api/json/utc/now" // NTP URL
-
- // callback function to handle the response!
- xhr.onreadystatechange = function() {
- if (this.readyState == 4 && this.status == 200) {
-  let response = JSON.parse(this.responseText) // Parse the response JSON
-  let ntpTime = response.currentDateTime // Get NTP time from responde!
-
-  // SETTING UP INTERNET HOURS!
-  let ntpHour = ntpTime.slice(11,13)
-  let netHourMinus = ntpHour-04
-  if (ntpHour == 00) { ntpHourMinus = "20" }
-  else if (ntpHour == 01) { ntpHourMinus = "21" }
-  else if (ntpHour == 02) { ntpHourMinus = "22" }
-  else if (ntpHour == 03) { ntpHourMinus = "23" }
-  else { ntpHourMinus = ntpHour-04 }
-  // SETTING UP INTERNET MINUTES!
-  let ntpMins = ntpTime.slice(14,16)
-  let ntpLocalString = ntpHourMinus + ":" + ntpMins
-
-  if (ntpTime !== null || ntpTime !== undefined) {
-   let interTime = document.getElementById("internetTime") // Span element!
-   interTime.style.display = "block"
-   interTime.style.visibility = "visible"
-   }
-  // Display the NTP time on the HTML page
-  // document.getElementById("ntpTime").value = ntpTime // FULL DATE!
-  // document.getElementById("ntpTime").value = ntpTime.slice(11,16) // Time only!
-  document.getElementById("ntpTime").value = ntpLocalString
-  }
- }
-  // Send the GET request to fetch the NTP time
-  xhr.open("GET", url, true); xhr.send()
-  // END OF ONLINE TIME!
-  } catch (error) { console.error('ERROR DETECTED:', error) }
-
-// END OF ONLINE TIME FUNCTION!
 }
 
 
