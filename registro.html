@@ -382,31 +382,37 @@ let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent 
 // SETTING PROGRESS BAR
 if (barPercent  < 20) {
  autoTime.style.background = barGreeny
- attendBT.style.background = "green"
- attendBT.innerText = "PRESENTE!"
- attendBT.style.display = "block"
- rosterBT.style.display = "none"
- currentStatus.innerHTML = "Estás a tiempo... registrate!"
- rollStatus.value = "Presente"
- enableInput()
+ if (!isPresent) {
+  attendBT.style.background = "green"
+  attendBT.innerText = "PRESENTE!"
+  attendBT.style.display = "block"
+  rosterBT.style.display = "none"
+  currentStatus.innerHTML = "Estás a tiempo... registrate!"
+  rollStatus.value = "Presente"
+  enableInput()
+ }
 }
 
 if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
- attendBT.style.display = "block"
- rosterBT.style.display = "none"
- attendBT.style.background = "red"
- attendBT.innerText = "TARDE!"
- currentStatus.innerHTML = "Tarde... registrar igualmente!"
- rollStatus.value = "Tarde"
- enableInput()
+ if (!isPresent) {
+  attendBT.style.display = "block"
+  rosterBT.style.display = "none"
+  attendBT.style.background = "red"
+  attendBT.innerText = "TARDE!"
+  currentStatus.innerHTML = "Tarde... registrar igualmente!"
+  rollStatus.value = "Tarde"
+  enableInput()
+ }
 }
 
 if (barPercent > 40) {
  autoTime.style.background = barPurple
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
- enableInput()
+ if (!isPresent) {
+  rosterBT.style.display = "block"
+  attendBT.style.display = "none"
+  enableInput()
+ }
 }
 
 // BREAKS
@@ -425,9 +431,9 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- // attendTime.value = currentTime
- rosterBT.style.display = "block"
- attendBT.style.display = "none"
+ attendBT.style.background = "#AA0000"
+ attendBT.style.color = "darkgray"
+ attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
 })
 
 rosterBT.addEventListener("click", function() {
