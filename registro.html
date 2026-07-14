@@ -60,7 +60,7 @@
 
  <div class="buttonsDiv">
   <div id="currentStatus" style="font-size: 10px;text-align: center; padding: 6px;">...</div>
-  <div class="thisButton" id="rosterButton" style="background: blue; display: block;">📒 Registro!</div>
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block; width: 120px; padding: 6px 24px;">📒 Registro!</div>
   <button class="theButtons" type="submit" id="attendButton" style="background: green; display: none;">☝️ PRESENTE!</button>
   <div class="message" id="message"></div>
  </div>
@@ -445,9 +445,9 @@ attendBT.addEventListener("click", function() {
 
 rosterBT.addEventListener("click", function() {
  let theRoster = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
- rosterBT.innerHTML = "҉ &nbsp; Abriendo..."; rosterBT.style.border = "2px dashed white"
+ rosterBT.innerHTML = " ҉ &nbsp; Abriendo..."; rosterBT.style.border = "3px dashed white" 
  setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
- setTimeout(function(){ rosterBT.innerHTML = "Nómina"; rosterBT.style.border = "2px solid white" }, 2000)
+ setTimeout(function(){ rosterBT.innerHTML = "📒 Registro!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
 })
 
 

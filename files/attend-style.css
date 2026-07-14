@@ -62,8 +62,8 @@ body::-webkit-scrollbar { display: none; }
  display: grid;
  margin: auto;
  margin-bottom: 10px;
- transform: translate(20%, 0px);
- width: max-content;
+ transform: translate(16%, 0px);
+ width: 232px;
  align-items: center;
  justify-content: center;
  background: #FFFFFF33;
@@ -74,7 +74,7 @@ body::-webkit-scrollbar { display: none; }
  }
 
 .thisButton {
- width: 112px;
+ width: 120px;
  text-align: center;
  font-weight: bold;
  color: lightgray;
