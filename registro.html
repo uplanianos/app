@@ -390,7 +390,7 @@ let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent 
 // SETTING PROGRESS BAR
 if (barPercent  < 20) {
  autoTime.style.background = barGreeny
- if (!isPresent) {
+ if (!isPresent && !noShow) {
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENTE!"
   attendBT.style.display = "block"
@@ -404,7 +404,7 @@ if (barPercent  < 20) {
 
 if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
- if (!isPresent) {
+ if (!isPresent && !noShow) {
   attendBT.style.background = "red"
   attendBT.innerText = "👇 TARDE!"
   attendBT.style.display = "block"
@@ -418,11 +418,9 @@ if (barPercent >= 20 && barPercent <= 40) {
 
 if (barPercent > 40) {
  autoTime.style.background = barPurple
- if (!isPresent) {
   rosterBT.style.display = "block"
   attendBT.style.display = "none"
   enableInput()
- }
 }
 
 // BREAKS
