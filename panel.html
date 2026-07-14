@@ -458,18 +458,18 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	<div id="toolSlider" class="toolSlider">
 	<input type="number" id="slidePosition" style="display: none; width: 64px; text-align: right" value="2094" onchange="saveData()">
 	 <!-- PEACH -->
-	 <a href="asistencia.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
-	 <a href="examen.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
+	 <a href="asistencia.html?tipo=2&clases=16&asiste=12" target="promedios"><span class="helpSpan"><font class="sliderIcon">📋</font><br>Simular<br>Asistencia</span></a>
+	 <a href="examen.html?promedio=3.5&examen=5.0" target="promedios"><span class="helpSpan"><font class="sliderIcon">📉</font><br>Simular<br>Examen</span></a>
 	 <a href="promedios.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">💯</font><br>Promedios<br>Porcentuales</span></a>
-	 <a href="integrales.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
-	 <a href="pruebas.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
-	 <a href="notas.html" target="promedios"><span class="helpSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
+	 <a href="integrales.html?x=3&g1=6.0&g2=5.5&g3=5.0" target="promedios"><span class="helpSpan"><font class="sliderIcon">🧮</font><br>Promedios<br>Integrales</span></a>
+	 <a href="pruebas.html?total=50&puntos=35" target="promedios"><span class="helpSpan"><font class="sliderIcon">🌟</font><br>Notas de<br>Prueba</span></a>
+	 <a href="notas.html?escala=60" target="promedios"><span class="helpSpan"><font class="sliderIcon">📈</font><br>Escala<br>de Notas</span></a>
 	 <!-- LIGHT BLUE -->
 	 <a href="estudio.html" target="promedios"><span class="toolSpan"><img src="panel/question.png" height="78px"><br>Preguntas<br>de Estudio</span></a>
 	 <a href="pizarra.html" target="screen"><span class="toolSpan"><font class="sliderIcon" style="letter-spacing: -50px; margin-right: 36px;">🖼✍</font><br>Pizarra<br>Uplaniana</span></a>
 	 <a href="tirayafloja.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">❤️</font><br>Carrera<br>Favorita</span></a>
-	 <a href="voting.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
-	 <a href="manual-estudiante.html" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
+	 <a href="voting.html?cv=2&m1=Blue%20Peak&v1=8&m2=Peak,%20but%20red!&v2=2" target="promedios"><span class="toolSpan"><font class="sliderIcon">🗳️</font><br>Votación<br>Propuestas</span></a>
+	 <a href="manual-completo.html#title07" target="promedios"><span class="toolSpan"><font class="sliderIcon">📜</font><br>Manual<br>Estudiante</span></a>
 	 <!-- LIGHT GREEN -->
 	 <a href="sigueparo.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🛑</font><br>Paro<br>Tracker</span></a>
 	 <a href="countdown.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏱️</font><br>Recuento<br>Evaluaciones</span></a>
@@ -477,7 +477,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
 	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
 	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
-	 <a href="registro.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📋</font><br>Registro de<br>Asistencia</span></a>
+	 <a href="registro.html?clase=%22Modificar%20Clase%20en%20Link%22&profe=%22Editar%20y%20Compartir%20con%20Curso%22" target="organizer"><span class="tidySpan"><font class="sliderIcon">📋</font><br>Registro de<br>Asistencia</span></a>
 	 <!-- LIGHT YELLOW -->
 	 <a href="https://acceso.upla.cl/sinte/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🗃️</font><br>Portal<br>Sinte</span></a>
 	 <a href="https://acceso.upla.cl/matricula_enlinea/" target="upla"><span class="uplaSpan"><font class="sliderIcon">📝</font><br>Matrícula<br>Online</span></a>
@@ -894,7 +894,7 @@ else { monthLength = 31 }
 // console.log(monthLength)
 
 // TESTING MONTH LENGTH [FOR THIS WEEK]!
-console.log(currentMonth,monthLength)
+// console.log(currentMonth,monthLength)
 
 // =========================
 
