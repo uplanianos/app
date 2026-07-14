@@ -287,45 +287,47 @@ for(let studentInput of theFields) {
 
 
 
-
 // SHOW BUTTONS??
 // ===============
-if (inputReady && onTime && !isPresent) {
- attendBT.style.display = "block"
- attendBT.style.background = "green"
- attendBT.innerText = "PRESENTE!"
- rosterBT.style.display = "none"
- currentStatus.innerHTML = "Muy bien... estás a tiempo!"
- rollStatus.value = "Presente"
- enableInput()
+if (inputReady && !isPresent) {
+ if (onTime) {
+  attendBT.style.display = "block"
+  attendBT.style.background = "green"
+  attendBT.innerText = "PRESENTE!"
+  rosterBT.style.display = "none"
+  currentStatus.innerHTML = "Estás a tiempo... registrate!"
+  rollStatus.value = "Presente"
+  enableInput()
+ }
+ if (soLate) {
+  attendBT.style.display = "block"
+  attendBT.style.background = "red"
+  attendBT.innerText = "TARDE!"
+  rosterBT.style.display = "none"
+  currentStatus.innerHTML = "Tarde... registrar igualmente!"
+  rollStatus.value = "Tarde"
+  enableInput()
+ }
 }
 
-else if (inputReady && soLate && !isPresent) {
- attendBT.style.display = "block"
- attendBT.style.background = "red"
- attendBT.innerText = "TARDE!"
- rosterBT.style.display = "none"
- currentStatus.innerHTML = "Tarde... registrar igualmente!"
- rollStatus.value = "Tarde"
- enableInput()
-}
-
-else if (!inputReady) {
+if (!inputReady) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Completa tus datos!"
  enableInput()
 }
 
-else if (noShow && !isPresent) {
+if (noShow && !isPresent) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "Inscripción finalizada!"
  enableInput()
 }
 
-else if (isPresent) {
+if (isPresent) {
  currentStatus.innerHTML = "Estás presente... revisa la nómina."
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
  disableInput()
 }
 
@@ -371,16 +373,42 @@ let barPercent = parseFloat(thisDiff).toFixed(2)
 
 // BAR COLORS FOR CLASS PERIODS
 let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
-let barPinkie = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+let barRedish = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 let barPurple = 'linear-gradient(to right, #FFCCFFaa 0%, #FF66FFcc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 // BAR COLORS FOR NIGHT AND BREAKS
 let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercent + '%, #8888CC ' + barPercent + '%, #8888CC 100%)'
 let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 
 // SETTING PROGRESS BAR
-if (barPercent  < 20) { autoTime.style.background = barGreeny }
-if (barPercent >= 20 && barPercent <= 40) { autoTime.style.background = barPinkie }
-if (barPercent  > 40) { autoTime.style.background = barPurple }
+if (barPercent  < 20) {
+ autoTime.style.background = barGreeny
+ attendBT.style.background = "green"
+ attendBT.innerText = "PRESENTE!"
+ attendBT.style.display = "block"
+ rosterBT.style.display = "none"
+ currentStatus.innerHTML = "Estás a tiempo... registrate!"
+ rollStatus.value = "Presente"
+ enableInput()
+}
+
+if (barPercent >= 20 && barPercent <= 40) {
+ autoTime.style.background = barRedish
+ attendBT.style.display = "block"
+ rosterBT.style.display = "none"
+ attendBT.style.background = "red"
+ attendBT.innerText = "TARDE!"
+ currentStatus.innerHTML = "Tarde... registrar igualmente!"
+ rollStatus.value = "Tarde"
+ enableInput()
+}
+
+if (barPercent > 40) {
+ autoTime.style.background = barPurple
+ rosterBT.style.display = "block"
+ attendBT.style.display = "none"
+ enableInput()
+}
+
 // BREAKS
 if (thisPeriod >= 11 && thisPeriod <= 17) { autoTime.style.background = barYellow }
 if (thisPeriod ==  0 || thisPeriod == 18) { autoTime.style.background = barBlacky; autoTime.style.color = "#FFFFFFaa" }
@@ -403,12 +431,11 @@ attendBT.addEventListener("click", function() {
 })
 
 rosterBT.addEventListener("click", function() {
- let thisLink = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
- rosterBT.innerHTML = "Abriendo..."
- setTimeout(function(){ window.open(thisLink, '_blank') }, 1000)
- setTimeout(function(){ rosterBT.innerHTML = "Nómina" }, 2000)
+ let theRoster = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
+ rosterBT.innerHTML = "҉ &nbsp; Abriendo..."; rosterBT.style.border = "2px dashed white"
+ setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
+ setTimeout(function(){ rosterBT.innerHTML = "Nómina"; rosterBT.style.border = "2px solid white" }, 2000)
 })
-
 
 
 
