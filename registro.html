@@ -3,7 +3,6 @@
 <html lang="en-US">
 <html>
 <head>
- <meta http-equiv="refresh" content="300">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/attend-style.css">
@@ -614,10 +613,10 @@ let regOn = false
 let asiOn = false
 let autOn = false
 let stuOn = false
-reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
-asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
-aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
-stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; location.reload() } })
+reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
+asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
+aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
+stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
 // END OF RESET BUTTON
 }
 
