@@ -394,7 +394,7 @@ let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercen
 let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 
 // SETTING PROGRESS BAR
-if (barPercent < 20) {
+if (barPercent <= 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "green"
@@ -408,7 +408,7 @@ if (barPercent < 20) {
  }
 }
 
-if (barPercent >= 20 && barPercent <= 40) {
+if (barPercent >= 21 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "red"
