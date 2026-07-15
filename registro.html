@@ -210,52 +210,52 @@ let theTime = parseInt(thisHour+""+thisMinute) // FORMAT: 0800, or 1115, etc.
 if (theTime >= 0000 && theTime <= 0759) { isPeriod = 0 }
 
 // CLASS PERIOD - 8:00 (1)
-else if (theTime >= 0800 && theTime <= 0815) { isPeriod = 1; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 0816 && theTime <= 0830) { isPeriod = 1; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 0831 && theTime <= 0915) { isPeriod = 1; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 0916 && theTime <= 0929) { isPeriod = 11; noShow = true }
+else if (theTime >= 0800 && theTime < 0815) { isPeriod = 1; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 0815 && theTime < 0830) { isPeriod = 1; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 0830 && theTime < 0915) { isPeriod = 1; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 0915 && theTime < 0930) { isPeriod = 11; noShow = true }
 
 // CLASS PERIOD - 09:30 (2)
-else if (theTime >= 0930 && theTime <= 0945) { isPeriod = 2; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 0946 && theTime <= 1000) { isPeriod = 2; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1001 && theTime <= 1045) { isPeriod = 2; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1046 && theTime <= 1059) { isPeriod = 12; noShow = true }
+else if (theTime >= 0930 && theTime < 0945) { isPeriod = 2; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 0945 && theTime < 1000) { isPeriod = 2; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1000 && theTime < 1045) { isPeriod = 2; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1045 && theTime < 1100) { isPeriod = 12; noShow = true }
 
 // CLASS PERIOD - 11:00 (3)
-else if (theTime >= 1100 && theTime <= 1115) { isPeriod = 3; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1116 && theTime <= 1130) { isPeriod = 3; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1131 && theTime <= 1215) { isPeriod = 3; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1216 && theTime <= 1229) { isPeriod = 13; noShow = true }
+else if (theTime >= 1100 && theTime < 1115) { isPeriod = 3; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1115 && theTime < 1130) { isPeriod = 3; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1130 && theTime < 1215) { isPeriod = 3; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1215 && theTime < 1230) { isPeriod = 13; noShow = true }
 
 // CLASS PERIOD - 12:30 (4)
-else if (theTime >= 1230 && theTime <= 1245) { isPeriod = 4; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1246 && theTime <= 1300) { isPeriod = 4; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1301 && theTime <= 1345) { isPeriod = 4; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1346 && theTime <= 1359) { isPeriod = 14; noShow = true }
+else if (theTime >= 1230 && theTime < 1245) { isPeriod = 4; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1245 && theTime < 1300) { isPeriod = 4; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1300 && theTime < 1345) { isPeriod = 4; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1345 && theTime < 1400) { isPeriod = 14; noShow = true }
 
 // CLASS PERIOD - 14:00 (5)
-else if (theTime >= 1400 && theTime <= 1415) { isPeriod = 5; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1416 && theTime <= 1430) { isPeriod = 5; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1431 && theTime <= 1515) { isPeriod = 5; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1516 && theTime <= 1529) { isPeriod = 15; noShow = true }
+else if (theTime >= 1400 && theTime < 1415) { isPeriod = 5; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1415 && theTime < 1430) { isPeriod = 5; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1430 && theTime < 1515) { isPeriod = 5; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1515 && theTime < 1530) { isPeriod = 15; noShow = true }
 
 // CLASS PERIOD - 15:30 (6)
-else if (theTime >= 1530 && theTime <= 1545) { isPeriod = 6; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1546 && theTime <= 1600) { isPeriod = 6; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1601 && theTime <= 1645) { isPeriod = 6; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1646 && theTime <= 1759) { isPeriod = 16; noShow = true }
+else if (theTime >= 1530 && theTime < 1545) { isPeriod = 6; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1545 && theTime < 1600) { isPeriod = 6; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1600 && theTime < 1645) { isPeriod = 6; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1645 && theTime < 1700) { isPeriod = 16; noShow = true }
 
 // CLASS PERIOD - 17:00 (7)
-else if (theTime >= 1700 && theTime <= 1715) { isPeriod = 7; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1716 && theTime <= 1730) { isPeriod = 7; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1731 && theTime <= 1815) { isPeriod = 7; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1816 && theTime <= 1829) { isPeriod = 17; noShow = true }
+else if (theTime >= 1700 && theTime < 1715) { isPeriod = 7; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1715 && theTime < 1730) { isPeriod = 7; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1730 && theTime < 1815) { isPeriod = 7; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1815 && theTime < 1830) { isPeriod = 17; noShow = true }
 
 // CLASS PERIOD - 18:30 (8)
-else if (theTime >= 1830 && theTime <= 1845) { isPeriod = 8; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1846 && theTime <= 1900) { isPeriod = 8; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1901 && theTime <= 1945) { isPeriod = 8; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1946 && theTime <= 2359) { isPeriod = 18; noShow = true }
+else if (theTime >= 1830 && theTime < 1845) { isPeriod = 8; onTime =  true; soLate = false; noShow = false }
+else if (theTime >= 1845 && theTime < 1900) { isPeriod = 8; onTime = false; soLate =  true; noShow = false }
+else if (theTime >= 1900 && theTime < 1945) { isPeriod = 8; onTime = false; soLate = false; noShow = true }
+else if (theTime >= 1945 && theTime <= 2359) { isPeriod = 18; noShow = true }
 
 // ANY OTHER TIME - NO SHOW!
 else if (!onTime || !soLate) { noShow = true; isPeriod = 24 }
@@ -394,7 +394,7 @@ let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercen
 let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 
 // SETTING PROGRESS BAR
-if (barPercent <= 20) {
+if (barPercent < 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "green"
@@ -408,7 +408,7 @@ if (barPercent <= 20) {
  }
 }
 
-if (barPercent >= 21 && barPercent <= 40) {
+if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "red"
