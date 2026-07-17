@@ -651,6 +651,7 @@ if ((document.fullScreenElement && document.fullScreenElement !== null) || (!doc
  else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }
  }
 else {
+ document.getElementById("fullScreen").innerHTML = "⛶"
  document.getElementById("fullScreen").style.color = "#CCC"
  if (document.cancelFullScreen) { document.cancelFullScreen() }
  else if (document.mozCancelFullScreen) { document.mozCancelFullScreen() }
