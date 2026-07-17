@@ -14,7 +14,6 @@
 <audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 <body>
-<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
   <span id="reg" onClick="resetButton(this)">Registro</span> de
@@ -68,6 +67,8 @@
 
 </div>
 
+ <br><br>
+ <br><br>
  <br><br>
  <br><br>
  <br><br>
@@ -448,7 +449,7 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- attendBT.style.color = "yellow"
+ attendBT.style.color = "darkgray"
  attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
 })
 
@@ -537,18 +538,14 @@ form.addEventListener("submit", async function (e) {
 	messageDiv.style.backgroundColor = "#48c78e";
 	messageDiv.style.color = "white";
 	attendTime.value = currentTime
-	currentStatus.innerHTML = "Listo... siguiente registro (6)."
-	setTimeout(function(){ currentStatus.innerHTML = "Listo... siguiente registro (5)." }, 1000)
-	setTimeout(function(){ currentStatus.innerHTML = "Listo... siguiente registro (4)." }, 2000)
-	setTimeout(function(){ currentStatus.innerHTML = "Listo... siguiente registro (3)." }, 3000)
-	setTimeout(function(){ currentStatus.innerHTML = "Listo... siguiente registro (2)." }, 4000)
-	setTimeout(function(){ currentStatus.innerHTML = "Listo... siguiente registro (1)." }, 5000)
+	currentStatus.innerHTML = "Listo... siguiente registro!"
 	setTimeout(function(){
           lastNames.value = ""
           firstNames.value = ""
-	  attendTime.value = currentTime
+	  attendTime.value = ""
+	  attendBT.style.color = "lightgray"
 	  currentStatus.innerHTML = "Ingresa tus datos!"
-	}, 3000)
+	}, 5000)
 	// rosterBT.style.display = "block"
 	// attendBT.style.display = "none"
         // form.reset();
@@ -647,7 +644,8 @@ stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && a
 // ===========
 function toggleFullScreen() {
 if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
- document.getElementById("fullScreen").style.color = "#886688aa"
+ document.getElementById("fullScreen").innerHTML = "✗"
+ document.getElementById("fullScreen").style.color = "#88668833"
  if (document.documentElement.requestFullScreen) { document.documentElement.requestFullScreen() }
  else if (document.documentElement.mozRequestFullScreen) { document.documentElement.mozRequestFullScreen() }
  else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }
@@ -659,21 +657,6 @@ else {
  else if (document.webkitCancelFullScreen) { document.webkitCancelFullScreen() }
  }
 // END OF FULL SCREEN SCRIPT!
-}
-
-
-
-// ======================
-// RETURN ARROW!!
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("return").style.top = "6px"; 
-  } else {
-    document.getElementById("return").style.top = "-40px"; 
-  }
-  prevScrollpos = currentScrollPos;
 }
 
 

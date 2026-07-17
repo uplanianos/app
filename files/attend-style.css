@@ -18,11 +18,9 @@ body::-webkit-scrollbar { display: none; }
 .return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
 
 .fullScreen {
- display: flex;
- justify-content: center;
- margin-left: 97%;
- margin-top: -1%;
- margin-bottom: -24px;
+ position: absolute;
+ top: 16px; right: 20px;
+ background: transparent;
  font-size: 20px;
  color: lightgray;
  cursor: pointer;
