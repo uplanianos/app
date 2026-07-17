@@ -17,6 +17,17 @@ body::-webkit-scrollbar { display: none; }
 
 .return { position: absolute; right: 12px; top: 6px; color: white; font-size: 20px; transition: 3s; }
 
+.fullScreen {
+ display: flex;
+ justify-content: center;
+ margin-left: 97%;
+ margin-top: -1%;
+ margin-bottom: -24px;
+ font-size: 20px;
+ color: lightgray;
+ cursor: pointer;
+}
+
 .titleDiv {
  margin: auto;
  margin-bottom: 12px;
@@ -40,8 +51,9 @@ body::-webkit-scrollbar { display: none; }
  }
 
 .theInputs {
- display: flex-grid; width: 320px;
- margin: auto; margin-left: 20%;
+ width: 320px;
+ margin: auto;
+ margin-left: 20%;
  color: #0000CC;
  background: #FFF;
  text-align: center; font-size: 14px;

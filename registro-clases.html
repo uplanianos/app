@@ -23,6 +23,7 @@
  </div>
 
  <div class="rollDiv">
+ <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⛶</div>
  <form id="attendClass">
  <br>
  FECHA DE HOY:&nbsp;
@@ -632,6 +633,26 @@ asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && a
 aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
 stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
 // END OF RESET BUTTON
+}
+
+
+// ===========
+// FULL SCREEN!
+// ===========
+function toggleFullScreen() {
+if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+ document.getElementById("fullScreen").style.color = "#886688aa"
+ if (document.documentElement.requestFullScreen) { document.documentElement.requestFullScreen() }
+ else if (document.documentElement.mozRequestFullScreen) { document.documentElement.mozRequestFullScreen() }
+ else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }
+ }
+else {
+ document.getElementById("fullScreen").style.color = "#CCC"
+ if (document.cancelFullScreen) { document.cancelFullScreen() }
+ else if (document.mozCancelFullScreen) { document.mozCancelFullScreen() }
+ else if (document.webkitCancelFullScreen) { document.webkitCancelFullScreen() }
+ }
+// END OF FULL SCREEN SCRIPT!
 }
 
 
