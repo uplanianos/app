@@ -7,8 +7,7 @@ body {
  background-size: 500% 100%;
  font-family: Verdana, Tahoma, Helvetica, Sans-serif;
  font-size: 12px;
- margin-left: 0px;
- margin-right: 0px;
+ margin: 0px;
  -webkit-user-select: none; /* Safari */
  -ms-user-select: none; /* IE 10 and IE 11 */
  user-select: none; /* Standard syntax */
@@ -20,7 +19,7 @@ body::-webkit-scrollbar { display: none; }
 
 .fullScreen {
  position: absolute;
- top: 16px; right: 20px;
+ top: 22px; right: 22px;
  background: transparent;
  font-size: 20px;
  color: lightgray;
