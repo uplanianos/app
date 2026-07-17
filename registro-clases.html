@@ -38,7 +38,7 @@
  <input type="text" class="theInputs" id="thisTeach" name="Docente" placeholder="* Apellido, Nombre"><br><br>
 
  TUS APELLIDOS:
- <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido"><br><br>
+ <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido" AUTOFOCUS><br><br>
 
  <!-- RESET CLICKABLE ELEMENTS --><span id="stu" onClick="resetButton(this)">
  TUS NOMBRES:</span>&nbsp;&nbsp;
@@ -505,7 +505,8 @@ const messageDiv = document.getElementById("message");
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
   
-  // DISABLE BUTTON
+  // FOCUS ON BUTTON & DISABLE!
+  submitButton.focus()
   submitButton.disabled = true;
 
   // DISPLAYING MESSAGE
@@ -546,8 +547,6 @@ form.addEventListener("submit", async function (e) {
 	  attendBT.style.color = "lightgray"
 	  currentStatus.innerHTML = "Ingresa tus datos!"
 	}, 5000)
-	// rosterBT.style.display = "block"
-	// attendBT.style.display = "none"
         // form.reset();
         } else { throw new Error(data.message || "Asistencia fallida!"); }
     } catch (error) {
@@ -644,7 +643,7 @@ stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && a
 // ===========
 function toggleFullScreen() {
 if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
- document.getElementById("fullScreen").style.color = "transparent"
+ document.getElementById("fullScreen").style.color = "#88668866"
  if (document.documentElement.requestFullScreen) { document.documentElement.requestFullScreen() }
  else if (document.documentElement.mozRequestFullScreen) { document.documentElement.mozRequestFullScreen() }
  else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }

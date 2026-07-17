@@ -446,7 +446,7 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- attendBT.style.color = "yellow"
+ attendBT.style.color = "darkgray"
  attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
 })
 
@@ -548,7 +548,8 @@ form.addEventListener("submit", async function (e) {
         }
     finally {
 	// RE-ENABLE BUTTON
-        submitButton.disabled = false;
+	submitButton.disabled = false;
+	attendBT.style.color = "lightgray"
 
     setTimeout(() => {
         messageDiv.textContent = "";
