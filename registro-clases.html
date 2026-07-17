@@ -7,7 +7,9 @@
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/attend-style.css">
  <title>Uplanianos - Asistencia!</title>
-
+ <style>
+ body { background: #151B54; background-color: #151B54; background-image: linear-gradient(to bottom, #151B54, #151B54); }
+ </style>
 </head>
 
 
@@ -644,14 +646,12 @@ stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && a
 // ===========
 function toggleFullScreen() {
 if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
- document.getElementById("fullScreen").innerHTML = "✗"
- document.getElementById("fullScreen").style.color = "#88668833"
+ document.getElementById("fullScreen").style.color = "transparent"
  if (document.documentElement.requestFullScreen) { document.documentElement.requestFullScreen() }
  else if (document.documentElement.mozRequestFullScreen) { document.documentElement.mozRequestFullScreen() }
  else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }
  }
 else {
- document.getElementById("fullScreen").innerHTML = "⛶"
  document.getElementById("fullScreen").style.color = "#CCC"
  if (document.cancelFullScreen) { document.cancelFullScreen() }
  else if (document.mozCancelFullScreen) { document.mozCancelFullScreen() }
