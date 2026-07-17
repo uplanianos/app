@@ -507,6 +507,7 @@ form.addEventListener("submit", async function (e) {
   
   // FOCUS ON BUTTON & DISABLE!
   submitButton.focus()
+  attendBT.style.color = "darkgray"
   submitButton.disabled = true;
 
   // DISPLAYING MESSAGE
@@ -544,6 +545,7 @@ form.addEventListener("submit", async function (e) {
           lastNames.value = ""
           firstNames.value = ""
 	  attendTime.value = ""
+	  lastNames.focus()
 	  attendBT.style.color = "lightgray"
 	  currentStatus.innerHTML = "Ingresa tus datos!"
 	}, 5000)
