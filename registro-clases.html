@@ -14,15 +14,11 @@
 
 <body>
 
-<div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
-  <br>
-  <span id="reg" onClick="resetButton(this)">Registro</span> de
-  <span id="asi" onClick="resetButton(this)">Asistencia</span>
-  <span id="aut" onClick="resetButton(this)">Automatizada</span>:
- </div>
+ <br>
+ <div class="titleDiv">Registro de Asistencia Automatizada:</div>
+ <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⛶</div>
 
  <div class="rollDiv">
- <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⛶</div>
  <form id="attendClass">
  <br>
  FECHA DE HOY:&nbsp;
@@ -40,8 +36,7 @@
  TUS APELLIDOS:
  <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido" AUTOFOCUS><br><br>
 
- <!-- RESET CLICKABLE ELEMENTS --><span id="stu" onClick="resetButton(this)">
- TUS NOMBRES:</span>&nbsp;&nbsp;
+ TUS NOMBRES:&nbsp;&nbsp;
  <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre"><br><br>
 
  <span style="display: none;">
@@ -564,7 +559,7 @@ form.addEventListener("submit", async function (e) {
     setTimeout(() => {
         messageDiv.textContent = "";
         messageDiv.style.display = "none";
-        }, 3000);
+        }, 4000);
     }
 })
 
@@ -608,6 +603,7 @@ if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = false }
 }
 
 
+
 // =============
 // DISABLE INPUT!
 // =============
@@ -622,22 +618,6 @@ function disableInput() {
  firstNames.style.cursor = "not-allowed"
 }
 
-
-
-// =============
-// RESET BUTTON!
-// =============
-function resetButton(input) {
-let regOn = false
-let asiOn = false
-let autOn = false
-let stuOn = false
-reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-// END OF RESET BUTTON
-}
 
 
 // ===========
