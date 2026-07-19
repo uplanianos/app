@@ -37,7 +37,7 @@ Your browser does not support the <code>audio</code> element.</audio>
  LAST NAMES (2):
  <input type="text" class="theInputs" id="lastNames" name="LAST NAMES" placeholder="* Lastname Lastname (2)" AUTOFOCUS><br><br>
 
- FIRST NAME(S):&nbsp;&nbsp;&nbsp;&nbsp;
+ FIRST NAME(S):&nbsp;&nbsp;
  <input type="text" class="theInputs" id="firstNames" name="FIRST NAMES" placeholder="* Name(s)"><br><br>
 
  <span style="display: none;">
@@ -56,7 +56,7 @@ Your browser does not support the <code>audio</code> element.</audio>
  <div class="buttonsDiv">
   <div id="currentStatus" style="font-size: 10px;text-align: center; padding: 6px;">...</div>
   <div class="thisButton" id="rosterButton" style="background: blue; display: block; width: 120px; padding: 6px 24px;">📒 Attendance!</div>
-  <button class="theButtons" type="submit" id="attendButton" style="background: green; display: none;">☝️ PRESENTE!</button>
+  <button class="theButtons" type="submit" id="attendButton" style="background: green; display: none;">☝️ PRESENT!</button>
   <div class="message" id="message"></div>
  </div>
  </form>
@@ -144,30 +144,6 @@ let noShow = true
 
 
 
-/* // CHECKS ON/OFF TOGGLE!!
-// =========================
-// PERFORMING INITIAL CHECKS!
-setTimeout(function(){
- let lastAttend = parseInt(attendTime.value)
- let lastToLocale = new Date(lastAttend).toLocaleString()
- console.log("\nLAST ATTENDANCE:")
- console.log("Attended: " + attendTime.value)
- console.log("Converted: " + lastToLocale)
- console.log("\nVARIABLES:")
-}, 1000)
-setTimeout(function(){
- console.log("Period: " + isPeriod)
- console.log("Inputs: " + inputReady)
- console.log("Present: " + isPresent)
- console.log("onTime: " + onTime)
- console.log("soLate: " + soLate)
- console.log("noShow: " + noShow)
-}, 1500)
-// =========================
-*/ // CHECKS ON/OFF TOGGLE
-
-
-
 // ROLL CALL FUNCTION!
 // ===================
 function rollCall() {
@@ -199,92 +175,92 @@ setInterval(() => {
 
 
 
-// TIME PERIODS FUNCTIONALITY!
-// ===========================
+ // TIME PERIODS FUNCTIONALITY!
+ // ===========================
 
-let theTime = parseInt(thisHour+""+thisMinute) // FORMAT: 0800, or 1115, etc.
+ let theTime = parseInt(thisHour+""+thisMinute) // FORMAT: 0800, or 1115, etc.
 
-// CLASS PERIOD - 00:00 (0)
-if (theTime >= 0000 && theTime <= 0759) { isPeriod = 0 }
+ // CLASS PERIOD - 00:00 (0)
+ if (theTime >= 0000 && theTime <= 0759) { isPeriod = 0 }
 
-// CLASS PERIOD - 8:00 (1)
-else if (theTime >= 0800 && theTime < 0815) { isPeriod = 1; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 0815 && theTime < 0830) { isPeriod = 1; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 0830 && theTime < 0915) { isPeriod = 1; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 0915 && theTime < 0930) { isPeriod = 11; noShow = true }
+ // CLASS PERIOD - 8:00 (1)
+ else if (theTime >= 0800 && theTime < 0815) { isPeriod = 1; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 0815 && theTime < 0830) { isPeriod = 1; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 0830 && theTime < 0915) { isPeriod = 1; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 0915 && theTime < 0930) { isPeriod = 11; noShow = true }
 
-// CLASS PERIOD - 09:30 (2)
-else if (theTime >= 0930 && theTime < 0945) { isPeriod = 2; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 0945 && theTime < 1000) { isPeriod = 2; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1000 && theTime < 1045) { isPeriod = 2; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1045 && theTime < 1100) { isPeriod = 12; noShow = true }
+ // CLASS PERIOD - 09:30 (2)
+ else if (theTime >= 0930 && theTime < 0945) { isPeriod = 2; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 0945 && theTime < 1000) { isPeriod = 2; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1000 && theTime < 1045) { isPeriod = 2; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1045 && theTime < 1100) { isPeriod = 12; noShow = true }
 
-// CLASS PERIOD - 11:00 (3)
-else if (theTime >= 1100 && theTime < 1115) { isPeriod = 3; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1115 && theTime < 1130) { isPeriod = 3; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1130 && theTime < 1215) { isPeriod = 3; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1215 && theTime < 1230) { isPeriod = 13; noShow = true }
+ // CLASS PERIOD - 11:00 (3)
+ else if (theTime >= 1100 && theTime < 1115) { isPeriod = 3; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1115 && theTime < 1130) { isPeriod = 3; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1130 && theTime < 1215) { isPeriod = 3; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1215 && theTime < 1230) { isPeriod = 13; noShow = true }
 
-// CLASS PERIOD - 12:30 (4)
-else if (theTime >= 1230 && theTime < 1245) { isPeriod = 4; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1245 && theTime < 1300) { isPeriod = 4; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1300 && theTime < 1345) { isPeriod = 4; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1345 && theTime < 1400) { isPeriod = 14; noShow = true }
+ // CLASS PERIOD - 12:30 (4)
+ else if (theTime >= 1230 && theTime < 1245) { isPeriod = 4; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1245 && theTime < 1300) { isPeriod = 4; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1300 && theTime < 1345) { isPeriod = 4; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1345 && theTime < 1400) { isPeriod = 14; noShow = true }
 
-// CLASS PERIOD - 14:00 (5)
-else if (theTime >= 1400 && theTime < 1415) { isPeriod = 5; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1415 && theTime < 1430) { isPeriod = 5; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1430 && theTime < 1515) { isPeriod = 5; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1515 && theTime < 1530) { isPeriod = 15; noShow = true }
+ // CLASS PERIOD - 14:00 (5)
+ else if (theTime >= 1400 && theTime < 1415) { isPeriod = 5; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1415 && theTime < 1430) { isPeriod = 5; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1430 && theTime < 1515) { isPeriod = 5; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1515 && theTime < 1530) { isPeriod = 15; noShow = true }
 
-// CLASS PERIOD - 15:30 (6)
-else if (theTime >= 1530 && theTime < 1545) { isPeriod = 6; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1545 && theTime < 1600) { isPeriod = 6; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1600 && theTime < 1645) { isPeriod = 6; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1645 && theTime < 1700) { isPeriod = 16; noShow = true }
+ // CLASS PERIOD - 15:30 (6)
+ else if (theTime >= 1530 && theTime < 1545) { isPeriod = 6; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1545 && theTime < 1600) { isPeriod = 6; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1600 && theTime < 1645) { isPeriod = 6; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1645 && theTime < 1700) { isPeriod = 16; noShow = true } 
 
-// CLASS PERIOD - 17:00 (7)
-else if (theTime >= 1700 && theTime < 1715) { isPeriod = 7; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1715 && theTime < 1730) { isPeriod = 7; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1730 && theTime < 1815) { isPeriod = 7; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1815 && theTime < 1830) { isPeriod = 17; noShow = true }
+ // CLASS PERIOD - 17:00 (7)
+ else if (theTime >= 1700 && theTime < 1715) { isPeriod = 7; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1715 && theTime < 1730) { isPeriod = 7; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1730 && theTime < 1815) { isPeriod = 7; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1815 && theTime < 1830) { isPeriod = 17; noShow = true }
 
-// CLASS PERIOD - 18:30 (8)
-else if (theTime >= 1830 && theTime < 1845) { isPeriod = 8; onTime =  true; soLate = false; noShow = false }
-else if (theTime >= 1845 && theTime < 1900) { isPeriod = 8; onTime = false; soLate =  true; noShow = false }
-else if (theTime >= 1900 && theTime < 1945) { isPeriod = 8; onTime = false; soLate = false; noShow = true }
-else if (theTime >= 1945 && theTime <= 2359) { isPeriod = 18; noShow = true }
+ // CLASS PERIOD - 18:30 (8)
+ else if (theTime >= 1830 && theTime < 1845) { isPeriod = 8; onTime =  true; soLate = false; noShow = false }
+ else if (theTime >= 1845 && theTime < 1900) { isPeriod = 8; onTime = false; soLate =  true; noShow = false }
+ else if (theTime >= 1900 && theTime < 1945) { isPeriod = 8; onTime = false; soLate = false; noShow = true }
+ else if (theTime >= 1945 && theTime <= 2359) { isPeriod = 18; noShow = true }
 
-// ANY OTHER TIME - NO SHOW!
-else if (!onTime || !soLate) { noShow = true; isPeriod = 24 }
-
-
-
-// CHECKING PREVIOUS ATTENDANCE!
-// ==============================
-let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
-if (theDiff <= 2000) { isPresent = true }
-else { isPresent = false }
+ // ANY OTHER TIME - NO SHOW!
+ else if (!onTime || !soLate) { noShow = true; isPeriod = 24 }
 
 
 
-// CHECKING STUDENT INPUT!
-// ======================
-// INPUTS READY!
-if (thisClass.value !== "" && thisTeach.value !== "" &&
-    lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true; }
-else { inputReady = false }
+ // CHECKING PREVIOUS ATTENDANCE!
+ // ==============================
+ let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
+ if (theDiff <= 2000) { isPresent = true }
+ else { isPresent = false }
 
 
 
-// COLORING COMPLETE FIELDS!
-// ========================
-let theFields = document.querySelectorAll(".theInputs")
-for(let studentInput of theFields) {
-	if (studentInput.value !== "" && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
-   else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
-   else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "Enter your name!" }
-}
+ // CHECKING STUDENT INPUT!
+ // ======================
+ // INPUTS READY!
+ if (thisClass.value.length >= 3 && thisTeach.value.length >= 3 &&
+    lastNames.value.length >= 3 && firstNames.value.length >= 3 ) { inputReady = true; }
+ else { inputReady = false }
+
+
+
+ // COLORING COMPLETE FIELDS!
+ // ========================
+ let theFields = document.querySelectorAll(".theInputs")
+ for(let studentInput of theFields) {
+	if (studentInput.value.length >= 3 && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
+   else if (studentInput.value.length >= 3 && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
+   else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "📝 Enter your name! ✍️" }
+ }
 
 
 
@@ -293,20 +269,20 @@ for(let studentInput of theFields) {
 if (inputReady && !isPresent) {
  if (onTime) {
   attendBT.style.background = "green"
-  attendBT.innerText = "☝️ PRESENTE!"
+  attendBT.innerText = "☝️ PRESENT!"
   attendBT.style.display = "block"
   rosterBT.style.display = "none"
-  currentStatus.innerHTML = "Estás a tiempo... registrate!"
+  currentStatus.innerHTML = "⏳ On time... register! 🤚"
   thisPeriod.value = isPeriod
   rollStatus.value = "Present"
   enableInput()
  }
  if (soLate) {
   attendBT.style.background = "red"
-  attendBT.innerText = "👇 TARDE!"
+  attendBT.innerText = "👇 LATE!"
   attendBT.style.display = "block"
   rosterBT.style.display = "none"
-  currentStatus.innerHTML = "Tarde... registrar igualmente!"
+  currentStatus.innerHTML = "⌛ Late... register anyway! 🤷🏽"
   thisPeriod.value = isPeriod
   rollStatus.value = "Late"
   enableInput()
@@ -316,21 +292,21 @@ if (inputReady && !isPresent) {
 if (!inputReady) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
- currentStatus.innerHTML = "Enter your name!"
+ currentStatus.innerHTML = "📝 Enter your name! ✍️"
  enableInput()
 }
 
 if (noShow && !isPresent) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
- currentStatus.innerHTML = "Registration finished!"
+ currentStatus.innerHTML = "🚫 Registration finished! 🔒"
  thisPeriod.value = "0"
- rollStatus.value = "Ausente"
+ rollStatus.value = "Absent!"
  enableInput()
 }
 
 if (isPresent) {
- currentStatus.innerHTML = "Ready... next student!"
+ currentStatus.innerHTML = "✔️ Ready... next student! 📲"
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  disableInput()
@@ -338,72 +314,67 @@ if (isPresent) {
 
 
 
-// CURRENT TIME PROGRESS BAR
-// =========================
-let barSet
-let barEnd
-let barDif
-let dateString = autoDateString + "T"
+ // CURRENT TIME PROGRESS BAR
+ // =========================
+ let barSet
+ let barEnd
+ let barDif
+ let dateString = autoDateString + "T"
 
-// NIGHT TIME!
-if (isPeriod == 0) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'07:59:59') }
-// PERIOD 1!
-else if (isPeriod ==  1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
-else if (isPeriod == 11) { barSet = new Date(dateString+'09:15:01'); barEnd = new Date(dateString+'09:29:59') }
-// PERIOD 2!
-else if (isPeriod ==  2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:45:00') }
-else if (isPeriod == 12) { barSet = new Date(dateString+'10:45:01'); barEnd = new Date(dateString+'10:59:59') }
-// PERIOD 3!
-else if (isPeriod ==  3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:15:00') }
-else if (isPeriod == 13) { barSet = new Date(dateString+'12:15:01'); barEnd = new Date(dateString+'12:29:59') }
-// PERIOD 4!
-else if (isPeriod ==  4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:45:00') }
-else if (isPeriod == 14) { barSet = new Date(dateString+'13:45:01'); barEnd = new Date(dateString+'13:59:59') }
-// PERIOD 5!
-else if (isPeriod ==  5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'15:15:00') }
-else if (isPeriod == 15) { barSet = new Date(dateString+'15:15:01'); barEnd = new Date(dateString+'15:29:59') }
-// PERIOD 6!
-else if (isPeriod ==  6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:45:00') }
-else if (isPeriod == 16) { barSet = new Date(dateString+'16:45:01'); barEnd = new Date(dateString+'16:59:59') }
-// PERIOD 7!
-else if (isPeriod ==  7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:15:00') }
-else if (isPeriod == 17) { barSet = new Date(dateString+'18:15:01'); barEnd = new Date(dateString+'18:29:59') }
-// PERIOD 8!
-else if (isPeriod ==  8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:45:00') }
-else if (isPeriod == 18) { barSet = new Date(dateString+'19:45:01'); barEnd = new Date(dateString+'23:59:59') }
-// NIGHT TIME AGAIN!
-else if (isPeriod == 24) { barSet = new Date(dateString+'19:45:01'); barEnd = new Date(dateString+'23:59:59') }
-else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
+ // NIGHT TIME!
+ if (isPeriod == 0) { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'07:59:59') }
+ // PERIOD 1!
+ else if (isPeriod ==  1) { barSet = new Date(dateString+'08:00:00'); barEnd = new Date(dateString+'09:15:00') }
+ else if (isPeriod == 11) { barSet = new Date(dateString+'09:15:01'); barEnd = new Date(dateString+'09:29:59') }
+ // PERIOD 2!
+ else if (isPeriod ==  2) { barSet = new Date(dateString+'09:30:00'); barEnd = new Date(dateString+'10:45:00') }
+ else if (isPeriod == 12) { barSet = new Date(dateString+'10:45:01'); barEnd = new Date(dateString+'10:59:59') }
+ // PERIOD 3!
+ else if (isPeriod ==  3) { barSet = new Date(dateString+'11:00:00'); barEnd = new Date(dateString+'12:15:00') }
+ else if (isPeriod == 13) { barSet = new Date(dateString+'12:15:01'); barEnd = new Date(dateString+'12:29:59') }
+ // PERIOD 4!
+ else if (isPeriod ==  4) { barSet = new Date(dateString+'12:30:00'); barEnd = new Date(dateString+'13:45:00') }
+ else if (isPeriod == 14) { barSet = new Date(dateString+'13:45:01'); barEnd = new Date(dateString+'13:59:59') }
+ // PERIOD 5!
+ else if (isPeriod ==  5) { barSet = new Date(dateString+'14:00:00'); barEnd = new Date(dateString+'15:15:00') }
+ else if (isPeriod == 15) { barSet = new Date(dateString+'15:15:01'); barEnd = new Date(dateString+'15:29:59') }
+ // PERIOD 6!
+ else if (isPeriod ==  6) { barSet = new Date(dateString+'15:30:00'); barEnd = new Date(dateString+'16:45:00') }
+ else if (isPeriod == 16) { barSet = new Date(dateString+'16:45:01'); barEnd = new Date(dateString+'16:59:59') }
+ // PERIOD 7!
+ else if (isPeriod ==  7) { barSet = new Date(dateString+'17:00:00'); barEnd = new Date(dateString+'18:15:00') }
+ else if (isPeriod == 17) { barSet = new Date(dateString+'18:15:01'); barEnd = new Date(dateString+'18:29:59') }
+ // PERIOD 8!
+ else if (isPeriod ==  8) { barSet = new Date(dateString+'18:30:00'); barEnd = new Date(dateString+'19:45:00') }
+ else if (isPeriod == 18) { barSet = new Date(dateString+'19:45:01'); barEnd = new Date(dateString+'23:59:59') }
+ // NIGHT TIME AGAIN!
+ else if (isPeriod == 24) { barSet = new Date(dateString+'19:45:01'); barEnd = new Date(dateString+'23:59:59') }
+ else { barSet = new Date(dateString+'00:00:00'); barEnd = new Date(dateString+'23:59:59') }
 
 
+ // GETTING PERIOD PROGRESS (PERCENTAGE)!
+ let thisDiff = (currentTime - barSet)/(barEnd - barSet)*100
+ let barPercent = parseFloat(thisDiff).toFixed(2)
 
-// TESTING HOURS - REMEMBER TO COMMENT OUT!!
-// barSet = new Date(dateString+'21:00:00')
-// barEnd = new Date(dateString+'22:00:00')
+ // BAR COLORS FOR CLASS PERIODS
+ let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
+ let barRedish = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+ let barPurple = 'linear-gradient(to right, #FFCCFFaa 0%, #FF66FFcc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
+ // BAR COLORS FOR NIGHT AND BREAKS
+ let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercent + '%, #8888CC ' + barPercent + '%, #8888CC 100%)'
+ let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
 
-// GETTING PERIOD PROGRESS (PERCENTAGE)!
-let thisDiff = (currentTime - barSet)/(barEnd - barSet)*100
-let barPercent = parseFloat(thisDiff).toFixed(2)
-
-// BAR COLORS FOR CLASS PERIODS
-let barGreeny = 'linear-gradient(to right, lightgreen 0%, #50C878 ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)' 
-let barRedish = 'linear-gradient(to right, pink 0%, #FF3333cc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
-let barPurple = 'linear-gradient(to right, #FFCCFFaa 0%, #FF66FFcc ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
-// BAR COLORS FOR NIGHT AND BREAKS
-let barBlacky = 'linear-gradient(to right, #FF33FFaa 0%, #883388cc ' + barPercent + '%, #8888CC ' + barPercent + '%, #8888CC 100%)'
-let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent + '%, #fff ' + barPercent + '%, lightgray 100%)'
-
-// SETTING PROGRESS BAR
+ // SETTING PROGRESS BAR
 if (barPercent < 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "green"
-  attendBT.innerText = "☝️ PRESENTE!"
+  attendBT.innerText = "☝️ PRESENT!"
   attendBT.style.display = "block"
   rosterBT.style.display = "none"
-  currentStatus.innerHTML = "On time... record attendance!"
+  currentStatus.innerHTML = "⏳ On time... register attendance! 🤚"
   thisPeriod.value = isPeriod
-  rollStatus.value = "Present"
+  rollStatus.value = "Present!"
   enableInput()
  }
 }
@@ -412,12 +383,12 @@ if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
   attendBT.style.background = "red"
-  attendBT.innerText = "👇 TARDE!"
+  attendBT.innerText = "👇 LATE!"
   attendBT.style.display = "block"
   rosterBT.style.display = "none"
-  currentStatus.innerHTML = "Late... record anyway!"
+  currentStatus.innerHTML = "⌛ Late... register anyway! 🤷🏽"
   thisPeriod.value = isPeriod
-  rollStatus.value = "Tarde"
+  rollStatus.value = "Late!"
   enableInput()
  }
 }
@@ -446,12 +417,12 @@ else { autoTime.style.color = "#0000CC" }
 // ====================
 attendBT.addEventListener("click", function() {
  attendBT.style.color = "darkgray"
- attendBT.innerHTML = "҉ &nbsp; SENDING!"
+ attendBT.innerHTML = "&nbsp; ҉ &nbsp;"
 })
 
 rosterBT.addEventListener("click", function() {
  let theRoster = 'https://docs.google.com/spreadsheets/d/19GdiEWPkHD7uaJETKYiR6qeh-H5P60doUylWwlpBQUU/view?rm=minimal'
- rosterBT.innerHTML = " ҉ &nbsp; Checking..."; rosterBT.style.border = "3px dashed white" 
+ rosterBT.innerHTML = "&nbsp; ҉ &nbsp; "; rosterBT.style.border = "3px dashed white" 
  setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
  setTimeout(function(){ rosterBT.innerHTML = "📒 Attendance!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
 })
@@ -474,9 +445,10 @@ if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = fal
 if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
 if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
 
-// =====
-// FORMAT: nomina.html?clase=Inglés Básico 2&profe=Méndez, Juan
-// =====
+// FORMAT:
+// =============================================================
+// | /nomina.html?clase='Basic English 2'&profe='Méndez, Juan' |
+// =============================================================
 
 
 
@@ -499,70 +471,69 @@ const submitButton = document.getElementById("attendButton");
 const messageDiv = document.getElementById("message");
 
 form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  
-  // FOCUS ON BUTTON & DISABLE!
-  submitButton.focus()
-  attendBT.style.color = "darkgray"
-  submitButton.disabled = true;
+e.preventDefault();
 
-  // DISPLAYING MESSAGE
-  message.textContent = "Enviando...";
-  messageDiv.style.display = "block";
-  messageDiv.style.backgroundColor = "beige";
-  messageDiv.style.color = "cornflowerblue";
+// FOCUS ON BUTTON & DISABLE!
+submitButton.focus()
+attendBT.style.color = "darkgray"
+submitButton.disabled = true;
 
-  try {
-    const formData = new FormData(this);
-    const formDataObj = {};
+// DISPLAYING MESSAGE
+message.textContent = " ҉ ";
+messageDiv.style.display = "block";
+messageDiv.style.backgroundColor = "beige";
+messageDiv.style.color = "cornflowerblue";
 
-    // Convert FormData to object
-    for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
+try {
+ const formData = new FormData(this);
+ const formDataObj = {};
 
-    // Submit form data
-    // const scriptURL = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec";
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxk_dLh2aQrnLrapwTKZjEoJPwwi__Syoi4w02M1yuzizZz6vvyTu8YHU0g3JI8qGxZ/exec";
+ // Convert FormData to object
+ for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
 
-    const response = await fetch(scriptURL, {
-        redirect: "follow",
-        method: "POST",
-        body: JSON.stringify(formDataObj),
-        headers: { "Content-Type": "text/plain;charset=utf-8", },
-        });
+ // Submit form data!
+ const scriptURL = "https://script.google.com/macros/s/AKfycbxk_dLh2aQrnLrapwTKZjEoJPwwi__Syoi4w02M1yuzizZz6vvyTu8YHU0g3JI8qGxZ/exec";
 
-    const data = await response.json();
+ const response = await fetch(scriptURL, {
+ redirect: "follow",
+ method: "POST",
+ body: JSON.stringify(formDataObj),
+ headers: { "Content-Type": "text/plain;charset=utf-8", },
+ });
 
-    if (data.status === "success") {
-	messageDiv.textContent = data.message || "Asistencia exitosa!";
-	messageDiv.style.backgroundColor = "#48c78e";
-	messageDiv.style.color = "white";
-	attendTime.value = currentTime
-	currentStatus.innerHTML = "Ready... next student!"
-	setTimeout(function(){
-          lastNames.value = ""
-          firstNames.value = ""
-	  attendTime.value = ""
-	  lastNames.focus()
-	  attendBT.style.color = "lightgray"
-	  currentStatus.innerHTML = "Enter your name!"
-	}, 5000)
-        // form.reset();
-        } else { throw new Error(data.message || "Upload error!"); }
-    } catch (error) {
-        console.error("Error:", error);
-        messageDiv.textContent = "Error: " + error.message;
-        messageDiv.style.backgroundColor = "#f14668";
-        messageDiv.style.color = "white";
-        }
-    finally {
-	// RE-ENABLE BUTTON
-        submitButton.disabled = false;
+ const data = await response.json();
 
-    setTimeout(() => {
-        messageDiv.textContent = "";
-        messageDiv.style.display = "none";
-        }, 4000);
-    }
+ if (data.status === "success") {
+  messageDiv.textContent = data.message || "🎉 Successful attendance!";
+  messageDiv.style.backgroundColor = "#48c78e";
+  messageDiv.style.color = "white";
+  attendTime.value = currentTime
+  currentStatus.innerHTML = "✔️ Ready... next student! 📲"
+  setTimeout(function(){
+   lastNames.value = ""
+   firstNames.value = ""
+   attendTime.value = ""
+   lastNames.focus()
+   attendBT.style.color = "lightgray"
+   currentStatus.innerHTML = "📝 Enter your name! ✍️"
+   }, 4000)
+  // form.reset();
+ } else { throw new Error(data.message || "Upload error!"); }
+} catch (error) {
+ console.error("⚠️ ERROR DETECTED: \n🚧 ──────────────────── 🚧\n", error + "\n🚧 ──────────────────── 🚧");
+ messageDiv.textContent = "⚠️ ERROR: " + error.message;
+ messageDiv.style.backgroundColor = "#f14668";
+ messageDiv.style.color = "white";
+}
+ finally {
+  // RE-ENABLE BUTTON
+  submitButton.disabled = false;
+
+ setTimeout(() => {
+  messageDiv.textContent = "";
+  messageDiv.style.display = "none"
+  }, 4000);
+ }
 })
 
 
