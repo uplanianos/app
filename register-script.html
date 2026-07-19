@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title>Data Entry Form with File Upload</title>
+  </head>
+  <body>
+
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Data Entry Form</h1>
+        </div>
+      </div>
+    </section>
+
+    <form id="attendance" class="container m-4 pl-4">
+
+
+	<label class="label">Fecha</label>
+        <div class="control">
+          <input class="input" type="date" placeholder="Fecha" name="DATE" />
+        </div>
+      </div>
+
+	<label class="label">Hora</label>
+        <div class="control">
+          <input class="input" type="time" placeholder="Hora" name="TIME" />
+        </div>
+      </div>
+
+	<label class="label">Período</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Período" name="PERIOD" min="0" max="8" step="1" value="0" />
+        </div>
+      </div>
+
+	<label class="label">Asignatura</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Asignatura" name="SUBJECT" />
+        </div>
+      </div>
+
+	<label class="label">Docente</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Docente" name="PROFESSOR" />
+        </div>
+      </div>
+
+	<label class="label">Apellidos</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Apellidos" name="LAST NAMES" />
+        </div>
+      </div>
+
+	<label class="label">Nombres</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Nombers" name="FIRST NAMES" />
+        </div>
+      </div>
+
+	<label class="label">Asistencia</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Presente / Ausente" name="ATTENDANCE" />
+        </div>
+      </div>
+
+	<br>
+
+
+      <div class="field is-grouped">
+        <div class="control"><button class="button is-primary" type="submit" id="attendButton">Registrar</button></div>
+        <div class="control"><button class="button is-danger" type="button" onclick="document.getElementById('attendance').reset();">&nbsp;&nbsp;Borrar&nbsp;&nbsp;</button></div>
+      </div>
+    </form>
+    <div id="message" style=" display: none; margin: 20px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
+
+    <script>
+      const form = document.getElementById("attendance");
+      const submitButton = document.getElementById("attendButton");
+      const messageDiv = document.getElementById("message");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        messageDiv.textContent = "Submitting...";
+        messageDiv.style.display = "block";
+        messageDiv.style.backgroundColor = "beige";
+        messageDiv.style.color = "black";
+        submitButton.disabled = true;
+        submitButton.classList.add("is-loading");
+
+        try {
+          const formData = new FormData(this);
+          const formDataObj = {};
+
+          // Convert FormData to object
+          for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
+
+          // Submit form data
+          const scriptURL =
+            // "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec"; // Upla
+	    "https://script.google.com/macros/s/AKfycbxk_dLh2aQrnLrapwTKZjEoJPwwi__Syoi4w02M1yuzizZz6vvyTu8YHU0g3JI8qGxZ/exec"; // English
+
+          const response = await fetch(scriptURL, {
+            redirect: "follow",
+            method: "POST",
+            body: JSON.stringify(formDataObj),
+            headers: { "Content-Type": "text/plain;charset=utf-8", },
+          });
+
+          const data = await response.json();
+
+          if (data.status === "success") {
+            messageDiv.textContent =
+              data.message || "Data submitted successfully!";
+            messageDiv.style.backgroundColor = "#48c78e";
+            messageDiv.style.color = "white";
+            form.reset();
+          } else {
+            throw new Error(data.message || "Submission failed");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          messageDiv.textContent = "Error: " + error.message;
+          messageDiv.style.backgroundColor = "#f14668";
+          messageDiv.style.color = "white";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.classList.remove("is-loading");
+
+          setTimeout(() => {
+            messageDiv.textContent = "";
+            messageDiv.style.display = "none";
+          }, 4000);
+        }
+      });
+
+      // Enhance cancel button to reset file input display
+      const cancelButton = form.querySelector("button.is-danger");
+      cancelButton.addEventListener("click", function () {
+        form.reset();
+        messageDiv.style.display = "none";
+      });
+    </script>
+
+
+  </body>
+</html>
