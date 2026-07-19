@@ -247,8 +247,8 @@ setInterval(() => {
  // CHECKING STUDENT INPUT!
  // ======================
  // INPUTS READY!
- if (thisClass.value.length >= 3 && thisTeach.value.length >= 3 &&
-    lastNames.value.length >= 3 && firstNames.value.length >= 3 ) { inputReady = true; }
+ if (thisClass.value.length >= 4 && thisTeach.value.length >= 4 &&
+    lastNames.value.length >= 4 && firstNames.value.length >= 4 ) { inputReady = true; }
  else { inputReady = false }
 
 
@@ -257,8 +257,8 @@ setInterval(() => {
  // ========================
  let theFields = document.querySelectorAll(".theInputs")
  for(let studentInput of theFields) {
-	if (studentInput.value.length >= 3 && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
-   else if (studentInput.value.length >= 3 && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
+	if (studentInput.value.length >= 4 && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
+   else if (studentInput.value.length >= 4 && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
    else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "📝 Enter your name! ✍️" }
  }
 
