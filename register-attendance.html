@@ -431,8 +431,8 @@ rosterBT.addEventListener("click", function() {
 
 // GETTING CLASS NAME FROM LINK PARAMETER!
 // ======================================
-let urlClass = (new URLSearchParams(window.location.search)).get("clase")
-let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+let urlClass = (new URLSearchParams(window.location.search)).get("class")
+let urlTeach = (new URLSearchParams(window.location.search)).get("teach")
 // PRINTING CLASS ELEMENT
 if (urlClass !== null) { thisClass.value = urlClass }
 if (urlTeach !== null) { thisTeach.value = urlTeach }
@@ -447,7 +447,7 @@ if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = fal
 
 // FORMAT:
 // =============================================================
-// | /nomina.html?clase='Basic English 2'&profe='Méndez, Juan' |
+// | /nomina.html?class='Basic English 2'&teach='Méndez, Juan' |
 // =============================================================
 
 
