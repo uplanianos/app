@@ -17,28 +17,31 @@ Your browser does not support the <code>audio</code> element.</audio>
 
  <br>
  <div class="titleDiv">Automatic Attendance Registration:</div>
- <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⛶</div>
+ <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">[&nbsp;]</div>
 
  <div class="rollDiv">
  <form id="attendClass">
  <br>
  TODAY'S DATE: &nbsp;&nbsp;
- <input type="text" class="theInputs" id="autoDate" name="DATE" value="0000-00-00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ <input type="text" class="theInputs" id="autoDate" name="DATE" value="0000-00-00" readOnly style="cursor: not-allowed; background: #CCFFCCee;" onClick="isDisabled(this)"><br><br>
 
  CURRENT TIME:&nbsp;&nbsp;
- <input type="text" class="theInputs" id="autoTime" name="TIME" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ <input type="text" class="theInputs" id="autoTime" name="TIME" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;" onClick="isDisabled(this)"><br><br>
 
  CLASS - CODE:&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="thisClass" name="SUBJECT" placeholder="* Nombre Asignatura"><br><br>
+ <input type="text" class="theInputs" id="thisClass" name="SUBJECT" placeholder="* Nombre Asignatura" onClick="isDisabled(this)"><br><br>
 
  PROFESSOR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="thisTeach" name="PROFESSOR" placeholder="* Apellido, Nombre"><br><br>
+ <input type="text" class="theInputs" id="thisTeach" name="PROFESSOR" placeholder="* Apellido, Nombre" onClick="isDisabled(this)"><br><br>
 
  LAST NAMES (2):
  <input type="text" class="theInputs" id="lastNames" name="LAST NAMES" placeholder="* Lastname Lastname (2)" AUTOFOCUS><br><br>
 
  FIRST NAME(S):&nbsp;&nbsp;
  <input type="text" class="theInputs" id="firstNames" name="FIRST NAMES" placeholder="* Name(s)"><br><br>
+
+ UPLA @ USER:&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="thisEmail" name="E-MAIL" placeholder="* __________@alumnos.upla.cl" style="text-transform: lowercase;" onChange="fullEmail(this)"><br><br>
 
  <span style="display: none;">
  CLASS PERIOD: &nbsp;
@@ -87,6 +90,7 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
+ localStorage.thisEmail = document.getElementById("thisEmail").value
  localStorage.attendTime = document.getElementById("attendTime").value
 }
 // END OF "BEFORE LOAD"
@@ -102,6 +106,7 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
+ document.getElementById("thisEmail").value = localStorage.thisEmail || ""
  document.getElementById("attendTime").value = localStorage.attendTime || ""
  }
 
@@ -125,6 +130,8 @@ let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
 let firstNames = document.getElementById("firstNames")
+let thisEmail = document.getElementById("thisEmail")
+// HIDDEN ELEMENTS
 let rollStatus = document.getElementById("attendance")
 let attendTime = document.getElementById("attendTime")
 // BUTTONS
@@ -248,7 +255,8 @@ setInterval(() => {
  // ======================
  // INPUTS READY!
  if (thisClass.value.length >= 4 && thisTeach.value.length >= 4 &&
-    lastNames.value.length >= 4 && firstNames.value.length >= 4 ) { inputReady = true; }
+    lastNames.value.length >= 4 && firstNames.value.length >= 4 &&
+    thisEmail.value.length >= 8) { inputReady = true; }
  else { inputReady = false }
 
 
@@ -374,7 +382,7 @@ if (barPercent < 20) {
   rosterBT.style.display = "none"
   currentStatus.innerHTML = "⏳ On time... register attendance! 🤚"
   thisPeriod.value = isPeriod
-  rollStatus.value = "Present!"
+  rollStatus.value = "Present"
   enableInput()
  }
 }
@@ -388,7 +396,7 @@ if (barPercent >= 20 && barPercent <= 40) {
   rosterBT.style.display = "none"
   currentStatus.innerHTML = "⌛ Late... register anyway! 🤷🏽"
   thisPeriod.value = isPeriod
-  rollStatus.value = "Late!"
+  rollStatus.value = "Late"
   enableInput()
  }
 }
@@ -418,6 +426,7 @@ else { autoTime.style.color = "#0000CC" }
 attendBT.addEventListener("click", function() {
  attendBT.style.color = "darkgray"
  attendBT.innerHTML = "&nbsp; ҉ &nbsp;"
+ isDisabled(this)
 })
 
 rosterBT.addEventListener("click", function() {
@@ -461,6 +470,7 @@ thisClass.addEventListener("click", function() { if (thisClass.readOnly) {notAll
 thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 lastNames.addEventListener("click", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisEmail.addEventListener("click", function() { if (thisEmail.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
@@ -512,6 +522,7 @@ try {
   setTimeout(function(){
    lastNames.value = ""
    firstNames.value = ""
+   thisEmail.value = ""
    attendTime.value = ""
    lastNames.focus()
    attendBT.style.color = "lightgray"
@@ -566,8 +577,10 @@ return i
 function enableInput() {
  lastNames.readOnly = false
  firstNames.readOnly = false
+ thisEmail.readOnly = false
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
+ thisEmail.style.cursor = ""
 // ENABLING CLASS & TEACHER FIELD
 let urlClass = (new URLSearchParams(window.location.search)).get("clase")
 let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
@@ -585,12 +598,36 @@ function disableInput() {
  thisTeach.readOnly = true
  lastNames.readOnly = true
  firstNames.readOnly = true
+ thisEmail.readOnly = true
  thisClass.style.cursor = "not-allowed"
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
+ thisEmail.style.cursor = "not-allowed"
 }
 
+
+
+// ============================
+// CHECK DISABLED ANIMATION!
+// ============================
+function isDisabled(input) {
+if (input.readOnly || input.disabled) {
+ input.style.transform = "translate(3px, 0px)"
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" },  50)
+ setTimeout(() => { input.style.transform = "translate( 3px, 0px)" }, 100)
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" }, 150)
+ setTimeout(() => { input.style.transform = "translate(1px, 0px)" }, 200)
+ }
+}
+
+
+
+// FULL EMAIL
+function fullEmail(input) {
+let onlyUser = input.value.replace(/@.*/, "")
+thisEmail.value = onlyUser
+}
 
 
 // ===========
