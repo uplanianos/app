@@ -27,23 +27,27 @@
  <form id="attendClass">
  <br>
  FECHA DE HOY:&nbsp;
- <input type="text" class="theInputs" id="autoDate" name="Fecha" value="0000-00-00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ <input type="text" class="theInputs" id="autoDate" name="Fecha" value="0000-00-00" readOnly style="cursor: not-allowed; background: #CCFFCCee;" onClick="isDisabled(this)"><br><br>
 
  HORA ACTUAL:&nbsp;&nbsp;
- <input type="text" class="theInputs" id="autoTime" name="Hora" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;"><br><br>
+ <input type="text" class="theInputs" id="autoTime" name="Hora" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;" onClick="isDisabled(this)"><br><br>
 
  ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="thisClass" name="Asignatura" placeholder="* Nombre Asignatura"><br><br>
+ <input type="text" class="theInputs" id="thisClass" name="Asignatura" placeholder="* Nombre Asignatura" onClick="isDisabled(this)"><br><br>
 
  DOCENTE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="thisTeach" name="Docente" placeholder="* Apellido, Nombre"><br><br>
+ <input type="text" class="theInputs" id="thisTeach" name="Docente" placeholder="* Apellido, Nombre" onClick="isDisabled(this)"><br><br>
 
  TUS APELLIDOS:
- <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido"><br><br>
+ <input type="text" class="theInputs" id="lastNames" name="Apellidos" placeholder="* Apellido Apellido" onClick="isDisabled(this)"><br><br>
 
  <!-- RESET CLICKABLE ELEMENTS --><span id="stu" onClick="resetButton(this)">
  TUS NOMBRES:</span>&nbsp;&nbsp;
- <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre"><br><br>
+ <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre" onClick="isDisabled(this)"><br><br>
+
+ CORREO UPLA:&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="thisEmail" name="Correo" placeholder="* __________@alumnos.upla.cl"
+ style="text-transform: lowercase;" onClick="isDisabled(this)" onChange="fullEmail(this)"><br><br>
 
  <span style="display: none;">
  CLASS PERIOD: &nbsp;
@@ -90,6 +94,7 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
+ localStorage.thisEmail = document.getElementById("thisEmail").value
  localStorage.attendTime = document.getElementById("attendTime").value
 }
 // END OF "BEFORE LOAD"
@@ -105,6 +110,7 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
+ document.getElementById("thisEmail").value = localStorage.thisEmail || ""
  document.getElementById("attendTime").value = localStorage.attendTime || ""
  }
 
@@ -128,6 +134,8 @@ let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
 let firstNames = document.getElementById("firstNames")
+let thisEmail = document.getElementById("thisEmail")
+// HIDDEN ELEMENTS!
 let rollStatus = document.getElementById("attendance")
 let attendTime = document.getElementById("attendTime")
 // BUTTONS
@@ -275,7 +283,8 @@ else { isPresent = false }
 // ======================
 // INPUTS READY!
 if (thisClass.value !== "" && thisTeach.value !== "" &&
-    lastNames.value !== "" && firstNames.value !== "" ) { inputReady = true; }
+    lastNames.value !== "" && firstNames.value !== "" &&
+    thisEmail.value !== "" ) { inputReady = true; }
 else { inputReady = false }
 
 
@@ -295,6 +304,7 @@ for(let studentInput of theFields) {
 // ===============
 if (inputReady && !isPresent) {
  if (onTime) {
+  attendBT.disabled = true
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENTE!"
   attendBT.style.display = "block"
@@ -305,6 +315,7 @@ if (inputReady && !isPresent) {
   enableInput()
  }
  if (soLate) {
+  attendBT.disabled = true
   attendBT.style.background = "red"
   attendBT.innerText = "👇 TARDE!"
   attendBT.style.display = "block"
@@ -317,15 +328,17 @@ if (inputReady && !isPresent) {
 }
 
 if (!inputReady) {
- rosterBT.style.display = "block"
+ attendBT.disabled = true
  attendBT.style.display = "none"
+ rosterBT.style.display = "block"
  currentStatus.innerHTML = "Completa tus datos!"
  enableInput()
 }
 
 if (noShow && !isPresent) {
- rosterBT.style.display = "block"
+ attendBT.disabled = true
  attendBT.style.display = "none"
+ rosterBT.style.display = "block"
  currentStatus.innerHTML = "Inscripción finalizada!"
  thisPeriod.value = "0"
  rollStatus.value = "Ausente"
@@ -334,8 +347,9 @@ if (noShow && !isPresent) {
 
 if (isPresent) {
  currentStatus.innerHTML = "Estás presente... revisa el registro."
- rosterBT.style.display = "block"
+ attendBT.disabled = true
  attendBT.style.display = "none"
+ rosterBT.style.display = "block"
  disableInput()
 }
 
@@ -398,6 +412,7 @@ let barYellow = 'linear-gradient(to right, #FFFFCC 0%, #FFFF66ee ' + barPercent 
 if (barPercent < 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
+  attendBT.disabled = false
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENTE!"
   attendBT.style.display = "block"
@@ -412,6 +427,7 @@ if (barPercent < 20) {
 if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
+  attendBT.disabled = false
   attendBT.style.background = "red"
   attendBT.innerText = "👇 TARDE!"
   attendBT.style.display = "block"
@@ -425,9 +441,10 @@ if (barPercent >= 20 && barPercent <= 40) {
 
 if (barPercent > 40) {
  autoTime.style.background = barPurple
-  rosterBT.style.display = "block"
-  attendBT.style.display = "none"
-  enableInput()
+ attendBT.disabled = true
+ attendBT.style.display = "none"
+ rosterBT.style.display = "block"
+ enableInput()
 }
 
 // BREAKS
@@ -475,9 +492,10 @@ if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = fal
 if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
 if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
 
-// =====
-// FORMAT: nomina.html?clase=Inglés Básico 2&profe=Méndez, Juan
-// =====
+// URL FORMAT:
+// ======================================================================
+// |  FORMAT: nomina.html?clase='Inglés Básico 2'&profe='Méndez, Juan'  |
+// ======================================================================
 
 
 
@@ -598,6 +616,7 @@ if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = false }
 }
 
 
+
 // =============
 // DISABLE INPUT!
 // =============
@@ -610,6 +629,31 @@ function disableInput() {
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
+}
+
+
+
+// ============================
+// CHECK DISABLED ANIMATION!
+// ============================
+function isDisabled(input) {
+if (input.readOnly || input.disabled) {
+ input.style.transform = "translate(3px, 0px)"
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" },  50)
+ setTimeout(() => { input.style.transform = "translate( 3px, 0px)" }, 100)
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" }, 150)
+ setTimeout(() => { input.style.transform = "translate(1px, 0px)" }, 200)
+ }
+}
+
+
+
+// ===================
+// DELETE EMAIL DOMAIN
+// ===================
+function fullEmail(input) {
+let onlyUser = input.value.replace(/@.*/, "")
+thisEmail.value = onlyUser
 }
 
 
@@ -646,11 +690,8 @@ var currentScrollPos = window.pageYOffset;
 
 
 
-
 // ======================
 // END OF JAVASCRIPT CODE!!
 
 </script>
-
-
 </html>

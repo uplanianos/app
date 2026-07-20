@@ -287,6 +287,7 @@ if (inputReady && !isPresent) {
   enableInput()
  }
  if (soLate) {
+  attendBT.disabled = false
   attendBT.style.background = "red"
   attendBT.innerText = "👇 LATE!"
   attendBT.style.display = "block"
@@ -306,6 +307,7 @@ if (!inputReady) {
 }
 
 if (noShow && !isPresent) {
+ attendBT.disabled = false
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
  currentStatus.innerHTML = "🚫 Registration finished! 🔒"
@@ -318,6 +320,7 @@ if (isPresent) {
  currentStatus.innerHTML = "✔️ Ready... next student! 📲"
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
+ attendBT.disabled = true
  disableInput()
 }
 
@@ -377,7 +380,7 @@ if (isPresent) {
 if (barPercent < 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
-  attendButton.disabled = false
+  attendBT.disabled = false
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENT!"
   attendBT.style.display = "block"
@@ -392,7 +395,7 @@ if (barPercent < 20) {
 if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
-  attendButton.disabled = false
+  attendBT.disabled = false
   attendBT.style.background = "red"
   attendBT.innerText = "👇 LATE!"
   attendBT.style.display = "block"
@@ -408,13 +411,13 @@ if (barPercent > 40) {
  autoTime.style.background = barPurple
   rosterBT.style.display = "block"
   attendBT.style.display = "none"
-  attendButton.disabled = true
+  attendBT.disabled = true
   enableInput()
 }
 
 // BREAKS
-if (isPeriod >= 11 && isPeriod <= 17) { autoTime.style.background = barYellow; attendButton.disabled = true }
-if (isPeriod ==  0 || isPeriod == 18) { autoTime.style.background = barBlacky; attendButton.disabled = true; autoTime.style.color = "#FFFFFFaa" }
+if (isPeriod >= 11 && isPeriod <= 17) { autoTime.style.background = barYellow; attendBT.disabled = true }
+if (isPeriod ==  0 || isPeriod == 18) { autoTime.style.background = barBlacky; attendBT.disabled = true; autoTime.style.color = "#FFFFFFaa" }
 else { autoTime.style.color = "#0000CC" }
 
 
@@ -428,7 +431,6 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
- attendButton.disabled = true
  attendBT.style.color = "darkgray"
  attendBT.innerHTML = "&nbsp; ҉ &nbsp;"
  isDisabled(this)
@@ -490,8 +492,8 @@ e.preventDefault();
 
 // FOCUS ON BUTTON & DISABLE!
 attendButton.focus()
-attendBT.style.color = "darkgray"
-attendButton.disabled = true;
+attendButton.style.color = "darkgray"
+attendButton.disabled = true
 
 // DISPLAYING MESSAGE
 message.textContent = " ҉ ";
@@ -530,7 +532,7 @@ try {
    thisEmail.value = ""
    attendTime.value = ""
    lastNames.focus()
-   attendBT.style.color = "lightgray"
+   attendButton.style.color = "lightgray"
    currentStatus.innerHTML = "📝 Enter your name! ✍️"
    }, 4000)
   // form.reset();
@@ -628,11 +630,14 @@ if (input.readOnly || input.disabled) {
 
 
 
-// FULL EMAIL
+// ===================
+// DELETE EMAIL DOMAIN
+// ===================
 function fullEmail(input) {
 let onlyUser = input.value.replace(/@.*/, "")
 thisEmail.value = onlyUser
 }
+
 
 
 // ===========
@@ -656,11 +661,8 @@ else {
 
 
 
-
 // ======================
 // END OF JAVASCRIPT CODE!!
 
 </script>
-
-
 </html>
