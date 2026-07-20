@@ -606,13 +606,15 @@ return i
 function enableInput() {
  lastNames.readOnly = false
  firstNames.readOnly = false
+ thisEmail.readOnly = false
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
+ thisEmail.style.cursor = ""
 // ENABLING CLASS & TEACHER FIELD
 let urlClass = (new URLSearchParams(window.location.search)).get("clase")
 let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-if (urlClass == null && thisClass.value == "") { thisClass.readOnly = false }
-if (urlTeach == null && thisTeach.value == "") { thisTeach.readOnly = false }
+if (urlClass == null && !thisClass.value == "") { thisClass.readOnly = false; thisClass.style.cursor = "" }
+if (urlTeach == null && !thisTeach.value == "") { thisTeach.readOnly = false; thisTeach.style.cursor = "" }
 }
 
 
@@ -625,10 +627,12 @@ function disableInput() {
  thisTeach.readOnly = true
  lastNames.readOnly = true
  firstNames.readOnly = true
+ thisEmail.readOnly = true
  thisClass.style.cursor = "not-allowed"
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
+ thisEmail.style.cursor = "not-allowed"
 }
 
 
@@ -666,10 +670,10 @@ let regOn = false
 let asiOn = false
 let autOn = false
 let stuOn = false
-reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
-stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = "" } })
+reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
 // END OF RESET BUTTON
 }
 
