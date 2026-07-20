@@ -276,6 +276,7 @@ setInterval(() => {
 // ===============
 if (inputReady && !isPresent) {
  if (onTime) {
+  attendBT.disabled = false
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENT!"
   attendBT.style.display = "block"
@@ -376,6 +377,7 @@ if (isPresent) {
 if (barPercent < 20) {
  autoTime.style.background = barGreeny
  if (!isPresent && !noShow && inputReady) {
+  attendButton.disabled = false
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENT!"
   attendBT.style.display = "block"
@@ -390,6 +392,7 @@ if (barPercent < 20) {
 if (barPercent >= 20 && barPercent <= 40) {
  autoTime.style.background = barRedish
  if (!isPresent && !noShow && inputReady) {
+  attendButton.disabled = false
   attendBT.style.background = "red"
   attendBT.innerText = "👇 LATE!"
   attendBT.style.display = "block"
@@ -405,12 +408,13 @@ if (barPercent > 40) {
  autoTime.style.background = barPurple
   rosterBT.style.display = "block"
   attendBT.style.display = "none"
+  attendButton.disabled = true
   enableInput()
 }
 
 // BREAKS
-if (isPeriod >= 11 && isPeriod <= 17) { autoTime.style.background = barYellow }
-if (isPeriod ==  0 || isPeriod == 18) { autoTime.style.background = barBlacky; autoTime.style.color = "#FFFFFFaa" }
+if (isPeriod >= 11 && isPeriod <= 17) { autoTime.style.background = barYellow; attendButton.disabled = true }
+if (isPeriod ==  0 || isPeriod == 18) { autoTime.style.background = barBlacky; attendButton.disabled = true; autoTime.style.color = "#FFFFFFaa" }
 else { autoTime.style.color = "#0000CC" }
 
 
@@ -424,6 +428,7 @@ else { autoTime.style.color = "#0000CC" }
 // BUTTON CLICK EVENTS!
 // ====================
 attendBT.addEventListener("click", function() {
+ attendButton.disabled = true
  attendBT.style.color = "darkgray"
  attendBT.innerHTML = "&nbsp; ҉ &nbsp;"
  isDisabled(this)
@@ -477,16 +482,16 @@ thisEmail.addEventListener("click", function() { if (thisEmail.readOnly) {notAll
 // SUBMIT FORM FUNCTION
 // =========================
 const form = document.getElementById("attendClass");
-const submitButton = document.getElementById("attendButton");
+const attendButton = document.getElementById("attendButton");
 const messageDiv = document.getElementById("message");
 
 form.addEventListener("submit", async function (e) {
 e.preventDefault();
 
 // FOCUS ON BUTTON & DISABLE!
-submitButton.focus()
+attendButton.focus()
 attendBT.style.color = "darkgray"
-submitButton.disabled = true;
+attendButton.disabled = true;
 
 // DISPLAYING MESSAGE
 message.textContent = " ҉ ";
@@ -538,7 +543,7 @@ try {
 }
  finally {
   // RE-ENABLE BUTTON
-  submitButton.disabled = false;
+  attendButton.disabled = false;
 
  setTimeout(() => {
   messageDiv.textContent = "";
