@@ -17,7 +17,7 @@ Your browser does not support the <code>audio</code> element.</audio>
 
  <br>
  <div class="titleDiv">Automatic Attendance Registration:</div>
- <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">▮▯⊡⊠⇧⇩△▽</div>
+ <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⊡</div>
 
  <div class="rollDiv">
  <form id="attendClass">
@@ -645,14 +645,14 @@ thisEmail.value = onlyUser
 // ===========
 function toggleFullScreen() {
 if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
- document.getElementById("fullScreen").innerHTML = "⦿"
- document.getElementById("fullScreen").style.color = "#88668866"
+ document.getElementById("fullScreen").innerHTML = "⊠"
+ document.getElementById("fullScreen").style.color = "#66668866"
  if (document.documentElement.requestFullScreen) { document.documentElement.requestFullScreen() }
  else if (document.documentElement.mozRequestFullScreen) { document.documentElement.mozRequestFullScreen() }
  else if (document.documentElement.webkitRequestFullScreen) { document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT) }
  }
 else {
- document.getElementById("fullScreen").innerHTML = "⦾"
+ document.getElementById("fullScreen").innerHTML = "⊡"
  document.getElementById("fullScreen").style.color = "lightgray"
  if (document.cancelFullScreen) { document.cancelFullScreen() }
  else if (document.mozCancelFullScreen) { document.mozCancelFullScreen() }
