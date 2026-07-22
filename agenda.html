@@ -45,7 +45,7 @@
 <script type="text/javascript">
 document.getElementById('titleMenu').addEventListener('change', function() {
  if (titleMenu.value == 1) {blurMenu(); window.location.replace("agenda.html")}
- if (titleMenu.value == 110) {blurMenu(); window.location.replace("agenda.html?i1=sep7m&i2=oct5m&i3=nov16m&ex=nov30m&c=Clase")}
+ if (titleMenu.value == 110) {blurMenu(); window.location.replace("agenda.html?i1=ago31m&i2=oct5m&i3=nov16m&ex=nov30m&c=Clase")}
  if (titleMenu.value == 111) {setTimeout('blurMenu()', 1000); window.print()}
  if (titleMenu.value == 112) {doDelete(); setTimeout('blurMenu()', 1000)}
  if (titleMenu.value == 2) {blurMenu(); window.location = "asistencia.html?tipo=2&clases=12&asiste=0"}
@@ -402,10 +402,10 @@ Agenda tus evaluaciones programadas!
 <!- SEPTEMBER ->
 <!- SEPTEMBER ->
 
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">31</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days9" style="background: #eee">Lunes</div>
+ <div class="days9" style="background: #eee">31</div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="ago31m" style="background: transparent"></textarea></div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="ago31t" style="background: transparent"></textarea></div>
 
  <div class="days9">Martes</div>
  <div class="days9">1</div>
@@ -522,51 +522,25 @@ Agenda tus evaluaciones programadas!
  <div class="days9"><textarea class="agendaTask" maxlength="50" id="sep30m"></textarea></div>
  <div class="days9"><textarea class="agendaTask" maxlength="50" id="sep30t"></textarea></div>
 
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">Jueves</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">1</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days9" style="background: #eee">Jueves</div>
+ <div class="days9" style="background: #eee">1</div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="oct1m" style="background: transparent"></textarea></div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="oct1t" style="background: transparent"></textarea></div>
 
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">Viernes</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px; color: gray;">2</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days9" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days9" style="background: #eee">Viernes</div>
+ <div class="days9" style="background: #eee">2</div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="oct2m" style="background: transparent"></textarea></div>
+ <div class="days9" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="oct2t" style="background: transparent"></textarea></div>
 
 
 <!- OCTUBRE ->
 <!- OCTUBRE ->
 <!- OCTUBRE ->
 
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">28</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">Martes</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">29</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">Miércoles</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px; color: gray;">30</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days10" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days10">Jueves</div>
- <div class="days10">1</div>
- <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct1m"></textarea></div>
- <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct1t"></textarea></div>
-
- <div class="days10">Viernes</div>
- <div class="days10">2</div>
- <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct2m"></textarea></div>
- <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct2t"></textarea></div>
-
-
- <div class="days10" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
- <div class="days10" style="margin-top: 20px; border: 1px dashed gray;">5</div>
- <div class="days10" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="oct5m"></textarea></div>
- <div class="days10" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="oct5t"></textarea></div>
+ <div class="days10">Lunes</div>
+ <div class="days10">5</div>
+ <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct5m"></textarea></div>
+ <div class="days10"><textarea class="agendaTask" maxlength="50" id="oct5t"></textarea></div>
 
  <div class="days10">Martes</div>
  <div class="days10">6</div>
@@ -776,40 +750,15 @@ Agenda tus evaluaciones programadas!
  <div class="days11"><textarea class="agendaTask" maxlength="50" id="nov27t"></textarea></div>
 
 
- <div class="days11" style="margin-top: 20px; border: 1px dashed gray;">Lunes</div>
- <div class="days11" style="margin-top: 20px; border: 1px dashed gray;">30</div>
- <div class="days11" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="nov30m"  placeholder="* Examen Especial!"></textarea></div>
- <div class="days11" style="margin-top: 20px; border: 1px dashed gray;"><textarea class="agendaTask" maxlength="50" id="nov30t"></textarea></div>
-
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">Martes</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">1</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">Miércoles</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">2</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">Jueves</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">3</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">Viernes</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px; color: gray;">4</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days11" style="background-color: #DDD; font-size: 10px;">🚫</div>
-
 
 <!- DECEMBER ->
 <!- DECEMBER ->
 <!- DECEMBER ->
 
- <div class="days12" style="background-color: #DDD; font-size: 10px; color: gray;">Lunes</div>
- <div class="days12" style="background-color: #DDD; font-size: 10px; color: gray;">30</div>
- <div class="days12" style="background-color: #DDD; font-size: 10px;">🚫</div>
- <div class="days12" style="background-color: #DDD; font-size: 10px;">🚫</div>
+ <div class="days12" style="background: #eee">Lunes</div>
+ <div class="days12" style="background: #eee">30</div>
+ <div class="days12" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="nov30m" style="background: transparent" placeholder="* Examen Especial!"></textarea></div>
+ <div class="days12" style="background: #eee"><textarea class="agendaTask" maxlength="50" id="nov30t" style="background: transparent"></textarea></div>
 
  <div class="days12">Martes</div>
  <div class="days12">1</div>

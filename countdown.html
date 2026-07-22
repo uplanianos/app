@@ -63,17 +63,22 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 </script> 
 
 
-<div style="font-size: 16px; color: white; margin-left: 5%; margin-right: 5%; padding: 6px; ">
-<b>Avance - I, 2026 (17 de Julio):</b>
+<br>
+<div style="font-size: 16px; color: white; margin-left: 5%; margin-right: 5%; padding: 6px;">
+Avance II, 2026 (al 4 de Diciembre):
 </div>
 
 	<div id="progressBarDiv" style="display: flex; width: 90%; background-color: lightgray; margin-left: auto; margin-right: auto; border: 2px solid white; border-radius: 6px;">
 	 <div id="progressBar" style="width: 0%; height: 40px; background-color: #A7C7E7 /* Pastel Blue */; text-align: center; align-content: center; border-radius: 6px;">&nbsp;0%</div>
 	</div>
+
 	<br>
+	<span style="display: grid; margin: auto; margin-bottom: 6px; width: max-content; text-align: center; color: white; font-size: 14px; padding: 6px 12px; background: red; border: 1px solid white; border-radius: 6px;">
+	* Fechas de integrales aproximadas!</span>
+
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Inicio de clases (16 de Marzo):</font><br>
+	  <br><font class="checkpoint">📅 Inicio de clases (3 de Agosto):</font><br>
 	  <div class="countdown">
 	    <div><p class="startClassNumbers" id="weeksStart">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="startClassNumbers">:</p></div>
@@ -93,7 +98,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Primera Integral (20 de Abril):</font><br>
+	  <br><font class="checkpoint">📅 Semana Integral N°1 (* 31 de Agosto):</font><br>
 	  <div class="countdown">
 	    <div><p class="firstTestNumbers" id="weeksFirst">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="firstTestNumbers">:</p></div>
@@ -113,7 +118,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Segunda Integral (25 de Mayo):</font><br>
+	  <br><font class="checkpoint">📅 Semana Integral N°2 (* 5 de Octubre):</font><br>
 	  <div class="countdown">
 	    <div><p class="secondTestNumbers" id="weeksSecond">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="secondTestNumbers">:</p></div>
@@ -133,7 +138,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Tercera Integral (30 de Junio):</font><br>
+	  <br><font class="checkpoint">📅 Semana Integral N°3 (* 16 de Noviembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="thirdTestNumbers" id="weeksThird">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="thirdTestNumbers">:</p></div>
@@ -153,7 +158,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Examen Especial (13 de Julio):</font><br>
+	  <br><font class="checkpoint">📅 Examen Especial (30 de Noviembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="specialExamNumbers" id="weeksExam">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="specialExamNumbers">:</p></div>
@@ -173,7 +178,7 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	</div>
 
 	<div class="grid-item-slider" style="margin-bottom: 12px;">
-	  <br><font class="checkpoint">📅 Cierre de Semestre (17 de Julio):</font><br>
+	  <br><font class="checkpoint">📅 Cierre de Semestre (4 de Diciembre):</font><br>
 	  <div class="countdown">
 	    <div><p class="lastDayNumbers" id="weeksEnd">0</p></div>
 	    <div style="margin-left: -10%; margin-right: -5%;"><p class="lastDayNumbers">:</p></div>
@@ -196,10 +201,14 @@ function blurMenu() { document.getElementById('titleMenu').value = 0; document.g
 	<!- End of "grid-item-tools" Div ->
 	</div>
 
-    <br><br>
+    <br>
+    <br>
+
   </div>
 
 <br><br>
+<br><br>
+
 </div>
 
 
@@ -217,8 +226,8 @@ var i = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
 var oneDay = 1000 * 60 * 60 * 24
-var firstClass = new Date("2026-03-16T00:00:00").getTime()
-var finalClass = new Date("2026-07-18T00:00:00").getTime() // Midnight, next day!
+var firstClass = new Date("2026-08-03T00:00:00").getTime()
+var finalClass = new Date("2026-12-05T00:00:00").getTime() // Midnight, next day!
 
 // OLD DATE FORMAT - DEPRECATED!
 // var firstClass = new Date("March 16, 2026 00:00:00").getTime()
@@ -289,8 +298,7 @@ thisTime = "yellow"
 function startClass() {
 classStart = document.querySelectorAll("p.startClassNumbers");
 // START WORKING
-// var countDownDate = new Date("March 16, 2026 08:00:00").getTime(); // OLD DATE FORMAT!
-var countDownDate = new Date("2026-03-16T08:00:00").getTime();
+var countDownDate = new Date("2026-08-03T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -324,8 +332,7 @@ var doTheLoop = setInterval(function(){
 function firstTest() {
 firstTest = document.querySelectorAll("p.firstTestNumbers");
 // START WORKING
-// var countDownDate = new Date("April 20, 2026 08:00:00").getTime(); // OLD DATE FORMA!
-var countDownDate = new Date("2026-04-20T08:00:00").getTime();
+var countDownDate = new Date("2026-08-31T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -360,8 +367,7 @@ var doTheLoop = setInterval(function(){
 function secondTest() {
 secondTest = document.querySelectorAll("p.secondTestNumbers");
 // START WORKING
-// var countDownDate = new Date("May 25, 2026 08:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2026-05-25T08:00:00").getTime();
+var countDownDate = new Date("2026-10-05T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -396,8 +402,7 @@ var doTheLoop = setInterval(function(){
 function thirdTest() {
 thirdTest = document.querySelectorAll("p.thirdTestNumbers");
 // START WORKING
-// var countDownDate = new Date("June 30, 2026 08:00:00").getTime() // OLD DATE FORMAT
-var countDownDate = new Date("2026-06-30T08:00:00").getTime();
+var countDownDate = new Date("2026-11-16T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -432,8 +437,7 @@ var doTheLoop = setInterval(function(){
 function specialExam() {
 specialExam = document.querySelectorAll("p.specialExamNumbers");
 // START WORKING
-// var countDownDate = new Date("July 13, 2026 08:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2026-07-13T08:00:00").getTime();
+var countDownDate = new Date("2026-11-30T08:00:00").getTime();
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
@@ -469,7 +473,7 @@ function lastDay() {
 lastDay = document.querySelectorAll("p.lastDayNumbers");
 // START WORKING
 // var countDownDate = new Date("July 18, 2026 00:00:00").getTime() // OLD DATE FORMAT!
-var countDownDate = new Date("2026-07-18T00:00:00").getTime(); // Midnight next day!
+var countDownDate = new Date("2026-12-04T00:00:00").getTime(); // Midnight next day!
 
 var doTheLoop = setInterval(function(){
   // FIXED VARIABLES
