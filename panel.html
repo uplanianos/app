@@ -3,7 +3,7 @@
 
 <html lang="en-US">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=0.8">
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/panel-style.css">
  <title>Uplanianos - Panel de Control</title>
@@ -189,7 +189,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 
  <!-- SEMESTER PROGRESS DIV -->
  <div class="widgetDivs">
-  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;I,&nbsp;2026:</b>&nbsp;Julio&nbsp;17</div>
+  <div class="widgetTitle" style="background-color: cornflowerblue"><b>Avance&nbsp;II,&nbsp;2026:</b>&nbsp;Diciembre&nbsp;4</div>
   <div class="progressWrapper">
 	 <div id="semesterBar" class="progressBar">&nbsp;0%</div>
   </div>
@@ -555,8 +555,8 @@ var percent = duration / 100; // 1 percent of duration!
 var iTerm = 0; // Animation starts from Zero!
 
 // GETTING NUMBER OF DAYS!
-var firstClass = new Date("2026-03-16T00:00:00").getTime()
-var finalClass = new Date("2026-07-18T00:00:00").getTime()
+var firstClass = new Date("2026-08-03T00:00:00").getTime()
+var finalClass = new Date("2026-12-05T00:00:00").getTime() // Midnight next day!
 
 // SETTING UP VARIABLES!
 var currentDays = isNow - firstClass
