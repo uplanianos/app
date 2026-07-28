@@ -256,7 +256,7 @@ setInterval(() => {
  // INPUTS READY!
  if (thisClass.value.length >= 4 && thisTeach.value.length >= 4 &&
     lastNames.value.length >= 4 && firstNames.value.length >= 4 &&
-    thisEmail.value.length >= 8) { inputReady = true; }
+    thisEmail.value.length >= 8) { inputReady = true }
  else { inputReady = false }
 
 
@@ -267,9 +267,6 @@ setInterval(() => {
  for(let studentInput of theFields) {
 	if (studentInput.value.length >= 4 && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
    else if (studentInput.value.length >= 4 && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
-   else if (lastNames.value == "" && !noShow) { currentStatus.innerHTML =  "📝 Enter your last names! ✍️" }
-   else if (firstNames.value == "" && !noShow) { currentStatus.innerHTML = "📝 Enter your first name! ✍️" }
-   else if (thisEmail.value == "" && !noShow) { currentStatus.innerHTML =  "📝 Enter your e-mail! ✍️" }
    else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "📝 Enter your information! ✍️" }
  }
 
@@ -305,8 +302,12 @@ if (inputReady && !isPresent) {
 if (!inputReady) {
  rosterBT.style.display = "block"
  attendBT.style.display = "none"
- currentStatus.innerHTML = "📝 Enter your name! ✍️"
  enableInput()
+ if (thisClass.value == "" && thisTeach.value == "" && !noShow) { currentStatus.innerHTML = "📝 Enter class information! ✍️" }
+ else if (lastNames.value == "" && !noShow) { currentStatus.innerHTML =  "📝 Enter your last names! ✍️" }
+ else if (firstNames.value == "" && !noShow) { currentStatus.innerHTML = "📝 Enter your first name! ✍️" }
+ else if (thisEmail.value == "" && !noShow) { currentStatus.innerHTML =  "📝 Enter your e-mail! ✍️" }
+ else { currentStatus.innerHTML = "📝 Enter your information! ✍️" }
 }
 
 if (noShow && !isPresent) {
@@ -315,7 +316,7 @@ if (noShow && !isPresent) {
  attendBT.style.display = "none"
  currentStatus.innerHTML = "🚫 Registration finished! 🔒"
  thisPeriod.value = "0"
- rollStatus.value = "Absent!"
+ rollStatus.value = "⚠️ Absent! ❌"
  enableInput()
 }
 
