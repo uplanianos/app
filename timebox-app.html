@@ -49,6 +49,7 @@ localStorage.evening3 = document.getElementById("evening3").value
 window.onload = function() {
 // LOAD OTHER FUNCTIONS
 loadData()
+editListener()
 }
 
 function loadData() {
@@ -149,10 +150,9 @@ Completar actividades a priorizar!
   Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
   </div>
 
-  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
-  <button class="timebox-download" role="button" onclick="window.print()">Descargar 🖨️</button>
-
   </div>
+
+  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
 
 </div>
 
@@ -171,11 +171,16 @@ function getTomorrow() {
   console.log(`Mañana es ${currentDayOfWeek}`);
   document.getElementsByName('dateInput')[0].placeholder = "(Mañana es " + currentDayOfWeek + ")";
 }
-</script>
 
 
+function editListener() {
+let userInput = document.querySelectorAll("input")
+for(let data of userInput) {
+ data.addEventListener("change", function() { saveData() })
+ }
+}
 
-<script type="text/javascript">
+
 function deleteAll() {
 document.getElementById("dateInput").value = ""
 document.getElementById("priority1").value = ""
