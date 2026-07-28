@@ -92,7 +92,7 @@ Completar actividades a priorizar!
 </div>
 
 
-<div class="grid-timebox">
+<div class="grid-timebox" style="spacing: 0px; gap: 6px;">
 
   <div>
   <b>📅 Fecha:</b><br>
@@ -102,19 +102,19 @@ Completar actividades a priorizar!
   <div>
   <b>Prioridades ✔️:</b>
   <br>
-  1. <input type="text" class="timebox-inputs" id="priority1" placeholder="Prioridad 1" maxlength="50"><br>
-  2. <input type="text" class="timebox-inputs" id="priority2" placeholder="Prioridad 2" maxlength="50"><br>
-  3. <input type="text" class="timebox-inputs" id="priority3" placeholder="Prioridad 3" maxlength="50"><br>
-  4. <input type="text" class="timebox-inputs" id="priority4" placeholder="Prioridad 4" maxlength="50"><br>
+  1. <input type="text" class="timebox-inputs" id="priority1" placeholder="Prioridad 1" maxlength="50" style="width: 80%;"><br>
+  2. <input type="text" class="timebox-inputs" id="priority2" placeholder="Prioridad 2" maxlength="50" style="width: 80%;"><br>
+  3. <input type="text" class="timebox-inputs" id="priority3" placeholder="Prioridad 3" maxlength="50" style="width: 80%;"><br>
+  4. <input type="text" class="timebox-inputs" id="priority4" placeholder="Prioridad 4" maxlength="50" style="width: 80%;"><br>
   </div>
 
   <div>
   <b>Otras tareas 📑:</b>
   <br>
-  1. <input type="text" class="timebox-inputs" id="task1" placeholder="Actividad 1" maxlength="50"><br>
-  2. <input type="text" class="timebox-inputs" id="task2" placeholder="Actividad 2" maxlength="50"><br>
-  3. <input type="text" class="timebox-inputs" id="task3" placeholder="Actividad 3" maxlength="50"><br>
-  4. <input type="text" class="timebox-inputs" id="task4" placeholder="Actividad 4" maxlength="50">
+  1. <input type="text" class="timebox-inputs" id="task1" placeholder="Actividad 1" maxlength="50" style="width: 80%;"><br>
+  2. <input type="text" class="timebox-inputs" id="task2" placeholder="Actividad 2" maxlength="50" style="width: 80%;"><br>
+  3. <input type="text" class="timebox-inputs" id="task3" placeholder="Actividad 3" maxlength="50" style="width: 80%;"><br>
+  4. <input type="text" class="timebox-inputs" id="task4" placeholder="Actividad 4" maxlength="50" style="width: 80%;">
   </div>
 
   <div>
@@ -124,27 +124,27 @@ Completar actividades a priorizar!
   </div>
 
   <div style="grid-area: schedule; background-color: lightblue; padding-top: 2%;">
-  🕔 <b>Horario madrugada:</b><br>
-  <small>05:00</small> <input type="text" class="timebox-schedule" id="dawn1" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
-  <small>06:00</small> <input type="text" class="timebox-schedule" id="dawn2" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
-  <small>07:00</small> <input type="text" class="timebox-schedule" id="dawn3" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  🕔 <b>Madrugada:</b><br>
+  <small>05:00</small> <input type="text" class="timebox-schedule" id="dawn1" placeholder="Ducha, desayuno, trayecto…" maxlength="50" style="width: 65%;"><br>
+  <small>06:00</small> <input type="text" class="timebox-schedule" id="dawn2" placeholder="Ducha, desayuno, trayecto…" maxlength="50" style="width: 65%;"><br>
+  <small>07:00</small> <input type="text" class="timebox-schedule" id="dawn3" placeholder="Ducha, desayuno, trayecto…" maxlength="50" style="width: 65%;"><br>
   <br>
-  🕗 <b>Horario mañana:</b><br>
-  <small>08:00</small> <input type="text" class="timebox-schedule" id="morning1" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
-  <small>09:30</small> <input type="text" class="timebox-schedule" id="morning2" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
-  <small>11:00</small> <input type="text" class="timebox-schedule" id="morning3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  🕗 <b>Mañana:</b><br>
+  <small>08:00</small> <input type="text" class="timebox-schedule" id="morning1" placeholder="Clases, estudio, trabajo…" maxlength="50" style="width: 65%;"><br>
+  <small>09:30</small> <input type="text" class="timebox-schedule" id="morning2" placeholder="Clases, estudio, trabajo…" maxlength="50" style="width: 65%;"><br>
+  <small>11:00</small> <input type="text" class="timebox-schedule" id="morning3" placeholder="Clases, estudio, trabajo…" maxlength="50" style="width: 65%;"><br>
   <br>
-  🕧 <b>Horario tarde:</b><br>
-  <small>12:30</small> <input type="text" class="timebox-schedule" id="afternoon1" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
-  <small>14:00</small> <input type="text" class="timebox-schedule" id="afternoon2" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
-  <small>15:30</small> <input type="text" class="timebox-schedule" id="afternoon3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
-  <small>17:00</small> <input type="text" class="timebox-schedule" id="afternoon4" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
-  <small>18:30</small> <input type="text" class="timebox-schedule" id="afternoon5" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
+  🕧 <b>Tarde:</b><br>
+  <small>12:30</small> <input type="text" class="timebox-schedule" id="afternoon1" placeholder="Clases, trabajo, almuerzo…" maxlength="50" style="width: 65%;"><br>
+  <small>14:00</small> <input type="text" class="timebox-schedule" id="afternoon2" placeholder="Clases, trabajo, almuerzo…" maxlength="50" style="width: 65%;"><br>
+  <small>15:30</small> <input type="text" class="timebox-schedule" id="afternoon3" placeholder="Clases, trabajo, almuerzo…" maxlength="50" style="width: 65%;"><br>
+  <small>17:00</small> <input type="text" class="timebox-schedule" id="afternoon4" placeholder="Clases, trabajo, coffee…" maxlength="50" style="width: 65%;"><br>
+  <small>18:30</small> <input type="text" class="timebox-schedule" id="afternoon5" placeholder="Clases, trabajo, retorno…" maxlength="50" style="width: 65%;"><br>
   <br>
-  🕗 <b>Horario vespertino:</b><br>
-  <small>20:00</small> <input type="text" class="timebox-schedule" id="evening1" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
-  <small>21:00</small> <input type="text" class="timebox-schedule" id="evening2" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
-  <small>22:00</small> <input type="text" class="timebox-schedule" id="evening3" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
+  🕗 <b>Vespertino:</b><br>
+  <small>20:00</small> <input type="text" class="timebox-schedule" id="evening1" placeholder="Estudio, relajo, retorno..." maxlength="50" style="width: 65%;"><br>
+  <small>21:00</small> <input type="text" class="timebox-schedule" id="evening2" placeholder="Estudio, relajo, retorno..." maxlength="50" style="width: 65%;"><br>
+  <small>22:00</small> <input type="text" class="timebox-schedule" id="evening3" placeholder="Estudio, relajo, retorno..." maxlength="50" style="width: 65%;">
   </div>
 
   <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px;">
