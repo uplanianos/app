@@ -7,14 +7,12 @@
  <link rel="icon" href="media/uplanianos-icon.png">
  <link rel="stylesheet" href="files/attend-style.css">
  <title>Uplanianos - Asistencia!</title>
-
 </head>
-
 
 <audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
+
 <body>
-<a href="index.html"><div id="return" class="return">&larrhk;</div></a>
 
 <div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
   <br>
@@ -675,21 +673,6 @@ asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && a
 aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
 stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
 // END OF RESET BUTTON
-}
-
-
-
-// ======================
-// RETURN ARROW!!
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("return").style.top = "6px"; 
-  } else {
-    document.getElementById("return").style.top = "-40px"; 
-  }
-  prevScrollpos = currentScrollPos;
 }
 
 
