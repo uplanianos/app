@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <link rel="stylesheet" href="files/pages-style.css">
+ <title>Uplanianos - Timebox!</title>
+</head>
+
+<body>
+
+
+<!- SAVE FUNCTION ->
+<script type="text/javascript">
+window.onbeforeunload = function() {
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+// SAVING DATA
+localStorage.dateInput = document.getElementById("dateInput").value
+localStorage.priority1 = document.getElementById("priority1").value
+localStorage.priority2 = document.getElementById("priority2").value
+localStorage.priority3 = document.getElementById("priority3").value
+localStorage.priority4 = document.getElementById("priority4").value
+localStorage.task1 = document.getElementById("task1").value
+localStorage.task2 = document.getElementById("task2").value
+localStorage.task3 = document.getElementById("task3").value
+localStorage.task4 = document.getElementById("task4").value
+localStorage.message = document.getElementById("message").value
+localStorage.dawn1 = document.getElementById("dawn1").value
+localStorage.dawn2 = document.getElementById("dawn2").value
+localStorage.dawn3 = document.getElementById("dawn3").value
+localStorage.morning1 = document.getElementById("morning1").value
+localStorage.morning2 = document.getElementById("morning2").value
+localStorage.morning3 = document.getElementById("morning3").value
+localStorage.afternoon1 = document.getElementById("afternoon1").value
+localStorage.afternoon2 = document.getElementById("afternoon2").value
+localStorage.afternoon3 = document.getElementById("afternoon3").value
+localStorage.afternoon4 = document.getElementById("afternoon4").value
+localStorage.afternoon5 = document.getElementById("afternoon5").value
+localStorage.evening1 = document.getElementById("evening1").value
+localStorage.evening2 = document.getElementById("evening2").value
+localStorage.evening3 = document.getElementById("evening3").value
+}
+
+window.onload = function() {
+// LOAD OTHER FUNCTIONS
+loadData()
+}
+
+function loadData() {
+// LOAD DATA!
+document.getElementById("dateInput").value = localStorage.dateInput || ""
+document.getElementById("priority1").value = localStorage.priority1 || ""
+document.getElementById("priority2").value = localStorage.priority2 || ""
+document.getElementById("priority3").value = localStorage.priority3 || ""
+document.getElementById("priority4").value = localStorage.priority4 || ""
+document.getElementById("task1").value = localStorage.task1 || ""
+document.getElementById("task2").value = localStorage.task2 || ""
+document.getElementById("task3").value = localStorage.task3 || ""
+document.getElementById("task4").value = localStorage.task4 || ""
+document.getElementById("message").value = localStorage.message || ""
+document.getElementById("dawn1").value = localStorage.dawn1 || ""
+document.getElementById("dawn2").value = localStorage.dawn2 || ""
+document.getElementById("dawn3").value = localStorage.dawn3 || ""
+document.getElementById("morning1").value = localStorage.morning1 || ""
+document.getElementById("morning2").value = localStorage.morning2 || ""
+document.getElementById("morning3").value = localStorage.morning3 || ""
+document.getElementById("afternoon1").value = localStorage.afternoon1 || ""
+document.getElementById("afternoon2").value = localStorage.afternoon2 || ""
+document.getElementById("afternoon3").value = localStorage.afternoon3 || ""
+document.getElementById("afternoon4").value = localStorage.afternoon4 || ""
+document.getElementById("afternoon5").value = localStorage.afternoon5 || ""
+document.getElementById("evening1").value = localStorage.evening1 || ""
+document.getElementById("evening2").value = localStorage.evening2 || ""
+document.getElementById("evening3").value = localStorage.evening3 || ""
+}
+
+</script>
+
+
+<div class="grid-container-pages" style="grid-auto-flow: flow;">
+
+
+<div class="grid-item" id="theInstructions" style="background-color: #DBF9DB;">
+Completar actividades a priorizar!
+</div>
+
+
+<div class="grid-timebox">
+
+  <div>
+  <b>📅 Fecha:</b><br>
+  <input type="text" class="timebox-schedule" id="dateInput" name="dateInput" onClick="getTomorrow()" placeholder="Lunes, Día 1, Mayo 5, etc..." maxlength="50" style="width: 88%; margin-left: 6%; text-align: center; background-color: #DBF9DB; margin-top: 6px; margin-bottom: 6px;" title="Los campos verdes actualizarán el título: fecha (*) y primera prioridad.">
+  </div>
+
+  <div>
+  <b>Prioridades ✔️:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" id="priority1" placeholder="Prioridad 1" maxlength="50"><br>
+  2. <input type="text" class="timebox-inputs" id="priority2" placeholder="Prioridad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" id="priority3" placeholder="Prioridad 3" maxlength="50"><br>
+  4. <input type="text" class="timebox-inputs" id="priority4" placeholder="Prioridad 4" maxlength="50"><br>
+  </div>
+
+  <div>
+  <b>Otras tareas 📑:</b>
+  <br>
+  1. <input type="text" class="timebox-inputs" id="task1" placeholder="Actividad 1" maxlength="50"><br>
+  2. <input type="text" class="timebox-inputs" id="task2" placeholder="Actividad 2" maxlength="50"><br>
+  3. <input type="text" class="timebox-inputs" id="task3" placeholder="Actividad 3" maxlength="50"><br>
+  4. <input type="text" class="timebox-inputs" id="task4" placeholder="Actividad 4" maxlength="50">
+  </div>
+
+  <div>
+  <b>Recordatorios ✍️:</b>
+  <br>
+  <textarea id="message" rows="5" cols="auto" placeholder="Notas importantes para no olvidar." style="border-radius: 3px; padding: 6px; margin: 3px; width: 98%; resize: none;"></textarea>
+  </div>
+
+  <div style="grid-area: schedule; background-color: lightblue; padding-top: 2%;">
+  🕔 <b>Horario madrugada:</b><br>
+  <small>05:00</small> <input type="text" class="timebox-schedule" id="dawn1" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <small>06:00</small> <input type="text" class="timebox-schedule" id="dawn2" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <small>07:00</small> <input type="text" class="timebox-schedule" id="dawn3" placeholder="Ejercicio, ducha, desayuno, trayecto…" maxlength="50"><br>
+  <br>
+  🕗 <b>Horario mañana:</b><br>
+  <small>08:00</small> <input type="text" class="timebox-schedule" id="morning1" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>09:30</small> <input type="text" class="timebox-schedule" id="morning2" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>11:00</small> <input type="text" class="timebox-schedule" id="morning3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <br>
+  🕧 <b>Horario tarde:</b><br>
+  <small>12:30</small> <input type="text" class="timebox-schedule" id="afternoon1" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  <small>14:00</small> <input type="text" class="timebox-schedule" id="afternoon2" placeholder="Clases, estudio, trabajo (almuerzo)…" maxlength="50"><br>
+  <small>15:30</small> <input type="text" class="timebox-schedule" id="afternoon3" placeholder="Clases, estudio, trabajo…" maxlength="50"><br>
+  <small>17:00</small> <input type="text" class="timebox-schedule" id="afternoon4" placeholder="Clases, estudio, trabajo (coffee break)…" maxlength="50"><br>
+  <small>18:30</small> <input type="text" class="timebox-schedule" id="afternoon5" placeholder="Clases, estudio, trabajo, retorno…" maxlength="50"><br>
+  <br>
+  🕗 <b>Horario vespertino:</b><br>
+  <small>20:00</small> <input type="text" class="timebox-schedule" id="evening1" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
+  <small>21:00</small> <input type="text" class="timebox-schedule" id="evening2" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50"><br>
+  <small>22:00</small> <input type="text" class="timebox-schedule" id="evening3" placeholder="Estudio, lectura, relajo, retorno al hogar..." maxlength="50">
+  </div>
+
+  <div id="foot" class="foot" style="grid-area: foot; text-align: center; font-size: 12px;">
+  Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
+  </div>
+
+  </div>
+
+  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
+
+</div>
+
+<br>
+
+</div>
+
+<br>
+
+
+<script type="text/javascript">
+function getTomorrow() {
+  const date = new Date();
+  const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+  const currentDayOfWeek = daysOfWeek[date.getDay() + 1];
+  console.log(`Mañana es ${currentDayOfWeek}`);
+  document.getElementsByName('dateInput')[0].placeholder = "(Mañana es " + currentDayOfWeek + ")";
+}
+</script>
+
+
+
+<script type="text/javascript">
+function deleteAll() {
+document.getElementById("dateInput").value = ""
+document.getElementById("priority1").value = ""
+document.getElementById("priority2").value = ""
+document.getElementById("priority3").value = ""
+document.getElementById("priority4").value = ""
+document.getElementById("task1").value = ""
+document.getElementById("task2").value = ""
+document.getElementById("task3").value = ""
+document.getElementById("task4").value = ""
+document.getElementById("message").value = ""
+document.getElementById("dawn1").value = ""
+document.getElementById("dawn2").value = ""
+document.getElementById("dawn3").value = ""
+document.getElementById("morning1").value = ""
+document.getElementById("morning2").value = ""
+document.getElementById("morning3").value = ""
+document.getElementById("afternoon1").value = ""
+document.getElementById("afternoon2").value = ""
+document.getElementById("afternoon3").value = ""
+document.getElementById("afternoon4").value = ""
+document.getElementById("afternoon5").value = ""
+document.getElementById("evening1").value = ""
+document.getElementById("evening2").value = ""
+document.getElementById("evening3").value = ""
+}
+</script>
+
+
+
+
+</body>
+</html>
