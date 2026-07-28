@@ -49,7 +49,8 @@ localStorage.evening3 = document.getElementById("evening3").value
 window.onload = function() {
 // LOAD OTHER FUNCTIONS
 loadData()
-editListener()
+inputChange()
+textChange()
 }
 
 function loadData() {
@@ -173,10 +174,17 @@ function getTomorrow() {
 }
 
 
-function editListener() {
+function inputChange() {
 let userInput = document.querySelectorAll("input")
-for(let data of userInput) {
- data.addEventListener("change", function() { saveData() })
+for(let input of userInput) {
+ input.addEventListener("change", function() { saveData() })
+ }
+}
+
+function textChange() {
+let textInput = document.querySelectorAll("textarea")
+for(let text of textInput) {
+ text.addEventListener("change", function() { saveData() })
  }
 }
 
