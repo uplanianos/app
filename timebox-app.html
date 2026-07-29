@@ -151,9 +151,10 @@ Completar actividades a priorizar!
   Desarrollado por Uplanianos: <font color="blue"><u>https://www.instagram.com/uplanianos/</u></font>
   </div>
 
-  </div>
+  <button id="wipeBT" class="timebox-refresh" role="button" onClick="deleteAll(); checkWipe()">♻️ Borrar</button>
+  <button id="saveBT" class="timebox-download" role="button" onclick="saveData(); checkSave()">Guardar 💾</button>
 
-  <button class="timebox-refresh" role="button" onClick="deleteAll();">♻️ Borrar</button>
+  </div>
 
 </div>
 
@@ -215,6 +216,19 @@ document.getElementById("evening1").value = ""
 document.getElementById("evening2").value = ""
 document.getElementById("evening3").value = ""
 saveData()
+}
+
+
+function checkSave() {
+let saveBT = document.getElementById("saveBT")
+saveBT.innerHTML = " Listo ✔️"
+setTimeout(() => { saveBT.innerHTML = "Guardar 💾"; saveBT.blur() },  1200)
+}
+
+function checkWipe() {
+let wipeBT = document.getElementById("wipeBT")
+wipeBT.innerHTML = "✔️ Listo"
+setTimeout(() => { wipeBT.innerHTML = "♻️ Borrar"; wipeBT.blur() },  1200)
 }
 </script>
 
