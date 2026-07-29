@@ -287,13 +287,18 @@ else { inputReady = false }
 
 
 
-// COLORING COMPLETE FIELDS!
+// COLORING AND SAVING COMPLETE FIELDS!
 // ========================
 let theFields = document.querySelectorAll(".theInputs")
 for(let studentInput of theFields) {
-	if (studentInput.value !== "" && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
-   else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
-   else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "Completa tus datos!" }
+ // SAVING EDITS!
+ studentInput.addEventListener("change", function() { saveData() })
+ // COLORING READ-ONLY FIELDS!
+ if (studentInput.value !== "" && studentInput.readOnly == true) { studentInput.style.backgroundColor = "#CCFFCCee" }
+ // COLORING COMPLETE FIELDS!
+ else if (studentInput.value !== "" && !studentInput.disabled) { studentInput.style.backgroundColor = "#88FF88ee" }
+ // COLORING EMPTY FIELDS!
+ else { studentInput.style.backgroundColor = ""; currentStatus.innerHTML = "Completa tus datos!" }
 }
 
 
