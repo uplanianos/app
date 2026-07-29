@@ -21,21 +21,24 @@
  <form id="attendClass">
  <br>
  Tus datos:&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="People" name="People" placeholder="¿Nombre, Apellido / Apodo?"><br><br>
+ <input type="text" class="theInputs" id="People" name="People" placeholder="¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
 
  Consultas:&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?"><br><br>
+ <input type="text" class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?" style="text-transform: none;"><br><br>
 
  Comentarios:
- <input type="text" class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?"><br><br>
+ <input type="text" class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?" style="text-transform: none;"><br><br>
 
  Sugerencias:&nbsp;
- <input type="text" class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?"><br><br>
+ <input type="text" class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?" style="text-transform: none;"><br><br>
 
  Contacto:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="¿Correo, Insta, WhatsApp?"><br><br>
+ <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="¿Correo, Insta, WhatsApp?" style="text-transform: none;"><br><br>
 
- <button class="theButtons" type="submit" id="submitButton" style="background: green; margin-left: 40%;">🗣️ ENVIAR 💭</button>
+ <div style="display: flex-grid; align-items: center; text-align: center; padding-left: 6%;">
+ <button class="theButtons" type="submit" id="submitButton" style="background: green;">🗣️ ENVIAR 💭</button>
+ <button class="theButtons"  type="reset" id="deleteButton" style="background: red;" onclick="doDelete()">⚠️BORRAR!⚠️</button>
+ </div>
  <div class="message" id="message"></div>
 
  </div>
@@ -79,6 +82,16 @@ function loadData() {
 // END OF ONLOAD
 }
 </script>
+
+
+<script type="text/javascript">
+function doDelete() {
+let deleteButton = document.getElementById("deleteButton")
+deleteButton.innerText = "LISTO ✔️"
+setTimeout(() => { deleteButton.innerText = "⚠️BORRAR!⚠️" }, 1200);
+}
+</script>
+
 
 
 
