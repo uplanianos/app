@@ -22,11 +22,6 @@
  Tus datos: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <input type="text" class="theInputs" id="People" name="People" placeholder="* ¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
 
- <span style="display: none;">
- Contacto: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="* ¿Correo, Insta, WhatsApp?" value="----------"style="text-transform: none;"><br><br>
- </span>
-
  Comentarios: &nbsp;
  <textarea class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?" style="text-transform: none; resize: none;"></textarea>
  <br><br>
@@ -35,9 +30,15 @@
  <textarea class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?" style="text-transform: none; resize: none;"></textarea>
  <br><br>
 
- Consultas: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Consultas: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <textarea class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?" style="text-transform: none; resize: none;"></textarea>
  <br><br>
+
+ <span id="contactSpan" style="display: none;">
+ Contacto: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <textarea class="theInputs" id="Contact" name="Contact" placeholder="¿Medio de contacto para respuesta?" style="text-transform: none; resize: none;"></textarea>
+ <br><br>
+ </span>
 
  <div style="display: flex-grid; align-items: center; text-align: center; padding-left: 6%;">
  <div class="message" id="message" style="display: none; margin: auto; width: 75%;"></div>
@@ -65,10 +66,10 @@ if (typeof(Storage) !== "undefined") { saveData() }
 
 function saveData() {
  localStorage.People = document.getElementById("People").value
- // localStorage.Contact = document.getElementById("Contact").value
  localStorage.Comment = document.getElementById("Comment").value
  localStorage.Suggest = document.getElementById("Suggest").value
  localStorage.Doubts = document.getElementById("Doubts").value
+ // localStorage.Contact = document.getElementById("Contact").value
 }
 // END OF "BEFORE LOAD"
 
@@ -80,10 +81,10 @@ checkInput()
 
 function loadData() {
  document.getElementById("People").value = localStorage.People || ""
- // document.getElementById("Contact").value = localStorage.Contact || ""
  document.getElementById("Comment").value = localStorage.Comment || ""
  document.getElementById("Suggest").value = localStorage.Suggest || ""
  document.getElementById("Doubts").value = localStorage.Doubts || ""
+ // document.getElementById("Contact").value = localStorage.Contact || ""
  }
 
 // END OF ONLOAD
@@ -148,6 +149,7 @@ form.addEventListener("submit", async function (e) {
 	// submitButton.disabled = false;
 	submitButton.style.background = "gray"; 
 	submitButton.style.cursor = "not-allowed";
+	contactSpan.style.display = "none";
 
     setTimeout(() => {
         messageDiv.textContent = "";
@@ -180,19 +182,27 @@ for(let textChange of textInput) {
 function checkInput() {
 // CHECKING INPUT
 let People = document.getElementById("People")
-let Contact = document.getElementById("Contact")
 let Comment = document.getElementById("Comment")
 let Suggest = document.getElementById("Suggest")
 let Doubts = document.getElementById("Doubts")
-if (People.value.length >= 4 && Contact.value.length >= 4) {
- if (Comment.value !== "" || Suggest.value !== "" || Doubts.value !== "") {
+let Contact = document.getElementById("Contact")
+
+// CHECKING NAME AND ONE FIELD IS COMPLETE!
+if (People.value.length >= 4) {
+ if (Comment.value.length >= 6 || Suggest.value.length >= 6 || Doubts.value.length >= 6 ) {
   submitButton.style.background = "green"
   submitButton.style.cursor = "pointer"
   submitButton.disabled = false
   }
- else { submitButton.style.background = "gray"; submitButton.style.cursor = "not-allowed"; submitButton.disabled = true }
+  else { submitButton.style.background = "gray"; submitButton.style.cursor = "not-allowed"; submitButton.disabled = true }
  }
 else { submitButton.style.background = "gray"; submitButton.style.cursor = "not-allowed"; submitButton.disabled = true }
+
+// IF ALL INPUTS ARE COMPLETE, REVEAL CONTACT FIELD!
+let contactSpan = document.getElementById("contactSpan")
+if (People.value.length >= 6 && Comment.value.length >= 12 &&
+    Suggest.value.length >= 12 && Doubts.value.length >= 12) { contactSpan.style.display = "block" }
+else { contactSpan.style.display = "none" }
 }
 
 
@@ -204,7 +214,8 @@ function doDelete() {
 let deleteButton = document.getElementById("deleteButton")
 deleteButton.innerText = "LISTO ✔️"
 submitButton.disabled = true
-submitButton.style.background = "gray";
+submitButton.style.background = "gray"
+document.getElementById("contactSpan").style.display = "none"
 setTimeout(() => { deleteButton.innerText = "⚠️BORRAR!⚠️" }, 1200)
 }
 
