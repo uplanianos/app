@@ -20,7 +20,7 @@
  <div class="rollDiv">
  <form id="attendClass">
  <br>
- Tus datos:&nbsp;&nbsp;&nbsp;&nbsp;
+ Tu nombre:&nbsp;&nbsp;&nbsp;
  <input type="text" class="theInputs" id="People" name="People" placeholder="¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
 
  Consultas:&nbsp;&nbsp;&nbsp;&nbsp;
@@ -64,7 +64,7 @@ function saveData() {
  localStorage.Doubts = document.getElementById("Doubts").value
  localStorage.Comment = document.getElementById("Comment").value
  localStorage.Suggest = document.getElementById("Suggest").value
- localStorage.Contact = document.getElementById("Contact").value
+// localStorage.Contact = document.getElementById("Contact").value
 }
 // END OF "BEFORE LOAD"
 
@@ -78,7 +78,7 @@ function loadData() {
  document.getElementById("Doubts").value = localStorage.Doubts || ""
  document.getElementById("Comment").value = localStorage.Comment || ""
  document.getElementById("Suggest").value = localStorage.Suggest || ""
- document.getElementById("Contact").value = localStorage.Contact || ""
+// document.getElementById("Contact").value = localStorage.Contact || ""
  }
 
 // END OF ONLOAD

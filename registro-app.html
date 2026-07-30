@@ -44,8 +44,8 @@
  <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre" onClick="isDisabled(this)"><br><br>
 
  <span style="display: none;">
- CORREO UPLA:&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="thisEmail" name="Correo" placeholder="* __________@alumnos.upla.cl" value="Uplanianos.App"
+ USUARIO UPLA:&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="thisEmail" name="Correo" placeholder="* Usuario Sinte" value="Uplanianos.App"
  style="text-transform: lowercase;" onClick="isDisabled(this)" onChange="fullEmail(this)"><br><br>
  </span>
 
@@ -94,7 +94,7 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
- localStorage.thisEmail = document.getElementById("thisEmail").value
+// localStorage.thisEmail = document.getElementById("thisEmail").value
  localStorage.attendTime = document.getElementById("attendTime").value
 }
 // END OF "BEFORE LOAD"
@@ -110,7 +110,7 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
- document.getElementById("thisEmail").value = localStorage.thisEmail || ""
+// document.getElementById("thisEmail").value = localStorage.thisEmail || ""
  document.getElementById("attendTime").value = localStorage.attendTime || ""
  }
 
