@@ -18,28 +18,31 @@
  </div>
 
  <div class="rollDiv">
- <form id="attendClass">
+ <form id="contactForm">
  <br>
- Tus datos:&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="People" name="People" placeholder="¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
+ Tus datos: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="People" name="People" placeholder="* ¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
 
- Consultas:&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?" style="text-transform: none;"><br><br>
+ Contacto: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="* ¿Correo, Insta, WhatsApp?" style="text-transform: none;"><br><br>
 
- Comentarios:
- <input type="text" class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?" style="text-transform: none;"><br><br>
+ Comentarios: &nbsp;
+ <textarea class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?" style="text-transform: none; resize: none;"></textarea>
+ <br><br>
 
- Sugerencias:&nbsp;
- <input type="text" class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?" style="text-transform: none;"><br><br>
+ Sugerencias: &nbsp;&nbsp;
+ <textarea class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?" style="text-transform: none; resize: none;"></textarea>
+ <br><br>
 
- Contacto:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="¿Correo, Insta, WhatsApp?" style="text-transform: none;"><br><br>
+ Consultas: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <textarea class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?" style="text-transform: none; resize: none;"></textarea>
+ <br><br>
 
  <div style="display: flex-grid; align-items: center; text-align: center; padding-left: 6%;">
- <button class="theButtons" type="submit" id="submitButton" style="background: green;">🗣️ ENVIAR 💭</button>
+ <div class="message" id="message" style="display: none; margin: auto; width: 75%;"></div>
+ <button class="theButtons" type="submit" id="submitButton" style="background: gray; cursor: not-allowed;" DISABLED>🗣️ ENVIAR 💭</button>
  <button class="theButtons"  type="reset" id="deleteButton" style="background: red;" onclick="doDelete()">⚠️BORRAR!⚠️</button>
  </div>
- <div class="message" id="message"></div>
 
  </div>
  </form>
@@ -47,6 +50,8 @@
  <br><br><br>
  <br><br><br>
 </body>
+
+
 
 <!- SAVE FUNCTION ->
 <script type="text/javascript">
@@ -59,24 +64,25 @@ if (typeof(Storage) !== "undefined") { saveData() }
 
 function saveData() {
  localStorage.People = document.getElementById("People").value
- localStorage.Doubts = document.getElementById("Doubts").value
+ localStorage.Contact = document.getElementById("Contact").value
  localStorage.Comment = document.getElementById("Comment").value
  localStorage.Suggest = document.getElementById("Suggest").value
- localStorage.Contact = document.getElementById("Contact").value
+ localStorage.Doubts = document.getElementById("Doubts").value
 }
 // END OF "BEFORE LOAD"
-
 
 window.onload = function() {
 // LOAD DATA!
 loadData()
+saveInput()
+checkInput()
 
 function loadData() {
  document.getElementById("People").value = localStorage.People || ""
- document.getElementById("Doubts").value = localStorage.Doubts || ""
+ document.getElementById("Contact").value = localStorage.Contact || ""
  document.getElementById("Comment").value = localStorage.Comment || ""
  document.getElementById("Suggest").value = localStorage.Suggest || ""
- document.getElementById("Contact").value = localStorage.Contact || ""
+ document.getElementById("Doubts").value = localStorage.Doubts || ""
  }
 
 // END OF ONLOAD
@@ -85,20 +91,10 @@ function loadData() {
 
 
 <script type="text/javascript">
-function doDelete() {
-let deleteButton = document.getElementById("deleteButton")
-deleteButton.innerText = "LISTO ✔️"
-setTimeout(() => { deleteButton.innerText = "⚠️BORRAR!⚠️" }, 1200);
-}
-</script>
-
-
-
-
-<script type="text/javascript">
+// =========================
 // SUBMIT FORM FUNCTION
 // =========================
-const form = document.getElementById("attendClass");
+const form = document.getElementById("contactForm");
 const submitButton = document.getElementById("submitButton");
 const messageDiv = document.getElementById("message");
 
@@ -137,7 +133,7 @@ form.addEventListener("submit", async function (e) {
         messageDiv.textContent = data.message || "Gracias por tu contacto... trataremos de responder!";
         messageDiv.style.backgroundColor = "#48c78e";
         messageDiv.style.color = "white";
-        // form.reset();
+        form.reset();
         } else { throw new Error(data.message || "Problema encontrado... intenta más tarde!"); }
     } catch (error) {
         console.error("Error:", error);
@@ -145,9 +141,12 @@ form.addEventListener("submit", async function (e) {
         messageDiv.style.backgroundColor = "#f14668";
         messageDiv.style.color = "white";
         }
+
     finally {
 	// RE-ENABLE BUTTON
-	submitButton.disabled = false;
+	// submitButton.disabled = false;
+	submitButton.style.background = "gray"; 
+	submitButton.style.cursor = "not-allowed";
 
     setTimeout(() => {
         messageDiv.textContent = "";
@@ -155,6 +154,60 @@ form.addEventListener("submit", async function (e) {
         }, 5000);
     }
 })
+
+
+
+// =========================
+// SAVE INPUT FUNCTION!
+// =========================
+function saveInput() {
+// SAVING INPUT EDITS!
+let userInput = document.querySelectorAll("input")
+for(let inputChange of userInput) {
+ inputChange.addEventListener("change", function() { saveData(); checkInput() })
+ }
+let textInput = document.querySelectorAll("textarea")
+for(let textChange of textInput) {
+ textChange.addEventListener("change", function() { saveData(); checkInput() })
+ }
+}
+
+
+// =========================
+// CHECK INPUT FUNCTION!
+// =========================
+function checkInput() {
+// CHECKING INPUT
+let People = document.getElementById("People")
+let Contact = document.getElementById("Contact")
+let Comment = document.getElementById("Comment")
+let Suggest = document.getElementById("Suggest")
+let Doubts = document.getElementById("Doubts")
+if (People.value.length >= 4 && Contact.value.length >= 4) {
+ if (Comment.value !== "" || Suggest.value !== "" || Doubts.value !== "") {
+  submitButton.style.background = "green"
+  submitButton.style.cursor = "pointer"
+  submitButton.disabled = false
+  }
+ else { submitButton.style.background = "gray"; submitButton.style.cursor = "not-allowed"; submitButton.disabled = true }
+ }
+else { submitButton.style.background = "gray"; submitButton.style.cursor = "not-allowed"; submitButton.disabled = true }
+}
+
+
+
+// =========================
+// DELETE BUTTON FUNCTION
+// =========================
+function doDelete() {
+let deleteButton = document.getElementById("deleteButton")
+deleteButton.innerText = "LISTO ✔️"
+submitButton.disabled = true
+submitButton.style.background = "gray";
+setTimeout(() => { deleteButton.innerText = "⚠️BORRAR!⚠️" }, 1200)
+}
+
+
 
 // ======================
 // END OF JAVASCRIPT CODE!!
