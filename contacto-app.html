@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <link rel="stylesheet" href="files/attend-style.css">
+ <title>Uplanianos - Contacto!</title>
+</head>
+
+
+<body>
+
+<div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
+ <br>
+ Se agradecen tus comentarios, consultas y sugerencias!
+ </div>
+
+ <div class="rollDiv">
+ <form id="attendClass">
+ <br>
+ Tus datos:&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="People" name="People" placeholder="¿Nombre, Apellido / Apodo?" style="text-transform: none;"><br><br>
+
+ Consultas:&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="Doubts" name="Doubts" placeholder="¿Tienes alguna consulta?" style="text-transform: none;"><br><br>
+
+ Comentarios:
+ <input type="text" class="theInputs" id="Comment" name="Comment" placeholder="¿Tienes algún comentario?" style="text-transform: none;"><br><br>
+
+ Sugerencias:&nbsp;
+ <input type="text" class="theInputs" id="Suggest" name="Suggest" placeholder="¿Ideas, sugerencias, mejoras?" style="text-transform: none;"><br><br>
+
+ <span style="display: none;">
+ Contacto:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="Contact" name="Contact" placeholder="¿Correo, Insta, WhatsApp?" style="text-transform: none;"><br><br>
+ </span>
+
+ <div style="display: flex-grid; align-items: center; text-align: center; padding-left: 6%;">
+ <button class="theButtons" type="submit" id="submitButton" style="background: green;">🗣️ ENVIAR 💭</button>
+ <button class="theButtons"  type="reset" id="deleteButton" style="background: red;" onclick="doDelete()">⚠️BORRAR!⚠️</button>
+ </div>
+ <div class="message" id="message"></div>
+
+ </div>
+ </form>
+ </div>
+ <br><br><br>
+ <br><br><br>
+</body>
+
+<!- SAVE FUNCTION ->
+<script type="text/javascript">
+// ==============================
+// LOCAL STORAGE - SAVE FUNCTION!
+// ==============================
+window.onbeforeunload = function() {
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+ localStorage.People = document.getElementById("People").value
+ localStorage.Doubts = document.getElementById("Doubts").value
+ localStorage.Comment = document.getElementById("Comment").value
+ localStorage.Suggest = document.getElementById("Suggest").value
+ localStorage.Contact = document.getElementById("Contact").value
+}
+// END OF "BEFORE LOAD"
+
+
+window.onload = function() {
+// LOAD DATA!
+loadData()
+
+function loadData() {
+ document.getElementById("People").value = localStorage.People || ""
+ document.getElementById("Doubts").value = localStorage.Doubts || ""
+ document.getElementById("Comment").value = localStorage.Comment || ""
+ document.getElementById("Suggest").value = localStorage.Suggest || ""
+ document.getElementById("Contact").value = localStorage.Contact || ""
+ }
+
+// END OF ONLOAD
+}
+</script>
+
+
+<script type="text/javascript">
+function doDelete() {
+let deleteButton = document.getElementById("deleteButton")
+deleteButton.innerText = "LISTO ✔️"
+setTimeout(() => { deleteButton.innerText = "⚠️BORRAR!⚠️" }, 1200);
+}
+</script>
+
+
+
+
+<script type="text/javascript">
+// SUBMIT FORM FUNCTION
+// =========================
+const form = document.getElementById("attendClass");
+const submitButton = document.getElementById("submitButton");
+const messageDiv = document.getElementById("message");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  
+  // DISABLE BUTTON
+  submitButton.disabled = true;
+
+  // DISPLAYING MESSAGE
+  message.textContent = "Enviando...";
+  messageDiv.style.display = "block";
+  messageDiv.style.backgroundColor = "beige";
+  messageDiv.style.color = "cornflowerblue";
+
+  try {
+    const formData = new FormData(this);
+    const formDataObj = {};
+
+    // Convert FormData to object
+    for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
+
+    // Submit form data
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx9u1TVzj5sCl4QWbDCB3AXs9FQs4zlBGooDyvW8uXLZ6OemUuqXDzkMjdDc0p0v3v1fQ/exec";
+
+    const response = await fetch(scriptURL, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(formDataObj),
+        headers: { "Content-Type": "text/plain;charset=utf-8", },
+        });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+        messageDiv.textContent = data.message || "Gracias por tu contacto... trataremos de responder!";
+        messageDiv.style.backgroundColor = "#48c78e";
+        messageDiv.style.color = "white";
+        // form.reset();
+        } else { throw new Error(data.message || "Problema encontrado... intenta más tarde!"); }
+    } catch (error) {
+        console.error("Error:", error);
+        messageDiv.textContent = "Error: " + error.message;
+        messageDiv.style.backgroundColor = "#f14668";
+        messageDiv.style.color = "white";
+        }
+    finally {
+	// RE-ENABLE BUTTON
+	submitButton.disabled = false;
+
+    setTimeout(() => {
+        messageDiv.textContent = "";
+        messageDiv.style.display = "none";
+        }, 5000);
+    }
+})
+
+// ======================
+// END OF JAVASCRIPT CODE!!
+</script>
+
+
+</html>
