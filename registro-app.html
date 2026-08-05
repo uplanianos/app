@@ -43,6 +43,9 @@
  TUS NOMBRES:</span>&nbsp;&nbsp;
  <input type="text" class="theInputs" id="firstNames" name="Nombres" placeholder="* Nombre Nombre" onClick="isDisabled(this)"><br><br>
 
+ TU CARRERA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" class="theInputs" id="theProgram" name="Carrera" placeholder="Programa de Estudios" onClick="isDisabled(this)"><br><br>
+
  <span style="display: none;">
  USUARIO UPLA:&nbsp;&nbsp;
  <input type="text" class="theInputs" id="thisEmail" name="Correo" placeholder="* Usuario Sinte" value="Uplanianos.App"
@@ -94,6 +97,7 @@ function saveData() {
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
  localStorage.firstNames = document.getElementById("firstNames").value
+ localStorage.theProgram = document.getElementById("theProgram").value
 // localStorage.thisEmail = document.getElementById("thisEmail").value
  localStorage.attendTime = document.getElementById("attendTime").value
 }
@@ -110,6 +114,7 @@ function loadData() {
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
  document.getElementById("firstNames").value = localStorage.firstNames || ""
+ document.getElementById("theProgram").value = localStorage.theProgram || ""
 // document.getElementById("thisEmail").value = localStorage.thisEmail || ""
  document.getElementById("attendTime").value = localStorage.attendTime || ""
  }
@@ -134,6 +139,7 @@ let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
 let firstNames = document.getElementById("firstNames")
+let theProgram = document.getElementById("theProgram")
 let thisEmail = document.getElementById("thisEmail")
 // HIDDEN ELEMENTS!
 let rollStatus = document.getElementById("attendance")
@@ -611,9 +617,11 @@ return i
 function enableInput() {
  lastNames.readOnly = false
  firstNames.readOnly = false
+ theProgram.readOnly = false
  thisEmail.readOnly = false
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
+ theProgram.style.cursor = ""
  thisEmail.style.cursor = ""
 // ENABLING CLASS & TEACHER FIELD
 let urlClass = (new URLSearchParams(window.location.search)).get("clase")
@@ -632,11 +640,13 @@ function disableInput() {
  thisTeach.readOnly = true
  lastNames.readOnly = true
  firstNames.readOnly = true
+ theProgram.readOnly = true
  thisEmail.readOnly = true
  thisClass.style.cursor = "not-allowed"
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
  firstNames.style.cursor = "not-allowed"
+ theProgram.style.cursor = "not-allowed"
  thisEmail.style.cursor = "not-allowed"
 }
 
