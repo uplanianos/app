@@ -16,8 +16,12 @@
 
 <body>
 
- <br>
- <div class="titleDiv">Automatic Attendance Registration:</div>
+<div class="titleDiv"><!-- RESET CLICKABLE ELEMENTS -->
+  <br>
+  <span id="reg" onClick="resetButton(this)">Automatic</span> 
+  <span id="asi" onClick="resetButton(this)">Attendance</span> 
+  <span id="aut" onClick="resetButton(this)">Registration</span>:
+ </div>
  <div class="fullScreen" id="fullScreen" onclick="toggleFullScreen()">⊡</div>
 
  <div class="rollDiv">
@@ -38,7 +42,8 @@
  LAST NAMES (2):
  <input type="text" class="theInputs" id="lastNames" name="LAST NAMES" placeholder="* Lastname Lastname (2)" AUTOFOCUS><br><br>
 
- FIRST NAME(S):&nbsp;&nbsp;
+ <!-- RESET CLICKABLE ELEMENTS --><span id="stu" onClick="resetButton(this)">
+ FIRST NAME(S):</span>&nbsp;&nbsp;
  <input type="text" class="theInputs" id="firstNames" name="FIRST NAMES" placeholder="* Name(s)"><br><br>
 
  STUDY PROGRAM:
@@ -468,7 +473,7 @@ rosterBT.addEventListener("click", function() {
 const form = document.getElementById("attendClass");
 const messageDiv = document.getElementById("message");
 const attendButton = document.getElementById("attendButton");
-const success = new Audio('https://uplanianos.github.io/app/media/success.mp3')
+const success = new Audio("https://uplanianos.github.io/app/media/success.mp3")
 
 form.addEventListener("submit", async function (e) {
 e.preventDefault();
@@ -504,7 +509,7 @@ try {
  const data = await response.json();
 
  if (data.status === "success") {
-  success.play()
+  success.play();
   messageDiv.textContent = data.message || "🎉 Successful attendance!";
   messageDiv.style.backgroundColor = "#48c78e";
   messageDiv.style.color = "white";
@@ -513,12 +518,13 @@ try {
   setTimeout(function(){
    lastNames.value = ""
    firstNames.value = ""
+   theProgram.value = ""
    thisEmail.value = ""
    attendTime.value = ""
    lastNames.focus()
    attendButton.style.color = "lightgray"
    currentStatus.innerHTML = "📝 Enter your name! ✍️"
-   }, 4000)
+   }, 3000)
   // form.reset();
  } else { throw new Error(data.message || "Upload error!"); }
 } catch (error) {
@@ -664,6 +670,22 @@ let onlyUser = input.value.replace(/@.*/, "")
 thisEmail.value = onlyUser
 }
 
+
+
+// =================
+// RESET ATTENDANCE!
+// =================
+function resetButton(input) {
+let regOn = false
+let asiOn = false
+let autOn = false
+let stuOn = false
+reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
+// END OF RESET BUTTON
+}
 
 
 // ===========
