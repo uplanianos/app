@@ -68,6 +68,12 @@ body::-webkit-scrollbar { display: none; }
 
 .theInputs[readonly] { cursor: not-allowed; }
 
+select {
+ background: transparent;
+ -webkit-appearance: none;
+ -moz-appearance: none;
+}
+
 .buttonsDiv {
  display: grid;
  margin: auto;
