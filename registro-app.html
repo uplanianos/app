@@ -552,6 +552,7 @@ var scriptURL = urlAsistencia
 
 // SELECT FACULTY
 thisFacul.addEventListener("change", function (e) {
+if (thisFacul.value == null || thisFacul.value == undefined || thisFacul.value == "") { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // Default (1)!
 if (thisFacul.value == "1") { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // 1
 if (thisFacul.value == "2") { scriptURL = urlFacDeArtes; theRoster = rosterFacDeArtes } // 2
 if (thisFacul.value == "3") { scriptURL = urlFacCiencia; theRoster = rosterFacCiencia } // 3
@@ -654,6 +655,7 @@ if (urlFacul !== null && correctFaculty) { thisFacul.disabled = true; thisFacul.
 else { thisFacul.disabled = false; thisFacul.style.cursor = "" }
 
 // CHANGING FORM AND ROSTER IDS WHEN URL VALUE IS ASSIGNED!
+if (thisFacul.value == "" || thisFacul.value == null || thisFacul.value == undefined) { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // Default (1)!
 if (thisFacul.value == "1") { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // 1
 if (thisFacul.value == "2") { scriptURL = urlFacDeArtes; theRoster = rosterFacDeArtes } // 2
 if (thisFacul.value == "3") { scriptURL = urlFacCiencia; theRoster = rosterFacCiencia } // 3
