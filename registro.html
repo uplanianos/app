@@ -30,6 +30,19 @@
  HORA ACTUAL:&nbsp;&nbsp;
  <input type="text" class="theInputs" id="autoTime" name="Hora" value="00:00:00" readOnly style="cursor: not-allowed; background: #CCFFCCee;" onClick="isDisabled(this)"><br><br>
 
+ FACULTAD / EJE:&nbsp;
+ <select class="theInputs" id="thisFacul" name="thisFacul" style="height: 36px; text-transform: none;" onClick="isDisabled(this)">
+  <option value="1">[1] General, Transversal, Sello </option>
+  <option value="2">[2] Facultad de Artes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</option>
+  <option value="3">[3] F. Cs. Naturales & Exactas</option>
+  <option value="4">[4] Facultad de Educación &nbsp; &nbsp;</option>
+  <option value="5">[5] Fac. Ed. Física & Deporte</option>
+  <option value="6">[6] Fac. de Humanidades &nbsp; &nbsp; </option>
+  <option value="7">[7] Facultad de Ingeniería &nbsp;</option>
+  <option value="8">[8] Facultad de Salud &nbsp; &nbsp; &nbsp; &nbsp;</option>
+  <option value="9">[9] Fac. Ciencias Sociales &nbsp;</option>
+ </select><br><br>
+
  ASIGNATURA:&nbsp;&nbsp;&nbsp;&nbsp;
  <input type="text" class="theInputs" id="thisClass" name="Asignatura" placeholder="* Nombre Asignatura" onClick="isDisabled(this)"><br><br>
 
@@ -91,6 +104,7 @@ if (typeof(Storage) !== "undefined") { saveData() }
 }
 
 function saveData() {
+ localStorage.thisFacul = document.getElementById("thisFacul").value
  localStorage.thisClass = document.getElementById("thisClass").value
  localStorage.thisTeach = document.getElementById("thisTeach").value
  localStorage.lastNames = document.getElementById("lastNames").value
@@ -108,6 +122,7 @@ window.onload = function() {
  rollCall()
 
 function loadData() {
+ document.getElementById("thisFacul").value = localStorage.thisFacul || ""
  document.getElementById("thisClass").value = localStorage.thisClass || ""
  document.getElementById("thisTeach").value = localStorage.thisTeach || ""
  document.getElementById("lastNames").value = localStorage.lastNames || ""
@@ -133,6 +148,7 @@ function loadData() {
 let autoDate = document.getElementById("autoDate")
 let autoTime = document.getElementById("autoTime")
 let thisPeriod = document.getElementById("thisPeriod")
+let thisFacul = document.getElementById("thisFacul")
 let thisClass = document.getElementById("thisClass")
 let thisTeach = document.getElementById("thisTeach")
 let lastNames = document.getElementById("lastNames")
@@ -156,7 +172,6 @@ let onTime = false
 let soLate = false
 let noShow = true
 // ===================
-
 
 
 /* // CHECKS ON/OFF TOGGLE!!
@@ -279,8 +294,7 @@ else if (!onTime || !soLate) { noShow = true; isPeriod = 24 }
 // ==============================
 let theDiff = (Math.abs(currentTime - attendTime.value) / 1000).toFixed(0)
 if (theDiff <= 2000) { isPresent = true }
-else { isPresent = false }
-
+else { isPresent = false; attendTime.value = "" }
 
 
 // CHECKING STUDENT INPUT!
@@ -468,6 +482,35 @@ else { autoTime.style.color = "#0000CC" }
 }, 1000)
 
 
+// ==============================
+// ROSTER AND SUMBIT FORM VALUES
+// ==============================
+
+// ROSTERS
+// ==============================
+let rosterAsistencia = "https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal"
+let rosterFacDeArtes = "https://docs.google.com/spreadsheets/d/1Bcd4IAwpEU40wdMkVwXOeAmR6K64zKOwEDboAOS1qwE/view?rm=minimal"
+let rosterFacCiencia = "https://docs.google.com/spreadsheets/d/1ogcY2wp3Nb9PfT90IU3jksSJPc9JZhIcMsAMQnXdaec/view?rm=minimal"
+let rosterFacDeEduca = "https://docs.google.com/spreadsheets/d/1qtEIGS2r9DFL_jkmu61G3Nf6Hsjyq7HiSu0RdvqtGiI/view?rm=minimal"
+let rosterFacEducFis = "https://docs.google.com/spreadsheets/d/1yRZRf8CLySNOUf6cbCQbXy37dBqcRIy1taqc7yc3DO8/view?rm=minimal"
+let rosterFacHumanis = "https://docs.google.com/spreadsheets/d/1MAUVaOnGf6CINtQcxwsX9oRKz_JdN-cdD7mj17Rf9Yc/view?rm=minimal"
+let rosterFacIngenis = "https://docs.google.com/spreadsheets/d/1xgKRt-OH7OPZ8I5ZMns1nmYHKEeF2tRn-EOLSxp_L4I/view?rm=minimal"
+let rosterFacDeSalud = "https://docs.google.com/spreadsheets/d/1iZFpNVDphKlT_93nZdZ6lhT3DSxmLVF_bzSPcE_sIq0/view?rm=minimal"
+let rosterScSociales = "https://docs.google.com/spreadsheets/d/1qtA2IqvZjMeW8BHCAvPyG4zlc8FrdsTnM9jS3UmpTH4/view?rm=minimal"
+
+// FACULTIES [FORM URLs]
+// ==============================
+var urlAsistencia = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec"
+var urlFacDeArtes = "https://script.google.com/macros/s/AKfycbwTz9JVbcwvobOn5u8ReRFtcyD70Mpkke9b-SjH237VelItV2CXBj7676EPM99hexCo/exec"
+var urlFacCiencia = "https://script.google.com/macros/s/AKfycbxwtGpzj2Oxfgqr1Q3mqBD9THaZzKmTNTK7aZYMQX4dBnYCOkwKp6mr7ClBxLPGszPN/exec"
+var urlFacDeEduca = "https://script.google.com/macros/s/AKfycbw2wlP026Dqs4VxTWnZnmDERV5YinIKb29k4Bp8vADX69HOBlPgLpWNbBPpWW99dxyGLA/exec"
+var urlFacEducFis = "https://script.google.com/macros/s/AKfycbyRBYAiZwcRIpNaxNa233FJ6TE0jAp5b9ADOrcjhvudmuH8XXsZbjlrh63bGcym_0ixuw/exec"
+var urlFacHumanis = "https://script.google.com/macros/s/AKfycbzT9cQiFBU3MdwbTAxfjBTxo1OOU4DJKSiiPc5dFELa8wFMi2XkegJgFAqTQNmMuZoK/exec"
+var urlFacIngenis = "https://script.google.com/macros/s/AKfycbz3RsR9Lh7KB6CRDAHCS_GYXedlDgqJQPDngTv5aau4pZ3mr4W_dErsYzzgFgVkuPS8/exec"
+var urlFacDeSalud = "https://script.google.com/macros/s/AKfycbyaFvALYgdzAbR0rXc_r29vglmPskbsJ5Qw8hHjgO6REdxi5tVTKNmK6t15IZdaAIfnTg/exec"
+var urlScSociales = "https://script.google.com/macros/s/AKfycbwAEAEgF_KxJio_Kr6TWsZWRcKAwfFcSw31fduwpOQGWDwr1DdDm7BxUlK8rT2y6ig/exec"
+
+
 
 // BUTTON CLICK EVENTS!
 // ====================
@@ -476,47 +519,21 @@ attendBT.addEventListener("click", function() {
  attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
 })
 
+// ASSIGNING DEFAULT VALUE!
+let theRoster = rosterAsistencia
+
+// CHANGING ROSTER VALUES
+if (thisFacul.value == "1") { theRoster = rosterAsistencia }
+if (thisFacul.value == "2") { theRoster = rosterFacDeArtes }
+else { theRoster = rosterAsistencia }
+
+// ROSTER FUNCTION
 rosterBT.addEventListener("click", function() {
- let theRoster = 'https://docs.google.com/spreadsheets/d/1d2-2EqG3K72DLa7JSroDjxzIrlvWDWDdh_RjK_ILkc0/view?rm=minimal'
  rosterBT.innerHTML = " ҉ &nbsp; Abriendo..."; rosterBT.style.border = "3px dashed white" 
  setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
  setTimeout(function(){ rosterBT.innerHTML = "📒 Registro!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
 })
 
-
-
-// GETTING CLASS NAME FROM LINK PARAMETER!
-// ======================================
-let urlClass = (new URLSearchParams(window.location.search)).get("clase")
-let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-// PRINTING CLASS ELEMENT
-if (urlClass !== null) { thisClass.value = urlClass }
-if (urlTeach !== null) { thisTeach.value = urlTeach }
-
-// DISABLING CLASS FIELD
-if (urlClass !== null && thisClass.value !== "") { thisClass.readOnly = true }
-if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false }
-
-// DISABLING TEACHER FIELD
-if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
-if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
-
-// URL FORMAT:
-// ======================================================================
-// |  FORMAT: nomina.html?clase='Inglés Básico 2'&profe='Méndez, Juan'  |
-// ======================================================================
-
-
-
-// READONLY ELEMENTS SOUND
-// ====================
-let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
-autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-thisClass.addEventListener("click", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-lastNames.addEventListener("click", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
@@ -525,6 +542,23 @@ firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notA
 const form = document.getElementById("attendClass");
 const submitButton = document.getElementById("attendButton");
 const messageDiv = document.getElementById("message");
+
+// SUBMIT FORM DATA!
+// var scriptURL = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec"; // ORIGINAL!
+var scriptURL = urlAsistencia
+
+// SELECT FACULTY
+thisFacul.addEventListener("change", function (e) {
+if (thisFacul.value == "1") { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // 1
+if (thisFacul.value == "2") { scriptURL = urlFacDeArtes; theRoster = rosterFacDeArtes } // 2
+if (thisFacul.value == "3") { scriptURL = urlFacCiencia; theRoster = rosterFacCiencia } // 3
+if (thisFacul.value == "4") { scriptURL = urlFacDeEduca; theRoster = rosterFacDeEduca } // 4
+if (thisFacul.value == "5") { scriptURL = urlFacEducFis; theRoster = rosterFacEducFis } // 5
+if (thisFacul.value == "6") { scriptURL = urlFacHumanis; theRoster = rosterFacHumanis } // 6
+if (thisFacul.value == "7") { scriptURL = urlFacIngenis; theRoster = rosterFacIngenis } // 7
+if (thisFacul.value == "8") { scriptURL = urlFacDeSalud; theRoster = rosterFacDeSalud } // 8
+if (thisFacul.value == "9") { scriptURL = urlScSociales; theRoster = rosterScSociales } // 9
+})
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -544,9 +578,6 @@ form.addEventListener("submit", async function (e) {
 
     // Convert FormData to object
     for (let [key, value] of formData.entries()) { formDataObj[key] = value; }
-
-    // Submit form data
-    const scriptURL = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec";
 
     const response = await fetch(scriptURL, {
         redirect: "follow",
@@ -585,10 +616,73 @@ form.addEventListener("submit", async function (e) {
     }
 })
 
-
 // END OF SUBMIT FORM FUNCTION
 // =========================
 
+
+
+
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+let urlClass = (new URLSearchParams(window.location.search)).get("clase")
+let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
+let urlFacul = (new URLSearchParams(window.location.search)).get("facul")
+
+// PRINTING URL ELEMENTS
+if (urlClass !== null) { thisClass.value = urlClass }
+if (urlTeach !== null) { thisTeach.value = urlTeach }
+if (urlFacul !== null) { thisFacul.value = urlFacul }
+
+// DISABLING CLASS FIELD
+if (urlClass !== null && thisClass.value !== "") { thisClass.readOnly = true }
+if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false }
+
+// DISABLING TEACHER FIELD
+if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
+if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
+
+// CHECKING CORRECT FACULTY
+let correctFaculty
+if (urlFacul !== null && thisFacul.value > 0 && thisFacul.value < 10) { correctFaculty = true }
+else { correctFaculty = false }
+
+// CHECKING FACULTY URL VALUE!
+if (urlFacul !== null && correctFaculty) { thisFacul.disabled = true; thisFacul.style.cursor = "not-allowed" }
+else { thisFacul.disabled = false; thisFacul.style.cursor = "" }
+
+// CHANGING FORM AND ROSTER IDS WHEN URL VALUE IS ASSIGNED!
+if (thisFacul.value == "1") { scriptURL = urlAsistencia; theRoster = rosterAsistencia } // 1
+if (thisFacul.value == "2") { scriptURL = urlFacDeArtes; theRoster = rosterFacDeArtes } // 2
+if (thisFacul.value == "3") { scriptURL = urlFacCiencia; theRoster = rosterFacCiencia } // 3
+if (thisFacul.value == "4") { scriptURL = urlFacDeEduca; theRoster = rosterFacDeEduca } // 4
+if (thisFacul.value == "5") { scriptURL = urlFacEducFis; theRoster = rosterFacEducFis } // 5
+if (thisFacul.value == "6") { scriptURL = urlFacHumanis; theRoster = rosterFacHumanis } // 6
+if (thisFacul.value == "7") { scriptURL = urlFacIngenis; theRoster = rosterFacIngenis } // 7
+if (thisFacul.value == "8") { scriptURL = urlFacDeSalud; theRoster = rosterFacDeSalud } // 8
+if (thisFacul.value == "9") { scriptURL = urlScSociales; theRoster = rosterScSociales } // 9
+
+// DISABLING FACULTY FIELD
+if (urlFacul !== null && correctFaculty ) { thisFacul.disabled = true }
+if (urlFacul !== null && !correctFaculty ) { thisFacul.disabled = false }
+
+// URL FORMAT:
+// =============================================================================
+// | FORMAT: /nomina.html?clase='Inglés Básico 2'&profe='Méndez, Juan'&facul=0 |
+// =============================================================================
+
+
+
+
+// READONLY ELEMENTS SOUND
+// ====================
+let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
+autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+thisFacul.addEventListener("click", function() { if (thisFacul.disabled) { notAllowed.play() } })
+thisClass.addEventListener("click", function() { if (thisClass.readOnly) { notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) { notAllowed.play(); window.getSelection().removeAllRanges();} })
+lastNames.addEventListener("click", function() { if (lastNames.readOnly) { notAllowed.play(); window.getSelection().removeAllRanges();} })
+firstNames.addEventListener("click", function() { if (firstNames.readOnly) { notAllowed.play(); window.getSelection().removeAllRanges();} })
 
 
 
@@ -613,10 +707,13 @@ return i
 // ENABLE INPUTS!
 // =============
 function enableInput() {
+ thisFacul.disabled = false
+ thisFacul.readOnly = false
  lastNames.readOnly = false
  firstNames.readOnly = false
  theProgram.readOnly = false
  thisEmail.readOnly = false
+ thisFacul.style.cursor = ""
  lastNames.style.cursor = ""
  firstNames.style.cursor = ""
  theProgram.style.cursor = ""
@@ -624,8 +721,9 @@ function enableInput() {
 // ENABLING CLASS & TEACHER FIELD
 let urlClass = (new URLSearchParams(window.location.search)).get("clase")
 let urlTeach = (new URLSearchParams(window.location.search)).get("profe")
-if (urlClass == null && !thisClass.value == "") { thisClass.readOnly = false; thisClass.style.cursor = "" }
-if (urlTeach == null && !thisTeach.value == "") { thisTeach.readOnly = false; thisTeach.style.cursor = "" }
+let urlFacul = (new URLSearchParams(window.location.search)).get("facul")
+if (urlClass == null && thisClass.value !== "") { thisClass.readOnly = false; thisClass.style.cursor = "" }		// CHANGED THIS, HAVEN'T TRIED IT LIVE!
+if (urlTeach == null && thisTeach.value !== "") { thisTeach.readOnly = false; thisTeach.style.cursor = "" }		// CHANGED THIS, HAVEN'T TRIED IT LIVE!
 }
 
 
@@ -634,12 +732,15 @@ if (urlTeach == null && !thisTeach.value == "") { thisTeach.readOnly = false; th
 // DISABLE INPUT!
 // =============
 function disableInput() {
+ thisFacul.disabled = true
+ thisFacul.readOnly = true
  thisClass.readOnly = true
  thisTeach.readOnly = true
  lastNames.readOnly = true
  firstNames.readOnly = true
  theProgram.readOnly = true
  thisEmail.readOnly = true
+ thisFacul.style.cursor = "not-allowed"
  thisClass.style.cursor = "not-allowed"
  thisTeach.style.cursor = "not-allowed"
  lastNames.style.cursor = "not-allowed"
@@ -661,6 +762,13 @@ if (input.readOnly || input.disabled) {
  setTimeout(() => { input.style.transform = "translate(-3px, 0px)" }, 150)
  setTimeout(() => { input.style.transform = "translate(1px, 0px)" }, 200)
  }
+if (input.disabled == true) {
+ input.style.transform = "translate(3px, 0px)"
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" },  50)
+ setTimeout(() => { input.style.transform = "translate( 3px, 0px)" }, 100)
+ setTimeout(() => { input.style.transform = "translate(-3px, 0px)" }, 150)
+ setTimeout(() => { input.style.transform = "translate(1px, 0px)" }, 200)
+ }
 }
 
 
@@ -675,9 +783,9 @@ thisEmail.value = onlyUser
 
 
 
-// =============
-// RESET BUTTON!
-// =============
+// =================
+// RESET ATTENDANCE!
+// =================
 function resetButton(input) {
 let regOn = false
 let asiOn = false
