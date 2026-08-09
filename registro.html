@@ -9,6 +9,7 @@
  <title>Uplanianos - Asistencia!</title>
 </head>
 
+<audio id="success" src="https://uplanianos.github.io/app/media/success.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 <audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 
@@ -543,6 +544,7 @@ rosterBT.addEventListener("click", function() {
 const form = document.getElementById("attendClass");
 const submitButton = document.getElementById("attendButton");
 const messageDiv = document.getElementById("message");
+let success = new Audio('https://uplanianos.github.io/app/media/success.mp3')
 
 // SUBMIT FORM DATA!
 // var scriptURL = "https://script.google.com/macros/s/AKfycbw4WvdSGs6FWdGiNK3M6SWECweStPrV3EAh17MNubtORkaOztb-LPBLWfoi_1Bdhphu/exec"; // ORIGINAL!
@@ -591,6 +593,7 @@ form.addEventListener("submit", async function (e) {
     const data = await response.json();
 
     if (data.status === "success") {
+	success.play()
         messageDiv.textContent = data.message || "Asistencia exitosa!";
         messageDiv.style.backgroundColor = "#48c78e";
         messageDiv.style.color = "white";
