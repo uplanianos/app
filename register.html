@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -10,8 +11,8 @@
 </head>
 
 
-<audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">
-Your browser does not support the <code>audio</code> element.</audio>
+<audio id="success" src="https://uplanianos.github.io/app/media/success.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="not-allowed" src="https://uplanianos.github.io/app/tugofwar/hateSalud.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 <body>
 
@@ -191,7 +192,8 @@ setInterval(() => {
  // TIME PERIODS FUNCTIONALITY!
  // ===========================
 
- let theTime = parseInt(thisHour+""+thisMinute) // FORMAT: 0800, or 1115, etc.
+ // CUSTOM TIME FORMAT: 0800, or 1115, etc.
+ let theTime = parseInt(thisHour+""+thisMinute)
 
  // CLASS PERIOD - 00:00 (0)
  if (theTime >= 0000 && theTime <= 0759) { isPeriod = 0 }
@@ -460,47 +462,13 @@ rosterBT.addEventListener("click", function() {
 
 
 
-// GETTING CLASS NAME FROM LINK PARAMETER!
-// ======================================
-let urlClass = (new URLSearchParams(window.location.search)).get("class")
-let urlTeach = (new URLSearchParams(window.location.search)).get("teach")
-// PRINTING CLASS ELEMENT
-if (urlClass !== null) { thisClass.value = urlClass }
-if (urlTeach !== null) { thisTeach.value = urlTeach }
-
-// DISABLING CLASS FIELD
-if (urlClass !== null && thisClass.value !== "") { thisClass.readOnly = true }
-if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false }
-
-// DISABLING TEACHER FIELD
-if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
-if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
-
-// FORMAT:
-// =============================================================
-// | /nomina.html?class='Basic English 2'&teach='Méndez, Juan' |
-// =============================================================
-
-
-
-// READONLY ELEMENTS SOUND
-// ====================
-let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
-autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
-thisClass.addEventListener("click", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-lastNames.addEventListener("click", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-thisEmail.addEventListener("click", function() { if (thisEmail.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
-
-
 
 // SUBMIT FORM FUNCTION
 // =========================
 const form = document.getElementById("attendClass");
-const attendButton = document.getElementById("attendButton");
 const messageDiv = document.getElementById("message");
+const attendButton = document.getElementById("attendButton");
+const success = new Audio('https://uplanianos.github.io/app/media/success.mp3')
 
 form.addEventListener("submit", async function (e) {
 e.preventDefault();
@@ -536,6 +504,7 @@ try {
  const data = await response.json();
 
  if (data.status === "success") {
+  success.play()
   messageDiv.textContent = data.message || "🎉 Successful attendance!";
   messageDiv.style.backgroundColor = "#48c78e";
   messageDiv.style.color = "white";
@@ -553,6 +522,7 @@ try {
   // form.reset();
  } else { throw new Error(data.message || "Upload error!"); }
 } catch (error) {
+ notAllowed.play();
  console.error("⚠️ ERROR DETECTED: \n🚧 ──────────────────── 🚧\n", error + "\n🚧 ──────────────────── 🚧");
  messageDiv.textContent = "⚠️ ERROR: " + error.message;
  messageDiv.style.backgroundColor = "#f14668";
@@ -569,9 +539,46 @@ try {
  }
 })
 
-
 // END OF SUBMIT FORM FUNCTION
 // =========================
+
+
+
+// GETTING CLASS NAME FROM LINK PARAMETER!
+// ======================================
+let urlClass = (new URLSearchParams(window.location.search)).get("class")
+let urlTeach = (new URLSearchParams(window.location.search)).get("teach")
+// PRINTING CLASS ELEMENT
+if (urlClass !== null) { thisClass.value = urlClass }
+if (urlTeach !== null) { thisTeach.value = urlTeach }
+
+// DISABLING CLASS FIELD
+if (urlClass !== null && thisClass.value !== "") { thisClass.readOnly = true }
+if (urlClass !== null && thisClass.value.length == 0) { thisClass.readOnly = false }
+
+// DISABLING TEACHER FIELD
+if (urlTeach !== null && thisTeach.value !== "") { thisTeach.readOnly = true }
+if (urlTeach !== null && thisTeach.value.length == 0) { thisTeach.readOnly = false }
+
+// FORMAT:
+// =============================================================
+// | /nomina.html?class='Basic English 2'&teach='Méndez, Juan' |
+// =============================================================
+
+
+
+// READONLY ELEMENTS SOUND
+// ====================
+let notAllowed = new Audio('https://uplanianos.github.io/app/tugofwar/hateSalud.mp3')
+autoDate.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+autoTime.addEventListener("click", function() { notAllowed.play(); window.getSelection().removeAllRanges() })
+thisClass.addEventListener("click", function() { if (thisClass.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisTeach.addEventListener("click", function() { if (thisTeach.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+lastNames.addEventListener("click", function() { if (lastNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+firstNames.addEventListener("click", function() { if (firstNames.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+thisEmail.addEventListener("click", function() { if (thisEmail.readOnly) {notAllowed.play(); window.getSelection().removeAllRanges();} })
+
+
 
 
 
