@@ -739,16 +739,14 @@ thisEmail.value = onlyUser
 // RESET ATTENDANCE!
 // =================
 function resetButton(input) {
-let regOn = false
-let asiOn = false
-let autOn = false
-let stuOn = false
-reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
-asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
-aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
-stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) { attendTime.value = ""; enableInput() } })
-// END OF RESET BUTTON
-}
+let regOn = false; let asiOn = false; let autOn = false; let stuOn = false
+reg.addEventListener("click", function() { regOn = true; if (regOn && asiOn && autOn && stuOn) {doReset()} })
+asi.addEventListener("click", function() { asiOn = true; if (regOn && asiOn && autOn && stuOn) {doReset()} })
+aut.addEventListener("click", function() { autOn = true; if (regOn && asiOn && autOn && stuOn) {doReset()} })
+stu.addEventListener("click", function() { stuOn = true; if (regOn && asiOn && autOn && stuOn) {doReset()} }) }
+// ===== RESET ACTION! =====
+function doReset() { enableInput(); attendTime.value = ""; thisFacul.disabled = false; thisFacul.style.cursor = "" }
+// ===== RESET ACTION! =====
 
 
 
