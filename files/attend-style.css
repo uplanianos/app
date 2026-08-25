@@ -138,6 +138,17 @@ select {
  border: 1px solid red;
 }
 
+.favoriteDiv {
+ margin: auto;
+ width: max-content;
+ text-align: center;
+ padding: 12px 24px;
+ background: #FF0000aa;
+ border: 1px solid #FFFFFFcc;
+ border-radius: 6px;
+ transform: translate(14%,0);
+ }
+
 @media screen and (max-width: 800px) {
  .rollDiv { width: 80%; }
  .theInputs { margin-left: 2%; width: 90%; }
