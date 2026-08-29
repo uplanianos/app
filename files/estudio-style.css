@@ -63,9 +63,8 @@ body::-webkit-scrollbar { display: none; }
  font-weight: bold;
 }
 
-.questList {
- margin-left: 12px;
-}
+.questList { margin-left: 12px; }
+.randomList { display: flex-grid; margin: auto; text-align: center; }
 
 .answerTitle { position: absolute; top: 12px; right: 22%; }
 
@@ -205,6 +204,26 @@ textarea.answers {
  overflow-wrap: break-word;
  white-space: pre-wrap;
 }
+
+
+textarea.randomText {
+ width: 38%;
+ height: 26px;
+ background-color: #DBF9DB;
+ font-size: min(11px, 2vw);
+ border-width: 1px;
+ border-radius: 6px;
+ margin-left: 3px;
+ margin: 6px;
+ margin-bottom: -3px;
+ padding: 6px;
+ outline: none;
+ resize: none;
+ vertical-align: text-bottom;
+ overflow-wrap: break-word;
+ white-space: pre-wrap;
+}
+
 
 .audioToggle { width: 25px; }
 

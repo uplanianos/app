@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html lang="en-US">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <link rel="stylesheet" href="files/estudio-style.css">
+ <title>Uplanianos - Generador Aleatorio!</title>
+</head>
+
+
+<audio id="tics" src="tugofwar/likeTics.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="done" src="tugofwar/likeSport.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+
+<!- SAVE FUNCTION ->
+<script type="text/javascript">
+window.onbeforeunload = function() {
+if (typeof(Storage) !== "undefined") { saveData() }
+}
+
+function saveData() {
+localStorage.questAmount = document.getElementById("questAmount").value
+localStorage.r1 = document.getElementById("r1").value;
+localStorage.r2 = document.getElementById("r2").value;
+localStorage.r3 = document.getElementById("r3").value;
+localStorage.r4 = document.getElementById("r4").value;
+localStorage.r5 = document.getElementById("r5").value;
+localStorage.r6 = document.getElementById("r6").value;
+localStorage.r7 = document.getElementById("r7").value;
+localStorage.r8 = document.getElementById("r8").value;
+localStorage.r9 = document.getElementById("r9").value;
+localStorage.r10 = document.getElementById("r10").value;
+
+localStorage.r11 = document.getElementById("r11").value;
+localStorage.r12 = document.getElementById("r12").value;
+localStorage.r13 = document.getElementById("r13").value;
+localStorage.r14 = document.getElementById("r14").value;
+localStorage.r15 = document.getElementById("r15").value;
+localStorage.r16 = document.getElementById("r16").value;
+localStorage.r17 = document.getElementById("r17").value;
+localStorage.r18 = document.getElementById("r18").value;
+localStorage.r19 = document.getElementById("r19").value;
+localStorage.r20 = document.getElementById("r20").value;
+
+localStorage.r21 = document.getElementById("r21").value;
+localStorage.r22 = document.getElementById("r22").value;
+localStorage.r23 = document.getElementById("r23").value;
+localStorage.r24 = document.getElementById("r24").value;
+localStorage.r25 = document.getElementById("r25").value;
+localStorage.r26 = document.getElementById("r26").value;
+localStorage.r27 = document.getElementById("r27").value;
+localStorage.r28 = document.getElementById("r28").value;
+localStorage.r29 = document.getElementById("r29").value;
+localStorage.r30 = document.getElementById("r30").value;
+}
+
+window.onload = function() {
+// LOAD DATA
+loadData()
+// CALL FUNCTIONS ONLOAD!
+enableAudio()
+loadQuestions();
+pasteFunction();
+}
+
+function loadData() {
+// LOAD DATA!
+document.getElementById("questAmount").value = localStorage.questAmount || "6"
+document.getElementById("r1").value = localStorage.r1 || "";
+document.getElementById("r2").value = localStorage.r2 || "";
+document.getElementById("r3").value = localStorage.r3 || "";
+document.getElementById("r4").value = localStorage.r4 || "";
+document.getElementById("r5").value = localStorage.r5 || "";
+document.getElementById("r6").value = localStorage.r6 || "";
+document.getElementById("r7").value = localStorage.r7 || "";
+document.getElementById("r8").value = localStorage.r8 || "";
+document.getElementById("r9").value = localStorage.r9 || "";
+document.getElementById("r10").value = localStorage.r10 || "";
+
+document.getElementById("r11").value = localStorage.r11 || "";
+document.getElementById("r12").value = localStorage.r12 || "";
+document.getElementById("r13").value = localStorage.r13 || "";
+document.getElementById("r14").value = localStorage.r14 || "";
+document.getElementById("r15").value = localStorage.r15 || "";
+document.getElementById("r16").value = localStorage.r16 || "";
+document.getElementById("r17").value = localStorage.r17 || "";
+document.getElementById("r18").value = localStorage.r18 || "";
+document.getElementById("r19").value = localStorage.r19 || "";
+document.getElementById("r20").value = localStorage.r20 || "";
+
+document.getElementById("r21").value = localStorage.r21 || "";
+document.getElementById("r22").value = localStorage.r22 || "";
+document.getElementById("r23").value = localStorage.r23 || "";
+document.getElementById("r24").value = localStorage.r24 || "";
+document.getElementById("r25").value = localStorage.r25 || "";
+document.getElementById("r26").value = localStorage.r26 || "";
+document.getElementById("r27").value = localStorage.r27 || "";
+document.getElementById("r28").value = localStorage.r28 || "";
+document.getElementById("r29").value = localStorage.r29 || "";
+document.getElementById("r30").value = localStorage.r30 || "";
+}
+</script>
+
+
+
+<body>
+<div class="top">
+
+<div style="position: absolute; top: 10px; left: 10px;">
+ <a href="index.html"><button class="topButtons" title="Volver a página inicial!" value="Volver a página inicial!">&nbsp;&larrhk;&nbsp;</button></a>
+ </div>
+
+<div style="position: absolute; top: 10px; left: 50px;">
+ <a href="estudio.html"><button class="topButtons" title="Volver a página inicial!" value="Ir a preguntas de estudio!">&nbsp;📖&nbsp;</button></a>
+ </div>
+
+<div id="title" class="title">Generador Aleatorio!</div>
+
+<div id="questButton" style="position: absolute; top: 10px; right: 52px; display: none;">
+ <button class="topButtons" value="Preguntas?" title="Abrir preguntas!" onclick="slideQuestUp(); hideRandomizer()">&nbsp;❓&nbsp;</button></a>
+ </div>
+<div id="clearButton" style="position: absolute; top: 10px; right: 52px; display: none; display: block;">
+ <button class="topButtons" value="Borrar?" title="Borrar preguntas!" onclick="doDelete()">🗑️</button></a>
+ </div>
+
+<div style="position: absolute; top: 10px; right: 12px;">
+ <button id="fullscreen" class="topButtons" title="Pantalla completa!" onclick="activate(document.documentElement);">🚀</button>
+ <button id="minimize" class="topButtons" title="Minimizar pantalla!" style="display: none;" onclick="deactivate()">❌</button>
+ </div>
+</div>
+
+
+<div class="randomizer" id="randomizer" style="display: none; visibility: hidden;">
+ <div class="closeButton" onclick="slideQuestUp(); hideRandomizer()" title="Cerrar estudiador-inator!">❌</div>
+ <b>RANDOMIZE-INATOR:</b>
+ <br>
+ <div id="randomQs" class="randomQs" style="margin-top: 6px; margin-bottom: 16px;">Tus datos aleatorios<br>aparecerán aquí!!</div>
+ <div id="randomButton" class="studyButton" style="left: 34%; padding: 6px;" title="Mostrar alternativa aleatoria!" onclick="goRandomize(); saveData()">Generar!</div>
+ <br>
+ <div id="audioOn" class="audioToggle" onclick="enableAudio()" style="cursor: pointer; display: none;" title="Activar sonido!">🔈</div>
+ <div id="audioOff" class="audioToggle" onclick="disableAudio()" style="cursor: pointer;" title="Desactiva sonido!">🔊</div>
+</div>
+
+
+<div class="questions" id="questions" style="display: block; visibility: visible;">
+<span style="padding-left: 75px;"><b>Datos:</b></span><br><br>
+ <div class="addQuestButton" id="addQuestButton" onclick="showMoreQs(); saveData()" title="Agregar alternativa!">➕</div>
+ <div class="deleteQuestButton" id="deleteQuestButton" onclick="showLessQs(); saveData()" title="Borrar última alternativa!">➖</div>
+
+ <div class="closeButton" onclick="slideQuestDown(); showRandomizer()" title="Cerrar alternativas!">❌</div>
+
+<textarea id="questAmount" class="questAmount" rows="1" cols="auto" maxlength="5" style="display: none;">6</textarea>
+
+<div class="randomList">
+<textarea id="r1" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r2" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r3" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r4" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r5" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r6" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r7" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r8" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r9" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r10" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r11" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r12" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<!-- HIDDEN DIVS -->
+<div class="randomList" id="list7" style="display: none;">
+<textarea id="r13" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r14" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list8" style="display: none;">
+<textarea id="r15" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r16" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list9" style="display: none;">
+<textarea id="r17" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r18" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list10" style="display: none;">
+<textarea id="r19" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r20" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list11" style="display: none;">
+<textarea id="r21" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r22" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list12" style="display: none;">
+<textarea id="r23" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r24" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list13" style="display: none;">
+<textarea id="r25" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r26" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list14" style="display: none;">
+<textarea id="r27" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r28" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<div class="randomList" id="list15" style="display: none;">
+<textarea id="r29" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+<textarea id="r30" class="randomText" rows="1" cols="auto" placeholder="Ingresar alternativa" onchange="saveData()"></textarea>
+</div>
+
+<br>
+<div id="goButton" class="actionButton" onclick="slideQuestDown(); showRandomizer(); saveData()" title="Iniciar generación aleatoria!">Comenzar!</div>
+<br>
+
+</div>
+</body>
+
+
+<script type="text/javascript">
+// ====================
+// LOAD QUESTIONS FUNCTION
+// ====================
+function loadQuestions() {
+var questAmount = document.getElementById('questAmount').value;
+var i = questAmount;
+var theQs = parseInt(i) - parseInt(6);
+var start = parseInt(6);
+var end = parseInt(15);
+
+// DISPLAY HIDDEN QUESTIONS (BY AMOUNT PREVIOUSLY SET)!
+if (i >= 7 && i <= end) {
+ for (let step = 6; step < end; step++) {
+  start++;
+  var thisQuest = "list" + start;
+  document.getElementById(thisQuest).style.display = "block";
+  end = i;
+  }
+ }
+
+// DISPLAYING & HIDDING BUTTONS!
+if (i <= 6) {document.getElementById("deleteQuestButton").style.display = "none"}
+if (i >= 7 && i <= 15 ) {document.getElementById("deleteQuestButton").style.display = "block"}
+}
+
+
+// ====================
+// SHOW MORE QUESTIONS!
+// ====================
+function showMoreQs() {
+var questAmount = document.getElementById('questAmount').value;
+
+var i = questAmount;
+++i; // UPDATING AMOUNT OF LISTS!
+
+// CHECKING IF VALUE IS BETWEEN 7 AND 15!
+if (i >= 7 && i <= 15 ) {
+ document.getElementById('questAmount').value = i;
+ var thisQuest = "list" + i;
+ document.getElementById(thisQuest).style.display = "block";
+ document.getElementById("deleteQuestButton").style.display = "block";
+ }
+if (i == 15 ) {document.getElementById("addQuestButton").style.display = "none"}
+}
+
+// ====================
+// SHOW LESS QUESTIONS!
+// ====================
+function showLessQs() {
+var questAmount = document.getElementById('questAmount').value;
+
+var i = questAmount;
+
+// CHECKING IF VALUE IS BETWEEN 7 AND 15!
+if (i >= 7 && i <= 15) {
+ var thisQuest = "list" + i;
+ document.getElementById(thisQuest).style.display = "none";
+ document.getElementById("addQuestButton").style.display = "block";
+ // UPDATING AMOUNT OF LISTS!
+ i = i - 1; // UPDATING AMOUNT OF LISTS
+ document.getElementById('questAmount').value = i;
+ }
+if (i == 6 ) {document.getElementById("deleteQuestButton").style.display = "none"}
+if (i == 15 ) {document.getElementById("addQuestButton").style.display = "none"}
+}
+
+
+// ====================
+// CHECK BEFORE DELETING!
+// ====================
+function doDelete() {
+ if (confirm('¿Desea borrar todas las alternativas?')) { clearQuestions() }
+}
+
+
+// ====================
+// DELETING QUESTIONS!
+// ====================
+function clearQuestions() {
+
+// CLEAR STUDY QUESTIONS!
+const studyQs = document.getElementsByClassName('randomText')
+if (studyQs != null) {
+ for(let eachQuestion of studyQs) { eachQuestion.value = "" }
+}
+
+// RESET AMOUNT OF QUESTIONS BY DEFAULT!
+var questAmount = document.getElementById('questAmount')
+questAmount.value = 6;
+
+// DISABLE AUDIO
+disableAudio()
+
+saveData()
+
+// RELOAD PAGE
+window.location.reload()
+
+}
+
+
+// ====================
+// ENTER FULL SCREEN!!!
+// ====================
+function activate(ele) { if (ele.requestFullscreen) {
+  ele.requestFullscreen();
+  document.getElementById('fullscreen').style.display = 'none';
+  document.getElementById('minimize').style.display = 'inline';
+  }
+}
+
+
+// ====================
+// EXIT FULL SCREEN!!!!
+// ====================
+function deactivate() { if (document.exitFullscreen) {
+ document.exitFullscreen();
+ document.getElementById('fullscreen').style.display = 'none';
+ document.getElementById('fullscreen').style.display = 'inline';
+ document.getElementById('minimize').style.display = 'none';
+ }
+}
+
+
+// ======================
+// BREAKING THE CLIPBOARD DATA INTO THE DIFFERENT INPUTS!
+// ======================
+function pasteFunction() {
+// GETTING AN ARRAY WITH ALL THE INPUTS!
+ let randomText = document.getElementsByClassName('randomText')
+
+// Assign input 0 a listener for the onpaste event
+ randomText[0].onpaste = function(event) {
+ event.preventDefault()
+ let allValues = event.clipboardData.getData('Text').split(/\r?\n/)  // Split data on newline!
+ for(var i = 0; i < allValues.length; i++) { randomText[i].value = allValues[i] } // Cycling the values
+ }
+}
+
+
+// ====================
+// AUDIO SCRIPT FUNCTION
+// ====================
+
+// GLOBAL AUDIO VARIABLE!
+var audioToggle;
+
+// ENABLE / DISABLE AUDIO FUNCTIONS!
+function enableAudio() {
+document.getElementById("audioOn").style.display = "none";
+document.getElementById("audioOff").style.display = "block";
+audioToggle = "On";
+}
+
+function disableAudio() {
+document.getElementById("audioOn").style.display = "block";
+document.getElementById("audioOff").style.display = "none";
+audioToggle = "Off";
+}
+
+
+
+// ====================
+// RANDOMIZE FUNCTION
+// ====================
+
+function goRandomize() {
+var questAmount = document.getElementById('questAmount').value;
+var randomQs = document.getElementById("randomQs");
+
+// INITIAL FULL ARRAY OF NUMBERS (OF THE QUESTIONS)!
+const thisArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+
+// CREATING UPDATED ARRAY WITHOUT THE RANDOM NUMBER!
+// THIS FINDS THE INDEX OF THE RANDOM NUMBER TO BE TEMPORARILY REMOVED!
+const updatedArray = (arr, item)  => {
+ let newArray = [...arr]
+ const index = newArray.findIndex((element) => element === item)
+ if (index !== -1) {
+  newArray.splice(index, 1)
+  return newArray
+  }
+ }
+
+
+
+// RANDOMIZING 1
+let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+var toRemove = parseInt(random)
+var randomElement = "r" + random
+randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+if (audioToggle === "On") { document.getElementById("tics").play(); }
+
+// RANDOMIZING 2
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 250);
+
+// RANDOMIZING 3
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 500);
+
+// RANDOMIZING 4
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 750);
+
+// RANDOMIZING 5
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 1000);
+
+// RANDOMIZING 6
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 1250);
+
+// RANDOMIZING 7
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 1500);
+
+// RANDOMIZING 8
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 1750);
+
+// RANDOMIZING 9
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+}, 2000);
+
+// RANDOMIZING 10
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { document.getElementById("done").play(); }
+}, 2250);
+
+}
+
+
+
+
+// ANSWER FUNCTION
+// ANSWER FUNCTION
+// ANSWER FUNCTION
+
+function getAnswer() {
+var thisAnswer = theAnswer;
+var randomQs = document.getElementById("randomQs");
+document.getElementById("randomQs").innerHTML = "📖";
+
+// SHOW ANSWER!
+setTimeout(function() {
+ document.getElementById("randomQs").innerHTML = "<b>Respuesta:</b> " + document.getElementById(thisAnswer).value + "!" },
+ 400)
+
+
+
+// AUDIO PLAY CHECK FUNCTION
+// PLAY ANSWER EFFECT AUDIO!
+if (audioToggle === "On") { document.getElementById("answer").play(); }
+}
+// ====================
+// END OF RANDOMIZER
+// ====================
+
+
+</script>
+
+
+<!-- FUNCTION SCRIPTS -->
+<script type="text/javascript" src="scripts/loadQsScript.js"></script>
+<script type="text/javascript" src="scripts/animationScript.js"></script>
+<script type="text/javascript" src="scripts/studyScript.js"></script>
+
+
+
+</html>
