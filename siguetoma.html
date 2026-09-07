@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en-US">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="media/uplanianos-icon.png">
+	<link rel="stylesheet" href="files/pages-style.css">
+	<title>Uplanianos - Toma Tracker</title>
+</head>
+
+<body class="paroTrackerBody">
+
+<br>
+<div id="todo-normal" class="todoNormal" style="margin-top: 0px;">
+⚠️ TOMA TRACKER! 🌙🛏️✊💤<br>
+<span style="margin-left: 3%; font-size: 12px; font-weight: normal;">* Solo contaremos los días de duración, ya que una cuenta regresiva es imposible.</span>
+</div>
+
+<div id="tracker" style="display: flex; padding: 24px; gap: 12px;">
+
+ <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br>Casa Central<br><br>
+ <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br>Fac. Artes<br><br>
+ <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="scienceDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br>Fac. Ciencias<br><br>
+ <span id="science" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="sfelipeDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br>San Felipe<br><br>
+ <span id="sfelipe" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+</div>
+
+<div class="grid-item-slider" id="strike-footer">
+Visita 📷 <a href="https://www.instagram.com/uplanianos/" target="_blank" style="text-decoration: none; cursor: pointer;" title="Uplanianos en Instagram!">Uplanianos</a>
+para ver actualizaciones.
+</div>
+
+<br>
+<br>
+
+</div>
+
+
+
+<script type="text/javascript">
+// LOAD SCRIPT
+onload = tomaTracker()
+
+// MAIN TRACKER SCRIPT!
+function tomaTracker() {
+// DEFINE SPAN ELEMENTS
+let central = document.getElementById("central")
+let deartes = document.getElementById("deartes")
+let science = document.getElementById("science")
+let sfelipe = document.getElementById("sfelipe")
+// DEFINE DIV ELEMENTS
+let centralDiv = document.getElementById("centralDiv")
+let deartesDiv = document.getElementById("deartesDiv")
+let scienceDiv = document.getElementById("scienceDiv")
+let sfelipeDiv = document.getElementById("sfelipeDiv")
+// EDIT ALL SPANS AT ONCE!
+// let allSpans = document.querySelectorAll("span")
+// for(el of allSpans) { el.style.background = "red" }
+
+// WORKING WITH DATES!
+let currentDate = new Date()
+// START DATES
+let centralGoes = new Date("2026-09-07T00:00:00")
+let deartesGoes = currentDate
+let scienceGoes = currentDate
+let sfelipeGoes = currentDate
+// GETTING DIFFERENCE
+let centralDiff = currentDate - centralGoes
+let deartesDiff = currentDate - deartesGoes
+let scienceDiff = currentDate - scienceGoes
+let sfelipeDiff = currentDate - sfelipeGoes
+// CONVERTING TO DAYS IN FRACTION
+let centralDays = parseFloat(centralDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+let deartesDays = parseFloat(deartesDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+let scienceDays = parseFloat(scienceDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+let sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+
+// CHECKING IF HIGHER THAN 0
+if (centralDays > 0) { central.innerHTML = centralDays; centralDiv.style.background = "red" }
+if (deartesDays > 0) { deartes.innerHTML = deartesDays; deartesDiv.style.background = "red" }
+if (scienceDays > 0) { science.innerHTML = scienceDays; scienceDiv.style.background = "red" }
+if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.background = "red" }
+
+}
+</script>
+
+
+
+</body>
+</html>
