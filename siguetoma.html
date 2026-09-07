@@ -3,10 +3,25 @@
 <html lang="en-US">
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="media/uplanianos-icon.png">
-	<link rel="stylesheet" href="files/pages-style.css">
-	<title>Uplanianos - Toma Tracker</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="media/uplanianos-icon.png">
+ <link rel="stylesheet" href="files/pages-style.css">
+ <title>Uplanianos - Toma Tracker</title>
+ <style>
+ div.tomaTracker {
+  display: flex;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'div div'
+    'div div';
+ padding: 12px;
+ gap: 12px;
+ }
+ @media screen and (max-width: 800px) {
+ div.tomaTracker { display: grid; padding: 6px; gap: 6px; }
+ }
+</style>
 </head>
 
 <body class="paroTrackerBody">
@@ -14,10 +29,10 @@
 <br>
 <div id="todo-normal" class="todoNormal" style="margin-top: 0px;">
 ⚠️ TOMA TRACKER! 🌙🛏️✊💤<br>
-<span style="margin-left: 3%; font-size: 12px; font-weight: normal;">* Solo contaremos los días de duración, ya que una cuenta regresiva es imposible.</span>
+<span style="margin-left: 2%; font-size: 12px; font-weight: normal;">* Solo contaremos los días de duración, ya que el término es indefinido.</span>
 </div>
 
-<div style="display: flex; padding: 12px; gap: 12px;">
+<div class="tomaTracker" style="">
 
  <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Casa Central</b><br><small>Inicio: 7 de Septiembre, 2026.</small><br><br>
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
