@@ -9,17 +9,15 @@
  <title>Uplanianos - Toma Tracker</title>
  <style>
  div.tomaTracker {
-  display: flex;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    'div div'
-    'div div';
- padding: 12px;
- gap: 12px;
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 'div div div';
+ padding: 6px;
+ gap: 24px;
  }
  @media screen and (max-width: 800px) {
- div.tomaTracker { display: grid; padding: 6px; gap: 6px; }
+ div.tomaTracker { grid-template-columns: 48% 48%; grid-template-areas: 'div div';  padding: 0px; gap: 12px; }
  }
 </style>
 </head>
@@ -34,16 +32,22 @@
 
 <div class="tomaTracker" style="">
 
- <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Casa Central</b><br><small>Inicio: 7 de Septiembre, 2026.</small><br><br>
+ <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Casa Central</b><br><small>Inicio: Sep. 7, 2026.</small><br>
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br><br>
+ <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Ciencias</b><br><small>---</small><br><br>
+ <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Ciencias</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Sede San Felipe</b><br><small>---</small><br><br>
+ <div id="britaonDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Gran Bretaña</b><br><small>---</small><br>
+ <span id="britain" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="bureausDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Institucional</b><br><small>---</small><br>
+ <span id="bureaus" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>San Felipe</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
 </div>
@@ -70,11 +74,15 @@ function tomaTracker() {
 let central = document.getElementById("central")
 let deartes = document.getElementById("deartes")
 let science = document.getElementById("science")
+let britain = document.getElementById("britain")
+let bureaus = document.getElementById("bureaus")
 let sfelipe = document.getElementById("sfelipe")
 // DEFINE DIV ELEMENTS
 let centralDiv = document.getElementById("centralDiv")
 let deartesDiv = document.getElementById("deartesDiv")
 let scienceDiv = document.getElementById("scienceDiv")
+let britainDiv = document.getElementById("britainDiv")
+let bureausDiv = document.getElementById("bureausDiv")
 let sfelipeDiv = document.getElementById("sfelipeDiv")
 // EDIT ALL SPANS AT ONCE!
 // let allSpans = document.querySelectorAll("span")
@@ -86,22 +94,40 @@ let currentDate = new Date()
 let centralGoes = new Date("2026-09-07T00:00:00")
 let deartesGoes = currentDate
 let scienceGoes = currentDate
+let britainGoes = currentDate
+let bureausGoes = currentDate
 let sfelipeGoes = currentDate
 // GETTING DIFFERENCE
 let centralDiff = currentDate - centralGoes
 let deartesDiff = currentDate - deartesGoes
 let scienceDiff = currentDate - scienceGoes
+let britainDiff = currentDate - britainGoes
+let bureausDiff = currentDate - bureausGoes
 let sfelipeDiff = currentDate - sfelipeGoes
 // CONVERTING TO DAYS IN FRACTION
 let centralDays = parseFloat(centralDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let deartesDays = parseFloat(deartesDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let scienceDays = parseFloat(scienceDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+let britainDays = parseFloat(britainDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+let bureausDays = parseFloat(bureausDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 
-// CHECKING IF HIGHER THAN 0
-if (centralDays > 0) { central.innerHTML = centralDays; centralDiv.style.background = "red" }
+// CHECKING & UPDATING CENTRAL DAYS
+if (centralDays > 0) {
+ centralDiv.style.background = "red"
+ let i = 0.0
+ let centralLoop = setInterval(function(){
+  i += 0.1
+  central.innerHTML = i.toFixed(1)
+  if (i >= centralDays) { clearInterval(centralLoop) }
+ }, 100)
+}
+
+// CHECKING & UPDATING OTHER LOCATIONS [NOT YET IMPLEMENTED]!
 if (deartesDays > 0) { deartes.innerHTML = deartesDays; deartesDiv.style.background = "red" }
 if (scienceDays > 0) { science.innerHTML = scienceDays; scienceDiv.style.background = "red" }
+if (britainDays > 0) { britain.innerHTML = britainDays; britainDiv.style.background = "red" }
+if (bureausDays > 0) { bureaus.innerHTML = bureausDays; bureausDiv.style.background = "red" }
 if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.background = "red" }
 
 }
