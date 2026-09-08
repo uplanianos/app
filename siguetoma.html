@@ -8,6 +8,7 @@
  <link rel="stylesheet" href="files/pages-style.css">
  <title>Uplanianos - Toma Tracker</title>
  <style>
+ #centralDiv { transition: background-color 3s; transition: backgroundColor 3s; transition: background 3s; }
  div.tomaTracker {
   display: grid;
   grid-template-columns: 32% 32% 32%;
@@ -117,8 +118,7 @@ if (centralDays > 0) {
  centralDiv.style.background = "red"
  let i = 0.0
  let centralLoop = setInterval(function(){
-  i += 0.1
-  central.innerHTML = i.toFixed(1)
+  i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
  }, 50)
 }
