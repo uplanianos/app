@@ -467,8 +467,13 @@ else { autoTime.style.color = "#0000CC" }
 // ====================
 // ATTEND BUTTON CLICK!
 attendBT.addEventListener("click", function() {
+ attendBT.disabled = true; 
  attendBT.style.color = "darkgray"
  attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
+ setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 200)
+ setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 400)
+ setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 600)
+ setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 800)
 })
 
 // ROSTER BUTTON - ASSIGNING DEFAULT!
@@ -559,18 +564,21 @@ form.addEventListener("submit", async function (e) {
 	rosterBT.style.display = "block"
 	attendBT.style.display = "none"
         // form.reset();
-        } else { throw new Error(data.message || "Asistencia fallida!"); }
+        } else { throw new Error(data.message || "Asistencia fallida!"); attendBT.disabled = false; }
     } catch (error) {
 	notAllowed.play()
         console.error("Error:", error);
         messageDiv.textContent = "Error: " + error.message;
         messageDiv.style.backgroundColor = "#f14668";
         messageDiv.style.color = "white";
+	attendBT.disabled = false;
         }
     finally {
-	// RE-ENABLE BUTTON
-	submitButton.disabled = false;
-	attendBT.style.color = "lightgray"
+	// RE-ENABLE BUTTON (AFTER 15 SECONDS!)
+	setTimeout(() => {
+	 submitButton.disabled = false
+	 attendBT.style.color = "lightgray"
+	}, 15000)
 
     setTimeout(() => {
         messageDiv.textContent = "";
