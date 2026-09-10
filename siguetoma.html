@@ -23,6 +23,7 @@
 </style>
 </head>
 
+
 <body class="paroTrackerBody">
 
 <br>
@@ -33,7 +34,7 @@
 
 <div class="tomaTracker" style="">
 
- <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Casa Central</b><br><small>Inicio: Sep. 7, 2026.</small><br>
+ <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br><small>Inicio: Sep. 7, 2026.</small><br>
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br>
@@ -42,7 +43,7 @@
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Ciencias</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="britaonDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Gran Bretaña</b><br><small>---</small><br>
+ <div id="britainDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="britainLoop()"><br><b>Gran Bretaña</b><br><small>Inicio: Sep. 7, 2026.</small><br>
  <span id="britain" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
  <div id="bureausDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Institucional</b><br><small>---</small><br>
@@ -69,8 +70,12 @@ para ver actualizaciones.
 // LOAD SCRIPT
 onload = tomaTracker()
 
+// =========================
 // MAIN TRACKER SCRIPT!
+// =========================
 function tomaTracker() {
+
+// =========================
 // DEFINE SPAN ELEMENTS
 let central = document.getElementById("central")
 let deartes = document.getElementById("deartes")
@@ -78,6 +83,7 @@ let science = document.getElementById("science")
 let britain = document.getElementById("britain")
 let bureaus = document.getElementById("bureaus")
 let sfelipe = document.getElementById("sfelipe")
+
 // DEFINE DIV ELEMENTS
 let centralDiv = document.getElementById("centralDiv")
 let deartesDiv = document.getElementById("deartesDiv")
@@ -85,26 +91,28 @@ let scienceDiv = document.getElementById("scienceDiv")
 let britainDiv = document.getElementById("britainDiv")
 let bureausDiv = document.getElementById("bureausDiv")
 let sfelipeDiv = document.getElementById("sfelipeDiv")
+
 // EDIT ALL SPANS AT ONCE!
 // let allSpans = document.querySelectorAll("span")
 // for(el of allSpans) { el.style.background = "red" }
 
+// =========================
 // WORKING WITH DATES!
 let currentDate = new Date()
 // START DATES
-let centralGoes = new Date("2026-09-07T00:00:00")
-let deartesGoes = currentDate
-let scienceGoes = currentDate
-let britainGoes = currentDate
-let bureausGoes = currentDate
-let sfelipeGoes = currentDate
+let centralRaid = new Date("2026-09-07T00:00:00")
+let deartesRaid = currentDate
+let scienceRaid = currentDate
+let britainRaid = new Date("2026-09-07T00:00:00")
+let bureausRaid = currentDate
+let sfelipeRaid = currentDate
 // GETTING DIFFERENCE
-let centralDiff = currentDate - centralGoes
-let deartesDiff = currentDate - deartesGoes
-let scienceDiff = currentDate - scienceGoes
-let britainDiff = currentDate - britainGoes
-let bureausDiff = currentDate - bureausGoes
-let sfelipeDiff = currentDate - sfelipeGoes
+let centralDiff = currentDate - centralRaid
+let deartesDiff = currentDate - deartesRaid
+let scienceDiff = currentDate - scienceRaid
+let britainDiff = currentDate - britainRaid
+let bureausDiff = currentDate - bureausRaid
+let sfelipeDiff = currentDate - sfelipeRaid
 // CONVERTING TO DAYS IN FRACTION
 let centralDays = parseFloat(centralDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let deartesDays = parseFloat(deartesDiff / (1000 * 60 * 60 * 24)).toFixed(1)
@@ -113,24 +121,68 @@ let britainDays = parseFloat(britainDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let bureausDays = parseFloat(bureausDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 let sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 
-// CHECKING & UPDATING CENTRAL DAYS
+// =========================
+// CHECKING & UPDATING SIEGED BRANCHES!
 if (centralDays > 0) {
  centralDiv.style.background = "red"
- let i = 0.0
- let centralLoop = setInterval(function(){
+ centralDiv.style.cursor = "pointer"
+ let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
  }, 50)
 }
 
+if (britainDays > 0) {
+ britainDiv.style.background = "red"
+ britainDiv.style.cursor = "pointer"
+ let i = 0.0; let britainLoop = setInterval(function(){
+  i += 0.1; britain.innerHTML = i.toFixed(1)
+  if (i >= britainDays) { clearInterval(britainLoop) }
+ }, 50)
+}
+
+// =========================
 // CHECKING & UPDATING OTHER LOCATIONS [NOT YET IMPLEMENTED]!
 if (deartesDays > 0) { deartes.innerHTML = deartesDays; deartesDiv.style.background = "red" }
 if (scienceDays > 0) { science.innerHTML = scienceDays; scienceDiv.style.background = "red" }
-if (britainDays > 0) { britain.innerHTML = britainDays; britainDiv.style.background = "red" }
 if (bureausDays > 0) { bureaus.innerHTML = bureausDays; bureausDiv.style.background = "red" }
 if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.background = "red" }
 
+// =========================
+// END OF MAIN TRACKER SCRIPT!
+// =========================
 }
+
+
+
+// =========================
+// CENTRAL ONCLICK FUNCTION!
+function centralLoop() {
+ playAudio()
+ let centralDays = document.getElementById("central").innerText
+ let i = 0.0; let centralLoop = setInterval(function(){
+  i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
+  if (i >= centralDays) { clearInterval(centralLoop) }
+ }, 50)
+}
+
+// =========================
+// BRITAIN ONCLICK FUNCTION!
+function britainLoop() {
+
+ let britainDays = document.getElementById("britain").innerText
+ let i = 0.0; let britainLoop = setInterval(function(){
+  i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
+  if (i >= britainDays) { clearInterval(britainLoop) }
+ }, 50)
+}
+
+// PLAY AUDIO!
+function playAudio() {
+var repeatAudio = new Audio('media/click.mp3')
+repeatAudio.play()
+}
+
 </script>
 
 
