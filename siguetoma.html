@@ -8,7 +8,7 @@
  <link rel="stylesheet" href="files/pages-style.css">
  <title>Uplanianos - Toma Tracker</title>
  <style>
- #centralDiv { transition: background-color 3s; transition: backgroundColor 3s; transition: background 3s; }
+ .grid-item-slider { transition: background-color 3s; }
  div.tomaTracker {
   display: grid;
   grid-template-columns: 32% 32% 32%;
@@ -135,8 +135,8 @@ sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 // CHECKING & UPDATING SIEGED BRANCHES!
 // CENTRAL BRANCH!
 if (centralDays > 0) {
- centralDiv.style.background = "red"
  centralDiv.style.cursor = "pointer"
+ centralDiv.style.background = "red"
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
@@ -145,8 +145,8 @@ if (centralDays > 0) {
 
 // GREAT BRITAIN BRANCH!
 if (britainDays > 0) {
- britainDiv.style.background = "red"
  britainDiv.style.cursor = "pointer"
+ britainDiv.style.background = "red"
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1)
   if (i >= britainDays) { clearInterval(britainLoop) }
@@ -171,19 +171,29 @@ if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.backgro
 // CENTRAL ONCLICK FUNCTION!
 function centralLoop() {
  playAudio()
+ centralDiv.style.background = "#151B54"
+ centralDiv.style.transition = "background-color 0s"
+ let transCentral = "background-color " + parseInt(centralDays) + "s"
  let i = 0.0; let centralLoop = setInterval(function(){
+  centralDiv.style.transition = transCentral
+  centralDiv.style.background = "red"
   i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 40)
+ }, 60)
 }
 
 // =========================
 // BRITAIN ONCLICK FUNCTION!
 function britainLoop() {
+ britainDiv.style.background = "#151B54"
+ britainDiv.style.transition = "background-color 0s"
+ let transBritain = "background-color " + parseInt(britainDays) + "s"
  let i = 0.0; let britainLoop = setInterval(function(){
+  britainDiv.style.transition = transBritain
+  britainDiv.style.background = "red"
   i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 40)
+ }, 60)
 }
 
 // PLAY AUDIO!
