@@ -73,7 +73,37 @@ onload = tomaTracker()
 // =========================
 // MAIN TRACKER SCRIPT!
 // =========================
+
+// DEFINING DAY CALCULATION VARIABLES
+var centralDays
+var deartesDays
+var scienceDays
+var britainDays
+var bureausDays
+var sfelipeDays
+
 function tomaTracker() {
+// =========================
+// WORKING WITH DATES!
+var currentDate = new Date()
+// START DATES
+var centralRaid = new Date("2026-09-07T00:00:00")
+var deartesRaid = currentDate
+var scienceRaid = currentDate
+var britainRaid = new Date("2026-09-07T00:00:00")
+var bureausRaid = currentDate
+var sfelipeRaid = currentDate
+// GETTING DIFFERENCE
+var centralDiff = currentDate - centralRaid
+var deartesDiff = currentDate - deartesRaid
+var scienceDiff = currentDate - scienceRaid
+var britainDiff = currentDate - britainRaid
+var bureausDiff = currentDate - bureausRaid
+var sfelipeDiff = currentDate - sfelipeRaid
+
+// EDIT ALL SPANS AT ONCE!
+// let allSpans = document.querySelectorAll("span")
+// for(el of allSpans) { el.style.background = "red" }
 
 // =========================
 // DEFINE SPAN ELEMENTS
@@ -92,53 +122,35 @@ let britainDiv = document.getElementById("britainDiv")
 let bureausDiv = document.getElementById("bureausDiv")
 let sfelipeDiv = document.getElementById("sfelipeDiv")
 
-// EDIT ALL SPANS AT ONCE!
-// let allSpans = document.querySelectorAll("span")
-// for(el of allSpans) { el.style.background = "red" }
-
 // =========================
-// WORKING WITH DATES!
-let currentDate = new Date()
-// START DATES
-let centralRaid = new Date("2026-09-07T00:00:00")
-let deartesRaid = currentDate
-let scienceRaid = currentDate
-let britainRaid = new Date("2026-09-07T00:00:00")
-let bureausRaid = currentDate
-let sfelipeRaid = currentDate
-// GETTING DIFFERENCE
-let centralDiff = currentDate - centralRaid
-let deartesDiff = currentDate - deartesRaid
-let scienceDiff = currentDate - scienceRaid
-let britainDiff = currentDate - britainRaid
-let bureausDiff = currentDate - bureausRaid
-let sfelipeDiff = currentDate - sfelipeRaid
 // CONVERTING TO DAYS IN FRACTION
-let centralDays = parseFloat(centralDiff / (1000 * 60 * 60 * 24)).toFixed(1)
-let deartesDays = parseFloat(deartesDiff / (1000 * 60 * 60 * 24)).toFixed(1)
-let scienceDays = parseFloat(scienceDiff / (1000 * 60 * 60 * 24)).toFixed(1)
-let britainDays = parseFloat(britainDiff / (1000 * 60 * 60 * 24)).toFixed(1)
-let bureausDays = parseFloat(bureausDiff / (1000 * 60 * 60 * 24)).toFixed(1)
-let sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+centralDays = parseFloat(centralDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+deartesDays = parseFloat(deartesDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+scienceDays = parseFloat(scienceDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+britainDays = parseFloat(britainDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+bureausDays = parseFloat(bureausDiff / (1000 * 60 * 60 * 24)).toFixed(1)
+sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(1)
 
 // =========================
 // CHECKING & UPDATING SIEGED BRANCHES!
+// CENTRAL BRANCH!
 if (centralDays > 0) {
  centralDiv.style.background = "red"
  centralDiv.style.cursor = "pointer"
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 50)
+ }, 25)
 }
 
+// GREAT BRITAIN BRANCH!
 if (britainDays > 0) {
  britainDiv.style.background = "red"
  britainDiv.style.cursor = "pointer"
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1)
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 50)
+ }, 25)
 }
 
 // =========================
@@ -159,22 +171,19 @@ if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.backgro
 // CENTRAL ONCLICK FUNCTION!
 function centralLoop() {
  playAudio()
- let centralDays = document.getElementById("central").innerText
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 50)
+ }, 40)
 }
 
 // =========================
 // BRITAIN ONCLICK FUNCTION!
 function britainLoop() {
-
- let britainDays = document.getElementById("britain").innerText
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 50)
+ }, 40)
 }
 
 // PLAY AUDIO!
