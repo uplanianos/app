@@ -140,7 +140,7 @@ if (centralDays > 0) {
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 25)
+ }, 20)
 }
 
 // GREAT BRITAIN BRANCH!
@@ -150,7 +150,7 @@ if (britainDays > 0) {
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1)
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 25)
+ }, 20)
 }
 
 // =========================
@@ -179,7 +179,7 @@ function centralLoop() {
   centralDiv.style.background = "red"
   i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 60)
+ }, 40)
 }
 
 // =========================
@@ -193,7 +193,7 @@ function britainLoop() {
   britainDiv.style.background = "red"
   i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 60)
+ }, 40)
 }
 
 // PLAY AUDIO!
