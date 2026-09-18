@@ -10,7 +10,6 @@
 </head>
 
 
-<audio id="tics" src="tugofwar/likeTics.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 <audio id="done" src="tugofwar/likeSport.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 
@@ -407,87 +406,97 @@ const updatedArray = (arr, item)  => {
   }
  }
 
-
-
-// RANDOMIZING 1
-let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+// RANDOMIZING ANIMATION 1
+let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
 var toRemove = parseInt(random)
 var randomElement = "r" + random
+randomQs.style.color = "black"
+randomQs.style.transition = "color 0s"
 randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-if (audioToggle === "On") { document.getElementById("tics").play(); }
+if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
 
-// RANDOMIZING 2
+// RANDOMIZING ANIMATION 2
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 300);
+
+// RANDOMIZING ANIMATION 3
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 600);
+
+// RANDOMIZING ANIMATION 4
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 900);
+
+// RANDOMIZING ANIMATION 5
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 1200);
+
+// RANDOMIZING ANIMATION 6
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 1500);
+
+// RANDOMIZING ANIMATION 7
+setTimeout(function() {
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
+ var toRemove = parseInt(random)
+ var randomElement = "r" + random
+ randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 1800);
+
+// RANDOMIZING ANIMATION 8
 setTimeout(function() {
  let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
  var toRemove = parseInt(random)
  var randomElement = "r" + random
  randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 250);
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 2100);
 
-// RANDOMIZING 3
+// RANDOMIZING ANIMATION 9
 setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
  var toRemove = parseInt(random)
  var randomElement = "r" + random
  randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 500);
+ if (audioToggle === "On") { var clicks = new Audio('media/click.mp3'); clicks.play() }
+ }, 2500);
 
-// RANDOMIZING 4
+// RANDOMIZING ANIMATION 10
 setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
+ let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount * 2) + 1 );
  var toRemove = parseInt(random)
  var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 750);
-
-// RANDOMIZING 5
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 1000);
-
-// RANDOMIZING 6
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 1250);
-
-// RANDOMIZING 7
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 1500);
-
-// RANDOMIZING 8
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 1750);
-
-// RANDOMIZING 9
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
- randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
-}, 2000);
-
-// RANDOMIZING 10
-setTimeout(function() {
- let random = Math.floor( Math.random(updatedArray(thisArray,toRemove)) * (questAmount) + 1 );
- var toRemove = parseInt(random)
- var randomElement = "r" + random
+ randomQs.style.color = "red"
+ randomQs.style.transition = "color 0s"
  randomQs.innerHTML = "<b> * " + document.getElementById(randomElement).value + " * </b>"
  if (audioToggle === "On") { document.getElementById("done").play(); }
-}, 2250);
+ }, 3000);
 
 }
 
