@@ -24,6 +24,9 @@
 </head>
 
 
+<audio id="endAudio" src="media/click.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+
+
 <body class="paroTrackerBody">
 
 <br>
@@ -34,7 +37,8 @@
 
 <div class="tomaTracker" style="">
 
- <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br><small>Inicio: Sep. 7, 2026.</small><br>
+ <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br>
+ <small>Desde el 7 al 19 de Sept. [2026]</small><br>
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br>
@@ -43,7 +47,7 @@
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Ciencias</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="britainDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="britainLoop()"><br><b>Gran Bretaña</b><br><small>Inicio: Sep. 7, 2026.</small><br>
+ <div id="britainDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="britainLoop()"><br><b>Gran Bretaña</b><br><small>Inicio: Sep. 7 [2026]</small><br>
  <span id="britain" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
  <div id="bureausDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Institucional</b><br><small>---</small><br>
@@ -88,13 +92,14 @@ function tomaTracker() {
 var currentDate = new Date()
 // START DATES
 var centralRaid = new Date("2026-09-07T02:00:00")
+var centralEnds = new Date("2026-09-19T14:00:00")
 var deartesRaid = currentDate
 var scienceRaid = currentDate
 var britainRaid = new Date("2026-09-07T02:00:00")
 var bureausRaid = currentDate
 var sfelipeRaid = currentDate
 // GETTING DIFFERENCE
-var centralDiff = currentDate - centralRaid
+var centralDiff = centralEnds - centralRaid
 var deartesDiff = currentDate - deartesRaid
 var scienceDiff = currentDate - scienceRaid
 var britainDiff = currentDate - britainRaid
@@ -136,11 +141,11 @@ sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(3)
 // CENTRAL BRANCH!
 if (centralDays > 0) {
  centralDiv.style.cursor = "pointer"
- centralDiv.style.background = "red"
+ centralDiv.style.background = "#660066"
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 20)
+ }, 1)
 }
 
 // GREAT BRITAIN BRANCH!
@@ -150,7 +155,7 @@ if (britainDays > 0) {
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1)
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 20)
+ }, 15)
 }
 
 // =========================
@@ -170,16 +175,17 @@ if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.backgro
 // =========================
 // CENTRAL ONCLICK FUNCTION!
 function centralLoop() {
- playAudio()
- centralDiv.style.background = "#151B54"
- centralDiv.style.transition = "background-color 0s"
+ endAudio.play()
+ // centralDiv.style.background = "#151B54"
+ // centralDiv.style.transition = "background-color 0s"
  let transCentral = "background-color " + parseInt(centralDays) + "s"
  let i = 0.0; let centralLoop = setInterval(function(){
   centralDiv.style.transition = transCentral
-  centralDiv.style.background = "red"
-  i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
-  if (i >= centralDays) { clearInterval(centralLoop) }
- }, 40)
+  centralDiv.style.background = "#660066"
+  i += 0.1; central.innerHTML = i.toFixed(1)
+  // playAudio()
+  if (i >= centralDays) { clearInterval(centralLoop); endAudio.play() }
+ }, 1)
 }
 
 // =========================
@@ -193,8 +199,9 @@ function britainLoop() {
   britainDiv.style.background = "red"
   i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 40)
+ }, 30)
 }
+
 
 // PLAY AUDIO!
 function playAudio() {
