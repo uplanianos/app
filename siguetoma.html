@@ -39,8 +39,11 @@
 
  <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br>
  <small>Inicio: Sep. 21 [2026]</small><br>
- <!-- >Desde el 7 al 19 de Sept. [2026]</small><br><!-->
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
+
+ <div id="centralEnd" class="grid-item-slider" style="padding-left: 0px; text-align: center; display: none; background: #660066;"><br><b>Casa Central</b><br>
+ <small>Desde el 7 al 19 de Sept. [2026]</small><br>
+ <span style="font-size: 50px;">12.5</span><br>días.<br><br></div>
 
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
@@ -60,8 +63,8 @@
 </div>
 
 <div class="tomaDetails">
-<div class="tomaStatus" style="background: #FF0000;">En Curso!</div>
-<div class="tomaStatus" style="background: #660066;">Terminada</div>
+<div class="tomaStatus" style="background: #FF0000; cursor: pointer;" onclick="showActive()">En Curso!</div>
+<div class="tomaStatus" style="background: #660066; cursor: pointer;" onclick="showFinished()">Terminada</div>
 <div class="tomaStatus" style="background: #000088;">Normal</div>
 </div>
 
@@ -219,6 +222,19 @@ function britainLoop() {
 function playAudio() {
 var repeatAudio = new Audio('media/click.mp3')
 repeatAudio.play()
+}
+
+
+// DISPLAY ACTIVE!
+function showActive() {
+document.getElementById("centralDiv").style.display =  "block"
+document.getElementById("centralEnd").style.display =  "none"
+}
+
+// DISPLAY FINISHED!
+function showFinished() {
+document.getElementById("centralDiv").style.display =  "none"
+document.getElementById("centralEnd").style.display =  "block"
 }
 
 </script>
