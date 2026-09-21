@@ -35,7 +35,7 @@
 <span style="margin-left: 2%; font-size: 12px; font-weight: normal;">* Solo contaremos los días de duración, ya que el término es indefinido.</span>
 </div>
 
-<div class="tomaTracker" style="">
+<div class="tomaTracker">
 
  <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br>
  <small>Desde el 7 al 19 de Sept. [2026]</small><br>
@@ -56,6 +56,12 @@
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>San Felipe</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
+</div>
+
+<div class="tomaDetails">
+<div class="tomaStatus" style="background: #FF0000;">En Curso!</div>
+<div class="tomaStatus" style="background: #660066;">Terminada</div>
+<div class="tomaStatus" style="background: #000088;">Normal</div>
 </div>
 
 <div class="grid-item-slider" id="strike-footer">
@@ -199,7 +205,7 @@ function britainLoop() {
   britainDiv.style.background = "red"
   i += 0.1; britain.innerHTML = i.toFixed(1); playAudio()
   if (i >= britainDays) { clearInterval(britainLoop) }
- }, 30)
+ }, 20)
 }
 
 

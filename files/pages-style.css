@@ -1290,6 +1290,14 @@ div.strike-label-wrapper { display: grid; }
 }
 
 
+/* TOMA TRACKER SETTINGS */
+div.tomaDetails { display: flex; margin: auto; width: max-content; margin-top: -18px; align-items: center; color: white; font-size: 12px; gap: 12px; }
+div.tomaStatus  { margin: auto; text-align: center; width: 85px; padding: 6px 12px; border: 1px solid white; border-radius: 6px; }
+
+@media screen and (max-width: 800px) {
+div.tomaDetails { margin-top: 18px; }
+}
+
 
 /* CONFETTI EFFECT */
 /* CONFETTI EFFECT */
