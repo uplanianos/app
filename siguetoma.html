@@ -240,6 +240,7 @@ repeatAudio.play()
 
 // DISPLAY ACTIVE!
 function showActive() {
+centralLoop()
 document.getElementById("centralDiv").style.display =  "block"
 document.getElementById("centralEnd").style.display =  "none"
 document.getElementById("britainDiv").style.display =  "block"
@@ -248,10 +249,11 @@ document.getElementById("britainEnd").style.display =  "none"
 
 // DISPLAY FINISHED!
 function showFinished() {
+britainLoop()
 document.getElementById("centralDiv").style.display =  "none"
 document.getElementById("centralEnd").style.display =  "block"
-document.getElementById("britainDiv").style.display =  "none"
-document.getElementById("britainEnd").style.display =  "block"
+// document.getElementById("britainDiv").style.display =  "none"
+// document.getElementById("britainEnd").style.display =  "block"
 }
 
 </script>
