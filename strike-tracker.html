@@ -115,7 +115,7 @@
 	 <ul class="tracker-list">
 	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felinformis">✔️</span> Ingeniería Informática.</li></div>
 	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felcastelis">✔️</span> Pedagogía en Castellano.</li></div>
-	  <div class="felipis" style="display: none;"><li><span class="felipis" id="feldiferins">✔️</span> Pedagogía en Educación Diferencial.</li></div>
+	  <div class="felipis" style="display: none;"><li><span class="felipis" id="feldiferins">❌</span> Pedagogía en Educación Diferencial.</li></div>
 	  <div class="felipis" style="display: none;"><li><span class="felipis" id="felinglesis">✔️</span> Pedagogía en Inglés.</li><br></div>
 	 </ul>
 	</div>
@@ -261,8 +261,8 @@ let felipisTotal = 4
 for(let Courses of felipisSpan) {
  if (Courses.innerHTML == "❌") { felipisTotal-- }
  if (felipisTotal == 4) { sanFelipis.style.backgroundColor = "green" }
- if (felipisTotal <= 3) { sanFelipis.style.backgroundColor = "orange"; facFelipis.style.textShadow = "1px 1px black" }
- if (felipisTotal == 0) { sanFelipis.style.backgroundColor = "red"; facFelipis.style.opacity = "0.9"; facFelipis.style.textShadow = "1px 1px black" }
+ if (felipisTotal <= 3) { sanFelipis.style.backgroundColor = "orange"; sanFelipis.style.textShadow = "1px 1px black" }
+ if (felipisTotal == 0) { sanFelipis.style.backgroundColor = "red"; sanFelipis.style.opacity = "0.9"; sanFelipis.style.textShadow = "1px 1px black" }
  }
 
 
@@ -460,7 +460,7 @@ var weeklyLoop = setInterval(function() {
   displayScience()
   displayHumanis()
   displayEnginis()
-  // displayFelipis()
+  displayFelipis()
 
   // OTHER CHECKS
   overallCheck()
