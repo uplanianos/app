@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="en-US">
@@ -24,7 +25,7 @@
 </head>
 
 
-<audio id="endAudio" src="media/click.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
+<audio id="clickAudio" src="media/click.mp3" preload="auto">Your browser does not support the <code>audio</code> element.</audio>
 
 
 <body class="paroTrackerBody">
@@ -37,13 +38,14 @@
 
 <div class="tomaTracker">
 
- <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="centralLoop()"><br><b>Casa Central</b><br>
- <small>Inicio: Sep. 21 [2026]</small><br>
+ <div id="centralDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Casa Central</b><br><small>---</small><br>
  <span id="central" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="centralEnd" class="grid-item-slider" style="padding-left: 0px; text-align: center; display: none; background: #660066;"><br><b>Casa Central</b><br>
- <small>Del 7 al 19 de Sept. ['26]</small><br>
- <span style="font-size: 50px;">12.5</span><br>días.<br><br></div>
+ <!-- HIDDEN DIVS -->
+ <div id="centralEnd" class="grid-item-slider" style="padding-left: 0px; text-align: center; display: none; background: #660066; cursor: pointer;" onclick="centralLoop()">
+ <br><b>Casa Central</b><br>
+ <small>Sept. 7 a Oct. 16 ['26]</small><br>
+ <span id="centralEnded" style="font-size: 50px;">39.5</span><br>días.<br><br></div>
 
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Artes</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
@@ -51,13 +53,15 @@
  <div id="deartesDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Fac. de Ciencias</b><br><small>---</small><br>
  <span id="deartes" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="britainDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;" onclick="britainLoop()"><br><b>Gran Bretaña</b><br>
- <small>Del 7 al 22 de Sept. ['26]</small><br>
+ <div id="britainDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Gran Bretaña</b><br>
+ <small>---</small><br>
  <span id="britain" style="font-size: 50px;">0</span><br>días.<br><br></div>
 
- <div id="britainEnd" class="grid-item-slider" style="padding-left: 0px; text-align: center; display: none; background: #660066;"><br><b>Gran Bretaña</b><br>
+ <!-- HIDDEN DIVS -->
+ <div id="britainEnd" class="grid-item-slider" style="padding-left: 0px; text-align: center; display: none; background: #660066; cursor: pointer;" onclick="britainLoop()">
+ <br><b>Gran Bretaña</b><br>
  <small>Del 7 al 22 de Sept. ['26]</small><br>
- <span style="font-size: 50px;">15.0</span><br>días.<br><br></div>
+ <span id="britainEnded" style="font-size: 50px;">15.0</span><br>días.<br><br></div>
 
  <div id="bureausDiv" class="grid-item-slider" style="padding-left: 0px; text-align: center;"><br><b>Institucional</b><br><small>---</small><br>
  <span id="bureaus" style="font-size: 50px;">0</span><br>días.<br><br></div>
@@ -68,9 +72,9 @@
 </div>
 
 <div class="tomaDetails">
-<div class="tomaStatus" style="background: #FF0000; cursor: pointer;" onclick="showActive()">En Curso!</div>
-<div class="tomaStatus" style="background: #660066; cursor: pointer;" onclick="showFinished()">Terminada</div>
-<div class="tomaStatus" style="background: #000088;">Normal</div>
+<div class="tomaStatus" style="background: #FF0000; cursor: pointer;" onclick="showNormal()">En Curso!</div>
+<div class="tomaStatus" style="background: #660066; cursor: pointer;" onclick="showFinish()">Terminada</div>
+<div class="tomaStatus" style="background: #000088; cursor: pointer;" onclick="showNormal()">Normal</div>
 </div>
 
 <div class="grid-item-slider" id="strike-footer">
@@ -106,19 +110,22 @@ function tomaTracker() {
 // WORKING WITH DATES!
 var currentDate = new Date()
 // START DATES
-var centralRaid = new Date("2026-09-21T02:00:00")
-// var centralEnds = new Date("2026-09-19T14:00:00")
+var centralRaid = currentDate
+// var centralRaid = new Date("2026-09-07T02:00:00")
+// var centralEnds = new Date("2026-10-16T14:00:00")
 var deartesRaid = currentDate
 var scienceRaid = currentDate
-var britainRaid = new Date("2026-09-07T02:00:00")
-var britainEnds = new Date("2026-09-22T00:00:00")
+var britainRaid = currentDate
+// var britainRaid = new Date("2026-09-07T02:00:00")
+// var britainEnds = new Date("2026-09-22T00:00:00")
 var bureausRaid = currentDate
 var sfelipeRaid = currentDate
+
 // GETTING DIFFERENCE
 var centralDiff = currentDate - centralRaid
 var deartesDiff = currentDate - deartesRaid
 var scienceDiff = currentDate - scienceRaid
-var britainDiff = britainEnds - britainRaid
+var britainDiff = currentDate - britainRaid
 var bureausDiff = currentDate - bureausRaid
 var sfelipeDiff = currentDate - sfelipeRaid
 
@@ -154,21 +161,21 @@ sfelipeDays = parseFloat(sfelipeDiff / (1000 * 60 * 60 * 24)).toFixed(3)
 
 // =========================
 // CHECKING & UPDATING SIEGED BRANCHES!
+// =========================
+
 // CENTRAL BRANCH!
 if (centralDays > 0) {
  centralDiv.style.cursor = "pointer"
- centralDiv.style.background = "#FF0000"
- // centralDiv.style.background = "#660066"
+ centralDiv.style.background = "red"
  let i = 0.0; let centralLoop = setInterval(function(){
   i += 0.1; central.innerHTML = i.toFixed(1)
   if (i >= centralDays) { clearInterval(centralLoop) }
- }, 6)
+ }, 1)
 }
 
 // GREAT BRITAIN BRANCH!
 if (britainDays > 0) {
  britainDiv.style.cursor = "pointer"
- britainDiv.style.background = "#660066"
  // britainDiv.style.background = "red"
  let i = 0.0; let britainLoop = setInterval(function(){
   i += 0.1; britain.innerHTML = i.toFixed(1)
@@ -189,58 +196,13 @@ if (sfelipeDays > 0) { sfelipe.innerHTML = sfelipeDays; sfelipeDiv.style.backgro
 }
 
 
+// ===============
+// DISPLAY BUTTONS
+// ===============
 
-// =========================
-// CENTRAL ONCLICK FUNCTION!
-function centralLoop() {
- // endAudio.play()
- centralDiv.style.background = "#151B54"
- // centralDiv.style.background = "#FF0000"
- centralDiv.style.transition = "background-color 0s"
- let transCentral = "background-color " + parseInt(centralDays) + "s"
- let i = 0.0; let centralLoop = setInterval(function(){
-  centralDiv.style.transition = transCentral
-  centralDiv.style.background = "#FF0000"
-  // centralDiv.style.background = "#660066"
-  i += 0.1; central.innerHTML = i.toFixed(1); playAudio()
-  if (i >= centralDays) {
-   clearInterval(centralLoop)
-   // endAudio.play()
-   }
- }, 20)
-}
-
-// =========================
-// BRITAIN ONCLICK FUNCTION!
-function britainLoop() {
- endAudio.play()
- britainDiv.style.background = "#151B54"
- // britainDiv.style.background = "red"
- britainDiv.style.transition = "background-color 0s"
- let transBritain = "background-color " + parseInt(britainDays / 4) + "s"
- let i = 0.0; let britainLoop = setInterval(function(){
-  britainDiv.style.transition = transBritain
-  britainDiv.style.background = "#660066"
-  // britainDiv.style.background = "red"
-  i += 0.1; britain.innerHTML = i.toFixed(1)
-  if (i >= britainDays) {
-   clearInterval(britainLoop)
-   endAudio.play()
-  }
- }, 1)
-}
-
-
-// PLAY AUDIO!
-function playAudio() {
-var repeatAudio = new Audio('media/click.mp3')
-repeatAudio.play()
-}
-
-
-// DISPLAY ACTIVE!
-function showActive() {
-centralLoop()
+// DISPLAY NORMAL!
+function showNormal() {
+playAudio()
 document.getElementById("centralDiv").style.display =  "block"
 document.getElementById("centralEnd").style.display =  "none"
 document.getElementById("britainDiv").style.display =  "block"
@@ -248,13 +210,63 @@ document.getElementById("britainEnd").style.display =  "none"
 }
 
 // DISPLAY FINISHED!
-function showFinished() {
-britainLoop()
+function showFinish() {
+// playAudio()
 document.getElementById("centralDiv").style.display =  "none"
 document.getElementById("centralEnd").style.display =  "block"
-// document.getElementById("britainDiv").style.display =  "none"
-// document.getElementById("britainEnd").style.display =  "block"
+document.getElementById("britainDiv").style.display =  "none"
+document.getElementById("britainEnd").style.display =  "block"
+// LOOP FUNCTIONS!
+centralLoop()
+britainLoop()
 }
+
+
+// ===============
+// AUDIO SCRIPT!!!
+// ===============
+// PLAY AUDIO!
+function playAudio() {
+var repeatAudio = new Audio('media/click.mp3')
+repeatAudio.play()
+}
+
+
+
+
+// =========================
+// CENTRAL ONCLICK FUNCTION!
+function centralLoop() {
+ clickAudio.play()
+ let i = 0.0
+ centralDays = 39.5
+ let centralLoop = setInterval(function(){
+  i += 0.1
+  centralEnded.innerHTML = i.toFixed(1)
+  if (i >= centralDays) {
+   clearInterval(centralLoop)
+   clickAudio.play()
+  }
+ }, 1)
+}
+
+
+// =========================
+// BRITAIN ONCLICK FUNCTION!
+function britainLoop() {
+ clickAudio.play()
+ let i = 0.0
+ britainDays = 14.9
+ let britainLoop = setInterval(function(){
+  i += 0.1
+  britainEnded.innerHTML = i.toFixed(1)
+  if (i >= britainDays) {
+   clearInterval(britainLoop)
+   clickAudio.play()
+  }
+ }, 1)
+}
+
 
 </script>
 
