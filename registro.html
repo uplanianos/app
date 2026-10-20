@@ -309,7 +309,7 @@ for(let studentInput of theFields) {
 // ===============
 if (inputReady && !isPresent) {
  if (onTime) {
-  attendBT.disabled = true
+  attendBT.disabled = false
   attendBT.style.background = "green"
   attendBT.innerText = "☝️ PRESENTE!"
   attendBT.style.display = "block"
@@ -320,7 +320,7 @@ if (inputReady && !isPresent) {
   enableInput()
  }
  if (soLate) {
-  attendBT.disabled = true
+  attendBT.disabled = false
   attendBT.style.background = "red"
   attendBT.innerText = "👇 TARDE!"
   attendBT.style.display = "block"
@@ -467,13 +467,13 @@ else { autoTime.style.color = "#0000CC" }
 // ====================
 // ATTEND BUTTON CLICK!
 attendBT.addEventListener("click", function() {
- attendBT.disabled = true; 
- attendBT.style.color = "darkgray"
- attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
- setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 200)
- setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 400)
- setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 600)
- setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 800)
+ // attendBT.disabled = true; 
+ // attendBT.style.color = "darkgray"
+ // attendBT.innerHTML = "҉ &nbsp; ENVIANDO!"
+ // setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 200)
+ // setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 400)
+ // setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ESPERAR!!" }, 600)
+ // setTimeout(() => { attendBT.innerHTML = "҉ &nbsp; ENVIANDO!" }, 800)
 })
 
 // ROSTER BUTTON - ASSIGNING DEFAULT!
@@ -497,7 +497,7 @@ if (thisFacul.value == "9") { scriptURL = urlScSociales; theRoster = rosterScSoc
 
 // ROSTER - CLICK FUNCTION
 rosterBT.addEventListener("click", function() {
- rosterBT.innerHTML = " ҉ &nbsp; Abriendo..."; rosterBT.style.border = "3px dashed white" 
+ rosterBT.innerHTML = " ҉ &nbsp; Abriendo..."; rosterBT.style.border = "3px dashed white"
  setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
  setTimeout(function(){ rosterBT.innerHTML = "📒 Registro!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
 })
@@ -505,6 +505,7 @@ rosterBT.addEventListener("click", function() {
 
 
 
+// =========================
 // SUBMIT FORM FUNCTION
 // =========================
 const form = document.getElementById("attendClass");
@@ -563,6 +564,8 @@ form.addEventListener("submit", async function (e) {
 	currentStatus.innerHTML = "Estás presente... revisa el registro."
 	rosterBT.style.display = "block"
 	attendBT.style.display = "none"
+	attendBT.disabled = true
+	console.log("Button is Disabled!")
         // form.reset();
         } else { throw new Error(data.message || "Asistencia fallida!"); attendBT.disabled = false; }
     } catch (error) {
@@ -574,11 +577,12 @@ form.addEventListener("submit", async function (e) {
 	attendBT.disabled = false;
         }
     finally {
-	// RE-ENABLE BUTTON (AFTER 15 SECONDS!)
+	// RE-ENABLE BUTTON (AFTER 30 SECONDS!)
 	setTimeout(() => {
 	 submitButton.disabled = false
 	 attendBT.style.color = "lightgray"
-	}, 15000)
+	 console.log("Button is Enabled!")
+	}, 1000 * 60)
 
     setTimeout(() => {
         messageDiv.textContent = "";
