@@ -477,7 +477,7 @@ document.getElementById("slidePosition").value = localStorage.slidePosition || "
 	 <a href="agenda.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">📅</font><br>Agenda<br>Semestral</span></a>
 	 <a href="temporizador.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">⏳</font><br>Cronómetro<br>de Clase</span></a>
 	 <a href="horario.html" target="organizer"><span class="tidySpan"><font class="sliderIcon">🕘</font><br>Horario de<br>Clases</span></a>
-	 <a href="registro.html?clase=%27%E2%87%91%20Editar%20Clase/Prof/Fac.%20en%20Link%20(URL)%20%E2%87%91%27&profe=%27Copiar%20URL%20para%20Compartir%20con%20Curso%27&facul=0" target="organizer"><span class="tidySpan"><font class="sliderIcon">📋</font><br>Registro de<br>Asistencia</span></a>
+	 <a href="registro.html?clase=*Editar+Titulo+de+la+Clase+En+Link*&profe=*Y+Nombre+Docente+Para+Compartir*&facul=0" target="organizer"><span class="tidySpan"><font class="sliderIcon">📋</font><br>Registro de<br>Asistencia</span></a>
 	 <!-- LIGHT YELLOW -->
 	 <a href="https://acceso.upla.cl/sinte/" target="upla"><span class="uplaSpan"><font class="sliderIcon">🗃️</font><br>Portal<br>Sinte</span></a>
 	 <a href="https://app.upla.cl/Matricula_Enlinea_CS/" target="upla"><span class="uplaSpan"><font class="sliderIcon">📝</font><br>Matrícula<br>Online</span></a>
@@ -566,7 +566,7 @@ var semesterDays = finalClass - firstClass
 var termProgress = Math.floor(currentDays / oneDay)
 var termDuration = Math.floor(semesterDays / oneDay)
 
-distance = Math.abs(termProgress * 100 / termDuration)
+distance = Math.abs(termProgress * 100 / termDuration).toFixed(0)
 if (currentDays < 0 || termProgress < 0) { distance = -1 }
 
 if (distance <= 0) {
@@ -631,7 +631,8 @@ var semesterDays = firstDay - lastDay
 var termProgress = Math.floor(currentDays / oneDay)
 var termDuration = Math.floor(semesterDays / oneDay)
 
-distanceYear = Math.abs(termProgress * 100 / termDuration)
+// distanceYear = Math.abs(termProgress * 100 / termDuration)
+distanceYear = Math.abs(termProgress * 100 / termDuration).toFixed(0)
 
 // ==============================
 // TRYING ROUND UP PERCENTAGES!
