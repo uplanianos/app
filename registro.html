@@ -80,7 +80,7 @@
 
  <div class="buttonsDiv">
   <div id="currentStatus" style="font-size: 10px;text-align: center; padding: 6px;">...</div>
-  <div class="thisButton" id="rosterButton" style="background: blue; display: block; width: 120px; padding: 6px 24px;">📒 Registro!</div>
+  <div class="thisButton" id="rosterButton" style="background: blue; display: block; width: 120px; padding: 6px 24px;">📒 Ver registro!</div>
   <button class="theButtons" type="submit" id="attendButton" style="background: green; display: none;">☝️ PRESENTE!</button>
   <div class="message" id="message"></div>
  </div>
@@ -344,7 +344,7 @@ if (noShow && !isPresent) {
  attendBT.disabled = true
  attendBT.style.display = "none"
  rosterBT.style.display = "block"
- currentStatus.innerHTML = "Inscripción finalizada!"
+ currentStatus.innerHTML = "⌛ INSCRIPCIÓN FINALIZADA!!! 🛑"
  thisPeriod.value = "0"
  rollStatus.value = "Ausente"
  enableInput()
@@ -499,7 +499,7 @@ if (thisFacul.value == "9") { scriptURL = urlScSociales; theRoster = rosterScSoc
 rosterBT.addEventListener("click", function() {
  rosterBT.innerHTML = " ҉ &nbsp; Abriendo..."; rosterBT.style.border = "3px dashed white"
  setTimeout(function(){ window.open(theRoster, 'theRoster') }, 1000)
- setTimeout(function(){ rosterBT.innerHTML = "📒 Registro!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
+ setTimeout(function(){ rosterBT.innerHTML = "📒 Ver registro!"; rosterBT.style.border = "2px solid lightgray" }, 2000)
 })
 
 
