@@ -101,3 +101,19 @@ ol	{ padding-left: 18px; }
 }
 
 .referencias { color: white; margin-left: auto; margin-right: 50px; }
+
+#header	{ display: none; text-align: center; font-size: 16px; border: 1px solid black; border-radius: 8px 8px 0 0;}
+
+/* PRINT OR CONVERT TO PDF SETTINGS*/
+
+@media print {
+ p {color: black;}
+ body { background-color: white; background: transparent; }
+ .main { position: absolute; width: 100%; background-color: white; background: transparent; top: 0; padding: 0px; border: 0px solid white; border-radius: 0px; }
+ #header	{ display: block; }
+ .grid-item	{ padding-right: 3%; }
+ .labels	{ display: none; visibility: hidden; }
+ .referencias	{ display: none; visibility: hidden; }
+ #titles	{ display: none; visibility: hidden; }
+ .arrowTop	{ visibility: hidden; padding-top: 3px; }
+}
